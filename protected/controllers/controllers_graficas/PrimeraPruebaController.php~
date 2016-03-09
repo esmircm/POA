@@ -1,0 +1,139 @@
+<?php
+
+class GraficaComunaController extends Controller {
+
+     public $layout = '//layouts/admintui';
+
+    /**
+     * @return array action filters
+     */
+    public function filters() {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+            'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+
+    public function accessRules() {
+        return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'view'),
+                'users' => array('@'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
+
+    /**
+     * This is the default 'index' action that is invoked
+     * when an action is not explicitly requested by users.
+     */
+    public function actionIndex() {
+        //echo $_REQUEST['opc'];exit;
+        if (!isset($_REQUEST['opc'])) {
+
+            $sql = "select fk_nacionalidad as nacionalidad, count(*) as cantidad from sipp.persona group by fk_nacionalidad";
+
+            $connection = Yii::app()->db;
+            $command = $connection->createCommand($sql);
+            $row = $command->queryAll();
+
+            $datos = array();
+            $datos_leyenda = array();
+            $total = array();
+            //$html_comuna = '<table border="2"><tr><td> <b>Estados</b> </td><td> <b>Comunas</b> </td></tr>';
+
+            foreach ($row as $fila) {
+
+                // $html_comuna.= '<tr><td><a href="index.php?r=graficaComuna/index&cod_estado=' . $fila['cod_estado'] . '&opc=2">' . $fila['estado'] . '</a></td><td>' . $fila['comunas'] . ' </td></tr>';
+                array_push($datos, array('' . $fila['cantidad'] . ' ', $fila['cantidad']));
+                array_push($datos_leyenda, array('<a href="index.php?r=graficaComuna/index&cod_estado=' . $fila['nacionalidad'] . '&opc=2">' . $fila['nacionalidad'] . '</a>'));
+                array_push($total, $fila['cantidad']);
+            }
+
+            $total_final = array_sum($total);
+
+            //$html_comuna.= '<tr><td> <b>Total</b> </td><td> <b> ' .$total_final . '</b> </td></tr>';
+            //$html_comuna.='</table>';
+            // $this->redirect('graficas/index', array('total_final'=>$total_final,'datos' => $datos, 'html_comuna' => $html_comuna, 'alto' => (count($row) * 25), 'datos_leyenda' => $datos_leyenda, 'titulo' => 'Comunas Censadas'));*/
+            $this->render('zzzindex', array('total_final' => $total_final, 'datos' => $datos, 'alto' => (count($row) * 25), 'datos_leyenda' => $datos_leyenda, 'titulo' => 'Comunas Censadas'));
+        } else if ($_REQUEST['opc'] == 2) {
+            //mostramos los municipios
+
+            $sql = "SELECT cod_estado, estado, cod_municipio, municipio ,COALESCE(sum(comunas),0) AS comunas
+		    FROM vsw_comuna_conteo_municipio
+                    WHERE cod_estado= " . $_REQUEST['cod_estado'] . "
+                    GROUP BY cod_estado, estado,cod_municipio,municipio
+                    ORDER BY estado, municipio";
+
+            $connection = Yii::app()->db;
+            $command = $connection->createCommand($sql);
+            $row = $command->queryAll();
+
+            $datos = array();
+            $datos_leyenda = array();
+            $total = array();
+
+            $html_comuna = '<table border="2">
+                <tr><td> <b>Municipios</b> </td><td> <b>Comunas</b> </td></tr>';
+
+            foreach ($row as $fila) {
+                $html_comuna.= '<tr><td><a href="index.php?r=graficaComuna/index&cod_municipio=' . $fila['cod_municipio'] . '&opc=3">' . $fila['municipio'] . '</a></td><td>' . $fila['comunas'] . ' </td></tr>';
+                array_push($datos, array('' . $fila['comunas'] . ' ', (int) ($fila['comunas'])));
+                array_push($datos_leyenda, array('<a href="index.php?r=graficaComuna/index&cod_municipio=' . $fila['cod_municipio'] . '&opc=3">' . $fila['municipio'] . '</a>'));
+                array_push($total, $fila['comunas']);
+            }
+            $total_final = array_sum($total);
+            $html_comuna.= '<tr><td> <b>Total</b> </td><td> <b> ' . $total_final . '</b> </td></tr>';
+            $html_comuna.='</table>';
+            $this->render('index', array('total_final' => $total_final, 'datos' => $datos, 'html_comuna' => $html_comuna, 'alto' => count($row) > 7 ? (count($row) * 30) : 250, 'datos_leyenda' => $datos_leyenda, 'titulo' => 'Comunas Censadas del (Edo. ' . $row[0]['estado'] . ')'));
+        } else if ($_REQUEST['opc'] == 3) {
+            //mostramos las parroquias
+            $sql = "SELECT cod_estado, estado, cod_municipio, municipio, cod_parroquia, parroquia ,COALESCE(sum(comunas),0) AS comunas
+                    FROM vsw_comuna_conteo_parroquia
+                    WHERE cod_municipio= " . $_REQUEST['cod_municipio'] . "
+                    GROUP BY cod_estado, estado,cod_municipio,municipio, cod_parroquia, parroquia
+                    ORDER BY estado, municipio, parroquia";
+
+            $connection = Yii::app()->db;
+            $command = $connection->createCommand($sql);
+            $row = $command->queryAll();
+
+            $datos = array();
+            $datos_leyenda = array();
+            $total = array();
+
+            $html_comuna = '<table border="2">
+                <tr><td> <b>Parroquias</b> </td><td> <b>Comunas</b> </td></tr>';
+
+            foreach ($row as $fila) {
+                //if($fila['comunas']!=0){
+                $html_comuna.= '<tr><td>' . $fila['parroquia'] . '</td><td>' . $fila['comunas'] . ' </td></tr>';
+                array_push($datos, array('' . $fila['comunas'] . ' ', (int) ($fila['comunas'])));
+                array_push($datos_leyenda, array($fila['parroquia']));
+                array_push($total, $fila['comunas']);
+                //}
+            }
+            $total_final = array_sum($total);
+            $html_comuna.= '<tr><td> <b>Total</b> </td><td> <b> ' . $total_final . '</b> </td></tr>';
+            $html_comuna.='</table>';
+
+            $this->render('index', array('total_final' => $total_final, 'datos' => $datos, 'html_comuna' => $html_comuna, 'alto' => count($row) > 8 ? (count($row) * 30) : 250, 'EstadoId' => $row[0]['cod_estado'], 'datos_leyenda' => $datos_leyenda, 'titulo' => 'Comunas Censadas del (Edo. ' . $row[0]['estado'] . ' - Mun. ' . $row[0]['municipio'] . ')'));
+        }
+    }
+
+    /**
+     * This is the action to handle external exceptions.
+     */
+    public function actionError() {
+        if ($error = Yii::app()->errorHandler->error) {
+            if (Yii::app()->request->isAjaxRequest)
+                echo $error['message'];
+            else
+                $this->render('error', $error);
+        }
+    }
+
+}

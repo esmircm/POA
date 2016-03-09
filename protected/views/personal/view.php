@@ -1,0 +1,86 @@
+<?php
+/* @var $this PersonalController */
+/* @var $model Personal */
+
+$this->breadcrumbs=array(
+	'Personals'=>array('index'),
+	$model->id_personal,
+);
+
+$this->menu=array(
+	array('label'=>'List Personal', 'url'=>array('index')),
+	array('label'=>'Create Personal', 'url'=>array('create')),
+	array('label'=>'Update Personal', 'url'=>array('update', 'id'=>$model->id_personal)),
+	array('label'=>'Delete Personal', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_personal),'confirm'=>'Are you sure you want to delete this item?')),
+	array('label'=>'Manage Personal', 'url'=>array('admin')),
+);
+?>
+
+<h1>View Personal #<?php echo $model->id_personal; ?></h1>
+
+<?php $this->widget('zii.widgets.CDetailView', array(
+	'data'=>$model,
+	'attributes'=>array(
+		'id_personal',
+		'anios_servicio_apn',
+		'cedula',
+		'cedula_conyugue',
+		'id_ciudad_nacimiento',
+		'id_ciudad_residencia',
+		'diestralidad',
+		'direccion_residencia',
+		'doble_nacionalidad',
+		'email',
+		'id_establecimiento_salud',
+		'estado_civil',
+		'estatura',
+		'fecha_nacimiento',
+		'fecha_nacionalizacion',
+		'gaceta_nacionalizacion',
+		'grado_licencia',
+		'grupo_sanguineo',
+		'maneja',
+		'marca_vehiculo',
+		'mismo_organismo_conyugue',
+		'modelo_vehiculo',
+		'nacionalidad',
+		'nacionalizado',
+		'nivel_educativo',
+		'nombre_conyugue',
+		'numero_libreta_militar',
+		'numero_rif',
+		'numero_sso',
+		'otra_normativa_nac',
+		'id_pais_nacionalidad',
+		'id_parroquia',
+		'peso',
+		'placa_vehiculo',
+		'primer_apellido',
+		'primer_nombre',
+		'reingresable',
+		'sector_trabajo_conyugue',
+		'segundo_apellido',
+		'segundo_nombre',
+		'sexo',
+		'telefono_celular',
+		'telefono_oficina',
+		'telefono_residencia',
+		'tenencia_vivienda',
+		'tiene_hijos',
+		'tiene_vehiculo',
+		'tipo_vivienda',
+		'zona_postal_residencia',
+		'id_sitp',
+		'tiempo_sitp',
+		'password',
+		'madre_padre',
+		'fecha_fallecimiento',
+		'dias_servicio_apn',
+		'meses_servicio_apn',
+		'deuda_regimen_derogado',
+		'credencial',
+		'puebloindigena',
+		'discapacidad',
+		'tipodiscapacidad',
+	),
+)); ?>

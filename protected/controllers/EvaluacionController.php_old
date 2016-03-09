@@ -1,0 +1,750 @@
+<?php
+
+class EvaluacionController extends Controller {
+
+    /**
+     * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
+     * using two-column layout. See 'protected/views/layouts/column2.php'.
+     */
+    public $layout = '//layouts/column2';
+
+    /**
+     * @return array action filters
+     */
+    public function filters() {
+        return array(
+            'accessControl', // perform access control for CRUD operations
+        );
+    }
+
+    /**
+     * Specifies the access control rules.
+     * This method is used by the 'accessControl' filter.
+     * @return array access control rules
+     */
+    public function accessRules() {
+        return array(
+            array('allow', // allow all users to perform 'index' and 'view' actions
+                'actions' => array('index', 'admin', 'view', 'update', 'delete', 'certificado', 'ObjetivosIncompleto', 'objetivos', 'enviarodi', 'revisado', 'rrhheditar', 'direditar', 'dir', 'recursoshumanos', 'updateobjetivos'),
+                'users' => array('*'),
+            ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('create', 'admin', 'odi', 'update', 'delete', 'certificado', 'objetivos', 'ObjetivosIncompleto', 'enviarodi', 'revisado', 'rrhheditar', 'direditar', 'dir', 'recursoshumanos', 'updateobjetivos'),
+                'users' => array('*'),
+            ),
+            array('allow', // allow admin user to perform 'admin' and 'delete' actions
+                'actions' => array('admin', 'delete'),
+                'users' => array('admin'),
+            ),
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
+
+    /**
+     * Displays a particular model.
+     * @param integer $id the ID of the model to be displayed
+     */
+    public function actionView($id) {
+        $this->render('view', array(
+            'model' => $this->loadModel($id),
+        ));
+    }
+
+    /**
+     * Creates a new model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
+     */
+    public function actionCreate() {
+echo '11';die;
+        $model = new Persona;
+        $evaluados = new Evaluados;
+        $personal = new Personal;
+        $trabajador = new Trabajador;
+        $cargo = new Cargo;
+        $dependencia = new Dependencia;
+        $preind = new PreguntasIndividuales;
+// Uncomment the following line if AJAX validation is needed
+// $this->performAjaxValidation($model);
+
+        if (isset($_POST['Persona'])) {
+            $model->attributes = $_POST['Persona'];
+            if ($model->save())
+                $this->redirect(array('view', 'id' => $model->id_persona));
+        }
+
+        $this->render('create', array(
+            'model' => $model,
+            'evaluados' => $evaluados,
+            'personal' => $personal,
+            'trabajador' => $trabajador,
+            'cargo' => $cargo,
+            'dependencia' => $dependencia,
+            'preind' => $preind,
+        ));
+    }
+
+    public function actionOdi($id, $idP) {
+//         var_dump($id);die;
+echo '22';die;
+        $model = new Persona;
+        $evaluados = new Evaluados;
+        $personal = new Personal;
+        $trabajador = new Trabajador;
+        $cargo = new Cargo;
+        $dependencia = new Dependencia;
+        $preind = new PreguntasIndividuales;
+        $evaluacion = new Evaluacion;
+        $evaluador = new Evaluador;
+//        echo '<pre>';var_dump($_POST);
+//        die;
+
+        $vista = new VswListarPersonas;
+        $ver = VswListarPersonas::model()->findByAttributes(array('id_persona_evaluado' => $id));
+
+        if (isset($ver)) {
+            $vista->id_persona_evaluado = $ver['id_persona_evaluado'];
+            $vista->nacionalidad_evaluado = $ver['nacionalidad_evaluado'];
+            $vista->cedula_evaluado = $ver ['cedula_evaluado'];
+            $vista->nombres_evaluado = $ver ['nombres_evaluado'];
+            $vista->apellidos_evaluado = $ver ['apellidos_evaluado'];
+            $vista->cod_nomina_evaluado = $ver ['cod_nomina_evaluado'];
+            $vista->cargo_evaluado = $ver ['cargo_evaluado'];
+            $vista->oficina_evaluado = $ver ['oficina_evaluado'];
+        }
+        $supeva = new VswEvaluacion;
+        $sup = VswEvaluacion::model()->findByAttributes(array('id_persona' => $idP));
+        if (isset($sup)) {
+            $supeva->id_persona = $sup['id_persona'];
+            $supeva->nacionalidad = $sup['nacionalidad'];
+            $supeva->cedula = $sup ['cedula'];
+            $supeva->nombres = $sup ['nombres'];
+            $supeva->apellidos = $sup ['apellidos'];
+            $supeva->codigo_nomina = $sup ['codigo_nomina'];
+            $supeva->descripcion_cargo = $sup ['descripcion_cargo'];
+            $supeva->dependencia = $sup ['dependencia'];
+        }
+
+//       echo '<pre>'; var_dump($_POST);die;
+        if ($ver ['id_evaluacion'] != '') {
+            $this->redirect(array('admin'));
+//                 $this->render('odi', array(
+//                    'model' => $model,
+//                    'evaluados' => $evaluados,
+//                    'evaluador' => $evaluador,
+//                    'evaluacion' => $evaluacion,
+//                    'personal' => $personal,
+//                    'trabajador' => $trabajador,
+//                    'cargo' => $cargo,
+//                    'dependencia' => $dependencia,
+//                    'vista' => $vista,
+//                    'id_evaluacion' => $ver ['id_evaluacion'],
+//                    'preind' => $preind,
+//                    'supeva' => $supeva,
+//                ));
+        } else {
+            if (isset($_POST['VswEvaluacion']['cedula']) && isset($_POST['VswListarPersonas']['cedula_evaluado'])) {
+                $id_evaluacion = '';
+                $id_evaluador = '';
+                $id_evaluado = '';
+                $nacionalidad = '';
+                $nacionalidad_supervisado = '';
+//              var_dump($_POST);die;
+                //ESTE ES EL SUPERVISADO
+                $evaluados = new Evaluados;
+
+
+//            $fecha = $_POST['Evaluados']['periodo_desde'];
+//            $fechahasta = substr($fecha, -10);
+//            $fechadesde = substr($fecha, -23, 10);
+//            $evaluados->periodo_desde = $fechadesde;
+//            $evaluados->periodo_hasta = $fechahasta;
+//              var_dump($evaluados);die;
+                $evaluados->cargo = $_POST['VswListarPersonas']['cargo_evaluado'];
+                $evaluados->cod_nomina = $_POST['VswListarPersonas']['cod_nomina_evaluado'];
+                $evaluados->ubicacion_admtiva = $_POST['VswListarPersonas']['oficina_evaluado'];
+                $evaluados->fk_persona = $_POST['VswListarPersonas']['id_persona_evaluado'];
+                $evaluados->fk_periodo = $_POST['Evaluados']['fk_periodo'];
+                $evaluados->fk_estatus = 25;
+//            $evaluados->fk_sexo = 6;
+                $evaluados->fk_dependencia = 1;
+                $evaluados->fk_tipo_entidad = 53;
+                $evaluados->created_date = 'now()';
+                $evaluados->modified_date = 'now()';
+                $evaluados->created_by = Yii::app()->user->id;
+                $evaluados->es_activo = true;
+
+                if ($evaluados->save()) {
+
+
+                    $id_evaluados = $evaluados->id_evaluado;
+
+
+
+
+                    //ESTE ES EL SUPERVISOR
+                    $evaluador = new Evaluador;
+
+//               var_dump($_POST);die;
+                    $evaluador->cargo = $_POST['VswEvaluacion']['descripcion_cargo'];
+                    $evaluador->cod_nomina = $_POST['VswEvaluacion']['codigo_nomina'];
+                    $evaluador->unidad_admtiva = $_POST['VswEvaluacion']['dependencia'];
+                    $evaluador->fk_persona = $_POST['VswEvaluacion']['id_persona'];
+                    $evaluador->fk_estatus = 22;
+                    $evaluador->grado = 0; //ojo
+                    $evaluador->cod_clase = 0; //ojo
+                    $evaluador->fk_supervisor = 3; //ojo
+                    $evaluador->created_date = 'now()';
+                    $evaluador->modified_date = 'now()';
+                    $evaluador->created_by = Yii::app()->user->id;
+                    $evaluador->es_activo = true;
+                    if ($evaluador->save()) {
+                        $id_evaluador = $evaluador->id_evaluador;
+                    } else {
+
+                        echo "<pre>evaluador";
+                        var_dump($evaluador->Errors);
+                        exit;
+                    }
+
+
+                    //  var_dump($id_evaluador);die;
+                    if (($id_evaluados != '') && ($id_evaluador != '')) {
+                        $evaluacion = new Evaluacion;
+                        $evaluacion->fk_evaluado = $id_evaluados;
+                        $evaluacion->fk_evaluador = $id_evaluador;
+//                    $evaluacion->obj_funcional = $_POST['Evaluacion']['obj_funcional'];
+                        $evaluacion->fk_estatus = 19;
+                        $evaluacion->created_date = 'now()';
+                        $evaluacion->modified_date = 'now()';
+                        $evaluacion->created_by = Yii::app()->user->id;
+                        $evaluacion->es_activo = true;
+                        if ($evaluacion->save()) {
+                            $id_evaluacion = $evaluacion->id_evaluacion;
+                        }
+                    }
+                    if (isset($id_evaluacion)) {
+                        $EstatusEvaluacion = new EstatusEvaluacion;
+
+                        $EstatusEvaluacion->fk_estatus_evaluacion = 47;
+                        $EstatusEvaluacion->fk_estatus = 65;
+                        $EstatusEvaluacion->fk_evaluacion = $id_evaluacion;
+                        $EstatusEvaluacion->fk_entidad = Yii::app()->user->id;
+                        $EstatusEvaluacion->fk_tipo_entidad = 45;    // Cableado 
+                        $EstatusEvaluacion->fecha_estatus = 'now()';
+                        $EstatusEvaluacion->created_by = Yii::app()->user->id;
+                        $EstatusEvaluacion->created_date = 'now()';
+                        $EstatusEvaluacion->modified_date = 'now()';
+                        $EstatusEvaluacion->es_activo = true;
+                        if ($EstatusEvaluacion->save()) {
+                            
+                        } else {
+                            echo "<pre>EstatusEvaluacion";
+                            var_dump($EstatusEvaluacion->Errors);
+                            exit;
+                        }
+                    }
+                } else {
+                    echo "<pre>evaluados";
+                    var_dump($evaluados->Errors);
+                    exit;
+                }
+
+//                    var_dump($id_evaluacion);die;
+                if (($id_evaluacion != '')) {
+
+                    $this->render('odi', array(
+                        'model' => $model,
+                        'evaluados' => $evaluados,
+                        'evaluador' => $evaluador,
+                        'evaluacion' => $evaluacion,
+                        'personal' => $personal,
+                        'trabajador' => $trabajador,
+                        'cargo' => $cargo,
+                        'dependencia' => $dependencia,
+                        'vista' => $vista,
+                        'id_evaluacion' => $id_evaluacion,
+                        'preind' => $preind,
+                        'supeva' => $supeva,
+                    ));
+                }
+            }
+        }
+        $this->render('odi', array(
+            'model' => $model,
+            'evaluados' => $evaluados,
+            'evaluador' => $evaluador,
+            'evaluacion' => $evaluacion,
+            'personal' => $personal,
+            'trabajador' => $trabajador,
+            'cargo' => $cargo,
+            'dependencia' => $dependencia,
+            'vista' => $vista,
+            'preind' => $preind,
+            'supeva' => $supeva,
+        ));
+    }
+
+    public function actionObjetivosIncompleto() {
+//         var_dump($_GET['id']);die;
+echo '33';die;
+        $preind = new PreguntasIndividuales;
+        $evaluacion = new Evaluacion;
+        $vista = new VswListarPersonas;
+        $id_evaluacion = $_GET['id'];
+//        $model = VswPdfObjetivos::model()->findByAttributes(array('id_evaluacion' => $_GET['id']));
+//                    var_dump($model);die;
+//        if (($id_evaluacion != '')) {
+
+        $this->render('objetivos_incompletos', array(
+            'id_evaluacion' => $id_evaluacion, 'preind' => $preind, 'evaluacion' => $evaluacion, 'vista' => $vista,
+        ));
+//        }
+    }
+
+    /**
+     * Updates a particular model.
+     * If update is successful, the browser will be redirected to the 'view' page.
+     * @param integer $id the ID of the model to be updated
+     */
+
+
+        public function actionUpdate() {
+        echo 'Update';
+//        var_dump($_GET); 
+//        echo '<pre>'; 
+//        var_dump($_POST); 
+        
+//ssss
+        $vista = new VswPdfEvaluacion;
+        $Comentarios = new Comentarios;
+        $EstatusEvaluacion = new EstatusEvaluacion;
+        $consultaPersona = VswPdfEvaluacion::model()->findByAttributes(array('id_evaluacion' => $_GET['id']));
+
+//        $model = new VswPdfEvaluacion('search');
+//       var_dump($model); die;
+//        $model->unsetAttributes();  // clear any default values
+//        if (isset($_GET['VswPdfEvaluacion'])){
+//            echo 'pasooooo'; die;
+//            $model->attributes = $_GET['VswPdfEvaluacion'];
+//        }
+        
+//        $this->render('update', array(
+//            'id' => $_GET['id'],
+//        ));
+        if (isset($_GET['idPreg'])){
+            echo 'paso3';
+        
+                    //$this->redirect(array('update', 'id' => $_GET['id']));
+        }else{
+            echo 'paso4';
+            $this->render('update', array(
+            'consultaPersona' => $consultaPersona, 'Comentarios' => $Comentarios, 'EstatusEvaluacion' => $EstatusEvaluacion,
+        ));
+        }
+    }
+
+
+    /**
+     * Deletes a particular model.
+     * If deletion is successful, the browser will be redirected to the 'admin' page.
+     * @param integer $id the ID of the model to be deleted
+     */
+    public function actionDelete($id) {
+        if (Yii::app()->request->isPostRequest) {
+// we only allow deletion via POST request
+            $this->loadModel($id)->delete();
+
+// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+            if (!isset($_GET['ajax']))
+                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+        } else
+            throw new CHttpException(400, 'Invalid request. Please do not repeat this request again.');
+    }
+
+    /**
+     * Lists all models.
+     */
+    public function actionIndex() {
+        $dataProvider = new CActiveDataProvider('Persona');
+        $this->render('index', array(
+            'dataProvider' => $dataProvider,
+        ));
+    }
+
+    public function actionEnviarodi() {
+echo '44';die;       
+ if (isset($_GET['id'])) {
+
+            //  var_dump($_GET); echo 'enviarodi'; die;
+            //$model= new VswPdfObjetivos;   
+            $modelSave = EstatusEvaluacion::model()->findByPk($_GET['id']);
+            $EstatusEvaluacion = new EstatusEvaluacion;
+            $id_evaluacion = $_GET['id'];
+            $EstatusEvaluacion->fk_estatus_evaluacion = 48;
+            $EstatusEvaluacion->fk_estatus = 65;
+            $EstatusEvaluacion->fk_evaluacion = $id_evaluacion;
+            $EstatusEvaluacion->fk_entidad = Yii::app()->user->id;
+            $EstatusEvaluacion->fk_tipo_entidad = 45;    // Cableado 
+            $EstatusEvaluacion->fecha_estatus = 'now()';
+            $EstatusEvaluacion->created_by = Yii::app()->user->id;
+            $EstatusEvaluacion->created_date = 'now()';
+            $EstatusEvaluacion->modified_date = 'now()';
+            $EstatusEvaluacion->es_activo = true;
+            if ($EstatusEvaluacion->save()) {
+                
+            } else {
+                echo "<pre>evaluados";
+                var_dump($EstatusEvaluacion->Errors);
+                exit;
+            }
+
+
+            $this->redirect(array('admin'));
+        }
+
+
+
+
+        $dataProvider = new CActiveDataProvider('VswListarPersonas');
+        $this->render('index', array(
+            'dataProvider' => $dataProvider,
+        ));
+    }
+
+    public function actionRevisado() {
+        if (isset($_GET['id'])) {
+
+            // var_dump($_GET); echo 'enviarodi'; die;
+            //$model= new VswPdfObjetivos;   
+            $modelSave = EstatusEvaluacion::model()->findByPk($_GET['id']);
+            $EstatusEvaluacion = new EstatusEvaluacion;
+            $id_evaluacion = $_GET['id'];
+            $EstatusEvaluacion->fk_estatus_evaluacion = 79;
+            $EstatusEvaluacion->fk_estatus = 65;
+            $EstatusEvaluacion->fk_evaluacion = $id_evaluacion;
+            $EstatusEvaluacion->fk_entidad = Yii::app()->user->id;
+            $EstatusEvaluacion->fk_tipo_entidad = 45;    // Cableado 
+            $EstatusEvaluacion->fecha_estatus = 'now()';
+            $EstatusEvaluacion->created_by = Yii::app()->user->id;
+            $EstatusEvaluacion->created_date = 'now()';
+            $EstatusEvaluacion->modified_date = 'now()';
+            $EstatusEvaluacion->es_activo = true;
+            if ($EstatusEvaluacion->save()) {
+                
+            } else {
+                echo "<pre>evaluados";
+                var_dump($EstatusEvaluacion->Errors);
+                exit;
+            }
+
+
+            $this->redirect(array('admin'));
+        }
+
+
+
+
+//        $dataProvider = new CActiveDataProvider('VswListarPersonas');
+//        $this->render('index', array(
+//            'dataProvider' => $dataProvider,
+//        ));
+    }
+
+    /**
+     * Manages all models.
+     */
+//    public function actionAdmin() {
+//        $model = new Persona('search');
+//        $model->unsetAttributes();  // clear any default values
+//        if (isset($_GET['Persona']))
+//            $model->attributes = $_GET['Persona'];
+//
+//        $this->render('admin', array(
+//            'model' => $model,
+//        ));
+//    }
+
+    public function actionAdmin() {
+        
+$model = new VswListarPersonas('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['VswListarPersonas']))
+            $model->attributes = $_GET['VswListarPersonas'];
+
+        //$this->redirect(array("id_evaluacion","id"=>$model->getPrimaryKey()));
+
+
+        $this->render('admin', array(
+            'model' => $model,
+        ));
+    }
+
+    public function actionRecursoshumanos() {
+        // var_dump ($_POST);die;
+
+        $model = new VswListarPersonas('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['VswListarPersonas']))
+            $model->attributes = $_GET['VswListarPersonas'];
+
+        //$this->redirect(array("id_evaluacion","id"=>$model->getPrimaryKey()));
+
+
+        $this->render('recursoshumanos', array(
+            'model' => $model,
+        ));
+    }
+
+    public function actionDir() {
+        // var_dump ($_POST);die;
+
+        $model = new VswListarPersonas('search');
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['VswListarPersonas']))
+            $model->attributes = $_GET['VswListarPersonas'];
+
+        //$this->redirect(array("id_evaluacion","id"=>$model->getPrimaryKey()));
+
+
+        $this->render('admin', array(
+            'model' => $model,
+        ));
+    }
+
+    public function actionUpdaterrhh() {
+
+        $vista = new VswListarPersonas;
+        $Comentarios = new Comentarios;
+        $EstatusEvaluacion = new EstatusEvaluacion;
+        $consultaPersona = VswListarPersonas::model()->findByAttributes(array('id_evaluacion' => $_GET['id']));
+
+        $model = new VswListarPersonas('search');
+//       var_dump($model); die;
+        $model->unsetAttributes();  // clear any default values
+        if (isset($_GET['VswListarPersonas']))
+            $model->attributes = $_GET['VswListarPersonas'];
+
+        $this->render('update', array(
+            'model' => $model,
+        ));
+    }
+
+    /**
+     * Returns the data model based on the primary key given in the GET variable.
+     * If the data model is not found, an HTTP exception will be raised.
+     * @param integer the ID of the model to be loaded
+     */
+    public function loadModel($id) {
+        $model = Persona::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
+    }
+
+    /**
+     * Performs the AJAX validation.
+     * @param CModel the model to be validated
+     */
+    protected function performAjaxValidation($model) {
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'persona-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+    }
+
+    public function actionRRHHeditar() {
+        $model = new VswPdfObjetivos;
+        $vista = new VswListarPersonas;
+        $Comentarios = new Comentarios;
+        $EstatusEvaluacion = new EstatusEvaluacion;
+        $consultaPersona = VswListarPersonas::model()->findByAttributes(array('id_evaluacion' => $_GET['id']));
+        $id_evaluacion = $_GET['id'];
+        if (isset($_POST['EstatusEvaluacion']['fk_estatus_evaluacion'])) {
+//             var_dump($_POST);die;
+            $EstatusEvaluacion->fk_estatus_evaluacion = $_POST['EstatusEvaluacion']['fk_estatus_evaluacion'];
+            $EstatusEvaluacion->fk_estatus = 65;
+            // $EstatusEvaluacion->fk_evaluacion = 92;
+            $EstatusEvaluacion->fk_evaluacion = $_POST['VswListarPersonas']['id_evaluacion'];
+            $EstatusEvaluacion->fk_entidad = Yii::app()->user->id;
+            $EstatusEvaluacion->fk_tipo_entidad = 45;    // Cableado 
+            $EstatusEvaluacion->fecha_estatus = 'now()';
+            $EstatusEvaluacion->created_by = Yii::app()->user->id;
+            $EstatusEvaluacion->created_date = 'now()';
+            $EstatusEvaluacion->modified_date = 'now()';
+            $EstatusEvaluacion->es_activo = true;
+            if ($EstatusEvaluacion->save()) {
+                
+            } else {
+                echo "<pre>Comentarios";
+                var_dump($EstatusEvaluacion->Errors);
+                exit;
+            }
+            $Comentarios->comentario = $_POST['Comentarios']['comentario'];
+            //   $Comentarios->fk_tipo_entidad = 1;
+            $Comentarios->fk_estatus = 16;
+            //   $Comentarios->fk_entidad = 2;
+            $Comentarios->fk_direccion = 1;  // cABLEADO
+            $Comentarios->fk_evaluacion = $_POST['VswListarPersonas']['id_evaluacion'];
+            $Comentarios->created_date = 'now()';
+            $Comentarios->modified_date = 'now()';
+            $Comentarios->created_by = Yii::app()->user->id;
+            $Comentarios->es_activo = true;
+            if ($Comentarios->save()) {
+                
+            }
+            $this->redirect(array('evaluacion/recursoshumanos'));
+        } else {
+
+            $this->render('rrhheditar', array(
+                'consultaPersona' => $consultaPersona, 'Comentarios' => $Comentarios, 'EstatusEvaluacion' => $EstatusEvaluacion, 'model' => $model, 'id_evaluacion' => $id_evaluacion,
+            ));
+        }
+    }
+
+    public function actionDireditar() {
+
+        $model = new VswPdfObjetivos;
+        $vista = new VswListarPersonas;
+        $Comentarios = new Comentarios;
+        $EstatusEvaluacion = new EstatusEvaluacion;
+        $consultaPersona = VswListarPersonas::model()->findByAttributes(array('id_evaluacion' => $_GET['id']));
+        $id_evaluacion = $_GET['id'];
+        if (isset($_POST['EstatusEvaluacion']['fk_estatus_evaluacion'])) {
+//             var_dump($_POST);die;
+            $EstatusEvaluacion->fk_estatus_evaluacion = $_POST['EstatusEvaluacion']['fk_estatus_evaluacion'];
+            $EstatusEvaluacion->fk_estatus = 65;
+            // $EstatusEvaluacion->fk_evaluacion = 92;
+            $EstatusEvaluacion->fk_evaluacion = $_POST['VswListarPersonas']['id_evaluacion'];
+            $EstatusEvaluacion->fk_entidad = Yii::app()->user->id;
+            $EstatusEvaluacion->fk_tipo_entidad = 45;    // Cableado 
+            $EstatusEvaluacion->fecha_estatus = 'now()';
+            $EstatusEvaluacion->created_by = Yii::app()->user->id;
+            $EstatusEvaluacion->created_date = 'now()';
+            $EstatusEvaluacion->modified_date = 'now()';
+            $EstatusEvaluacion->es_activo = true;
+            if ($EstatusEvaluacion->save()) {
+                
+            } else {
+                echo "<pre>Comentarios";
+                var_dump($EstatusEvaluacion->Errors);
+                exit;
+            }
+            $Comentarios->comentario = $_POST['Comentarios']['comentario'];
+            //   $Comentarios->fk_tipo_entidad = 1;
+            $Comentarios->fk_estatus = 16;
+            //   $Comentarios->fk_entidad = 2;
+            $Comentarios->fk_direccion = 1;  // cABLEADO
+            $Comentarios->fk_evaluacion = $_POST['VswListarPersonas']['id_evaluacion'];
+            $Comentarios->created_date = 'now()';
+            $Comentarios->modified_date = 'now()';
+            $Comentarios->created_by = Yii::app()->user->id;
+            $Comentarios->es_activo = true;
+            if ($Comentarios->save()) {
+                
+            }
+            $this->redirect(array('evaluacion/dir'));
+        } else {
+
+            $this->render('direditar', array(
+                'consultaPersona' => $consultaPersona, 'Comentarios' => $Comentarios, 'EstatusEvaluacion' => $EstatusEvaluacion, 'model' => $model, 'id_evaluacion' => $id_evaluacion,
+            ));
+        }
+    }
+
+
+   public function action_objetivosUsuario() {
+        // var_dump ($_POST);die;
+
+        echo 'hayyy';die;
+    }
+
+ public function actionUpdateObjetivos() {
+ echo 'UpdateObjetivo';
+//die;
+//            var_dump($_GET);die;
+        if (isset($_GET['id'])) {
+ echo 'UpdateObjetivo2';
+//var_dump($_GET);die;
+            $model = VswPdfObjetivos::model()->findByAttributes(array('id_preguntas_ind' => $_GET['id']));
+            $idevaluacion = $model->id_evaluacion;
+//        var_dump($model); echo '<pre>'; die;
+            $model->attributes = $_GET['id'];
+            $this->render('_objetivosUsuario', array(
+                'model' => $model,
+                'idevaluacion' => $idevaluacion,
+            ));
+        
+//var_dump($_GET); echo 'admin'; die;
+        if (isset($idevaluacion)) {
+
+            //$model= new VswPdfObjetivos;   
+            $modelSave = PreguntasIndividuales::model()->findByPk($_GET['VswPdfObjetivos']['id_preguntas_ind']);
+            $modelSave->attributes = $_GET['VswPdfObjetivos'];
+            $modelSave->id_preguntas_ind = $_GET['VswPdfObjetivos']['id_preguntas_ind'];
+//var_dump($modelSave);die;
+            if ($modelSave->update()) {
+
+                $id_evaluacion = $modelSave->fk_evaluacion;
+                if (isset($id_evaluacion)) {
+                    $EstatusEvaluacion = new EstatusEvaluacion;
+                    $EstatusEvaluacion->fk_estatus_evaluacion = 79;
+                    $EstatusEvaluacion->fk_estatus = 65;
+                    $EstatusEvaluacion->fk_evaluacion = $id_evaluacion;
+                    $EstatusEvaluacion->fk_entidad = Yii::app()->user->id;
+                    $EstatusEvaluacion->fk_tipo_entidad = 45;    // Cableado 
+                    $EstatusEvaluacion->fecha_estatus = 'now()';
+                    $EstatusEvaluacion->created_by = Yii::app()->user->id;
+                    $EstatusEvaluacion->created_date = 'now()';
+                    $EstatusEvaluacion->modified_date = 'now()';
+                    $EstatusEvaluacion->es_activo = true;
+                    if ($EstatusEvaluacion->save()) {
+
+                        //   var_dump($EstatusEvaluacion);die;
+                    } else {
+                        echo "<pre>EstatusEvaluacion";
+                        var_dump($EstatusEvaluacion->Errors);
+                        exit;
+                    }
+                }
+            } else {
+
+                echo "<pre>reerer";
+                var_dump($modelSave->Errors);
+                exit;
+            }
+//$this->redirect(array('UpdateObjetivo?r=Evaluacion/update&id' => $_GET['VswPdfObjetivos']['id_evaluacion']));
+
+}
+//UpdateObjetivos?VswPdfObjetivos[id_preguntas_ind]=37&VswPdfObjetivos[id_evaluacion]=18&VswPdfObjetivos[objetivo]=dups%2C&VswPdfObjetivos[peso]=10&yt1=
+  //          $this->redirect(array('admin
+//$this->redirect(array('update', 'id' =>$idevaluacion));
+
+
+//        $this->render('update', array(
+//            'model' => $model,
+//        ));
+        //}
+//else{
+// $this->redirect(array('update', 'id' =>$idevaluacion));
+}
+        //   var_dump($_GET); echo 'admin'; die;
+    }
+
+    /**
+     * FUNCIÓN QUE HACE EL RENDER PARA GENERAR LOS CERTIFICADOS DE LAS SOLICITUDES
+     * RECIBI COMO PARAMETRO EL ID DE LA SOLICITUD
+     */
+    public function actionCertificado($id) {
+
+        //DATOS DE LA PERSONA SUPERVISADA
+        // var_dump($id);die;
+
+        $vswpdf = VswPdfEvaluacion::model()->findByAttributes(array('id_evaluacion' => $id));
+        $objetivo = VswPdfObjetivos::model()->findByAttributes(array('id_evaluacion' => $id));
+        $this->render('certificado', array('vswpdf' => $vswpdf, 'objetivo' => $objetivo,
+        ));
+    }
+
+}

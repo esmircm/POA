@@ -1,0 +1,121 @@
+
+<div class="raiz_grafico">
+    <?php
+    $opc = (isset($_REQUEST['opc'])) ? $_REQUEST['opc'] : '';
+    if (!$opc) {
+
+        $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+            'links' => array(
+                'Inicio' => array('graficaComuna/index'),
+                'Estado',
+            ),
+            'homeLink' => false,
+        ));
+    } else if ($opc == 2) {
+        $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+            'links' => array(
+                'Inicio' => array('graficaComuna/index'),
+                'Estado' => array('index'),
+                'Municipio',
+            ),
+            'homeLink' => false,
+        ));
+    } else if ($opc == 3) {
+        $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+            'links' => array(
+                'Inicio' => array('graficaConsejoComunal/index'),
+                'Estado' => array('index'),
+                'Municipio' => array('graficaComuna/index&cod_estado=' . $EstadoId . '&opc=2'),
+                'Parroquia',
+            ),
+            'homeLink' => false,
+        ));
+    } else if ($opc == 4) {
+        $this->widget('bootstrap.widgets.TbBreadcrumbs', array(
+            'links' => array(
+                'Inicio' => array('graficaConsejoComunal/index'),
+                'Estado' => array('index'),
+                'Municipio' => array('graficaComuna/index&cod_estado=' . $EstadoId . '&opc=3'),
+                'Parroquia',
+            ),
+            'homeLink' => false,
+        ));
+    }
+    ?>
+</div>
+<!-- <h3 align="center">Detalle de las Comunas Censadas Por Estado</h3> --><br/>
+
+<?php
+$this->Widget('ext.highcharts.HighchartsWidget', array(
+    'options' => array(
+        'chart' => array(
+            'renderTo' => 'estadistica_comunas',
+            'plotBackgroundColor' => null,
+            'plotBorderWidth' => 1,
+            'plotShadow' => false,
+            'height' => 500,
+            'width' => NULL
+        ),
+        'title' => array('text' => $titulo, 'style' => array('fontSize' => '15px', 'font-weight' => 'bold')),
+        'yAxis' => array('min' => '0', 'title' => array('text' => 'Comunas'),
+            'minorTickInterval' => 'auto', 'lineColor' => '#000', 'lineWidth' => 1, 'tickWidth' => 1, 'tickColor' => '#000',
+            'labels' => array('style' => array('color' => '#990000', 'font' => '11px Trebuchet MS, Verdana, sans-serif'))
+        ),
+        'xAxis' => array('labels' => array('rotation' => '-45', 'align' => 'right', 'style' => array('fontSize' => '11px')),
+            'categories' => $datos_leyenda, 'gridLineWidth' => 1, 'tickColor' => '#000'),
+        'legend' => array(
+            'itemStyle' => array('font' => '9pt Trebuchet MS, Verdana, sans-serif', 'color' => 'black'),
+            'itemHoverStyle' => array('color' => '#039'),
+            'itemHiddenStyle' => array('color' => 'gray')
+        ),
+        'legend' => array(
+            'layout' => 'horizontal',
+            'align' => 'center',
+            //'verticalAlign' => 'top',
+            'x' => 35,
+            'y' => 14,
+            'floating' => true,
+            'borderWidth' => 1,
+            'backgroundColor' => '#FFFFFF',
+            'shadow' => true,
+            'borderWidth' => 0
+        ),
+        'tooltip' => array(
+            'formatter' => 'js:function() { return "<b>"+ this.point.name +" Comunas</b> "; }'
+        ),
+        'plotOptions' => array(
+            'bar' => array(
+                'allowPointSelect' => true,
+                'cursor' => 'default',
+                'dataLabels' => array(
+                    'enabled' => true,
+                    'color' => '#000000',
+                    'connectorColor' => 'red',
+                    'formatter' => 'js:function() { return "<b>"+ this.point.name +"</b>"; }'
+                )
+            )
+        ),
+
+        'series' => array(
+            array('type' => 'bar',
+                'name' => array('Comuna ' . $total_final),
+                'color' => '#37BB61',
+                'data' => $datos,
+                'dataLabels' => array('enabled' => 'true',
+                    'style' => array('fontSize' => '11px'))),
+        )
+    )
+));
+?>
+<div class='fromulario_gradica_cc'>
+    <!--    <div class ="titulo_grafica">
+            Comunas Censadas 2013   
+        </div>-->
+    <div class='datos_graficos'>
+        <?php //echo $html_comuna;     ?>
+    </div>
+    <div id="estadistica_comunas" style="min-width: 60%; height: auto; margin: 0 auto" class='ColumLeft1'>
+        Espere Se Esta Cargando La Información..!
+    </div>
+    <div style="clear:both; margin-bottom: 3%"></div>
+</div>
