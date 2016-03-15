@@ -6,14 +6,6 @@
 <h1><?php echo ucwords(CrugeTranslator::t(	
 		(($model->isNewRecord==1) ? "creando nuevo campo personalizado" :"editando campo personalizado")
 	));?></h1>
-
-<?php $this->widget('booster.widgets.TbTabs', array(
-        'type' => 'tabs',
-        'tabs' => array(
-            array('label' => 'Campos', 'url' => 'fieldsadminlist'),
-            array('label' => 'Crear Nuevo campo', 'url' => 'fieldsadmincreate', 'active' => TRUE),
-                  ))
-    );?>
 <div class="form">
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id'=>'crugefield-form',

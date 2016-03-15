@@ -73,9 +73,9 @@ class Actividades extends CActiveRecord
 		return array(
 			'id_actividades' => 'Id Actividades',
 			'actividad' => 'Actividad',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
+			'fk_unidad_medida' => 'Unidad de Medida',
 			'cantidad' => 'Cantidad',
-			'fk_accion' => 'Fk Accion',
+			'fk_accion' => 'Acción',
 			'created_by' => 'Created By',
 			'created_date' => 'Created Date',
 			'modified_by' => 'Modified By',

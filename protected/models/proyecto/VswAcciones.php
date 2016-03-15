@@ -61,13 +61,13 @@ class VswAcciones extends CActiveRecord
 	{
 		return array(
 			'id_accion' => 'Id Accion',
-			'nombre_accion' => 'Nombre Accion',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
-			'unidad_medida' => 'Unidad Medida',
+			'nombre_accion' => 'Nombre de la Accion',
+			'fk_unidad_medida' => 'Unidad de Medida',
+			'unidad_medida' => 'Unidad de Medida',
 			'fk_ambito' => 'Fk Ambito',
 			'ambito' => 'Ambito',
 			'meta' => 'Meta',
-			'bien_servicio' => 'Bien Servicio',
+			'bien_servicio' => 'Bien o Servicio',
 			'cantidad' => 'Cantidad',
 			'fk_proyecto' => 'Fk Proyecto',
 		);
@@ -106,8 +106,8 @@ class VswAcciones extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-
-	/**
+        
+    	/**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.

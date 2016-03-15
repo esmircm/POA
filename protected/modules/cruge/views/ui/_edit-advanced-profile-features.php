@@ -23,8 +23,13 @@
 	$editiconHidden = "<img {$tit1} style='display: none;' class='iconhelp edit-icon' src='{$editimgurl}'>";
 	$granticonOn = "<img {$tit2} class='iconhelp grant-icon' src='{$handimgurl}'>";
 	$granticonOff = "<img {$tit3} class='iconhelp grant-icon' src='{$handoffimgurl}'>";
+        
+        $rol = Yii::app()->db->createCommand('select itemname from cruge_authassignment where userid = ' . Yii::app()->user->id)->queryAll();
+        $rol = (object) $rol[0];
+        $roll = $rol->itemname;
 ?>
 <div class='row form-group'>
+    
 	<h6><?php echo ucfirst(CrugeTranslator::t("opciones avanzadas"));?></h6>
 	<div class='field-group'>
 		<div class='col'>
@@ -95,13 +100,14 @@
 			// mas abajo se hara una funcion jQuery que reconocera el click de cada icono
 			// para lanzar dos actions via ajax.
 			//
+                        
 			$loader = "<span class='loader'></span>";
 			foreach($rbac->roles as $rol){
 				
 				$checked='';
-				//$edit="";
 				$edit = $editiconHidden;
 				$grant=$granticonOn;
+                                
 				foreach($listaRolesAsignados as $ra){
 					if($ra->itemName === $rol->name)
 						{
@@ -114,12 +120,34 @@
 							break;
 						}
 				}	
-				echo "<li class='{$checked}' alt='".$rol->name."'>"
-					.$rol->name.$grant.$edit.$loader."</li>";
-					
+				if (($roll == 'administrador_mrl') ){
+                                    if (($rol->name == 'registro_mrl')||($rol->name == 'rrhh_mrl_verificacion')){
+                                   echo "<li class='{$checked}' alt='".$rol->name."'>"
+                                    .$rol->name.$grant.$edit.$loader."</li>";
+                                   }
+                               }else if (($roll == 'administrador_actualizacion')){
+                               if (($rol->name == 'administrador_actualizacion')){
+                                   echo "<li class='{$checked}' alt='".$rol->name."'>"
+                                           .$rol->name.$grant.$edit.$loader."</li>";
+                               
+                               }
+                               }else {
+                                   echo "<li class='{$checked}' alt='".$rol->name."'>"
+                                        .$rol->name.$grant.$edit.$loader."</li>";
+					 }
 				// para efectos de UI solamente, el boton edit debe estar invisible pero existente
 				// si el role no esta asignado.
-				
+//				if (($roll == 'administrador_actualizacion')){
+//                                    if (($rol->name == 'administrador_actualizacion')){
+//                                   echo "<li class='{$checked}' alt='".$rol->name."'>"
+//                                           .$rol->name.$grant.$edit.$loader."</li>";
+//                               
+//                               }else {
+//                                   echo "<li class='{$checked}' alt='".$rol->name."'>"
+//                                        .$rol->name.$grant.$edit.$loader."</li>";
+//					 }
+//                               
+//                               }
 				
 			}
 		?>

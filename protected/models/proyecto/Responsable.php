@@ -14,6 +14,8 @@
  * @property string $modified_date
  * @property boolean $es_activo
  * @property integer $fk_estatus
+ * @property integer $cod_dependencia_cruge
+ * @property string $dependencia_cruge
  *
  * The followings are the available model relations:
  * @property CrugeUser $fkDirResponsable
@@ -39,12 +41,13 @@ class Responsable extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, created_date, modified_date, fk_estatus', 'required'),
-			array('fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, modified_by, fk_estatus', 'numerical', 'integerOnly'=>true),
+			array('fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, created_date, modified_date, fk_estatus, cod_dependencia_cruge, dependencia_cruge', 'required'),
+			array('fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, modified_by, fk_estatus, cod_dependencia_cruge', 'numerical', 'integerOnly'=>true),
+			array('dependencia_cruge', 'length', 'max'=>200),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_responsable, fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, modified_by, created_date, modified_date, es_activo, fk_estatus', 'safe', 'on'=>'search'),
+			array('id_responsable, fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, modified_by, created_date, modified_date, es_activo, fk_estatus, cod_dependencia_cruge, dependencia_cruge', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -79,6 +82,8 @@ class Responsable extends CActiveRecord
 			'modified_date' => 'Modified Date',
 			'es_activo' => 'Es Activo',
 			'fk_estatus' => 'Fk Estatus',
+			'cod_dependencia_cruge' => 'Cod Dependencia Cruge',
+			'dependencia_cruge' => 'Dependencia Cruge',
 		);
 	}
 
@@ -110,6 +115,8 @@ class Responsable extends CActiveRecord
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('es_activo',$this->es_activo);
 		$criteria->compare('fk_estatus',$this->fk_estatus);
+		$criteria->compare('cod_dependencia_cruge',$this->cod_dependencia_cruge);
+		$criteria->compare('dependencia_cruge',$this->dependencia_cruge,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

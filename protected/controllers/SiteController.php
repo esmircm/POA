@@ -97,7 +97,7 @@ class SiteController extends Controller {
      * Logs out the current user and redirect to homepage.
      */
     public function actionLogout() {
-        //Yii::$app->getSession()->destroy();
+        Yii::$app->getSession()->destroy();
         Yii::app()->user->logout();
         $this->redirect(Yii::app()->homeUrl);
     }

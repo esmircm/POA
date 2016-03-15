@@ -1,14 +1,5 @@
 <div class="form">
 <h1><?php echo ucwords(CrugeTranslator::t("campos personalizados"));?></h1>
-<?php 
-
-    $this->widget('booster.widgets.TbTabs', array(
-        'type' => 'tabs',
-        'tabs' => array(
-            array('label' => 'Campos', 'url' => 'fieldsadminlist', 'active' => TRUE),
-            array('label' => 'Crear Nuevo campo', 'url' => 'fieldsadmincreate'),
-                  ))
-    );?>
 
 <?php echo Yii::app()->user->ui->getFieldAdminCreateLink(CrugeTranslator::t("Crear un nuevo Campo Personalizado")); ?>
 

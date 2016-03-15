@@ -70,10 +70,10 @@ class VswPersonal extends CActiveRecord
 			'nombres' => 'Nombres',
 			'sexo' => 'Sexo',
 			'id_cargo' => 'Id Cargo',
-			'descripcion_cargo' => 'Descripcion Cargo',
+			'descripcion_cargo' => 'Descripcion del Cargo',
 			'estatus' => 'Estatus',
 			'cod_dependencia' => 'Cod Dependencia',
-			'dependencia' => 'Dependencia',
+			'dependencia' => 'Oficina',
 			'grado' => 'Grado',
 		);
 	}

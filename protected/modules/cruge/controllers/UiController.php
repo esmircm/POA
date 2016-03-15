@@ -120,8 +120,7 @@ class UiController extends Controller {
 
     public function actionLogin() {
         //$this->layout = CrugeUtil::config()->loginLayout;
-        //$this->layout = $layout = '//layouts/login';
-        $this->layout = $layout = '//layouts/principal';
+        $this->layout = $layout = '//layouts/login';
 
         $model = Yii::app()->user->um->getNewCrugeLogon('login');
         // por ahora solo un metodo de autenticacion por vez es usado, aunque sea un array en config/main

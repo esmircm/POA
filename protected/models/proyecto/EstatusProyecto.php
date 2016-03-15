@@ -68,7 +68,7 @@ class EstatusProyecto extends CActiveRecord
 	{
 		return array(
 			'id_estatus_proyecto' => 'Id Estatus Proyecto',
-			'fk_estatus_proyecto' => 'Fk Estatus Proyecto',
+			'fk_estatus_proyecto' => 'Estatus del Proyecto',
 			'fk_proyecto' => 'Fk Proyecto',
 			'created_by' => 'Created By',
 			'created_date' => 'Created Date',

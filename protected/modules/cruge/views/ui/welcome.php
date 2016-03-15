@@ -1,18 +1,11 @@
-<?php ?>
+<?php
+// llamada cuando el actionRegistration ha insertado a un usuario
+?>
+<div class='form'>
+    <h1><?php echo CrugeTranslator::t("Bienvenido");?></h1>
 
-<?php if (Yii::app()->user->isGuest) { ?>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<h1><p style="color: white; font-size:15px;" ><b>SESIÓN EXPIRO</b></p></h1><br>
-<div align="center"><img class="img-responsive" src="<?php echo Yii:: app()->baseUrl . '/img/lock.png' ?> " width="200" height="200"><br><br>
-    
-    
-        <a class="btn btn-success btn-lg" href="<?php echo Yii::app()->baseUrl ?>/cruge/ui/login"><i class="glyphicon glyphicon-lock"></i> Iniciar Sesión</a>
-    </div>
-<?php } ?>
-
-
+    <p><b><?php echo CrugeTranslator::t('registration', 'The account has been created!'); ?></b></p>
+    <p><?php echo CrugeTranslator::t('registration', 'Click here to login using new credentials:'); ?>
+        <?php echo Yii::app()->user->ui->loginLink; ?>
+    </p>
+</div>

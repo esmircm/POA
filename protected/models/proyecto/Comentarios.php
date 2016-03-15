@@ -37,7 +37,7 @@ class Comentarios extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('created_by, created_date, modified_by, modified_date, fk_status, fk_proyecto, fk_tipo_entidad', 'required'),
+			array('created_by, created_date, modified_date, fk_status, fk_proyecto, fk_tipo_entidad', 'required'),
 			array('created_by, modified_by, fk_status, fk_proyecto, fk_tipo_entidad', 'numerical', 'integerOnly'=>true),
 			array('comentarios', 'length', 'max'=>1000),
 			array('es_activo', 'safe'),

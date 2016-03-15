@@ -14,16 +14,7 @@
 		echo "</div>";
 	}
 ?>
-<h1><?php echo ucwords(CrugeTranslator::t("Variables del Sistema"));?></h1>
-<?php 
 
-    $this->widget('booster.widgets.TbTabs', array(
-        'type' => 'tabs',
-        'tabs' => array(
-            array('label' => 'Sesiones', 'url' => 'sessionadmin'),
-            array('label' => 'Variables del Sistema', 'url' => 'systemupdate','active' => TRUE),
-                  ))
-    );?>
 <div class="form">
 <?php $form = $this->beginWidget('CActiveForm', array(
     'id'=>'CrugeSystem-Form',

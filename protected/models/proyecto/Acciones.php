@@ -78,10 +78,10 @@ class Acciones extends CActiveRecord
 	{
 		return array(
 			'id_accion' => 'Id Accion',
-			'nombre_accion' => 'Nombre Accion',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
+			'nombre_accion' => 'Nombre de la Acción',
+			'fk_unidad_medida' => 'Unidad de Medida',
 			'cantidad' => 'Cantidad',
-			'fk_ambito' => 'Fk Ambito',
+			'fk_ambito' => 'Ámbito',
 			'fk_proyecto' => 'Fk Proyecto',
 			'created_by' => 'Created By',
 			'created_date' => 'Created Date',
@@ -90,7 +90,7 @@ class Acciones extends CActiveRecord
 			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
 			'meta' => 'Meta',
-			'bien_servicio' => 'Bien Servicio',
+			'bien_servicio' => 'Bien o Servicio',
 		);
 	}
 
@@ -130,6 +130,45 @@ class Acciones extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+        
+        public function searchAccion($fk_proyecto)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_accion',$this->id_accion);
+		$criteria->compare('nombre_accion',$this->nombre_accion,true);
+		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
+		$criteria->compare('cantidad',$this->cantidad);
+		$criteria->compare('fk_ambito',$this->fk_ambito);
+		$criteria->compare('fk_proyecto',$fk_proyecto);
+		$criteria->compare('created_by',$this->created_by);
+		$criteria->compare('created_date',$this->created_date,true);
+		$criteria->compare('modified_by',$this->modified_by);
+		$criteria->compare('modified_date',$this->modified_date,true);
+		$criteria->compare('fk_status',$this->fk_status);
+		$criteria->compare('es_activo',$this->es_activo);
+		$criteria->compare('meta',$this->meta,true);
+		$criteria->compare('bien_servicio',$this->bien_servicio,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+        
+        public function search_unidad_medida($id)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+                $consulta = Yii::app()->db->createCommand()
+                ->select('unidad_medida')
+                ->from('poa.vsw_acciones')
+                ->where('id_accion =' . $id)
+                ->queryRow();
+        
+                $resultado = $consulta['unidad_medida'];
+                return $resultado;
 	}
 
 	/**

@@ -1,17 +1,5 @@
 <h1><?php echo ucwords(CrugeTranslator::t("operaciones"));?></h1>
 
-<?php 
-
-    $this->widget('booster.widgets.TbTabs', array(
-        'type' => 'tabs',
-        'tabs' => array(
-            array('label' => 'Administrar Roles', 'url' => 'rbaclistroles'),
-            array('label' => 'Tareas', 'url' => 'rbaclisttasks'),
-            array('label' => 'Operaciones', 'url' => 'rbaclistops', 'active' => TRUE),
-            array('label' => 'Asignar Roles a Usuarios', 'url' => 'rbacusersassignments'),
-                  ))
-    );?>
-
 <div class='auth-item-create-button'>
 <?php echo CHtml::link(CrugeTranslator::t("Crear Nueva Operacion")
 	,Yii::app()->user->ui->getRbacAuthItemCreateUrl(CAuthItem::TYPE_OPERATION));?>

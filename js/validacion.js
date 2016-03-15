@@ -1463,6 +1463,13 @@ function ExportarReportes(tipo) {
     $('#exel').val('');
     $('#pdf').val('');
 }
+
+///////////////////////////////////////////////////////
+//////////////////PROYECTO/////////////////////////////
+///////////////////////////////////////////////////////
+
+
+
 function GuardarAccion() {
     validar = 0;
     if($("#Acciones_nombre_accion")==''){
@@ -1545,3 +1552,18 @@ function eliminar_actividad(valor, id) {
         $(valor).parent().parent().remove();
     }
 }
+
+function editar_accion(valor, fk_proyecto, id_accion) {
+    $(location).attr('href', baseUrl + "/proyecto/create_actividad/id_proyecto/" + fk_proyecto + "/id_accion/" + id_accion);
+}
+
+$(document).ready(function() {
+    $('#EstatusProyecto_fk_estatus_proyecto').change(function() {
+        if ($('#EstatusProyecto_fk_estatus_proyecto option:selected').html() == 'RECHAZADO') {
+            $('#Comentarios_comentarios').prop('required', true);
+        }
+        else {
+            $('#Comentarios_comentarios').prop('required', false);
+        }
+    });
+})
