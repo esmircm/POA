@@ -934,7 +934,7 @@ class ValidacionJsController extends Controller {
             
         }
         
-        $tabla = array('html' => $html);
+        $tabla = array('html' => $html, 'id_actividad' => $id_actividad);
         echo json_encode($tabla);
     }
 
@@ -953,6 +953,26 @@ class ValidacionJsController extends Controller {
         } else {
             echo json_encode(2);
 //         $tabla = array('html' => $html);
+        }
+    }
+    
+    public function actionGuardarProgramadoActividad() {
+        $programacion = new Rendimiento;
+        $programacion->fk_meses = $_POST['fk_mes'];
+        $programacion->cantidad_programada = $_POST['programacion'];
+        $programacion->fk_tipo_entidad = 74;
+        $programacion->id_entidad = $_POST['id_actividad'];
+        $programacion->fk_status = 27;
+        $programacion->created_by = Yii::app()->user->id;
+        $programacion->created_date = 'now()';
+        $programacion->modified_date = 'now()';
+        if($programacion->save()){
+            echo json_encode(1);
+        } else {
+            echo '<pre>';
+            var_dump($programacion->Errors);
+            die;
+            echo json_encode(2);
         }
     }
 

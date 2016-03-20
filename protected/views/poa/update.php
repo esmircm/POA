@@ -1,13 +1,9 @@
 <?php
-$this->breadcrumbs=array(
-	'Proyectos'=>array('index'),
-	'Create',
-);
 
-//$this->menu=array(
-//array('label'=>'List Proyecto','url'=>array('index')),
-//array('label'=>'Manage Proyecto','url'=>array('admin')),
-//);
+$this->breadcrumbs=array(
+	'Poas'=>array('index'),
+	'Update',
+);
 
 $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     'id' => 'personal-form',
@@ -30,7 +26,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
         
             <?php
-            echo $this->renderPartial('_responsable', array('model' => $model, 'form' => $form, 'model_dir' => $model_dir), TRUE);
+            echo $this->renderPartial('_responsable_update', array('model' => $model, 'form' => $form), TRUE);
             ?>
     </div>
 </div>
@@ -42,8 +38,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
             <?php
-            echo $this->renderPartial('_proyecto', array('proyecto' => $proyecto, 'form' => $form), TRUE);
-       
+            echo $this->renderPartial('_poa_update', array('model' => $model, 'form' => $form), TRUE);
             ?>
     </div>
 </div>
@@ -51,8 +46,10 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     <?php
     $this->widget('booster.widgets.TbButton', array(
         'buttonType' => 'submit',
+        'icon' => 'glyphicon glyphicon-chevron-right',
         'context' => 'primary',
-        'label' => $proyecto->isNewRecord ? 'Siguiente' : 'Save',
+        'size' => 'large',
+        'label' => $model->isNewRecord ? 'Save' : 'Siguiente',
     ));
     ?>
 </div>

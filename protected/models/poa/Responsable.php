@@ -1,35 +1,36 @@
 <?php
 
 /**
- * This is the model class for table "poa.actividades".
+ * This is the model class for table "poa.responsable".
  *
- * The followings are the available columns in table 'poa.actividades':
- * @property integer $id_actividades
- * @property string $actividad
- * @property integer $fk_unidad_medida
- * @property integer $cantidad
- * @property integer $fk_accion
+ * The followings are the available columns in table 'poa.responsable':
+ * @property integer $id_responsable
+ * @property integer $fk_persona_registro
+ * @property integer $fk_dir_responsable
+ * @property integer $fk_poa
  * @property integer $created_by
- * @property string $created_date
  * @property integer $modified_by
+ * @property string $created_date
  * @property string $modified_date
- * @property integer $fk_status
  * @property boolean $es_activo
+ * @property integer $fk_estatus
+ * @property integer $cod_dependencia_cruge
+ * @property string $dependencia_cruge
  *
  * The followings are the available model relations:
- * @property Maestro $fkStatus
- * @property Acciones $fkAccion
- * @property Maestro $fkUnidadMedida
- * @property Rendimiento[] $rendimientos
+ * @property CrugeUser $fkDirResponsable
+ * @property Maestro $fkEstatus
+ * @property CrugeUser $fkPersonaRegistro
+ * @property Poa $fkPoa
  */
-class Actividades extends CActiveRecord
+class Responsable extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'poa.actividades';
+		return 'poa.responsable';
 	}
 
 	/**
@@ -40,13 +41,13 @@ class Actividades extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_unidad_medida, fk_accion, created_by, created_date, modified_date, fk_status', 'required'),
-			array('fk_unidad_medida, cantidad, fk_accion, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
-			array('actividad', 'length', 'max'=>200),
+			array('fk_persona_registro, fk_dir_responsable, fk_poa, created_by, created_date, modified_date, fk_estatus, cod_dependencia_cruge, dependencia_cruge', 'required'),
+			array('fk_persona_registro, fk_dir_responsable, fk_poa, created_by, modified_by, fk_estatus, cod_dependencia_cruge', 'numerical', 'integerOnly'=>true),
+			array('dependencia_cruge', 'length', 'max'=>200),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_actividades, actividad, fk_unidad_medida, cantidad, fk_accion, created_by, created_date, modified_by, modified_date, fk_status, es_activo', 'safe', 'on'=>'search'),
+			array('id_responsable, fk_persona_registro, fk_dir_responsable, fk_poa, created_by, modified_by, created_date, modified_date, es_activo, fk_estatus, cod_dependencia_cruge, dependencia_cruge', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -58,10 +59,10 @@ class Actividades extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
-			'fkAccion' => array(self::BELONGS_TO, 'Acciones', 'fk_accion'),
-			'fkUnidadMedida' => array(self::BELONGS_TO, 'Maestro', 'fk_unidad_medida'),
-			'rendimientos' => array(self::HAS_MANY, 'Rendimiento', 'fk_actividad'),
+			'fkDirResponsable' => array(self::BELONGS_TO, 'CrugeUser', 'fk_dir_responsable'),
+			'fkEstatus' => array(self::BELONGS_TO, 'Maestro', 'fk_estatus'),
+			'fkPersonaRegistro' => array(self::BELONGS_TO, 'CrugeUser', 'fk_persona_registro'),
+			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
 		);
 	}
 
@@ -71,17 +72,18 @@ class Actividades extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_actividades' => 'Id Actividades',
-			'actividad' => 'Actividad',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
-			'cantidad' => 'Cantidad',
-			'fk_accion' => 'Fk Accion',
+			'id_responsable' => 'Id Responsable',
+			'fk_persona_registro' => 'Fk Persona Registro',
+			'fk_dir_responsable' => 'Fk Dir Responsable',
+			'fk_poa' => 'Fk Poa',
 			'created_by' => 'Created By',
-			'created_date' => 'Created Date',
 			'modified_by' => 'Modified By',
+			'created_date' => 'Created Date',
 			'modified_date' => 'Modified Date',
-			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
+			'fk_estatus' => 'Fk Estatus',
+			'cod_dependencia_cruge' => 'Cod Dependencia Cruge',
+			'dependencia_cruge' => 'Dependencia Cruge',
 		);
 	}
 
@@ -103,17 +105,18 @@ class Actividades extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_actividades',$this->id_actividades);
-		$criteria->compare('actividad',$this->actividad,true);
-		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
-		$criteria->compare('cantidad',$this->cantidad);
-		$criteria->compare('fk_accion',$this->fk_accion);
+		$criteria->compare('id_responsable',$this->id_responsable);
+		$criteria->compare('fk_persona_registro',$this->fk_persona_registro);
+		$criteria->compare('fk_dir_responsable',$this->fk_dir_responsable);
+		$criteria->compare('fk_poa',$this->fk_poa);
 		$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('modified_by',$this->modified_by);
+		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('modified_date',$this->modified_date,true);
-		$criteria->compare('fk_status',$this->fk_status);
 		$criteria->compare('es_activo',$this->es_activo);
+		$criteria->compare('fk_estatus',$this->fk_estatus);
+		$criteria->compare('cod_dependencia_cruge',$this->cod_dependencia_cruge);
+		$criteria->compare('dependencia_cruge',$this->dependencia_cruge,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -124,7 +127,7 @@ class Actividades extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Actividades the static model class
+	 * @return Responsable the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

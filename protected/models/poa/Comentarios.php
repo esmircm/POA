@@ -1,33 +1,32 @@
 <?php
 
 /**
- * This is the model class for table "poa.estatus_proyecto".
+ * This is the model class for table "poa.comentarios".
  *
- * The followings are the available columns in table 'poa.estatus_proyecto':
- * @property integer $id_estatus_proyecto
- * @property integer $fk_estatus_proyecto
- * @property integer $fk_proyecto
+ * The followings are the available columns in table 'poa.comentarios':
+ * @property integer $id_comentarios
+ * @property string $comentarios
  * @property integer $created_by
  * @property string $created_date
  * @property integer $modified_by
  * @property string $modified_date
  * @property integer $fk_status
  * @property boolean $es_activo
+ * @property integer $fk_poa
  * @property integer $fk_tipo_entidad
  *
  * The followings are the available model relations:
- * @property Proyecto $fkProyecto
  * @property Maestro $fkStatus
- * @property Maestro $fkEstatusProyecto
+ * @property Poa $fkPoa
  */
-class EstatusProyecto extends CActiveRecord
+class Comentarios extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'poa.estatus_proyecto';
+		return 'poa.comentarios';
 	}
 
 	/**
@@ -38,12 +37,13 @@ class EstatusProyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('fk_estatus_proyecto, fk_proyecto, created_by, created_date, modified_date, fk_status, fk_tipo_entidad', 'required'),
-			array('fk_estatus_proyecto, fk_proyecto, created_by, modified_by, fk_status, fk_tipo_entidad', 'numerical', 'integerOnly'=>true),
+			array('created_by, created_date, modified_date, fk_status, fk_poa, fk_tipo_entidad', 'required'),
+			array('created_by, modified_by, fk_status, fk_poa, fk_tipo_entidad', 'numerical', 'integerOnly'=>true),
+			array('comentarios', 'length', 'max'=>1000),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_estatus_proyecto, fk_estatus_proyecto, fk_proyecto, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_tipo_entidad', 'safe', 'on'=>'search'),
+			array('id_comentarios, comentarios, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_poa, fk_tipo_entidad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -55,9 +55,8 @@ class EstatusProyecto extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkProyecto' => array(self::BELONGS_TO, 'Proyecto', 'fk_proyecto'),
 			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
-			'fkEstatusProyecto' => array(self::BELONGS_TO, 'Maestro', 'fk_estatus_proyecto'),
+			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
 		);
 	}
 
@@ -67,15 +66,15 @@ class EstatusProyecto extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_estatus_proyecto' => 'Id Estatus Proyecto',
-			'fk_estatus_proyecto' => 'Fk Estatus Proyecto',
-			'fk_proyecto' => 'Fk Proyecto',
+			'id_comentarios' => 'Id Comentarios',
+			'comentarios' => 'Comentarios',
 			'created_by' => 'Created By',
 			'created_date' => 'Created Date',
 			'modified_by' => 'Modified By',
 			'modified_date' => 'Modified Date',
 			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
+			'fk_poa' => 'Fk Poa',
 			'fk_tipo_entidad' => 'Fk Tipo Entidad',
 		);
 	}
@@ -98,15 +97,15 @@ class EstatusProyecto extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_estatus_proyecto',$this->id_estatus_proyecto);
-		$criteria->compare('fk_estatus_proyecto',$this->fk_estatus_proyecto);
-		$criteria->compare('fk_proyecto',$this->fk_proyecto);
+		$criteria->compare('id_comentarios',$this->id_comentarios);
+		$criteria->compare('comentarios',$this->comentarios,true);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('modified_by',$this->modified_by);
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('fk_status',$this->fk_status);
 		$criteria->compare('es_activo',$this->es_activo);
+		$criteria->compare('fk_poa',$this->fk_poa);
 		$criteria->compare('fk_tipo_entidad',$this->fk_tipo_entidad);
 
 		return new CActiveDataProvider($this, array(
@@ -118,7 +117,7 @@ class EstatusProyecto extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return EstatusProyecto the static model class
+	 * @return Comentarios the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

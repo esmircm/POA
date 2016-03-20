@@ -1,28 +1,25 @@
 <?php
 
 /**
- * This is the model class for table "poa.vsw_acciones".
+ * This is the model class for table "poa.vsw_actividades".
  *
- * The followings are the available columns in table 'poa.vsw_acciones':
- * @property integer $id_accion
- * @property string $nombre_accion
+ * The followings are the available columns in table 'poa.vsw_actividades':
+ * @property integer $id_actividades
+ * @property string $actividad
+ * @property integer $cantidad
  * @property integer $fk_unidad_medida
  * @property string $unidad_medida
- * @property integer $fk_ambito
- * @property string $ambito
- * @property string $meta
- * @property string $bien_servicio
- * @property integer $cantidad
- * @property integer $fk_proyecto
+ * @property integer $fk_accion
+ * @property integer $fk_poa
  */
-class VswAcciones extends CActiveRecord
+class VswActividades extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'poa.vsw_acciones';
+		return 'poa.vsw_actividades';
 	}
 
 	/**
@@ -33,13 +30,12 @@ class VswAcciones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_accion, fk_unidad_medida, fk_ambito, cantidad, fk_proyecto', 'numerical', 'integerOnly'=>true),
-			array('nombre_accion, meta', 'length', 'max'=>500),
-			array('unidad_medida, ambito', 'length', 'max'=>1000),
-			array('bien_servicio', 'length', 'max'=>200),
+			array('id_actividades, cantidad, fk_unidad_medida, fk_accion, fk_poa', 'numerical', 'integerOnly'=>true),
+			array('actividad', 'length', 'max'=>200),
+			array('unidad_medida', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_accion, nombre_accion, fk_unidad_medida, unidad_medida, fk_ambito, ambito, meta, bien_servicio, cantidad, fk_proyecto', 'safe', 'on'=>'search'),
+			array('id_actividades, actividad, cantidad, fk_unidad_medida, unidad_medida, fk_accion, fk_poa', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -60,16 +56,13 @@ class VswAcciones extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_accion' => 'Id Accion',
-			'nombre_accion' => 'Nombre Accion',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
-			'unidad_medida' => 'Unidad Medida',
-			'fk_ambito' => 'Fk Ambito',
-			'ambito' => 'Ambito',
-			'meta' => 'Meta',
-			'bien_servicio' => 'Bien Servicio',
+			'id_actividades' => 'Id Actividades',
+			'actividad' => 'Actividad',
 			'cantidad' => 'Cantidad',
-			'fk_proyecto' => 'Fk Proyecto',
+			'fk_unidad_medida' => 'Unidad de Medida',
+			'unidad_medida' => 'Unidad de Medida',
+			'fk_accion' => 'Fk Accion',
+			'fk_poa' => 'Fk Poa',
 		);
 	}
 
@@ -91,16 +84,32 @@ class VswAcciones extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_accion',$this->id_accion);
-		$criteria->compare('nombre_accion',$this->nombre_accion,true);
+		$criteria->compare('id_actividades',$this->id_actividades);
+		$criteria->compare('actividad',$this->actividad,true);
+		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
 		$criteria->compare('unidad_medida',$this->unidad_medida,true);
-		$criteria->compare('fk_ambito',$this->fk_ambito);
-		$criteria->compare('ambito',$this->ambito,true);
-		$criteria->compare('meta',$this->meta,true);
-		$criteria->compare('bien_servicio',$this->bien_servicio,true);
+		$criteria->compare('fk_accion',$this->fk_accion);
+		$criteria->compare('fk_poa',$this->fk_poa);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+        
+        public function searchActividad($fk_accion)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_actividades',$this->id_actividades);
+		$criteria->compare('actividad',$this->actividad,true);
 		$criteria->compare('cantidad',$this->cantidad);
-		$criteria->compare('fk_proyecto',$this->fk_proyecto);
+		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
+		$criteria->compare('unidad_medida',$this->unidad_medida,true);
+		$criteria->compare('fk_accion',$fk_accion);
+		$criteria->compare('fk_poa',$this->fk_poa);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -111,7 +120,7 @@ class VswAcciones extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return VswAcciones the static model class
+	 * @return VswActividades the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

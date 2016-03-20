@@ -60,14 +60,26 @@
                                     <h3>General</h3>
                                     <ul class="nav side-menu">
                                         
-                                        <li><a><i class="fa fa-home"></i> Simap <span class="fa fa-chevron-down"></span></a>
+                                        <li><a><i class="fa fa-home"></i> Sigepoa <span class="fa fa-chevron-down"></span></a>
                                             <ul class="nav child_menu" style="display: none">
-                                                <li><a href="<?php echo $this->createUrl('/proyecto/index'); ?>">
+                                                <?php if(Yii::app()->user->checkAccess('registro_poa') || Yii::app()->user->checkAccess('administrador_poa')) { ?>
+                                                <li><a href="<?php echo $this->createUrl('/poa/index'); ?>">
                                                         <i class="fa fa-pencil"></i>
-                                                        <span>Registrar Proyecto</span>
+                                                        <span>Plan Operativo Anual</span>
                                                     </a>
                                                 </li>
-
+                                                <?php
+                                                }
+                                                ?>
+                                                <?php if(Yii::app()->user->checkAccess('evaluador_poa')) { ?>
+                                                <li><a href="<?php echo $this->createUrl('/poa/admin'); ?>">
+                                                        <i class="fa fa-pencil"></i>
+                                                        <span>Planificación</span>
+                                                    </a>
+                                                </li>
+                                                <?php
+                                                }
+                                                ?>
                                             </ul>
                                         </li>
 

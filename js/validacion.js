@@ -1463,6 +1463,13 @@ function ExportarReportes(tipo) {
     $('#exel').val('');
     $('#pdf').val('');
 }
+
+///////////////////////////////////////////////////////
+//////////////////PROYECTO/////////////////////////////
+///////////////////////////////////////////////////////
+
+
+
 function GuardarAccion() {
     validar = 0;
     if($("#Acciones_nombre_accion")==''){
@@ -1490,7 +1497,7 @@ function GuardarActividad() {
         bootbox.alert('Debe seleccionar un tipo de Unidad de Medida.');
     }
     if(($("#Actividades_actividad").val()!='')&&($("#Actividades_fk_unidad_medida").val()!='SELECCIONE')){
-       
+        
         $.ajax({
             url: baseUrl + "/ValidacionJs/DibujarActividad",
             async: true,
@@ -1499,7 +1506,29 @@ function GuardarActividad() {
             dataType: 'json',
             success: function(datos) {
                 if (datos != '') {
+                    $('#id_actividad').val(datos['id_actividad']);
                     $('#ActividadesPOA').append(datos['html']);
+                    
+                    //Guardado del Rendimiento de la Actividad
+                    
+                    i = 0;
+                    fk_meses = 57;
+                   
+                    while (i < 12) {
+                        id_actividad = $('#id_actividad').val();
+                        programacion = $('#Rendimiento_' + fk_meses).val();
+                        fk_mes = fk_meses;
+              
+                        $.ajax({
+                            url: baseUrl + "/ValidacionJs/GuardarProgramadoActividad",
+                            async: true,
+                            type: 'POST',
+                            data: 'id_actividad=' + id_actividad + '&fk_mes=' + fk_mes + '&programacion=' + programacion,
+                            dataType: 'json',
+                        });
+                        fk_meses++;
+                        i++;
+                    }
                     
                     bootbox.alert('La Actividad fue guardada con éxito.');
                     Limpiar();
@@ -1545,3 +1574,18 @@ function eliminar_actividad(valor, id) {
         $(valor).parent().parent().remove();
     }
 }
+
+function editar_accion(valor, fk_poa, id_accion, tipo) {
+    $(location).attr('href', baseUrl + "/poa/create_actividad/id_poa/" + fk_poa + "/id_accion/" + id_accion + "/tipo/" + tipo);
+}
+
+$(document).ready(function() {
+    $('#EstatusPoa_fk_estatus_poa').change(function() {
+        if ($('#EstatusPoa_fk_estatus_poa option:selected').html() == 'RECHAZADO') {
+            $('#Comentarios_comentarios').prop('required', true);
+        }
+        else {
+            $('#Comentarios_comentarios').prop('required', false);
+        }
+    });
+})

@@ -13,7 +13,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.models.evaluacion.*',
-        'application.models.proyecto.*',
+        'application.models.poa.*',
         'application.components.*',
         'application.funciones.*',
         'application.modules.cruge.components.*',
@@ -113,7 +113,7 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
          'db' => array(
-            'connectionString' => 'pgsql:host=XX.XX.X.XX;dbname=siim_evaluacion',
+            'connectionString' => 'pgsql:host=XXX.XX.XX.XX;dbname=siim',
             'emulatePrepare' => false,
             'username' => 'XXXXXX',
             'password' => 'XXXXXX',
@@ -121,10 +121,10 @@ return array(
         ),
         'db2' => array(
             'class' => 'CDbConnection',
-            'connectionString' => 'pgsql:host=XX.XX.X.XX;dbname=actualizacion',
+            'connectionString' => 'pgsql:host=XXX.XX.XX.XX;dbname=actualizacion',
             'emulatePrepare' => false,
             'username' => 'XXXXXX',
-            'password' => 'XXXXX',
+            'password' => 'XXXXXX',
             'charset' => 'utf8',
         ),
         

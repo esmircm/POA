@@ -1,37 +1,33 @@
 <?php
 
 /**
- * This is the model class for table "poa.proyecto".
+ * This is the model class for table "poa.estatus_poa".
  *
- * The followings are the available columns in table 'poa.proyecto':
- * @property integer $id_proyecto
- * @property string $nombre_proyecto
- * @property string $objetivo_general
- * @property string $descripcion
- * @property string $fecha_inicio
+ * The followings are the available columns in table 'poa.estatus_poa':
+ * @property integer $id_estatus_poa
+ * @property integer $fk_estatus_poa
+ * @property integer $fk_poa
  * @property integer $created_by
  * @property string $created_date
  * @property integer $modified_by
  * @property string $modified_date
  * @property integer $fk_status
  * @property boolean $es_activo
- * @property string $objetivo_historico
+ * @property integer $fk_tipo_entidad
  *
  * The followings are the available model relations:
+ * @property Maestro $fkEstatusPoa
+ * @property Poa $fkPoa
  * @property Maestro $fkStatus
- * @property Acciones[] $acciones
- * @property Responsable[] $responsables
- * @property EstatusProyecto[] $estatusProyectos
- * @property Comentarios[] $comentarioses
  */
-class Proyecto extends CActiveRecord
+class EstatusPoa extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'poa.proyecto';
+		return 'poa.estatus_poa';
 	}
 
 	/**
@@ -42,14 +38,12 @@ class Proyecto extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_proyecto, objetivo_general, created_by, created_date, modified_date, fk_status', 'required'),
-			array('created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
-			array('nombre_proyecto, objetivo_general, objetivo_historico', 'length', 'max'=>500),
-			array('descripcion', 'length', 'max'=>1000),
-			array('fecha_inicio, es_activo', 'safe'),
+			array('fk_estatus_poa, fk_poa, created_by, created_date, modified_date, fk_status, fk_tipo_entidad', 'required'),
+			array('fk_estatus_poa, fk_poa, created_by, modified_by, fk_status, fk_tipo_entidad', 'numerical', 'integerOnly'=>true),
+			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_proyecto, nombre_proyecto, objetivo_general, descripcion, fecha_inicio, created_by, created_date, modified_by, modified_date, fk_status, es_activo, objetivo_historico', 'safe', 'on'=>'search'),
+			array('id_estatus_poa, fk_estatus_poa, fk_poa, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_tipo_entidad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -61,11 +55,9 @@ class Proyecto extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			'fkEstatusPoa' => array(self::BELONGS_TO, 'Maestro', 'fk_estatus_poa'),
+			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
 			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
-			'acciones' => array(self::HAS_MANY, 'Acciones', 'fk_proyecto'),
-			'responsables' => array(self::HAS_MANY, 'Responsable', 'fk_proyecto'),
-			'estatusProyectos' => array(self::HAS_MANY, 'EstatusProyecto', 'fk_proyecto'),
-			'comentarioses' => array(self::HAS_MANY, 'Comentarios', 'fk_proyecto'),
 		);
 	}
 
@@ -75,18 +67,16 @@ class Proyecto extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_proyecto' => 'Id Proyecto',
-			'nombre_proyecto' => 'Nombre Proyecto',
-			'objetivo_general' => 'Objetivo General',
-			'descripcion' => 'Descripcion',
-			'fecha_inicio' => 'Fecha Inicio',
+			'id_estatus_poa' => 'Id Estatus Poa',
+			'fk_estatus_poa' => 'Fk Estatus Poa',
+			'fk_poa' => 'Fk Poa',
 			'created_by' => 'Created By',
 			'created_date' => 'Created Date',
 			'modified_by' => 'Modified By',
 			'modified_date' => 'Modified Date',
 			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
-			'objetivo_historico' => 'Objetivo Historico',
+			'fk_tipo_entidad' => 'Fk Tipo Entidad',
 		);
 	}
 
@@ -108,18 +98,16 @@ class Proyecto extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_proyecto',$this->id_proyecto);
-		$criteria->compare('nombre_proyecto',$this->nombre_proyecto,true);
-		$criteria->compare('objetivo_general',$this->objetivo_general,true);
-		$criteria->compare('descripcion',$this->descripcion,true);
-		$criteria->compare('fecha_inicio',$this->fecha_inicio,true);
+		$criteria->compare('id_estatus_poa',$this->id_estatus_poa);
+		$criteria->compare('fk_estatus_poa',$this->fk_estatus_poa);
+		$criteria->compare('fk_poa',$this->fk_poa);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('modified_by',$this->modified_by);
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('fk_status',$this->fk_status);
 		$criteria->compare('es_activo',$this->es_activo);
-		$criteria->compare('objetivo_historico',$this->objetivo_historico,true);
+		$criteria->compare('fk_tipo_entidad',$this->fk_tipo_entidad);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -130,7 +118,7 @@ class Proyecto extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Proyecto the static model class
+	 * @return EstatusPoa the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

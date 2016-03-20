@@ -9,7 +9,7 @@
  * @property integer $fk_unidad_medida
  * @property integer $cantidad
  * @property integer $fk_ambito
- * @property integer $fk_proyecto
+ * @property integer $fk_poa
  * @property integer $created_by
  * @property string $created_date
  * @property integer $modified_by
@@ -22,8 +22,8 @@
  * The followings are the available model relations:
  * @property Maestro $fkAmbito
  * @property Maestro $fkStatus
- * @property Proyecto $fkProyecto
  * @property Maestro $fkUnidadMedida
+ * @property Poa $fkPoa
  * @property Actividades[] $actividades
  */
 class Acciones extends CActiveRecord
@@ -44,14 +44,14 @@ class Acciones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_proyecto, created_by, created_date, modified_date, fk_status', 'required'),
-			array('fk_unidad_medida, cantidad, fk_ambito, fk_proyecto, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
+			array('nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_date, fk_status', 'required'),
+			array('fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
 			array('nombre_accion, meta', 'length', 'max'=>500),
 			array('bien_servicio', 'length', 'max'=>200),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_proyecto, created_by, created_date, modified_by, modified_date, fk_status, es_activo, meta, bien_servicio', 'safe', 'on'=>'search'),
+			array('id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_by, modified_date, fk_status, es_activo, meta, bien_servicio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -65,8 +65,8 @@ class Acciones extends CActiveRecord
 		return array(
 			'fkAmbito' => array(self::BELONGS_TO, 'Maestro', 'fk_ambito'),
 			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
-			'fkProyecto' => array(self::BELONGS_TO, 'Proyecto', 'fk_proyecto'),
 			'fkUnidadMedida' => array(self::BELONGS_TO, 'Maestro', 'fk_unidad_medida'),
+			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
 			'actividades' => array(self::HAS_MANY, 'Actividades', 'fk_accion'),
 		);
 	}
@@ -78,11 +78,11 @@ class Acciones extends CActiveRecord
 	{
 		return array(
 			'id_accion' => 'Id Accion',
-			'nombre_accion' => 'Nombre Accion',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
+			'nombre_accion' => 'Nombre de la Accion',
+			'fk_unidad_medida' => 'Unidad de Medida',
 			'cantidad' => 'Cantidad',
-			'fk_ambito' => 'Fk Ambito',
-			'fk_proyecto' => 'Fk Proyecto',
+			'fk_ambito' => 'Ámbito',
+			'fk_poa' => 'Fk Poa',
 			'created_by' => 'Created By',
 			'created_date' => 'Created Date',
 			'modified_by' => 'Modified By',
@@ -90,7 +90,7 @@ class Acciones extends CActiveRecord
 			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
 			'meta' => 'Meta',
-			'bien_servicio' => 'Bien Servicio',
+			'bien_servicio' => 'Bien o Servicio',
 		);
 	}
 
@@ -117,7 +117,7 @@ class Acciones extends CActiveRecord
 		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
 		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('fk_ambito',$this->fk_ambito);
-		$criteria->compare('fk_proyecto',$this->fk_proyecto);
+		$criteria->compare('fk_poa',$this->fk_poa);
 		$criteria->compare('created_by',$this->created_by);
 		$criteria->compare('created_date',$this->created_date,true);
 		$criteria->compare('modified_by',$this->modified_by);
@@ -130,6 +130,45 @@ class Acciones extends CActiveRecord
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
+	}
+        
+        public function searchAccion($fk_poa)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_accion',$this->id_accion);
+		$criteria->compare('nombre_accion',$this->nombre_accion,true);
+		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
+		$criteria->compare('cantidad',$this->cantidad);
+		$criteria->compare('fk_ambito',$this->fk_ambito);
+		$criteria->compare('fk_poa',$fk_poa);
+		$criteria->compare('created_by',$this->created_by);
+		$criteria->compare('created_date',$this->created_date,true);
+		$criteria->compare('modified_by',$this->modified_by);
+		$criteria->compare('modified_date',$this->modified_date,true);
+		$criteria->compare('fk_status',$this->fk_status);
+		$criteria->compare('es_activo',$this->es_activo);
+		$criteria->compare('meta',$this->meta,true);
+		$criteria->compare('bien_servicio',$this->bien_servicio,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+        
+        public function search_unidad_medida($id)
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
+                $consulta = Yii::app()->db->createCommand()
+                ->select('unidad_medida')
+                ->from('poa.vsw_acciones')
+                ->where('id_accion =' . $id)
+                ->queryRow();
+        
+                $resultado = $consulta['unidad_medida'];
+                return $resultado;
 	}
 
 	/**
