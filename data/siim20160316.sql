@@ -2,10 +2,6 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 9.4.5
--- Dumped by pg_dump version 9.4.5
--- Started on 2016-03-04 14:56:25 VET
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -14,7 +10,6 @@ SET check_function_bodies = false;
 SET client_min_messages = warning;
 
 --
--- TOC entry 6 (class 2615 OID 109146)
 -- Name: actualizar; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -24,7 +19,6 @@ CREATE SCHEMA actualizar;
 ALTER SCHEMA actualizar OWNER TO postgres;
 
 --
--- TOC entry 7 (class 2615 OID 109147)
 -- Name: evaluacion; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -34,7 +28,6 @@ CREATE SCHEMA evaluacion;
 ALTER SCHEMA evaluacion OWNER TO postgres;
 
 --
--- TOC entry 10 (class 2615 OID 110741)
 -- Name: poa; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -44,7 +37,6 @@ CREATE SCHEMA poa;
 ALTER SCHEMA poa OWNER TO postgres;
 
 --
--- TOC entry 8 (class 2615 OID 109148)
 -- Name: requisicion; Type: SCHEMA; Schema: -; Owner: postgres
 --
 
@@ -54,7 +46,6 @@ CREATE SCHEMA requisicion;
 ALTER SCHEMA requisicion OWNER TO postgres;
 
 --
--- TOC entry 268 (class 3079 OID 11861)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -62,8 +53,6 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
--- TOC entry 2753 (class 0 OID 0)
--- Dependencies: 268
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -71,7 +60,6 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 
 --
--- TOC entry 269 (class 3079 OID 109149)
 -- Name: dblink; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -79,8 +67,6 @@ CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA actualizar;
 
 
 --
--- TOC entry 2754 (class 0 OID 0)
--- Dependencies: 269
 -- Name: EXTENSION dblink; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -90,7 +76,6 @@ COMMENT ON EXTENSION dblink IS 'connect to other PostgreSQL databases from withi
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 323 (class 1255 OID 109195)
 -- Name: fn_eliminar_traza(integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
 --
 
@@ -132,7 +117,6 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- TOC entry 177 (class 1259 OID 109196)
 -- Name: historico; Type: TABLE; Schema: actualizar; Owner: postgres; Tablespace: 
 --
 
@@ -147,11 +131,9 @@ CREATE TABLE historico (
 );
 
 
-ALTER TABLE historico OWNER TO postgres;
+ALTER TABLE actualizar.historico OWNER TO postgres;
 
 --
--- TOC entry 2755 (class 0 OID 0)
--- Dependencies: 177
 -- Name: COLUMN historico.se_activa_1; Type: COMMENT; Schema: actualizar; Owner: postgres
 --
 
@@ -159,8 +141,6 @@ COMMENT ON COLUMN historico.se_activa_1 IS 'booleano que permite que se active l
 
 
 --
--- TOC entry 2756 (class 0 OID 0)
--- Dependencies: 177
 -- Name: COLUMN historico.se_activa_2; Type: COMMENT; Schema: actualizar; Owner: postgres
 --
 
@@ -168,8 +148,6 @@ COMMENT ON COLUMN historico.se_activa_2 IS 'booleano que permite que se active l
 
 
 --
--- TOC entry 2757 (class 0 OID 0)
--- Dependencies: 177
 -- Name: COLUMN historico.se_activa_3; Type: COMMENT; Schema: actualizar; Owner: postgres
 --
 
@@ -177,7 +155,6 @@ COMMENT ON COLUMN historico.se_activa_3 IS 'booleano que permite que se active l
 
 
 --
--- TOC entry 178 (class 1259 OID 109203)
 -- Name: historico_id_historico_seq; Type: SEQUENCE; Schema: actualizar; Owner: postgres
 --
 
@@ -189,11 +166,9 @@ CREATE SEQUENCE historico_id_historico_seq
     CACHE 1;
 
 
-ALTER TABLE historico_id_historico_seq OWNER TO postgres;
+ALTER TABLE actualizar.historico_id_historico_seq OWNER TO postgres;
 
 --
--- TOC entry 2759 (class 0 OID 0)
--- Dependencies: 178
 -- Name: historico_id_historico_seq; Type: SEQUENCE OWNED BY; Schema: actualizar; Owner: postgres
 --
 
@@ -201,7 +176,6 @@ ALTER SEQUENCE historico_id_historico_seq OWNED BY historico.id_historico;
 
 
 --
--- TOC entry 179 (class 1259 OID 109205)
 -- Name: traza; Type: TABLE; Schema: actualizar; Owner: postgres; Tablespace: 
 --
 
@@ -215,10 +189,9 @@ CREATE TABLE traza (
 );
 
 
-ALTER TABLE traza OWNER TO postgres;
+ALTER TABLE actualizar.traza OWNER TO postgres;
 
 --
--- TOC entry 180 (class 1259 OID 109210)
 -- Name: traza_id_traza_seq; Type: SEQUENCE; Schema: actualizar; Owner: postgres
 --
 
@@ -230,11 +203,9 @@ CREATE SEQUENCE traza_id_traza_seq
     CACHE 1;
 
 
-ALTER TABLE traza_id_traza_seq OWNER TO postgres;
+ALTER TABLE actualizar.traza_id_traza_seq OWNER TO postgres;
 
 --
--- TOC entry 2762 (class 0 OID 0)
--- Dependencies: 180
 -- Name: traza_id_traza_seq; Type: SEQUENCE OWNED BY; Schema: actualizar; Owner: postgres
 --
 
@@ -242,7 +213,6 @@ ALTER SEQUENCE traza_id_traza_seq OWNED BY traza.id_traza;
 
 
 --
--- TOC entry 181 (class 1259 OID 109212)
 -- Name: vsw_sigefirrhh; Type: VIEW; Schema: actualizar; Owner: postgres
 --
 
@@ -268,10 +238,9 @@ CREATE VIEW vsw_sigefirrhh AS
 													     ORDER BY oficina'::text) p(id_personal integer, cedula integer, primer_nombre character varying(20), segundo_nombre character varying(20), primer_apellido character varying(20), segundo_apellido character varying(20), descripcion_cargo character varying(90), oficina character varying(90), id_tipo_dependencia integer);
 
 
-ALTER TABLE vsw_sigefirrhh OWNER TO postgres;
+ALTER TABLE actualizar.vsw_sigefirrhh OWNER TO postgres;
 
 --
--- TOC entry 182 (class 1259 OID 109217)
 -- Name: vsw_usuarios_actualizados; Type: VIEW; Schema: actualizar; Owner: postgres
 --
 
@@ -305,12 +274,11 @@ CREATE VIEW vsw_usuarios_actualizados AS
         END DESC;
 
 
-ALTER TABLE vsw_usuarios_actualizados OWNER TO postgres;
+ALTER TABLE actualizar.vsw_usuarios_actualizados OWNER TO postgres;
 
 SET search_path = evaluacion, pg_catalog;
 
 --
--- TOC entry 183 (class 1259 OID 109222)
 -- Name: comentarios; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -327,11 +295,9 @@ CREATE TABLE comentarios (
 );
 
 
-ALTER TABLE comentarios OWNER TO postgres;
+ALTER TABLE evaluacion.comentarios OWNER TO postgres;
 
 --
--- TOC entry 2765 (class 0 OID 0)
--- Dependencies: 183
 -- Name: COLUMN comentarios.id_comentario; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -339,8 +305,6 @@ COMMENT ON COLUMN comentarios.id_comentario IS 'clave primaria';
 
 
 --
--- TOC entry 2766 (class 0 OID 0)
--- Dependencies: 183
 -- Name: COLUMN comentarios.fk_evaluacion; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -348,7 +312,6 @@ COMMENT ON COLUMN comentarios.fk_evaluacion IS 'clave foránea con referencia a 
 
 
 --
--- TOC entry 184 (class 1259 OID 109231)
 -- Name: comentarios_id_comentario_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -360,11 +323,9 @@ CREATE SEQUENCE comentarios_id_comentario_seq
     CACHE 1;
 
 
-ALTER TABLE comentarios_id_comentario_seq OWNER TO postgres;
+ALTER TABLE evaluacion.comentarios_id_comentario_seq OWNER TO postgres;
 
 --
--- TOC entry 2767 (class 0 OID 0)
--- Dependencies: 184
 -- Name: comentarios_id_comentario_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -372,7 +333,6 @@ ALTER SEQUENCE comentarios_id_comentario_seq OWNED BY comentarios.id_comentario;
 
 
 --
--- TOC entry 185 (class 1259 OID 109233)
 -- Name: estatus_evaluacion; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -392,10 +352,9 @@ CREATE TABLE estatus_evaluacion (
 );
 
 
-ALTER TABLE estatus_evaluacion OWNER TO postgres;
+ALTER TABLE evaluacion.estatus_evaluacion OWNER TO postgres;
 
 --
--- TOC entry 186 (class 1259 OID 109239)
 -- Name: estatus_evaluacion_id_estatus_evaluacion_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -407,11 +366,9 @@ CREATE SEQUENCE estatus_evaluacion_id_estatus_evaluacion_seq
     CACHE 1;
 
 
-ALTER TABLE estatus_evaluacion_id_estatus_evaluacion_seq OWNER TO postgres;
+ALTER TABLE evaluacion.estatus_evaluacion_id_estatus_evaluacion_seq OWNER TO postgres;
 
 --
--- TOC entry 2768 (class 0 OID 0)
--- Dependencies: 186
 -- Name: estatus_evaluacion_id_estatus_evaluacion_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -419,7 +376,6 @@ ALTER SEQUENCE estatus_evaluacion_id_estatus_evaluacion_seq OWNED BY estatus_eva
 
 
 --
--- TOC entry 187 (class 1259 OID 109241)
 -- Name: evaluacion; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -442,10 +398,9 @@ CREATE TABLE evaluacion (
 );
 
 
-ALTER TABLE evaluacion OWNER TO postgres;
+ALTER TABLE evaluacion.evaluacion OWNER TO postgres;
 
 --
--- TOC entry 188 (class 1259 OID 109249)
 -- Name: evaluacion_id_evaluacion_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -457,11 +412,9 @@ CREATE SEQUENCE evaluacion_id_evaluacion_seq
     CACHE 1;
 
 
-ALTER TABLE evaluacion_id_evaluacion_seq OWNER TO postgres;
+ALTER TABLE evaluacion.evaluacion_id_evaluacion_seq OWNER TO postgres;
 
 --
--- TOC entry 2769 (class 0 OID 0)
--- Dependencies: 188
 -- Name: evaluacion_id_evaluacion_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -469,7 +422,6 @@ ALTER SEQUENCE evaluacion_id_evaluacion_seq OWNED BY evaluacion.id_evaluacion;
 
 
 --
--- TOC entry 189 (class 1259 OID 109251)
 -- Name: evaluador; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -494,11 +446,9 @@ CREATE TABLE evaluador (
 );
 
 
-ALTER TABLE evaluador OWNER TO postgres;
+ALTER TABLE evaluacion.evaluador OWNER TO postgres;
 
 --
--- TOC entry 2770 (class 0 OID 0)
--- Dependencies: 189
 -- Name: COLUMN evaluador.fk_dependencia; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -506,7 +456,6 @@ COMMENT ON COLUMN evaluador.fk_dependencia IS 'Clave foránea con respecto a la 
 
 
 --
--- TOC entry 190 (class 1259 OID 109257)
 -- Name: evaluador_id_evaluador_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -518,11 +467,9 @@ CREATE SEQUENCE evaluador_id_evaluador_seq
     CACHE 1;
 
 
-ALTER TABLE evaluador_id_evaluador_seq OWNER TO postgres;
+ALTER TABLE evaluacion.evaluador_id_evaluador_seq OWNER TO postgres;
 
 --
--- TOC entry 2771 (class 0 OID 0)
--- Dependencies: 190
 -- Name: evaluador_id_evaluador_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -530,7 +477,6 @@ ALTER SEQUENCE evaluador_id_evaluador_seq OWNED BY evaluador.id_evaluador;
 
 
 --
--- TOC entry 191 (class 1259 OID 109259)
 -- Name: evaluados; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -560,11 +506,9 @@ CREATE TABLE evaluados (
 );
 
 
-ALTER TABLE evaluados OWNER TO postgres;
+ALTER TABLE evaluacion.evaluados OWNER TO postgres;
 
 --
--- TOC entry 2772 (class 0 OID 0)
--- Dependencies: 191
 -- Name: COLUMN evaluados.fk_tipo_entidad; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -572,8 +516,6 @@ COMMENT ON COLUMN evaluados.fk_tipo_entidad IS 'clave foránea con respecto a ma
 
 
 --
--- TOC entry 2773 (class 0 OID 0)
--- Dependencies: 191
 -- Name: COLUMN evaluados.fk_dependencia; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -581,8 +523,6 @@ COMMENT ON COLUMN evaluados.fk_dependencia IS 'clave foránea con referencia a l
 
 
 --
--- TOC entry 2774 (class 0 OID 0)
--- Dependencies: 191
 -- Name: COLUMN evaluados.fk_periodo; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -590,7 +530,6 @@ COMMENT ON COLUMN evaluados.fk_periodo IS 'clave foranea con referencia a maestr
 
 
 --
--- TOC entry 192 (class 1259 OID 109264)
 -- Name: evaluados_id_evaluado_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -602,11 +541,9 @@ CREATE SEQUENCE evaluados_id_evaluado_seq
     CACHE 1;
 
 
-ALTER TABLE evaluados_id_evaluado_seq OWNER TO postgres;
+ALTER TABLE evaluacion.evaluados_id_evaluado_seq OWNER TO postgres;
 
 --
--- TOC entry 2775 (class 0 OID 0)
--- Dependencies: 192
 -- Name: evaluados_id_evaluado_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -614,7 +551,6 @@ ALTER SEQUENCE evaluados_id_evaluado_seq OWNED BY evaluados.id_evaluado;
 
 
 --
--- TOC entry 193 (class 1259 OID 109266)
 -- Name: maestro; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -632,10 +568,9 @@ CREATE TABLE maestro (
 );
 
 
-ALTER TABLE maestro OWNER TO postgres;
+ALTER TABLE evaluacion.maestro OWNER TO postgres;
 
 --
--- TOC entry 194 (class 1259 OID 109275)
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -647,11 +582,9 @@ CREATE SEQUENCE maestro_id_maestro_seq
     CACHE 1;
 
 
-ALTER TABLE maestro_id_maestro_seq OWNER TO postgres;
+ALTER TABLE evaluacion.maestro_id_maestro_seq OWNER TO postgres;
 
 --
--- TOC entry 2776 (class 0 OID 0)
--- Dependencies: 194
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -659,7 +592,6 @@ ALTER SEQUENCE maestro_id_maestro_seq OWNED BY maestro.id_maestro;
 
 
 --
--- TOC entry 195 (class 1259 OID 109277)
 -- Name: preguntas; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -679,10 +611,9 @@ CREATE TABLE preguntas (
 );
 
 
-ALTER TABLE preguntas OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas OWNER TO postgres;
 
 --
--- TOC entry 196 (class 1259 OID 109286)
 -- Name: preguntas_colectivas; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -704,11 +635,9 @@ CREATE TABLE preguntas_colectivas (
 );
 
 
-ALTER TABLE preguntas_colectivas OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_colectivas OWNER TO postgres;
 
 --
--- TOC entry 2777 (class 0 OID 0)
--- Dependencies: 196
 -- Name: COLUMN preguntas_colectivas.orden; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -716,7 +645,6 @@ COMMENT ON COLUMN preguntas_colectivas.orden IS 'orden de las preguntas';
 
 
 --
--- TOC entry 197 (class 1259 OID 109292)
 -- Name: preguntas_colectivas_id_preguntas_colect_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -728,11 +656,9 @@ CREATE SEQUENCE preguntas_colectivas_id_preguntas_colect_seq
     CACHE 1;
 
 
-ALTER TABLE preguntas_colectivas_id_preguntas_colect_seq OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_colectivas_id_preguntas_colect_seq OWNER TO postgres;
 
 --
--- TOC entry 2778 (class 0 OID 0)
--- Dependencies: 197
 -- Name: preguntas_colectivas_id_preguntas_colect_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -740,7 +666,6 @@ ALTER SEQUENCE preguntas_colectivas_id_preguntas_colect_seq OWNED BY preguntas_c
 
 
 --
--- TOC entry 198 (class 1259 OID 109294)
 -- Name: preguntas_id_pregunta_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -752,11 +677,9 @@ CREATE SEQUENCE preguntas_id_pregunta_seq
     CACHE 1;
 
 
-ALTER TABLE preguntas_id_pregunta_seq OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_id_pregunta_seq OWNER TO postgres;
 
 --
--- TOC entry 2779 (class 0 OID 0)
--- Dependencies: 198
 -- Name: preguntas_id_pregunta_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -764,7 +687,6 @@ ALTER SEQUENCE preguntas_id_pregunta_seq OWNED BY preguntas.id_pregunta;
 
 
 --
--- TOC entry 199 (class 1259 OID 109296)
 -- Name: preguntas_individuales; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -784,11 +706,9 @@ CREATE TABLE preguntas_individuales (
 );
 
 
-ALTER TABLE preguntas_individuales OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_individuales OWNER TO postgres;
 
 --
--- TOC entry 2780 (class 0 OID 0)
--- Dependencies: 199
 -- Name: COLUMN preguntas_individuales.id_preguntas_ind; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -796,8 +716,6 @@ COMMENT ON COLUMN preguntas_individuales.id_preguntas_ind IS 'clave primaria';
 
 
 --
--- TOC entry 2781 (class 0 OID 0)
--- Dependencies: 199
 -- Name: COLUMN preguntas_individuales.objetivo; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -805,8 +723,6 @@ COMMENT ON COLUMN preguntas_individuales.objetivo IS 'referente a los objetivos 
 
 
 --
--- TOC entry 2782 (class 0 OID 0)
--- Dependencies: 199
 -- Name: COLUMN preguntas_individuales.peso; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -814,8 +730,6 @@ COMMENT ON COLUMN preguntas_individuales.peso IS 'peso asignado a cada objetivo'
 
 
 --
--- TOC entry 2783 (class 0 OID 0)
--- Dependencies: 199
 -- Name: COLUMN preguntas_individuales.fk_rango; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -823,8 +737,6 @@ COMMENT ON COLUMN preguntas_individuales.fk_rango IS 'clave foránea en referenc
 
 
 --
--- TOC entry 2784 (class 0 OID 0)
--- Dependencies: 199
 -- Name: COLUMN preguntas_individuales.subtotal_peso; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -832,8 +744,6 @@ COMMENT ON COLUMN preguntas_individuales.subtotal_peso IS 'total de puntaje eval
 
 
 --
--- TOC entry 2785 (class 0 OID 0)
--- Dependencies: 199
 -- Name: COLUMN preguntas_individuales.fk_evaluacion; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -841,7 +751,6 @@ COMMENT ON COLUMN preguntas_individuales.fk_evaluacion IS 'clave foránea en ref
 
 
 --
--- TOC entry 200 (class 1259 OID 109301)
 -- Name: preguntas_individuales_id_preguntas_ind_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -853,11 +762,9 @@ CREATE SEQUENCE preguntas_individuales_id_preguntas_ind_seq
     CACHE 1;
 
 
-ALTER TABLE preguntas_individuales_id_preguntas_ind_seq OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_individuales_id_preguntas_ind_seq OWNER TO postgres;
 
 --
--- TOC entry 2786 (class 0 OID 0)
--- Dependencies: 200
 -- Name: preguntas_individuales_id_preguntas_ind_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -865,7 +772,6 @@ ALTER SEQUENCE preguntas_individuales_id_preguntas_ind_seq OWNED BY preguntas_in
 
 
 --
--- TOC entry 201 (class 1259 OID 109303)
 -- Name: preguntas_obrero; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -883,11 +789,9 @@ CREATE TABLE preguntas_obrero (
 );
 
 
-ALTER TABLE preguntas_obrero OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_obrero OWNER TO postgres;
 
 --
--- TOC entry 2787 (class 0 OID 0)
--- Dependencies: 201
 -- Name: COLUMN preguntas_obrero.fk_pregunta; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -895,8 +799,6 @@ COMMENT ON COLUMN preguntas_obrero.fk_pregunta IS 'Clave foránea con referencia
 
 
 --
--- TOC entry 2788 (class 0 OID 0)
--- Dependencies: 201
 -- Name: COLUMN preguntas_obrero.fk_evaluacion; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -904,8 +806,6 @@ COMMENT ON COLUMN preguntas_obrero.fk_evaluacion IS 'clave foránea en referenci
 
 
 --
--- TOC entry 2789 (class 0 OID 0)
--- Dependencies: 201
 -- Name: COLUMN preguntas_obrero.fk_estatus; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -913,7 +813,6 @@ COMMENT ON COLUMN preguntas_obrero.fk_estatus IS 'clave foránea en referencia a
 
 
 --
--- TOC entry 202 (class 1259 OID 109311)
 -- Name: preguntas_obrero_id_preguntas_obr_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -925,11 +824,9 @@ CREATE SEQUENCE preguntas_obrero_id_preguntas_obr_seq
     CACHE 1;
 
 
-ALTER TABLE preguntas_obrero_id_preguntas_obr_seq OWNER TO postgres;
+ALTER TABLE evaluacion.preguntas_obrero_id_preguntas_obr_seq OWNER TO postgres;
 
 --
--- TOC entry 2790 (class 0 OID 0)
--- Dependencies: 202
 -- Name: preguntas_obrero_id_preguntas_obr_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -937,7 +834,6 @@ ALTER SEQUENCE preguntas_obrero_id_preguntas_obr_seq OWNED BY preguntas_obrero.i
 
 
 --
--- TOC entry 203 (class 1259 OID 109313)
 -- Name: revision; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -957,11 +853,9 @@ CREATE TABLE revision (
 );
 
 
-ALTER TABLE revision OWNER TO postgres;
+ALTER TABLE evaluacion.revision OWNER TO postgres;
 
 --
--- TOC entry 2791 (class 0 OID 0)
--- Dependencies: 203
 -- Name: COLUMN revision.fk_revision; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -969,8 +863,6 @@ COMMENT ON COLUMN revision.fk_revision IS 'clave foranea con referencia a maestr
 
 
 --
--- TOC entry 2792 (class 0 OID 0)
--- Dependencies: 203
 -- Name: COLUMN revision.fk_evaluador; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -978,7 +870,6 @@ COMMENT ON COLUMN revision.fk_evaluador IS 'clave foranea con referencia a perso
 
 
 --
--- TOC entry 204 (class 1259 OID 109322)
 -- Name: revision_id_revision_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -990,11 +881,9 @@ CREATE SEQUENCE revision_id_revision_seq
     CACHE 1;
 
 
-ALTER TABLE revision_id_revision_seq OWNER TO postgres;
+ALTER TABLE evaluacion.revision_id_revision_seq OWNER TO postgres;
 
 --
--- TOC entry 2793 (class 0 OID 0)
--- Dependencies: 204
 -- Name: revision_id_revision_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -1002,7 +891,6 @@ ALTER SEQUENCE revision_id_revision_seq OWNED BY revision.id_revision;
 
 
 --
--- TOC entry 205 (class 1259 OID 109324)
 -- Name: supervisor; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -1019,11 +907,9 @@ CREATE TABLE supervisor (
 );
 
 
-ALTER TABLE supervisor OWNER TO postgres;
+ALTER TABLE evaluacion.supervisor OWNER TO postgres;
 
 --
--- TOC entry 2794 (class 0 OID 0)
--- Dependencies: 205
 -- Name: COLUMN supervisor.id_supervisor; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -1031,8 +917,6 @@ COMMENT ON COLUMN supervisor.id_supervisor IS 'clave primaria';
 
 
 --
--- TOC entry 2795 (class 0 OID 0)
--- Dependencies: 205
 -- Name: COLUMN supervisor.fk_persona; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -1040,8 +924,6 @@ COMMENT ON COLUMN supervisor.fk_persona IS 'Clave Foránea con respecto a la tab
 
 
 --
--- TOC entry 2796 (class 0 OID 0)
--- Dependencies: 205
 -- Name: COLUMN supervisor.cargo; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -1049,8 +931,6 @@ COMMENT ON COLUMN supervisor.cargo IS 'descripción del cargo';
 
 
 --
--- TOC entry 2797 (class 0 OID 0)
--- Dependencies: 205
 -- Name: COLUMN supervisor.fk_estatus; Type: COMMENT; Schema: evaluacion; Owner: postgres
 --
 
@@ -1058,7 +938,6 @@ COMMENT ON COLUMN supervisor.fk_estatus IS 'clave foránea con referencia a la t
 
 
 --
--- TOC entry 206 (class 1259 OID 109329)
 -- Name: supervisor_id_supervisor_seq; Type: SEQUENCE; Schema: evaluacion; Owner: postgres
 --
 
@@ -1070,11 +949,9 @@ CREATE SEQUENCE supervisor_id_supervisor_seq
     CACHE 1;
 
 
-ALTER TABLE supervisor_id_supervisor_seq OWNER TO postgres;
+ALTER TABLE evaluacion.supervisor_id_supervisor_seq OWNER TO postgres;
 
 --
--- TOC entry 2798 (class 0 OID 0)
--- Dependencies: 206
 -- Name: supervisor_id_supervisor_seq; Type: SEQUENCE OWNED BY; Schema: evaluacion; Owner: postgres
 --
 
@@ -1082,7 +959,6 @@ ALTER SEQUENCE supervisor_id_supervisor_seq OWNED BY supervisor.id_supervisor;
 
 
 --
--- TOC entry 264 (class 1259 OID 110947)
 -- Name: vsw_admin; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -1110,13 +986,10 @@ CREATE TABLE vsw_admin (
     dep_evaluador_cruge character varying(100)
 );
 
-ALTER TABLE ONLY vsw_admin REPLICA IDENTITY NOTHING;
 
-
-ALTER TABLE vsw_admin OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_admin OWNER TO postgres;
 
 --
--- TOC entry 207 (class 1259 OID 109337)
 -- Name: vsw_evaluacion; Type: VIEW; Schema: evaluacion; Owner: postgres
 --
 
@@ -1144,22 +1017,20 @@ CREATE VIEW vsw_evaluacion AS
             WHEN (p.cod_tipo_personal = 3) THEN (11)::text
             WHEN (p.cod_tipo_personal = 4) THEN (12)::text
             ELSE NULL::text
-        END AS fk_tipo_clase,
-    p.id_tipo_dependencia
+        END AS fk_tipo_clase
    FROM actualizar.dblink('dbname=actualizacion'::text, 'SELECT per.id_personal, per.nacionalidad, per.cedula, per.primer_nombre, per.segundo_nombre, per.primer_apellido,
-segundo_apellido, per.sexo, car.id_cargo, car.descripcion_cargo, tr.estatus, tr.codigo_nomina, dep.id_dependencia, dep.nombre, per.telefono_oficina, car.grado, car.tipo_cargo, tr.fecha_ingreso,tr.cod_tipo_personal, dep.id_tipo_dependencia
+segundo_apellido, per.sexo, car.id_cargo, car.descripcion_cargo, tr.estatus, tr.codigo_nomina, dep.id_dependencia, dep.nombre, per.telefono_oficina, car.grado, car.tipo_cargo, tr.fecha_ingreso,tr.cod_tipo_personal
 FROM personal per
 JOIN trabajador tr on tr.id_personal = per.id_personal
 JOIN cargo car on car.id_cargo = tr.id_cargo
 JOIN dependencia dep on dep.id_dependencia = tr.id_dependencia
-'::text) p(id_personal integer, nacionalidad character varying(1), cedula integer, primer_nombre character varying(20), segundo_nombre character varying(20), primer_apellido character varying(20), segundo_apellido character varying(20), sexo character varying(1), id_cargo integer, descripcion_cargo character varying(60), estatus character varying(1), codigo_nomina integer, id_dependencia integer, nombre character varying(90), telefono_oficina character varying(15), grado integer, tipo_cargo character varying(1), fecha_ingreso date, cod_tipo_personal integer, id_tipo_dependencia integer)
+'::text) p(id_personal integer, nacionalidad character varying(1), cedula integer, primer_nombre character varying(20), segundo_nombre character varying(20), primer_apellido character varying(20), segundo_apellido character varying(20), sexo character varying(1), id_cargo integer, descripcion_cargo character varying(60), estatus character varying(1), codigo_nomina integer, id_dependencia integer, nombre character varying(90), telefono_oficina character varying(15), grado integer, tipo_cargo character varying(1), fecha_ingreso date, cod_tipo_personal integer)
   WHERE ((p.estatus)::text = 'A'::text);
 
 
-ALTER TABLE vsw_evaluacion OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_evaluacion OWNER TO postgres;
 
 --
--- TOC entry 208 (class 1259 OID 109342)
 -- Name: vsw_certificado; Type: VIEW; Schema: evaluacion; Owner: postgres
 --
 
@@ -1212,10 +1083,9 @@ CREATE VIEW vsw_certificado AS
   ORDER BY eva.id_evaluacion;
 
 
-ALTER TABLE vsw_certificado OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_certificado OWNER TO postgres;
 
 --
--- TOC entry 209 (class 1259 OID 109347)
 -- Name: vsw_listar_personas; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -1261,13 +1131,10 @@ CREATE TABLE vsw_listar_personas (
     dep_evaluador_cruge character varying(100)
 );
 
-ALTER TABLE ONLY vsw_listar_personas REPLICA IDENTITY NOTHING;
 
-
-ALTER TABLE vsw_listar_personas OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_listar_personas OWNER TO postgres;
 
 --
--- TOC entry 210 (class 1259 OID 109353)
 -- Name: vsw_pdf_competencias; Type: VIEW; Schema: evaluacion; Owner: postgres
 --
 
@@ -1292,10 +1159,9 @@ CREATE VIEW vsw_pdf_competencias AS
      LEFT JOIN maestro ran ON ((ran.id_maestro = pregcol.fk_rango)));
 
 
-ALTER TABLE vsw_pdf_competencias OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_pdf_competencias OWNER TO postgres;
 
 --
--- TOC entry 211 (class 1259 OID 109358)
 -- Name: vsw_pdf_eval_final; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -1341,13 +1207,10 @@ CREATE TABLE vsw_pdf_eval_final (
     dep_evaluador_cruge character varying(100)
 );
 
-ALTER TABLE ONLY vsw_pdf_eval_final REPLICA IDENTITY NOTHING;
 
-
-ALTER TABLE vsw_pdf_eval_final OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_pdf_eval_final OWNER TO postgres;
 
 --
--- TOC entry 212 (class 1259 OID 109364)
 -- Name: vsw_pdf_evaluacion; Type: VIEW; Schema: evaluacion; Owner: postgres
 --
 
@@ -1404,10 +1267,9 @@ CREATE VIEW vsw_pdf_evaluacion AS
   ORDER BY eva.id_evaluacion;
 
 
-ALTER TABLE vsw_pdf_evaluacion OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_pdf_evaluacion OWNER TO postgres;
 
 --
--- TOC entry 213 (class 1259 OID 109369)
 -- Name: vsw_pdf_objetivos; Type: VIEW; Schema: evaluacion; Owner: postgres
 --
 
@@ -1422,15 +1284,14 @@ CREATE VIEW vsw_pdf_objetivos AS
    FROM ((((evaluacion eva
      JOIN evaluados evados ON ((evados.id_evaluado = eva.fk_evaluado)))
      JOIN vsw_evaluacion per ON ((per.id_persona = evados.fk_persona)))
-     JOIN preguntas_individuales preg ON (((preg.fk_evaluacion = eva.id_evaluacion) AND preg.es_activo)))
+     JOIN preguntas_individuales preg ON ((preg.fk_evaluacion = eva.id_evaluacion)))
      LEFT JOIN maestro ran ON ((ran.id_maestro = preg.fk_rango)))
   ORDER BY preg.id_preguntas_ind;
 
 
-ALTER TABLE vsw_pdf_objetivos OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_pdf_objetivos OWNER TO postgres;
 
 --
--- TOC entry 214 (class 1259 OID 109374)
 -- Name: vsw_pdf_reporte; Type: VIEW; Schema: evaluacion; Owner: postgres
 --
 
@@ -1487,43 +1348,11 @@ CREATE VIEW vsw_pdf_reporte AS
   ORDER BY eva.id_evaluacion;
 
 
-ALTER TABLE vsw_pdf_reporte OWNER TO postgres;
-
---
--- TOC entry 246 (class 1259 OID 109957)
--- Name: vsw_reporte_final; Type: TABLE; Schema: evaluacion; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE vsw_reporte_final (
-    id_persona_evaluado integer,
-    nacionalidad character varying(1),
-    cedula integer,
-    apellidos text,
-    nombres text,
-    descripcion_cargo character varying(60),
-    activo character varying(1),
-    cod_dependencia_evaluado integer,
-    dependencia character varying(90),
-    tipo_cargo character varying(1),
-    fk_tipo_clase text,
-    id_evaluacion integer,
-    fecha_creacion_evaluacion timestamp without time zone,
-    id_persona integer,
-    cod_dependencia_evaluador integer,
-    fk_estatus_evaluacion integer,
-    estatus character varying,
-    tiene_objetivos text
-);
-
-ALTER TABLE ONLY vsw_reporte_final REPLICA IDENTITY NOTHING;
-
-
-ALTER TABLE vsw_reporte_final OWNER TO postgres;
+ALTER TABLE evaluacion.vsw_pdf_reporte OWNER TO postgres;
 
 SET search_path = poa, pg_catalog;
 
 --
--- TOC entry 247 (class 1259 OID 110742)
 -- Name: acciones; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -1533,7 +1362,7 @@ CREATE TABLE acciones (
     fk_unidad_medida integer NOT NULL,
     cantidad integer NOT NULL,
     fk_ambito integer NOT NULL,
-    fk_proyecto integer NOT NULL,
+    fk_poa integer NOT NULL,
     created_by integer NOT NULL,
     created_date timestamp without time zone DEFAULT now() NOT NULL,
     modified_by integer,
@@ -1545,10 +1374,9 @@ CREATE TABLE acciones (
 );
 
 
-ALTER TABLE acciones OWNER TO postgres;
+ALTER TABLE poa.acciones OWNER TO postgres;
 
 --
--- TOC entry 248 (class 1259 OID 110751)
 -- Name: acciones_id_accion_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
@@ -1560,11 +1388,9 @@ CREATE SEQUENCE acciones_id_accion_seq
     CACHE 1;
 
 
-ALTER TABLE acciones_id_accion_seq OWNER TO postgres;
+ALTER TABLE poa.acciones_id_accion_seq OWNER TO postgres;
 
 --
--- TOC entry 2799 (class 0 OID 0)
--- Dependencies: 248
 -- Name: acciones_id_accion_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
@@ -1572,7 +1398,6 @@ ALTER SEQUENCE acciones_id_accion_seq OWNED BY acciones.id_accion;
 
 
 --
--- TOC entry 249 (class 1259 OID 110753)
 -- Name: actividades; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -1591,10 +1416,9 @@ CREATE TABLE actividades (
 );
 
 
-ALTER TABLE actividades OWNER TO postgres;
+ALTER TABLE poa.actividades OWNER TO postgres;
 
 --
--- TOC entry 250 (class 1259 OID 110759)
 -- Name: actividades_id_actividades_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
@@ -1606,11 +1430,9 @@ CREATE SEQUENCE actividades_id_actividades_seq
     CACHE 1;
 
 
-ALTER TABLE actividades_id_actividades_seq OWNER TO postgres;
+ALTER TABLE poa.actividades_id_actividades_seq OWNER TO postgres;
 
 --
--- TOC entry 2800 (class 0 OID 0)
--- Dependencies: 250
 -- Name: actividades_id_actividades_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
@@ -1618,7 +1440,6 @@ ALTER SEQUENCE actividades_id_actividades_seq OWNED BY actividades.id_actividade
 
 
 --
--- TOC entry 251 (class 1259 OID 110761)
 -- Name: comentarios; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -1627,19 +1448,18 @@ CREATE TABLE comentarios (
     comentarios character varying(1000),
     created_by integer NOT NULL,
     created_date timestamp without time zone DEFAULT now() NOT NULL,
-    modified_by integer NOT NULL,
+    modified_by integer,
     modified_date timestamp without time zone DEFAULT now() NOT NULL,
     fk_status integer NOT NULL,
     es_activo boolean DEFAULT true NOT NULL,
-    fk_proyecto integer NOT NULL,
+    fk_poa integer NOT NULL,
     fk_tipo_entidad integer NOT NULL
 );
 
 
-ALTER TABLE comentarios OWNER TO postgres;
+ALTER TABLE poa.comentarios OWNER TO postgres;
 
 --
--- TOC entry 252 (class 1259 OID 110770)
 -- Name: comentarios_id_comentarios_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
@@ -1651,11 +1471,9 @@ CREATE SEQUENCE comentarios_id_comentarios_seq
     CACHE 1;
 
 
-ALTER TABLE comentarios_id_comentarios_seq OWNER TO postgres;
+ALTER TABLE poa.comentarios_id_comentarios_seq OWNER TO postgres;
 
 --
--- TOC entry 2801 (class 0 OID 0)
--- Dependencies: 252
 -- Name: comentarios_id_comentarios_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
@@ -1663,14 +1481,13 @@ ALTER SEQUENCE comentarios_id_comentarios_seq OWNED BY comentarios.id_comentario
 
 
 --
--- TOC entry 253 (class 1259 OID 110772)
--- Name: estatus_proyecto; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
+-- Name: estatus_poa; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
-CREATE TABLE estatus_proyecto (
-    id_estatus_proyecto integer NOT NULL,
-    fk_estatus_proyecto integer NOT NULL,
-    fk_proyecto integer NOT NULL,
+CREATE TABLE estatus_poa (
+    id_estatus_poa integer NOT NULL,
+    fk_estatus_poa integer NOT NULL,
+    fk_poa integer NOT NULL,
     created_by integer NOT NULL,
     created_date timestamp without time zone DEFAULT now() NOT NULL,
     modified_by integer,
@@ -1681,14 +1498,13 @@ CREATE TABLE estatus_proyecto (
 );
 
 
-ALTER TABLE estatus_proyecto OWNER TO postgres;
+ALTER TABLE poa.estatus_poa OWNER TO postgres;
 
 --
--- TOC entry 254 (class 1259 OID 110778)
--- Name: estatus_id_status_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
+-- Name: estatus_poa_id_estatus_poa_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
-CREATE SEQUENCE estatus_id_status_seq
+CREATE SEQUENCE estatus_poa_id_estatus_poa_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1696,19 +1512,16 @@ CREATE SEQUENCE estatus_id_status_seq
     CACHE 1;
 
 
-ALTER TABLE estatus_id_status_seq OWNER TO postgres;
+ALTER TABLE poa.estatus_poa_id_estatus_poa_seq OWNER TO postgres;
 
 --
--- TOC entry 2802 (class 0 OID 0)
--- Dependencies: 254
--- Name: estatus_id_status_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
+-- Name: estatus_poa_id_estatus_poa_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
-ALTER SEQUENCE estatus_id_status_seq OWNED BY estatus_proyecto.id_estatus_proyecto;
+ALTER SEQUENCE estatus_poa_id_estatus_poa_seq OWNED BY estatus_poa.id_estatus_poa;
 
 
 --
--- TOC entry 255 (class 1259 OID 110780)
 -- Name: maestro; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -1725,10 +1538,9 @@ CREATE TABLE maestro (
 );
 
 
-ALTER TABLE maestro OWNER TO postgres;
+ALTER TABLE poa.maestro OWNER TO postgres;
 
 --
--- TOC entry 256 (class 1259 OID 110789)
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
@@ -1740,11 +1552,9 @@ CREATE SEQUENCE maestro_id_maestro_seq
     CACHE 1;
 
 
-ALTER TABLE maestro_id_maestro_seq OWNER TO postgres;
+ALTER TABLE poa.maestro_id_maestro_seq OWNER TO postgres;
 
 --
--- TOC entry 2803 (class 0 OID 0)
--- Dependencies: 256
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
@@ -1752,34 +1562,36 @@ ALTER SEQUENCE maestro_id_maestro_seq OWNED BY maestro.id_maestro;
 
 
 --
--- TOC entry 257 (class 1259 OID 110791)
--- Name: proyecto; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
+-- Name: poa; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
-CREATE TABLE proyecto (
-    id_proyecto integer NOT NULL,
-    nombre_proyecto character varying(500) NOT NULL,
-    objetivo_general character varying(500) NOT NULL,
-    descripcion character varying(1000),
+CREATE TABLE poa (
+    id_poa integer NOT NULL,
+    nombre character varying(700) NOT NULL,
+    fk_tipo_poa integer NOT NULL,
+    obj_historico character varying(800),
+    obj_estrategico character varying(800),
+    obj_general character varying(800) NOT NULL,
+    obj_institucional character varying(800),
+    descripcion character varying(800),
     fecha_inicio timestamp without time zone,
+    fecha_final timestamp without time zone,
     created_by integer NOT NULL,
     created_date timestamp without time zone DEFAULT now() NOT NULL,
     modified_by integer,
     modified_date timestamp without time zone DEFAULT now() NOT NULL,
     fk_status integer NOT NULL,
-    es_activo boolean DEFAULT true NOT NULL,
-    objetivo_historico character varying(500)
+    es_activo boolean DEFAULT true NOT NULL
 );
 
 
-ALTER TABLE proyecto OWNER TO postgres;
+ALTER TABLE poa.poa OWNER TO postgres;
 
 --
--- TOC entry 258 (class 1259 OID 110800)
--- Name: proyecto_id_proyecto_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
+-- Name: poa_id_poa_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
-CREATE SEQUENCE proyecto_id_proyecto_seq
+CREATE SEQUENCE poa_id_poa_seq
     START WITH 1
     INCREMENT BY 1
     NO MINVALUE
@@ -1787,40 +1599,38 @@ CREATE SEQUENCE proyecto_id_proyecto_seq
     CACHE 1;
 
 
-ALTER TABLE proyecto_id_proyecto_seq OWNER TO postgres;
+ALTER TABLE poa.poa_id_poa_seq OWNER TO postgres;
 
 --
--- TOC entry 2804 (class 0 OID 0)
--- Dependencies: 258
--- Name: proyecto_id_proyecto_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
+-- Name: poa_id_poa_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
-ALTER SEQUENCE proyecto_id_proyecto_seq OWNED BY proyecto.id_proyecto;
+ALTER SEQUENCE poa_id_poa_seq OWNED BY poa.id_poa;
 
 
 --
--- TOC entry 259 (class 1259 OID 110802)
 -- Name: rendimiento; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
 CREATE TABLE rendimiento (
     id_rendimiento integer NOT NULL,
     fk_meses integer NOT NULL,
-    fk_actividad integer NOT NULL,
     created_by integer NOT NULL,
     created_date timestamp without time zone DEFAULT now() NOT NULL,
     modified_by integer,
     modified_date timestamp without time zone DEFAULT now() NOT NULL,
     fk_status integer NOT NULL,
     es_activo boolean DEFAULT true NOT NULL,
-    cantidad_cumplida integer NOT NULL
+    cantidad_cumplida integer,
+    cantidad_programada integer NOT NULL,
+    fk_tipo_entidad integer NOT NULL,
+    id_entidad integer NOT NULL
 );
 
 
-ALTER TABLE rendimiento OWNER TO postgres;
+ALTER TABLE poa.rendimiento OWNER TO postgres;
 
 --
--- TOC entry 260 (class 1259 OID 110808)
 -- Name: rendimiento_id_rendimiento_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
@@ -1832,11 +1642,9 @@ CREATE SEQUENCE rendimiento_id_rendimiento_seq
     CACHE 1;
 
 
-ALTER TABLE rendimiento_id_rendimiento_seq OWNER TO postgres;
+ALTER TABLE poa.rendimiento_id_rendimiento_seq OWNER TO postgres;
 
 --
--- TOC entry 2805 (class 0 OID 0)
--- Dependencies: 260
 -- Name: rendimiento_id_rendimiento_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
@@ -1844,7 +1652,6 @@ ALTER SEQUENCE rendimiento_id_rendimiento_seq OWNED BY rendimiento.id_rendimient
 
 
 --
--- TOC entry 261 (class 1259 OID 110810)
 -- Name: responsable; Type: TABLE; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -1852,20 +1659,21 @@ CREATE TABLE responsable (
     id_responsable integer NOT NULL,
     fk_persona_registro integer NOT NULL,
     fk_dir_responsable integer NOT NULL,
-    fk_proyecto integer NOT NULL,
+    fk_poa integer NOT NULL,
     created_by integer NOT NULL,
     modified_by integer,
     created_date timestamp without time zone DEFAULT now() NOT NULL,
     modified_date timestamp without time zone DEFAULT now() NOT NULL,
     es_activo boolean DEFAULT true NOT NULL,
-    fk_estatus integer NOT NULL
+    fk_estatus integer NOT NULL,
+    cod_dependencia_cruge integer NOT NULL,
+    dependencia_cruge character varying(200) NOT NULL
 );
 
 
-ALTER TABLE responsable OWNER TO postgres;
+ALTER TABLE poa.responsable OWNER TO postgres;
 
 --
--- TOC entry 262 (class 1259 OID 110816)
 -- Name: responsable_id_responsable_seq; Type: SEQUENCE; Schema: poa; Owner: postgres
 --
 
@@ -1877,11 +1685,9 @@ CREATE SEQUENCE responsable_id_responsable_seq
     CACHE 1;
 
 
-ALTER TABLE responsable_id_responsable_seq OWNER TO postgres;
+ALTER TABLE poa.responsable_id_responsable_seq OWNER TO postgres;
 
 --
--- TOC entry 2806 (class 0 OID 0)
--- Dependencies: 262
 -- Name: responsable_id_responsable_seq; Type: SEQUENCE OWNED BY; Schema: poa; Owner: postgres
 --
 
@@ -1889,7 +1695,6 @@ ALTER SEQUENCE responsable_id_responsable_seq OWNED BY responsable.id_responsabl
 
 
 --
--- TOC entry 265 (class 1259 OID 191464)
 -- Name: vsw_acciones; Type: VIEW; Schema: poa; Owner: postgres
 --
 
@@ -1902,16 +1707,17 @@ CREATE VIEW vsw_acciones AS
     am.descripcion AS ambito,
     ac.meta,
     ac.bien_servicio,
-    ac.fk_proyecto
+    ac.cantidad,
+    ac.fk_poa
    FROM ((acciones ac
      LEFT JOIN maestro mt ON ((mt.id_maestro = ac.fk_unidad_medida)))
-     LEFT JOIN maestro am ON ((am.id_maestro = ac.fk_ambito)));
+     LEFT JOIN maestro am ON ((am.id_maestro = ac.fk_ambito)))
+  ORDER BY ac.id_accion;
 
 
-ALTER TABLE vsw_acciones OWNER TO postgres;
+ALTER TABLE poa.vsw_acciones OWNER TO postgres;
 
 --
--- TOC entry 266 (class 1259 OID 191469)
 -- Name: vsw_actividades; Type: VIEW; Schema: poa; Owner: postgres
 --
 
@@ -1921,38 +1727,46 @@ CREATE VIEW vsw_actividades AS
     act.cantidad,
     act.fk_unidad_medida,
     pr.descripcion AS unidad_medida,
-    acc.id_accion
+    acc.id_accion AS fk_accion,
+    acc.fk_poa
    FROM ((actividades act
      LEFT JOIN maestro pr ON ((pr.id_maestro = act.fk_unidad_medida)))
-     LEFT JOIN acciones acc ON ((acc.id_accion = act.fk_accion)));
+     LEFT JOIN acciones acc ON ((acc.id_accion = act.fk_accion)))
+  ORDER BY act.id_actividades;
 
 
-ALTER TABLE vsw_actividades OWNER TO postgres;
+ALTER TABLE poa.vsw_actividades OWNER TO postgres;
 
 --
--- TOC entry 267 (class 1259 OID 191474)
 -- Name: vsw_admin; Type: VIEW; Schema: poa; Owner: postgres
 --
 
 CREATE VIEW vsw_admin AS
- SELECT pr.id_proyecto,
-    pr.nombre_proyecto AS proyecto,
-    pr.objetivo_general,
-    pr.objetivo_historico,
-    pr.descripcion,
-    ac.id_accion,
-    ac.nombre_accion AS acciones,
-    act.id_actividades AS actividades,
-    act.actividad
-   FROM ((proyecto pr
-     LEFT JOIN acciones ac ON ((ac.fk_proyecto = pr.id_proyecto)))
-     LEFT JOIN actividades act ON ((act.fk_accion = ac.id_accion)));
+ SELECT pro.id_poa,
+    pro.nombre,
+    res.cod_dependencia_cruge,
+    res.dependencia_cruge,
+    est.fk_estatus_poa,
+    maest.descripcion,
+    pro.fk_tipo_poa,
+    te.descripcion AS tipo_poa
+   FROM ((((((poa pro
+     LEFT JOIN responsable res ON ((res.fk_poa = pro.id_poa)))
+     LEFT JOIN estatus_poa est ON (((est.fk_poa = pro.id_poa) AND (est.created_date = ( SELECT max(est2.created_date) AS max
+           FROM estatus_poa est2
+          WHERE (est.fk_poa = est2.fk_poa)
+          GROUP BY est2.fk_poa)))))
+     LEFT JOIN maestro maest ON ((maest.id_maestro = est.fk_estatus_poa)))
+     LEFT JOIN maestro te ON ((te.id_maestro = pro.fk_tipo_poa)))
+     LEFT JOIN acciones acc ON ((acc.fk_poa = pro.id_poa)))
+     LEFT JOIN actividades act ON ((act.fk_accion = acc.id_accion)))
+  GROUP BY pro.id_poa, pro.nombre, res.cod_dependencia_cruge, res.dependencia_cruge, est.fk_estatus_poa, maest.descripcion, pro.fk_tipo_poa, te.descripcion
+  ORDER BY pro.id_poa;
 
 
-ALTER TABLE vsw_admin OWNER TO postgres;
+ALTER TABLE poa.vsw_admin OWNER TO postgres;
 
 --
--- TOC entry 263 (class 1259 OID 110818)
 -- Name: vsw_personal; Type: VIEW; Schema: poa; Owner: postgres
 --
 
@@ -1979,12 +1793,100 @@ JOIN dependencia dep on dep.id_dependencia = tr.id_dependencia
   WHERE ((p.estatus)::text = 'A'::text);
 
 
-ALTER TABLE vsw_personal OWNER TO postgres;
+ALTER TABLE poa.vsw_personal OWNER TO postgres;
 
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 215 (class 1259 OID 109379)
+-- Name: cruge_user; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE cruge_user (
+    iduser integer NOT NULL,
+    regdate bigint,
+    actdate bigint,
+    logondate bigint,
+    username character varying(64),
+    email character varying(45),
+    password character varying(64),
+    authkey character varying(100),
+    state integer DEFAULT 0,
+    totalsessioncounter integer DEFAULT 0,
+    currentsessioncounter integer DEFAULT 0,
+    id_persona integer
+);
+
+
+ALTER TABLE public.cruge_user OWNER TO postgres;
+
+SET search_path = poa, pg_catalog;
+
+--
+-- Name: vsw_poa; Type: VIEW; Schema: poa; Owner: postgres
+--
+
+CREATE VIEW vsw_poa AS
+ SELECT pro.id_poa,
+    pro.nombre,
+    pro.obj_general,
+    pro.obj_historico,
+    pro.obj_estrategico,
+    pro.obj_institucional,
+    pro.descripcion,
+    pro.fecha_inicio,
+    pro.fecha_final,
+    pro.fk_tipo_poa,
+    ms.descripcion AS tipo_poa,
+    per.id_persona AS id_persona_responsable,
+    per.nombres AS nombres_responsable,
+    per.apellidos AS apellidos_responsable,
+    per.nacionalidad AS nacionalidad_responsable,
+    per.cedula AS cedula_responsable,
+    per.descripcion_cargo AS cargo_responsable,
+    per.dependencia AS dependencia_responsable,
+    per_dir.id_persona,
+    per_dir.nombres,
+    per_dir.apellidos,
+    per_dir.nacionalidad,
+    per_dir.cedula,
+    per_dir.descripcion_cargo,
+    per_dir.dependencia
+   FROM ((((((poa pro
+     LEFT JOIN maestro ms ON ((ms.id_maestro = pro.fk_tipo_poa)))
+     LEFT JOIN responsable res ON ((res.fk_poa = pro.id_poa)))
+     LEFT JOIN public.cruge_user user_res ON ((user_res.iduser = res.fk_persona_registro)))
+     LEFT JOIN public.cruge_user user_dir ON ((user_dir.iduser = res.fk_dir_responsable)))
+     LEFT JOIN vsw_personal per ON ((per.id_persona = user_res.id_persona)))
+     LEFT JOIN vsw_personal per_dir ON ((per_dir.id_persona = user_dir.id_persona)));
+
+
+ALTER TABLE poa.vsw_poa OWNER TO postgres;
+
+--
+-- Name: vsw_poa2; Type: VIEW; Schema: poa; Owner: postgres
+--
+
+CREATE VIEW vsw_poa2 AS
+ SELECT pr.id_poa,
+    pr.nombre AS poa,
+    pr.obj_general,
+    pr.obj_historico,
+    pr.descripcion,
+    ac.id_accion,
+    ac.nombre_accion AS acciones,
+    act.id_actividades AS actividades,
+    act.actividad
+   FROM ((poa pr
+     LEFT JOIN acciones ac ON ((ac.fk_poa = pr.id_poa)))
+     LEFT JOIN actividades act ON ((act.fk_accion = ac.id_accion)))
+  ORDER BY pr.id_poa;
+
+
+ALTER TABLE poa.vsw_poa2 OWNER TO postgres;
+
+SET search_path = public, pg_catalog;
+
+--
 -- Name: cruge_authassignment; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -1996,10 +1898,9 @@ CREATE TABLE cruge_authassignment (
 );
 
 
-ALTER TABLE cruge_authassignment OWNER TO postgres;
+ALTER TABLE public.cruge_authassignment OWNER TO postgres;
 
 --
--- TOC entry 216 (class 1259 OID 109385)
 -- Name: cruge_authitem; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2012,10 +1913,9 @@ CREATE TABLE cruge_authitem (
 );
 
 
-ALTER TABLE cruge_authitem OWNER TO postgres;
+ALTER TABLE public.cruge_authitem OWNER TO postgres;
 
 --
--- TOC entry 217 (class 1259 OID 109391)
 -- Name: cruge_authitemchild; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2025,10 +1925,9 @@ CREATE TABLE cruge_authitemchild (
 );
 
 
-ALTER TABLE cruge_authitemchild OWNER TO postgres;
+ALTER TABLE public.cruge_authitemchild OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 109394)
 -- Name: cruge_field; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2048,10 +1947,9 @@ CREATE TABLE cruge_field (
 );
 
 
-ALTER TABLE cruge_field OWNER TO postgres;
+ALTER TABLE public.cruge_field OWNER TO postgres;
 
 --
--- TOC entry 219 (class 1259 OID 109406)
 -- Name: cruge_field_idfield_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -2063,11 +1961,9 @@ CREATE SEQUENCE cruge_field_idfield_seq
     CACHE 1;
 
 
-ALTER TABLE cruge_field_idfield_seq OWNER TO postgres;
+ALTER TABLE public.cruge_field_idfield_seq OWNER TO postgres;
 
 --
--- TOC entry 2807 (class 0 OID 0)
--- Dependencies: 219
 -- Name: cruge_field_idfield_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -2075,7 +1971,6 @@ ALTER SEQUENCE cruge_field_idfield_seq OWNED BY cruge_field.idfield;
 
 
 --
--- TOC entry 220 (class 1259 OID 109408)
 -- Name: cruge_fieldvalue; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2087,10 +1982,9 @@ CREATE TABLE cruge_fieldvalue (
 );
 
 
-ALTER TABLE cruge_fieldvalue OWNER TO postgres;
+ALTER TABLE public.cruge_fieldvalue OWNER TO postgres;
 
 --
--- TOC entry 221 (class 1259 OID 109414)
 -- Name: cruge_fieldvalue_idfieldvalue_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -2102,11 +1996,9 @@ CREATE SEQUENCE cruge_fieldvalue_idfieldvalue_seq
     CACHE 1;
 
 
-ALTER TABLE cruge_fieldvalue_idfieldvalue_seq OWNER TO postgres;
+ALTER TABLE public.cruge_fieldvalue_idfieldvalue_seq OWNER TO postgres;
 
 --
--- TOC entry 2808 (class 0 OID 0)
--- Dependencies: 221
 -- Name: cruge_fieldvalue_idfieldvalue_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -2114,7 +2006,6 @@ ALTER SEQUENCE cruge_fieldvalue_idfieldvalue_seq OWNED BY cruge_fieldvalue.idfie
 
 
 --
--- TOC entry 222 (class 1259 OID 109416)
 -- Name: cruge_session; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2132,10 +2023,9 @@ CREATE TABLE cruge_session (
 );
 
 
-ALTER TABLE cruge_session OWNER TO postgres;
+ALTER TABLE public.cruge_session OWNER TO postgres;
 
 --
--- TOC entry 223 (class 1259 OID 109421)
 -- Name: cruge_session_idsession_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -2147,11 +2037,9 @@ CREATE SEQUENCE cruge_session_idsession_seq
     CACHE 1;
 
 
-ALTER TABLE cruge_session_idsession_seq OWNER TO postgres;
+ALTER TABLE public.cruge_session_idsession_seq OWNER TO postgres;
 
 --
--- TOC entry 2809 (class 0 OID 0)
--- Dependencies: 223
 -- Name: cruge_session_idsession_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -2159,7 +2047,6 @@ ALTER SEQUENCE cruge_session_idsession_seq OWNED BY cruge_session.idsession;
 
 
 --
--- TOC entry 224 (class 1259 OID 109423)
 -- Name: cruge_system; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2184,10 +2071,9 @@ CREATE TABLE cruge_system (
 );
 
 
-ALTER TABLE cruge_system OWNER TO postgres;
+ALTER TABLE public.cruge_system OWNER TO postgres;
 
 --
--- TOC entry 225 (class 1259 OID 109440)
 -- Name: cruge_system_idsystem_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -2199,11 +2085,9 @@ CREATE SEQUENCE cruge_system_idsystem_seq
     CACHE 1;
 
 
-ALTER TABLE cruge_system_idsystem_seq OWNER TO postgres;
+ALTER TABLE public.cruge_system_idsystem_seq OWNER TO postgres;
 
 --
--- TOC entry 2810 (class 0 OID 0)
--- Dependencies: 225
 -- Name: cruge_system_idsystem_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -2211,30 +2095,6 @@ ALTER SEQUENCE cruge_system_idsystem_seq OWNED BY cruge_system.idsystem;
 
 
 --
--- TOC entry 226 (class 1259 OID 109442)
--- Name: cruge_user; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
---
-
-CREATE TABLE cruge_user (
-    iduser integer NOT NULL,
-    regdate bigint,
-    actdate bigint,
-    logondate bigint,
-    username character varying(64),
-    email character varying(45),
-    password character varying(64),
-    authkey character varying(100),
-    state integer DEFAULT 0,
-    totalsessioncounter integer DEFAULT 0,
-    currentsessioncounter integer DEFAULT 0,
-    id_persona integer
-);
-
-
-ALTER TABLE cruge_user OWNER TO postgres;
-
---
--- TOC entry 227 (class 1259 OID 109448)
 -- Name: cruge_user_iduser_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -2246,11 +2106,9 @@ CREATE SEQUENCE cruge_user_iduser_seq
     CACHE 1;
 
 
-ALTER TABLE cruge_user_iduser_seq OWNER TO postgres;
+ALTER TABLE public.cruge_user_iduser_seq OWNER TO postgres;
 
 --
--- TOC entry 2811 (class 0 OID 0)
--- Dependencies: 227
 -- Name: cruge_user_iduser_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -2258,7 +2116,6 @@ ALTER SEQUENCE cruge_user_iduser_seq OWNED BY cruge_user.iduser;
 
 
 --
--- TOC entry 228 (class 1259 OID 109450)
 -- Name: maestro; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -2277,10 +2134,9 @@ CREATE TABLE maestro (
 );
 
 
-ALTER TABLE maestro OWNER TO postgres;
+ALTER TABLE public.maestro OWNER TO postgres;
 
 --
--- TOC entry 229 (class 1259 OID 109459)
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -2292,11 +2148,9 @@ CREATE SEQUENCE maestro_id_maestro_seq
     CACHE 1;
 
 
-ALTER TABLE maestro_id_maestro_seq OWNER TO postgres;
+ALTER TABLE public.maestro_id_maestro_seq OWNER TO postgres;
 
 --
--- TOC entry 2812 (class 0 OID 0)
--- Dependencies: 229
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -2306,7 +2160,6 @@ ALTER SEQUENCE maestro_id_maestro_seq OWNED BY maestro.id_maestro;
 SET search_path = requisicion, pg_catalog;
 
 --
--- TOC entry 230 (class 1259 OID 109461)
 -- Name: datos_requisicion; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2329,10 +2182,9 @@ CREATE TABLE datos_requisicion (
 );
 
 
-ALTER TABLE datos_requisicion OWNER TO postgres;
+ALTER TABLE requisicion.datos_requisicion OWNER TO postgres;
 
 --
--- TOC entry 231 (class 1259 OID 109470)
 -- Name: datos_requisicion_id_datos_requisicion_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2344,11 +2196,9 @@ CREATE SEQUENCE datos_requisicion_id_datos_requisicion_seq
     CACHE 1;
 
 
-ALTER TABLE datos_requisicion_id_datos_requisicion_seq OWNER TO postgres;
+ALTER TABLE requisicion.datos_requisicion_id_datos_requisicion_seq OWNER TO postgres;
 
 --
--- TOC entry 2813 (class 0 OID 0)
--- Dependencies: 231
 -- Name: datos_requisicion_id_datos_requisicion_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2356,7 +2206,6 @@ ALTER SEQUENCE datos_requisicion_id_datos_requisicion_seq OWNED BY datos_requisi
 
 
 --
--- TOC entry 232 (class 1259 OID 109472)
 -- Name: imputacion_presupuestaria_ac; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2377,10 +2226,9 @@ CREATE TABLE imputacion_presupuestaria_ac (
 );
 
 
-ALTER TABLE imputacion_presupuestaria_ac OWNER TO postgres;
+ALTER TABLE requisicion.imputacion_presupuestaria_ac OWNER TO postgres;
 
 --
--- TOC entry 233 (class 1259 OID 109477)
 -- Name: imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2392,11 +2240,9 @@ CREATE SEQUENCE imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq
     CACHE 1;
 
 
-ALTER TABLE imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq OWNER TO postgres;
+ALTER TABLE requisicion.imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq OWNER TO postgres;
 
 --
--- TOC entry 2814 (class 0 OID 0)
--- Dependencies: 233
 -- Name: imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2404,7 +2250,6 @@ ALTER SEQUENCE imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq OWNED B
 
 
 --
--- TOC entry 234 (class 1259 OID 109479)
 -- Name: imputacion_presupuestaria_ue; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2427,10 +2272,9 @@ CREATE TABLE imputacion_presupuestaria_ue (
 );
 
 
-ALTER TABLE imputacion_presupuestaria_ue OWNER TO postgres;
+ALTER TABLE requisicion.imputacion_presupuestaria_ue OWNER TO postgres;
 
 --
--- TOC entry 235 (class 1259 OID 109487)
 -- Name: imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2442,11 +2286,9 @@ CREATE SEQUENCE imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq
     CACHE 1;
 
 
-ALTER TABLE imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq OWNER TO postgres;
+ALTER TABLE requisicion.imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq OWNER TO postgres;
 
 --
--- TOC entry 2815 (class 0 OID 0)
--- Dependencies: 235
 -- Name: imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2454,7 +2296,6 @@ ALTER SEQUENCE imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq OWN
 
 
 --
--- TOC entry 236 (class 1259 OID 109489)
 -- Name: lugar_entrega; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2474,10 +2315,9 @@ CREATE TABLE lugar_entrega (
 );
 
 
-ALTER TABLE lugar_entrega OWNER TO postgres;
+ALTER TABLE requisicion.lugar_entrega OWNER TO postgres;
 
 --
--- TOC entry 237 (class 1259 OID 109495)
 -- Name: lugar_entrega_id_lugar_entrega_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2489,11 +2329,9 @@ CREATE SEQUENCE lugar_entrega_id_lugar_entrega_seq
     CACHE 1;
 
 
-ALTER TABLE lugar_entrega_id_lugar_entrega_seq OWNER TO postgres;
+ALTER TABLE requisicion.lugar_entrega_id_lugar_entrega_seq OWNER TO postgres;
 
 --
--- TOC entry 2816 (class 0 OID 0)
--- Dependencies: 237
 -- Name: lugar_entrega_id_lugar_entrega_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2501,7 +2339,6 @@ ALTER SEQUENCE lugar_entrega_id_lugar_entrega_seq OWNED BY lugar_entrega.id_luga
 
 
 --
--- TOC entry 238 (class 1259 OID 109497)
 -- Name: numero_requisicion_unidad; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2518,10 +2355,9 @@ CREATE TABLE numero_requisicion_unidad (
 );
 
 
-ALTER TABLE numero_requisicion_unidad OWNER TO postgres;
+ALTER TABLE requisicion.numero_requisicion_unidad OWNER TO postgres;
 
 --
--- TOC entry 239 (class 1259 OID 109502)
 -- Name: numero_requisicion_unidad_id_n_requisicion_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2533,11 +2369,9 @@ CREATE SEQUENCE numero_requisicion_unidad_id_n_requisicion_seq
     CACHE 1;
 
 
-ALTER TABLE numero_requisicion_unidad_id_n_requisicion_seq OWNER TO postgres;
+ALTER TABLE requisicion.numero_requisicion_unidad_id_n_requisicion_seq OWNER TO postgres;
 
 --
--- TOC entry 2817 (class 0 OID 0)
--- Dependencies: 239
 -- Name: numero_requisicion_unidad_id_n_requisicion_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2545,7 +2379,6 @@ ALTER SEQUENCE numero_requisicion_unidad_id_n_requisicion_seq OWNED BY numero_re
 
 
 --
--- TOC entry 240 (class 1259 OID 109504)
 -- Name: observacion; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2563,10 +2396,9 @@ CREATE TABLE observacion (
 );
 
 
-ALTER TABLE observacion OWNER TO postgres;
+ALTER TABLE requisicion.observacion OWNER TO postgres;
 
 --
--- TOC entry 241 (class 1259 OID 109509)
 -- Name: observacion_id_observacion_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2578,11 +2410,9 @@ CREATE SEQUENCE observacion_id_observacion_seq
     CACHE 1;
 
 
-ALTER TABLE observacion_id_observacion_seq OWNER TO postgres;
+ALTER TABLE requisicion.observacion_id_observacion_seq OWNER TO postgres;
 
 --
--- TOC entry 2818 (class 0 OID 0)
--- Dependencies: 241
 -- Name: observacion_id_observacion_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2590,7 +2420,6 @@ ALTER SEQUENCE observacion_id_observacion_seq OWNED BY observacion.id_observacio
 
 
 --
--- TOC entry 242 (class 1259 OID 109511)
 -- Name: pedido; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2609,10 +2438,9 @@ CREATE TABLE pedido (
 );
 
 
-ALTER TABLE pedido OWNER TO postgres;
+ALTER TABLE requisicion.pedido OWNER TO postgres;
 
 --
--- TOC entry 243 (class 1259 OID 109516)
 -- Name: pedido_especial; Type: TABLE; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -2631,10 +2459,9 @@ CREATE TABLE pedido_especial (
 );
 
 
-ALTER TABLE pedido_especial OWNER TO postgres;
+ALTER TABLE requisicion.pedido_especial OWNER TO postgres;
 
 --
--- TOC entry 244 (class 1259 OID 109521)
 -- Name: pedido_especial_id_ped_especial_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2646,11 +2473,9 @@ CREATE SEQUENCE pedido_especial_id_ped_especial_seq
     CACHE 1;
 
 
-ALTER TABLE pedido_especial_id_ped_especial_seq OWNER TO postgres;
+ALTER TABLE requisicion.pedido_especial_id_ped_especial_seq OWNER TO postgres;
 
 --
--- TOC entry 2819 (class 0 OID 0)
--- Dependencies: 244
 -- Name: pedido_especial_id_ped_especial_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2658,7 +2483,6 @@ ALTER SEQUENCE pedido_especial_id_ped_especial_seq OWNED BY pedido_especial.id_p
 
 
 --
--- TOC entry 245 (class 1259 OID 109523)
 -- Name: pedido_id_pedido_seq; Type: SEQUENCE; Schema: requisicion; Owner: postgres
 --
 
@@ -2670,11 +2494,9 @@ CREATE SEQUENCE pedido_id_pedido_seq
     CACHE 1;
 
 
-ALTER TABLE pedido_id_pedido_seq OWNER TO postgres;
+ALTER TABLE requisicion.pedido_id_pedido_seq OWNER TO postgres;
 
 --
--- TOC entry 2820 (class 0 OID 0)
--- Dependencies: 245
 -- Name: pedido_id_pedido_seq; Type: SEQUENCE OWNED BY; Schema: requisicion; Owner: postgres
 --
 
@@ -2684,7 +2506,6 @@ ALTER SEQUENCE pedido_id_pedido_seq OWNED BY pedido.id_pedido;
 SET search_path = actualizar, pg_catalog;
 
 --
--- TOC entry 2245 (class 2604 OID 109525)
 -- Name: id_historico; Type: DEFAULT; Schema: actualizar; Owner: postgres
 --
 
@@ -2692,7 +2513,6 @@ ALTER TABLE ONLY historico ALTER COLUMN id_historico SET DEFAULT nextval('histor
 
 
 --
--- TOC entry 2248 (class 2604 OID 109526)
 -- Name: id_traza; Type: DEFAULT; Schema: actualizar; Owner: postgres
 --
 
@@ -2702,7 +2522,6 @@ ALTER TABLE ONLY traza ALTER COLUMN id_traza SET DEFAULT nextval('traza_id_traza
 SET search_path = evaluacion, pg_catalog;
 
 --
--- TOC entry 2252 (class 2604 OID 109527)
 -- Name: id_comentario; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2710,7 +2529,6 @@ ALTER TABLE ONLY comentarios ALTER COLUMN id_comentario SET DEFAULT nextval('com
 
 
 --
--- TOC entry 2256 (class 2604 OID 109528)
 -- Name: id_estatus_evaluacion; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2718,7 +2536,6 @@ ALTER TABLE ONLY estatus_evaluacion ALTER COLUMN id_estatus_evaluacion SET DEFAU
 
 
 --
--- TOC entry 2259 (class 2604 OID 109529)
 -- Name: id_evaluacion; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2726,7 +2543,6 @@ ALTER TABLE ONLY evaluacion ALTER COLUMN id_evaluacion SET DEFAULT nextval('eval
 
 
 --
--- TOC entry 2263 (class 2604 OID 109530)
 -- Name: id_evaluador; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2734,7 +2550,6 @@ ALTER TABLE ONLY evaluador ALTER COLUMN id_evaluador SET DEFAULT nextval('evalua
 
 
 --
--- TOC entry 2266 (class 2604 OID 109531)
 -- Name: id_evaluado; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2742,7 +2557,6 @@ ALTER TABLE ONLY evaluados ALTER COLUMN id_evaluado SET DEFAULT nextval('evaluad
 
 
 --
--- TOC entry 2270 (class 2604 OID 109532)
 -- Name: id_maestro; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2750,7 +2564,6 @@ ALTER TABLE ONLY maestro ALTER COLUMN id_maestro SET DEFAULT nextval('maestro_id
 
 
 --
--- TOC entry 2274 (class 2604 OID 109533)
 -- Name: id_pregunta; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2758,7 +2571,6 @@ ALTER TABLE ONLY preguntas ALTER COLUMN id_pregunta SET DEFAULT nextval('pregunt
 
 
 --
--- TOC entry 2278 (class 2604 OID 109534)
 -- Name: id_preguntas_colect; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2766,7 +2578,6 @@ ALTER TABLE ONLY preguntas_colectivas ALTER COLUMN id_preguntas_colect SET DEFAU
 
 
 --
--- TOC entry 2281 (class 2604 OID 109535)
 -- Name: id_preguntas_ind; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2774,7 +2585,6 @@ ALTER TABLE ONLY preguntas_individuales ALTER COLUMN id_preguntas_ind SET DEFAUL
 
 
 --
--- TOC entry 2284 (class 2604 OID 109536)
 -- Name: id_preguntas_obr; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2782,7 +2592,6 @@ ALTER TABLE ONLY preguntas_obrero ALTER COLUMN id_preguntas_obr SET DEFAULT next
 
 
 --
--- TOC entry 2288 (class 2604 OID 109537)
 -- Name: id_revision; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2790,7 +2599,6 @@ ALTER TABLE ONLY revision ALTER COLUMN id_revision SET DEFAULT nextval('revision
 
 
 --
--- TOC entry 2291 (class 2604 OID 109538)
 -- Name: id_supervisor; Type: DEFAULT; Schema: evaluacion; Owner: postgres
 --
 
@@ -2800,7 +2608,6 @@ ALTER TABLE ONLY supervisor ALTER COLUMN id_supervisor SET DEFAULT nextval('supe
 SET search_path = poa, pg_catalog;
 
 --
--- TOC entry 2349 (class 2604 OID 110823)
 -- Name: id_accion; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
@@ -2808,7 +2615,6 @@ ALTER TABLE ONLY acciones ALTER COLUMN id_accion SET DEFAULT nextval('acciones_i
 
 
 --
--- TOC entry 2353 (class 2604 OID 110824)
 -- Name: id_actividades; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
@@ -2816,7 +2622,6 @@ ALTER TABLE ONLY actividades ALTER COLUMN id_actividades SET DEFAULT nextval('ac
 
 
 --
--- TOC entry 2357 (class 2604 OID 110825)
 -- Name: id_comentarios; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
@@ -2824,15 +2629,13 @@ ALTER TABLE ONLY comentarios ALTER COLUMN id_comentarios SET DEFAULT nextval('co
 
 
 --
--- TOC entry 2361 (class 2604 OID 110826)
--- Name: id_estatus_proyecto; Type: DEFAULT; Schema: poa; Owner: postgres
+-- Name: id_estatus_poa; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
-ALTER TABLE ONLY estatus_proyecto ALTER COLUMN id_estatus_proyecto SET DEFAULT nextval('estatus_id_status_seq'::regclass);
+ALTER TABLE ONLY estatus_poa ALTER COLUMN id_estatus_poa SET DEFAULT nextval('estatus_poa_id_estatus_poa_seq'::regclass);
 
 
 --
--- TOC entry 2365 (class 2604 OID 110827)
 -- Name: id_maestro; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
@@ -2840,15 +2643,13 @@ ALTER TABLE ONLY maestro ALTER COLUMN id_maestro SET DEFAULT nextval('maestro_id
 
 
 --
--- TOC entry 2369 (class 2604 OID 110828)
--- Name: id_proyecto; Type: DEFAULT; Schema: poa; Owner: postgres
+-- Name: id_poa; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
-ALTER TABLE ONLY proyecto ALTER COLUMN id_proyecto SET DEFAULT nextval('proyecto_id_proyecto_seq'::regclass);
+ALTER TABLE ONLY poa ALTER COLUMN id_poa SET DEFAULT nextval('poa_id_poa_seq'::regclass);
 
 
 --
--- TOC entry 2373 (class 2604 OID 110829)
 -- Name: id_rendimiento; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
@@ -2856,7 +2657,6 @@ ALTER TABLE ONLY rendimiento ALTER COLUMN id_rendimiento SET DEFAULT nextval('re
 
 
 --
--- TOC entry 2377 (class 2604 OID 110830)
 -- Name: id_responsable; Type: DEFAULT; Schema: poa; Owner: postgres
 --
 
@@ -2866,7 +2666,6 @@ ALTER TABLE ONLY responsable ALTER COLUMN id_responsable SET DEFAULT nextval('re
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2298 (class 2604 OID 109539)
 -- Name: idfield; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2874,7 +2673,6 @@ ALTER TABLE ONLY cruge_field ALTER COLUMN idfield SET DEFAULT nextval('cruge_fie
 
 
 --
--- TOC entry 2299 (class 2604 OID 109540)
 -- Name: idfieldvalue; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2882,7 +2680,6 @@ ALTER TABLE ONLY cruge_fieldvalue ALTER COLUMN idfieldvalue SET DEFAULT nextval(
 
 
 --
--- TOC entry 2302 (class 2604 OID 109541)
 -- Name: idsession; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2890,7 +2687,6 @@ ALTER TABLE ONLY cruge_session ALTER COLUMN idsession SET DEFAULT nextval('cruge
 
 
 --
--- TOC entry 2314 (class 2604 OID 109542)
 -- Name: idsystem; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2898,7 +2694,6 @@ ALTER TABLE ONLY cruge_system ALTER COLUMN idsystem SET DEFAULT nextval('cruge_s
 
 
 --
--- TOC entry 2318 (class 2604 OID 109543)
 -- Name: iduser; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2906,7 +2701,6 @@ ALTER TABLE ONLY cruge_user ALTER COLUMN iduser SET DEFAULT nextval('cruge_user_
 
 
 --
--- TOC entry 2322 (class 2604 OID 109544)
 -- Name: id_maestro; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -2916,7 +2710,6 @@ ALTER TABLE ONLY maestro ALTER COLUMN id_maestro SET DEFAULT nextval('maestro_id
 SET search_path = requisicion, pg_catalog;
 
 --
--- TOC entry 2326 (class 2604 OID 109545)
 -- Name: id_datos_requisicion; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2924,7 +2717,6 @@ ALTER TABLE ONLY datos_requisicion ALTER COLUMN id_datos_requisicion SET DEFAULT
 
 
 --
--- TOC entry 2329 (class 2604 OID 109546)
 -- Name: id_imp_presupuestaria_ac; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2932,7 +2724,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac ALTER COLUMN id_imp_presupuestaria
 
 
 --
--- TOC entry 2332 (class 2604 OID 109547)
 -- Name: id_imputacion_presupuestaria; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2940,7 +2731,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue ALTER COLUMN id_imputacion_presupu
 
 
 --
--- TOC entry 2336 (class 2604 OID 109548)
 -- Name: id_lugar_entrega; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2948,7 +2738,6 @@ ALTER TABLE ONLY lugar_entrega ALTER COLUMN id_lugar_entrega SET DEFAULT nextval
 
 
 --
--- TOC entry 2339 (class 2604 OID 109549)
 -- Name: id_n_requisicion; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2956,7 +2745,6 @@ ALTER TABLE ONLY numero_requisicion_unidad ALTER COLUMN id_n_requisicion SET DEF
 
 
 --
--- TOC entry 2342 (class 2604 OID 109550)
 -- Name: id_observacion; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2964,7 +2752,6 @@ ALTER TABLE ONLY observacion ALTER COLUMN id_observacion SET DEFAULT nextval('ob
 
 
 --
--- TOC entry 2345 (class 2604 OID 109551)
 -- Name: id_pedido; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2972,7 +2759,6 @@ ALTER TABLE ONLY pedido ALTER COLUMN id_pedido SET DEFAULT nextval('pedido_id_pe
 
 
 --
--- TOC entry 2348 (class 2604 OID 109552)
 -- Name: id_ped_especial; Type: DEFAULT; Schema: requisicion; Owner: postgres
 --
 
@@ -2982,8 +2768,6 @@ ALTER TABLE ONLY pedido_especial ALTER COLUMN id_ped_especial SET DEFAULT nextva
 SET search_path = actualizar, pg_catalog;
 
 --
--- TOC entry 2671 (class 0 OID 109196)
--- Dependencies: 177
 -- Data for Name: historico; Type: TABLE DATA; Schema: actualizar; Owner: postgres
 --
 
@@ -3374,8 +3158,6 @@ COPY historico (id_historico, id_personal, id_usuario, se_activa_1, se_activa_2,
 
 
 --
--- TOC entry 2821 (class 0 OID 0)
--- Dependencies: 178
 -- Name: historico_id_historico_seq; Type: SEQUENCE SET; Schema: actualizar; Owner: postgres
 --
 
@@ -3383,8 +3165,6 @@ SELECT pg_catalog.setval('historico_id_historico_seq', 382, true);
 
 
 --
--- TOC entry 2673 (class 0 OID 109205)
--- Dependencies: 179
 -- Data for Name: traza; Type: TABLE DATA; Schema: actualizar; Owner: postgres
 --
 
@@ -3429,8 +3209,6 @@ COPY traza (id_traza, id_personal, n_traza, id_usuario, fecha_traza, fecha_creac
 
 
 --
--- TOC entry 2822 (class 0 OID 0)
--- Dependencies: 180
 -- Name: traza_id_traza_seq; Type: SEQUENCE SET; Schema: actualizar; Owner: postgres
 --
 
@@ -3440,1719 +3218,157 @@ SELECT pg_catalog.setval('traza_id_traza_seq', 418, true);
 SET search_path = evaluacion, pg_catalog;
 
 --
--- TOC entry 2675 (class 0 OID 109222)
--- Dependencies: 183
 -- Data for Name: comentarios; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY comentarios (id_comentario, fk_evaluacion, comentario, fk_estatus, created_date, modified_date, created_by, modified_by, es_activo) FROM stdin;
-1	2	Las MRL u ODIS tienen congruencia, solo que debes revisar los indicadores (tiempo, calidad y/o cantidad), recuerda que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\nEJEMPLO:\r\nRegistrar quincenalmente las transferencias...\r\n\r\nSe sugiere escribir en minúscula, respetando los signos de puntuación.	16	2016-01-26 10:51:10.261368	2016-01-26 10:51:10.261368	467	\N	t
-2	2	Prueba 1	16	2016-01-26 15:54:02.168306	2016-01-26 15:54:02.168306	467	\N	t
-3	3	Prueba 2	16	2016-01-26 15:54:14.932251	2016-01-26 15:54:14.932251	467	\N	t
-4	4	Prueba 3	16	2016-01-26 15:54:26.943453	2016-01-26 15:54:26.943453	467	\N	t
-5	5	Prueba 4	16	2016-01-26 15:54:40.677136	2016-01-26 15:54:40.677136	467	\N	t
-6	6	Prueba 5	16	2016-01-26 15:55:23.96856	2016-01-26 15:55:23.96856	467	\N	t
-7	13	Odis mal formulados, me imagino que esto es una prueba.	16	2016-01-27 06:10:42.385574	2016-01-27 06:10:42.385574	467	\N	f
-8	15		16	2016-01-28 11:01:45.896259	2016-01-28 11:01:45.896259	275	\N	t
-9	16		16	2016-01-28 11:03:42.534363	2016-01-28 11:03:42.534363	275	\N	t
-10	17		16	2016-01-28 11:08:42.004318	2016-01-28 11:08:42.004318	275	\N	t
-11	15	Deber revisar los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\nPor otro lado, revisar la 2da. y 3era. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. Visualice la meta como procesada o materializada; solo que en su redacción se deben respetar lo anteriormente descrito.\r\n	16	2016-01-28 13:48:44.834642	2016-01-28 13:48:44.834642	467	\N	t
-12	16	Deber revisar los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\nPor otro lado, revisar la 2da. y 3era. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. Visualice la meta como procesada o materializada; solo que en su redacción se deben respetar lo anteriormente descrito.\r\n	16	2016-01-28 13:49:19.859313	2016-01-28 13:49:19.859313	467	\N	t
-13	17	Deber revisar los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\nPor otro lado, revisar la 1era.,  3era. y 4ta  MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. Visualice la meta como procesada o materializada; solo que en su redacción se deben respetar lo anteriormente descrito.\r\n	16	2016-01-28 13:50:59.58621	2016-01-28 13:50:59.58621	467	\N	t
-14	24	Es pertinente revisar los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\nPor otro lado, revisar la 2da. y 4ta. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. Para todas las MRL u ODIS debes Visualizarlos como procesada o materializada; solo que en su redacción se deben respetar lo anteriormente descrito.	16	2016-01-28 14:27:25.776499	2016-01-28 14:27:25.776499	467	\N	t
-15	18	cambiar verbo	16	2016-01-28 14:53:42.356136	2016-01-28 14:53:42.356136	275	\N	t
-16	22		16	2016-01-28 15:28:10.636739	2016-01-28 15:28:10.636739	275	\N	t
-17	16		16	2016-01-28 15:30:16.689552	2016-01-28 15:30:16.689552	275	\N	t
-18	17		16	2016-01-28 15:30:56.423037	2016-01-28 15:30:56.423037	275	\N	t
-19	18		16	2016-01-28 15:33:27.35678	2016-01-28 15:33:27.35678	275	\N	t
-20	21		16	2016-01-28 15:34:23.023974	2016-01-28 15:34:23.023974	275	\N	t
-21	15		16	2016-01-28 15:36:15.056947	2016-01-28 15:36:15.056947	275	\N	t
-22	27	Modificar los dos ultimos objetivos	16	2016-01-28 15:39:22.919199	2016-01-28 15:39:22.919199	397	\N	t
-23	20	corregir objetivo repetido	16	2016-01-28 15:45:31.756849	2016-01-28 15:45:31.756849	275	\N	t
-24	34	Revisar redaccion del objetivo 2 y 4	16	2016-01-28 15:58:11.615643	2016-01-28 15:58:11.615643	397	\N	t
-25	33	Revisar redaccion del objetivo 2	16	2016-01-28 16:01:30.510224	2016-01-28 16:01:30.510224	397	\N	t
-26	17	Se devuelven, según lo conversado en horas de tarde en la Oficina de Planificación y Presupuesto.	16	2016-01-28 16:17:45.888825	2016-01-28 16:17:45.888825	467	\N	t
-27	18	Se devuelven, según lo conversado en horas de tarde en la Oficina de Planificación y Presupuesto.	16	2016-01-28 16:18:08.95552	2016-01-28 16:18:08.95552	467	\N	t
-28	21	Se devuelven, según lo conversado en horas de tarde en la Oficina de Planificación y Presupuesto.	16	2016-01-28 16:19:02.00901	2016-01-28 16:19:02.00901	467	\N	t
-29	22	Se devuelven, según lo conversado en horas de tarde en la Oficina de Planificación y Presupuesto.	16	2016-01-28 16:20:11.652557	2016-01-28 16:20:11.652557	467	\N	t
-30	27	Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola y de gran impacto.	16	2016-01-28 16:25:14.648197	2016-01-28 16:25:14.648197	467	\N	t
-31	29	Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola y de gran impacto.	16	2016-01-28 16:25:55.50448	2016-01-28 16:25:55.50448	467	\N	t
-32	31	Corregir 1era. Meta,  No debes incluir periodos fuera del semestre (ene-jun). Las demás MRL están aceptables.	16	2016-01-28 16:28:07.657298	2016-01-28 16:28:07.657298	467	\N	t
-33	33	Aceptable.	16	2016-01-28 16:28:51.492786	2016-01-28 16:28:51.492786	467	\N	t
-34	34	* Corregir acentos en el Objetivo 2.\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n* Debes tener cuidado en no repetir los mismos objetivos para cada trabajador(a).(esto es a manera reflexiva).	16	2016-01-28 16:33:04.859577	2016-01-28 16:33:04.859577	2	\N	t
-35	3		16	2016-01-29 08:24:33.617031	2016-01-29 08:24:33.617031	468	\N	t
-36	46		16	2016-01-29 08:24:56.954298	2016-01-29 08:24:56.954298	468	\N	t
-37	4		16	2016-01-29 08:25:13.042263	2016-01-29 08:25:13.042263	468	\N	t
-38	47		16	2016-01-29 08:25:28.719168	2016-01-29 08:25:28.719168	468	\N	t
-39	5		16	2016-01-29 08:25:43.377793	2016-01-29 08:25:43.377793	468	\N	t
-40	6		16	2016-01-29 08:25:57.667883	2016-01-29 08:25:57.667883	468	\N	t
-41	2		16	2016-01-29 08:26:12.836497	2016-01-29 08:26:12.836497	468	\N	t
-42	7		16	2016-01-29 08:41:01.182813	2016-01-29 08:41:01.182813	468	\N	t
-43	56		16	2016-01-29 09:57:51.893095	2016-01-29 09:57:51.893095	468	\N	t
-44	57		16	2016-01-29 09:58:35.405959	2016-01-29 09:58:35.405959	468	\N	t
-45	59		16	2016-01-29 09:58:56.494307	2016-01-29 09:58:56.494307	468	\N	t
-46	58		16	2016-01-29 09:59:19.4538	2016-01-29 09:59:19.4538	468	\N	t
-47	60		16	2016-01-29 10:06:45.133329	2016-01-29 10:06:45.133329	468	\N	t
-48	61		16	2016-01-29 10:26:37.165079	2016-01-29 10:26:37.165079	468	\N	t
-49	62		16	2016-01-29 10:27:02.575304	2016-01-29 10:27:02.575304	468	\N	t
-86	75	* Sugiero escribir en minúscula, respetando los puntos seguidos y parte.\r\n* La 1era. MRL debes ser más preciso y conciso en su formulación, es pertinente que re-formules este párrafo: " así mismo atender todas las solicitudes de materiales y remodelaciones requeridas por las Direcciones que """confoirman""" el Organismo".\r\n* La MRL N° 3 está  aceptable.	16	2016-01-29 17:57:30.433469	2016-01-29 17:57:30.433469	467	\N	t
-249	104	Aceptables	16	2016-02-15 07:52:47.845894	2016-02-15 07:52:47.845894	467	\N	t
-50	2	Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\nLa primera MRL u ODIS esta aceptable, asimismo se recomienda revisar la 2da. y 3era.  MRL u ODIS ya que según la inducción y el material enviado a su correo, el indicador debe estar apagado al cumplimiento de la meta que realiza el trabajador(a)\r\n\r\nA manera de tener presente, no es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación. Además, se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; también se pudiera fusionar algunas metas, que conlleve a  formularse en una sola, y de gran impacto.\r\n\r\nSe sugiere mantener un solo estilo de redacción, respetando los signos de puntuación.\r\n	16	2016-01-29 11:07:51.905352	2016-01-29 11:07:51.905352	467	\N	t
-51	3	* Se  sugiere corregir el 1er. Objetivo, hay dos verbos en infinitivo, recuerde que es uno solo.\r\n* El 2do. y 3er. ODIS o MRL, deben estar acompañados por un indicador (tiempo, calidad o cantidad).	16	2016-01-29 11:13:22.106649	2016-01-29 11:13:22.106649	467	\N	t
-52	4	* Revisar el 1er ODIS, sugiero colocarle: "Realizar oportunamente el Registro....\r\n* El 2do. ODIS carece de un Indicador (calidad, cantidad o tiempo).\r\n* El 3er ODIS esta aceptable, solo que debes ser precisa y concisa en su redacción.	16	2016-01-29 11:18:47.251368	2016-01-29 11:18:47.251368	467	\N	t
-53	63		16	2016-01-29 11:27:37.815961	2016-01-29 11:27:37.815961	468	\N	t
-54	71		16	2016-01-29 11:27:54.023019	2016-01-29 11:27:54.023019	468	\N	t
-55	65		16	2016-01-29 11:28:10.088368	2016-01-29 11:28:10.088368	468	\N	t
-56	72		16	2016-01-29 11:28:29.906692	2016-01-29 11:28:29.906692	468	\N	t
-57	68		16	2016-01-29 11:28:52.145222	2016-01-29 11:28:52.145222	468	\N	t
-58	5	* El 1er. ODIS esta aceptable, solo que debes resumir un poco más, cuidado con la ortografía, Ejemplo: órdenes de pago.\r\n*. El 2do. y 3er ODIS están aceptables.	16	2016-01-29 11:40:59.679579	2016-01-29 11:40:59.679579	467	\N	t
-59	6	* Las MRL u ODIS son del Trabajador(a); es decir a cumplir por el o ella.\r\n* Es pertinente ser preciso y conciso en la redacción de las MRL.	16	2016-01-29 11:46:27.991668	2016-01-29 11:46:27.991668	467	\N	t
-60	7	* El primer ODIS no debe tener dos verbos.\r\n* El quinto ODIS debes incluir un indicador (tiempo, cantidad o calidad)...¿para cuando debe estar lista la Base de datos?\r\n* Se recomienda tener cuidado con la ortografía, acentuación y signos de puntuación.	16	2016-01-29 11:50:36.459537	2016-01-29 11:50:36.459537	467	\N	t
-61	46	* Las MRL 1, 2, y 3 están aceptables.\r\n* Las MRL 4 y 5 deben estar acompañadas de un Indicador (cantidad, calidad o tiempo)	16	2016-01-29 11:52:41.973347	2016-01-29 11:52:41.973347	467	\N	t
-62	47	* Las MRL 1, 3, 4 carece de un indicador (Calidad, cantidad o tiempo), las demás MRL están aceptables.	16	2016-01-29 11:59:48.585279	2016-01-29 11:59:48.585279	467	\N	t
-63	47	* Las MRL 1, 3, 4 carecen de un indicador (Calidad, Cantidad o Tiempo), las demás MRL están aceptables.	16	2016-01-29 12:00:08.27611	2016-01-29 12:00:08.27611	467	\N	t
-64	3		16	2016-01-29 13:42:22.25195	2016-01-29 13:42:22.25195	468	\N	t
-65	75		16	2016-01-29 13:42:48.83258	2016-01-29 13:42:48.83258	468	\N	t
-66	7		16	2016-01-29 13:43:40.036516	2016-01-29 13:43:40.036516	468	\N	t
-67	73		16	2016-01-29 14:30:46.225963	2016-01-29 14:30:46.225963	468	\N	t
-68	28		16	2016-01-29 14:31:09.735371	2016-01-29 14:31:09.735371	468	\N	t
-69	3	* Las MRL 1 y 2 están aceptable, déjelas así.\r\n* La MRL 3 contiene 2 verbos, recuerda que es uno solo.	16	2016-01-29 14:38:22.95292	2016-01-29 14:38:22.95292	467	\N	t
-70	7	Debes tener en cuenta la ortografía en la Redacción de las Metas de rendimiento Laboral (MRL) 	16	2016-01-29 14:39:51.627296	2016-01-29 14:39:51.627296	467	\N	t
-71	28		16	2016-01-29 14:41:37.296758	2016-01-29 14:41:37.296758	467	\N	t
-72	55	Mientras mas precisa y concisa sea la Meta de Rendimiento Laboral, mejor.	16	2016-01-29 14:43:16.883587	2016-01-29 14:43:16.883587	467	\N	t
-73	56	* Es pertinente que en las metas de rendimiento laboral, al menos se incluyan indicadores de calidad o cantidad.	16	2016-01-29 14:45:30.759868	2016-01-29 14:45:30.759868	467	\N	t
-74	57	* Debes transcribir las MRL en minúscula, respetando los signos de puntuación.\r\n* En la 3ra. MRL hay dos verbos en distinto tiempo, recuerda que es uno y en infinitivo, terminados en: ar, er, ir.\r\n* En la 5ta. MRL hay dos verbos en infinitivo, recuerda que es uno, terminados en: ar, er, ir.\r\n* Trate de ser lo más preciso y conciso en la redacción de las MRL	16	2016-01-29 14:59:25.728129	2016-01-29 14:59:25.728129	467	\N	t
-75	58	* La MRL N° 3 tiene dos verbos en infinitivo, recuerde que es uno.\r\n* Debes tener cuidado en colocar solo el 1er. Trimestre... y qué pasa con el 2do trimestre?\r\n* Se sugiere redactar las MRL en formato World u Open Oficie a fin de detectar errores o palabras mal escritas.	16	2016-01-29 15:36:50.971721	2016-01-29 15:36:50.971721	467	\N	t
-76	59	* Debes corregir lo del 1er trimestre; porque da a entender o queda el vacío lo del 2do. trimestre.\r\n* la MRL N° 3 tiene dos verbos en infinitivo; recuerde que es solamente uno.\r\n	16	2016-01-29 16:12:04.825059	2016-01-29 16:12:04.825059	467	\N	t
-77	60		16	2016-01-29 16:46:13.814013	2016-01-29 16:46:13.814013	467	\N	t
-78	61	* Las MRL 1, 2 y 3 están aceptables.\r\n* Se sugiere colocarle un indicador (tiempo, calidad o cantidad) a la MRL N°4.\r\n* Es pertinente mantener un estilo de redacción, donde se respeten los signos de puntuación. (escribir en minúscula)	16	2016-01-29 16:52:55.433524	2016-01-29 16:52:55.433524	467	\N	t
-79	62	* Mantener una redacción donde se tenga presente los signos de puntuación y/u ortografía. (escribir en minúscula)	16	2016-01-29 16:55:31.624289	2016-01-29 16:55:31.624289	467	\N	t
-80	63	* Corregir la MRL N°2, la palabra: "OREDENES", siendo lo correcto: órdenes.\r\n* Tal vez se pudiera fusionar algunas MRL; y así tener al menos 3 MRL u ODIS bastantes consistentes.\r\n* Nuevamente mantenga el estilo redactivo, respetando ortografía y signos de puntuación.	16	2016-01-29 17:00:45.018954	2016-01-29 17:00:45.018954	467	\N	t
-81	65	* Todas las MRL fueron asignadas a otro(a) trabajador(a); por favor es pertinente asignarle otras MRL u ODIS distintas; ya que no puede haber dos trabajadores(as) que ejecuten la mismas MRL u ODIS meta.\r\n* Se sugiere mantener el estilo redactivo, respetando ortografía y signos de puntuación.	16	2016-01-29 17:23:04.938555	2016-01-29 17:23:04.938555	467	\N	t
-82	68	* Se sugiere mantener el estilo redactivo, respetando ortografía y signos de puntuación.\r\n* Tener cuidado en asignar las mismas MRL a otro(a) trabajador(a)	16	2016-01-29 17:26:04.246068	2016-01-29 17:26:04.246068	467	\N	t
-83	71	* Las MRL no pueden contener dos verbos, leer instructivo.\r\n* Debes ser especifico en la redacción de las MRL, revisar la MRL N° 3.\r\n* Las MRL 1 y 4 están aceptables.\r\n* Sugiero escribir en minúscula, respetando los puntos seguidos y parte.	16	2016-01-29 17:45:27.395188	2016-01-29 17:45:27.395188	467	\N	t
-84	72	* Sugiero escribir en minúscula, respetando los puntos seguidos y parte.\r\n\r\n* Recuerde que la evaluación es durante todo un semestre; es decir, se tiene que tomar en cuenta, o al menos indicar qué se va hacer el los meses subsiguientes correspondiente al semestre objeto de evaluación.	16	2016-01-29 17:49:57.752517	2016-01-29 17:49:57.752517	2	\N	t
-85	73	* Sugiero escribir en minúscula, respetando los puntos seguidos y parte.\r\n* La 1era. MRL debes precisar y ser conciso, se sugiere re-formular. \r\n* Las MRL 2 y 3 están aceptableS, sin embargo es necesario identificar al "Organismo", en este cado es MINMUJER.	16	2016-01-29 17:53:28.975943	2016-01-29 17:53:28.975943	467	\N	t
-87	31	Parcialmente las MRL de la trabajadora están aceptables, sólo que debes darle sentido a la redacción, por ejemplo:\r\nAnalizar los primeros 15 días de cada mes la información contenida en los informes de gestión mensual correspondientes a la Fundación Misión Madres del Barrio/ Gran Misión Hogares de la Patria.\r\n\r\nCorregir la 3era. MRL, ya que no se deben incluir el mes de diciembre que corresponde al 2do. Semestre. Las MRL deben ser atinentes al 1er. Semestre objeto de evaluación al trabajador(a).	16	2016-02-01 14:06:41.883699	2016-02-01 14:06:41.883699	467	\N	t
-88	34	Actualizar los primeros 15 días de cada mes, la base de datos con estadísticas vitales, nacionales, regionales y mundiales. 	16	2016-02-01 14:09:19.273881	2016-02-01 14:09:19.273881	467	\N	t
-89	21	espacio vacio	16	2016-02-01 15:28:16.148128	2016-02-01 15:28:16.148128	275	\N	t
-90	15		16	2016-02-01 17:05:12.888874	2016-02-01 17:05:12.888874	275	\N	t
-91	16		16	2016-02-01 17:09:05.436162	2016-02-01 17:09:05.436162	275	\N	t
-92	17		16	2016-02-01 17:11:01.287199	2016-02-01 17:11:01.287199	275	\N	t
-93	18		16	2016-02-01 17:13:38.78884	2016-02-01 17:13:38.78884	275	\N	t
-94	22		16	2016-02-01 17:16:56.145327	2016-02-01 17:16:56.145327	275	\N	t
-95	20		16	2016-02-01 17:19:13.043061	2016-02-01 17:19:13.043061	275	\N	t
-96	21		16	2016-02-01 17:21:14.926305	2016-02-01 17:21:14.926305	275	\N	t
-97	70	Revisar	16	2016-02-01 17:37:18.492317	2016-02-01 17:37:18.492317	355	\N	t
-98	66	Revisar	16	2016-02-01 17:37:50.398205	2016-02-01 17:37:50.398205	355	\N	t
-99	64	Revisar	16	2016-02-01 17:38:17.443713	2016-02-01 17:38:17.443713	355	\N	t
-100	67	Revisar	16	2016-02-01 17:38:53.037746	2016-02-01 17:38:53.037746	355	\N	t
-101	69	Revisar	16	2016-02-01 17:39:40.351801	2016-02-01 17:39:40.351801	355	\N	t
-102	15	Las MRL están bastante aceptables, solo que debes tener cuidado en la temporalidad de las mismas;  ello por cuando daría a pensar que en los demás meses no se realiza nada, véase la 2da. MRL.	16	2016-02-02 14:11:51.8603	2016-02-02 14:11:51.8603	467	\N	t
-103	16	Las MRL están bastante aceptables, solo que debes tener cuidado en la temporalidad de las mismas;  ello por cuando daría a pensar que en los demás meses no se realiza nada, véase la 2da. MRL. Asimismo, es pertinente especificar MRL distintas para cada Trabajador(a)	16	2016-02-02 14:14:56.694282	2016-02-02 14:14:56.694282	467	\N	t
-104	17	Las MRL están bastante aceptables, solo que debes tener cuidado en la temporalidad de las mismas;  ello por cuando daría a pensar que en los demás meses no se realiza nada, véase la 2da. MRL.	16	2016-02-02 14:16:14.105978	2016-02-02 14:16:14.105978	467	\N	t
-105	18	Las MRL están bastante aceptables, solo que debes tener cuidado en la temporalidad de las mismas;  ello por cuando daría a pensar que en los demás meses no se realiza nada, véase la 2da. MRL.	16	2016-02-02 14:17:09.56544	2016-02-02 14:17:09.56544	467	\N	t
-106	20	Se sugiere puntualizar un peso adecuado a cada MRL; así como también la fusión entre algunas de ellas, si fuere el caso.	16	2016-02-02 14:20:27.935593	2016-02-02 14:20:27.935593	467	\N	t
-107	21	Se sugiere puntualizar MRL para cada trabajador(a); ya que se han transcritos algunas MRL iguales a las de otros(as) trabajadores, aún cuando eso se conversó. es pertinente subsanar y especificar las MRL para el próximo periodo evaluativo (2do. semestre).	16	2016-02-02 14:23:22.728743	2016-02-02 14:23:22.728743	467	\N	t
-108	22	Se sugiere puntualizar una ponderación adecuada a cada MRL, ello por cuanto se evidencia diferencias en su materialización bastantes considerables.\r\n\r\nCorregir la 5ta. MRL, hay un número transcrito al comienzo de la misma.	16	2016-02-02 14:27:30.262644	2016-02-02 14:27:30.262644	2	\N	t
-109	22		16	2016-02-03 10:50:02.576064	2016-02-03 10:50:02.576064	275	\N	t
-110	12		16	2016-02-03 10:57:38.79011	2016-02-03 10:57:38.79011	41	\N	t
-111	12		16	2016-02-03 10:58:56.620741	2016-02-03 10:58:56.620741	41	\N	t
-112	83		16	2016-02-03 14:04:15.773319	2016-02-03 14:04:15.773319	2	\N	t
-113	8		16	2016-02-03 14:05:55.774224	2016-02-03 14:05:55.774224	41	\N	t
-114	6		16	2016-02-03 15:00:30.014396	2016-02-03 15:00:30.014396	468	\N	t
-115	77		16	2016-02-03 15:01:12.808022	2016-02-03 15:01:12.808022	468	\N	t
-116	2		16	2016-02-03 15:01:51.639572	2016-02-03 15:01:51.639572	468	\N	t
-117	3		16	2016-02-03 15:02:25.378527	2016-02-03 15:02:25.378527	468	\N	t
-118	4		16	2016-02-03 15:02:53.708393	2016-02-03 15:02:53.708393	468	\N	t
-119	76		16	2016-02-03 15:03:21.32719	2016-02-03 15:03:21.32719	468	\N	t
-120	78		16	2016-02-03 15:03:49.422955	2016-02-03 15:03:49.422955	468	\N	t
-121	5		16	2016-02-03 15:04:19.236751	2016-02-03 15:04:19.236751	468	\N	t
-122	68		16	2016-02-03 16:09:58.495847	2016-02-03 16:09:58.495847	468	\N	t
-123	63		16	2016-02-03 16:10:44.122875	2016-02-03 16:10:44.122875	468	\N	t
-124	71		16	2016-02-03 16:11:14.979414	2016-02-03 16:11:14.979414	468	\N	t
-125	61		16	2016-02-03 16:23:10.215719	2016-02-03 16:23:10.215719	468	\N	t
-126	57		16	2016-02-03 16:23:49.9766	2016-02-03 16:23:49.9766	468	\N	t
-127	72		16	2016-02-03 16:28:31.272319	2016-02-03 16:28:31.272319	468	\N	t
-128	2	aceptables.	16	2016-02-04 06:57:27.653735	2016-02-04 06:57:27.653735	467	\N	t
-129	3	Aceptable	16	2016-02-04 06:59:49.268862	2016-02-04 06:59:49.268862	467	\N	t
-130	4	Aceptables	16	2016-02-04 07:01:24.141119	2016-02-04 07:01:24.141119	467	\N	t
-131	5	Aceptables	16	2016-02-04 07:03:20.098148	2016-02-04 07:03:20.098148	467	\N	t
-132	6	Aceptables.	16	2016-02-04 07:04:50.251821	2016-02-04 07:04:50.251821	467	\N	t
-133	8	Aceptable	16	2016-02-04 07:06:46.34819	2016-02-04 07:06:46.34819	467	\N	t
-134	12	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Por otro lado, revisar la 3era. y 4ta. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n	16	2016-02-04 07:15:43.550513	2016-02-04 07:15:43.550513	467	\N	t
-135	22	Aceptables	16	2016-02-04 07:18:11.639119	2016-02-04 07:18:11.639119	467	\N	t
-136	23	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Por otro lado, revisar la 3era. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:20:18.836463	2016-02-04 07:20:18.836463	467	\N	t
-228	51		16	2016-02-14 22:08:09.214125	2016-02-14 22:08:09.214125	355	\N	t
-137	25	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Por otro lado, revisar las MRL N° 2, 3 y 4 ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:27:25.448856	2016-02-04 07:27:25.448856	2	\N	t
-138	26	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Por otro lado, revisar las MRL N° 1, 2 y 3 ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:29:36.885331	2016-02-04 07:29:36.885331	467	\N	t
-139	35	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:31:47.612499	2016-02-04 07:31:47.612499	467	\N	t
-140	36	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:33:40.438066	2016-02-04 07:33:40.438066	467	\N	t
-141	37	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:35:05.760871	2016-02-04 07:35:05.760871	467	\N	t
-142	38	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar las MRL N° 3 y 4 ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:38:53.597102	2016-02-04 07:38:53.597102	467	\N	t
-143	39	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:40:12.410284	2016-02-04 07:40:12.410284	467	\N	t
-144	40	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:42:48.412249	2016-02-04 07:42:48.412249	467	\N	t
-229	52		16	2016-02-14 22:10:34.284768	2016-02-14 22:10:34.284768	355	\N	t
-314	157	* La última tiene la palabra género dos veces.\r\n* La 2da. MRL tiene dos verbos ( Realizar y Sistematizar)\r\n* hace las correcciones de acuerdo a lo conversado telefónicamente.\r\n	16	2016-02-17 15:34:21.85534	2016-02-17 15:34:21.85534	467	\N	t
-145	41	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar las MRL N° 2 y 3, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:45:09.307093	2016-02-04 07:45:09.307093	467	\N	t
-146	42	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar las MRL N° 3 y 4, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:51:07.300147	2016-02-04 07:51:07.300147	467	\N	t
-147	43	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:52:41.082819	2016-02-04 07:52:41.082819	467	\N	t
-148	44	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar las MRL N° 1 y 3, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 07:58:15.177265	2016-02-04 07:58:15.177265	2	\N	t
-149	45	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la MRL N° 2, ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-04 08:00:15.084323	2016-02-04 08:00:15.084323	467	\N	t
-150	57	A NIVEL GENERAL DE SUS MRL U ODIS, DEBES CONSIDERAR LO SIGUIENTE:\r\n\r\n*Es pertinente que en la redacción de las MRL estén en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-04 08:05:47.794598	2016-02-04 08:05:47.794598	467	\N	t
-151	61	* Es pertinente que en la redacción de las MRL estén en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-04 08:09:13.636469	2016-02-04 08:09:13.636469	467	\N	t
-152	63	* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-04 08:12:14.896069	2016-02-04 08:12:14.896069	467	\N	t
-153	68	* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-04 08:14:17.770295	2016-02-04 08:14:17.770295	467	\N	t
-154	71	* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-04 08:17:00.673992	2016-02-04 08:17:00.673992	467	\N	t
-155	72	* Revisar la 2da. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-04 08:20:50.544402	2016-02-04 08:20:50.544402	467	\N	t
-156	74	* Revisar la 4ta. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. 	16	2016-02-04 08:25:19.234666	2016-02-04 08:25:19.234666	467	\N	t
-157	76	* Revisar las MRL 1 y 4, es pertinente ser preciso y conciso en la misma.\r\nPor otro lado, y a manera de ejercicio, sugiero antes de escribir la MRL, visualizarla como ya materializada, y con base a ello, se procede a transcribirla. Cualquier inquietud o duda, estoy a sus órdenes.\r\n	16	2016-02-04 08:37:38.30519	2016-02-04 08:37:38.30519	2	\N	t
-158	77	* Sugiero revisar "evaluación del desempeño de las empresas..."; ello por cuanto lo que se evalúa de las empresas es su calidad en la prestación del bien o sus servicio.\r\n\r\nPor otro lado, y a manera de ejercicio, sugiero antes de escribir la MRL, visualizarla como ya materializada, y con base a ello, se procede a transcribirla. Cualquier inquietud o duda, estoy a sus órdenes.\r\n	16	2016-02-04 08:44:11.879018	2016-02-04 08:44:11.879018	467	\N	t
-159	78	Aceptables	16	2016-02-04 08:46:53.963402	2016-02-04 08:46:53.963402	467	\N	t
-160	78	Aceptables\r\nRevisar la 4ta. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. La demás MRL están aceptables.	16	2016-02-04 08:49:36.066392	2016-02-04 08:49:36.066392	467	\N	t
-230	12	Aceptables	16	2016-02-15 06:50:33.985508	2016-02-15 06:50:33.985508	467	\N	t
-315	158	* La 2da. MRL tiene dos veces la palabra género.\r\n* La última MRL tiene dos verbos ( Ejecutar e Incentivar)\r\n* hacer las correcciones de acuerdo a lo conversado telefónicamente.	16	2016-02-17 15:36:39.511176	2016-02-17 15:36:39.511176	467	\N	t
-318	162	* Sugiero revisar acentos y sentido redactivo a cada MRL\r\n* hacer las correcciones de acuerdo a lo conversado telefónicamente.	16	2016-02-17 15:41:27.577167	2016-02-17 15:41:27.577167	467	\N	t
-161	83	OBSERVACIONES A MANERA GENERAL:\r\n\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la 3era. y 4ta. MRL u ODIS ya que según la inducción y el material enviado a su correo, solo se acepta un solo verbo por cada meta a materializar en el semestre. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-04 08:53:35.462887	2016-02-04 08:53:35.462887	467	\N	t
-162	72		16	2016-02-04 10:40:09.73491	2016-02-04 10:40:09.73491	468	\N	t
-163	72	Aceptables, salvo que, como le he sugerido en otras oportunidades, la escritura o redacción en minúscula, es la mas aconsejable; claro está, respetando también la ortografía.	16	2016-02-05 10:53:18.486022	2016-02-05 10:53:18.486022	467	\N	t
-164	58		16	2016-02-05 11:25:42.887478	2016-02-05 11:25:42.887478	468	\N	t
-165	59		16	2016-02-05 11:26:17.4182	2016-02-05 11:26:17.4182	468	\N	t
-166	73		16	2016-02-05 11:26:51.648039	2016-02-05 11:26:51.648039	468	\N	t
-167	26	Cambiar meta 3	16	2016-02-05 15:46:50.828359	2016-02-05 15:46:50.828359	453	\N	t
-168	24	Cambiar meta 2	16	2016-02-05 15:52:50.504136	2016-02-05 15:52:50.504136	453	\N	t
-169	24	* Se sugiere cambiar el verbo la 1era. MRL, es pertinente utilizar el material que le fue dado por los distintos medios comunicacionales, allí pueden observar y a su vez utilizar el verbo idóneo a la meta.\r\n* Hay que darle sentido redactivo a las MRL, por ejemplo en la 2da. MRL se podría colocar: "Sistematizar diariamente y sin errores ni omisiones, en el Sistema de Atención al Ciudadana (SAC) las solicitudes recibidas por las distintas vías de recepción. \r\n* Las dos últimas MRL están aceptables.	16	2016-02-05 16:15:42.902692	2016-02-05 16:15:42.902692	2	\N	t
-170	25	Cambiar la meta 4	16	2016-02-05 16:16:31.838446	2016-02-05 16:16:31.838446	453	\N	t
-171	26	* Es pertinente tener en cuenta los indicadores de cantidad, calidad y tiempo; por ejemplo, eficientemente, eficazmente, trimestralmente, mensualmente, en el semestre, entre otros.	16	2016-02-05 16:22:53.296772	2016-02-05 16:22:53.296772	467	\N	t
-172	36	Cambiar meta 1	16	2016-02-05 16:24:56.848564	2016-02-05 16:24:56.848564	453	\N	t
-173	35	cambiar meta 3	16	2016-02-05 16:33:45.917525	2016-02-05 16:33:45.917525	2	\N	t
-174	39	cambiar meta 3	16	2016-02-05 16:42:02.728901	2016-02-05 16:42:02.728901	453	\N	t
-175	40	cambiar meta 3	16	2016-02-05 16:58:00.998682	2016-02-05 16:58:00.998682	453	\N	t
-176	45	cambiar meta 3	16	2016-02-05 17:01:22.217902	2016-02-05 17:01:22.217902	453	\N	t
-177	24	* La 1era. la MRL 1, tiene dos verbos (Asignar - Hacer), recuerde que la meta debe estar acompañada de un indicador al menos, (tiempo, calidad y/o cantidad), asimismo, el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* Las demás MRL están aceptables.\r\n* Se sugiere que, si hay varios(as) trabajadores(as) con tareas iguales, debes especificar en la MRL un aspecto distintivo de la actividad, por Ejemplo: Los Estados, Parroquias, Municipios, tipo de usuarios(as), entre otros.	16	2016-02-10 07:14:16.806193	2016-02-10 07:14:16.806193	467	\N	t
-178	25	* La 2da. MRL tiene dos verbos (Asignar - Hacer), recuerde que la meta debe estar acompañada de un indicador al menos, (tiempo, calidad y/o cantidad), asimismo, el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Las demás MRL están aceptables.\r\n\r\n* Se sugiere que, si hay varios(as) trabajadores(as) con tareas iguales, debes especificar en la MRL un aspecto distintivo de la actividad, por Ejemplo: Los Estados, Parroquias, Municipios, tipo de usuarios(as), entre otros.	16	2016-02-10 07:17:50.573526	2016-02-10 07:17:50.573526	467	\N	t
-179	31	Aceptables.	16	2016-02-10 07:19:13.598657	2016-02-10 07:19:13.598657	467	\N	t
-180	34	* Se Sugiere tener cuidado con la ortografía y signos de puntuación.	16	2016-02-10 07:21:11.786994	2016-02-10 07:21:11.786994	467	\N	t
-181	35	Aceptable.\r\n* Se sugiere ser más preciso y conciso en la construcción de la MRL; es decir qué recursos tengo(Humano, Materiales, Financieros y Tecnológicos)?, qué quiero lograr?; y que impacte con la razón de ser de la Oficina de Atención Ciudadana, y a su vez con la Visión, Misión y Valores del Ministerio	16	2016-02-10 07:27:19.805772	2016-02-10 07:27:19.805772	467	\N	t
-182	36	* Se sugiere especificar los tipos de casos que se mencionan en la MRL N°2.\r\n\r\n* Se sugiere ser más preciso y conciso en la construcción de la MRL; es decir qué recursos tengo(Humano, Materiales, Financieros y Tecnológicos)?, qué quiero lograr?; y que impacte con la razón de ser de la Oficina de Atención Ciudadana, y a su vez con la Visión, Misión y Valores del Ministerio.	16	2016-02-10 07:32:27.31235	2016-02-10 07:32:27.31235	467	\N	t
-183	37	* Se recomienda no "abusar" en la exacerbación de lo imperativo ("de manera inmediata, eficiente y oportuna.", "en un tiempo no mayor de cinco días"); se puede usar: mensualmente, diariamente, eficientemente, eficazmente, en un 80%, la cantidad de xx, entre otros).\r\n\r\n* Revisar las MRL 3 y 4, se sugiere ser preciso y conciso en su construcción; todo ello con base a lo especificado en otras observaciones.	16	2016-02-10 07:44:31.050442	2016-02-10 07:44:31.050442	2	\N	t
-184	38	* Se sugiere se más especifico, y a su ves conciso en la MRL 4.\r\n\r\n* Revisar la MRL 1 "tareas y actividades" , ver cual de ellas es más relevante para la construcción de la MRL.\r\n	16	2016-02-10 07:54:01.040697	2016-02-10 07:54:01.040697	467	\N	t
-185	39	* Revisar la MRL 2, se refiere a los casos, pero de que tipo?, políticos, sociales?, económicos? étnicos?, culturales?\r\n\r\n* Se observa que la MRL 3, es reiterativa en varios trabajadores que están siendo objeto de evaluación de sus MRL; se sugiere especificar un elemento distintivo, como Estados, Municipios, Parroquia, tipo de ciudadanos(as), entre otros.	16	2016-02-10 07:59:43.061782	2016-02-10 07:59:43.061782	467	\N	t
-186	40	Revisar la MRL N°3, tiene dos verbos, recuerde que es sólo uno.\r\nRevisar la MRL N°2, esta redundante su redacción ("su solicitud..." "sus solicitudes..."	16	2016-02-10 08:03:08.557434	2016-02-10 08:03:08.557434	467	\N	t
-187	41	* En la MRL N° 3, su redacción esta redundante: "su solicitud..." sus solicitudes..."\r\n* Las demás MRL están aceptables.	16	2016-02-10 08:05:49.127026	2016-02-10 08:05:49.127026	467	\N	t
-188	42	* Revisar la 1era MRL, se observa redundancia en su redacción: "asignaciones y actividades asignadas" \r\n* Revisar la 3era MRL 2, se observa redundancia en su redacción:  "su solicitud..." "sus solicitudes..."\r\n* Se observa que la MRL 5 es reiterativa en varios trabajadores que están siendo objeto de evaluación de sus MRL; se sugiere especificar un elemento distintivo, como Estados, Municipios, Parroquia, tipo de ciudadanos(as), entre otros.\r\n* hay que ser equitativo en la ponderación de cada MRL.	16	2016-02-10 08:14:17.27308	2016-02-10 08:14:17.27308	467	\N	t
-248	100	* La 3era MRL tiene dos verbos, siendo lo correcto uno.\r\n* Las demás MRL están aceptables.\r\n\r\nA MANERA GENERAL:\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n* Se recomienda transcribir las MRL en World ó Libre Office, a fin de detectar el sentido redactivo de cada MRL. \r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-15 07:51:43.163351	2016-02-15 07:51:43.163351	467	\N	t
-189	42	* Revisar la 1era MRL, se observa redundancia en su redacción: "asignaciones y actividades asignadas" \r\n* Revisar la 3era MRL, se observa redundancia en su redacción:  "su solicitud..." "sus solicitudes..."\r\n* Se observa que la MRL 5 es reiterativa en varios trabajadores que están siendo objeto de evaluación de sus MRL; se sugiere especificar un elemento distintivo, como Estados, Municipios, Parroquia, tipo de ciudadanos(as), entre otros.\r\n* hay que ser equitativo en la ponderación de cada MRL.	16	2016-02-10 08:14:48.352166	2016-02-10 08:14:48.352166	467	\N	t
-190	43	* Se sugieres especificar en la 1era. MRL, qué tipo de casos? políticos, étnicos, culturales, económicos, sociales, humanitarios?\r\n\r\n* Revisar la 2da. MRL, se observa redundancia en su redacción:  "su solicitud..." "sus solicitudes..."\r\n\r\n* hay que ser equitativo en la ponderación de cada MRL.	16	2016-02-10 08:18:06.904626	2016-02-10 08:18:06.904626	467	\N	t
-191	44	* Revisar la MRL, hay redundancia en su redacción ..."a los casos..." , "según sea el caso".\r\n\r\n* Se debe especificar en la 2da. MRL, qué tipo de informe?.\r\n\r\n* Revisar la 3era MRL, se observa redundancia en su redacción:  "su solicitud..." "sus solicitudes..."\r\n\r\n* Se observa que en la 4ta. MRL, es reiterativa en varios trabajadores que están siendo objeto de evaluación de sus MRL; se sugiere especificar un elemento distintivo, como Estados, Municipios, Parroquia, tipo de ciudadanos(as), entre otros.\r\n\r\n* hay que ser equitativo en la ponderación de cada MRL.	16	2016-02-10 08:35:27.548639	2016-02-10 08:35:27.548639	467	\N	t
-192	45	* Corregir en la 1era. MRL el error escritura a la palabra "pesión".\r\n\r\n* Revisar la 2da. MRL, hay redundancia en su redacción ..."a los casos..." , "según sea el caso".\r\n\r\n* Revisar la 3era MRL, se observa redundancia en su redacción:  "su solicitud..." "sus solicitudes..."\r\n\r\n* hay que ser equitativo en la ponderación de cada MRL.	16	2016-02-10 08:40:43.347153	2016-02-10 08:40:43.347153	467	\N	t
-193	58	Aceptables.	16	2016-02-10 08:43:46.797757	2016-02-10 08:43:46.797757	467	\N	t
-194	59	* Las MRL especificadas aquí, colidan con la de otro(a) trabajador(a) es pertinente hacer la corrección, en el sentido de especificar algún indicativo que diferencie las actividades, por ejemplo: de los Estados, Municipios, tipo de mobiliarios o línea marrón o blanca, materiales de limpieza, piezas de carros, entre otros. Recuerde que la evaluación del desempeño, en la materialización de las MRL, justifica el pago de un beneficio o correctivo; sin embargo sirven también, entre otras cosas, para verificar la duplicidad de tareas entre trabajadores.	16	2016-02-10 08:52:21.962659	2016-02-10 08:52:21.962659	2	\N	t
-195	73	Aceptables.	16	2016-02-10 08:54:09.97191	2016-02-10 08:54:09.97191	467	\N	t
-196	74	* En la 1era. MRL, es preciso especificar que significa OAC, y posteriormente en lo adelante, no es necesario.\r\n* En la 2da. MRL se debe especificar, en este caso puntual, con qué periodicidad de hace la rendición de caja chica.\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina o Coordinación.\r\n\r\n\r\n	16	2016-02-10 08:58:40.072747	2016-02-10 08:58:40.072747	467	\N	t
-197	78		16	2016-02-10 10:57:24.823666	2016-02-10 10:57:24.823666	468	\N	t
-198	77		16	2016-02-10 10:58:19.521052	2016-02-10 10:58:19.521052	468	\N	t
-199	76		16	2016-02-10 10:58:47.238699	2016-02-10 10:58:47.238699	468	\N	t
-200	65		16	2016-02-10 11:20:38.274521	2016-02-10 11:20:38.274521	468	\N	t
-201	65	Aceptables	16	2016-02-10 11:28:32.246368	2016-02-10 11:28:32.246368	467	\N	t
-202	76	Aceptables	16	2016-02-10 11:30:21.833611	2016-02-10 11:30:21.833611	467	\N	t
-203	77	* Revisar la 1era MRL, ya que la evaluación del desempeño se le hace es el Recursos Humano, en este caso se debe es evaluar la calidad por el bien o servicio prestado.\r\n* La 2da. MRL tiene dos verbos, recuerde que se acepta es un solo verbo.\r\n\r\n	16	2016-02-10 11:34:05.924753	2016-02-10 11:34:05.924753	467	\N	t
-204	64	revisar	16	2016-02-11 16:07:42.716367	2016-02-11 16:07:42.716367	355	\N	t
-205	24	Es pertinente no redactar las MRL de forma imperativa; por ejemplo la palabra inmediata podría ser sustituida por: oportunamente, eficazmente (tiempo).	16	2016-02-12 06:29:51.339801	2016-02-12 06:29:51.339801	467	\N	t
-206	25	Aceptables\r\nSe sugiere que en la redacción de las MRL, no usar palabra de manera imperativa; por ejemplo, la palabra "inmediatamente" debería sustituirse por: Oportunamente, Eficazmente (tiempo), entre otros.	16	2016-02-12 06:33:59.462228	2016-02-12 06:33:59.462228	467	\N	t
-207	25	Aceptables\r\nSe sugiere que en la redacción de las MRL, no usar palabra de manera imperativa; por ejemplo, la palabra "inmediata" debería sustituirse por: Oportunamente, Eficazmente (tiempo), entre otros.	16	2016-02-12 06:34:29.561119	2016-02-12 06:34:29.561119	467	\N	t
-208	36	Aceptables	16	2016-02-12 06:35:37.061622	2016-02-12 06:35:37.061622	467	\N	t
-209	37	Aceptables	16	2016-02-12 06:37:01.525479	2016-02-12 06:37:01.525479	467	\N	t
-210	38	Aceptables	16	2016-02-12 06:38:04.169913	2016-02-12 06:38:04.169913	467	\N	t
-211	39	Aceptables	16	2016-02-12 06:38:44.352508	2016-02-12 06:38:44.352508	467	\N	t
-212	40	Aceptables	16	2016-02-12 06:39:48.80528	2016-02-12 06:39:48.80528	467	\N	t
-213	41	Aceptables	16	2016-02-12 06:40:22.4998	2016-02-12 06:40:22.4998	467	\N	t
-214	42	Aceptables.	16	2016-02-12 06:41:22.14958	2016-02-12 06:41:22.14958	467	\N	t
-215	43	Aceptables.	16	2016-02-12 06:41:59.280098	2016-02-12 06:41:59.280098	467	\N	t
-216	44	Revisar la 4ta MRL, ya que no especifica el destino del referido informe, las demás MRL están aceptables.	16	2016-02-12 06:43:41.358364	2016-02-12 06:43:41.358364	467	\N	t
-217	45	Se sugiere especificar que tipo de pensión; ya que la Oficina de Gestión Humana es la competente para gestionar esos casos según la ley; ahora bien, si es de la Misión en Amor Mayor debes dilucidarlo.	16	2016-02-12 06:46:09.212024	2016-02-12 06:46:09.212024	467	\N	t
-218	74	Se sugiere indicar la Metas de Rendimiento Laboral que tiene el peso del 5%, las demás MRL están aceptables	16	2016-02-12 06:49:38.155597	2016-02-12 06:49:38.155597	467	\N	t
-219	78	Aceptables.	16	2016-02-12 06:50:44.240523	2016-02-12 06:50:44.240523	467	\N	t
-220	95	A MANERA GENERAL SE SUGIERE:\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Revisar la 1era., y 2da. MRL u ODIS ya que no especifica a que tipos de programas o actividades de la Unidad y por otro lado a cuáles resultados. \r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n	16	2016-02-12 06:56:33.677192	2016-02-12 06:56:33.677192	2	\N	t
-221	47		16	2016-02-12 09:21:00.953102	2016-02-12 09:21:00.953102	468	\N	t
-222	47	Aceptables.	16	2016-02-12 10:51:48.909398	2016-02-12 10:51:48.909398	467	\N	t
-223	12	Culminar eficientemente durante el 1° semestre dos (2) Informe Preliminares originados de las actuaciones fiscales realizadas cuyos hallazgos de auditoría deberán contener los elementos de condición, criterio, causa y efecto.	16	2016-02-12 11:54:39.448551	2016-02-12 11:54:39.448551	2	\N	t
-224	104		16	2016-02-14 21:59:09.573636	2016-02-14 21:59:09.573636	355	\N	t
-225	48		16	2016-02-14 22:04:56.634812	2016-02-14 22:04:56.634812	355	\N	t
-226	49		16	2016-02-14 22:06:27.461838	2016-02-14 22:06:27.461838	355	\N	t
-227	50		16	2016-02-14 22:07:13.458701	2016-02-14 22:07:13.458701	355	\N	t
-231	23	*Revisar la 4ta. MRL, debido a que hay dos verbos: Apoyar y colaborar. \r\nA MANERA GENERAL:\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-15 06:53:55.509031	2016-02-15 06:53:55.509031	467	\N	t
-232	48	Aceptables	16	2016-02-15 06:55:10.113087	2016-02-15 06:55:10.113087	467	\N	t
-233	49	Aceptables.	16	2016-02-15 06:56:28.494519	2016-02-15 06:56:28.494519	467	\N	t
-234	50	Aceptables,\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina de Tecnologías de la Información y la Comunicación, y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-15 06:58:42.710423	2016-02-15 06:58:42.710423	467	\N	t
-235	51	* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina de Tecnologías de la Información y la Comunicación y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-15 07:01:11.80267	2016-02-15 07:01:11.80267	467	\N	t
-236	52	* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina de Tecnologías de la Información y la Comunicación y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n* Los meses Enero, Febrero y junio inclusive, deben estar inmersos en las MRL; tomar en cuenta este aspecto para el 2do. Semestre del año 2016	16	2016-02-15 07:05:08.075856	2016-02-15 07:05:08.075856	467	\N	t
-237	64	Aceptables	16	2016-02-15 07:15:02.445169	2016-02-15 07:15:02.445169	467	\N	t
-238	66	* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina de Tecnologías de la Información y la Comunicación y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n* Los meses Marzo, Abril y Mayo inclusive, deben estar inmersos en las MRL; tomar en cuenta este aspecto para el 2do. Semestre del año 2016	16	2016-02-15 07:16:56.329631	2016-02-15 07:16:56.329631	2	\N	t
-239	67	Aceptables	16	2016-02-15 07:18:55.572793	2016-02-15 07:18:55.572793	467	\N	t
-240	69	Aceptables	16	2016-02-15 07:26:16.229887	2016-02-15 07:26:16.229887	467	\N	t
-241	70	Aceptables	16	2016-02-15 07:27:10.801162	2016-02-15 07:27:10.801162	467	\N	t
-242	83	* Revisar la 2da. MRL tiene dos verbos, recuerde que se debe utilizar solo uno.\r\n\r\nA MANERA GENERAL:\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Oficina de Auditoría y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-15 07:30:24.203941	2016-02-15 07:30:24.203941	467	\N	t
-243	85	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Se sugiere no repetir el mismo verbo, se deben incluir, a los menos otros verbos.\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n*Se debe especificar y a la ver ser conciso en la construcción de la MRL; por ejemplo, a que proceso formativo se refiere.\r\n\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n	16	2016-02-15 07:35:41.942335	2016-02-15 07:35:41.942335	467	\N	t
-244	96	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n*Se debe especificar y a la ver ser conciso en la construcción de la MRL; por ejemplo, a que proceso formativo se refiere.\r\n\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-15 07:37:40.680576	2016-02-15 07:37:40.680576	467	\N	t
-245	97	* La 3era MRL tiene dos verbos, siendo lo correcto uno.\r\n* Las demás MRL están aceptables.\r\n\r\nA MANERA GENERAL:\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n* Se recomienda transcribir las MRL en World ó Libre Office, a fin de detectar el sentido redactivo de cada MRL. 	16	2016-02-15 07:44:06.673026	2016-02-15 07:44:06.673026	467	\N	t
-246	98	* la 1era MRL hay un error de transcripción "alos", favor corregir.\r\n* La 3era MRL tiene dos verbos, siendo lo correcto uno.\r\n* Las demás MRL están aceptables.\r\n\r\nA MANERA GENERAL:\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n* Se recomienda transcribir las MRL en World ó Libre Office, a fin de detectar el sentido redactivo de cada MRL. \r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-15 07:46:38.595339	2016-02-15 07:46:38.595339	467	\N	t
-247	99	* La 3era MRL tiene dos verbos, siendo lo correcto uno.\r\n* Las demás MRL están aceptables.\r\n\r\nA MANERA GENERAL:\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n* Se recomienda transcribir las MRL en World ó Libre Office, a fin de detectar el sentido redactivo de cada MRL. \r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.	16	2016-02-15 07:47:54.508641	2016-02-15 07:47:54.508641	467	\N	t
-250	131	* La 1era MRL tiene dos verbos, siendo lo correcto uno.\r\n* Las demás MRL están aceptables.\r\n\r\nA MANERA GENERAL:\r\n* Las MRL están mejorando, sólo que debes agregarles los indicadores de tiempo, calidad o cantidad; por ejemplo: Adecuar efectivamente los planes de formación según la cultura y aplicación para la población Campesina, Indígena y Afro-descendiente, para el primer trimestre del año 2016.\r\n* Se Sugiere escribir con inicial en mayúscula los nombre de Instituciones, ejemplo: Universidades, Consejos Comunales, Unamujer, entre otros; respetando la ortografía y signos de puntuación.\r\n* Se recomienda transcribir las MRL en World ó Libre Office, a fin de detectar el sentido redactivo de cada MRL. \r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n* Es recomendable que me llame al 0426-519.04.59	16	2016-02-15 08:05:59.479786	2016-02-15 08:05:59.479786	467	\N	t
-251	132	* La 1era MRL tiene dos verbos, siendo lo correcto uno.\r\n* Las demás MRL están aceptables.\r\n\r\nA MANERA GENERAL:\r\n* Las MRL están mejorando, sólo que debes agregarles los indicadores de tiempo, calidad o cantidad; por ejemplo: Adecuar efectivamente los planes de formación según la cultura y aplicación para la población Campesina, Indígena y Afro-descendiente, para el primer trimestre del año 2016.\r\n* Se Sugiere escribir con inicial en mayúscula los nombre de Instituciones, ejemplo: Universidades, Consejos Comunales, Unamujer, entre otros; respetando la ortografía y signos de puntuación.\r\n* Se recomienda transcribir las MRL en World ó Libre Office, a fin de detectar el sentido redactivo de cada MRL. \r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n* Es recomendable que me llame al 0426-519.04.59	16	2016-02-15 08:07:10.795346	2016-02-15 08:07:10.795346	467	\N	t
-252	133	* La 5ta. MRL tiene dos verbos, siendo lo correcto uno.\r\nA MANERA GENERAL:\r\n\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n*Se debe especificar y a la ver ser conciso en la construcción de la MRL; por ejemplo, a que proceso formativo se refiere.\r\n\r\n* Considere las otras observaciones hechas a la de otros(as) trabajadores(as).\r\n\r\n\r\n	16	2016-02-15 08:10:59.727121	2016-02-15 08:10:59.727121	467	\N	t
-253	135	* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n* "CONFORMACIÓN e INCORPORACIÓN" no son verbos, recuerde utilizar verbos en infinitivos, los terminados en ar, er o ir, por ejemplo Planificar.\r\n* Toda MRL debe tener sentido para su materialización, se sugiere revisar presentación donde hay ejemplo de la misma.\r\n* Las MRL carecen de indicadores como de tiempo, calidad o cantidad, es pertinente incluirlos.\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también, fusionar algunas metas que pudieran formularse en una sola, y de gran impacto.\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-15 08:19:56.69157	2016-02-15 08:19:56.69157	2	\N	t
-254	136	* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n\r\n* "INCORPORARSE" no es un verbo, recuerde utilizar verbos en infinitivos, los terminados en ar, er o ir, por ejemplo Planificar.\r\n\r\n* La 4ta MRL tiene dos verbos, siendo lo correcto uno.\r\n\r\n* Toda MRL debe tener sentido para su materialización, se sugiere revisar presentación donde hay ejemplo de la misma.\r\n\r\n* Las MRL carecen de indicadores como de tiempo, calidad o cantidad, es pertinente incluirlos.\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también, fusionar algunas metas que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-15 08:24:48.161571	2016-02-15 08:24:48.161571	467	\N	t
-255	23	Aceptables; sin embargo, se recomienda escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-15 09:24:14.69484	2016-02-15 09:24:14.69484	467	\N	t
-256	83	Aceptables, sin embargo, se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.	16	2016-02-15 09:25:27.034269	2016-02-15 09:25:27.034269	467	\N	t
-257	137	Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n\r\n* "INCORPORARSE" no es un verbo, recuerde utilizar verbos en infinitivos, los terminados en ar, er o ir, por ejemplo Planificar.\r\n\r\n* Toda MRL debe tener sentido para su materialización, se sugiere revisar presentación donde hay ejemplo de la misma.\r\n\r\n* Las MRL carecen de indicadores como de tiempo, calidad o cantidad, es pertinente incluirlos.\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también, fusionar algunas metas que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores(as) con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-15 09:27:43.155977	2016-02-15 09:27:43.155977	467	\N	t
-258	138	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Se sugiere no repetir mas de dos veces el mismo verbo, se deben incluir, a los menos otros verbos.\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n* Se debe especificar y a la vez ser conciso en la construcción de la MRL.\r\n	16	2016-02-15 09:41:25.180948	2016-02-15 09:41:25.180948	467	\N	t
-316	160	* La 2da. MRL debes darle más sentido claro y preciso.\r\n* Ojo con los acentos, usar documento word u Libre Office.\r\n* hacer las correcciones de acuerdo a lo conversado telefónicamente.\r\n	16	2016-02-17 15:39:45.410335	2016-02-17 15:39:45.410335	467	\N	t
-259	139	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* Se sugiere no repetir má de dos veces el mismo verbo, se deben incluir, a los menos otros verbos.\r\n\r\n* Se recomienda usar un solo verbo en infinitivo para cada MRL.\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n* Se debe especificar y a la vez ser conciso en la construcción de la MRL.	16	2016-02-15 09:45:21.287577	2016-02-15 09:45:21.287577	467	\N	t
-260	144	correjir los objetivos 	16	2016-02-15 10:26:42.942975	2016-02-15 10:26:42.942975	390	\N	t
-261	145	corregir el objetivo	16	2016-02-15 10:28:49.01749	2016-02-15 10:28:49.01749	390	\N	t
-262	142	corregir los objetivos 	16	2016-02-15 10:29:27.487624	2016-02-15 10:29:27.487624	390	\N	t
-263	146	Corregir los objetivos 	16	2016-02-15 10:30:13.639004	2016-02-15 10:30:13.639004	390	\N	t
-264	143	Corregir los Objetivos 	16	2016-02-15 10:30:49.706208	2016-02-15 10:30:49.706208	390	\N	t
-265	87	Las Metas de Rendimiento Laboral han mejorado; sin embargo se recomienda: \r\n* Se sugiere precisar la temporalidad de los informes en la 1era MRL.\r\n* Se recomienda especificar que es MRL.\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación.\r\n* Se sugiere cambiar  en la 4ta MRL las palabras "Político Ideológico", por otra actividad administrativa inherente al Ministerio, por ejemplo: "Sensibilización al Genero y Sexo". \r\n	16	2016-02-15 10:52:57.960546	2016-02-15 10:52:57.960546	467	\N	f
-266	108	* Se sugiere cambiar MRL de contenido Político Ideológico.\r\n* Se recomienda no recargar de indicadores la 1era, 2da y 3era  MRL; por ejemplo, colocó dos cantidades en porcentajes.\r\n* Recuerde que en formación debe haber equidad e igualdad de oportunidades; sin embargo podría colocar, por ejemplo: en un 85% a la población sujeta a formación...\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n	16	2016-02-15 11:28:59.020349	2016-02-15 11:28:59.020349	467	\N	f
-267	109	* Se sugiere cambiar MRL de contenido Político Ideológico. Colocar Metas administrativas inherentes al MINMUJER.\r\n* Se recomienda no recargar de indicadores la 1era, 2da y 3era  MRL; por ejemplo, colocó dos cantidades en porcentajes.\r\n* Recuerde que en formación debe haber equidad e igualdad de oportunidades; sin embargo podría colocar, por ejemplo: en un 85% a la población sujeta a formación...\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n* Se recomienda alternar verbos distintos.\r\n	16	2016-02-15 12:00:48.743018	2016-02-15 12:00:48.743018	467	\N	f
-268	110	* Se sugiere cambiar MRL de contenido Político Ideológico. Colocar Metas administrativas inherentes al MINMUJER.\r\n* Se recomienda no recargar de indicadores la 1era, 2da y 3era  MRL; por ejemplo, colocó dos cantidades en porcentajes.\r\n* Recuerde que en formación debe haber equidad e igualdad de oportunidades; sin embargo podría colocar, por ejemplo: en un 85% a la población sujeta a formación...\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n* Se recomienda alternar verbos distintos.\r\n	16	2016-02-15 12:01:43.475112	2016-02-15 12:01:43.475112	467	\N	f
-269	111	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* En la 1era MRL debes especificar que tipo de actividades, y si estas son cada 15 días, semanales, mensuales, bimensuales, trimestrales.\r\n* Estas MRL parcialmente están aceptables, siempre y cuando hagas las correcciones sobre la base de lo antes expuesto.	16	2016-02-15 12:06:01.966688	2016-02-15 12:06:01.966688	467	\N	f
-270	114	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* En las MRL debes especificar que tipo de actividades, y si estas son cada 15 días, semanales, mensuales, bimensuales, trimestrales.\r\n* En las MRL debes especificar si las Metas se harán con eficacia, oportunamente, eficientemente, entre otras.\r\n* Estas MRL parcialmente están aceptables, siempre y cuando hagas las correcciones sobre la base de lo antes expuesto.	16	2016-02-15 12:15:57.556292	2016-02-15 12:15:57.556292	467	\N	f
-271	115	\r\n* Se sugiere cambiar MRL de contenido Político Ideológico.\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* Es recomendable incluir en las MRL indicadores, como: oportunamente, eficazmente, diariamente, semanalmente, trimestralmente, entre otros.\r\n* Recuerde que en formación debe haber equidad e igualdad de oportunidades; sin embargo podría colocar, por ejemplo: en un 85% a la población sujeta a formación...\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n	16	2016-02-15 13:18:09.527671	2016-02-15 13:18:09.527671	467	\N	f
-273	118	* Parcialmente las MRL están aceptables, solo si se le hacen las modificaciones que a continuación se especifican:\r\n* Se sugiere cambiar MRL de contenido Político Ideológico, estas deben ser de contenido administrativo.\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* Es recomendable incluir en las MRL indicadores, como: oportunamente, eficazmente, diariamente, semanalmente, trimestralmente, en un 95%, en un 50%, entre otros.\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.	16	2016-02-15 13:25:55.680859	2016-02-15 13:25:55.680859	467	\N	f
-317	161	* Sugiero revisar acentos y sentido redactivo a cada MRL\r\n* hacer las correcciones de acuerdo a lo conversado telefónicamente.	16	2016-02-17 15:41:11.434669	2016-02-17 15:41:11.434669	467	\N	t
-274	127	* La 1era. MRL carece de se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n* En la 1era MRL debes especifica el nombre del producto logrado mensualmente.\r\n* La 3era. MRL está aceptable, sin embargo debes especificar qué tipo de informe.\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* Es recomendable incluir en las MRL indicadores, como: oportunamente, eficazmente, diariamente, semanalmente, trimestralmente, en un 95%, en un 50%, entre otros.\r\n	16	2016-02-15 13:30:26.242114	2016-02-15 13:30:26.242114	467	\N	t
-275	112	* Se recomienda en la 1era MRL, darle otro "tono" redactivo, a fin de clarificar la meta final.\r\n* En la 3era MRL hay un error de transcripción, dice: "...para se ejecutado en 1 semestre"..., siendo lo correcto: para ser ejecutado en el 1er semestre del año 2016.\r\n* Las MRL deben tener orden numérico.\r\n* Se sugiere especificar el semestre, Ejemplo:  "en 1 semestre..."  siendo lo correcto, para el 1er. semestre del año en curso ó correspondiente al 1er. semestre de 2016.	16	2016-02-15 15:14:10.32945	2016-02-15 15:14:10.32945	467	\N	t
-276	113	Aceptables,\r\nDebes tener cuidado con los acentos y las comas (s), algunas de ellas están pegadas de las palabras. 	16	2016-02-15 15:23:46.985458	2016-02-15 15:23:46.985458	467	\N	t
-277	142	aceptables,\r\nDebes tener cuidados con la ortografía, se sugiere hacer las MRL en documento World o Libre Office, a fin de hacer las correcciones pertinentes.\r\n	16	2016-02-15 15:31:11.009023	2016-02-15 15:31:11.009023	467	\N	t
-278	143	Aceptables.\r\n* Es pertinente tener cuidado con los acentos, comas(,) puntos y espacios.	16	2016-02-15 15:59:20.127691	2016-02-15 15:59:20.127691	467	\N	t
-279	150	extraordinaria trabajadora	16	2016-02-15 18:03:24.946716	2016-02-15 18:03:24.946716	455	\N	t
-280	151	Es muy buena trabajadora	16	2016-02-15 18:32:51.168909	2016-02-15 18:32:51.168909	455	\N	t
-281	44	Aceptables	16	2016-02-16 07:10:36.10151	2016-02-16 07:10:36.10151	467	\N	t
-282	45	Aceptables.\r\n* Trata siempre de identificar los tramites o el estatus de éstos.	16	2016-02-16 07:25:24.113315	2016-02-16 07:25:24.113315	467	\N	t
-283	144	* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.	16	2016-02-16 07:28:46.698218	2016-02-16 07:28:46.698218	467	\N	t
-284	145	Aceptables\r\n* Se sugiere tener cuidado con la ortografía y signos de puntuación.\r\n* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.	16	2016-02-16 07:32:21.221645	2016-02-16 07:32:21.221645	2	\N	t
-285	146	* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.\r\n* Se sugiere tener cuidado con la ortografía y signos de puntuación.\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n	16	2016-02-16 07:38:14.973297	2016-02-16 07:38:14.973297	467	\N	t
-286	150	 A MANERA GENERAL:\r\n* Sus MRL, están parcialmente aceptables; para lo cual la invito a que tome en cuenta los siguientes tip's:\r\n\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.\r\n\r\n* No deben haber de dos verbos por cada MRL, solo uno y, cuidado con la ortografía y signos de puntuación.\r\n	16	2016-02-16 07:46:57.902383	2016-02-16 07:46:57.902383	467	\N	t
-287	151	A MANERA GENERAL:\r\n* Sus MRL, están parcialmente aceptables; para lo cual la invito a que tome en cuenta los siguientes tip's:\r\n\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.\r\n\r\n* No deben haber de dos verbos por cada MRL, solo uno y, cuidado con la ortografía y signos de puntuación.\r\n	16	2016-02-16 07:48:13.998708	2016-02-16 07:48:13.998708	467	\N	t
-272	117	* Parcialmente las MRL están aceptables, solo si se le hacen las modificaciones que a continuación se especifican:\r\n* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n* Es recomendable incluir en las MRL indicadores, como: oportunamente, eficazmente, diariamente, semanalmente, trimestralmente, entre otros.\r\n* Se Sugiere escribir en minúscula, respetando la ortografía y signos de puntuación. Observe que en las MRL carecen, de al menos de "comas" (,).\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.	16	2016-02-15 13:23:33.196241	2016-02-15 13:23:33.196241	467	\N	f
-288	127	* La 1era MRL, "Coordina", no es un verbo además, debes identificar a cual Sede Central se refiere (claro sabemos que es MINMUJER), pero debes identificarlo. Las MRL deben ser clareas, precisas y concisas.\r\n* sugiero colocar a algunas MRL, al menos un indicador de calidad como: eficazmente, oportunamente, eficientemente.	16	2016-02-16 14:12:35.449052	2016-02-16 14:12:35.449052	467	\N	t
-289	154	* Las MRL están aceptables parcialmente, sin embargo sugiero que en la 3era MRL, coloque semanalmente ó los días viernes.\r\n	16	2016-02-16 14:16:39.641747	2016-02-16 14:16:39.641747	467	\N	t
-290	155	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas(,), entre otros.\r\n	16	2016-02-16 14:21:49.595836	2016-02-16 14:21:49.595836	2	\N	t
-291	156	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* Recuerde que no debes colocar MRL de corte político, sino de tipo administrativo; lo político lo hacemos, pero no se refleja aquí\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".\r\n	16	2016-02-16 14:35:34.427664	2016-02-16 14:35:34.427664	467	\N	t
-292	157	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* Recuerde que no debes colocar MRL de corte político, sino de tipo administrativo; lo político lo hacemos, pero no se refleja aquí\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".	16	2016-02-16 14:36:15.734194	2016-02-16 14:36:15.734194	467	\N	t
-293	158	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* en la 4ta MRL donde dice: "Rendir semanal los días viernes antes de las 12:00 m sobre actividades formativas desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas", no logra entender que se persigue como meta final.\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n	16	2016-02-16 14:39:24.30438	2016-02-16 14:39:24.30438	467	\N	t
-294	160	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* Recuerde que no debes colocar MRL de corte político, sino de tipo administrativo; lo político lo hacemos, pero no se refleja aquí\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".	16	2016-02-16 14:42:00.388969	2016-02-16 14:42:00.388969	467	\N	t
-295	161	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* la 1era y 2da MRL son idénticas.\r\n* Recuerde que no debes colocar MRL de corte político, sino de tipo administrativo; lo político lo hacemos, pero no se refleja aquí\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".\r\n\r\n	16	2016-02-16 15:07:28.125182	2016-02-16 15:07:28.125182	467	\N	t
-296	162	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* Recuerde que no debes colocar MRL de corte político, sino de tipo administrativo; lo político lo hacemos, pero no se refleja aquí\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".\r\n\r\n	16	2016-02-16 15:09:25.167815	2016-02-16 15:09:25.167815	467	\N	t
-297	163	* Las MRL están mejorando y aceptables parcialmente, sin embargo sugiero:\r\n* Corrige "semanal los días viernes", o colocas semanalmente, o colocas los días viernes.\r\n* Recuerde que no debes colocar MRL de corte político, sino de tipo administrativo; lo político lo hacemos, pero no se refleja aquí\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".\r\n\r\n	16	2016-02-16 15:12:23.76296	2016-02-16 15:12:23.76296	467	\N	t
-298	138		16	2016-02-16 17:16:36.090739	2016-02-16 17:16:36.090739	355	\N	t
-299	139		16	2016-02-16 17:17:54.62871	2016-02-16 17:17:54.62871	355	\N	t
-300	1	* Todas sus MRL están aceptables, solo que debes corregir la última MRL, debido a que tiene dos verbos (elaborar estudios y emitir....), siendo lo correcto.uno.	16	2016-02-17 09:19:25.517118	2016-02-17 09:19:25.517118	467	\N	t
-301	138	* Sugiero darle más peso a la última MRL, relacionada con la elaboración del POAN. Es pertinente que de acuerdo a la meta, colocarle un peso adecuado.	16	2016-02-17 09:29:44.894336	2016-02-17 09:29:44.894336	467	\N	t
-302	139	* Es pertinente que de acuerdo a la meta, colocarle un peso adecuado.\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n* La de Tecnologías de la Información no tiene personal directivo, ni es una Dirección.	16	2016-02-17 09:32:48.622659	2016-02-17 09:32:48.622659	467	\N	t
-303	75		16	2016-02-17 12:07:44.861506	2016-02-17 12:07:44.861506	468	\N	t
-304	77		16	2016-02-17 12:12:53.032603	2016-02-17 12:12:53.032603	468	\N	t
-305	59		16	2016-02-17 12:14:49.378949	2016-02-17 12:14:49.378949	468	\N	t
-306	59		16	2016-02-17 12:15:39.263594	2016-02-17 12:15:39.263594	468	\N	t
-307	59	Todas sus MRL están aceptables, solo que no debes incluir en la 1era MRL el periodo del 2do semestre del año en curso.	16	2016-02-17 14:55:10.784154	2016-02-17 14:55:10.784154	2	\N	t
-308	75	* Sugiero que debido al cargo de la trabajadora, se le deben crear metas más retadoras; es pertinente considerarlo para el próximo semestre del año 2016.	16	2016-02-17 14:57:44.103637	2016-02-17 14:57:44.103637	467	\N	t
-309	77		16	2016-02-17 15:06:22.647909	2016-02-17 15:06:22.647909	467	\N	t
-310	127	* Siguen habiendo errores en la transcripción, prueba de ello se observa en la 3era MRL; sugiero que trascribas la MRL en un documento World o Libre Office.\r\n* Parcialmente están aceptables; sugiero enfatizar más (no repetitivo) los indicadores de cantidad, calidad y tiempo. 	16	2016-02-17 15:10:07.310576	2016-02-17 15:10:07.310576	467	\N	t
-311	154	* Siguen habiendo errores en la transcripción; sugiero que trascribas la MRL en un documento World o Libre Office.\r\n* Parcialmente están aceptables; sugiero enfatizar más (no repetitivo) los indicadores de cantidad, calidad y tiempo. \r\n* Sugiero prestar más atención a la ortografía, leer primer punto de comentario.\r\n	16	2016-02-17 15:13:54.528551	2016-02-17 15:13:54.528551	467	\N	t
-312	155	* La primera MRL tiene dos verbos  ( promover y fortalece).\r\n* hace las correcciones de acuerdo a lo conversado telefónicamente.\r\n	16	2016-02-17 15:29:15.941453	2016-02-17 15:29:15.941453	467	\N	t
-313	156	* La última MRL tiene dos verbos  ( Rendir y garantizar).\r\n* hace las correcciones de acuerdo a lo conversado telefónicamente.	16	2016-02-17 15:31:43.706473	2016-02-17 15:31:43.706473	467	\N	t
-319	165	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n*Se debe especificar y a la ver ser conciso en la construcción de la MRL; por ejemplo, a que proceso formativo se refiere.\r\n\r\n* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.\r\n\r\n* Las MRL no deben tener más de dos Verbos.	16	2016-02-18 10:49:07.26981	2016-02-18 10:49:07.26981	467	\N	t
-320	166	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n*Se debe especificar y a la ver ser conciso en la construcción de la MRL; por ejemplo, a que proceso formativo se refiere.\r\n\r\n* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.\r\n\r\n* Las MRL no deben tener más de dos Verbos.	16	2016-02-18 10:49:26.799973	2016-02-18 10:49:26.799973	467	\N	t
-321	167	* Es pertinente incluir los indicadores (tiempo, calidad y/o cantidad), recuerde que el indicador debe estar casado con la meta que va a desarrollar el trabajador(a).\r\n\r\n* No es recomendable incluir como MRL u ODIS, tareas rutinarias, sino de impacto o retadoras, que repercutan en los objetivos de la Dirección Estadal y del MINMUJER.\r\n\r\n* Se debe priorizar el peso correspondiente a la magnitud de la Meta a desarrollar; así como también fusionar algunas metas, que pudieran formularse en una sola, y de gran impacto.\r\n\r\n* Es pertinente, tener en cuenta que aunque hayan trabajadores con MRL parecidas, especificar bien la diferencia en su desenvolvimiento.\r\n\r\n*Se debe especificar y a la ver ser conciso en la construcción de la MRL; por ejemplo, a que proceso formativo se refiere.\r\n\r\n* Recuerde que al final del semestre el supervisado(a) deberá a su supervisor(a) inmediato(a) la entrega de lo acordado en las MRL.\r\n\r\n* Revisar la última MRL.	16	2016-02-18 10:53:15.066536	2016-02-18 10:53:15.066536	467	\N	t
-322	88	A MANERA GENERAL:\r\nParcialmente están aceptables, sin embargo es pertinente tomar en cuenta lo siguiente:\r\n\r\n* Sugiero utilices indicadores de tiempo como, diariamente, semanalmente, mensualmente, trimestralmente o en el 1er. Semestre del año 2016.\r\n* Sugiero utilices indicadores de calidad como, oportunamente, eficazmente o eficientemente.\r\n* Sugiero tengas cuidado con la ortografía, acentos, comas (,), entre otros.\r\n* Un tip's, visualice la MRL como ya el producto final deseado, y con base a ello constrúyala con sus características la "meta+verbo+indicador".\r\n	16	2016-02-18 11:36:45.00756	2016-02-18 11:36:45.00756	467	\N	t
+125	84	Rechazado RRHH 1	16	2016-02-19 10:12:41.951699	2016-02-19 10:12:41.951699	11	\N	t
+126	85	Rechazado RRHH 1	16	2016-02-19 10:14:10.783452	2016-02-19 10:14:10.783452	11	\N	t
+127	86	Rechazado RRHH 1	16	2016-02-19 10:14:19.491243	2016-02-19 10:14:19.491243	11	\N	t
+128	84	Rechazado RRHH 2	16	2016-02-19 10:15:28.946922	2016-02-19 10:15:28.946922	11	\N	t
+129	85	Rechazado RRHH 2	16	2016-02-19 10:15:38.955401	2016-02-19 10:15:38.955401	11	\N	t
+130	84	Rechazado RRHH 3	16	2016-02-19 10:16:24.454315	2016-02-19 10:16:24.454315	11	\N	t
+131	85	Rechazado RRHH	16	2016-02-19 12:09:25.309095	2016-02-19 12:09:25.309095	11	\N	t
+132	86	Rechazado RRHH 2	16	2016-02-19 12:09:36.691889	2016-02-19 12:09:36.691889	11	\N	t
+133	87	Rechazado RRHH 2	16	2016-02-19 12:09:56.016993	2016-02-19 12:09:56.016993	11	\N	t
+134	88	Rechazado RRHH 3	16	2016-02-19 12:10:07.99125	2016-02-19 12:10:07.99125	11	\N	t
+135	86	Rechazado RRHH 3	16	2016-02-19 12:12:10.954641	2016-02-19 12:12:10.954641	11	\N	t
+136	87	Rechazado RRHH 3	16	2016-02-19 12:12:19.2961	2016-02-19 12:12:19.2961	11	\N	t
+137	88	Rechazado RRHH 3	16	2016-02-19 12:12:31.32123	2016-02-19 12:12:31.32123	11	\N	t
 \.
 
 
 --
--- TOC entry 2823 (class 0 OID 0)
--- Dependencies: 184
 -- Name: comentarios_id_comentario_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('comentarios_id_comentario_seq', 322, true);
+SELECT pg_catalog.setval('comentarios_id_comentario_seq', 137, true);
 
 
 --
--- TOC entry 2677 (class 0 OID 109233)
--- Dependencies: 185
 -- Data for Name: estatus_evaluacion; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY estatus_evaluacion (id_estatus_evaluacion, fk_evaluacion, fk_tipo_entidad, fk_entidad, fk_estatus_evaluacion, fecha_estatus, created_by, modified_by, created_date, modified_date, fk_estatus, es_activo) FROM stdin;
-1	1	45	404	47	2016-01-25 14:28:05.096357	404	\N	2016-01-25 14:28:05.096357	2016-01-25 14:28:05.096357	65	t
-2	2	45	68	47	2016-01-26 09:59:52.694977	68	\N	2016-01-26 09:59:52.694977	2016-01-26 09:59:52.694977	65	t
-3	2	45	68	48	2016-01-26 10:24:20.162518	68	\N	2016-01-26 10:24:20.162518	2016-01-26 10:24:20.162518	65	t
-4	3	45	68	47	2016-01-26 10:25:26.401569	68	\N	2016-01-26 10:25:26.401569	2016-01-26 10:25:26.401569	65	t
-5	4	45	68	47	2016-01-26 10:37:04.257402	68	\N	2016-01-26 10:37:04.257402	2016-01-26 10:37:04.257402	65	t
-6	2	45	467	50	2016-01-26 10:51:10.245215	467	\N	2016-01-26 10:51:10.245215	2016-01-26 10:51:10.245215	65	t
-7	2	45	2	79	2016-01-26 11:09:59.454438	2	\N	2016-01-26 11:09:59.454438	2016-01-26 11:09:59.454438	65	t
-8	5	45	68	47	2016-01-26 11:13:06.19311	68	\N	2016-01-26 11:13:06.19311	2016-01-26 11:13:06.19311	65	t
-9	6	45	68	47	2016-01-26 11:24:50.536302	68	\N	2016-01-26 11:24:50.536302	2016-01-26 11:24:50.536302	65	t
-10	2	45	68	48	2016-01-26 11:37:00.193401	68	\N	2016-01-26 11:37:00.193401	2016-01-26 11:37:00.193401	65	t
-11	3	45	68	48	2016-01-26 11:37:02.909239	68	\N	2016-01-26 11:37:02.909239	2016-01-26 11:37:02.909239	65	t
-12	4	45	68	48	2016-01-26 11:37:03.014805	68	\N	2016-01-26 11:37:03.014805	2016-01-26 11:37:03.014805	65	t
-13	6	45	68	48	2016-01-26 11:37:05.893879	68	\N	2016-01-26 11:37:05.893879	2016-01-26 11:37:05.893879	65	t
-14	5	45	68	48	2016-01-26 11:37:06.018126	68	\N	2016-01-26 11:37:06.018126	2016-01-26 11:37:06.018126	65	t
-15	3	45	68	48	2016-01-26 11:37:08.753737	68	\N	2016-01-26 11:37:08.753737	2016-01-26 11:37:08.753737	65	t
-16	5	45	468	48	2016-01-26 11:37:37.865721	468	\N	2016-01-26 11:37:37.865721	2016-01-26 11:37:37.865721	65	t
-17	7	45	468	47	2016-01-26 11:38:32.799576	468	\N	2016-01-26 11:38:32.799576	2016-01-26 11:38:32.799576	65	t
-18	8	45	41	47	2016-01-26 12:13:22.470668	41	\N	2016-01-26 12:13:22.470668	2016-01-26 12:13:22.470668	65	t
-19	9	45	21	47	2016-01-26 13:57:36.829802	21	\N	2016-01-26 13:57:36.829802	2016-01-26 13:57:36.829802	65	t
-20	10	45	21	47	2016-01-26 14:08:31.008329	21	\N	2016-01-26 14:08:31.008329	2016-01-26 14:08:31.008329	65	t
-21	11	45	21	47	2016-01-26 15:17:03.15982	21	\N	2016-01-26 15:17:03.15982	2016-01-26 15:17:03.15982	65	t
-22	2	45	467	50	2016-01-26 15:54:02.146864	467	\N	2016-01-26 15:54:02.146864	2016-01-26 15:54:02.146864	65	t
-23	3	45	467	50	2016-01-26 15:54:14.912169	467	\N	2016-01-26 15:54:14.912169	2016-01-26 15:54:14.912169	65	t
-24	4	45	467	50	2016-01-26 15:54:26.922766	467	\N	2016-01-26 15:54:26.922766	2016-01-26 15:54:26.922766	65	t
-25	5	45	467	50	2016-01-26 15:54:40.657691	467	\N	2016-01-26 15:54:40.657691	2016-01-26 15:54:40.657691	65	t
-26	6	45	467	50	2016-01-26 15:55:23.948502	467	\N	2016-01-26 15:55:23.948502	2016-01-26 15:55:23.948502	65	t
-27	2	45	68	79	2016-01-26 15:57:28.151972	68	\N	2016-01-26 15:57:28.151972	2016-01-26 15:57:28.151972	65	t
-28	3	45	68	79	2016-01-26 15:57:39.177956	68	\N	2016-01-26 15:57:39.177956	2016-01-26 15:57:39.177956	65	t
-29	4	45	68	79	2016-01-26 15:57:50.003627	68	\N	2016-01-26 15:57:50.003627	2016-01-26 15:57:50.003627	65	t
-30	5	45	68	79	2016-01-26 15:57:59.98911	68	\N	2016-01-26 15:57:59.98911	2016-01-26 15:57:59.98911	65	t
-31	5	45	68	79	2016-01-26 15:58:04.123233	68	\N	2016-01-26 15:58:04.123233	2016-01-26 15:58:04.123233	65	t
-32	6	45	68	79	2016-01-26 15:58:15.668484	68	\N	2016-01-26 15:58:15.668484	2016-01-26 15:58:15.668484	65	t
-33	12	45	41	47	2016-01-26 16:01:48.633294	41	\N	2016-01-26 16:01:48.633294	2016-01-26 16:01:48.633294	65	t
-35	14	45	437	47	2016-01-26 17:14:11.982026	437	\N	2016-01-26 17:14:11.982026	2016-01-26 17:14:11.982026	65	f
-38	14	45	355	48	2016-01-27 09:27:48.096639	355	\N	2016-01-27 09:27:48.096639	2016-01-27 09:27:48.096639	65	f
-34	13	45	9	47	2016-01-26 16:50:43.456016	9	\N	2016-01-26 16:50:43.456016	2016-01-26 16:50:43.456016	65	f
-36	13	45	355	48	2016-01-26 17:22:19.608879	355	\N	2016-01-26 17:22:19.608879	2016-01-26 17:22:19.608879	65	f
-37	13	45	467	50	2016-01-27 06:10:42.368789	467	\N	2016-01-27 06:10:42.368789	2016-01-27 06:10:42.368789	65	f
-39	13	45	9	79	2016-01-27 09:34:08.167489	9	\N	2016-01-27 09:34:08.167489	2016-01-27 09:34:08.167489	65	f
-40	13	45	355	48	2016-01-27 09:35:00.851379	355	\N	2016-01-27 09:35:00.851379	2016-01-27 09:35:00.851379	65	f
-41	15	45	162	47	2016-01-27 13:51:14.374413	162	\N	2016-01-27 13:51:14.374413	2016-01-27 13:51:14.374413	65	t
-42	16	45	162	47	2016-01-27 13:56:01.555604	162	\N	2016-01-27 13:56:01.555604	2016-01-27 13:56:01.555604	65	t
-43	17	45	162	47	2016-01-27 13:58:45.604905	162	\N	2016-01-27 13:58:45.604905	2016-01-27 13:58:45.604905	65	t
-44	18	45	162	47	2016-01-27 14:01:33.502138	162	\N	2016-01-27 14:01:33.502138	2016-01-27 14:01:33.502138	65	t
-46	20	45	143	47	2016-01-28 08:46:51.42853	143	\N	2016-01-28 08:46:51.42853	2016-01-28 08:46:51.42853	65	t
-47	21	45	143	47	2016-01-28 08:55:13.35767	143	\N	2016-01-28 08:55:13.35767	2016-01-28 08:55:13.35767	65	t
-48	22	45	143	47	2016-01-28 08:57:34.379055	143	\N	2016-01-28 08:57:34.379055	2016-01-28 08:57:34.379055	65	t
-49	15	45	275	48	2016-01-28 11:01:45.872162	275	\N	2016-01-28 11:01:45.872162	2016-01-28 11:01:45.872162	65	t
-50	16	45	275	48	2016-01-28 11:03:42.509437	275	\N	2016-01-28 11:03:42.509437	2016-01-28 11:03:42.509437	65	t
-51	17	45	275	48	2016-01-28 11:08:41.982041	275	\N	2016-01-28 11:08:41.982041	2016-01-28 11:08:41.982041	65	t
-52	23	45	41	47	2016-01-28 11:39:41.70949	41	\N	2016-01-28 11:39:41.70949	2016-01-28 11:39:41.70949	65	t
-53	24	45	453	47	2016-01-28 11:41:53.39544	453	\N	2016-01-28 11:41:53.39544	2016-01-28 11:41:53.39544	65	t
-54	25	45	453	47	2016-01-28 13:43:36.379094	453	\N	2016-01-28 13:43:36.379094	2016-01-28 13:43:36.379094	65	t
-55	15	45	467	50	2016-01-28 13:48:44.811178	467	\N	2016-01-28 13:48:44.811178	2016-01-28 13:48:44.811178	65	t
-56	16	45	467	50	2016-01-28 13:49:19.84594	467	\N	2016-01-28 13:49:19.84594	2016-01-28 13:49:19.84594	65	t
-57	17	45	467	50	2016-01-28 13:50:59.564862	467	\N	2016-01-28 13:50:59.564862	2016-01-28 13:50:59.564862	65	t
-58	26	45	453	47	2016-01-28 13:51:40.937665	453	\N	2016-01-28 13:51:40.937665	2016-01-28 13:51:40.937665	65	t
-59	24	45	453	48	2016-01-28 14:01:21.796964	453	\N	2016-01-28 14:01:21.796964	2016-01-28 14:01:21.796964	65	t
-60	15	45	162	79	2016-01-28 14:14:13.020318	162	\N	2016-01-28 14:14:13.020318	2016-01-28 14:14:13.020318	65	t
-61	24	45	467	50	2016-01-28 14:27:25.751451	467	\N	2016-01-28 14:27:25.751451	2016-01-28 14:27:25.751451	65	t
-62	27	45	397	47	2016-01-28 14:37:55.203847	397	\N	2016-01-28 14:37:55.203847	2016-01-28 14:37:55.203847	65	t
-63	28	45	470	47	2016-01-28 14:40:48.510521	470	\N	2016-01-28 14:40:48.510521	2016-01-28 14:40:48.510521	65	t
-64	18	45	275	50	2016-01-28 14:53:42.337428	275	\N	2016-01-28 14:53:42.337428	2016-01-28 14:53:42.337428	65	t
-65	29	45	401	47	2016-01-28 15:08:03.206324	401	\N	2016-01-28 15:08:03.206324	2016-01-28 15:08:03.206324	65	t
-66	30	45	404	47	2016-01-28 15:09:21.908166	404	\N	2016-01-28 15:09:21.908166	2016-01-28 15:09:21.908166	65	t
-67	31	45	401	47	2016-01-28 15:11:21.686794	401	\N	2016-01-28 15:11:21.686794	2016-01-28 15:11:21.686794	65	t
-68	32	45	404	47	2016-01-28 15:17:22.88025	404	\N	2016-01-28 15:17:22.88025	2016-01-28 15:17:22.88025	65	t
-69	18	45	162	79	2016-01-28 15:23:32.639887	162	\N	2016-01-28 15:23:32.639887	2016-01-28 15:23:32.639887	65	t
-70	17	45	162	79	2016-01-28 15:26:24.126512	162	\N	2016-01-28 15:26:24.126512	2016-01-28 15:26:24.126512	65	t
-71	16	45	162	79	2016-01-28 15:27:29.259065	162	\N	2016-01-28 15:27:29.259065	2016-01-28 15:27:29.259065	65	t
-72	33	45	37	47	2016-01-28 15:27:56.140918	37	\N	2016-01-28 15:27:56.140918	2016-01-28 15:27:56.140918	65	t
-73	22	45	275	48	2016-01-28 15:28:10.614645	275	\N	2016-01-28 15:28:10.614645	2016-01-28 15:28:10.614645	65	t
-74	16	45	275	48	2016-01-28 15:30:16.651234	275	\N	2016-01-28 15:30:16.651234	2016-01-28 15:30:16.651234	65	t
-75	17	45	275	48	2016-01-28 15:30:56.400041	275	\N	2016-01-28 15:30:56.400041	2016-01-28 15:30:56.400041	65	t
-76	34	45	37	47	2016-01-28 15:32:38.846087	37	\N	2016-01-28 15:32:38.846087	2016-01-28 15:32:38.846087	65	t
-77	18	45	275	48	2016-01-28 15:33:27.338716	275	\N	2016-01-28 15:33:27.338716	2016-01-28 15:33:27.338716	65	t
-78	21	45	275	48	2016-01-28 15:34:23.003702	275	\N	2016-01-28 15:34:23.003702	2016-01-28 15:34:23.003702	65	t
-79	15	45	275	48	2016-01-28 15:36:15.032361	275	\N	2016-01-28 15:36:15.032361	2016-01-28 15:36:15.032361	65	t
-80	27	45	397	50	2016-01-28 15:39:22.895411	397	\N	2016-01-28 15:39:22.895411	2016-01-28 15:39:22.895411	65	t
-81	20	45	275	50	2016-01-28 15:45:31.734358	275	\N	2016-01-28 15:45:31.734358	2016-01-28 15:45:31.734358	65	t
-82	27	45	397	79	2016-01-28 15:54:42.477612	397	\N	2016-01-28 15:54:42.477612	2016-01-28 15:54:42.477612	65	t
-83	15	45	467	50	2016-01-28 15:55:52.64503	467	\N	2016-01-28 15:55:52.64503	2016-01-28 15:55:52.64503	65	t
-84	34	45	397	50	2016-01-28 15:58:11.59135	397	\N	2016-01-28 15:58:11.59135	2016-01-28 15:58:11.59135	65	t
-85	16	45	2	50	2016-01-28 15:59:09.342268	2	\N	2016-01-28 15:59:09.342268	2016-01-28 15:59:09.342268	65	t
-86	33	45	397	50	2016-01-28 16:01:30.485741	397	\N	2016-01-28 16:01:30.485741	2016-01-28 16:01:30.485741	65	t
-87	33	45	37	79	2016-01-28 16:03:17.561939	37	\N	2016-01-28 16:03:17.561939	2016-01-28 16:03:17.561939	65	t
-88	34	45	37	79	2016-01-28 16:07:18.223675	37	\N	2016-01-28 16:07:18.223675	2016-01-28 16:07:18.223675	65	t
-89	29	45	397	48	2016-01-28 16:09:14.530722	397	\N	2016-01-28 16:09:14.530722	2016-01-28 16:09:14.530722	65	t
-90	33	45	397	48	2016-01-28 16:09:18.91676	397	\N	2016-01-28 16:09:18.91676	2016-01-28 16:09:18.91676	65	t
-91	31	45	397	48	2016-01-28 16:09:20.672796	397	\N	2016-01-28 16:09:20.672796	2016-01-28 16:09:20.672796	65	t
-92	34	45	397	48	2016-01-28 16:09:20.829245	397	\N	2016-01-28 16:09:20.829245	2016-01-28 16:09:20.829245	65	t
-93	27	45	397	48	2016-01-28 16:09:22.544186	397	\N	2016-01-28 16:09:22.544186	2016-01-28 16:09:22.544186	65	t
-94	17	45	467	50	2016-01-28 16:17:45.865637	467	\N	2016-01-28 16:17:45.865637	2016-01-28 16:17:45.865637	65	t
-95	18	45	467	50	2016-01-28 16:18:08.933836	467	\N	2016-01-28 16:18:08.933836	2016-01-28 16:18:08.933836	65	t
-96	21	45	467	50	2016-01-28 16:19:01.980708	467	\N	2016-01-28 16:19:01.980708	2016-01-28 16:19:01.980708	65	t
-97	22	45	467	50	2016-01-28 16:20:11.632639	467	\N	2016-01-28 16:20:11.632639	2016-01-28 16:20:11.632639	65	t
-98	35	45	453	47	2016-01-28 16:20:57.902702	453	\N	2016-01-28 16:20:57.902702	2016-01-28 16:20:57.902702	65	t
-99	36	45	453	47	2016-01-28 16:22:39.982838	453	\N	2016-01-28 16:22:39.982838	2016-01-28 16:22:39.982838	65	t
-100	27	45	467	49	2016-01-28 16:25:14.627568	467	\N	2016-01-28 16:25:14.627568	2016-01-28 16:25:14.627568	65	t
-101	29	45	467	49	2016-01-28 16:25:55.480954	467	\N	2016-01-28 16:25:55.480954	2016-01-28 16:25:55.480954	65	t
-102	31	45	467	50	2016-01-28 16:28:07.633465	467	\N	2016-01-28 16:28:07.633465	2016-01-28 16:28:07.633465	65	t
-103	33	45	467	49	2016-01-28 16:28:51.469144	467	\N	2016-01-28 16:28:51.469144	2016-01-28 16:28:51.469144	65	t
-104	37	45	453	47	2016-01-28 16:30:11.471392	453	\N	2016-01-28 16:30:11.471392	2016-01-28 16:30:11.471392	65	t
-105	38	45	453	47	2016-01-28 16:32:48.891737	453	\N	2016-01-28 16:32:48.891737	2016-01-28 16:32:48.891737	65	t
-106	34	45	2	50	2016-01-28 16:33:04.836847	2	\N	2016-01-28 16:33:04.836847	2016-01-28 16:33:04.836847	65	t
-107	39	45	453	47	2016-01-28 16:39:31.283785	453	\N	2016-01-28 16:39:31.283785	2016-01-28 16:39:31.283785	65	t
-108	40	45	453	47	2016-01-28 16:41:30.461062	453	\N	2016-01-28 16:41:30.461062	2016-01-28 16:41:30.461062	65	t
-109	41	45	453	47	2016-01-28 16:44:55.954107	453	\N	2016-01-28 16:44:55.954107	2016-01-28 16:44:55.954107	65	t
-110	42	45	453	47	2016-01-28 16:47:28.297877	453	\N	2016-01-28 16:47:28.297877	2016-01-28 16:47:28.297877	65	t
-111	43	45	453	47	2016-01-28 16:51:20.428576	453	\N	2016-01-28 16:51:20.428576	2016-01-28 16:51:20.428576	65	t
-112	44	45	453	47	2016-01-28 16:53:35.704081	453	\N	2016-01-28 16:53:35.704081	2016-01-28 16:53:35.704081	65	t
-113	45	45	453	47	2016-01-28 17:08:30.222455	453	\N	2016-01-28 17:08:30.222455	2016-01-28 17:08:30.222455	65	t
-45	19	45	437	47	2016-01-27 14:02:11.262494	437	\N	2016-01-27 14:02:11.262494	2016-01-27 14:02:11.262494	65	f
-114	19	45	355	48	2016-01-28 17:36:35.756854	355	\N	2016-01-28 17:36:35.756854	2016-01-28 17:36:35.756854	65	f
-115	46	45	440	47	2016-01-28 17:51:18.9134	440	\N	2016-01-28 17:51:18.9134	2016-01-28 17:51:18.9134	65	t
-116	47	45	440	47	2016-01-28 18:11:13.932389	440	\N	2016-01-28 18:11:13.932389	2016-01-28 18:11:13.932389	65	t
-117	48	45	22	47	2016-01-28 23:44:42.516163	22	\N	2016-01-28 23:44:42.516163	2016-01-28 23:44:42.516163	65	t
-118	49	45	22	47	2016-01-28 23:56:03.444577	22	\N	2016-01-28 23:56:03.444577	2016-01-28 23:56:03.444577	65	t
-119	50	45	22	47	2016-01-29 00:00:01.543188	22	\N	2016-01-29 00:00:01.543188	2016-01-29 00:00:01.543188	65	t
-120	51	45	22	47	2016-01-29 00:04:16.630774	22	\N	2016-01-29 00:04:16.630774	2016-01-29 00:04:16.630774	65	t
-121	52	45	22	47	2016-01-29 00:09:56.299386	22	\N	2016-01-29 00:09:56.299386	2016-01-29 00:09:56.299386	65	t
-122	3	45	468	48	2016-01-29 08:24:33.589614	468	\N	2016-01-29 08:24:33.589614	2016-01-29 08:24:33.589614	65	t
-123	46	45	468	48	2016-01-29 08:24:56.935302	468	\N	2016-01-29 08:24:56.935302	2016-01-29 08:24:56.935302	65	t
-124	4	45	468	48	2016-01-29 08:25:13.01837	468	\N	2016-01-29 08:25:13.01837	2016-01-29 08:25:13.01837	65	t
-125	47	45	468	48	2016-01-29 08:25:28.697941	468	\N	2016-01-29 08:25:28.697941	2016-01-29 08:25:28.697941	65	t
-126	5	45	468	48	2016-01-29 08:25:43.351781	468	\N	2016-01-29 08:25:43.351781	2016-01-29 08:25:43.351781	65	t
-127	6	45	468	48	2016-01-29 08:25:57.646454	468	\N	2016-01-29 08:25:57.646454	2016-01-29 08:25:57.646454	65	t
-128	2	45	468	48	2016-01-29 08:26:12.812109	468	\N	2016-01-29 08:26:12.812109	2016-01-29 08:26:12.812109	65	t
-129	53	45	183	47	2016-01-29 08:35:29.174257	183	\N	2016-01-29 08:35:29.174257	2016-01-29 08:35:29.174257	65	t
-130	54	45	183	47	2016-01-29 08:36:27.59807	183	\N	2016-01-29 08:36:27.59807	2016-01-29 08:36:27.59807	65	t
-131	7	45	468	48	2016-01-29 08:41:01.159529	468	\N	2016-01-29 08:41:01.159529	2016-01-29 08:41:01.159529	65	t
-132	55	45	54	47	2016-01-29 09:33:56.51877	54	\N	2016-01-29 09:33:56.51877	2016-01-29 09:33:56.51877	65	t
-133	56	45	87	47	2016-01-29 09:41:24.559517	87	\N	2016-01-29 09:41:24.559517	2016-01-29 09:41:24.559517	65	t
-134	57	45	468	47	2016-01-29 09:48:57.644719	468	\N	2016-01-29 09:48:57.644719	2016-01-29 09:48:57.644719	65	t
-135	58	45	87	47	2016-01-29 09:49:44.269578	87	\N	2016-01-29 09:49:44.269578	2016-01-29 09:49:44.269578	65	t
-136	59	45	87	47	2016-01-29 09:52:30.663568	87	\N	2016-01-29 09:52:30.663568	2016-01-29 09:52:30.663568	65	t
-137	56	45	468	48	2016-01-29 09:57:51.864544	468	\N	2016-01-29 09:57:51.864544	2016-01-29 09:57:51.864544	65	t
-138	57	45	468	48	2016-01-29 09:58:35.391725	468	\N	2016-01-29 09:58:35.391725	2016-01-29 09:58:35.391725	65	t
-139	59	45	468	48	2016-01-29 09:58:56.472753	468	\N	2016-01-29 09:58:56.472753	2016-01-29 09:58:56.472753	65	t
-140	58	45	468	48	2016-01-29 09:59:19.432867	468	\N	2016-01-29 09:59:19.432867	2016-01-29 09:59:19.432867	65	t
-143	60	45	468	47	2016-01-29 10:00:15.110682	468	\N	2016-01-29 10:00:15.110682	2016-01-29 10:00:15.110682	65	t
-144	55	45	54	48	2016-01-29 09:33:56.51877	54	\N	2016-01-29 09:33:56.51877	2016-01-29 09:33:56.51877	65	t
-145	60	45	468	48	2016-01-29 10:06:45.115164	468	\N	2016-01-29 10:06:45.115164	2016-01-29 10:06:45.115164	65	t
-146	61	45	468	47	2016-01-29 10:07:21.554002	468	\N	2016-01-29 10:07:21.554002	2016-01-29 10:07:21.554002	65	t
-147	62	45	468	47	2016-01-29 10:19:35.224593	468	\N	2016-01-29 10:19:35.224593	2016-01-29 10:19:35.224593	65	t
-148	61	45	468	48	2016-01-29 10:26:37.143133	468	\N	2016-01-29 10:26:37.143133	2016-01-29 10:26:37.143133	65	t
-149	62	45	468	48	2016-01-29 10:27:02.558419	468	\N	2016-01-29 10:27:02.558419	2016-01-29 10:27:02.558419	65	t
-150	63	45	468	47	2016-01-29 10:27:43.157678	468	\N	2016-01-29 10:27:43.157678	2016-01-29 10:27:43.157678	65	t
-151	64	45	437	47	2016-01-29 10:34:57.962512	437	\N	2016-01-29 10:34:57.962512	2016-01-29 10:34:57.962512	65	t
-152	65	45	468	47	2016-01-29 10:36:53.052505	468	\N	2016-01-29 10:36:53.052505	2016-01-29 10:36:53.052505	65	t
-153	66	45	437	47	2016-01-29 10:40:27.744364	437	\N	2016-01-29 10:40:27.744364	2016-01-29 10:40:27.744364	65	t
-154	67	45	437	47	2016-01-29 10:47:05.740413	437	\N	2016-01-29 10:47:05.740413	2016-01-29 10:47:05.740413	65	t
-155	68	45	468	47	2016-01-29 10:48:53.976561	468	\N	2016-01-29 10:48:53.976561	2016-01-29 10:48:53.976561	65	t
-156	69	45	437	47	2016-01-29 10:53:06.845572	437	\N	2016-01-29 10:53:06.845572	2016-01-29 10:53:06.845572	65	t
-157	70	45	437	47	2016-01-29 10:57:04.441748	437	\N	2016-01-29 10:57:04.441748	2016-01-29 10:57:04.441748	65	t
-158	71	45	468	47	2016-01-29 11:03:19.726473	468	\N	2016-01-29 11:03:19.726473	2016-01-29 11:03:19.726473	65	t
-159	2	45	467	50	2016-01-29 11:07:51.885166	467	\N	2016-01-29 11:07:51.885166	2016-01-29 11:07:51.885166	65	t
-160	72	45	468	47	2016-01-29 11:10:17.273642	468	\N	2016-01-29 11:10:17.273642	2016-01-29 11:10:17.273642	65	t
-161	3	45	467	50	2016-01-29 11:13:22.051668	467	\N	2016-01-29 11:13:22.051668	2016-01-29 11:13:22.051668	65	t
-162	4	45	467	50	2016-01-29 11:18:47.226095	467	\N	2016-01-29 11:18:47.226095	2016-01-29 11:18:47.226095	65	t
-163	73	45	470	47	2016-01-29 11:20:44.172643	470	\N	2016-01-29 11:20:44.172643	2016-01-29 11:20:44.172643	65	t
-164	63	45	468	48	2016-01-29 11:27:37.796048	468	\N	2016-01-29 11:27:37.796048	2016-01-29 11:27:37.796048	65	t
-165	71	45	468	48	2016-01-29 11:27:54.004853	468	\N	2016-01-29 11:27:54.004853	2016-01-29 11:27:54.004853	65	t
-166	65	45	468	48	2016-01-29 11:28:10.072579	468	\N	2016-01-29 11:28:10.072579	2016-01-29 11:28:10.072579	65	t
-167	72	45	468	48	2016-01-29 11:28:29.889692	468	\N	2016-01-29 11:28:29.889692	2016-01-29 11:28:29.889692	65	t
-168	68	45	468	48	2016-01-29 11:28:52.126037	468	\N	2016-01-29 11:28:52.126037	2016-01-29 11:28:52.126037	65	t
-169	5	45	467	50	2016-01-29 11:40:59.659852	467	\N	2016-01-29 11:40:59.659852	2016-01-29 11:40:59.659852	65	t
-170	3	45	68	79	2016-01-29 11:46:05.90738	68	\N	2016-01-29 11:46:05.90738	2016-01-29 11:46:05.90738	65	t
-171	6	45	467	50	2016-01-29 11:46:27.974228	467	\N	2016-01-29 11:46:27.974228	2016-01-29 11:46:27.974228	65	t
-172	7	45	467	50	2016-01-29 11:50:36.440321	467	\N	2016-01-29 11:50:36.440321	2016-01-29 11:50:36.440321	65	t
-173	46	45	467	50	2016-01-29 11:52:41.952806	467	\N	2016-01-29 11:52:41.952806	2016-01-29 11:52:41.952806	65	t
-174	47	45	467	50	2016-01-29 11:59:48.563361	467	\N	2016-01-29 11:59:48.563361	2016-01-29 11:59:48.563361	65	t
-175	47	45	467	50	2016-01-29 12:00:08.261151	467	\N	2016-01-29 12:00:08.261151	2016-01-29 12:00:08.261151	65	t
-176	74	45	453	47	2016-01-29 13:15:41.513739	453	\N	2016-01-29 13:15:41.513739	2016-01-29 13:15:41.513739	65	t
-177	75	45	470	47	2016-01-29 13:21:10.891802	470	\N	2016-01-29 13:21:10.891802	2016-01-29 13:21:10.891802	65	t
-178	3	45	468	48	2016-01-29 13:42:22.229205	468	\N	2016-01-29 13:42:22.229205	2016-01-29 13:42:22.229205	65	t
-179	75	45	468	48	2016-01-29 13:42:48.817321	468	\N	2016-01-29 13:42:48.817321	2016-01-29 13:42:48.817321	65	t
-180	7	45	468	79	2016-01-29 13:43:22.962638	468	\N	2016-01-29 13:43:22.962638	2016-01-29 13:43:22.962638	65	t
-181	7	45	468	48	2016-01-29 13:43:40.021962	468	\N	2016-01-29 13:43:40.021962	2016-01-29 13:43:40.021962	65	t
-182	73	45	468	48	2016-01-29 14:30:46.206412	468	\N	2016-01-29 14:30:46.206412	2016-01-29 14:30:46.206412	65	t
-183	28	45	468	48	2016-01-29 14:31:09.713486	468	\N	2016-01-29 14:31:09.713486	2016-01-29 14:31:09.713486	65	t
-184	3	45	467	50	2016-01-29 14:38:22.925095	467	\N	2016-01-29 14:38:22.925095	2016-01-29 14:38:22.925095	65	t
-185	7	45	467	49	2016-01-29 14:39:51.607772	467	\N	2016-01-29 14:39:51.607772	2016-01-29 14:39:51.607772	65	t
-186	28	45	467	49	2016-01-29 14:41:37.273359	467	\N	2016-01-29 14:41:37.273359	2016-01-29 14:41:37.273359	65	t
-187	55	45	467	49	2016-01-29 14:43:16.858833	467	\N	2016-01-29 14:43:16.858833	2016-01-29 14:43:16.858833	65	t
-188	56	45	467	49	2016-01-29 14:45:30.73868	467	\N	2016-01-29 14:45:30.73868	2016-01-29 14:45:30.73868	65	t
-189	57	45	467	50	2016-01-29 14:59:25.70435	467	\N	2016-01-29 14:59:25.70435	2016-01-29 14:59:25.70435	65	t
-190	58	45	467	50	2016-01-29 15:36:50.95148	467	\N	2016-01-29 15:36:50.95148	2016-01-29 15:36:50.95148	65	t
-191	59	45	467	50	2016-01-29 16:12:04.804761	467	\N	2016-01-29 16:12:04.804761	2016-01-29 16:12:04.804761	65	t
-192	76	45	114	47	2016-01-29 16:19:53.425048	114	\N	2016-01-29 16:19:53.425048	2016-01-29 16:19:53.425048	65	t
-193	77	45	114	47	2016-01-29 16:36:49.914661	114	\N	2016-01-29 16:36:49.914661	2016-01-29 16:36:49.914661	65	t
-194	78	45	114	47	2016-01-29 16:39:37.212101	114	\N	2016-01-29 16:39:37.212101	2016-01-29 16:39:37.212101	65	t
-195	60	45	467	49	2016-01-29 16:46:13.795245	467	\N	2016-01-29 16:46:13.795245	2016-01-29 16:46:13.795245	65	t
-196	61	45	467	50	2016-01-29 16:52:55.414237	467	\N	2016-01-29 16:52:55.414237	2016-01-29 16:52:55.414237	65	t
-197	62	45	467	49	2016-01-29 16:55:31.603163	467	\N	2016-01-29 16:55:31.603163	2016-01-29 16:55:31.603163	65	t
-198	63	45	467	50	2016-01-29 17:00:44.998824	467	\N	2016-01-29 17:00:44.998824	2016-01-29 17:00:44.998824	65	t
-199	65	45	467	50	2016-01-29 17:23:04.919002	467	\N	2016-01-29 17:23:04.919002	2016-01-29 17:23:04.919002	65	t
-200	68	45	467	50	2016-01-29 17:26:04.224856	467	\N	2016-01-29 17:26:04.224856	2016-01-29 17:26:04.224856	65	t
-201	71	45	467	50	2016-01-29 17:45:27.372195	467	\N	2016-01-29 17:45:27.372195	2016-01-29 17:45:27.372195	65	t
-202	72	45	2	50	2016-01-29 17:49:57.728922	2	\N	2016-01-29 17:49:57.728922	2016-01-29 17:49:57.728922	65	t
-203	73	45	467	50	2016-01-29 17:53:28.955625	467	\N	2016-01-29 17:53:28.955625	2016-01-29 17:53:28.955625	65	t
-204	75	45	467	50	2016-01-29 17:57:30.414277	467	\N	2016-01-29 17:57:30.414277	2016-01-29 17:57:30.414277	65	t
-205	79	45	11	47	2016-01-31 13:51:24.722952	11	\N	2016-01-31 13:51:24.722952	2016-01-31 13:51:24.722952	65	f
-206	79	45	355	48	2016-02-01 10:11:09.466453	355	\N	2016-02-01 10:11:09.466453	2016-02-01 10:11:09.466453	65	f
-207	3	45	68	79	2016-02-01 10:38:09.805938	68	\N	2016-02-01 10:38:09.805938	2016-02-01 10:38:09.805938	65	t
-208	4	45	68	79	2016-02-01 10:44:34.314497	68	\N	2016-02-01 10:44:34.314497	2016-02-01 10:44:34.314497	65	t
-209	31	45	401	79	2016-02-01 11:03:45.887819	401	\N	2016-02-01 11:03:45.887819	2016-02-01 11:03:45.887819	65	t
-210	34	45	37	79	2016-02-01 11:08:04.139015	37	\N	2016-02-01 11:08:04.139015	2016-02-01 11:08:04.139015	65	t
-211	2	45	68	79	2016-02-01 11:46:03.969299	68	\N	2016-02-01 11:46:03.969299	2016-02-01 11:46:03.969299	65	t
-212	5	45	68	79	2016-02-01 11:54:14.228546	68	\N	2016-02-01 11:54:14.228546	2016-02-01 11:54:14.228546	65	t
-213	31	45	397	48	2016-02-01 13:50:27.044094	397	\N	2016-02-01 13:50:27.044094	2016-02-01 13:50:27.044094	65	t
-214	34	45	397	48	2016-02-01 13:50:33.323957	397	\N	2016-02-01 13:50:33.323957	2016-02-01 13:50:33.323957	65	t
-215	6	45	68	79	2016-02-01 14:00:03.372694	68	\N	2016-02-01 14:00:03.372694	2016-02-01 14:00:03.372694	65	t
-216	31	45	467	50	2016-02-01 14:06:41.868691	467	\N	2016-02-01 14:06:41.868691	2016-02-01 14:06:41.868691	65	t
-217	34	45	467	50	2016-02-01 14:09:19.252636	467	\N	2016-02-01 14:09:19.252636	2016-02-01 14:09:19.252636	65	t
-218	80	45	404	47	2016-02-01 14:56:21.657602	404	\N	2016-02-01 14:56:21.657602	2016-02-01 14:56:21.657602	65	t
-219	22	45	143	79	2016-02-01 15:14:00.093249	143	\N	2016-02-01 15:14:00.093249	2016-02-01 15:14:00.093249	65	t
-220	18	45	162	79	2016-02-01 15:14:28.12995	162	\N	2016-02-01 15:14:28.12995	2016-02-01 15:14:28.12995	65	t
-221	20	45	143	79	2016-02-01 15:16:21.722229	143	\N	2016-02-01 15:16:21.722229	2016-02-01 15:16:21.722229	65	t
-222	17	45	162	79	2016-02-01 15:18:35.206823	162	\N	2016-02-01 15:18:35.206823	2016-02-01 15:18:35.206823	65	t
-223	21	45	143	79	2016-02-01 15:19:19.699826	143	\N	2016-02-01 15:19:19.699826	2016-02-01 15:19:19.699826	65	t
-224	15	45	162	79	2016-02-01 15:20:38.808762	162	\N	2016-02-01 15:20:38.808762	2016-02-01 15:20:38.808762	65	t
-225	16	45	162	79	2016-02-01 15:23:56.882359	162	\N	2016-02-01 15:23:56.882359	2016-02-01 15:23:56.882359	65	t
-226	21	45	275	50	2016-02-01 15:28:16.129865	275	\N	2016-02-01 15:28:16.129865	2016-02-01 15:28:16.129865	65	t
-227	21	45	143	79	2016-02-01 15:58:00.060682	143	\N	2016-02-01 15:58:00.060682	2016-02-01 15:58:00.060682	65	t
-228	15	45	275	48	2016-02-01 17:05:12.868206	275	\N	2016-02-01 17:05:12.868206	2016-02-01 17:05:12.868206	65	t
-229	16	45	275	48	2016-02-01 17:09:05.419864	275	\N	2016-02-01 17:09:05.419864	2016-02-01 17:09:05.419864	65	t
-230	17	45	275	48	2016-02-01 17:11:01.26071	275	\N	2016-02-01 17:11:01.26071	2016-02-01 17:11:01.26071	65	t
-231	18	45	275	48	2016-02-01 17:13:38.767974	275	\N	2016-02-01 17:13:38.767974	2016-02-01 17:13:38.767974	65	t
-232	22	45	275	48	2016-02-01 17:16:56.121662	275	\N	2016-02-01 17:16:56.121662	2016-02-01 17:16:56.121662	65	t
-233	20	45	275	48	2016-02-01 17:19:13.0227	275	\N	2016-02-01 17:19:13.0227	2016-02-01 17:19:13.0227	65	t
-234	21	45	275	48	2016-02-01 17:21:14.910842	275	\N	2016-02-01 17:21:14.910842	2016-02-01 17:21:14.910842	65	t
-235	70	45	355	50	2016-02-01 17:37:18.469661	355	\N	2016-02-01 17:37:18.469661	2016-02-01 17:37:18.469661	65	t
-236	66	45	355	50	2016-02-01 17:37:50.375999	355	\N	2016-02-01 17:37:50.375999	2016-02-01 17:37:50.375999	65	t
-237	64	45	355	50	2016-02-01 17:38:17.380109	355	\N	2016-02-01 17:38:17.380109	2016-02-01 17:38:17.380109	65	t
-238	67	45	355	50	2016-02-01 17:38:53.015127	355	\N	2016-02-01 17:38:53.015127	2016-02-01 17:38:53.015127	65	t
-239	69	45	355	50	2016-02-01 17:39:40.329162	355	\N	2016-02-01 17:39:40.329162	2016-02-01 17:39:40.329162	65	t
-240	15	45	467	49	2016-02-02 14:11:51.83977	467	\N	2016-02-02 14:11:51.83977	2016-02-02 14:11:51.83977	65	t
-241	16	45	467	49	2016-02-02 14:14:56.667024	467	\N	2016-02-02 14:14:56.667024	2016-02-02 14:14:56.667024	65	t
-242	17	45	467	49	2016-02-02 14:16:14.088546	467	\N	2016-02-02 14:16:14.088546	2016-02-02 14:16:14.088546	65	t
-243	18	45	467	49	2016-02-02 14:17:09.551597	467	\N	2016-02-02 14:17:09.551597	2016-02-02 14:17:09.551597	65	t
-244	20	45	467	49	2016-02-02 14:20:27.912295	467	\N	2016-02-02 14:20:27.912295	2016-02-02 14:20:27.912295	65	t
-245	21	45	467	49	2016-02-02 14:23:22.696735	467	\N	2016-02-02 14:23:22.696735	2016-02-02 14:23:22.696735	65	t
-246	22	45	2	50	2016-02-02 14:27:30.239519	2	\N	2016-02-02 14:27:30.239519	2016-02-02 14:27:30.239519	65	t
-247	22	45	143	79	2016-02-02 14:33:11.612875	143	\N	2016-02-02 14:33:11.612875	2016-02-02 14:33:11.612875	65	t
-248	81	45	437	47	2016-02-03 10:24:13.710306	437	\N	2016-02-03 10:24:13.710306	2016-02-03 10:24:13.710306	65	f
-249	81	45	355	48	2016-02-03 10:32:10.470777	355	\N	2016-02-03 10:32:10.470777	2016-02-03 10:32:10.470777	65	f
-250	82	45	404	47	2016-02-03 10:37:16.704599	404	\N	2016-02-03 10:37:16.704599	2016-02-03 10:37:16.704599	65	t
-251	22	45	275	48	2016-02-03 10:50:02.562349	275	\N	2016-02-03 10:50:02.562349	2016-02-03 10:50:02.562349	65	t
-252	12	45	41	48	2016-02-03 10:57:38.769066	41	\N	2016-02-03 10:57:38.769066	2016-02-03 10:57:38.769066	65	t
-253	12	45	41	48	2016-02-03 10:58:56.597324	41	\N	2016-02-03 10:58:56.597324	2016-02-03 10:58:56.597324	65	t
-254	23	45	41	48	2016-02-03 11:29:04.958314	41	\N	2016-02-03 11:29:04.958314	2016-02-03 11:29:04.958314	65	t
-255	83	45	41	47	2016-02-03 13:40:51.430738	41	\N	2016-02-03 13:40:51.430738	2016-02-03 13:40:51.430738	65	t
-256	83	45	2	48	2016-02-03 14:04:15.743896	2	\N	2016-02-03 14:04:15.743896	2016-02-03 14:04:15.743896	65	t
-257	8	45	41	48	2016-02-03 14:05:55.750352	41	\N	2016-02-03 14:05:55.750352	2016-02-03 14:05:55.750352	65	t
-258	6	45	468	48	2016-02-03 15:00:29.998143	468	\N	2016-02-03 15:00:29.998143	2016-02-03 15:00:29.998143	65	t
-259	77	45	468	48	2016-02-03 15:01:12.792209	468	\N	2016-02-03 15:01:12.792209	2016-02-03 15:01:12.792209	65	t
-260	2	45	468	48	2016-02-03 15:01:51.621593	468	\N	2016-02-03 15:01:51.621593	2016-02-03 15:01:51.621593	65	t
-261	3	45	468	48	2016-02-03 15:02:25.358293	468	\N	2016-02-03 15:02:25.358293	2016-02-03 15:02:25.358293	65	t
-262	4	45	468	48	2016-02-03 15:02:53.690728	468	\N	2016-02-03 15:02:53.690728	2016-02-03 15:02:53.690728	65	t
-263	76	45	468	48	2016-02-03 15:03:21.308264	468	\N	2016-02-03 15:03:21.308264	2016-02-03 15:03:21.308264	65	t
-264	78	45	468	48	2016-02-03 15:03:49.402409	468	\N	2016-02-03 15:03:49.402409	2016-02-03 15:03:49.402409	65	t
-265	5	45	468	48	2016-02-03 15:04:19.215393	468	\N	2016-02-03 15:04:19.215393	2016-02-03 15:04:19.215393	65	t
-266	68	45	468	79	2016-02-03 15:47:41.051781	468	\N	2016-02-03 15:47:41.051781	2016-02-03 15:47:41.051781	65	t
-267	63	45	468	79	2016-02-03 15:51:43.147669	468	\N	2016-02-03 15:51:43.147669	2016-02-03 15:51:43.147669	65	t
-268	37	45	453	48	2016-02-03 15:57:23.208583	453	\N	2016-02-03 15:57:23.208583	2016-02-03 15:57:23.208583	65	t
-269	57	45	468	79	2016-02-03 16:01:14.663477	468	\N	2016-02-03 16:01:14.663477	2016-02-03 16:01:14.663477	65	t
-270	24	45	453	79	2016-02-03 16:02:26.254785	453	\N	2016-02-03 16:02:26.254785	2016-02-03 16:02:26.254785	65	t
-271	71	45	468	79	2016-02-03 16:09:27.653749	468	\N	2016-02-03 16:09:27.653749	2016-02-03 16:09:27.653749	65	t
-272	68	45	468	48	2016-02-03 16:09:58.472167	468	\N	2016-02-03 16:09:58.472167	2016-02-03 16:09:58.472167	65	t
-273	63	45	468	48	2016-02-03 16:10:44.100022	468	\N	2016-02-03 16:10:44.100022	2016-02-03 16:10:44.100022	65	t
-274	71	45	468	48	2016-02-03 16:11:14.960478	468	\N	2016-02-03 16:11:14.960478	2016-02-03 16:11:14.960478	65	t
-275	61	45	468	79	2016-02-03 16:22:39.497162	468	\N	2016-02-03 16:22:39.497162	2016-02-03 16:22:39.497162	65	t
-276	61	45	468	48	2016-02-03 16:23:10.200189	468	\N	2016-02-03 16:23:10.200189	2016-02-03 16:23:10.200189	65	t
-277	57	45	468	48	2016-02-03 16:23:49.955631	468	\N	2016-02-03 16:23:49.955631	2016-02-03 16:23:49.955631	65	t
-278	72	45	468	79	2016-02-03 16:28:04.418421	468	\N	2016-02-03 16:28:04.418421	2016-02-03 16:28:04.418421	65	t
-279	72	45	468	48	2016-02-03 16:28:31.248794	468	\N	2016-02-03 16:28:31.248794	2016-02-03 16:28:31.248794	65	t
-280	44	45	453	48	2016-02-03 16:39:47.111124	453	\N	2016-02-03 16:39:47.111124	2016-02-03 16:39:47.111124	65	t
-281	26	45	453	48	2016-02-03 16:40:02.387699	453	\N	2016-02-03 16:40:02.387699	2016-02-03 16:40:02.387699	65	t
-282	41	45	453	48	2016-02-03 16:40:12.419362	453	\N	2016-02-03 16:40:12.419362	2016-02-03 16:40:12.419362	65	t
-283	36	45	453	48	2016-02-03 16:40:23.652041	453	\N	2016-02-03 16:40:23.652041	2016-02-03 16:40:23.652041	65	t
-284	38	45	453	48	2016-02-03 16:40:30.914716	453	\N	2016-02-03 16:40:30.914716	2016-02-03 16:40:30.914716	65	t
-285	43	45	453	48	2016-02-03 16:40:36.902089	453	\N	2016-02-03 16:40:36.902089	2016-02-03 16:40:36.902089	65	t
-286	74	45	453	48	2016-02-03 16:40:42.984266	453	\N	2016-02-03 16:40:42.984266	2016-02-03 16:40:42.984266	65	t
-287	24	45	453	48	2016-02-03 16:40:49.05625	453	\N	2016-02-03 16:40:49.05625	2016-02-03 16:40:49.05625	65	t
-288	35	45	453	48	2016-02-03 16:40:55.307915	453	\N	2016-02-03 16:40:55.307915	2016-02-03 16:40:55.307915	65	t
-289	39	45	453	48	2016-02-03 16:41:01.414981	453	\N	2016-02-03 16:41:01.414981	2016-02-03 16:41:01.414981	65	t
-290	40	45	453	48	2016-02-03 16:41:13.921524	453	\N	2016-02-03 16:41:13.921524	2016-02-03 16:41:13.921524	65	t
-291	42	45	453	48	2016-02-03 16:41:25.593434	453	\N	2016-02-03 16:41:25.593434	2016-02-03 16:41:25.593434	65	t
-292	45	45	453	48	2016-02-03 16:41:28.407949	453	\N	2016-02-03 16:41:28.407949	2016-02-03 16:41:28.407949	65	t
-293	25	45	453	48	2016-02-03 16:41:28.521948	453	\N	2016-02-03 16:41:28.521948	2016-02-03 16:41:28.521948	65	t
-294	2	45	467	49	2016-02-04 06:57:27.629341	467	\N	2016-02-04 06:57:27.629341	2016-02-04 06:57:27.629341	65	t
-295	3	45	467	49	2016-02-04 06:59:49.24595	467	\N	2016-02-04 06:59:49.24595	2016-02-04 06:59:49.24595	65	t
-296	4	45	467	49	2016-02-04 07:01:24.119749	467	\N	2016-02-04 07:01:24.119749	2016-02-04 07:01:24.119749	65	t
-297	5	45	467	49	2016-02-04 07:03:20.075619	467	\N	2016-02-04 07:03:20.075619	2016-02-04 07:03:20.075619	65	t
-298	6	45	467	49	2016-02-04 07:04:50.231712	467	\N	2016-02-04 07:04:50.231712	2016-02-04 07:04:50.231712	65	t
-299	8	45	467	49	2016-02-04 07:06:46.322712	467	\N	2016-02-04 07:06:46.322712	2016-02-04 07:06:46.322712	65	t
-300	12	45	467	50	2016-02-04 07:15:43.52308	467	\N	2016-02-04 07:15:43.52308	2016-02-04 07:15:43.52308	65	t
-301	22	45	467	49	2016-02-04 07:18:11.619571	467	\N	2016-02-04 07:18:11.619571	2016-02-04 07:18:11.619571	65	t
-302	23	45	467	50	2016-02-04 07:20:18.819593	467	\N	2016-02-04 07:20:18.819593	2016-02-04 07:20:18.819593	65	t
-303	24	45	467	50	2016-02-04 07:24:03.182508	467	\N	2016-02-04 07:24:03.182508	2016-02-04 07:24:03.182508	65	t
-304	25	45	2	50	2016-02-04 07:27:25.39571	2	\N	2016-02-04 07:27:25.39571	2016-02-04 07:27:25.39571	65	t
-305	26	45	467	50	2016-02-04 07:29:36.861023	467	\N	2016-02-04 07:29:36.861023	2016-02-04 07:29:36.861023	65	t
-306	35	45	467	50	2016-02-04 07:31:47.591493	467	\N	2016-02-04 07:31:47.591493	2016-02-04 07:31:47.591493	65	t
-307	36	45	467	50	2016-02-04 07:33:40.416864	467	\N	2016-02-04 07:33:40.416864	2016-02-04 07:33:40.416864	65	t
-308	37	45	467	50	2016-02-04 07:35:05.72981	467	\N	2016-02-04 07:35:05.72981	2016-02-04 07:35:05.72981	65	t
-309	38	45	467	50	2016-02-04 07:38:53.574419	467	\N	2016-02-04 07:38:53.574419	2016-02-04 07:38:53.574419	65	t
-310	39	45	467	50	2016-02-04 07:40:12.385993	467	\N	2016-02-04 07:40:12.385993	2016-02-04 07:40:12.385993	65	t
-311	40	45	467	50	2016-02-04 07:42:48.390766	467	\N	2016-02-04 07:42:48.390766	2016-02-04 07:42:48.390766	65	t
-312	41	45	467	50	2016-02-04 07:45:09.282865	467	\N	2016-02-04 07:45:09.282865	2016-02-04 07:45:09.282865	65	t
-313	42	45	467	50	2016-02-04 07:51:07.277744	467	\N	2016-02-04 07:51:07.277744	2016-02-04 07:51:07.277744	65	t
-314	43	45	467	50	2016-02-04 07:52:41.062552	467	\N	2016-02-04 07:52:41.062552	2016-02-04 07:52:41.062552	65	t
-315	44	45	2	50	2016-02-04 07:58:15.151615	2	\N	2016-02-04 07:58:15.151615	2016-02-04 07:58:15.151615	65	t
-316	45	45	467	50	2016-02-04 08:00:15.065092	467	\N	2016-02-04 08:00:15.065092	2016-02-04 08:00:15.065092	65	t
-317	57	45	467	49	2016-02-04 08:05:47.772611	467	\N	2016-02-04 08:05:47.772611	2016-02-04 08:05:47.772611	65	t
-318	61	45	467	49	2016-02-04 08:09:13.58967	467	\N	2016-02-04 08:09:13.58967	2016-02-04 08:09:13.58967	65	t
-319	63	45	467	49	2016-02-04 08:12:14.870654	467	\N	2016-02-04 08:12:14.870654	2016-02-04 08:12:14.870654	65	t
-320	68	45	467	49	2016-02-04 08:14:17.749759	467	\N	2016-02-04 08:14:17.749759	2016-02-04 08:14:17.749759	65	t
-321	71	45	467	49	2016-02-04 08:17:00.651209	467	\N	2016-02-04 08:17:00.651209	2016-02-04 08:17:00.651209	65	t
-322	72	45	467	50	2016-02-04 08:20:50.518226	467	\N	2016-02-04 08:20:50.518226	2016-02-04 08:20:50.518226	65	t
-323	74	45	467	50	2016-02-04 08:25:19.214862	467	\N	2016-02-04 08:25:19.214862	2016-02-04 08:25:19.214862	65	t
-324	76	45	2	50	2016-02-04 08:37:38.282007	2	\N	2016-02-04 08:37:38.282007	2016-02-04 08:37:38.282007	65	t
-325	77	45	467	50	2016-02-04 08:44:11.849276	467	\N	2016-02-04 08:44:11.849276	2016-02-04 08:44:11.849276	65	t
-326	78	45	467	49	2016-02-04 08:46:53.94418	467	\N	2016-02-04 08:46:53.94418	2016-02-04 08:46:53.94418	65	t
-327	78	45	467	50	2016-02-04 08:49:36.044196	467	\N	2016-02-04 08:49:36.044196	2016-02-04 08:49:36.044196	65	t
-328	83	45	467	50	2016-02-04 08:53:35.440642	467	\N	2016-02-04 08:53:35.440642	2016-02-04 08:53:35.440642	65	t
-329	72	45	468	79	2016-02-04 10:38:57.984861	468	\N	2016-02-04 10:38:57.984861	2016-02-04 10:38:57.984861	65	t
-330	72	45	468	48	2016-02-04 10:40:09.688025	468	\N	2016-02-04 10:40:09.688025	2016-02-04 10:40:09.688025	65	t
-331	58	45	87	79	2016-02-05 09:35:44.663089	87	\N	2016-02-05 09:35:44.663089	2016-02-05 09:35:44.663089	65	t
-332	59	45	87	79	2016-02-05 09:39:59.410274	87	\N	2016-02-05 09:39:59.410274	2016-02-05 09:39:59.410274	65	t
-333	40	45	453	79	2016-02-05 09:52:09.170987	453	\N	2016-02-05 09:52:09.170987	2016-02-05 09:52:09.170987	65	t
-334	42	45	453	79	2016-02-05 09:55:10.367191	453	\N	2016-02-05 09:55:10.367191	2016-02-05 09:55:10.367191	65	t
-335	41	45	453	79	2016-02-05 09:57:52.136268	453	\N	2016-02-05 09:57:52.136268	2016-02-05 09:57:52.136268	65	t
-336	35	45	453	79	2016-02-05 10:00:21.485723	453	\N	2016-02-05 10:00:21.485723	2016-02-05 10:00:21.485723	65	t
-337	36	45	453	79	2016-02-05 10:01:07.753757	453	\N	2016-02-05 10:01:07.753757	2016-02-05 10:01:07.753757	65	t
-338	44	45	453	79	2016-02-05 10:03:50.022213	453	\N	2016-02-05 10:03:50.022213	2016-02-05 10:03:50.022213	65	t
-339	24	45	453	79	2016-02-05 10:27:57.734519	453	\N	2016-02-05 10:27:57.734519	2016-02-05 10:27:57.734519	65	t
-340	25	45	453	79	2016-02-05 10:30:44.007871	453	\N	2016-02-05 10:30:44.007871	2016-02-05 10:30:44.007871	65	t
-341	26	45	453	79	2016-02-05 10:36:46.878743	453	\N	2016-02-05 10:36:46.878743	2016-02-05 10:36:46.878743	65	t
-342	38	45	453	79	2016-02-05 10:39:58.408665	453	\N	2016-02-05 10:39:58.408665	2016-02-05 10:39:58.408665	65	t
-343	74	45	453	79	2016-02-05 10:43:22.23404	453	\N	2016-02-05 10:43:22.23404	2016-02-05 10:43:22.23404	65	t
-344	39	45	453	79	2016-02-05 10:44:37.326031	453	\N	2016-02-05 10:44:37.326031	2016-02-05 10:44:37.326031	65	t
-345	45	45	453	79	2016-02-05 10:46:09.175818	453	\N	2016-02-05 10:46:09.175818	2016-02-05 10:46:09.175818	65	t
-346	43	45	453	79	2016-02-05 10:46:50.080333	453	\N	2016-02-05 10:46:50.080333	2016-02-05 10:46:50.080333	65	t
-347	37	45	453	79	2016-02-05 10:48:13.009755	453	\N	2016-02-05 10:48:13.009755	2016-02-05 10:48:13.009755	65	t
-348	72	45	467	49	2016-02-05 10:53:18.468978	467	\N	2016-02-05 10:53:18.468978	2016-02-05 10:53:18.468978	65	t
-349	84	45	358	47	2016-02-05 11:24:27.901353	358	\N	2016-02-05 11:24:27.901353	2016-02-05 11:24:27.901353	65	t
-350	58	45	468	48	2016-02-05 11:25:42.870599	468	\N	2016-02-05 11:25:42.870599	2016-02-05 11:25:42.870599	65	t
-351	73	45	470	79	2016-02-05 11:25:56.131743	470	\N	2016-02-05 11:25:56.131743	2016-02-05 11:25:56.131743	65	t
-352	59	45	468	48	2016-02-05 11:26:17.401142	468	\N	2016-02-05 11:26:17.401142	2016-02-05 11:26:17.401142	65	t
-353	73	45	468	48	2016-02-05 11:26:51.628634	468	\N	2016-02-05 11:26:51.628634	2016-02-05 11:26:51.628634	65	t
-354	78	45	114	79	2016-02-05 13:13:10.291642	114	\N	2016-02-05 13:13:10.291642	2016-02-05 13:13:10.291642	65	t
-355	77	45	114	79	2016-02-05 13:20:37.858572	114	\N	2016-02-05 13:20:37.858572	2016-02-05 13:20:37.858572	65	t
-356	34	45	37	79	2016-02-05 13:57:25.493138	37	\N	2016-02-05 13:57:25.493138	2016-02-05 13:57:25.493138	65	t
-357	31	45	401	79	2016-02-05 13:59:47.002387	401	\N	2016-02-05 13:59:47.002387	2016-02-05 13:59:47.002387	65	t
-358	34	45	397	48	2016-02-05 14:05:46.55153	397	\N	2016-02-05 14:05:46.55153	2016-02-05 14:05:46.55153	65	t
-359	31	45	397	48	2016-02-05 14:05:52.632166	397	\N	2016-02-05 14:05:52.632166	2016-02-05 14:05:52.632166	65	t
-360	76	45	114	79	2016-02-05 15:20:12.051575	114	\N	2016-02-05 15:20:12.051575	2016-02-05 15:20:12.051575	65	t
-361	37	45	453	48	2016-02-05 15:35:27.974568	453	\N	2016-02-05 15:35:27.974568	2016-02-05 15:35:27.974568	65	t
-362	44	45	453	48	2016-02-05 15:37:14.221993	453	\N	2016-02-05 15:37:14.221993	2016-02-05 15:37:14.221993	65	t
-363	41	45	453	48	2016-02-05 15:38:27.933436	453	\N	2016-02-05 15:38:27.933436	2016-02-05 15:38:27.933436	65	t
-364	38	45	453	48	2016-02-05 15:40:37.087852	453	\N	2016-02-05 15:40:37.087852	2016-02-05 15:40:37.087852	65	t
-365	74	45	453	48	2016-02-05 15:41:36.754725	453	\N	2016-02-05 15:41:36.754725	2016-02-05 15:41:36.754725	65	t
-366	42	45	453	48	2016-02-05 15:43:12.050136	453	\N	2016-02-05 15:43:12.050136	2016-02-05 15:43:12.050136	65	t
-367	26	45	453	50	2016-02-05 15:46:50.806798	453	\N	2016-02-05 15:46:50.806798	2016-02-05 15:46:50.806798	65	t
-368	26	45	453	79	2016-02-05 15:51:28.593764	453	\N	2016-02-05 15:51:28.593764	2016-02-05 15:51:28.593764	65	t
-369	26	45	453	48	2016-02-05 15:51:42.344284	453	\N	2016-02-05 15:51:42.344284	2016-02-05 15:51:42.344284	65	t
-370	24	45	453	50	2016-02-05 15:52:50.480714	453	\N	2016-02-05 15:52:50.480714	2016-02-05 15:52:50.480714	65	t
-371	24	45	453	79	2016-02-05 15:55:35.405197	453	\N	2016-02-05 15:55:35.405197	2016-02-05 15:55:35.405197	65	t
-372	24	45	453	48	2016-02-05 15:55:50.005442	453	\N	2016-02-05 15:55:50.005442	2016-02-05 15:55:50.005442	65	t
-373	24	45	2	50	2016-02-05 16:15:42.874172	2	\N	2016-02-05 16:15:42.874172	2016-02-05 16:15:42.874172	65	t
-374	25	45	453	50	2016-02-05 16:16:31.819468	453	\N	2016-02-05 16:16:31.819468	2016-02-05 16:16:31.819468	65	t
-375	25	45	453	79	2016-02-05 16:18:49.885684	453	\N	2016-02-05 16:18:49.885684	2016-02-05 16:18:49.885684	65	t
-376	25	45	453	48	2016-02-05 16:19:12.152086	453	\N	2016-02-05 16:19:12.152086	2016-02-05 16:19:12.152086	65	t
-377	24	45	453	79	2016-02-05 16:19:31.443156	453	\N	2016-02-05 16:19:31.443156	2016-02-05 16:19:31.443156	65	t
-378	24	45	453	48	2016-02-05 16:21:16.234873	453	\N	2016-02-05 16:21:16.234873	2016-02-05 16:21:16.234873	65	t
-379	26	45	467	49	2016-02-05 16:22:53.274136	467	\N	2016-02-05 16:22:53.274136	2016-02-05 16:22:53.274136	65	t
-380	36	45	453	50	2016-02-05 16:24:56.820314	453	\N	2016-02-05 16:24:56.820314	2016-02-05 16:24:56.820314	65	t
-381	36	45	453	79	2016-02-05 16:30:50.881536	453	\N	2016-02-05 16:30:50.881536	2016-02-05 16:30:50.881536	65	t
-382	36	45	453	48	2016-02-05 16:31:22.338772	453	\N	2016-02-05 16:31:22.338772	2016-02-05 16:31:22.338772	65	t
-383	43	45	453	48	2016-02-05 16:32:28.621618	453	\N	2016-02-05 16:32:28.621618	2016-02-05 16:32:28.621618	65	t
-384	35	45	2	50	2016-02-05 16:33:45.894867	2	\N	2016-02-05 16:33:45.894867	2016-02-05 16:33:45.894867	65	t
-385	35	45	453	79	2016-02-05 16:38:19.849799	453	\N	2016-02-05 16:38:19.849799	2016-02-05 16:38:19.849799	65	t
-386	35	45	453	48	2016-02-05 16:38:52.738875	453	\N	2016-02-05 16:38:52.738875	2016-02-05 16:38:52.738875	65	t
-387	39	45	453	50	2016-02-05 16:42:02.706016	453	\N	2016-02-05 16:42:02.706016	2016-02-05 16:42:02.706016	65	t
-388	39	45	453	79	2016-02-05 16:56:39.320071	453	\N	2016-02-05 16:56:39.320071	2016-02-05 16:56:39.320071	65	t
-389	39	45	453	48	2016-02-05 16:56:47.688549	453	\N	2016-02-05 16:56:47.688549	2016-02-05 16:56:47.688549	65	t
-390	40	45	453	50	2016-02-05 16:58:00.979412	453	\N	2016-02-05 16:58:00.979412	2016-02-05 16:58:00.979412	65	t
-391	40	45	453	79	2016-02-05 17:00:02.775349	453	\N	2016-02-05 17:00:02.775349	2016-02-05 17:00:02.775349	65	t
-392	40	45	453	48	2016-02-05 17:00:17.242525	453	\N	2016-02-05 17:00:17.242525	2016-02-05 17:00:17.242525	65	t
-393	45	45	453	50	2016-02-05 17:01:22.200236	453	\N	2016-02-05 17:01:22.200236	2016-02-05 17:01:22.200236	65	t
-394	45	45	453	79	2016-02-05 17:02:28.833725	453	\N	2016-02-05 17:02:28.833725	2016-02-05 17:02:28.833725	65	t
-395	45	45	453	48	2016-02-05 17:02:42.100986	453	\N	2016-02-05 17:02:42.100986	2016-02-05 17:02:42.100986	65	t
-396	85	45	235	47	2016-02-08 10:14:50.124741	235	\N	2016-02-08 10:14:50.124741	2016-02-08 10:14:50.124741	65	t
-397	24	45	467	50	2016-02-10 07:14:16.788693	467	\N	2016-02-10 07:14:16.788693	2016-02-10 07:14:16.788693	65	t
-398	25	45	467	50	2016-02-10 07:17:50.55378	467	\N	2016-02-10 07:17:50.55378	2016-02-10 07:17:50.55378	65	t
-399	31	45	467	49	2016-02-10 07:19:13.58195	467	\N	2016-02-10 07:19:13.58195	2016-02-10 07:19:13.58195	65	t
-400	34	45	467	49	2016-02-10 07:21:11.765947	467	\N	2016-02-10 07:21:11.765947	2016-02-10 07:21:11.765947	65	t
-401	35	45	467	49	2016-02-10 07:27:19.785507	467	\N	2016-02-10 07:27:19.785507	2016-02-10 07:27:19.785507	65	t
-402	36	45	467	50	2016-02-10 07:32:27.28957	467	\N	2016-02-10 07:32:27.28957	2016-02-10 07:32:27.28957	65	t
-403	37	45	2	50	2016-02-10 07:44:31.021243	2	\N	2016-02-10 07:44:31.021243	2016-02-10 07:44:31.021243	65	t
-404	38	45	467	50	2016-02-10 07:54:01.022201	467	\N	2016-02-10 07:54:01.022201	2016-02-10 07:54:01.022201	65	t
-405	39	45	467	50	2016-02-10 07:59:43.037975	467	\N	2016-02-10 07:59:43.037975	2016-02-10 07:59:43.037975	65	t
-406	40	45	467	50	2016-02-10 08:03:08.534888	467	\N	2016-02-10 08:03:08.534888	2016-02-10 08:03:08.534888	65	t
-407	41	45	467	50	2016-02-10 08:05:49.090009	467	\N	2016-02-10 08:05:49.090009	2016-02-10 08:05:49.090009	65	t
-408	42	45	467	50	2016-02-10 08:14:17.256504	467	\N	2016-02-10 08:14:17.256504	2016-02-10 08:14:17.256504	65	t
-409	42	45	467	50	2016-02-10 08:14:48.333237	467	\N	2016-02-10 08:14:48.333237	2016-02-10 08:14:48.333237	65	t
-410	43	45	467	50	2016-02-10 08:18:06.887593	467	\N	2016-02-10 08:18:06.887593	2016-02-10 08:18:06.887593	65	t
-411	44	45	467	50	2016-02-10 08:35:27.524813	467	\N	2016-02-10 08:35:27.524813	2016-02-10 08:35:27.524813	65	t
-412	45	45	467	50	2016-02-10 08:40:43.330957	467	\N	2016-02-10 08:40:43.330957	2016-02-10 08:40:43.330957	65	t
-413	58	45	467	49	2016-02-10 08:43:46.773569	467	\N	2016-02-10 08:43:46.773569	2016-02-10 08:43:46.773569	65	t
-414	59	45	2	50	2016-02-10 08:52:21.93998	2	\N	2016-02-10 08:52:21.93998	2016-02-10 08:52:21.93998	65	t
-415	73	45	467	49	2016-02-10 08:54:09.954606	467	\N	2016-02-10 08:54:09.954606	2016-02-10 08:54:09.954606	65	t
-416	74	45	467	50	2016-02-10 08:58:40.048706	467	\N	2016-02-10 08:58:40.048706	2016-02-10 08:58:40.048706	65	t
-417	78	45	468	48	2016-02-10 10:57:24.806012	468	\N	2016-02-10 10:57:24.806012	2016-02-10 10:57:24.806012	65	t
-418	77	45	468	48	2016-02-10 10:58:19.505466	468	\N	2016-02-10 10:58:19.505466	2016-02-10 10:58:19.505466	65	t
-419	76	45	468	48	2016-02-10 10:58:47.217806	468	\N	2016-02-10 10:58:47.217806	2016-02-10 10:58:47.217806	65	t
-420	65	45	468	79	2016-02-10 11:19:45.142499	468	\N	2016-02-10 11:19:45.142499	2016-02-10 11:19:45.142499	65	t
-421	65	45	468	48	2016-02-10 11:20:38.258967	468	\N	2016-02-10 11:20:38.258967	2016-02-10 11:20:38.258967	65	t
-422	86	45	443	47	2016-02-10 11:21:45.095088	443	\N	2016-02-10 11:21:45.095088	2016-02-10 11:21:45.095088	65	t
-423	65	45	467	49	2016-02-10 11:28:32.227364	467	\N	2016-02-10 11:28:32.227364	2016-02-10 11:28:32.227364	65	t
-424	76	45	467	49	2016-02-10 11:30:21.818089	467	\N	2016-02-10 11:30:21.818089	2016-02-10 11:30:21.818089	65	t
-425	77	45	467	50	2016-02-10 11:34:05.903796	467	\N	2016-02-10 11:34:05.903796	2016-02-10 11:34:05.903796	65	t
-427	88	45	443	47	2016-02-10 12:01:49.906648	443	\N	2016-02-10 12:01:49.906648	2016-02-10 12:01:49.906648	65	t
-428	89	45	443	47	2016-02-10 12:02:49.307864	443	\N	2016-02-10 12:02:49.307864	2016-02-10 12:02:49.307864	65	t
-429	90	45	443	47	2016-02-10 12:04:04.863192	443	\N	2016-02-10 12:04:04.863192	2016-02-10 12:04:04.863192	65	t
-430	91	45	443	47	2016-02-10 12:06:36.648787	443	\N	2016-02-10 12:06:36.648787	2016-02-10 12:06:36.648787	65	t
-431	92	45	443	47	2016-02-10 12:08:13.475804	443	\N	2016-02-10 12:08:13.475804	2016-02-10 12:08:13.475804	65	t
-432	40	45	453	79	2016-02-10 13:11:31.678561	453	\N	2016-02-10 13:11:31.678561	2016-02-10 13:11:31.678561	65	t
-433	93	45	458	47	2016-02-10 13:26:37.115382	458	\N	2016-02-10 13:26:37.115382	2016-02-10 13:26:37.115382	65	t
-434	94	45	458	47	2016-02-10 13:33:09.431053	458	\N	2016-02-10 13:33:09.431053	2016-02-10 13:33:09.431053	65	t
-435	95	45	444	47	2016-02-10 13:54:47.565142	444	\N	2016-02-10 13:54:47.565142	2016-02-10 13:54:47.565142	65	t
-436	96	45	235	47	2016-02-11 07:40:40.768553	235	\N	2016-02-11 07:40:40.768553	2016-02-11 07:40:40.768553	65	t
-437	97	45	384	47	2016-02-11 14:42:57.186094	384	\N	2016-02-11 14:42:57.186094	2016-02-11 14:42:57.186094	65	t
-438	98	45	384	47	2016-02-11 14:49:02.833812	384	\N	2016-02-11 14:49:02.833812	2016-02-11 14:49:02.833812	65	t
-439	99	45	384	47	2016-02-11 14:55:11.397861	384	\N	2016-02-11 14:55:11.397861	2016-02-11 14:55:11.397861	65	t
-440	100	45	384	47	2016-02-11 15:01:01.930095	384	\N	2016-02-11 15:01:01.930095	2016-02-11 15:01:01.930095	65	t
-441	101	45	400	47	2016-02-11 15:01:27.509376	400	\N	2016-02-11 15:01:27.509376	2016-02-11 15:01:27.509376	65	t
-442	42	45	453	79	2016-02-11 15:11:54.39653	453	\N	2016-02-11 15:11:54.39653	2016-02-11 15:11:54.39653	65	t
-443	102	45	400	47	2016-02-11 15:28:22.773721	400	\N	2016-02-11 15:28:22.773721	2016-02-11 15:28:22.773721	65	t
-444	45	45	453	79	2016-02-11 15:34:12.441452	453	\N	2016-02-11 15:34:12.441452	2016-02-11 15:34:12.441452	65	t
-445	25	45	453	79	2016-02-11 15:36:01.200139	453	\N	2016-02-11 15:36:01.200139	2016-02-11 15:36:01.200139	65	t
-446	24	45	453	79	2016-02-11 15:39:49.091192	453	\N	2016-02-11 15:39:49.091192	2016-02-11 15:39:49.091192	65	t
-447	41	45	453	79	2016-02-11 15:42:18.878759	453	\N	2016-02-11 15:42:18.878759	2016-02-11 15:42:18.878759	65	t
-448	39	45	453	79	2016-02-11 15:50:51.060169	453	\N	2016-02-11 15:50:51.060169	2016-02-11 15:50:51.060169	65	t
-449	103	45	400	47	2016-02-11 15:56:04.086779	400	\N	2016-02-11 15:56:04.086779	2016-02-11 15:56:04.086779	65	t
-450	36	45	453	79	2016-02-11 15:58:11.940858	453	\N	2016-02-11 15:58:11.940858	2016-02-11 15:58:11.940858	65	t
-451	70	45	437	79	2016-02-11 15:59:19.257411	437	\N	2016-02-11 15:59:19.257411	2016-02-11 15:59:19.257411	65	t
-452	69	45	437	79	2016-02-11 16:02:23.693429	437	\N	2016-02-11 16:02:23.693429	2016-02-11 16:02:23.693429	65	t
-453	64	45	437	79	2016-02-11 16:05:20.335691	437	\N	2016-02-11 16:05:20.335691	2016-02-11 16:05:20.335691	65	t
-454	38	45	453	79	2016-02-11 16:05:29.657192	453	\N	2016-02-11 16:05:29.657192	2016-02-11 16:05:29.657192	65	t
-455	64	45	355	50	2016-02-11 16:07:42.699341	355	\N	2016-02-11 16:07:42.699341	2016-02-11 16:07:42.699341	65	t
-456	64	45	437	79	2016-02-11 16:08:35.715082	437	\N	2016-02-11 16:08:35.715082	2016-02-11 16:08:35.715082	65	t
-457	43	45	453	79	2016-02-11 16:09:47.368916	453	\N	2016-02-11 16:09:47.368916	2016-02-11 16:09:47.368916	65	t
-458	66	45	437	79	2016-02-11 16:09:54.377567	437	\N	2016-02-11 16:09:54.377567	2016-02-11 16:09:54.377567	65	t
-459	104	45	437	47	2016-02-11 16:10:32.074507	437	\N	2016-02-11 16:10:32.074507	2016-02-11 16:10:32.074507	65	t
-460	74	45	453	79	2016-02-11 16:20:25.617126	453	\N	2016-02-11 16:20:25.617126	2016-02-11 16:20:25.617126	65	t
-461	36	45	453	48	2016-02-11 16:20:44.982582	453	\N	2016-02-11 16:20:44.982582	2016-02-11 16:20:44.982582	65	t
-462	38	45	453	48	2016-02-11 16:20:50.407522	453	\N	2016-02-11 16:20:50.407522	2016-02-11 16:20:50.407522	65	t
-463	43	45	453	48	2016-02-11 16:20:55.825057	453	\N	2016-02-11 16:20:55.825057	2016-02-11 16:20:55.825057	65	t
-464	105	45	400	47	2016-02-11 16:21:02.340359	400	\N	2016-02-11 16:21:02.340359	2016-02-11 16:21:02.340359	65	t
-465	74	45	453	48	2016-02-11 16:21:11.884451	453	\N	2016-02-11 16:21:11.884451	2016-02-11 16:21:11.884451	65	t
-466	24	45	453	48	2016-02-11 16:21:17.396545	453	\N	2016-02-11 16:21:17.396545	2016-02-11 16:21:17.396545	65	t
-467	41	45	453	48	2016-02-11 16:21:22.880042	453	\N	2016-02-11 16:21:22.880042	2016-02-11 16:21:22.880042	65	t
-468	39	45	453	48	2016-02-11 16:21:22.991645	453	\N	2016-02-11 16:21:22.991645	2016-02-11 16:21:22.991645	65	t
-469	40	45	453	48	2016-02-11 16:21:33.604379	453	\N	2016-02-11 16:21:33.604379	2016-02-11 16:21:33.604379	65	t
-470	42	45	453	48	2016-02-11 16:21:55.43393	453	\N	2016-02-11 16:21:55.43393	2016-02-11 16:21:55.43393	65	t
-471	45	45	453	48	2016-02-11 16:22:01.095063	453	\N	2016-02-11 16:22:01.095063	2016-02-11 16:22:01.095063	65	t
-472	25	45	453	48	2016-02-11 16:22:01.198346	453	\N	2016-02-11 16:22:01.198346	2016-02-11 16:22:01.198346	65	t
-473	67	45	437	79	2016-02-11 16:22:04.434863	437	\N	2016-02-11 16:22:04.434863	2016-02-11 16:22:04.434863	65	t
-474	37	45	453	79	2016-02-11 16:27:59.435309	453	\N	2016-02-11 16:27:59.435309	2016-02-11 16:27:59.435309	65	t
-475	37	45	453	48	2016-02-11 16:28:21.092022	453	\N	2016-02-11 16:28:21.092022	2016-02-11 16:28:21.092022	65	t
-476	44	45	453	79	2016-02-11 16:44:09.716906	453	\N	2016-02-11 16:44:09.716906	2016-02-11 16:44:09.716906	65	t
-477	44	45	453	48	2016-02-11 16:45:41.944572	453	\N	2016-02-11 16:45:41.944572	2016-02-11 16:45:41.944572	65	t
-478	106	45	444	47	2016-02-11 17:25:54.543004	444	\N	2016-02-11 17:25:54.543004	2016-02-11 17:25:54.543004	65	t
-479	107	45	444	47	2016-02-11 19:29:42.724127	444	\N	2016-02-11 19:29:42.724127	2016-02-11 19:29:42.724127	65	t
-480	95	45	444	48	2016-02-11 19:32:14.491982	444	\N	2016-02-11 19:32:14.491982	2016-02-11 19:32:14.491982	65	t
-481	107	45	444	48	2016-02-11 19:32:33.234069	444	\N	2016-02-11 19:32:33.234069	2016-02-11 19:32:33.234069	65	t
-482	106	45	444	48	2016-02-11 19:32:56.828772	444	\N	2016-02-11 19:32:56.828772	2016-02-11 19:32:56.828772	65	t
-483	24	45	467	49	2016-02-12 06:29:51.312955	467	\N	2016-02-12 06:29:51.312955	2016-02-12 06:29:51.312955	65	t
-484	25	45	467	49	2016-02-12 06:33:59.439968	467	\N	2016-02-12 06:33:59.439968	2016-02-12 06:33:59.439968	65	t
-485	25	45	467	49	2016-02-12 06:34:29.540661	467	\N	2016-02-12 06:34:29.540661	2016-02-12 06:34:29.540661	65	t
-486	36	45	467	49	2016-02-12 06:35:37.035557	467	\N	2016-02-12 06:35:37.035557	2016-02-12 06:35:37.035557	65	t
-487	37	45	467	49	2016-02-12 06:37:01.505716	467	\N	2016-02-12 06:37:01.505716	2016-02-12 06:37:01.505716	65	t
-488	38	45	467	49	2016-02-12 06:38:04.140204	467	\N	2016-02-12 06:38:04.140204	2016-02-12 06:38:04.140204	65	t
-489	39	45	467	49	2016-02-12 06:38:44.324922	467	\N	2016-02-12 06:38:44.324922	2016-02-12 06:38:44.324922	65	t
-490	40	45	467	49	2016-02-12 06:39:48.787411	467	\N	2016-02-12 06:39:48.787411	2016-02-12 06:39:48.787411	65	t
-491	41	45	467	49	2016-02-12 06:40:22.482343	467	\N	2016-02-12 06:40:22.482343	2016-02-12 06:40:22.482343	65	t
-492	42	45	467	49	2016-02-12 06:41:22.127887	467	\N	2016-02-12 06:41:22.127887	2016-02-12 06:41:22.127887	65	t
-493	43	45	467	49	2016-02-12 06:41:59.26063	467	\N	2016-02-12 06:41:59.26063	2016-02-12 06:41:59.26063	65	t
-494	44	45	467	50	2016-02-12 06:43:41.334911	467	\N	2016-02-12 06:43:41.334911	2016-02-12 06:43:41.334911	65	t
-495	45	45	467	50	2016-02-12 06:46:09.187455	467	\N	2016-02-12 06:46:09.187455	2016-02-12 06:46:09.187455	65	t
-496	74	45	467	50	2016-02-12 06:49:38.139055	467	\N	2016-02-12 06:49:38.139055	2016-02-12 06:49:38.139055	65	t
-497	78	45	467	49	2016-02-12 06:50:44.216889	467	\N	2016-02-12 06:50:44.216889	2016-02-12 06:50:44.216889	65	t
-498	95	45	2	50	2016-02-12 06:56:33.654163	2	\N	2016-02-12 06:56:33.654163	2016-02-12 06:56:33.654163	65	t
-499	106	45	467	50	2016-02-12 07:37:27.735002	467	\N	2016-02-12 07:37:27.735002	2016-02-12 07:37:27.735002	65	t
-500	107	45	467	50	2016-02-12 07:41:02.859467	467	\N	2016-02-12 07:41:02.859467	2016-02-12 07:41:02.859467	65	t
-501	47	45	440	79	2016-02-12 09:20:02.924639	440	\N	2016-02-12 09:20:02.924639	2016-02-12 09:20:02.924639	65	t
-502	47	45	468	48	2016-02-12 09:21:00.938492	468	\N	2016-02-12 09:21:00.938492	2016-02-12 09:21:00.938492	65	t
-503	12	45	41	79	2016-02-12 10:51:24.633011	41	\N	2016-02-12 10:51:24.633011	2016-02-12 10:51:24.633011	65	t
-504	47	45	467	49	2016-02-12 10:51:48.895429	467	\N	2016-02-12 10:51:48.895429	2016-02-12 10:51:48.895429	65	t
-505	83	45	2	79	2016-02-12 11:15:57.182303	2	\N	2016-02-12 11:15:57.182303	2016-02-12 11:15:57.182303	65	t
-506	23	45	41	79	2016-02-12 11:38:16.006113	41	\N	2016-02-12 11:38:16.006113	2016-02-12 11:38:16.006113	65	t
-507	12	45	2	50	2016-02-12 11:54:39.429423	2	\N	2016-02-12 11:54:39.429423	2016-02-12 11:54:39.429423	65	t
-508	12	45	41	79	2016-02-12 12:02:39.036703	41	\N	2016-02-12 12:02:39.036703	2016-02-12 12:02:39.036703	65	t
-509	12	45	41	48	2016-02-12 12:02:56.071659	41	\N	2016-02-12 12:02:56.071659	2016-02-12 12:02:56.071659	65	t
-510	23	45	41	48	2016-02-12 12:04:10.763351	41	\N	2016-02-12 12:04:10.763351	2016-02-12 12:04:10.763351	65	t
-511	83	45	41	48	2016-02-12 12:04:25.621951	41	\N	2016-02-12 12:04:25.621951	2016-02-12 12:04:25.621951	65	t
-516	112	45	225	47	2016-02-12 15:16:12.582361	225	\N	2016-02-12 15:16:12.582361	2016-02-12 15:16:12.582361	65	t
-517	113	45	230	47	2016-02-12 15:20:17.936066	230	\N	2016-02-12 15:20:17.936066	2016-02-12 15:20:17.936066	65	t
-520	116	45	474	47	2016-02-12 15:44:14.335765	474	\N	2016-02-12 15:44:14.335765	2016-02-12 15:44:14.335765	65	t
-523	119	45	155	47	2016-02-12 16:24:32.789691	155	\N	2016-02-12 16:24:32.789691	2016-02-12 16:24:32.789691	65	t
-524	120	45	155	47	2016-02-12 16:31:00.848708	155	\N	2016-02-12 16:31:00.848708	2016-02-12 16:31:00.848708	65	t
-525	121	45	155	47	2016-02-12 16:33:36.026074	155	\N	2016-02-12 16:33:36.026074	2016-02-12 16:33:36.026074	65	t
-526	122	45	155	47	2016-02-12 16:36:37.583267	155	\N	2016-02-12 16:36:37.583267	2016-02-12 16:36:37.583267	65	t
-527	123	45	155	47	2016-02-12 16:39:04.538033	155	\N	2016-02-12 16:39:04.538033	2016-02-12 16:39:04.538033	65	t
-528	124	45	155	47	2016-02-12 16:40:43.310263	155	\N	2016-02-12 16:40:43.310263	2016-02-12 16:40:43.310263	65	t
-529	125	45	155	47	2016-02-12 16:45:52.487388	155	\N	2016-02-12 16:45:52.487388	2016-02-12 16:45:52.487388	65	t
-530	126	45	23	47	2016-02-12 17:03:26.860906	23	\N	2016-02-12 17:03:26.860906	2016-02-12 17:03:26.860906	65	t
-531	127	45	474	47	2016-02-12 17:11:54.675833	474	\N	2016-02-12 17:11:54.675833	2016-02-12 17:11:54.675833	65	t
-532	128	45	2	47	2016-02-12 17:30:37.725774	2	\N	2016-02-12 17:30:37.725774	2016-02-12 17:30:37.725774	65	t
-533	129	45	382	47	2016-02-12 17:33:27.643245	382	\N	2016-02-12 17:33:27.643245	2016-02-12 17:33:27.643245	65	t
-534	130	45	23	47	2016-02-12 17:43:02.431278	23	\N	2016-02-12 17:43:02.431278	2016-02-12 17:43:02.431278	65	t
-535	100	45	376	48	2016-02-12 19:17:25.189391	376	\N	2016-02-12 19:17:25.189391	2016-02-12 19:17:25.189391	65	t
-536	99	45	376	48	2016-02-12 19:17:27.354649	376	\N	2016-02-12 19:17:27.354649	2016-02-12 19:17:27.354649	65	t
-537	97	45	376	48	2016-02-12 19:17:29.552493	376	\N	2016-02-12 19:17:29.552493	2016-02-12 19:17:29.552493	65	t
-538	98	45	376	48	2016-02-12 19:17:29.658448	376	\N	2016-02-12 19:17:29.658448	2016-02-12 19:17:29.658448	65	t
-539	131	45	444	47	2016-02-13 05:44:10.101658	444	\N	2016-02-13 05:44:10.101658	2016-02-13 05:44:10.101658	65	t
-540	132	45	444	47	2016-02-13 05:56:38.300056	444	\N	2016-02-13 05:56:38.300056	2016-02-13 05:56:38.300056	65	t
-541	133	45	444	47	2016-02-13 05:58:20.028702	444	\N	2016-02-13 05:58:20.028702	2016-02-13 05:58:20.028702	65	t
-542	134	45	444	47	2016-02-13 06:01:20.387988	444	\N	2016-02-13 06:01:20.387988	2016-02-13 06:01:20.387988	65	t
-543	131	45	444	48	2016-02-13 06:02:57.102405	444	\N	2016-02-13 06:02:57.102405	2016-02-13 06:02:57.102405	65	t
-544	132	45	444	48	2016-02-13 06:21:07.028953	444	\N	2016-02-13 06:21:07.028953	2016-02-13 06:21:07.028953	65	t
-545	133	45	444	48	2016-02-13 06:21:12.650329	444	\N	2016-02-13 06:21:12.650329	2016-02-13 06:21:12.650329	65	t
-546	134	45	444	48	2016-02-13 06:21:21.008553	444	\N	2016-02-13 06:21:21.008553	2016-02-13 06:21:21.008553	65	t
-547	95	45	444	79	2016-02-13 06:23:42.549759	444	\N	2016-02-13 06:23:42.549759	2016-02-13 06:23:42.549759	65	t
-548	96	45	235	48	2016-02-13 08:09:29.594997	235	\N	2016-02-13 08:09:29.594997	2016-02-13 08:09:29.594997	65	t
-549	85	45	235	48	2016-02-13 08:12:22.162384	235	\N	2016-02-13 08:12:22.162384	2016-02-13 08:12:22.162384	65	t
-550	135	45	235	47	2016-02-13 08:14:43.532877	235	\N	2016-02-13 08:14:43.532877	2016-02-13 08:14:43.532877	65	t
-551	135	45	235	48	2016-02-13 08:19:12.019497	235	\N	2016-02-13 08:19:12.019497	2016-02-13 08:19:12.019497	65	t
-552	136	45	235	47	2016-02-13 08:19:45.952189	235	\N	2016-02-13 08:19:45.952189	2016-02-13 08:19:45.952189	65	t
-553	136	45	235	48	2016-02-13 08:29:04.589888	235	\N	2016-02-13 08:29:04.589888	2016-02-13 08:29:04.589888	65	t
-554	137	45	235	47	2016-02-13 08:30:01.743608	235	\N	2016-02-13 08:30:01.743608	2016-02-13 08:30:01.743608	65	t
-555	137	45	235	48	2016-02-13 08:35:55.932518	235	\N	2016-02-13 08:35:55.932518	2016-02-13 08:35:55.932518	65	t
-556	66	45	355	48	2016-02-14 21:55:48.975199	355	\N	2016-02-14 21:55:48.975199	2016-02-14 21:55:48.975199	65	t
-557	67	45	355	48	2016-02-14 21:56:34.271277	355	\N	2016-02-14 21:56:34.271277	2016-02-14 21:56:34.271277	65	t
-558	70	45	355	48	2016-02-14 21:57:09.633543	355	\N	2016-02-14 21:57:09.633543	2016-02-14 21:57:09.633543	65	t
-559	104	45	355	48	2016-02-14 21:59:09.550339	355	\N	2016-02-14 21:59:09.550339	2016-02-14 21:59:09.550339	65	t
-560	64	45	355	48	2016-02-14 22:02:34.241496	355	\N	2016-02-14 22:02:34.241496	2016-02-14 22:02:34.241496	65	t
-561	69	45	355	48	2016-02-14 22:04:00.778998	355	\N	2016-02-14 22:04:00.778998	2016-02-14 22:04:00.778998	65	t
-562	48	45	355	48	2016-02-14 22:04:56.61232	355	\N	2016-02-14 22:04:56.61232	2016-02-14 22:04:56.61232	65	t
-563	49	45	355	48	2016-02-14 22:06:27.443239	355	\N	2016-02-14 22:06:27.443239	2016-02-14 22:06:27.443239	65	t
-564	50	45	355	48	2016-02-14 22:07:13.436613	355	\N	2016-02-14 22:07:13.436613	2016-02-14 22:07:13.436613	65	t
-565	51	45	355	48	2016-02-14 22:08:09.193244	355	\N	2016-02-14 22:08:09.193244	2016-02-14 22:08:09.193244	65	t
-566	52	45	355	48	2016-02-14 22:10:34.259457	355	\N	2016-02-14 22:10:34.259457	2016-02-14 22:10:34.259457	65	t
-567	138	45	355	47	2016-02-14 23:04:30.096899	355	\N	2016-02-14 23:04:30.096899	2016-02-14 23:04:30.096899	65	t
-568	139	45	355	47	2016-02-14 23:11:37.398859	355	\N	2016-02-14 23:11:37.398859	2016-02-14 23:11:37.398859	65	t
-512	108	45	474	47	2016-02-12 14:09:14.178198	474	\N	2016-02-12 14:09:14.178198	2016-02-12 14:09:14.178198	65	f
-513	109	45	474	47	2016-02-12 14:41:50.505424	474	\N	2016-02-12 14:41:50.505424	2016-02-12 14:41:50.505424	65	f
-514	110	45	474	47	2016-02-12 14:45:48.642919	474	\N	2016-02-12 14:45:48.642919	2016-02-12 14:45:48.642919	65	f
-515	111	45	474	47	2016-02-12 15:12:46.657999	474	\N	2016-02-12 15:12:46.657999	2016-02-12 15:12:46.657999	65	f
-518	114	45	474	47	2016-02-12 15:42:17.749016	474	\N	2016-02-12 15:42:17.749016	2016-02-12 15:42:17.749016	65	f
-519	115	45	474	47	2016-02-12 15:42:52.513856	474	\N	2016-02-12 15:42:52.513856	2016-02-12 15:42:52.513856	65	f
-522	118	45	474	47	2016-02-12 15:45:58.590087	474	\N	2016-02-12 15:45:58.590087	2016-02-12 15:45:58.590087	65	f
-569	138	45	355	48	2016-02-14 23:13:48.021293	355	\N	2016-02-14 23:13:48.021293	2016-02-14 23:13:48.021293	65	t
-570	139	45	355	48	2016-02-14 23:14:01.620042	355	\N	2016-02-14 23:14:01.620042	2016-02-14 23:14:01.620042	65	t
-571	12	45	467	49	2016-02-15 06:50:33.968937	467	\N	2016-02-15 06:50:33.968937	2016-02-15 06:50:33.968937	65	t
-572	23	45	467	50	2016-02-15 06:53:55.491567	467	\N	2016-02-15 06:53:55.491567	2016-02-15 06:53:55.491567	65	t
-573	48	45	467	49	2016-02-15 06:55:10.089267	467	\N	2016-02-15 06:55:10.089267	2016-02-15 06:55:10.089267	65	t
-574	49	45	467	49	2016-02-15 06:56:28.470737	467	\N	2016-02-15 06:56:28.470737	2016-02-15 06:56:28.470737	65	t
-575	50	45	467	49	2016-02-15 06:58:42.686079	467	\N	2016-02-15 06:58:42.686079	2016-02-15 06:58:42.686079	65	t
-576	51	45	467	49	2016-02-15 07:01:11.779656	467	\N	2016-02-15 07:01:11.779656	2016-02-15 07:01:11.779656	65	t
-577	52	45	467	49	2016-02-15 07:05:08.041454	467	\N	2016-02-15 07:05:08.041454	2016-02-15 07:05:08.041454	65	t
-578	64	45	467	49	2016-02-15 07:15:02.422018	467	\N	2016-02-15 07:15:02.422018	2016-02-15 07:15:02.422018	65	t
-579	66	45	2	49	2016-02-15 07:16:56.306349	2	\N	2016-02-15 07:16:56.306349	2016-02-15 07:16:56.306349	65	t
-580	67	45	467	49	2016-02-15 07:18:55.554603	467	\N	2016-02-15 07:18:55.554603	2016-02-15 07:18:55.554603	65	t
-581	69	45	467	49	2016-02-15 07:26:16.19632	467	\N	2016-02-15 07:26:16.19632	2016-02-15 07:26:16.19632	65	t
-582	70	45	467	49	2016-02-15 07:27:10.776925	467	\N	2016-02-15 07:27:10.776925	2016-02-15 07:27:10.776925	65	t
-583	83	45	467	50	2016-02-15 07:30:24.176052	467	\N	2016-02-15 07:30:24.176052	2016-02-15 07:30:24.176052	65	t
-584	85	45	467	50	2016-02-15 07:35:41.922908	467	\N	2016-02-15 07:35:41.922908	2016-02-15 07:35:41.922908	65	t
-585	96	45	467	50	2016-02-15 07:37:40.659795	467	\N	2016-02-15 07:37:40.659795	2016-02-15 07:37:40.659795	65	t
-586	97	45	467	50	2016-02-15 07:44:06.647845	467	\N	2016-02-15 07:44:06.647845	2016-02-15 07:44:06.647845	65	t
-587	98	45	467	50	2016-02-15 07:46:38.563297	467	\N	2016-02-15 07:46:38.563297	2016-02-15 07:46:38.563297	65	t
-588	99	45	467	50	2016-02-15 07:47:54.485743	467	\N	2016-02-15 07:47:54.485743	2016-02-15 07:47:54.485743	65	t
-589	100	45	467	50	2016-02-15 07:51:43.131807	467	\N	2016-02-15 07:51:43.131807	2016-02-15 07:51:43.131807	65	t
-590	104	45	467	49	2016-02-15 07:52:47.823841	467	\N	2016-02-15 07:52:47.823841	2016-02-15 07:52:47.823841	65	t
-591	131	45	467	50	2016-02-15 08:05:59.461969	467	\N	2016-02-15 08:05:59.461969	2016-02-15 08:05:59.461969	65	t
-592	132	45	467	50	2016-02-15 08:07:10.772846	467	\N	2016-02-15 08:07:10.772846	2016-02-15 08:07:10.772846	65	t
-593	133	45	467	50	2016-02-15 08:10:59.709337	467	\N	2016-02-15 08:10:59.709337	2016-02-15 08:10:59.709337	65	t
-594	134	45	467	50	2016-02-15 08:14:12.40501	467	\N	2016-02-15 08:14:12.40501	2016-02-15 08:14:12.40501	65	t
-595	135	45	2	50	2016-02-15 08:19:56.66836	2	\N	2016-02-15 08:19:56.66836	2016-02-15 08:19:56.66836	65	t
-596	136	45	467	50	2016-02-15 08:24:48.147363	467	\N	2016-02-15 08:24:48.147363	2016-02-15 08:24:48.147363	65	t
-597	140	45	382	47	2016-02-15 08:33:14.177853	382	\N	2016-02-15 08:33:14.177853	2016-02-15 08:33:14.177853	65	t
-598	83	45	41	79	2016-02-15 08:58:34.963485	41	\N	2016-02-15 08:58:34.963485	2016-02-15 08:58:34.963485	65	t
-599	83	45	41	48	2016-02-15 08:58:53.866804	41	\N	2016-02-15 08:58:53.866804	2016-02-15 08:58:53.866804	65	t
-600	23	45	41	79	2016-02-15 09:04:53.848181	41	\N	2016-02-15 09:04:53.848181	2016-02-15 09:04:53.848181	65	t
-601	23	45	41	48	2016-02-15 09:05:12.374425	41	\N	2016-02-15 09:05:12.374425	2016-02-15 09:05:12.374425	65	t
-602	141	45	382	47	2016-02-15 09:20:09.25411	382	\N	2016-02-15 09:20:09.25411	2016-02-15 09:20:09.25411	65	t
-603	23	45	467	49	2016-02-15 09:24:14.67785	467	\N	2016-02-15 09:24:14.67785	2016-02-15 09:24:14.67785	65	t
-604	83	45	467	49	2016-02-15 09:25:27.010621	467	\N	2016-02-15 09:25:27.010621	2016-02-15 09:25:27.010621	65	t
-605	137	45	467	50	2016-02-15 09:27:43.131923	467	\N	2016-02-15 09:27:43.131923	2016-02-15 09:27:43.131923	65	t
-606	142	45	471	47	2016-02-15 09:34:21.820425	471	\N	2016-02-15 09:34:21.820425	2016-02-15 09:34:21.820425	65	t
-607	138	45	467	50	2016-02-15 09:41:25.159505	467	\N	2016-02-15 09:41:25.159505	2016-02-15 09:41:25.159505	65	t
-608	139	45	467	50	2016-02-15 09:45:21.268488	467	\N	2016-02-15 09:45:21.268488	2016-02-15 09:45:21.268488	65	t
-609	143	45	471	47	2016-02-15 10:03:07.023206	471	\N	2016-02-15 10:03:07.023206	2016-02-15 10:03:07.023206	65	t
-610	144	45	471	47	2016-02-15 10:04:43.280786	471	\N	2016-02-15 10:04:43.280786	2016-02-15 10:04:43.280786	65	t
-611	145	45	471	47	2016-02-15 10:06:17.076052	471	\N	2016-02-15 10:06:17.076052	2016-02-15 10:06:17.076052	65	t
-612	146	45	471	47	2016-02-15 10:07:49.096183	471	\N	2016-02-15 10:07:49.096183	2016-02-15 10:07:49.096183	65	t
-621	127	45	474	48	2016-02-15 10:15:21.005278	474	\N	2016-02-15 10:15:21.005278	2016-02-15 10:15:21.005278	65	t
-623	144	45	390	50	2016-02-15 10:26:42.921648	390	\N	2016-02-15 10:26:42.921648	2016-02-15 10:26:42.921648	65	t
-624	145	45	390	50	2016-02-15 10:28:48.997808	390	\N	2016-02-15 10:28:48.997808	2016-02-15 10:28:48.997808	65	t
-625	142	45	390	50	2016-02-15 10:29:27.468151	390	\N	2016-02-15 10:29:27.468151	2016-02-15 10:29:27.468151	65	t
-626	146	45	390	50	2016-02-15 10:30:13.615056	390	\N	2016-02-15 10:30:13.615056	2016-02-15 10:30:13.615056	65	t
-627	143	45	390	50	2016-02-15 10:30:49.683986	390	\N	2016-02-15 10:30:49.683986	2016-02-15 10:30:49.683986	65	t
-629	144	45	471	79	2016-02-15 11:09:03.111259	471	\N	2016-02-15 11:09:03.111259	2016-02-15 11:09:03.111259	65	t
-630	143	45	471	79	2016-02-15 11:11:55.714964	471	\N	2016-02-15 11:11:55.714964	2016-02-15 11:11:55.714964	65	t
-631	145	45	471	79	2016-02-15 11:13:58.340643	471	\N	2016-02-15 11:13:58.340643	2016-02-15 11:13:58.340643	65	t
-632	146	45	471	79	2016-02-15 11:15:44.68982	471	\N	2016-02-15 11:15:44.68982	2016-02-15 11:15:44.68982	65	t
-633	142	45	471	79	2016-02-15 11:17:39.723553	471	\N	2016-02-15 11:17:39.723553	2016-02-15 11:17:39.723553	65	t
-642	127	45	467	50	2016-02-15 13:30:26.223753	467	\N	2016-02-15 13:30:26.223753	2016-02-15 13:30:26.223753	65	t
-643	112	45	230	48	2016-02-15 14:31:57.988921	230	\N	2016-02-15 14:31:57.988921	2016-02-15 14:31:57.988921	65	t
-644	113	45	230	48	2016-02-15 14:32:10.580177	230	\N	2016-02-15 14:32:10.580177	2016-02-15 14:32:10.580177	65	t
-645	147	45	454	47	2016-02-15 15:02:18.924687	454	\N	2016-02-15 15:02:18.924687	2016-02-15 15:02:18.924687	65	t
-646	112	45	467	50	2016-02-15 15:14:10.3062	467	\N	2016-02-15 15:14:10.3062	2016-02-15 15:14:10.3062	65	t
-647	148	45	454	47	2016-02-15 15:21:03.272893	454	\N	2016-02-15 15:21:03.272893	2016-02-15 15:21:03.272893	65	t
-648	144	45	390	48	2016-02-15 15:21:44.788255	390	\N	2016-02-15 15:21:44.788255	2016-02-15 15:21:44.788255	65	t
-649	143	45	390	48	2016-02-15 15:22:04.249859	390	\N	2016-02-15 15:22:04.249859	2016-02-15 15:22:04.249859	65	t
-615	87	45	474	48	2016-02-15 10:14:39.50846	474	\N	2016-02-15 10:14:39.50846	2016-02-15 10:14:39.50846	65	f
-628	87	45	467	50	2016-02-15 10:52:57.939776	467	\N	2016-02-15 10:52:57.939776	2016-02-15 10:52:57.939776	65	f
-622	108	45	474	48	2016-02-15 10:15:34.602507	474	\N	2016-02-15 10:15:34.602507	2016-02-15 10:15:34.602507	65	f
-634	108	45	467	50	2016-02-15 11:28:59.001713	467	\N	2016-02-15 11:28:59.001713	2016-02-15 11:28:59.001713	65	f
-616	109	45	474	48	2016-02-15 10:14:47.676641	474	\N	2016-02-15 10:14:47.676641	2016-02-15 10:14:47.676641	65	f
-635	109	45	467	50	2016-02-15 12:00:48.709794	467	\N	2016-02-15 12:00:48.709794	2016-02-15 12:00:48.709794	65	f
-618	110	45	474	48	2016-02-15 10:15:02.537853	474	\N	2016-02-15 10:15:02.537853	2016-02-15 10:15:02.537853	65	f
-636	110	45	467	50	2016-02-15 12:01:43.454272	467	\N	2016-02-15 12:01:43.454272	2016-02-15 12:01:43.454272	65	f
-613	111	45	474	48	2016-02-15 10:14:20.087509	474	\N	2016-02-15 10:14:20.087509	2016-02-15 10:14:20.087509	65	f
-637	111	45	467	50	2016-02-15 12:06:01.942898	467	\N	2016-02-15 12:06:01.942898	2016-02-15 12:06:01.942898	65	f
-614	114	45	474	48	2016-02-15 10:14:32.61891	474	\N	2016-02-15 10:14:32.61891	2016-02-15 10:14:32.61891	65	f
-638	114	45	467	50	2016-02-15 12:15:57.533355	467	\N	2016-02-15 12:15:57.533355	2016-02-15 12:15:57.533355	65	f
-617	115	45	474	48	2016-02-15 10:14:55.575601	474	\N	2016-02-15 10:14:55.575601	2016-02-15 10:14:55.575601	65	f
-639	115	45	467	50	2016-02-15 13:18:09.505735	467	\N	2016-02-15 13:18:09.505735	2016-02-15 13:18:09.505735	65	f
-619	118	45	474	48	2016-02-15 10:15:08.534887	474	\N	2016-02-15 10:15:08.534887	2016-02-15 10:15:08.534887	65	f
-641	118	45	467	50	2016-02-15 13:25:55.657295	467	\N	2016-02-15 13:25:55.657295	2016-02-15 13:25:55.657295	65	f
-650	145	45	390	48	2016-02-15 15:22:13.822638	390	\N	2016-02-15 15:22:13.822638	2016-02-15 15:22:13.822638	65	t
-651	142	45	390	48	2016-02-15 15:23:27.469379	390	\N	2016-02-15 15:23:27.469379	2016-02-15 15:23:27.469379	65	t
-652	146	45	390	48	2016-02-15 15:23:46.456262	390	\N	2016-02-15 15:23:46.456262	2016-02-15 15:23:46.456262	65	t
-653	113	45	467	49	2016-02-15 15:23:46.964951	467	\N	2016-02-15 15:23:46.964951	2016-02-15 15:23:46.964951	65	t
-654	149	45	443	47	2016-02-15 15:26:09.847053	443	\N	2016-02-15 15:26:09.847053	2016-02-15 15:26:09.847053	65	t
-655	142	45	467	49	2016-02-15 15:31:10.987704	467	\N	2016-02-15 15:31:10.987704	2016-02-15 15:31:10.987704	65	t
-656	143	45	467	49	2016-02-15 15:59:20.026997	467	\N	2016-02-15 15:59:20.026997	2016-02-15 15:59:20.026997	65	t
-657	100	45	384	79	2016-02-15 16:07:39.243076	384	\N	2016-02-15 16:07:39.243076	2016-02-15 16:07:39.243076	65	t
-658	99	45	384	79	2016-02-15 16:08:19.654268	384	\N	2016-02-15 16:08:19.654268	2016-02-15 16:08:19.654268	65	t
-659	97	45	384	79	2016-02-15 16:08:51.632391	384	\N	2016-02-15 16:08:51.632391	2016-02-15 16:08:51.632391	65	t
-660	98	45	384	79	2016-02-15 16:10:58.757509	384	\N	2016-02-15 16:10:58.757509	2016-02-15 16:10:58.757509	65	t
-661	150	45	455	47	2016-02-15 16:23:07.454395	455	\N	2016-02-15 16:23:07.454395	2016-02-15 16:23:07.454395	65	t
-662	44	45	453	79	2016-02-15 17:02:42.437816	453	\N	2016-02-15 17:02:42.437816	2016-02-15 17:02:42.437816	65	t
-663	45	45	453	79	2016-02-15 17:06:24.028457	453	\N	2016-02-15 17:06:24.028457	2016-02-15 17:06:24.028457	65	t
-664	44	45	453	48	2016-02-15 17:06:53.158879	453	\N	2016-02-15 17:06:53.158879	2016-02-15 17:06:53.158879	65	t
-665	45	45	453	48	2016-02-15 17:08:58.66763	453	\N	2016-02-15 17:08:58.66763	2016-02-15 17:08:58.66763	65	t
-666	150	45	455	48	2016-02-15 18:03:24.923846	455	\N	2016-02-15 18:03:24.923846	2016-02-15 18:03:24.923846	65	t
-667	151	45	455	47	2016-02-15 18:17:17.896074	455	\N	2016-02-15 18:17:17.896074	2016-02-15 18:17:17.896074	65	t
-668	151	45	455	48	2016-02-15 18:32:51.141865	455	\N	2016-02-15 18:32:51.141865	2016-02-15 18:32:51.141865	65	t
-669	44	45	467	49	2016-02-16 07:10:36.080677	467	\N	2016-02-16 07:10:36.080677	2016-02-16 07:10:36.080677	65	t
-670	45	45	467	49	2016-02-16 07:25:24.085535	467	\N	2016-02-16 07:25:24.085535	2016-02-16 07:25:24.085535	65	t
-671	144	45	467	49	2016-02-16 07:28:46.676475	467	\N	2016-02-16 07:28:46.676475	2016-02-16 07:28:46.676475	65	t
-672	145	45	2	49	2016-02-16 07:32:21.198415	2	\N	2016-02-16 07:32:21.198415	2016-02-16 07:32:21.198415	65	t
-673	146	45	467	49	2016-02-16 07:38:14.951358	467	\N	2016-02-16 07:38:14.951358	2016-02-16 07:38:14.951358	65	t
-674	150	45	467	50	2016-02-16 07:46:57.879871	467	\N	2016-02-16 07:46:57.879871	2016-02-16 07:46:57.879871	65	t
-675	151	45	467	50	2016-02-16 07:48:13.976375	467	\N	2016-02-16 07:48:13.976375	2016-02-16 07:48:13.976375	65	t
-676	127	45	474	79	2016-02-16 10:13:54.126067	474	\N	2016-02-16 10:13:54.126067	2016-02-16 10:13:54.126067	65	t
-677	127	45	474	48	2016-02-16 10:14:08.455701	474	\N	2016-02-16 10:14:08.455701	2016-02-16 10:14:08.455701	65	t
-679	152	45	454	47	2016-02-16 11:08:42.80563	454	\N	2016-02-16 11:08:42.80563	2016-02-16 11:08:42.80563	65	t
-684	153	45	454	47	2016-02-16 11:21:57.58565	454	\N	2016-02-16 11:21:57.58565	2016-02-16 11:21:57.58565	65	t
-521	117	45	474	47	2016-02-12 15:45:29.526079	474	\N	2016-02-12 15:45:29.526079	2016-02-12 15:45:29.526079	65	f
-620	117	45	474	48	2016-02-15 10:15:15.222214	474	\N	2016-02-15 10:15:15.222214	2016-02-15 10:15:15.222214	65	f
-640	117	45	467	50	2016-02-15 13:23:33.174086	467	\N	2016-02-15 13:23:33.174086	2016-02-15 13:23:33.174086	65	f
-682	117	45	474	79	2016-02-16 11:21:08.961761	474	\N	2016-02-16 11:21:08.961761	2016-02-16 11:21:08.961761	65	f
-696	117	45	474	48	2016-02-16 11:26:44.79986	474	\N	2016-02-16 11:26:44.79986	2016-02-16 11:26:44.79986	65	f
-426	87	45	474	47	2016-02-10 11:50:08.680536	474	\N	2016-02-10 11:50:08.680536	2016-02-10 11:50:08.680536	65	f
-687	87	45	474	79	2016-02-16 11:22:41.160372	474	\N	2016-02-16 11:22:41.160372	2016-02-16 11:22:41.160372	65	f
-691	87	45	474	48	2016-02-16 11:25:30.951927	474	\N	2016-02-16 11:25:30.951927	2016-02-16 11:25:30.951927	65	f
-683	108	45	474	79	2016-02-16 11:21:27.304342	474	\N	2016-02-16 11:21:27.304342	2016-02-16 11:21:27.304342	65	f
-697	108	45	474	48	2016-02-16 11:26:53.702474	474	\N	2016-02-16 11:26:53.702474	2016-02-16 11:26:53.702474	65	f
-698	108	45	474	48	2016-02-16 11:27:09.809075	474	\N	2016-02-16 11:27:09.809075	2016-02-16 11:27:09.809075	65	f
-678	109	45	474	79	2016-02-16 10:16:54.526235	474	\N	2016-02-16 10:16:54.526235	2016-02-16 10:16:54.526235	65	f
-692	109	45	474	48	2016-02-16 11:25:53.052591	474	\N	2016-02-16 11:25:53.052591	2016-02-16 11:25:53.052591	65	f
-688	110	45	474	79	2016-02-16 11:24:19.879724	474	\N	2016-02-16 11:24:19.879724	2016-02-16 11:24:19.879724	65	f
-694	110	45	474	48	2016-02-16 11:26:23.499542	474	\N	2016-02-16 11:26:23.499542	2016-02-16 11:26:23.499542	65	f
-685	111	45	474	79	2016-02-16 11:22:03.627493	474	\N	2016-02-16 11:22:03.627493	2016-02-16 11:22:03.627493	65	f
-689	111	45	474	48	2016-02-16 11:24:38.320747	474	\N	2016-02-16 11:24:38.320747	2016-02-16 11:24:38.320747	65	f
-686	114	45	474	79	2016-02-16 11:22:24.729772	474	\N	2016-02-16 11:22:24.729772	2016-02-16 11:22:24.729772	65	f
-690	114	45	474	48	2016-02-16 11:24:59.154582	474	\N	2016-02-16 11:24:59.154582	2016-02-16 11:24:59.154582	65	f
-680	115	45	474	79	2016-02-16 11:19:42.961188	474	\N	2016-02-16 11:19:42.961188	2016-02-16 11:19:42.961188	65	f
-693	115	45	474	48	2016-02-16 11:26:09.241971	474	\N	2016-02-16 11:26:09.241971	2016-02-16 11:26:09.241971	65	f
-681	118	45	474	79	2016-02-16 11:20:36.515469	474	\N	2016-02-16 11:20:36.515469	2016-02-16 11:20:36.515469	65	f
-695	118	45	474	48	2016-02-16 11:26:35.53518	474	\N	2016-02-16 11:26:35.53518	2016-02-16 11:26:35.53518	65	f
-699	154	45	474	47	2016-02-16 12:05:28.673668	474	\N	2016-02-16 12:05:28.673668	2016-02-16 12:05:28.673668	65	t
-700	154	45	474	48	2016-02-16 12:31:49.611164	474	\N	2016-02-16 12:31:49.611164	2016-02-16 12:31:49.611164	65	t
-701	155	45	474	47	2016-02-16 12:32:38.200253	474	\N	2016-02-16 12:32:38.200253	2016-02-16 12:32:38.200253	65	t
-702	155	45	474	48	2016-02-16 12:38:19.932045	474	\N	2016-02-16 12:38:19.932045	2016-02-16 12:38:19.932045	65	t
-703	156	45	474	47	2016-02-16 12:39:12.054043	474	\N	2016-02-16 12:39:12.054043	2016-02-16 12:39:12.054043	65	t
-704	156	45	474	48	2016-02-16 12:41:33.713572	474	\N	2016-02-16 12:41:33.713572	2016-02-16 12:41:33.713572	65	t
-705	157	45	474	47	2016-02-16 12:52:56.990954	474	\N	2016-02-16 12:52:56.990954	2016-02-16 12:52:56.990954	65	t
-706	157	45	474	48	2016-02-16 12:56:46.230809	474	\N	2016-02-16 12:56:46.230809	2016-02-16 12:56:46.230809	65	t
-707	158	45	474	47	2016-02-16 12:57:37.134134	474	\N	2016-02-16 12:57:37.134134	2016-02-16 12:57:37.134134	65	t
-708	159	45	454	47	2016-02-16 12:59:04.249033	454	\N	2016-02-16 12:59:04.249033	2016-02-16 12:59:04.249033	65	t
-709	158	45	474	48	2016-02-16 13:01:11.440032	474	\N	2016-02-16 13:01:11.440032	2016-02-16 13:01:11.440032	65	t
-710	160	45	474	47	2016-02-16 13:01:41.109359	474	\N	2016-02-16 13:01:41.109359	2016-02-16 13:01:41.109359	65	t
-711	161	45	474	47	2016-02-16 13:04:55.913792	474	\N	2016-02-16 13:04:55.913792	2016-02-16 13:04:55.913792	65	t
-712	162	45	474	47	2016-02-16 13:07:24.41149	474	\N	2016-02-16 13:07:24.41149	2016-02-16 13:07:24.41149	65	t
-713	162	45	474	48	2016-02-16 13:10:31.555954	474	\N	2016-02-16 13:10:31.555954	2016-02-16 13:10:31.555954	65	t
-714	160	45	474	48	2016-02-16 13:10:57.196799	474	\N	2016-02-16 13:10:57.196799	2016-02-16 13:10:57.196799	65	t
-715	161	45	474	48	2016-02-16 13:11:07.145744	474	\N	2016-02-16 13:11:07.145744	2016-02-16 13:11:07.145744	65	t
-716	163	45	474	47	2016-02-16 13:11:53.441963	474	\N	2016-02-16 13:11:53.441963	2016-02-16 13:11:53.441963	65	t
-717	163	45	474	48	2016-02-16 13:32:22.170533	474	\N	2016-02-16 13:32:22.170533	2016-02-16 13:32:22.170533	65	t
-718	127	45	467	50	2016-02-16 14:12:35.425791	467	\N	2016-02-16 14:12:35.425791	2016-02-16 14:12:35.425791	65	t
-719	154	45	467	50	2016-02-16 14:16:39.621345	467	\N	2016-02-16 14:16:39.621345	2016-02-16 14:16:39.621345	65	t
-720	155	45	2	50	2016-02-16 14:21:49.554453	2	\N	2016-02-16 14:21:49.554453	2016-02-16 14:21:49.554453	65	t
-721	156	45	467	50	2016-02-16 14:35:34.408606	467	\N	2016-02-16 14:35:34.408606	2016-02-16 14:35:34.408606	65	t
-722	157	45	467	50	2016-02-16 14:36:15.702381	467	\N	2016-02-16 14:36:15.702381	2016-02-16 14:36:15.702381	65	t
-723	158	45	467	50	2016-02-16 14:39:24.282471	467	\N	2016-02-16 14:39:24.282471	2016-02-16 14:39:24.282471	65	t
-724	160	45	467	50	2016-02-16 14:42:00.368001	467	\N	2016-02-16 14:42:00.368001	2016-02-16 14:42:00.368001	65	t
-725	74	45	2	79	2016-02-16 14:44:07.578157	2	\N	2016-02-16 14:44:07.578157	2016-02-16 14:44:07.578157	65	t
-726	161	45	467	50	2016-02-16 15:07:28.106906	467	\N	2016-02-16 15:07:28.106906	2016-02-16 15:07:28.106906	65	t
-727	162	45	467	50	2016-02-16 15:09:25.149794	467	\N	2016-02-16 15:09:25.149794	2016-02-16 15:09:25.149794	65	t
-728	163	45	467	49	2016-02-16 15:12:23.740104	467	\N	2016-02-16 15:12:23.740104	2016-02-16 15:12:23.740104	65	t
-729	1	45	405	48	2016-02-16 15:51:09.397411	405	\N	2016-02-16 15:51:09.397411	2016-02-16 15:51:09.397411	65	t
-730	164	45	476	47	2016-02-16 16:22:31.985518	476	\N	2016-02-16 16:22:31.985518	2016-02-16 16:22:31.985518	65	t
-731	138	45	355	79	2016-02-16 16:27:17.136768	355	\N	2016-02-16 16:27:17.136768	2016-02-16 16:27:17.136768	65	t
-732	139	45	355	79	2016-02-16 16:44:22.370957	355	\N	2016-02-16 16:44:22.370957	2016-02-16 16:44:22.370957	65	t
-733	138	45	355	48	2016-02-16 17:16:36.068872	355	\N	2016-02-16 17:16:36.068872	2016-02-16 17:16:36.068872	65	t
-734	139	45	355	48	2016-02-16 17:17:54.606656	355	\N	2016-02-16 17:17:54.606656	2016-02-16 17:17:54.606656	65	t
-735	1	45	467	50	2016-02-17 09:19:25.4943	467	\N	2016-02-17 09:19:25.4943	2016-02-17 09:19:25.4943	65	t
-736	138	45	467	50	2016-02-17 09:29:44.876517	467	\N	2016-02-17 09:29:44.876517	2016-02-17 09:29:44.876517	65	t
-737	139	45	467	50	2016-02-17 09:32:48.606087	467	\N	2016-02-17 09:32:48.606087	2016-02-17 09:32:48.606087	65	t
-738	59	45	87	79	2016-02-17 10:12:52.396074	87	\N	2016-02-17 10:12:52.396074	2016-02-17 10:12:52.396074	65	t
-739	77	45	114	79	2016-02-17 10:38:40.338693	114	\N	2016-02-17 10:38:40.338693	2016-02-17 10:38:40.338693	65	t
-740	75	45	470	79	2016-02-17 11:27:37.793456	470	\N	2016-02-17 11:27:37.793456	2016-02-17 11:27:37.793456	65	t
-741	75	45	468	48	2016-02-17 12:07:44.83447	468	\N	2016-02-17 12:07:44.83447	2016-02-17 12:07:44.83447	65	t
-742	77	45	468	48	2016-02-17 12:12:53.014658	468	\N	2016-02-17 12:12:53.014658	2016-02-17 12:12:53.014658	65	t
-743	59	45	468	48	2016-02-17 12:14:49.361729	468	\N	2016-02-17 12:14:49.361729	2016-02-17 12:14:49.361729	65	t
-744	59	45	468	48	2016-02-17 12:15:39.24649	468	\N	2016-02-17 12:15:39.24649	2016-02-17 12:15:39.24649	65	t
-745	161	45	474	79	2016-02-17 14:31:38.623304	474	\N	2016-02-17 14:31:38.623304	2016-02-17 14:31:38.623304	65	t
-746	155	45	474	79	2016-02-17 14:32:29.821289	474	\N	2016-02-17 14:32:29.821289	2016-02-17 14:32:29.821289	65	t
-747	154	45	474	79	2016-02-17 14:32:52.579477	474	\N	2016-02-17 14:32:52.579477	2016-02-17 14:32:52.579477	65	t
-748	162	45	474	79	2016-02-17 14:33:15.120702	474	\N	2016-02-17 14:33:15.120702	2016-02-17 14:33:15.120702	65	t
-749	127	45	474	79	2016-02-17 14:37:09.368033	474	\N	2016-02-17 14:37:09.368033	2016-02-17 14:37:09.368033	65	t
-750	156	45	474	79	2016-02-17 14:37:42.314338	474	\N	2016-02-17 14:37:42.314338	2016-02-17 14:37:42.314338	65	t
-751	157	45	474	79	2016-02-17 14:38:01.232543	474	\N	2016-02-17 14:38:01.232543	2016-02-17 14:38:01.232543	65	t
-752	158	45	474	79	2016-02-17 14:38:20.812932	474	\N	2016-02-17 14:38:20.812932	2016-02-17 14:38:20.812932	65	t
-753	160	45	474	79	2016-02-17 14:40:18.882696	474	\N	2016-02-17 14:40:18.882696	2016-02-17 14:40:18.882696	65	t
-754	158	45	474	48	2016-02-17 14:41:11.582705	474	\N	2016-02-17 14:41:11.582705	2016-02-17 14:41:11.582705	65	t
-755	162	45	474	48	2016-02-17 14:41:30.638352	474	\N	2016-02-17 14:41:30.638352	2016-02-17 14:41:30.638352	65	t
-756	127	45	474	48	2016-02-17 14:41:30.798155	474	\N	2016-02-17 14:41:30.798155	2016-02-17 14:41:30.798155	65	t
-757	156	45	474	48	2016-02-17 14:41:44.599377	474	\N	2016-02-17 14:41:44.599377	2016-02-17 14:41:44.599377	65	t
-758	160	45	474	48	2016-02-17 14:41:58.900113	474	\N	2016-02-17 14:41:58.900113	2016-02-17 14:41:58.900113	65	t
-759	161	45	474	48	2016-02-17 14:42:09.805314	474	\N	2016-02-17 14:42:09.805314	2016-02-17 14:42:09.805314	65	t
-760	155	45	474	48	2016-02-17 14:42:32.454849	474	\N	2016-02-17 14:42:32.454849	2016-02-17 14:42:32.454849	65	t
-761	154	45	474	48	2016-02-17 14:42:43.958656	474	\N	2016-02-17 14:42:43.958656	2016-02-17 14:42:43.958656	65	t
-762	157	45	474	48	2016-02-17 14:42:54.28689	474	\N	2016-02-17 14:42:54.28689	2016-02-17 14:42:54.28689	65	t
-763	59	45	2	50	2016-02-17 14:55:10.741717	2	\N	2016-02-17 14:55:10.741717	2016-02-17 14:55:10.741717	65	t
-764	75	45	467	49	2016-02-17 14:57:44.085666	467	\N	2016-02-17 14:57:44.085666	2016-02-17 14:57:44.085666	65	t
-765	77	45	467	49	2016-02-17 15:06:22.622997	467	\N	2016-02-17 15:06:22.622997	2016-02-17 15:06:22.622997	65	t
-766	127	45	467	50	2016-02-17 15:10:07.295217	467	\N	2016-02-17 15:10:07.295217	2016-02-17 15:10:07.295217	65	t
-767	154	45	467	50	2016-02-17 15:13:54.501622	467	\N	2016-02-17 15:13:54.501622	2016-02-17 15:13:54.501622	65	t
-768	155	45	467	50	2016-02-17 15:29:15.917258	467	\N	2016-02-17 15:29:15.917258	2016-02-17 15:29:15.917258	65	t
-769	156	45	467	50	2016-02-17 15:31:43.688888	467	\N	2016-02-17 15:31:43.688888	2016-02-17 15:31:43.688888	65	t
-770	157	45	467	50	2016-02-17 15:34:21.8332	467	\N	2016-02-17 15:34:21.8332	2016-02-17 15:34:21.8332	65	t
-771	158	45	467	50	2016-02-17 15:36:39.49253	467	\N	2016-02-17 15:36:39.49253	2016-02-17 15:36:39.49253	65	t
-772	160	45	467	50	2016-02-17 15:39:45.392972	467	\N	2016-02-17 15:39:45.392972	2016-02-17 15:39:45.392972	65	t
-773	161	45	467	50	2016-02-17 15:41:11.417007	467	\N	2016-02-17 15:41:11.417007	2016-02-17 15:41:11.417007	65	t
-774	162	45	467	50	2016-02-17 15:41:27.557364	467	\N	2016-02-17 15:41:27.557364	2016-02-17 15:41:27.557364	65	t
-775	1	45	404	79	2016-02-18 09:33:04.011167	404	\N	2016-02-18 09:33:04.011167	2016-02-18 09:33:04.011167	65	t
-776	165	45	450	47	2016-02-18 10:06:41.813447	450	\N	2016-02-18 10:06:41.813447	2016-02-18 10:06:41.813447	65	t
-777	166	45	450	47	2016-02-18 10:11:22.729596	450	\N	2016-02-18 10:11:22.729596	2016-02-18 10:11:22.729596	65	t
-778	167	45	450	47	2016-02-18 10:15:04.687783	450	\N	2016-02-18 10:15:04.687783	2016-02-18 10:15:04.687783	65	t
-779	167	45	450	48	2016-02-18 10:23:45.270496	450	\N	2016-02-18 10:23:45.270496	2016-02-18 10:23:45.270496	65	t
-780	167	45	450	48	2016-02-18 10:23:47.894182	450	\N	2016-02-18 10:23:47.894182	2016-02-18 10:23:47.894182	65	t
-781	165	45	450	48	2016-02-18 10:23:53.294441	450	\N	2016-02-18 10:23:53.294441	2016-02-18 10:23:53.294441	65	t
-782	166	45	450	48	2016-02-18 10:23:58.805123	450	\N	2016-02-18 10:23:58.805123	2016-02-18 10:23:58.805123	65	t
-783	166	45	450	48	2016-02-18 10:24:01.422499	450	\N	2016-02-18 10:24:01.422499	2016-02-18 10:24:01.422499	65	t
-784	165	45	467	50	2016-02-18 10:49:07.251089	467	\N	2016-02-18 10:49:07.251089	2016-02-18 10:49:07.251089	65	t
-785	166	45	467	50	2016-02-18 10:49:26.77636	467	\N	2016-02-18 10:49:26.77636	2016-02-18 10:49:26.77636	65	t
-786	167	45	467	50	2016-02-18 10:53:15.044597	467	\N	2016-02-18 10:53:15.044597	2016-02-18 10:53:15.044597	65	t
-787	88	45	443	48	2016-02-18 11:20:53.731862	443	\N	2016-02-18 11:20:53.731862	2016-02-18 11:20:53.731862	65	t
-788	88	45	467	50	2016-02-18 11:36:44.988857	467	\N	2016-02-18 11:36:44.988857	2016-02-18 11:36:44.988857	65	t
-789	149	45	443	48	2016-02-18 13:25:39.821174	443	\N	2016-02-18 13:25:39.821174	2016-02-18 13:25:39.821174	65	t
-790	91	45	443	48	2016-02-18 13:32:43.968579	443	\N	2016-02-18 13:32:43.968579	2016-02-18 13:32:43.968579	65	t
-791	86	45	443	48	2016-02-18 15:06:31.623541	443	\N	2016-02-18 15:06:31.623541	2016-02-18 15:06:31.623541	65	t
-792	92	45	443	48	2016-02-18 15:14:11.226418	443	\N	2016-02-18 15:14:11.226418	2016-02-18 15:14:11.226418	65	t
-793	90	45	443	48	2016-02-18 15:29:13.136535	443	\N	2016-02-18 15:29:13.136535	2016-02-18 15:29:13.136535	65	t
-794	88	45	443	79	2016-02-18 15:44:07.428723	443	\N	2016-02-18 15:44:07.428723	2016-02-18 15:44:07.428723	65	t
-795	88	45	443	48	2016-02-18 15:44:15.490914	443	\N	2016-02-18 15:44:15.490914	2016-02-18 15:44:15.490914	65	t
+277	84	53	437	47	2016-02-18 09:30:13.718009	437	\N	2016-02-18 09:30:13.718009	2016-02-18 09:30:13.718009	65	t
+278	85	53	437	47	2016-02-19 10:08:19.67982	437	\N	2016-02-19 10:08:19.67982	2016-02-19 10:08:19.67982	65	t
+279	86	53	437	47	2016-02-19 10:08:52.347852	437	\N	2016-02-19 10:08:52.347852	2016-02-19 10:08:52.347852	65	t
+280	87	53	437	47	2016-02-19 10:09:24.39677	437	\N	2016-02-19 10:09:24.39677	2016-02-19 10:09:24.39677	65	t
+281	88	53	437	47	2016-02-19 10:10:48.892135	437	\N	2016-02-19 10:10:48.892135	2016-02-19 10:10:48.892135	65	t
+282	87	52	355	48	2016-02-19 10:11:32.717345	355	\N	2016-02-19 10:11:32.717345	2016-02-19 10:11:32.717345	65	t
+283	88	52	355	48	2016-02-19 10:11:35.078676	355	\N	2016-02-19 10:11:35.078676	2016-02-19 10:11:35.078676	65	t
+284	85	52	355	48	2016-02-19 10:11:37.439545	355	\N	2016-02-19 10:11:37.439545	2016-02-19 10:11:37.439545	65	t
+285	86	52	355	48	2016-02-19 10:11:39.594071	355	\N	2016-02-19 10:11:39.594071	2016-02-19 10:11:39.594071	65	t
+286	84	52	355	48	2016-02-19 10:11:41.565165	355	\N	2016-02-19 10:11:41.565165	2016-02-19 10:11:41.565165	65	t
+287	84	45	11	50	2016-02-19 10:12:41.937314	11	\N	2016-02-19 10:12:41.937314	2016-02-19 10:12:41.937314	65	t
+288	85	45	11	50	2016-02-19 10:14:10.762876	11	\N	2016-02-19 10:14:10.762876	2016-02-19 10:14:10.762876	65	t
+289	86	45	11	50	2016-02-19 10:14:19.472265	11	\N	2016-02-19 10:14:19.472265	2016-02-19 10:14:19.472265	65	t
+290	84	52	437	79	2016-02-19 10:14:33.00609	437	\N	2016-02-19 10:14:33.00609	2016-02-19 10:14:33.00609	65	t
+291	85	52	437	79	2016-02-19 10:14:37.897031	437	\N	2016-02-19 10:14:37.897031	2016-02-19 10:14:37.897031	65	t
+292	86	52	437	79	2016-02-19 10:14:43.078503	437	\N	2016-02-19 10:14:43.078503	2016-02-19 10:14:43.078503	65	t
+293	85	52	355	48	2016-02-19 10:14:55.446866	355	\N	2016-02-19 10:14:55.446866	2016-02-19 10:14:55.446866	65	t
+294	86	52	355	48	2016-02-19 10:14:57.527522	355	\N	2016-02-19 10:14:57.527522	2016-02-19 10:14:57.527522	65	t
+295	84	52	355	48	2016-02-19 10:14:59.111162	355	\N	2016-02-19 10:14:59.111162	2016-02-19 10:14:59.111162	65	t
+296	84	45	11	50	2016-02-19 10:15:28.91295	11	\N	2016-02-19 10:15:28.91295	2016-02-19 10:15:28.91295	65	t
+297	85	45	11	50	2016-02-19 10:15:38.926261	11	\N	2016-02-19 10:15:38.926261	2016-02-19 10:15:38.926261	65	t
+298	85	52	437	79	2016-02-19 10:15:52.830859	437	\N	2016-02-19 10:15:52.830859	2016-02-19 10:15:52.830859	65	t
+299	84	52	437	79	2016-02-19 10:15:57.324949	437	\N	2016-02-19 10:15:57.324949	2016-02-19 10:15:57.324949	65	t
+300	85	52	355	48	2016-02-19 10:16:10.850701	355	\N	2016-02-19 10:16:10.850701	2016-02-19 10:16:10.850701	65	t
+301	84	52	355	48	2016-02-19 10:16:12.536143	355	\N	2016-02-19 10:16:12.536143	2016-02-19 10:16:12.536143	65	t
+302	84	45	11	50	2016-02-19 10:16:24.429904	11	\N	2016-02-19 10:16:24.429904	2016-02-19 10:16:24.429904	65	t
+303	84	52	437	79	2016-02-19 12:08:45.347009	437	\N	2016-02-19 12:08:45.347009	2016-02-19 12:08:45.347009	65	t
+304	85	45	11	50	2016-02-19 12:09:25.286449	11	\N	2016-02-19 12:09:25.286449	2016-02-19 12:09:25.286449	65	t
+305	86	45	11	50	2016-02-19 12:09:36.67666	11	\N	2016-02-19 12:09:36.67666	2016-02-19 12:09:36.67666	65	t
+306	87	45	11	50	2016-02-19 12:09:55.997103	11	\N	2016-02-19 12:09:55.997103	2016-02-19 12:09:55.997103	65	t
+307	88	45	11	50	2016-02-19 12:10:07.970564	11	\N	2016-02-19 12:10:07.970564	2016-02-19 12:10:07.970564	65	t
+308	86	52	437	79	2016-02-19 12:11:18.706876	437	\N	2016-02-19 12:11:18.706876	2016-02-19 12:11:18.706876	65	t
+309	88	52	437	79	2016-02-19 12:11:27.981923	437	\N	2016-02-19 12:11:27.981923	2016-02-19 12:11:27.981923	65	t
+310	87	52	437	79	2016-02-19 12:11:38.970464	437	\N	2016-02-19 12:11:38.970464	2016-02-19 12:11:38.970464	65	t
+311	86	52	355	48	2016-02-19 12:11:49.272434	355	\N	2016-02-19 12:11:49.272434	2016-02-19 12:11:49.272434	65	t
+312	88	52	355	48	2016-02-19 12:11:51.366337	355	\N	2016-02-19 12:11:51.366337	2016-02-19 12:11:51.366337	65	t
+313	87	52	355	48	2016-02-19 12:11:53.03897	355	\N	2016-02-19 12:11:53.03897	2016-02-19 12:11:53.03897	65	t
+314	86	45	11	50	2016-02-19 12:12:10.926372	11	\N	2016-02-19 12:12:10.926372	2016-02-19 12:12:10.926372	65	t
+315	87	45	11	50	2016-02-19 12:12:19.277847	11	\N	2016-02-19 12:12:19.277847	2016-02-19 12:12:19.277847	65	t
+316	88	45	11	50	2016-02-19 12:12:31.298651	11	\N	2016-02-19 12:12:31.298651	2016-02-19 12:12:31.298651	65	t
+317	89	53	437	47	2016-02-21 23:41:11.355745	437	\N	2016-02-21 23:41:11.355745	2016-02-21 23:41:11.355745	65	t
+318	90	53	437	47	2016-02-21 23:50:34.171478	437	\N	2016-02-21 23:50:34.171478	2016-02-21 23:50:34.171478	65	t
 \.
 
 
 --
--- TOC entry 2824 (class 0 OID 0)
--- Dependencies: 186
 -- Name: estatus_evaluacion_id_estatus_evaluacion_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('estatus_evaluacion_id_estatus_evaluacion_seq', 795, true);
+SELECT pg_catalog.setval('estatus_evaluacion_id_estatus_evaluacion_seq', 318, true);
 
 
 --
--- TOC entry 2679 (class 0 OID 109241)
--- Dependencies: 187
 -- Data for Name: evaluacion; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY evaluacion (id_evaluacion, fk_evaluador, fk_evaluado, total_b, total_c, total_final, esta_conforme, fk_estatus, created_date, modified_date, created_by, modified_by, es_activo, obj_funcional, fk_rango_act) FROM stdin;
-1	1	1	\N	\N	\N	\N	19	2016-01-25 14:28:05.067934	2016-01-25 14:28:05.067934	404	\N	t	\N	\N
-2	2	2	\N	\N	\N	\N	19	2016-01-26 09:59:52.66694	2016-01-26 09:59:52.66694	68	\N	t	\N	\N
-3	3	3	\N	\N	\N	\N	19	2016-01-26 10:25:26.370115	2016-01-26 10:25:26.370115	68	\N	t	\N	\N
-4	4	4	\N	\N	\N	\N	19	2016-01-26 10:37:04.227373	2016-01-26 10:37:04.227373	68	\N	t	\N	\N
-5	5	5	\N	\N	\N	\N	19	2016-01-26 11:13:06.160608	2016-01-26 11:13:06.160608	68	\N	t	\N	\N
-6	6	6	\N	\N	\N	\N	19	2016-01-26 11:24:50.501894	2016-01-26 11:24:50.501894	68	\N	t	\N	\N
-7	7	7	\N	\N	\N	\N	19	2016-01-26 11:38:32.771697	2016-01-26 11:38:32.771697	468	\N	t	\N	\N
-8	8	8	\N	\N	\N	\N	19	2016-01-26 12:13:22.441759	2016-01-26 12:13:22.441759	41	\N	t	\N	\N
-9	9	9	\N	\N	\N	\N	19	2016-01-26 13:57:36.802601	2016-01-26 13:57:36.802601	21	\N	t	\N	\N
-10	10	10	\N	\N	\N	\N	19	2016-01-26 14:08:30.979481	2016-01-26 14:08:30.979481	21	\N	t	\N	\N
-11	11	11	\N	\N	\N	\N	19	2016-01-26 15:17:03.132385	2016-01-26 15:17:03.132385	21	\N	t	\N	\N
-12	12	12	\N	\N	\N	\N	19	2016-01-26 16:01:48.602716	2016-01-26 16:01:48.602716	41	\N	t	\N	\N
-14	14	14	\N	\N	\N	\N	19	2016-01-26 17:14:11.951027	2016-01-26 17:14:11.951027	437	\N	f	\N	\N
-13	13	13	\N	\N	\N	\N	19	2016-01-26 16:50:43.430755	2016-01-26 16:50:43.430755	9	\N	f	\N	\N
-15	15	15	\N	\N	\N	\N	19	2016-01-27 13:51:14.344779	2016-01-27 13:51:14.344779	162	\N	t	\N	\N
-16	16	16	\N	\N	\N	\N	19	2016-01-27 13:56:01.522724	2016-01-27 13:56:01.522724	162	\N	t	\N	\N
-17	17	17	\N	\N	\N	\N	19	2016-01-27 13:58:45.568204	2016-01-27 13:58:45.568204	162	\N	t	\N	\N
-18	18	18	\N	\N	\N	\N	19	2016-01-27 14:01:33.472208	2016-01-27 14:01:33.472208	162	\N	t	\N	\N
-20	20	20	\N	\N	\N	\N	19	2016-01-28 08:46:51.398903	2016-01-28 08:46:51.398903	143	\N	t	\N	\N
-21	21	21	\N	\N	\N	\N	19	2016-01-28 08:55:13.323984	2016-01-28 08:55:13.323984	143	\N	t	\N	\N
-22	22	22	\N	\N	\N	\N	19	2016-01-28 08:57:34.351086	2016-01-28 08:57:34.351086	143	\N	t	\N	\N
-23	23	23	\N	\N	\N	\N	19	2016-01-28 11:39:41.680599	2016-01-28 11:39:41.680599	41	\N	t	\N	\N
-24	24	24	\N	\N	\N	\N	19	2016-01-28 11:41:53.363597	2016-01-28 11:41:53.363597	453	\N	t	\N	\N
-25	25	25	\N	\N	\N	\N	19	2016-01-28 13:43:36.348273	2016-01-28 13:43:36.348273	453	\N	t	\N	\N
-26	26	26	\N	\N	\N	\N	19	2016-01-28 13:51:40.909855	2016-01-28 13:51:40.909855	453	\N	t	\N	\N
-27	27	27	\N	\N	\N	\N	19	2016-01-28 14:37:55.173842	2016-01-28 14:37:55.173842	397	\N	t	\N	\N
-28	28	28	\N	\N	\N	\N	19	2016-01-28 14:40:48.469861	2016-01-28 14:40:48.469861	470	\N	t	\N	\N
-29	29	29	\N	\N	\N	\N	19	2016-01-28 15:08:03.177361	2016-01-28 15:08:03.177361	401	\N	t	\N	\N
-30	30	30	\N	\N	\N	\N	19	2016-01-28 15:09:21.879561	2016-01-28 15:09:21.879561	404	\N	t	\N	\N
-31	31	31	\N	\N	\N	\N	19	2016-01-28 15:11:21.657069	2016-01-28 15:11:21.657069	401	\N	t	\N	\N
-32	32	32	\N	\N	\N	\N	19	2016-01-28 15:17:22.851817	2016-01-28 15:17:22.851817	404	\N	t	\N	\N
-33	33	33	\N	\N	\N	\N	19	2016-01-28 15:27:56.107716	2016-01-28 15:27:56.107716	37	\N	t	\N	\N
-34	34	34	\N	\N	\N	\N	19	2016-01-28 15:32:38.818677	2016-01-28 15:32:38.818677	37	\N	t	\N	\N
-35	35	35	\N	\N	\N	\N	19	2016-01-28 16:20:57.872955	2016-01-28 16:20:57.872955	453	\N	t	\N	\N
-36	36	36	\N	\N	\N	\N	19	2016-01-28 16:22:39.952813	2016-01-28 16:22:39.952813	453	\N	t	\N	\N
-37	37	37	\N	\N	\N	\N	19	2016-01-28 16:30:11.440309	2016-01-28 16:30:11.440309	453	\N	t	\N	\N
-38	38	38	\N	\N	\N	\N	19	2016-01-28 16:32:48.86032	2016-01-28 16:32:48.86032	453	\N	t	\N	\N
-39	39	39	\N	\N	\N	\N	19	2016-01-28 16:39:31.253479	2016-01-28 16:39:31.253479	453	\N	t	\N	\N
-40	40	40	\N	\N	\N	\N	19	2016-01-28 16:41:30.432458	2016-01-28 16:41:30.432458	453	\N	t	\N	\N
-41	41	41	\N	\N	\N	\N	19	2016-01-28 16:44:55.919322	2016-01-28 16:44:55.919322	453	\N	t	\N	\N
-42	42	42	\N	\N	\N	\N	19	2016-01-28 16:47:28.269334	2016-01-28 16:47:28.269334	453	\N	t	\N	\N
-43	43	43	\N	\N	\N	\N	19	2016-01-28 16:51:20.399498	2016-01-28 16:51:20.399498	453	\N	t	\N	\N
-44	44	44	\N	\N	\N	\N	19	2016-01-28 16:53:35.672718	2016-01-28 16:53:35.672718	453	\N	t	\N	\N
-45	45	45	\N	\N	\N	\N	19	2016-01-28 17:08:30.191412	2016-01-28 17:08:30.191412	453	\N	t	\N	\N
-19	19	19	\N	\N	\N	\N	19	2016-01-27 14:02:11.221032	2016-01-27 14:02:11.221032	437	\N	f	\N	\N
-46	46	46	\N	\N	\N	\N	19	2016-01-28 17:51:18.870504	2016-01-28 17:51:18.870504	440	\N	t	\N	\N
-47	47	47	\N	\N	\N	\N	19	2016-01-28 18:11:13.903	2016-01-28 18:11:13.903	440	\N	t	\N	\N
-48	48	48	\N	\N	\N	\N	19	2016-01-28 23:44:42.487022	2016-01-28 23:44:42.487022	22	\N	t	\N	\N
-49	49	49	\N	\N	\N	\N	19	2016-01-28 23:56:03.412913	2016-01-28 23:56:03.412913	22	\N	t	\N	\N
-50	50	50	\N	\N	\N	\N	19	2016-01-29 00:00:01.51422	2016-01-29 00:00:01.51422	22	\N	t	\N	\N
-51	51	51	\N	\N	\N	\N	19	2016-01-29 00:04:16.601879	2016-01-29 00:04:16.601879	22	\N	t	\N	\N
-52	52	52	\N	\N	\N	\N	19	2016-01-29 00:09:56.266743	2016-01-29 00:09:56.266743	22	\N	t	\N	\N
-53	53	53	\N	\N	\N	\N	19	2016-01-29 08:35:29.143053	2016-01-29 08:35:29.143053	183	\N	t	\N	\N
-54	54	54	\N	\N	\N	\N	19	2016-01-29 08:36:27.569969	2016-01-29 08:36:27.569969	183	\N	t	\N	\N
-55	55	55	\N	\N	\N	\N	19	2016-01-29 09:33:56.487525	2016-01-29 09:33:56.487525	54	\N	t	\N	\N
-56	56	56	\N	\N	\N	\N	19	2016-01-29 09:41:24.530371	2016-01-29 09:41:24.530371	87	\N	t	\N	\N
-57	57	57	\N	\N	\N	\N	19	2016-01-29 09:48:57.616219	2016-01-29 09:48:57.616219	468	\N	t	\N	\N
-58	58	58	\N	\N	\N	\N	19	2016-01-29 09:49:44.23982	2016-01-29 09:49:44.23982	87	\N	t	\N	\N
-59	59	59	\N	\N	\N	\N	19	2016-01-29 09:52:30.635991	2016-01-29 09:52:30.635991	87	\N	t	\N	\N
-60	60	60	\N	\N	\N	\N	19	2016-01-29 10:00:15.078928	2016-01-29 10:00:15.078928	468	\N	t	\N	\N
-61	61	61	\N	\N	\N	\N	19	2016-01-29 10:07:21.523627	2016-01-29 10:07:21.523627	468	\N	t	\N	\N
-62	62	62	\N	\N	\N	\N	19	2016-01-29 10:19:35.195987	2016-01-29 10:19:35.195987	468	\N	t	\N	\N
-63	63	63	\N	\N	\N	\N	19	2016-01-29 10:27:43.129687	2016-01-29 10:27:43.129687	468	\N	t	\N	\N
-64	64	64	\N	\N	\N	\N	19	2016-01-29 10:34:57.934637	2016-01-29 10:34:57.934637	437	\N	t	\N	\N
-65	65	65	\N	\N	\N	\N	19	2016-01-29 10:36:53.02151	2016-01-29 10:36:53.02151	468	\N	t	\N	\N
-66	66	66	\N	\N	\N	\N	19	2016-01-29 10:40:27.711274	2016-01-29 10:40:27.711274	437	\N	t	\N	\N
-67	67	67	\N	\N	\N	\N	19	2016-01-29 10:47:05.709352	2016-01-29 10:47:05.709352	437	\N	t	\N	\N
-68	68	68	\N	\N	\N	\N	19	2016-01-29 10:48:53.92318	2016-01-29 10:48:53.92318	468	\N	t	\N	\N
-69	69	69	\N	\N	\N	\N	19	2016-01-29 10:53:06.796608	2016-01-29 10:53:06.796608	437	\N	t	\N	\N
-70	70	70	\N	\N	\N	\N	19	2016-01-29 10:57:04.410451	2016-01-29 10:57:04.410451	437	\N	t	\N	\N
-71	71	71	\N	\N	\N	\N	19	2016-01-29 11:03:19.691191	2016-01-29 11:03:19.691191	468	\N	t	\N	\N
-72	72	72	\N	\N	\N	\N	19	2016-01-29 11:10:17.241839	2016-01-29 11:10:17.241839	468	\N	t	\N	\N
-73	73	73	\N	\N	\N	\N	19	2016-01-29 11:20:44.143306	2016-01-29 11:20:44.143306	470	\N	t	\N	\N
-74	74	74	\N	\N	\N	\N	19	2016-01-29 13:15:41.481446	2016-01-29 13:15:41.481446	453	\N	t	\N	\N
-75	75	75	\N	\N	\N	\N	19	2016-01-29 13:21:10.861798	2016-01-29 13:21:10.861798	470	\N	t	\N	\N
-76	76	76	\N	\N	\N	\N	19	2016-01-29 16:19:53.396181	2016-01-29 16:19:53.396181	114	\N	t	\N	\N
-77	77	77	\N	\N	\N	\N	19	2016-01-29 16:36:49.886307	2016-01-29 16:36:49.886307	114	\N	t	\N	\N
-78	78	78	\N	\N	\N	\N	19	2016-01-29 16:39:37.180454	2016-01-29 16:39:37.180454	114	\N	t	\N	\N
-79	79	79	\N	\N	\N	\N	19	2016-01-31 13:51:24.694235	2016-01-31 13:51:24.694235	11	\N	f	\N	\N
-80	80	80	\N	\N	\N	\N	19	2016-02-01 14:56:21.629229	2016-02-01 14:56:21.629229	404	\N	t	\N	\N
-81	81	81	\N	\N	\N	\N	19	2016-02-03 10:24:13.674557	2016-02-03 10:24:13.674557	437	\N	f	\N	\N
-82	82	82	\N	\N	\N	\N	19	2016-02-03 10:37:16.673781	2016-02-03 10:37:16.673781	404	\N	t	\N	\N
-83	83	83	\N	\N	\N	\N	19	2016-02-03 13:40:51.399817	2016-02-03 13:40:51.399817	41	\N	t	\N	\N
-84	84	84	\N	\N	\N	\N	19	2016-02-05 11:24:27.874373	2016-02-05 11:24:27.874373	358	\N	t	\N	\N
-85	85	85	\N	\N	\N	\N	19	2016-02-08 10:14:50.09242	2016-02-08 10:14:50.09242	235	\N	t	\N	\N
-86	86	86	\N	\N	\N	\N	19	2016-02-10 11:21:45.065654	2016-02-10 11:21:45.065654	443	\N	t	\N	\N
-88	88	88	\N	\N	\N	\N	19	2016-02-10 12:01:49.871639	2016-02-10 12:01:49.871639	443	\N	t	\N	\N
-89	89	89	\N	\N	\N	\N	19	2016-02-10 12:02:49.280903	2016-02-10 12:02:49.280903	443	\N	t	\N	\N
-90	90	90	\N	\N	\N	\N	19	2016-02-10 12:04:04.830472	2016-02-10 12:04:04.830472	443	\N	t	\N	\N
-91	91	91	\N	\N	\N	\N	19	2016-02-10 12:06:36.620096	2016-02-10 12:06:36.620096	443	\N	t	\N	\N
-92	92	92	\N	\N	\N	\N	19	2016-02-10 12:08:13.444343	2016-02-10 12:08:13.444343	443	\N	t	\N	\N
-93	93	93	\N	\N	\N	\N	19	2016-02-10 13:26:37.086697	2016-02-10 13:26:37.086697	458	\N	t	\N	\N
-94	94	94	\N	\N	\N	\N	19	2016-02-10 13:33:09.398081	2016-02-10 13:33:09.398081	458	\N	t	\N	\N
-95	95	95	\N	\N	\N	\N	19	2016-02-10 13:54:47.526638	2016-02-10 13:54:47.526638	444	\N	t	\N	\N
-96	96	96	\N	\N	\N	\N	19	2016-02-11 07:40:40.716824	2016-02-11 07:40:40.716824	235	\N	t	\N	\N
-97	97	97	\N	\N	\N	\N	19	2016-02-11 14:42:57.12422	2016-02-11 14:42:57.12422	384	\N	t	\N	\N
-98	98	98	\N	\N	\N	\N	19	2016-02-11 14:49:02.801292	2016-02-11 14:49:02.801292	384	\N	t	\N	\N
-99	99	99	\N	\N	\N	\N	19	2016-02-11 14:55:11.370686	2016-02-11 14:55:11.370686	384	\N	t	\N	\N
-100	100	100	\N	\N	\N	\N	19	2016-02-11 15:01:01.900785	2016-02-11 15:01:01.900785	384	\N	t	\N	\N
-101	101	101	\N	\N	\N	\N	19	2016-02-11 15:01:27.478367	2016-02-11 15:01:27.478367	400	\N	t	\N	\N
-102	102	102	\N	\N	\N	\N	19	2016-02-11 15:28:22.745812	2016-02-11 15:28:22.745812	400	\N	t	\N	\N
-103	103	103	\N	\N	\N	\N	19	2016-02-11 15:56:04.036854	2016-02-11 15:56:04.036854	400	\N	t	\N	\N
-104	104	104	\N	\N	\N	\N	19	2016-02-11 16:10:32.047154	2016-02-11 16:10:32.047154	437	\N	t	\N	\N
-105	105	105	\N	\N	\N	\N	19	2016-02-11 16:21:02.311347	2016-02-11 16:21:02.311347	400	\N	t	\N	\N
-106	106	106	\N	\N	\N	\N	19	2016-02-11 17:25:54.515107	2016-02-11 17:25:54.515107	444	\N	t	\N	\N
-107	107	107	\N	\N	\N	\N	19	2016-02-11 19:29:42.69443	2016-02-11 19:29:42.69443	444	\N	t	\N	\N
-112	112	112	\N	\N	\N	\N	19	2016-02-12 15:16:12.552407	2016-02-12 15:16:12.552407	225	\N	t	\N	\N
-113	113	113	\N	\N	\N	\N	19	2016-02-12 15:20:17.907659	2016-02-12 15:20:17.907659	230	\N	t	\N	\N
-116	116	116	\N	\N	\N	\N	19	2016-02-12 15:44:14.309918	2016-02-12 15:44:14.309918	474	\N	t	\N	\N
-119	119	119	\N	\N	\N	\N	19	2016-02-12 16:24:32.762544	2016-02-12 16:24:32.762544	155	\N	t	\N	\N
-120	120	120	\N	\N	\N	\N	19	2016-02-12 16:31:00.817192	2016-02-12 16:31:00.817192	155	\N	t	\N	\N
-121	121	121	\N	\N	\N	\N	19	2016-02-12 16:33:35.999227	2016-02-12 16:33:35.999227	155	\N	t	\N	\N
-122	122	122	\N	\N	\N	\N	19	2016-02-12 16:36:37.552913	2016-02-12 16:36:37.552913	155	\N	t	\N	\N
-123	123	123	\N	\N	\N	\N	19	2016-02-12 16:39:04.509767	2016-02-12 16:39:04.509767	155	\N	t	\N	\N
-124	124	124	\N	\N	\N	\N	19	2016-02-12 16:40:43.282563	2016-02-12 16:40:43.282563	155	\N	t	\N	\N
-125	125	125	\N	\N	\N	\N	19	2016-02-12 16:45:52.456196	2016-02-12 16:45:52.456196	155	\N	t	\N	\N
-126	126	126	\N	\N	\N	\N	19	2016-02-12 17:03:26.80538	2016-02-12 17:03:26.80538	23	\N	t	\N	\N
-127	127	127	\N	\N	\N	\N	19	2016-02-12 17:11:54.644605	2016-02-12 17:11:54.644605	474	\N	t	\N	\N
-128	128	128	\N	\N	\N	\N	19	2016-02-12 17:30:37.690706	2016-02-12 17:30:37.690706	2	\N	t	\N	\N
-129	129	129	\N	\N	\N	\N	19	2016-02-12 17:33:27.615542	2016-02-12 17:33:27.615542	382	\N	t	\N	\N
-130	130	130	\N	\N	\N	\N	19	2016-02-12 17:43:02.402915	2016-02-12 17:43:02.402915	23	\N	t	\N	\N
-131	131	131	\N	\N	\N	\N	19	2016-02-13 05:44:10.074354	2016-02-13 05:44:10.074354	444	\N	t	\N	\N
-132	132	132	\N	\N	\N	\N	19	2016-02-13 05:56:38.272754	2016-02-13 05:56:38.272754	444	\N	t	\N	\N
-133	133	133	\N	\N	\N	\N	19	2016-02-13 05:58:19.998594	2016-02-13 05:58:19.998594	444	\N	t	\N	\N
-134	134	134	\N	\N	\N	\N	19	2016-02-13 06:01:20.360623	2016-02-13 06:01:20.360623	444	\N	t	\N	\N
-135	135	135	\N	\N	\N	\N	19	2016-02-13 08:14:43.505184	2016-02-13 08:14:43.505184	235	\N	t	\N	\N
-136	136	136	\N	\N	\N	\N	19	2016-02-13 08:19:45.923789	2016-02-13 08:19:45.923789	235	\N	t	\N	\N
-137	137	137	\N	\N	\N	\N	19	2016-02-13 08:30:01.715412	2016-02-13 08:30:01.715412	235	\N	t	\N	\N
-138	138	138	\N	\N	\N	\N	19	2016-02-14 23:04:30.067243	2016-02-14 23:04:30.067243	355	\N	t	\N	\N
-139	139	139	\N	\N	\N	\N	19	2016-02-14 23:11:37.366696	2016-02-14 23:11:37.366696	355	\N	t	\N	\N
-140	140	140	\N	\N	\N	\N	19	2016-02-15 08:33:14.144108	2016-02-15 08:33:14.144108	382	\N	t	\N	\N
-141	141	141	\N	\N	\N	\N	19	2016-02-15 09:20:09.222306	2016-02-15 09:20:09.222306	382	\N	t	\N	\N
-142	142	142	\N	\N	\N	\N	19	2016-02-15 09:34:21.588114	2016-02-15 09:34:21.588114	471	\N	t	\N	\N
-143	143	143	\N	\N	\N	\N	19	2016-02-15 10:03:06.99473	2016-02-15 10:03:06.99473	471	\N	t	\N	\N
-144	144	144	\N	\N	\N	\N	19	2016-02-15 10:04:43.252128	2016-02-15 10:04:43.252128	471	\N	t	\N	\N
-145	145	145	\N	\N	\N	\N	19	2016-02-15 10:06:17.043575	2016-02-15 10:06:17.043575	471	\N	t	\N	\N
-146	146	146	\N	\N	\N	\N	19	2016-02-15 10:07:49.067637	2016-02-15 10:07:49.067637	471	\N	t	\N	\N
-147	147	147	\N	\N	\N	\N	19	2016-02-15 15:02:18.89687	2016-02-15 15:02:18.89687	454	\N	t	\N	\N
-148	148	148	\N	\N	\N	\N	19	2016-02-15 15:21:03.240688	2016-02-15 15:21:03.240688	454	\N	t	\N	\N
-149	149	149	\N	\N	\N	\N	19	2016-02-15 15:26:09.815195	2016-02-15 15:26:09.815195	443	\N	t	\N	\N
-150	150	150	\N	\N	\N	\N	19	2016-02-15 16:23:07.423418	2016-02-15 16:23:07.423418	455	\N	t	\N	\N
-151	151	151	\N	\N	\N	\N	19	2016-02-15 18:17:17.867265	2016-02-15 18:17:17.867265	455	\N	t	\N	\N
-152	152	152	\N	\N	\N	\N	19	2016-02-16 11:08:42.772653	2016-02-16 11:08:42.772653	454	\N	t	\N	\N
-153	153	153	\N	\N	\N	\N	19	2016-02-16 11:21:57.556398	2016-02-16 11:21:57.556398	454	\N	t	\N	\N
-117	117	117	\N	\N	\N	\N	19	2016-02-12 15:45:29.484734	2016-02-12 15:45:29.484734	474	\N	f	\N	\N
-87	87	87	\N	\N	\N	\N	19	2016-02-10 11:50:08.651705	2016-02-10 11:50:08.651705	474	\N	f	\N	\N
-108	108	108	\N	\N	\N	\N	19	2016-02-12 14:09:14.151756	2016-02-12 14:09:14.151756	474	\N	f	\N	\N
-109	109	109	\N	\N	\N	\N	19	2016-02-12 14:41:50.476835	2016-02-12 14:41:50.476835	474	\N	f	\N	\N
-110	110	110	\N	\N	\N	\N	19	2016-02-12 14:45:48.613899	2016-02-12 14:45:48.613899	474	\N	f	\N	\N
-111	111	111	\N	\N	\N	\N	19	2016-02-12 15:12:46.631727	2016-02-12 15:12:46.631727	474	\N	f	\N	\N
-114	114	114	\N	\N	\N	\N	19	2016-02-12 15:42:17.721004	2016-02-12 15:42:17.721004	474	\N	f	\N	\N
-115	115	115	\N	\N	\N	\N	19	2016-02-12 15:42:52.487899	2016-02-12 15:42:52.487899	474	\N	f	\N	\N
-118	118	118	\N	\N	\N	\N	19	2016-02-12 15:45:58.557682	2016-02-12 15:45:58.557682	474	\N	f	\N	\N
-154	154	154	\N	\N	\N	\N	19	2016-02-16 12:05:28.640352	2016-02-16 12:05:28.640352	474	\N	t	\N	\N
-155	155	155	\N	\N	\N	\N	19	2016-02-16 12:32:38.167991	2016-02-16 12:32:38.167991	474	\N	t	\N	\N
-156	156	156	\N	\N	\N	\N	19	2016-02-16 12:39:12.025572	2016-02-16 12:39:12.025572	474	\N	t	\N	\N
-157	157	157	\N	\N	\N	\N	19	2016-02-16 12:52:56.956436	2016-02-16 12:52:56.956436	474	\N	t	\N	\N
-158	158	158	\N	\N	\N	\N	19	2016-02-16 12:57:37.079675	2016-02-16 12:57:37.079675	474	\N	t	\N	\N
-159	159	159	\N	\N	\N	\N	19	2016-02-16 12:59:04.221411	2016-02-16 12:59:04.221411	454	\N	t	\N	\N
-160	160	160	\N	\N	\N	\N	19	2016-02-16 13:01:41.077579	2016-02-16 13:01:41.077579	474	\N	t	\N	\N
-161	161	161	\N	\N	\N	\N	19	2016-02-16 13:04:55.883093	2016-02-16 13:04:55.883093	474	\N	t	\N	\N
-162	162	162	\N	\N	\N	\N	19	2016-02-16 13:07:24.37851	2016-02-16 13:07:24.37851	474	\N	t	\N	\N
-163	163	163	\N	\N	\N	\N	19	2016-02-16 13:11:53.411052	2016-02-16 13:11:53.411052	474	\N	t	\N	\N
-164	164	164	\N	\N	\N	\N	19	2016-02-16 16:22:31.957168	2016-02-16 16:22:31.957168	476	\N	t	\N	\N
-165	165	165	\N	\N	\N	\N	19	2016-02-18 10:06:41.782822	2016-02-18 10:06:41.782822	450	\N	t	\N	\N
-166	166	166	\N	\N	\N	\N	19	2016-02-18 10:11:22.700299	2016-02-18 10:11:22.700299	450	\N	t	\N	\N
-167	167	167	\N	\N	\N	\N	19	2016-02-18 10:15:04.658376	2016-02-18 10:15:04.658376	450	\N	t	\N	\N
+84	84	84	\N	\N	\N	\N	19	2016-02-18 09:30:13.681091	2016-02-18 09:30:13.681091	437	\N	t	\N	\N
+85	85	85	\N	\N	\N	\N	19	2016-02-19 10:08:19.650555	2016-02-19 10:08:19.650555	437	\N	t	\N	\N
+86	86	86	\N	\N	\N	\N	19	2016-02-19 10:08:52.330895	2016-02-19 10:08:52.330895	437	\N	t	\N	\N
+87	87	87	\N	\N	\N	\N	19	2016-02-19 10:09:24.380206	2016-02-19 10:09:24.380206	437	\N	t	\N	\N
+88	88	88	\N	\N	\N	\N	19	2016-02-19 10:10:48.861989	2016-02-19 10:10:48.861989	437	\N	t	\N	\N
+89	89	89	\N	\N	\N	\N	19	2016-02-21 23:41:11.322618	2016-02-21 23:41:11.322618	437	\N	t	\N	\N
+90	90	90	\N	\N	\N	\N	19	2016-02-21 23:50:34.137648	2016-02-21 23:50:34.137648	437	\N	t	\N	\N
 \.
 
 
 --
--- TOC entry 2825 (class 0 OID 0)
--- Dependencies: 188
 -- Name: evaluacion_id_evaluacion_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('evaluacion_id_evaluacion_seq', 167, true);
+SELECT pg_catalog.setval('evaluacion_id_evaluacion_seq', 90, true);
 
 
 --
--- TOC entry 2681 (class 0 OID 109251)
--- Dependencies: 189
 -- Data for Name: evaluador; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY evaluador (id_evaluador, cod_nomina, cargo, grado, cod_clase, unidad_admtiva, fk_persona, fk_estatus, fk_supervisor, created_date, modified_date, created_by, modified_by, es_activo, fk_tipo_entidad, fk_dependencia, dependencia_cruge) FROM stdin;
-1	2979	COORDINADORA DE DICTAMENES Y ESTUDIOS	0	0	CONSULTORIA JURIDICA	4527	22	3	2016-01-25 14:28:05.056128	2016-01-25 14:28:05.056128	404	\N	t	\N	\N	\N
-2	3118	TESORERO (A)	0	0	OFICINA DE GESTION ADMINISTRATIVA	2649	22	3	2016-01-26 09:59:52.650359	2016-01-26 09:59:52.650359	68	\N	t	\N	\N	\N
-3	3118	TESORERO (A)	0	0	OFICINA DE GESTION ADMINISTRATIVA	2649	22	3	2016-01-26 10:25:26.354506	2016-01-26 10:25:26.354506	68	\N	t	\N	\N	\N
-4	3118	TESORERO (A)	0	0	OFICINA DE GESTION ADMINISTRATIVA	2649	22	3	2016-01-26 10:37:04.211518	2016-01-26 10:37:04.211518	68	\N	t	\N	\N	\N
-5	3118	TESORERO (A)	0	0	OFICINA DE GESTION ADMINISTRATIVA	2649	22	3	2016-01-26 11:13:06.143995	2016-01-26 11:13:06.143995	68	\N	t	\N	\N	\N
-6	3118	TESORERO (A)	0	0	OFICINA DE GESTION ADMINISTRATIVA	2649	22	3	2016-01-26 11:24:50.489546	2016-01-26 11:24:50.489546	68	\N	t	\N	\N	\N
-7	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-26 11:38:32.760516	2016-01-26 11:38:32.760516	468	\N	t	\N	\N	\N
-8	563	DIRECTORA DE LINEA DE CONTROL POSTERIOR	0	0	AUDITORIA INTERNA	1229	22	3	2016-01-26 12:13:22.425168	2016-01-26 12:13:22.425168	41	\N	t	\N	\N	\N
-9	119	COORDINADOR (A)	0	0	OFICINA DE GESTIÓN HUMANA	2643	22	3	2016-01-26 13:57:36.786496	2016-01-26 13:57:36.786496	21	\N	t	\N	\N	\N
-10	119	COORDINADOR (A)	0	0	OFICINA DE GESTIÓN HUMANA	2643	22	3	2016-01-26 14:08:30.96274	2016-01-26 14:08:30.96274	21	\N	t	\N	\N	\N
-11	119	COORDINADOR (A)	0	0	OFICINA DE GESTIÓN HUMANA	2643	22	3	2016-01-26 15:17:03.120846	2016-01-26 15:17:03.120846	21	\N	t	\N	\N	\N
-12	563	DIRECTORA DE LINEA DE CONTROL POSTERIOR	0	0	AUDITORIA INTERNA	1229	22	3	2016-01-26 16:01:48.587282	2016-01-26 16:01:48.587282	41	\N	t	\N	\N	\N
-14	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-26 17:14:11.935546	2016-01-26 17:14:11.935546	437	\N	f	\N	\N	\N
-13	3353	COORDINADOR DE REDES Y SERVIDORES	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	649	22	3	2016-01-26 16:50:43.418953	2016-01-26 16:50:43.418953	9	\N	f	\N	\N	\N
-15	3266	ANALISTA	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1189	22	3	2016-01-27 13:51:14.329097	2016-01-27 13:51:14.329097	162	\N	t	\N	\N	\N
-16	3266	ANALISTA	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1189	22	3	2016-01-27 13:56:01.508091	2016-01-27 13:56:01.508091	162	\N	t	\N	\N	\N
-17	3266	ANALISTA	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1189	22	3	2016-01-27 13:58:45.552295	2016-01-27 13:58:45.552295	162	\N	t	\N	\N	\N
-18	3266	ANALISTA	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1189	22	3	2016-01-27 14:01:33.457143	2016-01-27 14:01:33.457143	162	\N	t	\N	\N	\N
-20	3128	COORDINADOR DE PLANIFICACION	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1140	22	3	2016-01-28 08:46:51.381954	2016-01-28 08:46:51.381954	143	\N	t	\N	\N	\N
-21	3128	COORDINADOR DE PLANIFICACION	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1140	22	3	2016-01-28 08:55:13.310828	2016-01-28 08:55:13.310828	143	\N	t	\N	\N	\N
-22	3128	COORDINADOR DE PLANIFICACION	0	0	OFICINA DE PLANIFICACION Y PRESUPUESTO	1140	22	3	2016-01-28 08:57:34.334811	2016-01-28 08:57:34.334811	143	\N	t	\N	\N	\N
-23	563	DIRECTORA DE LINEA DE CONTROL POSTERIOR	0	0	AUDITORIA INTERNA	1229	22	3	2016-01-28 11:39:41.669087	2016-01-28 11:39:41.669087	41	\N	t	\N	\N	\N
-24	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 11:41:53.349475	2016-01-28 11:41:53.349475	453	\N	t	\N	\N	\N
-25	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 13:43:36.33273	2016-01-28 13:43:36.33273	453	\N	t	\N	\N	\N
-26	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 13:51:40.897451	2016-01-28 13:51:40.897451	453	\N	t	\N	\N	\N
-27	829	DIRECTORA(O) GENERAL (E) DE POLITICAS PUBLICAS	0	0	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	3822	22	3	2016-01-28 14:37:55.158192	2016-01-28 14:37:55.158192	397	\N	t	\N	\N	\N
-28	3127	COORDINADOR DE SERVICIOS GENERALES	0	0	OFICINA DE GESTION ADMINISTRATIVA	4642	22	3	2016-01-28 14:40:48.456231	2016-01-28 14:40:48.456231	470	\N	t	\N	\N	\N
-29	3139	COORDINADOR (A)	0	0	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	3184	22	3	2016-01-28 15:08:03.164174	2016-01-28 15:08:03.164174	401	\N	t	\N	\N	\N
-30	2979	COORDINADORA DE DICTAMENES Y ESTUDIOS	0	0	CONSULTORIA JURIDICA	4527	22	3	2016-01-28 15:09:21.868037	2016-01-28 15:09:21.868037	404	\N	t	\N	\N	\N
-31	3139	COORDINADOR (A)	0	0	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	3184	22	3	2016-01-28 15:11:21.628631	2016-01-28 15:11:21.628631	401	\N	t	\N	\N	\N
-32	2979	COORDINADORA DE DICTAMENES Y ESTUDIOS	0	0	CONSULTORIA JURIDICA	4527	22	3	2016-01-28 15:17:22.840269	2016-01-28 15:17:22.840269	404	\N	t	\N	\N	\N
-33	3062	TRABAJADOR SOCIAL	0	0	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	971	22	3	2016-01-28 15:27:56.093071	2016-01-28 15:27:56.093071	37	\N	t	\N	\N	\N
-34	3062	TRABAJADOR SOCIAL	0	0	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	971	22	3	2016-01-28 15:32:38.807265	2016-01-28 15:32:38.807265	37	\N	t	\N	\N	\N
-35	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:20:57.85626	2016-01-28 16:20:57.85626	453	\N	t	\N	\N	\N
-36	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:22:39.937469	2016-01-28 16:22:39.937469	453	\N	t	\N	\N	\N
-37	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:30:11.425766	2016-01-28 16:30:11.425766	453	\N	t	\N	\N	\N
-38	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:32:48.839881	2016-01-28 16:32:48.839881	453	\N	t	\N	\N	\N
-39	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:39:31.2378	2016-01-28 16:39:31.2378	453	\N	t	\N	\N	\N
-40	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:41:30.420582	2016-01-28 16:41:30.420582	453	\N	t	\N	\N	\N
-41	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:44:55.904325	2016-01-28 16:44:55.904325	453	\N	t	\N	\N	\N
-42	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:47:28.256693	2016-01-28 16:47:28.256693	453	\N	t	\N	\N	\N
-43	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:51:20.382558	2016-01-28 16:51:20.382558	453	\N	t	\N	\N	\N
-44	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 16:53:35.65807	2016-01-28 16:53:35.65807	453	\N	t	\N	\N	\N
-45	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-28 17:08:30.175102	2016-01-28 17:08:30.175102	453	\N	t	\N	\N	\N
-19	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-27 14:02:11.206249	2016-01-27 14:02:11.206249	437	\N	f	\N	\N	\N
-46	3323	COORDINADOR DE TRANSPORTE (E)	0	0	OFICINA DE GESTION ADMINISTRATIVA	4545	22	3	2016-01-28 17:51:18.851969	2016-01-28 17:51:18.851969	440	\N	t	\N	\N	\N
-47	3323	COORDINADOR DE TRANSPORTE (E)	0	0	OFICINA DE GESTION ADMINISTRATIVA	4545	22	3	2016-01-28 18:11:13.886947	2016-01-28 18:11:13.886947	440	\N	t	\N	\N	\N
-48	3131	COORDINADOR DE SOPORTE TECNICO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	647	22	3	2016-01-28 23:44:42.470244	2016-01-28 23:44:42.470244	22	\N	t	\N	\N	\N
-49	3131	COORDINADOR DE SOPORTE TECNICO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	647	22	3	2016-01-28 23:56:03.398892	2016-01-28 23:56:03.398892	22	\N	t	\N	\N	\N
-50	3131	COORDINADOR DE SOPORTE TECNICO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	647	22	3	2016-01-29 00:00:01.503024	2016-01-29 00:00:01.503024	22	\N	t	\N	\N	\N
-51	3131	COORDINADOR DE SOPORTE TECNICO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	647	22	3	2016-01-29 00:04:16.585374	2016-01-29 00:04:16.585374	22	\N	t	\N	\N	\N
-52	3131	COORDINADOR DE SOPORTE TECNICO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	647	22	3	2016-01-29 00:09:56.249469	2016-01-29 00:09:56.249469	22	\N	t	\N	\N	\N
-53	3138	COORDINADOR (A) DE DESPACHO	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	3756	22	3	2016-01-29 08:35:29.129768	2016-01-29 08:35:29.129768	183	\N	t	\N	\N	\N
-54	3138	COORDINADOR (A) DE DESPACHO	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	3756	22	3	2016-01-29 08:36:27.558428	2016-01-29 08:36:27.558428	183	\N	t	\N	\N	\N
-55	3132	COORDINADOR (A) DE ASUNTOS MULTILATERALES	0	0	OFICINA DE INTEGRACIÓN Y ASUNTOS INTERNACIONALES	651	22	3	2016-01-29 09:33:56.470749	2016-01-29 09:33:56.470749	54	\N	t	\N	\N	\N
-56	69	ANALISTA	0	0	OFICINA DE GESTION ADMINISTRATIVA	588	22	3	2016-01-29 09:41:24.518959	2016-01-29 09:41:24.518959	87	\N	t	\N	\N	\N
-57	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 09:48:57.60398	2016-01-29 09:48:57.60398	468	\N	t	\N	\N	\N
-58	69	ANALISTA	0	0	OFICINA DE GESTION ADMINISTRATIVA	588	22	3	2016-01-29 09:49:44.223704	2016-01-29 09:49:44.223704	87	\N	t	\N	\N	\N
-59	69	ANALISTA	0	0	OFICINA DE GESTION ADMINISTRATIVA	588	22	3	2016-01-29 09:52:30.624752	2016-01-29 09:52:30.624752	87	\N	t	\N	\N	\N
-60	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 10:00:15.064571	2016-01-29 10:00:15.064571	468	\N	t	\N	\N	\N
-61	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 10:07:21.508453	2016-01-29 10:07:21.508453	468	\N	t	\N	\N	\N
-62	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 10:19:35.178572	2016-01-29 10:19:35.178572	468	\N	t	\N	\N	\N
-63	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 10:27:43.117104	2016-01-29 10:27:43.117104	468	\N	t	\N	\N	\N
-64	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-29 10:34:57.917566	2016-01-29 10:34:57.917566	437	\N	t	\N	\N	\N
-65	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 10:36:53.005955	2016-01-29 10:36:53.005955	468	\N	t	\N	\N	\N
-66	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-29 10:40:27.695203	2016-01-29 10:40:27.695203	437	\N	t	\N	\N	\N
-67	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-29 10:47:05.694654	2016-01-29 10:47:05.694654	437	\N	t	\N	\N	\N
-68	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 10:48:53.906769	2016-01-29 10:48:53.906769	468	\N	t	\N	\N	\N
-69	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-29 10:53:06.781413	2016-01-29 10:53:06.781413	437	\N	t	\N	\N	\N
-70	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-01-29 10:57:04.394692	2016-01-29 10:57:04.394692	437	\N	t	\N	\N	\N
-71	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 11:03:19.667748	2016-01-29 11:03:19.667748	468	\N	t	\N	\N	\N
-72	3343	DIRECTOR GENERAL DE GESTIÓN ADMINISTRATIVA	0	0	OFICINA DE GESTION ADMINISTRATIVA	4616	22	3	2016-01-29 11:10:17.227612	2016-01-29 11:10:17.227612	468	\N	t	\N	\N	\N
-73	3127	COORDINADOR DE SERVICIOS GENERALES	0	0	OFICINA DE GESTION ADMINISTRATIVA	4642	22	3	2016-01-29 11:20:44.12655	2016-01-29 11:20:44.12655	470	\N	t	\N	\N	\N
-74	2786	DIRECTORA GENERAL DE LA OFICINA DE ATENCIÓN A LA CIUDADANÍA	0	0	OFICINA DE ATENCION A LA CIUDADANIA	3834	22	3	2016-01-29 13:15:41.466862	2016-01-29 13:15:41.466862	453	\N	t	\N	\N	\N
-75	3127	COORDINADOR DE SERVICIOS GENERALES	0	0	OFICINA DE GESTION ADMINISTRATIVA	4642	22	3	2016-01-29 13:21:10.845119	2016-01-29 13:21:10.845119	470	\N	t	\N	\N	\N
-76	3301	COORDINADOR DE COMPRAS	0	0	OFICINA DE GESTION ADMINISTRATIVA	4500	22	3	2016-01-29 16:19:53.318983	2016-01-29 16:19:53.318983	114	\N	t	\N	\N	\N
-77	3301	COORDINADOR DE COMPRAS	0	0	OFICINA DE GESTION ADMINISTRATIVA	4500	22	3	2016-01-29 16:36:49.869093	2016-01-29 16:36:49.869093	114	\N	t	\N	\N	\N
-78	3301	COORDINADOR DE COMPRAS	0	0	OFICINA DE GESTION ADMINISTRATIVA	4500	22	3	2016-01-29 16:39:37.168286	2016-01-29 16:39:37.168286	114	\N	t	\N	\N	\N
-79	655	ANALISTA DE SISTEMAS 	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	1401	22	3	2016-01-31 13:51:24.683001	2016-01-31 13:51:24.683001	11	\N	f	\N	\N	\N
-80	2979	COORDINADORA DE DICTAMENES Y ESTUDIOS	0	0	CONSULTORIA JURIDICA	4527	22	3	2016-02-01 14:56:21.605942	2016-02-01 14:56:21.605942	404	\N	t	\N	\N	\N
-81	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-03 10:24:13.661745	2016-02-03 10:24:13.661745	437	\N	f	\N	\N	\N
-82	2979	COORDINADORA DE DICTAMENES Y ESTUDIOS	0	0	CONSULTORIA JURIDICA	4527	22	3	2016-02-03 10:37:16.658705	2016-02-03 10:37:16.658705	404	\N	t	\N	\N	\N
-83	563	DIRECTORA DE LINEA DE CONTROL POSTERIOR	0	0	AUDITORIA INTERNA	1229	22	3	2016-02-03 13:40:51.386101	2016-02-03 13:40:51.386101	41	\N	t	\N	\N	\N
-84	3153	DIRECTORA ESTADAL	0	0	LARA	2699	22	3	2016-02-05 11:24:27.862629	2016-02-05 11:24:27.862629	358	\N	t	\N	\N	\N
-85	3148	DIRECTORA ESTADAL	0	0	TRUJILLO	4532	22	3	2016-02-08 10:14:50.077993	2016-02-08 10:14:50.077993	235	\N	t	\N	\N	\N
-86	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-10 11:21:45.049832	2016-02-10 11:21:45.049832	443	\N	t	\N	\N	\N
-88	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-10 12:01:49.856305	2016-02-10 12:01:49.856305	443	\N	t	\N	\N	\N
-89	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-10 12:02:49.269576	2016-02-10 12:02:49.269576	443	\N	t	\N	\N	\N
-90	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-10 12:04:04.817408	2016-02-10 12:04:04.817408	443	\N	t	\N	\N	\N
-91	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-10 12:06:36.608142	2016-02-10 12:06:36.608142	443	\N	t	\N	\N	\N
-92	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-10 12:08:13.429905	2016-02-10 12:08:13.429905	443	\N	t	\N	\N	\N
-93	1128	COORDINADORA (E)	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4221	22	3	2016-02-10 13:26:37.074856	2016-02-10 13:26:37.074856	458	\N	t	\N	\N	\N
-94	1128	COORDINADORA (E)	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4221	22	3	2016-02-10 13:33:09.385092	2016-02-10 13:33:09.385092	458	\N	t	\N	\N	\N
-95	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-10 13:54:47.507534	2016-02-10 13:54:47.507534	444	\N	t	\N	\N	\N
-96	3148	DIRECTORA ESTADAL	0	0	TRUJILLO	4532	22	3	2016-02-11 07:40:40.676489	2016-02-11 07:40:40.676489	235	\N	t	\N	\N	\N
-97	906	ANALISTA	0	0	DIRECCION GENERAL DEL DESPACHO	2825	22	3	2016-02-11 14:42:57.076661	2016-02-11 14:42:57.076661	384	\N	t	\N	\N	\N
-98	906	ANALISTA	0	0	DIRECCION GENERAL DEL DESPACHO	2825	22	3	2016-02-11 14:49:02.771341	2016-02-11 14:49:02.771341	384	\N	t	\N	\N	\N
-99	906	ANALISTA	0	0	DIRECCION GENERAL DEL DESPACHO	2825	22	3	2016-02-11 14:55:11.35124	2016-02-11 14:55:11.35124	384	\N	t	\N	\N	\N
-100	906	ANALISTA	0	0	DIRECCION GENERAL DEL DESPACHO	2825	22	3	2016-02-11 15:01:01.885102	2016-02-11 15:01:01.885102	384	\N	t	\N	\N	\N
-101	3314	COORDINADORA DE PRENSA (E)	0	0	OFICINA DE GESTIÓN COMUNICACIONAL	4526	22	3	2016-02-11 15:01:27.463261	2016-02-11 15:01:27.463261	400	\N	t	\N	\N	\N
-102	3314	COORDINADORA DE PRENSA (E)	0	0	OFICINA DE GESTIÓN COMUNICACIONAL	4526	22	3	2016-02-11 15:28:22.722249	2016-02-11 15:28:22.722249	400	\N	t	\N	\N	\N
-103	3314	COORDINADORA DE PRENSA (E)	0	0	OFICINA DE GESTIÓN COMUNICACIONAL	4526	22	3	2016-02-11 15:56:04.023652	2016-02-11 15:56:04.023652	400	\N	t	\N	\N	\N
-104	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-11 16:10:32.033895	2016-02-11 16:10:32.033895	437	\N	t	\N	\N	\N
-105	3314	COORDINADORA DE PRENSA (E)	0	0	OFICINA DE GESTIÓN COMUNICACIONAL	4526	22	3	2016-02-11 16:21:02.295549	2016-02-11 16:21:02.295549	400	\N	t	\N	\N	\N
-106	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-11 17:25:54.500119	2016-02-11 17:25:54.500119	444	\N	t	\N	\N	\N
-107	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-11 19:29:42.67922	2016-02-11 19:29:42.67922	444	\N	t	\N	\N	\N
-112	2974	COORDINADORA (E) DE PLANIFICACION Y CONTROL DE DESARRO PRODU	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	1741	22	3	2016-02-12 15:16:12.538078	2016-02-12 15:16:12.538078	225	\N	t	\N	\N	\N
-113	2981	DIRECTORA GENERAL DE PROMOCION Y DESARROLLO PRODUCTIVO	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4025	22	3	2016-02-12 15:20:17.892928	2016-02-12 15:20:17.892928	230	\N	t	\N	\N	\N
-116	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 15:44:14.298159	2016-02-12 15:44:14.298159	474	\N	t	\N	\N	\N
-119	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:24:32.750567	2016-02-12 16:24:32.750567	155	\N	t	\N	\N	\N
-120	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:31:00.803298	2016-02-12 16:31:00.803298	155	\N	t	\N	\N	\N
-121	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:33:35.986418	2016-02-12 16:33:35.986418	155	\N	t	\N	\N	\N
-122	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:36:37.537808	2016-02-12 16:36:37.537808	155	\N	t	\N	\N	\N
-123	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:39:04.497282	2016-02-12 16:39:04.497282	155	\N	t	\N	\N	\N
-124	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:40:43.271045	2016-02-12 16:40:43.271045	155	\N	t	\N	\N	\N
-125	2927	DIRECTORA DE LÍNEA	0	0	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	4157	22	3	2016-02-12 16:45:52.443764	2016-02-12 16:45:52.443764	155	\N	t	\N	\N	\N
-126	3126	COORDINADOR (A)	0	0	OFICINA DE GESTIÓN HUMANA	2889	22	3	2016-02-12 17:03:26.794416	2016-02-12 17:03:26.794416	23	\N	t	\N	\N	\N
-127	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 17:11:54.631077	2016-02-12 17:11:54.631077	474	\N	t	\N	\N	\N
-128	3126	COORDINADOR (A)	0	0	OFICINA DE GESTIÓN HUMANA	2889	22	3	2016-02-12 17:30:37.673495	2016-02-12 17:30:37.673495	2	\N	t	\N	\N	\N
-129	685	ANALISTA	0	0	OFICINA DE GESTIÓN HUMANA	1493	22	3	2016-02-12 17:33:27.602738	2016-02-12 17:33:27.602738	382	\N	t	\N	\N	\N
-130	3126	COORDINADOR (A)	0	0	OFICINA DE GESTIÓN HUMANA	2889	22	3	2016-02-12 17:43:02.392	2016-02-12 17:43:02.392	23	\N	t	\N	\N	\N
-131	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-13 05:44:10.061764	2016-02-13 05:44:10.061764	444	\N	t	\N	\N	\N
-132	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-13 05:56:38.257301	2016-02-13 05:56:38.257301	444	\N	t	\N	\N	\N
-133	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-13 05:58:19.985873	2016-02-13 05:58:19.985873	444	\N	t	\N	\N	\N
-134	2352	DIRECTORA ESTADAL (E)	0	0	BOLIVAR	2213	22	3	2016-02-13 06:01:20.348266	2016-02-13 06:01:20.348266	444	\N	t	\N	\N	\N
-135	3148	DIRECTORA ESTADAL	0	0	TRUJILLO	4532	22	3	2016-02-13 08:14:43.484255	2016-02-13 08:14:43.484255	235	\N	t	\N	\N	\N
-136	3148	DIRECTORA ESTADAL	0	0	TRUJILLO	4532	22	3	2016-02-13 08:19:45.90759	2016-02-13 08:19:45.90759	235	\N	t	\N	\N	\N
-137	3148	DIRECTORA ESTADAL	0	0	TRUJILLO	4532	22	3	2016-02-13 08:30:01.701144	2016-02-13 08:30:01.701144	235	\N	t	\N	\N	\N
-138	3307	DIRECTORA GENERAL DE LA OFICINA DE TECNOLOGÍA DE LA INFORMAC	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4103	22	3	2016-02-14 23:04:30.051175	2016-02-14 23:04:30.051175	355	\N	t	\N	\N	\N
-139	3307	DIRECTORA GENERAL DE LA OFICINA DE TECNOLOGÍA DE LA INFORMAC	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4103	22	3	2016-02-14 23:11:37.349886	2016-02-14 23:11:37.349886	355	\N	t	\N	\N	\N
-140	685	ANALISTA	0	0	OFICINA DE GESTIÓN HUMANA	1493	22	3	2016-02-15 08:33:14.129775	2016-02-15 08:33:14.129775	382	\N	t	\N	\N	\N
-141	685	ANALISTA	0	0	OFICINA DE GESTIÓN HUMANA	1493	22	3	2016-02-15 09:20:09.208487	2016-02-15 09:20:09.208487	382	\N	t	\N	\N	\N
-142	3352	COORDINADOR DE IMPULSO, FORMULACION Y ELABORACION DE PROYECT	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4606	22	3	2016-02-15 09:34:21.573056	2016-02-15 09:34:21.573056	471	\N	t	\N	\N	\N
-143	3352	COORDINADOR DE IMPULSO, FORMULACION Y ELABORACION DE PROYECT	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4606	22	3	2016-02-15 10:03:06.982737	2016-02-15 10:03:06.982737	471	\N	t	\N	\N	\N
-144	3352	COORDINADOR DE IMPULSO, FORMULACION Y ELABORACION DE PROYECT	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4606	22	3	2016-02-15 10:04:43.235016	2016-02-15 10:04:43.235016	471	\N	t	\N	\N	\N
-145	3352	COORDINADOR DE IMPULSO, FORMULACION Y ELABORACION DE PROYECT	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4606	22	3	2016-02-15 10:06:17.030044	2016-02-15 10:06:17.030044	471	\N	t	\N	\N	\N
-146	3352	COORDINADOR DE IMPULSO, FORMULACION Y ELABORACION DE PROYECT	0	0	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	4606	22	3	2016-02-15 10:07:49.055354	2016-02-15 10:07:49.055354	471	\N	t	\N	\N	\N
-147	457	ASISTENTA ADMINISTRATIVA	0	0	VARGAS	976	22	3	2016-02-15 15:02:18.884857	2016-02-15 15:02:18.884857	454	\N	t	\N	\N	\N
-148	457	ASISTENTA ADMINISTRATIVA	0	0	VARGAS	976	22	3	2016-02-15 15:21:03.223751	2016-02-15 15:21:03.223751	454	\N	t	\N	\N	\N
-149	3143	DIRECTORA ESTADAL (E)	0	0	ANZOATEGUI	3312	22	3	2016-02-15 15:26:09.79884	2016-02-15 15:26:09.79884	443	\N	t	\N	\N	\N
-150	3152	DIRECTORA ESTADAL DE YARACUY	0	0	YARACUY	4231	22	3	2016-02-15 16:23:07.407977	2016-02-15 16:23:07.407977	455	\N	t	\N	\N	\N
-151	3152	DIRECTORA ESTADAL DE YARACUY	0	0	YARACUY	4231	22	3	2016-02-15 18:17:17.850078	2016-02-15 18:17:17.850078	455	\N	t	\N	\N	\N
-152	457	ASISTENTA ADMINISTRATIVA	0	0	VARGAS	976	22	3	2016-02-16 11:08:42.759095	2016-02-16 11:08:42.759095	454	\N	t	\N	\N	\N
-153	457	ASISTENTA ADMINISTRATIVA	0	0	VARGAS	976	22	3	2016-02-16 11:21:57.539968	2016-02-16 11:21:57.539968	454	\N	t	\N	\N	\N
-117	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 15:45:29.474174	2016-02-12 15:45:29.474174	474	\N	f	\N	\N	\N
-87	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-10 11:50:08.634119	2016-02-10 11:50:08.634119	474	\N	f	\N	\N	\N
-108	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 14:09:14.14032	2016-02-12 14:09:14.14032	474	\N	f	\N	\N	\N
-109	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 14:41:50.462186	2016-02-12 14:41:50.462186	474	\N	f	\N	\N	\N
-110	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 14:45:48.598509	2016-02-12 14:45:48.598509	474	\N	f	\N	\N	\N
-111	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 15:12:46.620334	2016-02-12 15:12:46.620334	474	\N	f	\N	\N	\N
-114	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 15:42:17.698938	2016-02-12 15:42:17.698938	474	\N	f	\N	\N	\N
-115	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 15:42:52.476326	2016-02-12 15:42:52.476326	474	\N	f	\N	\N	\N
-118	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-12 15:45:58.541658	2016-02-12 15:45:58.541658	474	\N	f	\N	\N	\N
-154	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 12:05:28.627467	2016-02-16 12:05:28.627467	474	\N	t	\N	\N	\N
-155	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 12:32:38.15387	2016-02-16 12:32:38.15387	474	\N	t	\N	\N	\N
-156	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 12:39:12.013	2016-02-16 12:39:12.013	474	\N	t	\N	\N	\N
-157	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 12:52:56.944655	2016-02-16 12:52:56.944655	474	\N	t	\N	\N	\N
-158	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 12:57:37.056299	2016-02-16 12:57:37.056299	474	\N	t	\N	\N	\N
-159	457	ASISTENTA ADMINISTRATIVA	0	0	VARGAS	976	22	3	2016-02-16 12:59:04.209341	2016-02-16 12:59:04.209341	454	\N	t	\N	\N	\N
-160	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 13:01:41.063881	2016-02-16 13:01:41.063881	474	\N	t	\N	\N	\N
-161	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 13:04:55.867004	2016-02-16 13:04:55.867004	474	\N	t	\N	\N	\N
-162	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 13:07:24.365871	2016-02-16 13:07:24.365871	474	\N	t	\N	\N	\N
-163	3393	DIRECTORA ESTADAL FALCON (E)	0	0	FALCON	4882	22	3	2016-02-16 13:11:53.396362	2016-02-16 13:11:53.396362	474	\N	t	\N	\N	\N
-164	924	ASISTENTA	0	0	GUARICO	827	22	3	2016-02-16 16:22:31.940592	2016-02-16 16:22:31.940592	476	\N	t	\N	\N	\N
-165	3158	DIRECTORA DE FORMACION E INVESTIGACION PARA LA IGUALDAD 	0	0	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	4533	22	3	2016-02-18 10:06:41.763664	2016-02-18 10:06:41.763664	450	\N	t	\N	\N	\N
-166	3158	DIRECTORA DE FORMACION E INVESTIGACION PARA LA IGUALDAD 	0	0	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	4533	22	3	2016-02-18 10:11:22.684463	2016-02-18 10:11:22.684463	450	\N	t	\N	\N	\N
-167	3158	DIRECTORA DE FORMACION E INVESTIGACION PARA LA IGUALDAD 	0	0	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	4533	22	3	2016-02-18 10:15:04.642175	2016-02-18 10:15:04.642175	450	\N	t	\N	\N	\N
+84	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-18 09:30:13.672745	2016-02-18 09:30:13.672745	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+85	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-19 10:08:19.633635	2016-02-19 10:08:19.633635	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+86	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-19 10:08:52.322556	2016-02-19 10:08:52.322556	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+87	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-19 10:09:24.372031	2016-02-19 10:09:24.372031	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+88	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-19 10:10:48.853678	2016-02-19 10:10:48.853678	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+89	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-21 23:41:11.314358	2016-02-21 23:41:11.314358	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+90	3136	COORDINADOR (A) DE DESARROLLO	0	0	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	4528	22	3	2016-02-21 23:50:34.128717	2016-02-21 23:50:34.128717	437	\N	t	\N	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
 \.
 
 
 --
--- TOC entry 2826 (class 0 OID 0)
--- Dependencies: 190
 -- Name: evaluador_id_evaluador_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('evaluador_id_evaluador_seq', 167, true);
+SELECT pg_catalog.setval('evaluador_id_evaluador_seq', 90, true);
 
 
 --
--- TOC entry 2683 (class 0 OID 109259)
--- Dependencies: 191
 -- Data for Name: evaluados; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY evaluados (id_evaluado, cargo, grado, cod_nomina, fecha_ingreso, tiempo_puesto, ubicacion_admtiva, estado, periodo_desde, periodo_hasta, n_veces, cod_clase, fk_persona, fk_estatus, created_date, modified_date, created_by, modified_by, es_activo, fk_tipo_entidad, fk_dependencia, fk_periodo) FROM stdin;
-1	ABOGADA	\N	1220	\N	\N	CONSULTORIA JURIDICA	\N	\N	\N	\N	\N	3163	25	2016-01-25 14:28:05.040054	2016-01-25 14:28:05.040054	404	\N	t	53	1	81
-2	ANALISTA	\N	3171	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	1186	25	2016-01-26 09:59:52.631283	2016-01-26 09:59:52.631283	68	\N	t	53	1	81
-3	ASISTENTA ADMINISTRATIVA	\N	713	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	1573	25	2016-01-26 10:25:26.339984	2016-01-26 10:25:26.339984	68	\N	t	53	1	81
-4	ASISTENTE (A)	\N	1108	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	2807	25	2016-01-26 10:37:04.190078	2016-01-26 10:37:04.190078	68	\N	t	53	1	81
-5	ASISTENTE (A)	\N	2350	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	3993	25	2016-01-26 11:13:06.125004	2016-01-26 11:13:06.125004	68	\N	t	53	1	81
-6	ANALISTA	\N	2347	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	4314	25	2016-01-26 11:24:50.466066	2016-01-26 11:24:50.466066	68	\N	t	53	1	81
-7	ASISTENTE (A)	\N	927	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	2781	25	2016-01-26 11:38:32.744802	2016-01-26 11:38:32.744802	468	\N	t	53	1	81
-8	AUDITORA	\N	425	\N	\N	AUDITORIA INTERNA	\N	\N	\N	\N	\N	1654	25	2016-01-26 12:13:22.408584	2016-01-26 12:13:22.408584	41	\N	t	53	1	81
-9	ANALISTA	\N	2907	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	3831	25	2016-01-26 13:57:36.769282	2016-01-26 13:57:36.769282	21	\N	t	53	1	81
-10	ANALISTA	\N	1186	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	2820	25	2016-01-26 14:08:30.942776	2016-01-26 14:08:30.942776	21	\N	t	53	1	81
-11	ANALISTA	\N	3052	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	4038	25	2016-01-26 15:17:03.104957	2016-01-26 15:17:03.104957	21	\N	t	53	1	81
-12	AUDITOR	\N	944	\N	\N	AUDITORIA INTERNA	\N	\N	\N	\N	\N	1588	25	2016-01-26 16:01:48.568088	2016-01-26 16:01:48.568088	41	\N	t	53	1	81
-14	PROGRAMADOR	\N	3361	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4612	25	2016-01-26 17:14:11.918987	2016-01-26 17:14:11.918987	437	\N	f	53	1	81
-13	ANALISTA DE SISTEMAS 	\N	655	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	1401	25	2016-01-26 16:50:43.387029	2016-01-26 16:50:43.387029	9	\N	f	53	1	81
-15	ASISTENTE (A)	\N	2346	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	3449	25	2016-01-27 13:51:14.31071	2016-01-27 13:51:14.31071	162	\N	t	53	1	81
-16	ANALISTA	\N	100	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	3854	25	2016-01-27 13:56:01.48406	2016-01-27 13:56:01.48406	162	\N	t	53	1	81
-17	ASISTENTA ADMINISTRATIVA	\N	940	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	616	25	2016-01-27 13:58:45.531267	2016-01-27 13:58:45.531267	162	\N	t	53	1	81
-18	ANALISTA	\N	2041	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	2269	25	2016-01-27 14:01:33.433182	2016-01-27 14:01:33.433182	162	\N	t	53	1	81
-20	ANALISTA	\N	99	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	3411	25	2016-01-28 08:46:51.361782	2016-01-28 08:46:51.361782	143	\N	t	53	1	81
-21	ANALISTA	\N	604	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	658	25	2016-01-28 08:55:13.28801	2016-01-28 08:55:13.28801	143	\N	t	53	1	81
-22	ANALISTA	\N	2042	\N	\N	OFICINA DE PLANIFICACION Y PRESUPUESTO	\N	\N	\N	\N	\N	617	25	2016-01-28 08:57:34.308	2016-01-28 08:57:34.308	143	\N	t	53	1	81
-23	ANALISTA	\N	2430	\N	\N	AUDITORIA INTERNA	\N	\N	\N	\N	\N	3662	25	2016-01-28 11:39:41.652202	2016-01-28 11:39:41.652202	41	\N	t	53	1	81
-24	ASISTENTE (A)	\N	3277	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	4437	25	2016-01-28 11:41:53.331422	2016-01-28 11:41:53.331422	453	\N	t	53	1	81
-25	ASISTENTE (A)	\N	1124	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	4000	25	2016-01-28 13:43:36.309032	2016-01-28 13:43:36.309032	453	\N	t	53	1	81
-26	ANALISTA	\N	139	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	3905	25	2016-01-28 13:51:40.87796	2016-01-28 13:51:40.87796	453	\N	t	53	1	81
-27	ASISTENTE (A)	\N	1241	\N	\N	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	\N	\N	\N	\N	\N	625	25	2016-01-28 14:37:55.134944	2016-01-28 14:37:55.134944	397	\N	t	53	1	81
-28	ANALISTA	\N	909	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	609	25	2016-01-28 14:40:48.438013	2016-01-28 14:40:48.438013	470	\N	t	53	1	81
-29	ANALISTA	\N	651	\N	\N	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	\N	\N	\N	\N	\N	1392	25	2016-01-28 15:08:03.141428	2016-01-28 15:08:03.141428	401	\N	t	53	1	81
-30	ANALISTA	\N	1153	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	2702	25	2016-01-28 15:09:21.850093	2016-01-28 15:09:21.850093	404	\N	t	53	1	81
-31	ANALISTA	\N	735	\N	\N	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	\N	\N	\N	\N	\N	2549	25	2016-01-28 15:11:21.610014	2016-01-28 15:11:21.610014	401	\N	t	53	1	81
-32	ABOGADO (A)	\N	628	\N	\N	CONSULTORIA JURIDICA	\N	\N	\N	\N	\N	4431	25	2016-01-28 15:17:22.827417	2016-01-28 15:17:22.827417	404	\N	t	53	1	81
-33	ANALISTA	\N	2575	\N	\N	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	\N	\N	\N	\N	\N	3801	25	2016-01-28 15:27:56.077346	2016-01-28 15:27:56.077346	37	\N	t	53	1	81
-34	ANALISTA	\N	1193	\N	\N	OFICINA ESTRATÉGICA DE SEGUIMIENTO Y EVALUACIÓN DE POLÍTICAS PÚBLICAS	\N	\N	\N	\N	\N	4333	25	2016-01-28 15:32:38.78086	2016-01-28 15:32:38.78086	37	\N	t	53	1	81
-35	ASISTENTE (A)	\N	2553	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2505	25	2016-01-28 16:20:57.835409	2016-01-28 16:20:57.835409	453	\N	t	53	1	81
-36	ASISTENTE (A)	\N	1184	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2811	25	2016-01-28 16:22:39.913863	2016-01-28 16:22:39.913863	453	\N	t	53	1	81
-37	TRABAJADORA SOCIAL	\N	995	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	659	25	2016-01-28 16:30:11.397303	2016-01-28 16:30:11.397303	453	\N	t	53	1	81
-38	ASISTENTE (A)	\N	4945505	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2511	25	2016-01-28 16:32:48.820532	2016-01-28 16:32:48.820532	453	\N	t	53	1	81
-39	ASISTENTE (A)	\N	1180	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2504	25	2016-01-28 16:39:31.214338	2016-01-28 16:39:31.214338	453	\N	t	53	1	81
-40	ASISTENTE (A)	\N	2323	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2506	25	2016-01-28 16:41:30.401392	2016-01-28 16:41:30.401392	453	\N	t	53	1	81
-41	TRABAJADORA SOCIAL	\N	1238	\N	\N	DISTRITO CAPITAL	\N	\N	\N	\N	\N	1047	25	2016-01-28 16:44:55.88047	2016-01-28 16:44:55.88047	453	\N	t	53	1	81
-42	ANALISTA	\N	2444	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	4253	25	2016-01-28 16:47:28.234012	2016-01-28 16:47:28.234012	453	\N	t	53	1	81
-43	ANALISTA	\N	497	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2795	25	2016-01-28 16:51:20.360847	2016-01-28 16:51:20.360847	453	\N	t	53	1	81
-44	ASISTENTE (A)	\N	1179	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2806	25	2016-01-28 16:53:35.634226	2016-01-28 16:53:35.634226	453	\N	t	53	1	81
-45	ASISTENTE (A)	\N	1176	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	2808	25	2016-01-28 17:08:30.151572	2016-01-28 17:08:30.151572	453	\N	t	53	1	81
-19	COORDINADORA (E) DE PLANIFICACION Y CONTROL DE DESARRO PRODU	\N	2974	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	1741	25	2016-01-27 14:02:11.18941	2016-01-27 14:02:11.18941	437	\N	f	53	1	81
-46	ANALISTA	\N	908	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	3873	25	2016-01-28 17:51:18.828279	2016-01-28 17:51:18.828279	440	\N	t	53	1	81
-47	ASISTENTA ADMINISTRATIVA	\N	2975	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	665	25	2016-01-28 18:11:13.864113	2016-01-28 18:11:13.864113	440	\N	t	53	1	81
-48	TECNICO DE SOPORTE	\N	3319	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4542	25	2016-01-28 23:44:42.452957	2016-01-28 23:44:42.452957	22	\N	t	53	1	81
-49	ASISTENTA ADMINISTRATIVA	\N	937	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	646	25	2016-01-28 23:56:03.371063	2016-01-28 23:56:03.371063	22	\N	t	53	1	81
-50	SOPORTE TECNICO	\N	2360	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	3497	25	2016-01-29 00:00:01.479687	2016-01-29 00:00:01.479687	22	\N	t	53	1	81
-51	TECNICO EN SOPORTES 	\N	124	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	606	25	2016-01-29 00:04:16.562833	2016-01-29 00:04:16.562833	22	\N	t	53	1	81
-52	TECNICO EN SOPORTES 	\N	989	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	643	25	2016-01-29 00:09:56.224422	2016-01-29 00:09:56.224422	22	\N	t	53	1	81
-53	ASISTENTE (A)	\N	2327	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	3823	25	2016-01-29 08:35:29.103945	2016-01-29 08:35:29.103945	183	\N	t	53	1	81
-54	ASISTENTE (A)	\N	1094	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	2525	25	2016-01-29 08:36:27.535669	2016-01-29 08:36:27.535669	183	\N	t	53	1	81
-55	ANALISTA	\N	3329	\N	\N	OFICINA DE INTEGRACIÓN Y ASUNTOS INTERNACIONALES	\N	\N	\N	\N	\N	4556	25	2016-01-29 09:33:56.439116	2016-01-29 09:33:56.439116	54	\N	t	53	1	81
-56	ASISTENTA ADMINISTRATIVA	\N	935	\N	\N	OFICINA DE ATENCION A LA CIUDADANIA	\N	\N	\N	\N	\N	595	25	2016-01-29 09:41:24.500871	2016-01-29 09:41:24.500871	87	\N	t	53	1	81
-57	ASISTENTA ADMINISTRATIVA	\N	1007	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	2232	25	2016-01-29 09:48:57.580055	2016-01-29 09:48:57.580055	468	\N	t	53	1	81
-58	REGISTRADOR DE BIENES	\N	2033	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	590	25	2016-01-29 09:49:44.200379	2016-01-29 09:49:44.200379	87	\N	t	53	1	81
-59	REGISTRADOR DE BIENES	\N	2433	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	1587	25	2016-01-29 09:52:30.600466	2016-01-29 09:52:30.600466	87	\N	t	53	1	81
-60	TESORERO (A)	\N	3118	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	2649	25	2016-01-29 10:00:15.041847	2016-01-29 10:00:15.041847	468	\N	t	53	1	81
-61	COORDINADOR DE COMPRAS	\N	3301	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	4500	25	2016-01-29 10:07:21.491685	2016-01-29 10:07:21.491685	468	\N	t	53	1	81
-62	COORDINADOR DE SERVICIOS GENERALES	\N	3127	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	4642	25	2016-01-29 10:19:35.161237	2016-01-29 10:19:35.161237	468	\N	t	53	1	81
-63	ASISTENTE (A)	\N	1011	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	2235	25	2016-01-29 10:27:43.098998	2016-01-29 10:27:43.098998	468	\N	t	53	1	81
-64	PROGRAMADOR	\N	3361	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4612	25	2016-01-29 10:34:57.899372	2016-01-29 10:34:57.899372	437	\N	t	53	1	81
-65	ANALISTA	\N	2969	\N	\N	OFICINA DE INTEGRACIÓN Y ASUNTOS INTERNACIONALES	\N	\N	\N	\N	\N	654	25	2016-01-29 10:36:52.988698	2016-01-29 10:36:52.988698	468	\N	t	53	1	81
-66	PROGRAMADOR	\N	3366	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4611	25	2016-01-29 10:40:27.679633	2016-01-29 10:40:27.679633	437	\N	t	53	1	81
-67	PROGRAMADORA	\N	3320	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4543	25	2016-01-29 10:47:05.674312	2016-01-29 10:47:05.674312	437	\N	t	53	1	81
-68	ANALISTA	\N	600	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	3484	25	2016-01-29 10:48:53.890004	2016-01-29 10:48:53.890004	468	\N	t	53	1	81
-69	ANALISTA	\N	165	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	4191	25	2016-01-29 10:53:06.75732	2016-01-29 10:53:06.75732	437	\N	t	53	1	81
-70	ANALISTA DE SISTEMAS 	\N	655	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	1401	25	2016-01-29 10:57:04.37328	2016-01-29 10:57:04.37328	437	\N	t	53	1	81
-71	ANALISTA	\N	69	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	588	25	2016-01-29 11:03:19.640754	2016-01-29 11:03:19.640754	468	\N	t	53	1	81
-72	COORDINADOR DE TRANSPORTE (E)	\N	3323	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	4545	25	2016-01-29 11:10:17.209503	2016-01-29 11:10:17.209503	468	\N	t	53	1	81
-73	ANALISTA	\N	82	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	2512	25	2016-01-29 11:20:44.108688	2016-01-29 11:20:44.108688	470	\N	t	53	1	81
-74	ASISTENTA ADMINISTRATIVA	\N	3161	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	545	25	2016-01-29 13:15:41.446252	2016-01-29 13:15:41.446252	453	\N	t	53	1	81
-75	ANALISTA	\N	934	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	594	25	2016-01-29 13:21:10.826199	2016-01-29 13:21:10.826199	470	\N	t	53	1	81
-76	ASISTENTE (A)	\N	2906	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	3252	25	2016-01-29 16:19:53.299434	2016-01-29 16:19:53.299434	114	\N	t	53	1	81
-77	ANALISTA	\N	702	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	3004	25	2016-01-29 16:36:49.84736	2016-01-29 16:36:49.84736	114	\N	t	53	1	81
-78	ANALISTA	\N	70	\N	\N	OFICINA DE GESTION ADMINISTRATIVA	\N	\N	\N	\N	\N	3572	25	2016-01-29 16:39:37.15229	2016-01-29 16:39:37.15229	114	\N	t	53	1	81
-79	TRABAJADORA (O) SOCIAL	\N	669	\N	\N	YARACUY	\N	\N	\N	\N	\N	946	25	2016-01-31 13:51:24.663633	2016-01-31 13:51:24.663633	11	\N	f	53	1	81
-80	ANALISTA	\N	3162	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	639	25	2016-02-01 14:56:21.586379	2016-02-01 14:56:21.586379	404	\N	t	53	1	81
-81	ABOGADO (A)	\N	616	\N	\N	CONSULTORIA JURIDICA	\N	\N	\N	\N	\N	1306	25	2016-02-03 10:24:13.637676	2016-02-03 10:24:13.637676	437	\N	f	53	1	81
-82	ABOGADO (A)	\N	616	\N	\N	CONSULTORIA JURIDICA	\N	\N	\N	\N	\N	1306	25	2016-02-03 10:37:16.640026	2016-02-03 10:37:16.640026	404	\N	t	53	1	81
-83	ASISTENTE EN AUDITORIA	\N	3374	\N	\N	AUDITORIA INTERNA	\N	\N	\N	\N	\N	4871	25	2016-02-03 13:40:51.367162	2016-02-03 13:40:51.367162	41	\N	t	53	1	81
-84	PROMOTOR (A)	\N	326	\N	\N	LARA	\N	\N	\N	\N	\N	3332	25	2016-02-05 11:24:27.843639	2016-02-05 11:24:27.843639	358	\N	t	53	1	81
-85	INSTRUCTORA  DE FORMACIÓN 	\N	1036	\N	\N	TRUJILLO	\N	\N	\N	\N	\N	941	25	2016-02-08 10:14:50.059912	2016-02-08 10:14:50.059912	235	\N	t	53	1	81
-86	ABOGADO (A)	\N	196	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	715	25	2016-02-10 11:21:45.027637	2016-02-10 11:21:45.027637	443	\N	t	53	1	81
-88	ADMINISTRADORA	\N	1018	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	711	25	2016-02-10 12:01:49.838361	2016-02-10 12:01:49.838361	443	\N	t	53	1	81
-89	PROMOTOR (A)	\N	972	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	720	25	2016-02-10 12:02:49.254505	2016-02-10 12:02:49.254505	443	\N	t	53	1	81
-90	ASISTENTA	\N	200	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	3165	25	2016-02-10 12:04:04.795793	2016-02-10 12:04:04.795793	443	\N	t	53	1	81
-91	INSTRUCTORA DE FORMACIÓN	\N	198	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	717	25	2016-02-10 12:06:36.587347	2016-02-10 12:06:36.587347	443	\N	t	53	1	81
-92	ASISTENTE (A)	\N	3271	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	4336	25	2016-02-10 12:08:13.406886	2016-02-10 12:08:13.406886	443	\N	t	53	1	81
-93	ANALISTA	\N	1202	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	3584	25	2016-02-10 13:26:37.051947	2016-02-10 13:26:37.051947	458	\N	t	53	1	81
-94	ANALISTA	\N	1183	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	4351	25	2016-02-10 13:33:09.364313	2016-02-10 13:33:09.364313	458	\N	t	53	1	81
-95	ADMINISTRADORA	\N	753	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	1941	25	2016-02-10 13:54:47.48506	2016-02-10 13:54:47.48506	444	\N	t	53	1	81
-96	PROMOTOR (A)	\N	980	\N	\N	TRUJILLO	\N	\N	\N	\N	\N	938	25	2016-02-11 07:40:40.651125	2016-02-11 07:40:40.651125	235	\N	t	53	1	81
-97	ANALISTA	\N	1060	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	2322	25	2016-02-11 14:42:57.049041	2016-02-11 14:42:57.049041	384	\N	t	53	1	81
-98	ANALISTA	\N	1059	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	2342	25	2016-02-11 14:49:02.745808	2016-02-11 14:49:02.745808	384	\N	t	53	1	81
-99	ENTRENADOR	\N	782	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	1105	25	2016-02-11 14:55:11.334446	2016-02-11 14:55:11.334446	384	\N	t	53	1	81
-100	ANALISTA	\N	158	\N	\N	DIRECCION GENERAL DEL DESPACHO	\N	\N	\N	\N	\N	1710	25	2016-02-11 15:01:01.867174	2016-02-11 15:01:01.867174	384	\N	t	53	1	81
-101	ASISTENTA ADMINISTRATIVA	\N	3082	\N	\N	OFICINA DE GESTIÓN COMUNICACIONAL	\N	\N	\N	\N	\N	692	25	2016-02-11 15:01:27.443246	2016-02-11 15:01:27.443246	400	\N	t	53	1	81
-102	DISEÑADOR GRAFICO	\N	2035	\N	\N	OFICINA DE GESTIÓN COMUNICACIONAL	\N	\N	\N	\N	\N	3656	25	2016-02-11 15:28:22.705835	2016-02-11 15:28:22.705835	400	\N	t	53	1	81
-103	ASISTENTE (A)	\N	918	\N	\N	OFICINA DE GESTIÓN COMUNICACIONAL	\N	\N	\N	\N	\N	544	25	2016-02-11 15:56:03.999582	2016-02-11 15:56:03.999582	400	\N	t	53	1	81
-104	ANALISTA DE SISTEMAS 	\N	2363	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	3496	25	2016-02-11 16:10:32.007724	2016-02-11 16:10:32.007724	437	\N	t	53	1	81
-105	ASISTENTA	\N	2941	\N	\N	OFICINA DE GESTIÓN COMUNICACIONAL	\N	\N	\N	\N	\N	574	25	2016-02-11 16:21:02.277938	2016-02-11 16:21:02.277938	400	\N	t	53	1	81
-106	TRABAJADORA SOCIAL	\N	242	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	761	25	2016-02-11 17:25:54.474924	2016-02-11 17:25:54.474924	444	\N	t	53	1	81
-107	ASISTENTA	\N	913	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	764	25	2016-02-11 19:29:42.657366	2016-02-11 19:29:42.657366	444	\N	t	53	1	81
-108	FORMADOR	\N	306	\N	\N	FALCON	\N	\N	\N	\N	\N	825	25	2016-02-12 14:09:14.118869	2016-02-12 14:09:14.118869	474	\N	f	53	1	81
-112	ANALISTA	\N	1069	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	2363	25	2016-02-12 15:16:12.516563	2016-02-12 15:16:12.516563	225	\N	t	53	1	81
-113	AUXILIAR ADMINISTRATIVA	\N	3328	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	4561	25	2016-02-12 15:20:17.874428	2016-02-12 15:20:17.874428	230	\N	t	53	1	81
-116	ADMINISTRADORA	\N	1027	\N	\N	FALCON	\N	\N	\N	\N	\N	816	25	2016-02-12 15:44:14.282321	2016-02-12 15:44:14.282321	474	\N	t	53	1	81
-119	COORDINADORA ADMINISTRATIVA EFOSIG	\N	3124	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	2763	25	2016-02-12 16:24:32.731748	2016-02-12 16:24:32.731748	155	\N	t	53	1	81
-120	RECEPCIONISTA	\N	3377	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	3758	25	2016-02-12 16:31:00.78674	2016-02-12 16:31:00.78674	155	\N	t	53	1	81
-121	ASISTENTA	\N	3031	\N	\N	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	\N	\N	\N	\N	\N	4156	25	2016-02-12 16:33:35.966023	2016-02-12 16:33:35.966023	155	\N	t	53	1	81
-122	ANALISTA	\N	1010	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	3643	25	2016-02-12 16:36:37.515617	2016-02-12 16:36:37.515617	155	\N	t	53	1	81
-123	ASISTENTE (A)	\N	2921	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	1733	25	2016-02-12 16:39:04.475316	2016-02-12 16:39:04.475316	155	\N	t	53	1	81
-124	ANALISTA	\N	2582	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	1721	25	2016-02-12 16:40:43.24941	2016-02-12 16:40:43.24941	155	\N	t	53	1	81
-125	SECRETARIA	\N	3381	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	568	25	2016-02-12 16:45:52.421957	2016-02-12 16:45:52.421957	155	\N	t	53	1	81
-126	ASISTENTE (A)	\N	1093	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	2522	25	2016-02-12 17:03:26.77645	2016-02-12 17:03:26.77645	23	\N	t	53	1	81
-127	ASISTENTE (A)	\N	919	\N	\N	FALCON	\N	\N	\N	\N	\N	824	25	2016-02-12 17:11:54.607575	2016-02-12 17:11:54.607575	474	\N	t	53	1	81
-128	ANALISTA	\N	904	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	696	25	2016-02-12 17:30:37.651455	2016-02-12 17:30:37.651455	2	\N	t	53	1	81
-129	ASISTENTE (A)	\N	1091	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	3855	25	2016-02-12 17:33:27.583203	2016-02-12 17:33:27.583203	382	\N	t	53	1	81
-130	ANALISTA	\N	1133	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	2652	25	2016-02-12 17:43:02.369579	2016-02-12 17:43:02.369579	23	\N	t	53	1	81
-131	FORMADORA 6	\N	3080	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	983	25	2016-02-13 05:44:10.039494	2016-02-13 05:44:10.039494	444	\N	t	53	1	81
-132	INSTRUCTORA DE FORMACIÓN	\N	3067	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	766	25	2016-02-13 05:56:38.240604	2016-02-13 05:56:38.240604	444	\N	t	53	1	81
-133	ASISTENTA	\N	3070	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	767	25	2016-02-13 05:58:19.958122	2016-02-13 05:58:19.958122	444	\N	t	53	1	81
-134	INSTRUCTORA DE FORMACIÓN	\N	3069	\N	\N	BOLIVAR	\N	\N	\N	\N	\N	768	25	2016-02-13 06:01:20.325761	2016-02-13 06:01:20.325761	444	\N	t	53	1	81
-135	ASISTENTA	\N	2766	\N	\N	TRUJILLO	\N	\N	\N	\N	\N	4135	25	2016-02-13 08:14:43.467799	2016-02-13 08:14:43.467799	235	\N	t	53	1	81
-136	ANALISTA	\N	2950	\N	\N	TRUJILLO	\N	\N	\N	\N	\N	935	25	2016-02-13 08:19:45.885205	2016-02-13 08:19:45.885205	235	\N	t	53	1	81
-137	TRABAJADORA SOCIAL	\N	414	\N	\N	TRUJILLO	\N	\N	\N	\N	\N	3271	25	2016-02-13 08:30:01.679598	2016-02-13 08:30:01.679598	235	\N	t	53	1	81
-138	AUXILIAR ADMINISTRATIVA	\N	3341	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4601	25	2016-02-14 23:04:30.029113	2016-02-14 23:04:30.029113	355	\N	t	53	1	81
-139	TECNICO DE SISTEMAS	\N	988	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	1406	25	2016-02-14 23:11:37.329331	2016-02-14 23:11:37.329331	355	\N	t	53	1	81
-140	ANALISTA	\N	2576	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	3802	25	2016-02-15 08:33:14.107108	2016-02-15 08:33:14.107108	382	\N	t	53	1	81
-141	ASISTENTE (A)	\N	1178	\N	\N	OFICINA DE GESTIÓN HUMANA	\N	\N	\N	\N	\N	2791	25	2016-02-15 09:20:09.181721	2016-02-15 09:20:09.181721	382	\N	t	53	1	81
-142	ANALISTA	\N	998	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	2211	25	2016-02-15 09:34:21.5448	2016-02-15 09:34:21.5448	471	\N	t	53	1	81
-143	ANALISTA	\N	3003	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	675	25	2016-02-15 10:03:06.961242	2016-02-15 10:03:06.961242	471	\N	t	53	1	81
-144	ANALISTA	\N	1013	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	2238	25	2016-02-15 10:04:43.218781	2016-02-15 10:04:43.218781	471	\N	t	53	1	81
-145	ANALISTA	\N	2402	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	4256	25	2016-02-15 10:06:17.009666	2016-02-15 10:06:17.009666	471	\N	t	53	1	81
-146	ANALISTA	\N	1171	\N	\N	DESPACHO DE LA VICEMINISTRA  DEL DESARROLLO PRODUCTIVO DE LA MUJER	\N	\N	\N	\N	\N	4254	25	2016-02-15 10:07:49.032846	2016-02-15 10:07:49.032846	471	\N	t	53	1	81
-147	FORMADOR	\N	3367	\N	\N	VARGAS	\N	\N	\N	\N	\N	978	25	2016-02-15 15:02:18.86271	2016-02-15 15:02:18.86271	454	\N	t	53	1	81
-148	PROMOTOR (A)	\N	976	\N	\N	VARGAS	\N	\N	\N	\N	\N	977	25	2016-02-15 15:21:03.203081	2016-02-15 15:21:03.203081	454	\N	t	53	1	81
-149	ANALISTA	\N	3375	\N	\N	ANZOATEGUI	\N	\N	\N	\N	\N	3446	25	2016-02-15 15:26:09.776965	2016-02-15 15:26:09.776965	443	\N	t	53	1	81
-150	ADMINISTRADOR	\N	667	\N	\N	YARACUY	\N	\N	\N	\N	\N	944	25	2016-02-15 16:23:07.390153	2016-02-15 16:23:07.390153	455	\N	t	53	1	81
-151	PROMOTOR (A)	\N	3073	\N	\N	YARACUY	\N	\N	\N	\N	\N	955	25	2016-02-15 18:17:17.83137	2016-02-15 18:17:17.83137	455	\N	t	53	1	81
-152	ASISTENTA ADMINISTRATIVA	\N	929	\N	\N	VARGAS	\N	\N	\N	\N	\N	972	25	2016-02-16 11:08:42.742379	2016-02-16 11:08:42.742379	454	\N	t	53	1	81
-153	ANALISTA	\N	819	\N	\N	VARGAS	\N	\N	\N	\N	\N	1060	25	2016-02-16 11:21:57.521693	2016-02-16 11:21:57.521693	454	\N	t	53	1	81
-117	PROMOTOR (A)	\N	982	\N	\N	FALCON	\N	\N	\N	\N	\N	826	25	2016-02-12 15:45:29.451056	2016-02-12 15:45:29.451056	474	\N	f	53	1	81
-87	COORDINADOR (A) ESTADAL	\N	3099	\N	\N	FALCON	\N	\N	\N	\N	\N	821	25	2016-02-10 11:50:08.615861	2016-02-10 11:50:08.615861	474	\N	f	53	1	81
-109	FACILITADORA	\N	3075	\N	\N	FALCON	\N	\N	\N	\N	\N	819	25	2016-02-12 14:41:50.428292	2016-02-12 14:41:50.428292	474	\N	f	53	1	81
-110	INSTRUCTORA DE FORMACIÓN	\N	957	\N	\N	FALCON	\N	\N	\N	\N	\N	822	25	2016-02-12 14:45:48.575968	2016-02-12 14:45:48.575968	474	\N	f	53	1	81
-111	TRABAJADORA SOCIAL	\N	298	\N	\N	FALCON	\N	\N	\N	\N	\N	817	25	2016-02-12 15:12:46.600092	2016-02-12 15:12:46.600092	474	\N	f	53	1	81
-114	ANALISTA	\N	903	\N	\N	FALCON	\N	\N	\N	\N	\N	687	25	2016-02-12 15:42:17.584859	2016-02-12 15:42:17.584859	474	\N	f	53	1	81
-115	INSTRUCTORA  DE FORMACIÓN 	\N	1039	\N	\N	FALCON	\N	\N	\N	\N	\N	823	25	2016-02-12 15:42:52.462797	2016-02-12 15:42:52.462797	474	\N	f	53	1	81
-118	ASISTENTA	\N	2761	\N	\N	FALCON	\N	\N	\N	\N	\N	4122	25	2016-02-12 15:45:58.527434	2016-02-12 15:45:58.527434	474	\N	f	53	1	81
-154	TRABAJADORA SOCIAL	\N	298	\N	\N	FALCON	\N	\N	\N	\N	\N	817	25	2016-02-16 12:05:28.604864	2016-02-16 12:05:28.604864	474	\N	t	53	1	81
-155	ANALISTA	\N	903	\N	\N	FALCON	\N	\N	\N	\N	\N	687	25	2016-02-16 12:32:38.133009	2016-02-16 12:32:38.133009	474	\N	t	53	1	81
-156	ASISTENTA	\N	2761	\N	\N	FALCON	\N	\N	\N	\N	\N	4122	25	2016-02-16 12:39:11.993771	2016-02-16 12:39:11.993771	474	\N	t	53	1	81
-157	PROMOTOR (A)	\N	982	\N	\N	FALCON	\N	\N	\N	\N	\N	826	25	2016-02-16 12:52:56.924513	2016-02-16 12:52:56.924513	474	\N	t	53	1	81
-158	FORMADOR	\N	306	\N	\N	FALCON	\N	\N	\N	\N	\N	825	25	2016-02-16 12:57:37.032018	2016-02-16 12:57:37.032018	474	\N	t	53	1	81
-159	ANALISTA	\N	3976	\N	\N	VARGAS	\N	\N	\N	\N	\N	4501	25	2016-02-16 12:59:04.182923	2016-02-16 12:59:04.182923	454	\N	t	53	1	81
-160	COORDINADOR (A) ESTADAL	\N	3099	\N	\N	FALCON	\N	\N	\N	\N	\N	821	25	2016-02-16 13:01:41.042126	2016-02-16 13:01:41.042126	474	\N	t	53	1	81
-161	FACILITADORA	\N	3075	\N	\N	FALCON	\N	\N	\N	\N	\N	819	25	2016-02-16 13:04:55.844442	2016-02-16 13:04:55.844442	474	\N	t	53	1	81
-162	INSTRUCTORA DE FORMACIÓN	\N	957	\N	\N	FALCON	\N	\N	\N	\N	\N	822	25	2016-02-16 13:07:24.350343	2016-02-16 13:07:24.350343	474	\N	t	53	1	81
-163	INSTRUCTORA  DE FORMACIÓN 	\N	1039	\N	\N	FALCON	\N	\N	\N	\N	\N	823	25	2016-02-16 13:11:53.373537	2016-02-16 13:11:53.373537	474	\N	t	53	1	81
-164	INSTRUCTORA DE FORMACIÓN	\N	310	\N	\N	GUARICO	\N	\N	\N	\N	\N	829	25	2016-02-16 16:22:31.919209	2016-02-16 16:22:31.919209	476	\N	t	53	1	81
-165	ASISTENTE (A)	\N	3084	\N	\N	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	\N	\N	\N	\N	\N	4273	25	2016-02-18 10:06:41.747021	2016-02-18 10:06:41.747021	450	\N	t	53	1	81
-166	ASISTENTA	\N	3024	\N	\N	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	\N	\N	\N	\N	\N	3492	25	2016-02-18 10:11:22.663286	2016-02-18 10:11:22.663286	450	\N	t	53	1	81
-167	RECEPCIONISTA	\N	3008	\N	\N	DESPACHO DE LA VICEMINISTRA DE IGUALDAD DE GÉNERO Y NO DISCRIMINACIÓN	\N	\N	\N	\N	\N	4090	25	2016-02-18 10:15:04.623954	2016-02-18 10:15:04.623954	450	\N	t	53	1	81
+84	PROGRAMADOR	\N	3361	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4612	25	2016-02-18 09:30:13.651527	2016-02-18 09:30:13.651527	437	\N	t	53	1	81
+85	ANALISTA	\N	165	\N	\N	DESPACHO DE LA VICEMINISTRA PARA PROTECCIÓN DE LOS DERECHOS DE LA MUJER	\N	\N	\N	\N	\N	4191	25	2016-02-19 10:08:19.611451	2016-02-19 10:08:19.611451	437	\N	t	53	1	81
+86	PROGRAMADOR	\N	3366	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	4611	25	2016-02-19 10:08:52.307385	2016-02-19 10:08:52.307385	437	\N	t	53	1	81
+87	ANALISTA DE SISTEMAS 	\N	655	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	1401	25	2016-02-19 10:09:24.354417	2016-02-19 10:09:24.354417	437	\N	t	53	1	81
+88	ANALISTA DE SISTEMAS 	\N	2363	\N	\N	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN	\N	\N	\N	\N	\N	3496	25	2016-02-19 10:10:48.827616	2016-02-19 10:10:48.827616	437	\N	t	53	1	81
+89	ASESOR (A)	\N	820	\N	\N	OFICINA DE GESTIÓN COMUNICACIONAL	\N	\N	\N	\N	\N	4012	25	2016-02-21 23:41:11.292698	2016-02-21 23:41:11.292698	437	\N	t	53	1	81
+90	ASESOR (A)	\N	820	\N	\N	OFICINA DE GESTIÓN COMUNICACIONAL	\N	\N	\N	\N	\N	4012	25	2016-02-21 23:50:34.107487	2016-02-21 23:50:34.107487	437	\N	t	53	1	81
 \.
 
 
 --
--- TOC entry 2827 (class 0 OID 0)
--- Dependencies: 192
 -- Name: evaluados_id_evaluado_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('evaluados_id_evaluado_seq', 167, true);
+SELECT pg_catalog.setval('evaluados_id_evaluado_seq', 90, true);
 
 
 --
--- TOC entry 2685 (class 0 OID 109266)
--- Dependencies: 193
 -- Data for Name: maestro; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
@@ -5267,8 +3483,6 @@ COPY maestro (id_maestro, descripcion, padre, hijo, created_date, modified_date,
 
 
 --
--- TOC entry 2828 (class 0 OID 0)
--- Dependencies: 194
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
@@ -5276,8 +3490,6 @@ SELECT pg_catalog.setval('maestro_id_maestro_seq', 1, false);
 
 
 --
--- TOC entry 2687 (class 0 OID 109277)
--- Dependencies: 195
 -- Data for Name: preguntas; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
@@ -5350,8 +3562,6 @@ COPY preguntas (id_pregunta, pregunta, fk_tipo_clase, pregunta_padre, fk_estatus
 
 
 --
--- TOC entry 2688 (class 0 OID 109286)
--- Dependencies: 196
 -- Data for Name: preguntas_colectivas; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
@@ -5360,8 +3570,6 @@ COPY preguntas_colectivas (id_preguntas_colect, fk_pregunta, fk_tipo_clase, peso
 
 
 --
--- TOC entry 2829 (class 0 OID 0)
--- Dependencies: 197
 -- Name: preguntas_colectivas_id_preguntas_colect_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
@@ -5369,8 +3577,6 @@ SELECT pg_catalog.setval('preguntas_colectivas_id_preguntas_colect_seq', 0, true
 
 
 --
--- TOC entry 2830 (class 0 OID 0)
--- Dependencies: 198
 -- Name: preguntas_id_pregunta_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
@@ -5378,643 +3584,39 @@ SELECT pg_catalog.setval('preguntas_id_pregunta_seq', 1, false);
 
 
 --
--- TOC entry 2691 (class 0 OID 109296)
--- Dependencies: 199
 -- Data for Name: preguntas_individuales; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY preguntas_individuales (id_preguntas_ind, objetivo, peso, fk_rango, subtotal_peso, fk_evaluacion, fk_estatus, created_date, modified_date, created_by, modified_by, es_activo) FROM stdin;
-10	Controlar mensualmente la Disponibilidad Presupuestaria del Fondo en Anticipo, permitiéndonos así hacer la solicitud de reposición del mismo toda vez que se haya consumido el 75% de lo aprobado en la apertura del Ejercicio Económico 2016.	15	1	1	3	37	2016-01-26 10:35:07.906565	2016-01-26 10:35:07.906565	2	2	t
-17	Tramitar diariamente los respectivos cheques de nómina, honorarios profesionales y prestaciones sociales, respondiendo a las solicitudes emitidas por parte de la Dirección de Gestión del Talento Humano.	20	1	1	5	37	2016-01-26 11:24:09.488643	2016-01-26 11:24:09.488643	68	68	t
-25	REALIZAR LA SOLICITUD DE RECURSOS DE LA NOMINA MENSUALMENTE A TRAVES DEL SIGECOF	20	1	1	9	37	2016-01-26 13:59:44.582666	2016-01-26 13:59:44.582666	21	21	t
-26	RENDIR LA NOMINA LOS PRIMEROS CINCO DIAS DE CADA MES A TRAVES DEL SIGECOF	20	1	1	9	37	2016-01-26 14:00:40.864853	2016-01-26 14:00:40.864853	21	21	t
-27	ELABORAR EL COMPROMISO Y CAUSADO DE LOS APORTES PATRONALES MENSUALMENTE POR EL SIGECOF	10	1	1	9	37	2016-01-26 14:02:03.068844	2016-01-26 14:02:03.068844	21	21	t
-34	ELABORAR LOS ARCHIVOS TXT DE LAS RETENCIONES Y APORTES PATRONALES MENSUALMENTE	10	1	1	10	37	2016-01-26 14:20:02.992115	2016-01-26 14:20:02.992115	21	21	t
-35	REALIZAR LOS MOVIMIENTOS DE LAS NOMINAS QUINCENALMENTE EN EL SIGEFIRRHH	25	1	1	10	37	2016-01-26 14:22:22.187964	2016-01-26 14:22:22.187964	21	21	t
-37	TRAMITAR LOS ANTICIPOS DEL FIDEICOMISO DEL PERSONAL DIARIAMENTE, ANTE EL BANCO DE VENEZUELA	15	1	1	10	37	2016-01-26 14:24:17.680161	2016-01-26 14:24:17.680161	21	21	t
-5	Aplicar diariamente las retenciones de ley (IVA, 1X1000, ISLR) a los diferentes pagos efectuados a Proveedores, siguiendo instrucciones de los expedientes recibidos en el departamento.	10	1	1	2	37	2016-01-26 10:19:34.635957	2016-01-26 10:19:34.635957	68	68	t
-14	Responder oportunamente las solicitudes de los departamentos del Organismo, mediante la elaboración de Ordenes de Pago Internas para el pago de viáticos a los Trabajadores y Trabajadoras, con la emisión de cheques.	20	1	1	4	37	2016-01-26 11:01:03.613702	2016-01-26 11:01:03.613702	68	68	t
-123	Asignar las solicitudes previamente registradas y sistematizadas en el Sistema de Atención al Ciudadana (SAC) al analista encargado y hacer entrega inmediata del expediente correspondiente.	5	1	1	26	37	2016-01-28 13:59:38.168422	2016-01-28 13:59:38.168422	453	453	t
-15	Elaborar las conciliaciones bancarias mensualmente del fondo en anticipo, los 5 primeros días de cada mes. Permitiéndonos confrontar los saldos que el organismo tiene registrado en los libros, con los saldos que el banco nos suministra mediante estados de cuenta.	15	1	1	5	37	2016-01-26 11:17:40.654315	2016-01-26 11:17:40.654315	68	68	t
-216	Ejecutar curso de ofimática básica en software libre al personal de MinMujer antes de los primeros diez días del mes de Marzo.\n	10	1	1	48	37	2016-01-28 23:46:01.37243	2016-01-28 23:46:01.37243	22	22	t
-218	Ejecutar curso de ofimática básica en software libre al personal de MinMujer antes de los primeros diez días del mes de Marzo.	10	1	1	49	37	2016-01-28 23:56:26.352626	2016-01-28 23:56:26.352626	22	22	t
-12	Elaborar las conciliaciones bancarias mensualmente, los 5 primeros días del mes siguiente, para confrontar los saldos que el Organismo tiene registrado en los libros, con los saldos que el banco suministra mediante la emisión de Estados de Cuenta.	15	1	1	4	37	2016-01-26 10:56:36.920198	2016-01-26 10:56:36.920198	68	68	t
-4	Declarar mediante el SENIAT los impuestos retenidos durante el mes, correspondiente a los pagos emitidos por concepto de Honorarios Profesionales. Estas declaraciones se emiten mensual o quincenalmente, según sea el caso.	10	1	1	2	37	2016-01-26 10:17:29.708697	2016-01-26 10:17:29.708697	68	68	t
-1	Emitir oportunamente el registro del causado, en el Sistema Integrado de Gestión y Control de las Finanzas Públicas (SIGECOF), respondiendo a las solicitudes del departamento de compras, para cancelar los compromisos y obligaciones adquiridos con los distintos  proveedores.	20	1	1	2	37	2016-01-26 10:05:06.032308	2016-01-26 10:05:06.032308	68	68	t
-16	Emitir diariamente las órdenes de pago internas a las trabajadoras y los trabajadores, para cancelar los respectivos viáticos, reembolsos, fondos de caja chica y donaciones solicitadas.	15	1	1	5	37	2016-01-26 11:20:07.109182	2016-01-26 11:20:07.109182	68	68	t
-7	Registrar mensualmente las Transferencias otorgadas a los Entes adscritos (Banmujer, Inamujer y la Fundación Madres del Barrio), de acuerdo al presupuesto ley o crédito adicional, aprobado por el Ejecutivo Nacional.	10	1	1	2	37	2016-01-26 10:22:30.958714	2016-01-26 10:22:30.958714	68	68	t
-19	Realizar diariamente la disponibilidad financiera del fondo en anticipo a través de los movimientos bancarios.	15	1	1	6	37	2016-01-26 11:27:28.510757	2016-01-26 11:27:28.510757	68	68	t
-20	Controlar las solicitudes de cheques recibidas diariamente en la Coordinación, permitiéndonos garantizar la emisión y entrega oportuna de los mismos.	10	1	1	6	37	2016-01-26 11:31:41.182086	2016-01-26 11:31:41.182086	68	68	t
-22	Constituir semanalmente los expedientes administrativos de cheques y pago a proveedores, con la finalidad de ser enviados los 5 primeros días de cada mes, al departamento de contabilidad.	10	1	1	6	37	2016-01-26 11:36:38.32049	2016-01-26 11:36:38.32049	68	68	t
-18	Elaborar las conciliaciones bancarias mensualmente del fondo en avance, los 5 primeros días de cada mes. Permitiéndonos confrontar los saldos que el organismo tiene registrado en los libros, con los saldos que el banco nos suministra mediante estados de cuenta.	15	1	1	6	37	2016-01-26 11:25:18.389565	2016-01-26 11:25:18.389565	68	68	t
-283	REVISAR MENSUALMENTE LA CONFORMACIÓN DE EXPEDIENTES, REFERIDOS A ORDENES DE PAGO Y CHEQUES, SIN ERRORES U OMISIONES.	10	1	1	65	37	2016-01-29 10:38:57.061739	2016-01-29 10:38:57.061739	468	468	t
-215	Tramitar diariamente, los requerimientos administrativos del personal que integra la oficina de transporte con un máximo de calidad y eficiencia.	10	1	1	47	37	2016-01-28 18:17:05.485613	2016-01-28 18:17:05.485613	440	440	t
-40	Ejecutar en campo 3 actuaciones fiscales en atención a las programadas y obtener las pruebas que soportan los hallazgos de auditoría sin errores u omisiones durante el 1° semestre 	15	1	1	8	37	2016-01-26 14:54:47.859805	2016-01-26 14:54:47.859805	2	2	t
-41	Elaborar y presentar en el 1° semestre dos (2) informes preliminares originados de las actuaciones fiscales realizadas cuyos hallazgos de auditoría deben contener claramente los elementos de condición, criterio, causa y efecto 	10	1	1	8	37	2016-01-26 15:12:10.612699	2016-01-26 15:12:10.612699	2	2	t
-42	ELABORAR LAS PRESTACIONES SOCIALES DEL PERSONAL EGRESADO DIARIAMENTE	25	1	1	11	37	2016-01-26 15:18:01.639899	2016-01-26 15:18:01.639899	21	21	t
-43	REALIZAR LOS MOVIMIENTOS DE LAS NOMINAS QUINCENALMENTE EN EL SIGEFIRRHH	15	1	1	11	37	2016-01-26 15:18:39.014373	2016-01-26 15:18:39.014373	21	21	t
-44	TRAMITAR LOS AR-C CORRESPONDIENTES AL AÑO 2015 DEL PERSONAL ACTIVO Y EGRESADO EN EL PRIMER TRIMESTRE DEL AÑO 2016	10	1	1	11	37	2016-01-26 15:22:52.473021	2016-01-26 15:22:52.473021	21	21	t
-46	Elaborar y presentar en el 1° semestre tres (3) informes definitivos el cual deberá contener las observaciones y/o hallazgos conclusiones y recomendaciones 	10	1	1	8	37	2016-01-26 15:30:43.831337	2016-01-26 15:30:43.831337	2	2	t
-47	Conformar oportunamente los correspondientes papeles de trabajo que sustenten o soporten las actuaciones fiscales ejecutadas programadas.	5	1	1	8	37	2016-01-26 15:34:18.064681	2016-01-26 15:34:18.064681	2	2	t
-48	Planificar eficazmente una (1) actividad fiscal que le sea asignadas de acuerdo al plan operativo de la oficina de Auditoría Interna durante el 1° semestre.	10	1	1	8	37	2016-01-26 15:38:18.023602	2016-01-26 15:38:18.023602	2	2	t
-62	mmmmmmm	20	1	1	14	37	2016-01-26 17:14:29.172792	2016-01-26 17:14:29.172792	437	437	f
-63	hjjjjjjj	20	1	1	14	37	2016-01-26 17:14:34.479305	2016-01-26 17:14:34.479305	437	437	f
-64	jmmmmmmmmmmm	10	1	1	14	37	2016-01-26 17:14:39.778451	2016-01-26 17:14:39.778451	437	437	f
-58	xxxx	10	1	1	13	37	2016-01-26 17:12:21.071767	2016-01-26 17:12:21.071767	9	9	f
-59	xxx	10	1	1	13	37	2016-01-26 17:12:27.994896	2016-01-26 17:12:27.994896	9	9	f
-60	xx	10	1	1	13	37	2016-01-26 17:12:35.256687	2016-01-26 17:12:35.256687	9	9	f
-65	jbnkj	10	1	1	13	37	2016-01-26 17:17:12.068577	2016-01-26 17:17:12.068577	9	9	f
-57	uiyuiyuxxx	10	1	1	13	37	2016-01-26 17:12:16.034292	2016-01-26 17:12:16.034292	9	9	f
-69	Analizar eficientemente las rendiciones mensuales de la ejecución presupuestaria correspondiente al Banco de Desarrollo de la Mujer 	15	1	1	16	37	2016-01-27 13:56:28.161516	2016-01-27 13:56:28.161516	162	162	t
-76	Analizar eficientemente las rendiciones mensuales de la ejecución presupuestaria correspondiente al INAMUJER	20	1	1	18	37	2016-01-27 14:01:56.727165	2016-01-27 14:01:56.727165	162	162	t
-72	Actualizar continuamente  el flujo de información comunicacional procesados por esta Oficina	15	1	1	17	37	2016-01-27 13:59:09.607132	2016-01-27 13:59:09.607132	162	162	t
-75	Formular  en los meses mayo-junio el anteproyecto de presupuesto  de la Acción Centralizada del Minmujer 	10	1	1	17	37	2016-01-27 14:00:12.130845	2016-01-27 14:00:12.130845	162	162	t
-67	Analizar eficientemente las rendiciones mensuales, de la ejecución presupuestaria de la Fundación Misión Madres del Barrio 	20	1	1	15	37	2016-01-27 13:53:27.373615	2016-01-27 13:53:27.373615	162	162	t
-70	Formular  en los meses mayo-junio el anteproyecto de presupuesto  del Viceministerio de Desarrollo Productivo de la Mujer y del Banmujer 	15	1	1	16	37	2016-01-27 13:56:45.282022	2016-01-27 13:56:45.282022	162	162	t
-50	Ejecutar en campo tres (3) actuaciones fiscales en atención a las auditorías programadas y recabar las pruebas que soporten los hallazgos sin errores u omisiones durante el 1° semestre	15	1	1	12	37	2016-01-26 16:06:35.098604	2016-01-26 16:06:35.098604	41	41	t
-77	dfgdfgfd	20	1	1	19	37	2016-01-27 14:02:17.991819	2016-01-27 14:02:17.991819	437	437	f
-79	dfgdfgdf	20	1	1	19	37	2016-01-27 14:02:22.298265	2016-01-27 14:02:22.298265	437	437	f
-80	sdfsdf	10	1	1	19	37	2016-01-27 14:02:32.121107	2016-01-27 14:02:32.121107	437	437	f
-212	Garantizar el óptimo funcionamiento y buen uso de la motos y vehículos asignados al Ministerio.	10	1	1	47	37	2016-01-28 18:13:18.735588	2016-01-28 18:13:18.735588	440	440	t
-74	  Elaborar mensualmente a través del Instructivo N.º 6, la ejecución presupuestaria  correspondiente del Minmujer	10	1	1	17	37	2016-01-27 13:59:56.619772	2016-01-27 13:59:56.619772	162	162	t
-73	Registrar oportunamente las imputaciones presupuestarias de los compromisos de gastos,  con el objeto de controlar la disponibilidad de las partidas asignadas a las acciones centralizadas del Minmujer.	15	1	1	17	37	2016-01-27 13:59:27.490583	2016-01-27 13:59:27.490583	162	162	t
-68	Formular  en los meses mayo-junio el anteproyecto de presupuesto  del Viceministerio de Igualdad de Género y no Discriminación y la Fundación Misión Madres del Barrio 	10	1	1	15	37	2016-01-27 13:53:48.931359	2016-01-27 13:53:48.931359	162	162	t
-66	Tramitar  oportunamente las solicitudes de Créditos Adicionales ante el ONAPRE, correspondiente al Minmujer  y sus entes adscritos	20	1	1	15	37	2016-01-27 13:52:24.820688	2016-01-27 13:52:24.820688	162	162	t
-71	Registrar oportunamente las imputaciones presupuestarias de los compromisos de gastos, con el objeto de controlar la disponibilidad de las partidas asignadas a los proyectos del Minmujer.	20	1	1	16	37	2016-01-27 13:57:01.352559	2016-01-27 13:57:01.352559	162	162	t
-49	Planificar eficazmente durante el 1° semestre dos (2) actuaciones fiscales que le sean asignadas y se estén contenidas en el  Plan Operativo de la Oficina de Auditoría Interna	10	1	1	12	37	2016-01-26 16:03:56.202937	2016-01-26 16:03:56.202937	41	41	t
-52	Culminar eficientemente durante el 1° semestre dos (2) informes definitivos los cuales deberán contener las observaciones y/o hallazgos de las auditorías, conclusiones y recomendaciones	10	1	1	12	37	2016-01-26 16:11:06.36264	2016-01-26 16:11:06.36264	41	41	t
-53	Conformar eficientemente dos (2)expedientes contentivos de los correspondientes papeles de trabajo que sustenten o soporten las actuaciones fiscales culminadas durante el 1° semestre	5	1	1	12	37	2016-01-26 16:12:38.583691	2016-01-26 16:12:38.583691	41	41	t
-51	Culminar eficientemente en el 1° semestre dos (2) Informes Preliminares originados de las actuaciones fiscales realizadas cuyos hallazgos y/o observaciones de auditoría deberán contener los elementos de condición, criterio, causa y efecto 	10	1	1	12	37	2016-01-26 16:09:12.706157	2016-01-26 16:09:12.706157	41	41	t
-126	Verificar la existencia y el uso de materiales de oficina y consumibles, durare los primeros 15 días de cada mes.	10	1	1	27	37	2016-01-28 14:39:06.716829	2016-01-28 14:39:06.716829	397	397	t
-103	Actualizar mensualmente los informes de gestión y ejecución física del Minmujer y sus Entes adscritos 	10	1	1	22	37	2016-01-28 08:58:31.130627	2016-01-28 08:58:31.130627	143	143	t
-125	Establecer mecanismos dinámicos y eficientes para la ubicación de información concerniente a la gestión de la oficina a fin de fortalecer las actividades de entrega de informes ministeriales, durante los 10 primeros días de cada mes.	10	1	1	27	37	2016-01-28 14:38:41.025625	2016-01-28 14:38:41.025625	397	397	t
-124	Mantener el archivo de correspondencia enviada y recibida tanto en  físico como en digital de la oficina de forma organizada, diariamente sin errores u omisiones.	10	1	1	27	37	2016-01-28 14:38:27.065991	2016-01-28 14:38:27.065991	397	397	t
-91	Brindar asesoría técnica en la formulación del plan operativo y presupuesto, a las distintas unidades del Minmujer y entes adscritos durante primer semestre	10	1	1	20	37	2016-01-28 08:52:27.825264	2016-01-28 08:52:27.825264	143	143	t
-104	Elaborar mensualmente las diferentes Matrices que se requieran de los Proyectos del Minmujer y los Entes adscritos 	10	1	1	22	37	2016-01-28 08:58:43.928162	2016-01-28 08:58:43.928162	143	143	t
-112	Asesorar de manera directa, inmediata y personalizada, a las ciudadanas y los ciudadanos, que acuden a la Oficina a interponer peticiones; mostrando un trato empático, amable y cordial, con base a la Misión y la Visión de la institución	20	1	1	24	37	2016-01-28 13:49:00.466126	2016-01-28 13:49:00.466126	453	453	t
-106	Cargar  en el Sistema Nueva Etapa el anteproyecto y proyecto (metas físicas y financieras) del Minmujer en el primer semestre	10	1	1	22	37	2016-01-28 09:00:03.69697	2016-01-28 09:00:03.69697	143	143	t
-105	Elaborar en el mes de enero 2016 la Memoria y Cuenta del Minmujer correspondiente al año 2015	10	1	1	22	37	2016-01-28 08:59:11.399661	2016-01-28 08:59:11.399661	143	143	t
-81	Tramitar oportunamente ante la ONAPRE y Oficina Nacional del Tesoro las solicitudes mensuales  de cuotas presupuestarias  	20	1	1	18	37	2016-01-27 14:02:38.533024	2016-01-27 14:02:38.533024	162	162	t
-92	Formular el plan operativo de la oficina de planificación y presupuesto durante el primer semestre	10	1	1	20	37	2016-01-28 08:53:13.102247	2016-01-28 08:53:13.102247	143	143	t
-93	Revisar mensual informes de gestión y ejecución física del Minmujer y sus entes adscritos	10	1	1	20	37	2016-01-28 08:53:38.832683	2016-01-28 08:53:38.832683	143	143	t
-94	Editar eficientemente  en el mes de enero 2016 la  Memoria y Cuenta del Minmujer correspondiente al año 2015	10	1	1	20	37	2016-01-28 08:54:21.510195	2016-01-28 08:54:21.510195	143	143	t
-95	Mantener periodicamente la matriz de seguimiento de rendiciones del Minmujer y sus entes adscritos 	10	1	1	20	37	2016-01-28 08:54:40.740784	2016-01-28 08:54:40.740784	143	143	t
-107	Apoyar mensualmente a las distintas unidades del Minmujer  en la elaboración del Plan Operativo Anual 	10	1	1	22	37	2016-01-28 09:00:29.031295	2016-01-28 09:00:29.031295	143	143	t
-98	Revisar mensualmente los planes operativos  y proyectos  elaborados por las unidades del Minmujer y sus entes adscritos	10	1	1	21	37	2016-01-28 08:55:58.989188	2016-01-28 08:55:58.989188	143	143	t
-99	Hacer  mensualmente seguimiento en la entrega puntual de informes de gestión y la ejecución de las metas físicas programadas	10	1	1	21	37	2016-01-28 08:56:16.494706	2016-01-28 08:56:16.494706	143	143	t
-113	Brindar orientación a las ciudadanas y los ciudadanos, sobre los programas, planes, proyectos y servicios de apoyo que presta el Ministerio y las distintas instituciones del Estado; ofreciendo información de calidad, actualizada y veraz, concerniente a su solicitud.	15	1	1	24	37	2016-01-28 13:49:23.036189	2016-01-28 13:49:23.036189	453	453	t
-97	Elaborar mensualmente el Plan Operativo de la Oficina de Planificación 	15	1	1	21	37	2016-01-28 08:55:44.360502	2016-01-28 08:55:44.360502	143	143	t
-114	Sistematizar en el Sistema de Atención al Ciudadana (SAC) las solicitudes recibidas por las distintas vías de recepción, diariamente, sin errores ni omisiones.	10	1	1	24	37	2016-01-28 13:49:47.736969	2016-01-28 13:49:47.736969	453	453	t
-108	Asesorar de manera directa, inmediata y personalizada, a las ciudadanas y los ciudadanos, que acuden a la Oficina a interponer peticiones; mostrando un trato empático, amable y cordial, con base a la Misión y la Visión de la institución.	20	1	1	25	37	2016-01-28 13:44:46.784424	2016-01-28 13:44:46.784424	453	453	t
-109	 Orientar a las ciudadanas y los ciudadanos, sobre los programas, planes, proyectos y servicios de apoyo que presta el Ministerio y las distintas instituciones del Estado; ofreciendo información de calidad, actualizada y veraz, concerniente a su solicitud.	15	1	1	25	37	2016-01-28 13:45:31.308988	2016-01-28 13:45:31.308988	453	453	t
-115	Asignar las solicitudes previamente registradas y sistematizadas en el Sistema de Atención al Ciudadana (SAC) al analista encargado, de manera inmediata.	5	1	1	24	37	2016-01-28 13:50:11.037077	2016-01-28 13:50:11.037077	453	453	t
-120	Asesorar de manera directa, inmediata y personalizada, a las ciudadanas y los ciudadanos, que acuden a la Oficina a interponer peticiones; mostrando un trato empático, amable y cordial, con base a la Misión y la Visión de la institución.	20	1	1	26	37	2016-01-28 13:58:37.873268	2016-01-28 13:58:37.873268	453	453	t
-213	Garantizar diariamente, la prestación de servicio de transporte a las dependencias que integran el Ministerio y ususarios atendidos a través de las unidades de Atención al Público. 	10	1	1	47	37	2016-01-28 18:15:00.820054	2016-01-28 18:15:00.820054	440	440	t
-121	Brindar orientación a las ciudadanas y los ciudadanos, sobre los programas, planes, proyectos y servicios de apoyo que presta el Ministerio y las distintas instituciones del Estado; ofreciendo información de calidad, actualizada y veraz, concerniente a su solicitud.	15	1	1	26	37	2016-01-28 13:58:56.666618	2016-01-28 13:58:56.666618	453	453	t
-122	Sistematizar en el Sistema de Atención al Ciudadana (SAC) las solicitudes recibidas por las distintas vías de recepción, sin errores ni omisiones.	10	1	1	26	37	2016-01-28 13:59:16.317929	2016-01-28 13:59:16.317929	453	453	t
-111	Asignar las solicitudes previamente registradas y sistematizadas en el Sistema de Atención al Ciudadana (SAC) al analista encargado y hacer entrega inmediata del expediente correspondiente.	5	1	1	25	37	2016-01-28 13:47:02.475174	2016-01-28 13:47:02.475174	453	453	t
-110	Sistematizar en el Sistema de Atención al Ciudadana (SAC) las solicitudes recibidas por las distintas vías de recepción, sin errores ni omisiones. 	10	1	1	25	37	2016-01-28 13:46:19.057704	2016-01-28 13:46:19.057704	453	453	t
-130	Diseñar 1 investigación evaluativa para 1 programa o proyecto ministerial, durante el primer trimestre de 2016	10	1	1	29	37	2016-01-28 15:08:32.134408	2016-01-28 15:08:32.134408	401	401	t
-131	Diseñar 1 investigación evaluativa para 1 programa o proyecto ministerial, durante el segundo trimestre de 2016.	10	1	1	29	37	2016-01-28 15:08:48.510744	2016-01-28 15:08:48.510744	401	401	t
-132	Construir contenidos para la elaboración de 1 boletín de la política del sector, durante todo el primer semestre de 2016.	10	1	1	29	37	2016-01-28 15:09:02.933893	2016-01-28 15:09:02.933893	401	401	t
-133	Analizar la información de la gestión semestral y anual para la elaboración de los informes correspondientes, durante los 15 primeros días del mes de junio y diciembre de 2016.	10	1	1	29	37	2016-01-28 15:09:17.139292	2016-01-28 15:09:17.139292	401	401	t
-134	Analizar la información contenida en los informes de gestión mensual correspondientes al Viceministerio para la Igualdad de género y no discriminación, durante los (15) primeros días de cada mes.	10	1	1	29	37	2016-01-28 15:09:29.05434	2016-01-28 15:09:29.05434	401	401	t
-139	Construir una herramienta de uso estadístico para el seguimiento mensual de planes y programas ministeriales, durante el primer trimestre del 2016.	20	1	1	33	37	2016-01-28 15:30:11.121088	2016-01-28 15:30:11.121088	37	37	t
-141	Realizar la carga de información mensual de los entes y órganos adscritos en la base de datos interna de la oficina correspondiente a la ejecución de planes y programas ministeriales, durante los primeros 15 días de cada mes	10	1	1	33	37	2016-01-28 15:31:13.024997	2016-01-28 15:31:13.024997	37	37	t
-143	Actualizar la matriz de seguimiento interna de indicadores de la política del sector, durante los últimos 10 días de cada mes.	10	1	1	33	37	2016-01-28 15:31:38.578946	2016-01-28 15:31:38.578946	37	37	t
-149	Redactar los proyectos de instrumentos normativos y jurídicos relacionados con la actividad del Ministerio, con eficiencia y calidad, en articulación con las unidades administrativas propias del organismo y de sus Entes adscritos en un plazo no mayor a tres (03) días una vez realizada la solicitud.	10	1	1	32	37	2016-01-28 15:37:15.16238	2016-01-28 15:37:15.16238	404	404	t
-150	Validar los aspectos legales de los proyectos y actos jurídicos, a los fines de dar una opinión jurídica, con eficiencia y calidad, en cumplimiento de las normativas legales que puedan afectar al patrimonio público, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	32	37	2016-01-28 15:43:15.815188	2016-01-28 15:43:15.815188	404	404	t
-151	Elaborar los dictámenes, con eficiencia y calidad, sobre los recursos administrativos, que se interpongan contra los actos administrativos dictados por el Ministro o la Ministra, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	32	37	2016-01-28 15:43:43.297108	2016-01-28 15:43:43.297108	404	404	t
-152	Establecer los criterios jurídicos administrativos, con eficiencia y calidad, en las diversas materias que son competencia del Ministerio y de sus Entes adscritos, divulgando sus dictámenes y doctrina jurídica, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	32	37	2016-01-28 15:44:07.519411	2016-01-28 15:44:07.519411	404	404	t
-189	Coordinar las actividades asignadas al equipo de atención interna, para obtener las respuestas a las ciudadanas y a los ciudadanos, de manera oportuna.	15	1	1	42	37	2016-01-28 16:47:49.053529	2016-01-28 16:47:49.053529	453	453	t
-153	Elaborar estudios y emitir opiniones, con eficiencia y calidad, sobre los expedientes disciplinarios instruidos al personal administrativo dependiente del Ministerio, sus órganos, y entes adscritos, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	32	37	2016-01-28 15:44:39.378937	2016-01-28 15:44:39.378937	404	404	t
-154	Redactar los proyectos de instrumentos normativos y jurídicos relacionados con la actividad del Ministerio, con eficiencia y calidad, en articulación con las unidades administrativas propias del organismo y de sus Entes adscritos en un plazo no mayor a tres (03) días una vez realizada la solicitud.	10	1	1	1	37	2016-01-28 15:48:00.020835	2016-01-28 15:48:00.020835	404	404	t
-155	Validar los aspectos legales de los proyectos y actos jurídicos, a los fines de dar una opinión jurídica, con eficiencia y calidad, en cumplimiento de las normativas legales que puedan afectar al patrimonio público, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	1	37	2016-01-28 15:48:22.536665	2016-01-28 15:48:22.536665	404	404	t
-128	Asistir a la Coordinación de Seguimiento de Planes, Programas y Políticas Ministerial en el proceso de verificación y entrega de reportes, informes e insumos de viceministerios y entes adscritos, duarnte los últimos 15 días de cada mes.	10	1	1	27	37	2016-01-28 14:40:03.0515	2016-01-28 14:40:03.0515	397	397	t
-156	Elaborar los dictámenes, con eficiencia y calidad, sobre los recursos administrativos, que se interpongan contra los actos administrativos dictados por el Ministro o la Ministra, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	1	37	2016-01-28 15:48:48.240075	2016-01-28 15:48:48.240075	404	404	t
-129	Asistir a la Coordinación de Evaluación de la Gestión Ministerial en la organización y archivo digital de indicadores de la oficina, durante los últimos 15 días de cada mes. 	10	1	1	27	37	2016-01-28 14:40:23.822719	2016-01-28 14:40:23.822719	397	397	t
-142	Verificar la recepción y el contenido de los informes de gestión mensual recibidos de los entes y órganos adscritos, durante los últimos 15 días de cada mes.	10	1	1	33	37	2016-01-28 15:31:26.380068	2016-01-28 15:31:26.380068	37	37	t
-138	Apoyar en la aplicación de instrumentos para la evaluación de programas y/o proyectos ministeriales durante los meses de enero a junio de 2016	10	1	1	31	37	2016-01-28 15:12:29.235345	2016-01-28 15:12:29.235345	401	401	t
-145	Actualizar los primeros 15 dias de cada mes, la base de datos de estadísticas vitales, nacionales, regionales y mundiales	10	1	1	34	37	2016-01-28 15:33:26.193968	2016-01-28 15:33:26.193968	37	37	t
-214	Tramitar ante la Dirección de Gestión Administrativa las órdenes de servicios y repaciones según las necesidades que presenten las unidades. 	10	1	1	47	37	2016-01-28 18:16:15.683411	2016-01-28 18:16:15.683411	440	440	t
-146	Actualizar las fichas técnicas para la construcción de indicadores de gestión de los programas y proyectos de los órganos y entes adscritos, durante la ultima semana de cada mes.	15	1	1	34	37	2016-01-28 15:33:37.454931	2016-01-28 15:33:37.454931	37	37	t
-137	Elaborar informes mensuales de la divulgación de la política ministerial en los medios de comunicación, durante los primeros (15) quince días de cada mes de enero a junio 2016	10	1	1	31	37	2016-01-28 15:12:18.582851	2016-01-28 15:12:18.582851	401	401	t
-135	Elaborar informes mensuales sobre el estatus de los Compromisos de Gobierno de la Eficiencia en la Calle, durante los primeros (15) quince días de los meses de enero a junio 2016 	15	1	1	31	37	2016-01-28 15:11:53.623371	2016-01-28 15:11:53.623371	401	401	t
-136	Analizar durante los primeros (15)  quince días de cada mes la información contenida en los informes de gestión mensual correspondientes a la Fundación Misión Madres del Barrio/ Gran Misión Hogares de la Patria	15	1	1	31	37	2016-01-28 15:12:05.44437	2016-01-28 15:12:05.44437	401	401	t
-157	Establecer los criterios jurídicos administrativos, con eficiencia y calidad, en las diversas materias que son competencia del Ministerio y de sus Entes adscritos, divulgando sus dictámenes y doctrina jurídica, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	1	37	2016-01-28 15:49:07.575705	2016-01-28 15:49:07.575705	404	404	t
-159	Redactar los proyectos de instrumentos normativos y jurídicos relacionados con la actividad del Ministerio, con eficiencia y calidad, en articulación con las unidades administrativas propias del organismo y de sus Entes adscritos en un plazo no mayor a tres (03) días una vez realizada la solicitud.	10	1	1	30	37	2016-01-28 15:50:59.407878	2016-01-28 15:50:59.407878	404	404	t
-160	Validar los aspectos legales de los proyectos y actos jurídicos, a los fines de dar una opinión jurídica, con eficiencia y calidad, en cumplimiento de las normativas legales que puedan afectar al patrimonio público, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	30	37	2016-01-28 15:51:23.841283	2016-01-28 15:51:23.841283	404	404	t
-161	Elaborar los dictámenes, con eficiencia y calidad, sobre los recursos administrativos, que se interpongan contra los actos administrativos dictados por el Ministro o la Ministra, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	30	37	2016-01-28 15:51:49.590946	2016-01-28 15:51:49.590946	404	404	t
-162	Establecer los criterios jurídicos administrativos, con eficiencia y calidad, en las diversas materias que son competencia del Ministerio y de sus Entes adscritos, divulgando sus dictámenes y doctrina jurídica, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	30	37	2016-01-28 15:52:10.25308	2016-01-28 15:52:10.25308	404	404	t
-163	Elaborar estudios y emitir opiniones, con eficiencia y calidad, sobre los expedientes disciplinarios instruidos al personal administrativo dependiente del Ministerio, sus órganos, y entes adscritos, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	30	37	2016-01-28 15:52:39.229302	2016-01-28 15:52:39.229302	404	404	t
-169	Informar a las ciudadanos y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días, luego de la atención de sus solicitudes	10	1	1	35	37	2016-01-28 16:27:40.294747	2016-01-28 16:27:40.294747	453	453	t
-174	Coordinar las tareas asignadas al equipo de atención ministerial, para otorgar respuestas a las ciudadanas y a los ciudadanos, con eficiencia y eficacia.	15	1	1	38	37	2016-01-28 16:33:19.964285	2016-01-28 16:33:19.964285	453	453	t
-176	Analizar objetivamente los casos, proyectos y situaciones, con un máximo de calidad y eficiencia.	10	1	1	38	37	2016-01-28 16:34:03.160591	2016-01-28 16:34:03.160591	453	453	t
-170	Atender las solicitudes eficientemente, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia, según sea el caso; en un tiempo no mayor de cinco días.	15	1	1	37	37	2016-01-28 16:30:51.368258	2016-01-28 16:30:51.368258	453	453	t
-180	Hacer seguimiento a las actuaciones realizadas a los casos del área socioproductiva, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	15	1	1	39	37	2016-01-28 16:40:30.111999	2016-01-28 16:40:30.111999	453	453	t
-158	Elaborar estudios con sus opiniones, con eficiencia y calidad, sobre los expedientes disciplinarios instruidos al personal administrativo dependiente del Ministerio, sus órganos, y entes adscritos, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	1	37	2016-01-28 15:49:40.375152	2016-01-28 15:49:40.375152	404	404	t
-164	Atender las solicitudes remitidas del Despacho de la Ministra, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia, según sea el caso; de manera eficiente, en un tiempo no mayor de 5 días	25	1	1	36	37	2016-01-28 16:23:36.506197	2016-01-28 16:23:36.506197	453	453	t
-167	Atender las solicitudes remitidas del Despacho de la Ministra, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia, según sea el caso; de manera eficiente, en un tiempo no mayor de 5 días	25	1	1	35	37	2016-01-28 16:26:06.395617	2016-01-28 16:26:06.395617	453	453	t
-181	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	39	37	2016-01-28 16:40:52.604	2016-01-28 16:40:52.604	453	453	t
-179	Atender las solicitudes del área socioproductiva, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia, según sea el caso; con eficacia, en un tiempo no mayor de cinco días.	25	1	1	39	37	2016-01-28 16:40:09.760595	2016-01-28 16:40:09.760595	453	453	t
-166	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	36	37	2016-01-28 16:24:46.848588	2016-01-28 16:24:46.848588	453	453	t
-165	Hacer seguimiento a las actuaciones realizadas a los casos recibidos de la Dirección del Despacho, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	15	1	1	36	37	2016-01-28 16:24:11.390715	2016-01-28 16:24:11.390715	453	453	t
-178	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	5	1	1	38	37	2016-01-28 16:34:53.792514	2016-01-28 16:34:53.792514	453	453	t
-175	Desarrollar, de acuerdo a las exigencias del caso, acciones interinstitucionales, para dar respuesta oportuna e inmediata a las solicitudes de las ciudadanas y los ciudadanos.	15	1	1	38	37	2016-01-28 16:33:36.5077	2016-01-28 16:33:36.5077	453	453	t
-177	Hacer seguimiento a las actuaciones realizadas a los casos recibidos del Despacho, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	5	1	1	38	37	2016-01-28 16:34:25.396914	2016-01-28 16:34:25.396914	453	453	t
-171	Desarrollar acciones en las intervenciones sociales, a fin de anticipar estrategias para tramitar las solicitudes de las ciudadanas y los ciudadanos, de manera oportuna.	15	1	1	37	37	2016-01-28 16:31:22.334255	2016-01-28 16:31:22.334255	453	453	t
-173	Informar a las ciudadanas y los ciudadanos,  el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	37	37	2016-01-28 16:32:14.773818	2016-01-28 16:32:14.773818	453	453	t
-172	Hacer seguimiento a las actuaciones realizadas a los casos sociales, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	10	1	1	37	37	2016-01-28 16:31:47.03015	2016-01-28 16:31:47.03015	453	453	t
-185	Atender los casos de salud, de manera eficiente y oportuna, en articulación con las diferentes instituciones públicas o privadas con competencia en la materia, en un tiempo no mayor de cinco días	20	1	1	41	37	2016-01-28 16:45:16.988163	2016-01-28 16:45:16.988163	453	453	t
-190	Atender casos de salud, de manera eficiente y oportuna, en articulación con las diferentes instituciones públicas o privadas con competencia en la materia, en un tiempo no mayor de cinco (5) días.	15	1	1	42	37	2016-01-28 16:48:06.824138	2016-01-28 16:48:06.824138	453	453	t
-206	Programar, mensualmente las necesidades relacionadas con el funcionamiento, conservación, reparación, mantenimiento preventivo y correctivo de motos y vehículos.	10	1	1	46	37	2016-01-28 18:04:46.656657	2016-01-28 18:04:46.656657	440	440	t
-207	Garantizar el óptimo funcionamiento y buen uso de las motos y vehículos asignados al Ministerio.	10	1	1	46	37	2016-01-28 18:05:45.757379	2016-01-28 18:05:45.757379	440	440	t
-208	Garantizar la presentación de servicio de transporte a las dependencias que integran el Ministerio y usuarios atendidos a través de las unidades de Atención al Público.	10	1	1	46	37	2016-01-28 18:07:08.050166	2016-01-28 18:07:08.050166	440	440	t
-209	Tramitar ante la Dirección de Gestión Administrativa las órdenes de servicios y reparaciones según las necesidades que presenten las unidades. 	10	1	1	46	37	2016-01-28 18:08:46.632596	2016-01-28 18:08:46.632596	440	440	t
-210	Tramitar los requerimientos administrativos del personal que integra la oficina de transporte. 	10	1	1	46	37	2016-01-28 18:09:50.586682	2016-01-28 18:09:50.586682	440	440	t
-186	Hacer informes sociales de los casos de salud para establecer el primer contacto hospitalario o institucional, de manera eficiente y oportuna.	10	1	1	41	37	2016-01-28 16:45:38.758708	2016-01-28 16:45:38.758708	453	453	t
-194	Atender casos de salud, de manera eficiente y oportuna, en articulación con las diferentes instituciones públicas o privadas con competencia en la materia, en un tiempo no mayor de cinco días.	20	1	1	43	37	2016-01-28 16:51:41.367922	2016-01-28 16:51:41.367922	453	453	t
-200	Realizar el Informe de Gestión mensual de la Oficina de Atención Ciudadana, con eficiencia y sin errores.	10	1	1	44	37	2016-01-28 16:55:51.753681	2016-01-28 16:55:51.753681	453	453	t
-198	Hacer seguimiento a las actuaciones realizadas a las solicitudes de orientación, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	15	1	1	44	37	2016-01-28 16:54:38.750578	2016-01-28 16:54:38.750578	453	453	t
-188	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	41	37	2016-01-28 16:46:27.731841	2016-01-28 16:46:27.731841	453	453	t
-199	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	44	37	2016-01-28 16:54:58.068129	2016-01-28 16:54:58.068129	453	453	t
-182	Atender las solicitudes de ayudas económicas, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia, según sea el caso; de manera eficiente y en un tiempo no mayor de cinco días.	25	1	1	40	37	2016-01-28 16:41:53.594982	2016-01-28 16:41:53.594982	453	453	t
-201	Atender las solicitudes de pensión "Amor Mayor", de manera oportuna, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia; en un tiempo no mayor de cinco días.	25	1	1	45	37	2016-01-28 17:09:00.259307	2016-01-28 17:09:00.259307	453	453	t
-183	Hacer seguimiento a las actuaciones realizadas a los casos, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones, según sea el caso.	15	1	1	40	37	2016-01-28 16:42:16.458321	2016-01-28 16:42:16.458321	453	453	t
-184	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	40	37	2016-01-28 16:42:40.522109	2016-01-28 16:42:40.522109	453	453	t
-193	Informar a las ciudadanos y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	5	1	1	42	37	2016-01-28 16:49:29.798419	2016-01-28 16:49:29.798419	453	453	t
-203	Informar a las ciudadanos y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	10	1	1	45	37	2016-01-28 17:09:42.46166	2016-01-28 17:09:42.46166	453	453	t
-187	Hacer seguimiento a las actuaciones realizadas a los casos de salud, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	10	1	1	41	37	2016-01-28 16:46:01.972498	2016-01-28 16:46:01.972498	453	453	t
-196	Informar a las ciudadanas y los ciudadanos, de manera oportuna, el estatus o curso de su solicitud o trámite interpuesto, en un lapso de 3 días.	15	1	1	43	37	2016-01-28 16:52:24.128	2016-01-28 16:52:24.128	453	453	t
-195	Hacer seguimiento a las actuaciones realizadas a los casos de salud, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	15	1	1	43	37	2016-01-28 16:52:04.417488	2016-01-28 16:52:04.417488	453	453	t
-197	Atender, oportunamente, las solicitudes de orientación, en relación a los trámites y servicios que presta el Ministerio, en articulación con las diferentes instituciones públicas o privadas, con competencia en la materia; en un tiempo no mayor de cinco días.	15	1	1	44	37	2016-01-28 16:54:12.842014	2016-01-28 16:54:12.842014	453	453	t
-211	Programar mensualmente, las necesidades relacionadas con el funcionamiento, conservación, reparación, mantenimiento preventivo y correctivo de motos y vehículos.	10	1	1	47	37	2016-01-28 18:12:31.540251	2016-01-28 18:12:31.540251	440	440	t
-202	Hacer seguimiento a las actuaciones realizadas a los casos de solicitud de pensión "Amor Mayor", en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones.	15	1	1	45	37	2016-01-28 17:09:20.803086	2016-01-28 17:09:20.803086	453	453	t
-220	Ejecutar curso de ofimática básica en software libre al personal de MinMujer antes de los primeros diez días del mes de Marzo.	10	1	1	50	37	2016-01-29 00:00:21.413799	2016-01-29 00:00:21.413799	22	22	t
-221	Culminar Ldap y mirror y con repositorios actualizados del sistema operativo Linux Mint con 100% de operatividad.	25	1	1	50	37	2016-01-29 00:01:21.039212	2016-01-29 00:01:21.039212	22	22	t
-222	Evaluar la implementación de ocs inventory con autenticacióń al sistema GLPI para la primera semana del mes de Junio.	15	1	1	50	37	2016-01-29 00:01:39.083929	2016-01-29 00:01:39.083929	22	22	t
-223	Establecer la implementación de la central telefónica en Elastix, con operatividad de almenos un 80%.	25	1	1	48	37	2016-01-29 00:02:28.435607	2016-01-29 00:02:28.435607	22	22	t
-224	Crear imágenes del sistema operativo Linux Mint de los distintos modelos de CPU utilizados en MinMujer para la primera semana del mes de Mayo.	15	1	1	48	37	2016-01-29 00:02:43.604061	2016-01-29 00:02:43.604061	22	22	t
-225	Establecer nomenclatura e identificación de los puntos de red del Ministerio para la última semana del mes de Mayo.	25	1	1	49	37	2016-01-29 00:03:19.341117	2016-01-29 00:03:19.341117	22	22	t
-226	Crear manual de procedimiento de los soportes mas comunes en el área, así como también para la instalación y utilización del openvpn (sigecof) y creación de tickets en el sistema GLPI, para la segunda semana del mes de Abril.	15	1	1	49	37	2016-01-29 00:03:35.332432	2016-01-29 00:03:35.332432	22	22	t
-227	Ejecutar curso de ofimática básica en software libre al personal de MinMujer antes de los primeros diez días del mes de Marzo.	10	1	1	51	37	2016-01-29 00:04:28.473017	2016-01-29 00:04:28.473017	22	22	t
-228	Establecer la implementación de la central telefónica en Elastix, con operatividad de un 80%.	25	1	1	51	37	2016-01-29 00:06:01.325871	2016-01-29 00:06:01.325871	22	22	t
-229	Elaborar hilo musical web antes del mes de Abril, basándose en la utilización de herramientas libres con 100% de operatividad.	15	1	1	51	37	2016-01-29 00:06:17.637658	2016-01-29 00:06:17.637658	22	22	t
-230	\tEjecutar curso de ofimática básica en software libre al personal de MinMujer antes de los primeros diez días del mes de Marzo.	10	1	1	52	37	2016-01-29 00:10:11.331194	2016-01-29 00:10:11.331194	22	22	t
-232	Establecer nomenclatura e identificación de los puntos de red del Ministerio para los últimos días del mes de Mayo.	25	1	1	52	37	2016-01-29 00:10:57.387259	2016-01-29 00:10:57.387259	22	22	t
-233	Crear imágenes del sistema operativo Linux Mint de los distintos modelos de CPU utilizados en MinMujer para la primera semana del mes de Mayo.	15	1	1	52	37	2016-01-29 00:11:22.264716	2016-01-29 00:11:22.264716	22	22	t
-234	Diseñar una base de datos que permita el registro y control diario de toda documentacin que ingrese a la Oficina de Gestion Administrativa 	15	1	1	7	37	2016-01-29 08:34:48.630747	2016-01-29 08:34:48.630747	468	468	t
-235	Revisar diariamente la correspondencia recibida en la Oficina de Gestion Administrativa con el proposito de ser distribuida con un maximo de calidad y eficiencia	5	1	1	7	37	2016-01-29 08:36:53.033713	2016-01-29 08:36:53.033713	468	468	t
-236	Verificar diariamiente que las solicitudes de tramites de viaticos pasajes y alojamiento para el personal que cumplira funciones en el interior del pais cumpla con la normativa legal vigente	10	1	1	7	37	2016-01-29 08:38:07.118354	2016-01-29 08:38:07.118354	468	468	t
-237	Coordinar mensualmente el correcto orden del archivo de toda la correspondencia del Despacho del Director velando por su adecuada seguridad y conservacion de la misma	10	1	1	7	37	2016-01-29 08:39:45.313786	2016-01-29 08:39:45.313786	468	468	t
-238	Atender y orientar al publico que solicite los servicios de una manera cortes  amable para que la informacion sea mas fluida y clara.	10	1	1	7	37	2016-01-29 08:40:38.960383	2016-01-29 08:40:38.960383	468	468	t
-239	Elaborar propuestas de documentos orientadores de la participación de la Delegaciones Oficiales en reuniones de organismos multilaterales, mecanismos de integración y concertación política convocadas durante el primer semestre del año 2016, con un máximo de calidad y eficiencia.	20	1	1	55	37	2016-01-29 09:36:48.833523	2016-01-29 09:36:48.833523	54	54	t
-240	Desarrollar las respuestas a las consultas realizadas por instancias nacionales y organismos multilaterales, vinculadas a los derechos humanos de las mujeres durante el primer semestre de 2016,  sin errores ni omisiones.	15	1	1	55	37	2016-01-29 09:37:21.874597	2016-01-29 09:37:21.874597	54	54	t
-241	Redactar informes ejecutivos sobre  los organismos multilaterales y mecanismos de integración y concertación política vinculados a los derechos humanos de las mujeres que sostendrán reuniones durante el primer semestre de 2016, en un plazo máximo de una semana por cada informe requerido.	15	1	1	55	37	2016-01-29 09:37:43.787176	2016-01-29 09:37:43.787176	54	54	t
-242	 Elaborar los Comprobantes de Inventario en Sedes Centrales y Sedes Estadales, correspondientes  a los Equipos y Mobiliarios pertenecientes a Min Mujer para el Primer Trimestre 2016.	10	1	1	56	37	2016-01-29 09:42:23.274137	2016-01-29 09:42:23.274137	87	87	t
-243	Registrar los Equipos y Mobiliarios (Bienes Muebles), identificadolos con su respectiva etiqueta, realizando la verificación física y a su vez el Comprobante de Incorporación para el Primer Trimestre 2016.	10	1	1	56	37	2016-01-29 09:42:46.810465	2016-01-29 09:42:46.810465	87	87	t
-244	Analizar y Adecuar los Comprobantes de Incorporación, Desincorporación,  Reasignación, Inventario a las Normativas exigidas por la Ley Orgánica de Bienes Públicos,  Manual de Especificas Técnicas de la Sudebip, y Manual de Sigecof ONCOP del Registro de Bienes Muebles para el Primer Trimestre 2016	10	1	1	56	37	2016-01-29 09:43:38.885378	2016-01-29 09:43:38.885378	87	87	t
-245	Actualizar los movimientos de Bienes Muebles  efectuados en las diferentes Oficinas de las Sedes Centrales de Caracas, justificados con su respectivo Comunicado de la Unidad Solicitante para el Primer Trimestre 2016\n	10	1	1	56	37	2016-01-29 09:43:59.65062	2016-01-29 09:43:59.65062	87	87	t
-246	Elaborar las Notas de Entrega y Comprobantes de Responsable por Uso, para el registro de los Bienes Muebles adaptados a la Normativa de la Sudebip para el Primer Trimestre 2016\n	10	1	1	56	37	2016-01-29 09:44:27.85845	2016-01-29 09:44:27.85845	87	87	t
-248	DISEÑAR UNA BASE DE DATOS, QUE PERMITA EL REGISTRO Y CONTROL DIARIO DE TODA DOCUMENTACIÓN QUE INGRESE A LA OFICINA DE GESTIÓN ADMINISTRATIVA	10	1	1	57	37	2016-01-29 09:50:24.25205	2016-01-29 09:50:24.25205	468	468	t
-249	Registrar los Equipos y Mobiliarios (Bienes Muebles), identificadolos con su respectiva etiqueta, realizando la verificación física y a su vez el Comprobante de Incorporación para el Primer Semestre del Año en curso.	10	1	1	58	37	2016-01-29 09:50:37.107294	2016-01-29 09:50:37.107294	87	87	t
-247	Elaborar los Comprobantes de Inventario en Sedes Centrales y Sedes Estadales, correspondientes  a los Equipos y Mobiliarios pertenecientes a Min Mujer para el Primer Trimestre  (Caracas) y Segundo Trimestre (Estados) 2016.	10	1	1	58	37	2016-01-29 09:50:20.715811	2016-01-29 09:50:20.715811	87	87	t
-262	CONTROLAR DIARIAMENTE LA DISPONIBILIDAD FINANCIERA A TRAVÉS DE LOS MOVIMIENTOS BANCARIOS.	10	1	1	60	37	2016-01-29 10:01:36.910443	2016-01-29 10:01:36.910443	468	468	t
-263	FORMULAR MENSUALMENTE DE MANERA OPORTUNA Y EFICIENTE LAS PROGRAMACIONES DE PAGO DE COMPROMISOS, OBLIGACIONES Y DESEMBOLSOS.	10	1	1	60	37	2016-01-29 10:02:37.725425	2016-01-29 10:02:37.725425	468	468	t
-264	SUPERVISAR MENSUALMENTE LA ELABORACIÓN DE CONCILIACIONES BANCARIAS, SIN ERRORES U OMISIONES.	10	1	1	60	37	2016-01-29 10:03:29.50035	2016-01-29 10:03:29.50035	468	468	t
-265	VERIFICAR DIARIAMENTE LA DISPONIBILIDAD PRESUPUESTARIA, CON LA FINALIDAD DE CONFIRMAR EL SALDO DISPONIBLE EN LAS PARTIDAS Y PROCESAR LA EJECUCION Y COMPROMISO Y CAUSADO.	10	1	1	60	37	2016-01-29 10:04:50.273449	2016-01-29 10:04:50.273449	468	468	t
-266	SUPERVISAR DIARIAMENTE LA ELABORACIÓN DE ÓRDENES DE PAGO, DE ACUERDO A LA NORMATIVA LEGAL VIGENTE.	10	1	1	60	37	2016-01-29 10:06:15.389773	2016-01-29 10:06:15.389773	468	468	t
-267	COORDINAR LA ELABORACIÓN DEL PLAN DE COMPRAS ANUAL.	15	1	1	61	37	2016-01-29 10:11:39.63838	2016-01-29 10:11:39.63838	468	468	t
-269	DISEÑAR EN UN LAPSO DE DOS MESES, UNA BASE DE DATOS PARA EL REGISTRO DE PROVEEDORES.	10	1	1	61	37	2016-01-29 10:16:38.767958	2016-01-29 10:16:38.767958	2	2	t
-271	PLANIFICAR MENSUALMENTE LA ENTREGA DE MATERIALES Y SUMINISTROS A FIN DE SATISFACER LOS REQUERIMIENTOS DE LOS USUARIOS.	10	1	1	62	37	2016-01-29 10:20:41.55315	2016-01-29 10:20:41.55315	468	468	t
-272	DISEÑAR UN CRONOGRAMA MENSUAL DE MANTENIMIENTO PREVENTIVO Y CORRECTIVO DE LOS SISTEMAS DE SERVICIOS BÁSICOS Y ESPACIOS FÍSICOS.	10	1	1	62	37	2016-01-29 10:21:53.077426	2016-01-29 10:21:53.077426	468	468	t
-273	SUPERVISAR DIARIAMENTE LAS ACTIVIDADES DE MANTENIMIENTO Y REPARACIÓN DE BIENES MUEBLES E INMUEBLES DE LA INSTITUCIÓN, GARANTIZANDO LAS ÓPTIMAS CONDICIONES DE LAS INSTALACIONES.	10	1	1	62	37	2016-01-29 10:24:11.284663	2016-01-29 10:24:11.284663	468	468	t
-274	IMPLEMETAR UN SISTEMA DE CONTROL INTERNO MENSUAL PARA LAS ACCIONES DE RECEPCIÓN, RESGUARDO Y DESPACHO DE MATERIALES Y SUMINISTROS.	10	1	1	62	37	2016-01-29 10:25:09.320707	2016-01-29 10:25:09.320707	468	468	t
-275	DESARROLLAR UNA BASE DE DATOS QUE PERMITA EL ADECUADO CONTROL MENSUAL DE INVENTARIOS DE MATERIALES Y SUMINISTROS.	10	1	1	62	37	2016-01-29 10:26:09.669936	2016-01-29 10:26:09.669936	468	468	t
-279	REVISAR MENSUALMENTE LA CONFORMACIÓN DE EXPEDIENTES, REFERIDOS A ORDENES DE PAGO Y CHEQUES, SIN ERRORES U OMISIONES.	10	1	1	63	37	2016-01-29 10:35:17.178809	2016-01-29 10:35:17.178809	468	468	t
-280	LLEVAR DE FORMA SISTEMATIZADA, LA ENTRADA Y SALIDA DE EXPEDIENTES REFERIDOS A ORDENES DE PAGO Y CHEQUES, SIN ERRORES U OMISIONES.	10	1	1	63	37	2016-01-29 10:36:19.191439	2016-01-29 10:36:19.191439	468	468	t
-261	ATENDER DIARIAMENTE AL PUBLICO, QUE SOLICITE LOS SERVICIOS, DE UNA MANERA CORTES Y AMABLE PARA QUE LA INFORMACIÓN SEA FLUIDA Y CLARA.	10	1	1	57	37	2016-01-29 09:56:39.617259	2016-01-29 09:56:39.617259	468	468	t
-259	VERIFICAR DIARIAMENTE, QUE LAS SOLICITUDES DE TRÁMITES DE VIÁTICOS, PASAJES Y ALOJAMIENTO PARA EL PERSONAL, CUMPLA CON LA NORMATIVA LEGAL VIGENTE.	10	1	1	57	37	2016-01-29 09:54:05.320739	2016-01-29 09:54:05.320739	468	468	t
-253	REVISAR DIARIAMENTE LA CORRESPONDENCIA RECIBIDA EN LA OFICINA DE GESTIÓN ADMINISTRATIVA, CON EL PROPÓSITO DE SER DISTRIBUIDA CON UN MÁXIMO DE CALIDAD Y EFICIENCIA.	10	1	1	57	37	2016-01-29 09:52:37.132785	2016-01-29 09:52:37.132785	468	468	t
-268	VERIFICAR DIARIAMENTE, LA ADQUISICIÓN DE BIENES Y MATERIALES, GARANTIZADO LAS MEJORES CONDICIONES EN CUANTO A COSTOS, TIEMPOS DE ENTREGA Y CALIDAD DE LAS MISMAS, A TRAVÉS DE LA NORMATIVA LEGAL VIGENTE, QUE RIGEN LA MATERIA.	15	1	1	61	37	2016-01-29 10:14:29.105321	2016-01-29 10:14:29.105321	468	468	t
-260	SUPERVISAR MENSUALMENTE, EL CORRECTO ORDEN Y RESGUARDO DEL ARCHIVO DONDE REPOSA TODA LA CORRESPONDENCIA DE LA DIRECCIONEGURIDAD Y CONSERVACIÓN.	10	1	1	57	37	2016-01-29 09:55:25.261069	2016-01-29 09:55:25.261069	468	468	t
-270	EFECTUAR DIARIAMENTE, GESTIÓN Y SEGUIMIENTO A LA LOGÍSTICA SOLICITADA, PARA LAS ACTIVIDADES QUE DESARROLLA LA INSTITUCIÓN.	10	1	1	61	37	2016-01-29 10:17:50.016546	2016-01-29 10:17:50.016546	2	2	t
-251	Actualizar los movimientos de Bienes Muebles  efectuados en las diferentes Oficinas de las Sedes Centrales de Caracas, justificados con su respectivo Comunicado de la Unidad Solicitante para el Primer Semestre del año en curso.	10	1	1	58	37	2016-01-29 09:51:27.68595	2016-01-29 09:51:27.68595	87	87	t
-250	 Adecuar los Comprobantes de Incorporación, Desincorporación,  Reasignación, Inventario a las Normativas exigidas por la Ley Orgánica de Bienes Públicos,  Manual de Especificaciones Técnicas de la Sudebip, y Manual de Sigecof del Registro de Bienes Muebles para el Primer Semestre del año en Curso.	10	1	1	58	37	2016-01-29 09:51:06.46106	2016-01-29 09:51:06.46106	87	87	t
-254	Elaborar los Comprobantes de Inventario en Sedes Centrales y Sedes Estadales, correspondientes  a los Equipos y Mobiliarios pertenecientes a Min Mujer para el Primer Trimestre (Caracas) y Segundo Trimestre (Estados) del año en curso.	10	1	1	59	37	2016-01-29 09:52:47.835658	2016-01-29 09:52:47.835658	87	87	t
-252	Elaborar las Notas de Entrega y Comprobantes de Responsable por Uso, para el registro de los Bienes Muebles adaptados a la Normativa de la Sudebip para el primer Semestre del año en Curso.	10	1	1	58	37	2016-01-29 09:51:44.914212	2016-01-29 09:51:44.914212	87	87	t
-258	Elaborar las Notas de Entrega y Comprobantes de Responsable por Uso, para el registro de los Bienes Muebles adaptados a la Normativa de la Sudebip para el Primer Semestre del año en curso.	10	1	1	59	37	2016-01-29 09:54:03.886348	2016-01-29 09:54:03.886348	87	87	t
-257	Actualizar los movimientos de Bienes Muebles  efectuados en las diferentes Oficinas de las Sedes Centrales de Caracas, justificados con su respectivo Comunicado de la Unidad Solicitante para el Primer Semestre del año en curso.	10	1	1	59	37	2016-01-29 09:53:49.217535	2016-01-29 09:53:49.217535	87	87	t
-256	Adecuar los Comprobantes de (Incorporación, Desincorporación,  Reasignación, Inventario) a las Normativas exigidas por la Ley Orgánica de Bienes Públicos,  Manual de Especificas Técnicas de la Sudebip, y Manual de Sigecof  del Registro de Bienes Muebles para el Primer Semestre 2016.	10	1	1	59	37	2016-01-29 09:53:33.125038	2016-01-29 09:53:33.125038	87	87	t
-255	 Registrar los Equipos y Mobiliarios (Bienes Muebles), identificadolos con su respectiva etiqueta, realizando la verificación física y a su vez el Comprobante de Incorporación para el Primer Semestre del año en curso.	10	1	1	59	37	2016-01-29 09:53:02.75432	2016-01-29 09:53:02.75432	87	87	t
-282	Desarrollar de manera eficientemente el módulo principal (Cruger) del nuevo Sistema de Planificación y Presupuesto  para finales del mes de Marzo del 2016.	20	1	1	64	37	2016-01-29 10:38:24.206158	2016-01-29 10:38:24.206158	437	437	t
-281	Analizar de manera eficaz y eficientemente los requerimientos recibidos  para el desarrollo de un nuevo Sistema solicitado por la Oficina de Planificación y Presupuesto para la primera quincena de Febrero del 2016.	10	1	1	64	37	2016-01-29 10:37:19.397974	2016-01-29 10:37:19.397974	437	437	t
-284	Desarrollar de manera eficaz el 40 %  de la primera fase de los módulos inherente al Sistema de Planificación y Presupuesto, para finales del segundo trimestre del 2016.	20	1	1	64	37	2016-01-29 10:39:55.169841	2016-01-29 10:39:55.169841	2	2	t
-302	MANTENER UN MECANISMO DE CONTROL MENSUAL, QUE PERMITA OBTENER INFORMACIÓN DE EN QUE FASE SE ENCUENTRAN LAS ORDENES DE PAGO PROCESADAS A CADA PROVEEDOR DE BIENES O SERVICIOS.	10	1	1	68	37	2016-01-29 10:59:41.451	2016-01-29 10:59:41.451	2	2	t
-309	DISEÑAR EN DOS MESES UN SISTEMA AUTOMATIZADO, QUE PERMITA IDENTIFICAR DE FORMA RÁPIDA, LA UBICACIÓN EXACTA DE LOS BIENES MUEBLES E INMUEBLES DE LA INSTITUCIÓN.	10	1	1	71	37	2016-01-29 11:08:57.667713	2016-01-29 11:08:57.667713	468	468	t
-315	Ordenar de forma fisica y digital los documentos administrativos que se generen en el Viceministerio para la Proteccion de los derechos de la Mujer	20	1	1	54	37	2016-01-29 11:36:05.3209	2016-01-29 11:36:05.3209	183	183	t
-316	Verificar mensualmente el estatus de las solicitudes y casos sociales recibidos en el Viceministerio para la proteccion de los Derechos de la mujer	20	1	1	54	37	2016-01-29 11:40:06.180604	2016-01-29 11:40:06.180604	183	183	t
-9	Registrar semanalmente mediante el Sistema Integrado de Gestión y Control de las Finanzas Públicas (SIGECOF), el compromiso y causado de los expedientes de cheque que conforman el Fondo en Anticipo toda vez que sean retirados por sus respectivos Beneficiarios. 	20	1	1	3	37	2016-01-26 10:31:00.186447	2016-01-26 10:31:00.186447	2	2	t
-317	Llevar registro digital de las noticias nacionales e internacionales relacionadas con los derechos sexuales y reproductivos de las mujeres teniendo como fecha tope los ultimos viernes de cada mes	10	1	1	54	37	2016-01-29 11:44:02.553648	2016-01-29 11:44:02.553648	183	183	t
-8	Tramitar diariamente las solicitudes de Apertura o Reposición de Caja Chica, Reembolsos y donaciones, mediante la elaboración de Certificados de Disponibilidad Presupuestaria cumpliendo con previa solicitud de las respectivas Direcciones del Organismo.	15	1	1	3	37	2016-01-26 10:27:43.991956	2016-01-26 10:27:43.991956	68	68	t
-318	\nEjecutar 12 actividades en articulación con instituciones educativas en el marco del programa para la prevención del embarazo a temprana edad y en adolescentes para el 1er. Semestre de 2016\n	20	1	1	53	37	2016-01-29 11:48:01.120528	2016-01-29 11:48:01.120528	183	183	t
-319	Preparar un banco de espacios públicos y privados, locaciones y auditorios en los cuales se realizaran actividades en el marco de los programas del Viceministerio para la Protección de los derechos de la mujer antes del mes de marzo de 2016	20	1	1	53	37	2016-01-29 11:49:26.944293	2016-01-29 11:49:26.944293	183	183	t
-298	DISEÑAR UNA BASE DE DATOS  MENSUAL, QUE PERMITA EL REGISTRO DE RETENCIONES REALIZADAS A LOS PROVEEDORES DE BIENES Y SERVICIOS, SEGÚN CORRESPONDA.	10	1	1	68	37	2016-01-29 10:56:17.6927	2016-01-29 10:56:17.6927	2	2	t
-306	REALIZAR LA PLANIFICACIÓN SEMESTRAL, PARA LA ACTUALIZACIÓN DE INVENTARIOS DE BIENES A NIVEL NACIONAL.	15	1	1	71	37	2016-01-29 11:04:54.704703	2016-01-29 11:04:54.704703	468	468	t
-307	SUPERVISAR MENSUALMENTE, LA EJECUCIÓN DE LOS PROCESOS DE INCORPORACIÓN Y TRASLADO DE BIENES.	15	1	1	71	37	2016-01-29 11:06:15.565001	2016-01-29 11:06:15.565001	468	468	t
-308	IDENTIFICAR MENSUALMENTE, LOS INVENTARIOS DE BIENES REALIZADOS EN LAS DIFERENTES UNIDADES DE LA INSTITUCIÓN.	10	1	1	71	37	2016-01-29 11:07:29.5037	2016-01-29 11:07:29.5037	468	468	t
-310	EFECTUAR REUNIONES MENSUALES CON EL PERSONAL ADSCRITO A SU COORDINACIÓN, PRESENTANDO MINUTA A LA DIRECCIÓN, A FIN DE IDENTIFICAR POSIBLES SITUACIONES IRREGULARES.	10	1	1	72	37	2016-01-29 11:18:34.500039	2016-01-29 11:18:34.500039	468	468	t
-291	LLEVAR DE FORMA SISTEMATIZADA, LA ENTRADA Y SALIDA DE EXPEDIENTES REFERIDOS A ORDENES DE PAGO Y CHEQUES, SIN ERRORES U OMISIONES.	10	1	1	65	37	2016-01-29 10:47:52.192951	2016-01-29 10:47:52.192951	468	468	t
-312	SUPERVISAR MENSUALMENTE, EL ESTADO MECÁNICO DE LA FLOTA AUTOMOTRIZ, A FIN DE POTENCIAR EL RENDIMIENTO Y SUS USUARIOS.	10	1	1	72	37	2016-01-29 11:21:12.741898	2016-01-29 11:21:12.741898	468	468	t
-313	COORDINAR MENSUALMENTE, LA REALIZACIÓN DEL MANTENIMIENTO DE UNIDADES DE LA FLOTA DE MANERA PERIÓDICA, ASI COMO  LA ESTABLECIDA POR LOS FABRICANTES.	10	1	1	72	37	2016-01-29 11:24:41.988761	2016-01-29 11:24:41.988761	468	468	t
-314	REALIZAR MENSUALMENTE, EL TRÁMITE NECESARIO PARA EL PAGO DE IMPUESTOS DE VEHÍCULO, SEGÚN VENCIMIENTO, ASÍ COMO LAS INSPECCIONES QUE SEAN NECESARIAS, ANTE LAS INSTANCIAS COMPETENTES.	10	1	1	72	37	2016-01-29 11:26:20.410771	2016-01-29 11:26:20.410771	468	468	t
-311	APLICAR QUINCENALMENTE, UN FORMATO DE CONTROL, PARA LA SALIDA DE CADA UNO DE LOS CONDUCTORES ADSCRITOS A LA COORDINACIÓN.	10	1	1	72	37	2016-01-29 11:20:12.098633	2016-01-29 11:20:12.098633	468	468	t
-285	PREPARAR EN TREINTA DÍAS, UN INVENTARIO DE EXPEDIENTES DE ORDENES DE PAGO Y CHEQUES (AÑOS 2014 Y 2015).	10	1	1	65	37	2016-01-29 10:40:44.917657	2016-01-29 10:40:44.917657	468	468	t
-287	DISEÑAR UNA BASE DE DATOS EN TRES MESES, QUE PERMITA IDENTIFICAR DE MANERA RÁPIDA LA UBICACIÓN DE ORDENES DE PAGO Y CHEQUES.	10	1	1	65	37	2016-01-29 10:44:33.045133	2016-01-29 10:44:33.045133	468	468	t
-290	ORDENAR MENSUALMENTE, EL ARCHIVO CORRESPONDIENTE A LOS EXPEDIENTES DE ORDENES DE PAGO Y CHEQUES (AÑOS 2014 Y 2015).	10	1	1	65	37	2016-01-29 10:46:30.585117	2016-01-29 10:46:30.585117	468	468	t
-301	Evaluar eficientemente los requerimientos establecidos por la Oficina de Atención a la Ciudadanía para las nuevas adaptaciones del Sistema de Atención al Ciudadano (SAC) para la primera semana de Febrero.	10	1	1	70	37	2016-01-29 10:58:55.163668	2016-01-29 10:58:55.163668	437	437	t
-304	Modificar en un 55% los requerimientos del Sistema de Atención al ciudadano (SAC)   previa solicitud de la  Oficina de Atención al Ciudadanía, en el segundo trimestre  del 2016.	20	1	1	70	37	2016-01-29 11:00:50.039367	2016-01-29 11:00:50.039367	437	437	t
-303	Realizar eficaz y eficientemente las pruebas pertinentes a las adecuaciones realizadas a la aplicación SAC  para el mes de Junio del 2016.	20	1	1	70	37	2016-01-29 10:59:54.573369	2016-01-29 10:59:54.573369	437	437	t
-296	Realizar las pruebas pertinentes a las adecuaciones realizadas en el  Sistema de Atención al ciudadano (SAC)  para el mes de mayo del 2016.	20	1	1	69	37	2016-01-29 10:54:35.873515	2016-01-29 10:54:35.873515	437	437	t
-401	Diagramación diaria de libros, prensa, revistas, encartados, librillos, tripticos, desplegables. 	15	1	1	102	37	2016-02-11 15:45:22.758201	2016-02-11 15:45:22.758201	400	400	t
-299	Modificar en un 45% los requerimientos   del Sistema de Atención al ciudadano (SAC)  previa solicitud de la   Oficina de Atención al Ciudadanía en el segundo trimestre  del 2016.	20	1	1	69	37	2016-01-29 10:56:36.474613	2016-01-29 10:56:36.474613	437	437	t
-297	Analizar de manera eficiente la estructura y codificación  del Sistema de Atención al ciudadano (SAC) para la primera quincena del mes de Febrero 2016.	10	1	1	69	37	2016-01-29 10:56:01.754743	2016-01-29 10:56:01.754743	437	437	t
-288	Diseñar el modelo entidad relación del Sistema de Planificación y Presupuesto para finales del mes de Febrero del 2016.	15	1	1	66	37	2016-01-29 10:44:34.711186	2016-01-29 10:44:34.711186	437	437	t
-294	Evaluar eficientemente el modulo principal (Cruger) del Sistema integrador del ministerio (SIIM), para  mejoras en el modulo de  usuarios del sistema, para finales del mes de Mayo del 2016.	15	1	1	67	37	2016-01-29 10:51:38.829923	2016-01-29 10:51:38.829923	437	437	t
-292	Desarrollar  la  cuarta fase del Sistema de Evaluación SIMCLA  para finales del primer trimestre  del 2016.	20	1	1	67	37	2016-01-29 10:48:31.510782	2016-01-29 10:48:31.510782	437	437	t
-320	Llevar registro digital de las noticias nacionales e internacionales relacionadas con los derechos sexuales y reproductivos de las mujeres teniendo como fecha tope los últimos viernes de cada mes	10	1	1	53	37	2016-01-29 11:49:51.211095	2016-01-29 11:49:51.211095	183	183	t
-329	Controlar semanalmente las entradas y salidas de los materiales que se encuentran en el almacen central del Organismo, para responder de manera oportuna a las solicitudes emitidas por los departamentos que integran dicho organismo.	20	1	1	28	37	2016-01-29 13:36:39.590924	2016-01-29 13:36:39.590924	470	470	t
-330	Inspeccionar mensualmente las sedes estadales, para responder de manera eficiente y eficaz las solicitudes de manteniento y remodelaciones que así lo requieran.	15	1	1	28	37	2016-01-29 13:44:30.265148	2016-01-29 13:44:30.265148	2	2	t
-331	Brindar apoyo técnico diariamente al personal obrero, para dar cumplimiento al mantenimiento y limpieza de las áreas que componen la sede central del Organismo.	15	1	1	28	37	2016-01-29 13:45:50.692187	2016-01-29 13:45:50.692187	2	2	t
-334	Controlar mensualmente las entradas y salidas de materiales y suministros que conforman el almacen central del Organismo, de esta manera nos permite dar respuesta oportuna a todas las solicitudes de las dependencias centrales y estadales.	15	1	1	73	37	2016-01-29 13:57:01.012226	2016-01-29 13:57:01.012226	470	470	t
-336	Establecer cronogramas trimestrales para la adquisición de materiales de oficina, limpieza y bienes muebles solicitados por las diferentes unidades ejecutoras de la institución; a fin de optimizar las compras  en un 90%.	10	1	1	76	37	2016-01-29 16:29:46.804615	2016-01-29 16:29:46.804615	114	114	t
-337	Sistematizar la recepción y procesamiento de facturas, correspondientes a servicios básicos de la Sede Principal y Sedes Regionales de MinMujer de forma mensual en un 80%.	10	1	1	76	37	2016-01-29 16:31:58.225635	2016-01-29 16:31:58.225635	114	114	t
-341	Establecer cronograma trimestral para la adquisición de materiales de oficina, limpieza y bienes muebles solicitados por las diferentes unidades ejecutoras de la institución a fin de optimizar las compras  en un 90%.	10	1	1	77	37	2016-01-29 16:37:26.326877	2016-01-29 16:37:26.326877	114	114	t
-345	Establecer cronograma trimestral para la adquisición de materiales de oficina, limpieza y bienes muebles solicitados por las diferentes unidades ejecutoras de la institución a fin de optimizar las compras  en un 90%.	10	1	1	78	37	2016-01-29 16:40:12.852419	2016-01-29 16:40:12.852419	114	114	t
-346	Crear un sistema de Registro de Proveedores. Para lograr de una manera práctica la ubicación de las empresas según su actividad económica (Venta de Materiales, Equipos y Contratación de Servicios) requeridos para MINMUJER. De forma semanal en un 100%.	10	1	1	78	37	2016-01-29 16:40:28.82824	2016-01-29 16:40:28.82824	114	114	t
-347	Actualizar en el sistema del Servicio Nacional de Contrataciones de forma mensual la programación electrónica de compras del estado.	15	1	1	78	37	2016-01-29 16:41:01.116813	2016-01-29 16:41:01.116813	114	114	t
-348	hola prueba	10	1	1	79	37	2016-01-31 13:51:39.835539	2016-01-31 13:51:39.835539	11	11	f
-349	ver 2	20	1	1	79	37	2016-01-31 13:51:49.156412	2016-01-31 13:51:49.156412	11	11	f
-350	ver 3	20	1	1	79	37	2016-01-31 13:51:59.148816	2016-01-31 13:51:59.148816	11	11	f
-11	Registrar semanalmente mediante el Sistema Integrado de Gestión y Control de las Finanzas Públicas (SIGECOF), el compromiso y causado de los expedientes de cheque que conforman el Fondo en Anticipo toda vez que sean retirados por sus respectivos Beneficiarios. 	15	1	1	4	37	2016-01-26 10:48:51.917236	2016-01-26 10:48:51.917236	68	68	t
-332	Prcesar oportuna y mensualmente las requisiciones de materiales de oficina y limpieza, previa solicitud de las dependencias del MINIMUJER y sedes Estadales.	20	1	1	73	37	2016-01-29 13:49:14.492135	2016-01-29 13:49:14.492135	470	470	t
-326	Realizar de manera mensual, el Plan Operativo Anual (POA), correspondiente a la Coordinación de Servicios Generales.	20	1	1	75	37	2016-01-29 13:23:07.643108	2016-01-29 13:23:07.643108	470	470	t
-328	Supervisar oportuna y diariamente la limpieza en todas las áreas de trabajo de la Sede Central de MinMujer y dar respuesta oportuna a todas las solicitudes de materiales y remodelaciones requeridas por las Direcciones Estadales y Central.	15	1	1	75	37	2016-01-29 13:30:13.082225	2016-01-29 13:30:13.082225	470	470	t
-344	Trámitar oportunamente, y en un 90%, las solicitudes de material y equipos de todas las áreas de trabajo del MINMUJER.	15	1	1	78	37	2016-01-29 16:39:58.268806	2016-01-29 16:39:58.268806	114	114	t
-340	Tramitar oportunamente, y en un 90%, las solicitudes de material y equipos de todas las áreas de trabajo del MINMUJER.	15	1	1	77	37	2016-01-29 16:37:07.01032	2016-01-29 16:37:07.01032	114	114	t
-342	Efectuar de forma trimestral, la evaluación de desempeño de las diferentes empresas que suministran bienes o servicios al MINMUJER. Tomando en cuenta la calidad, ejecución y disponibilidad en el cumplimiento de su actividad económica.	10	1	1	77	37	2016-01-29 16:37:45.053321	2016-01-29 16:37:45.053321	114	114	t
-339	Tramitar oportunamente, y en un 90%, las solicitudes de material y equipos de todas las áreas de trabajo del MINMUJER. 	15	1	1	76	37	2016-01-29 16:36:13.858233	2016-01-29 16:36:13.858233	114	114	t
-338	Controlar mediante procedimientos administrativos prácticos, en un 90%, la recepción, proceso y cancelación de los Arrendamientos y Condominios de las Sedes de MINMUJER.	15	1	1	76	37	2016-01-29 16:33:31.646506	2016-01-29 16:33:31.646506	114	114	t
-322	Llevar el control y seguimiento de la correspondencia y demás procesos administrativos de la Oficina de Atención Ciudadana, de manera eficiente y ordenada. 	15	1	1	74	37	2016-01-29 13:16:39.185272	2016-01-29 13:16:39.185272	453	453	t
-343	Realizar la intermediación de boletos aéreos y hospedajes para funcionarios y funcionarias de MinMujer de forma oportuna. En un 90%.	15	1	1	77	37	2016-01-29 16:38:01.01592	2016-01-29 16:38:01.01592	114	114	t
-323		5	1	1	74	37	2016-01-29 13:17:04.151006	2016-01-29 13:17:04.151006	453	453	t
-324	Realizar la rendición del Fondo de Caja Chica de la OAC, de manera eficiente y sin errores, cuando se haya ejecutado el 70 %.	15	1	1	74	37	2016-01-29 13:17:29.187301	2016-01-29 13:17:29.187301	453	453	t
-327	Elaborar  mensual y eficientemente el Inventario de Almacen del MinMujer, así como el control de las entradas y salidas de los suministros de materiales de Oficina y de limpieza.	15	1	1	75	37	2016-01-29 13:25:13.251233	2016-01-29 13:25:13.251233	470	470	t
-147	Verificar la recepción y el contenido de informes de gestión mensual enviados por los entes y órganos adscritos sobre su ejecución de planes y programas, durante los últimos 15 días de cada mes.	10	1	1	34	37	2016-01-28 15:33:49.663012	2016-01-28 15:33:49.663012	37	37	t
-305	DESARROLLAR UN METODO ESTADÍSTICO QUE PERMITA LA COMPARACIÓN, ENTRE ORDENES DE PAGO EMITIDAS Y ORDENES DE PAGO ENTREGADAS A PROVEEDORES DE BIENES Y SERVICIOS.	10	1	1	68	37	2016-01-29 11:00:52.036615	2016-01-29 11:00:52.036615	2	2	t
-300	SUPERVISAR LA ENTREGA MENSUAL A LOS RESPONSABLES ADMINISTRATIVOS DE ENTES ADSCRITOS A MINMUJER, EL COMPROBANTE DE TRANSFERENCIA REALIZADA.	10	1	1	68	37	2016-01-29 10:58:01.296839	2016-01-29 10:58:01.296839	2	2	t
-148	Construir una herramienta de uso estadístico para el seguimiento mensual de planes y programas ministeriales, durante los meses de enero, febrero y marzo del 2016. 	15	1	1	34	37	2016-01-28 15:34:21.151715	2016-01-28 15:34:21.151715	37	37	t
-78	Formular  en los meses mayo-junio el anteproyecto de presupuesto  del  Viceministerio para la Protección de los Derechos de la Mujer y  del INAMUJER	10	1	1	18	37	2016-01-27 14:02:21.444049	2016-01-27 14:02:21.444049	162	162	t
-96	Apoyar técnicamente a las distintas unidades del Minmujer y sus entes adscritos en el proceso de formulación del Plan Operativo y presupuesto durante el primer semestre	15	1	1	21	37	2016-01-28 08:55:29.254789	2016-01-28 08:55:29.254789	143	143	t
-351	prueba	10	1	1	81	37	2016-02-03 10:31:30.884044	2016-02-03 10:31:30.884044	437	437	f
-352	prueba	20	1	1	81	37	2016-02-03 10:31:35.775778	2016-02-03 10:31:35.775778	437	437	f
-353	prueba	20	1	1	81	37	2016-02-03 10:31:40.831564	2016-02-03 10:31:40.831564	437	437	f
-354	Redactar los proyectos de instrumentos normativos y jurídicos relacionados con la actividad del Ministerio, con eficiencia y calidad, en articulación con las unidades administrativas propias del organismo y de sus Entes adscritos en un plazo no mayor a tres (03) días una vez realizada la solicitud.	10	1	1	82	37	2016-02-03 10:38:32.075604	2016-02-03 10:38:32.075604	404	404	t
-355	Validar los aspectos legales de los proyectos y actos jurídicos, a los fines de dar una opinión jurídica, con eficiencia y calidad, en cumplimiento de las normativas legales que puedan afectar al patrimonio público, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	82	37	2016-02-03 10:38:59.283605	2016-02-03 10:38:59.283605	404	404	t
-356	Elaborar los dictámenes, con eficiencia y calidad, sobre los recursos administrativos, que se interpongan contra los actos administrativos dictados por el Ministro o la Ministra, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	82	37	2016-02-03 10:39:22.456665	2016-02-03 10:39:22.456665	404	404	t
-357	Establecer los criterios jurídicos administrativos, con eficiencia y calidad, en las diversas materias que son competencia del Ministerio y de sus Entes adscritos, divulgando sus dictámenes y doctrina jurídica, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	82	37	2016-02-03 10:39:42.516998	2016-02-03 10:39:42.516998	404	404	t
-358	Elaborar estudios y emitir opiniones, con eficiencia y calidad, sobre los expedientes disciplinarios instruidos al personal administrativo dependiente del Ministerio, sus órganos, y entes adscritos, en un plazo no mayor a tres (3) días una vez realizada la solicitud.	10	1	1	82	37	2016-02-03 10:40:19.536936	2016-02-03 10:40:19.536936	404	404	t
-295	IDENTIFICAR DIARIAMENTE  LA CORRECTA APLICACIÓN DE IMPUESTOS (I.V.A., I.S.L.R., 1x1000), PARA LOS EXPEDIENTES RECIBIDOS POR LA COORDINACION DE PAGOS, DE ACUERDO A LA NORMATIVA LEGAL VIGENTE.	10	1	1	68	37	2016-01-29 10:54:30.791516	2016-01-29 10:54:30.791516	2	2	t
-276	ORDENAR MENSUALMENTE, EL ARCHIVO CORRESPONDIENTE A LOS EXPEDIENTES DE ORDENES DE PAGO Y CHEQUES. AÑOS 2014 Y 2015.	10	1	1	63	37	2016-01-29 10:28:53.774078	2016-01-29 10:28:53.774078	468	468	t
-278	DISEÑAR UNA BASE DE DATOS EN TRES MESES, QUE PERMITA IDENTIFICAR DE MANERA RÁPIDA LA UBICACIÓN DE ORDENES DE PAGO Y CHEQUES.	10	1	1	63	37	2016-01-29 10:31:49.686009	2016-01-29 10:31:49.686009	468	468	t
-277	PREPARAR EN TREINTA DIAS, UN INVENTARIO DE EXPEDIENTES DE ORDENES DE PAGO Y CHEQUES (AÑOS 2014 Y 2015)	10	1	1	63	37	2016-01-29 10:30:16.892614	2016-01-29 10:30:16.892614	468	468	t
-191	Hacer informes sociales de los casos de salud para establecer el primer contacto hospitalario o institucional, de manera eficiente y oportuna.	10	1	1	42	37	2016-01-28 16:48:33.402497	2016-01-28 16:48:33.402497	453	453	t
-168	Hacer seguimiento a las actuaciones realizadas a los casos, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones, según sea el caso	15	1	1	35	37	2016-01-28 16:27:18.919022	2016-01-28 16:27:18.919022	453	453	t
-321	Ejecutar de manera coordinada y ordenada, los procesos administrativos de la OAC, con relación a las demás Oficinas del MinMujer y sus Entes Adscritos	15	1	1	74	37	2016-01-29 13:16:06.404067	2016-01-29 13:16:06.404067	453	453	t
-363	Planificar eficazmente dos (2) actuaciones fiscales que le sean asignadas durante el 1° semestre contenidas en el plan operativo de la Oficina de Auditoría Interna 	10	1	1	83	37	2016-02-03 13:44:34.529257	2016-02-03 13:44:34.529257	41	41	t
-359	Apoyar eficientemente durante el 1° semestre la ejecución de cuatro (4) actuaciones fiscales que se encuentren en campo obteniendo las pruebas para soportar los hallazgos de auditoría sin errores u omisiones	15	1	1	23	37	2016-02-03 11:15:13.555798	2016-02-03 11:15:13.555798	41	41	t
-365	Elaborar eficientemente en el 1° semestre un (1) informe preliminar originado de la actuación fiscal, cuyos hallazgos de auditoría deben contener claramente la condición, criterio, causa y efecto	10	1	1	83	37	2016-02-03 13:53:43.871588	2016-02-03 13:53:43.871588	41	41	t
-366	Culminar eficientemente en el 1° semestre  un (1) informe definitivo y dos (2) especiales los cuales deberán contener las observaciones conclusiones y recomendaciones	10	1	1	83	37	2016-02-03 13:56:18.435635	2016-02-03 13:56:18.435635	41	41	t
-367	Conformar con eficiencia en el 1° semestre tres (3) expedientes contentivos de los papeles de trabajo que sustentan las actuaciones fiscales concluidas	5	1	1	83	37	2016-02-03 13:57:59.203086	2016-02-03 13:57:59.203086	41	41	t
-364	Ejecutar eficientemente en campo las dos (2) actuaciones fiscales programadas en el 1° semestre obteniendo las pruebas que soporten los hallazgos y/o observaciones	15	1	1	83	37	2016-02-03 13:48:37.709121	2016-02-03 13:48:37.709121	41	41	t
-362	Actualizar eficazmente en el 1°semestre el índice y correlativo de las actuaciones fiscales que se culminan en la Oficina de Auditoría Interna	10	1	1	23	37	2016-02-03 11:28:00.367155	2016-02-03 11:28:00.367155	2	2	t
-361	Conformar con eficiencia en el 1° semestre dos (2) expedientes contentivos de los papeles de trabajo que sustentes o soporten las actuaciones fiscales culminadas	10	1	1	23	37	2016-02-03 11:22:09.166284	2016-02-03 11:22:09.166284	41	41	t
-333	Realizar  diariamente la supervisión de la limpieza de todas las áreas comunes, que integran la sede central del MINMUJER.	15	1	1	73	37	2016-01-29 13:53:05.98852	2016-01-29 13:53:05.98852	470	470	t
-368	Consolidar documentos requeridos legalmente para la elaboración del acta de entrega del Despacho de la  Viceministra de Desarrollo Productivo de la Mujer. La información debe recopilar toda la gestión de la Viceministra hasta la fecha de entrega de la gestión	10	1	1	93	37	2016-02-10 13:28:39.282197	2016-02-10 13:28:39.282197	458	458	t
-369	Compilar las actividades para la agenda semanal y el logro de los resultados actividades mensualmente, para que los mismos sean incorporados en el informe de gestión mensual, se debe hacer entrega de la información los últimos 5 días de mes	15	1	1	93	37	2016-02-10 13:29:10.855787	2016-02-10 13:29:10.855787	458	458	t
-371	llevar control de minutas levantadas en reuniones donde asista la Viceministra, así como el seguimiento de los acuerdos establecidos, reportar el cumplimiento de actividades en la confirmación semanal de la agenda, y su inclusión en el informe de gestión mensual.	15	1	1	93	37	2016-02-10 13:30:19.024632	2016-02-10 13:30:19.024632	458	458	t
-372	Hacer seguimiento semanal a los trámites administrativos efectuados por el Despacho,   (ordenes de pago, viáticos, reembolsos, solicitudes de ayuda, entre otros), impulsar cualquier acción para la obtención de los mismos en el tiempo requerido.	10	1	1	93	37	2016-02-10 13:30:45.471732	2016-02-10 13:30:45.471732	458	458	t
-373	Llevar al día la base de Datos digital de la correspondencia, enviada y recibida, efectuar conciliación con el archivo físico manteniendo la custodia de las comunicaciones según el correcto archivado , entregar relación trimestralmente. 	10	1	1	94	37	2016-02-10 13:34:15.059812	2016-02-10 13:34:15.059812	458	458	t
-374	Efectuar seguimiento a la correspondencia recibida e instrucciones impartidas por la Viceministra, garantizando la respuesta oportuna según lo instruido, actualizar libro de correspondencia según seguimiento efectuado, presentar resultado de seguimiento bimensualmente.	15	1	1	94	37	2016-02-10 13:34:40.657432	2016-02-10 13:34:40.657432	458	458	t
-375	Solicitar a la Dirección de Innovación de Modelos Productivos mensualmente, la base de datos de Ideas de Proyectos y Gobierno de Eficiencia en la calle, actualizar en el libro de proyectos estatus. Presentar resultados a la Viceministra mensualmente	10	1	1	94	37	2016-02-10 13:36:17.83778	2016-02-10 13:36:17.83778	2	2	t
-376	Atender casos específicos encomendados por la Viceministra, dando respuesta oportuna y con la calidad requerida	15	1	1	94	37	2016-02-10 13:36:48.137072	2016-02-10 13:36:48.137072	2	2	t
-377	Realizar asesorias, visitas y acompañamientos a las Direcciones Estadales instutucionales durante el primer semestre del año 2016	15	1	1	97	37	2016-02-11 14:44:13.97707	2016-02-11 14:44:13.97707	384	384	t
-379	Diseñar instrumentos necesarios para la recolección de información que permita el seguimiento eficiente de la gestión durante el primer semestre	10	1	1	97	37	2016-02-11 14:46:50.197898	2016-02-11 14:46:50.197898	384	384	t
-380	Realizar reuniones intrainstitucionales con otras direcciones de apoyo con el fin de dar respuesta efectiva a los requerimientos técnicos de las Direcciones Estadales durante el primer semestre del año 2016	15	1	1	97	37	2016-02-11 14:48:26.919364	2016-02-11 14:48:26.919364	384	384	t
-383	Diseñar instrumentos necesarios para la recolección  de información que permita el seguimiento eficiente de la gestión, durante el primer semestre del año 2016	10	1	1	98	37	2016-02-11 14:52:56.270097	2016-02-11 14:52:56.270097	384	384	t
-384	Realizar reuniones intrainstitucionales con otras Direcciones de apoyo con el fin de dar respuesta efectiva alos requerimientos técnicos de las Direcciones Estadales, durante el primer semestre del año 2016	15	1	1	98	37	2016-02-11 14:54:40.017582	2016-02-11 14:54:40.017582	384	384	t
-385	Realizar asesorias, visitas y acompañamientos a las Direcciones Estadales institucionales , durante el primer semestre del año 2016	15	1	1	99	37	2016-02-11 14:56:11.135792	2016-02-11 14:56:11.135792	384	384	t
-387	Diseñar instrumentos necesarios para la recolección de información que permita el seguimiento para su eficaz funcionamiento, durante el primer semestre del año 2016	10	1	1	99	37	2016-02-11 14:58:47.623915	2016-02-11 14:58:47.623915	384	384	t
-388	Realizar  reuniones intrainstitucionales con otras Direcciones de apoyo con el fin de dar respuesta efectiva a los requerimientos técnicos de la Direcciones Estadales, durante el primer semestre del año 2016	15	1	1	99	37	2016-02-11 15:00:25.987135	2016-02-11 15:00:25.987135	384	384	t
-389	Realizar asesorias, visitas y acompañamientos a las Direcciones Estadales institucionales, durante el primer semestre del año 2016	15	1	1	100	37	2016-02-11 15:01:52.848733	2016-02-11 15:01:52.848733	384	384	t
-391	Diseñar instrumentos necesarios para la recolección de información que permita el seguimiento eficiente de la gestión, durante el primer semestre del año 2016	10	1	1	100	37	2016-02-11 15:05:38.841188	2016-02-11 15:05:38.841188	384	384	t
-392	Realizar reuniones intrainstitucionales con otras Direcciones de apoyo, con el fin de dar respuesta efectiva a los requerimientos técnicos de las Direcciones Estadales, durante el primer trimestre del año 2016	15	1	1	100	37	2016-02-11 15:07:11.447142	2016-02-11 15:07:11.447142	384	384	t
-394	Elaborar el plan de guardias mensuales de los periodistas, camarografos, fotografos y protocolo, con el fin de cubrir las diferentes actividades emanadas del Ministerio.	15	1	1	101	37	2016-02-11 15:09:18.364383	2016-02-11 15:09:18.364383	400	400	t
-192	Hacer seguimiento a las actuaciones realizadas a los casos de salud, en articulación con las unidades o dependencias del Ministerio y demás instituciones del Estado, abarcando una cantidad mínima de tres acciones, según sea el caso.	5	1	1	42	37	2016-01-28 16:49:01.266611	2016-01-28 16:49:01.266611	453	453	t
-395	Elaborar cronograma diario de las actividades en las distintas regiones del pais, con el fin de crear las politicas comunicacionales correspondientes a la actividad.	20	1	1	101	37	2016-02-11 15:14:22.738712	2016-02-11 15:14:22.738712	400	400	t
-386	Procesar todas las solicitudes de caracter administrativo que demandan las Direcciones Estadales a fin de dar respuesta efectiva a su requerimiento para su eficaz funcionamiento, durante el primer semestre del año 2016	10	1	1	99	37	2016-02-11 14:57:48.882889	2016-02-11 14:57:48.882889	384	384	t
-378	Procesar todas las solicitudes de caracter administrativo que demandan las Direcciones Estadales a fin de dar respuesta efectiva a su requerimiento para su eficaz funcionamiento	10	1	1	97	37	2016-02-11 14:45:41.305366	2016-02-11 14:45:41.305366	384	384	t
-381	Realizar asesorias, visitas y acompañamientos a  Direcciones Estadales Institucionales, durante el primer semestre del año 2016	15	1	1	98	37	2016-02-11 14:50:13.030439	2016-02-11 14:50:13.030439	384	384	t
-382	Procesar todas las solicitudes de caracter administrativo que demandan las Direcciones Estadales, a fin de dar respuesta efectiva asu requerimiento para su eficaz funcionamiento, durante el primer semestre del año 2016	10	1	1	98	37	2016-02-11 14:51:44.912823	2016-02-11 14:51:44.912823	384	384	t
-396	Diseñar un sistema de correspondencia funcional para el mejoramiento y control diario de las comunicaciones, memos  y/u oficios recibidos y emanados de la Oficina de Gestión Comunicacional. 	5	1	1	101	37	2016-02-11 15:20:57.240062	2016-02-11 15:20:57.240062	400	400	t
-397	Tramitar la requisicion del material de oficina, logistica y todo lo necesario para cubrir las actividades semanales del Ministerio. 	10	1	1	101	37	2016-02-11 15:26:59.950618	2016-02-11 15:26:59.950618	400	400	t
-399	Diseñar el paquete grafico del Ministerio, utilizando los insumos diarios que genera la Oficina de Gestión Comunicacional. 	20	1	1	102	37	2016-02-11 15:35:01.083404	2016-02-11 15:35:01.083404	400	400	t
-400	Asesorar diariamente en materia gráfica la información publicada a través de las redes sociales 	15	1	1	102	37	2016-02-11 15:38:36.234575	2016-02-11 15:38:36.234575	400	400	t
-556	INCORPORARSE A LAS JORNADAS SOCIALES EN LA COMUNIDAD	10	1	1	137	37	2016-02-13 08:35:06.253198	2016-02-13 08:35:06.253198	235	235	t
-403	Desarrollar la produccion mensual de videos y audiovisuales de las politicas y actividades del Ministerio	25	1	1	103	37	2016-02-11 15:58:47.175477	2016-02-11 15:58:47.175477	2	2	t
-405	Producir mensualmente nuevos contenidos que permitan difundir las politicas del ministerio a través de videos y spots	10	1	1	103	37	2016-02-11 16:08:57.081979	2016-02-11 16:08:57.081979	2	2	t
-289	Presentar eficientemente una propuesta a la oficina de planificación y presupuesto sobre el sistema solicitado para finales de mes de Febrero del 2016.	15	1	1	66	37	2016-01-29 10:45:33.592815	2016-01-29 10:45:33.592815	437	437	t
-286	Desarrollar de manera eficaz el 60 %  restante de la primera fase de los módulos inherente al Sistema de Planificación y Presupuesto, para finales del segundo trimestre del 2016.	20	1	1	66	37	2016-01-29 10:43:10.898071	2016-01-29 10:43:10.898071	437	437	t
-406	Rediseñar  la base de datos del Sistema Integrador del Ministerio (SIIM)  para la primera quincena de Febrero del 2016.	10	1	1	104	37	2016-02-11 16:13:50.41325	2016-02-11 16:13:50.41325	437	437	t
-407	Elaborar guiones tecnicos y literarios, a traves de la investigación diaria sobre las polticas de la revolución bolivariana hacia las mujeres. 	15	1	1	103	37	2016-02-11 16:14:08.898746	2016-02-11 16:14:08.898746	2	2	t
-408	Reestructurar la base de datos del Sistema de Atención al ciudadano (SAC)  para la primera quincena de Marzo del 2016.	10	1	1	104	37	2016-02-11 16:14:26.593865	2016-02-11 16:14:26.593865	437	437	t
-409	Evaluar el modelo entidad relación  del  Sistema de Planificación y Presupuesto para la  finales de Marzo del 2016.	10	1	1	104	37	2016-02-11 16:14:43.8993	2016-02-11 16:14:43.8993	437	437	t
-410	Creación de la base de datos del  Sistema de Planificación y Presupuesto  para primera quincena del mes de Junio del 2016.	20	1	1	104	37	2016-02-11 16:15:12.813669	2016-02-11 16:15:12.813669	437	437	t
-293	Realizar un estudio de factibilidad del Sistema  de constancia de trabajo y recibos de pago (SIGIP) y su migración a el Sistema Integrador del Ministerio (SIIM) para finales del segundo trimestre del 2016.	15	1	1	67	37	2016-01-29 10:49:31.838665	2016-01-29 10:49:31.838665	437	437	t
-412	Elaborar el montaje para los eventos y actividades que se desarrollan mensualmente desde el Ministerio. 	20	1	1	105	37	2016-02-11 16:31:59.190695	2016-02-11 16:31:59.190695	400	400	t
-413	Garantizar el apoyo protocolar semanalmente en la reuniones de la Union Nacional de Unamujer 	10	1	1	105	37	2016-02-11 16:34:53.398622	2016-02-11 16:34:53.398622	400	400	t
-414	Garantizar la distribución, cuido y resguardo  del material POP para las actividades de calle. 	20	1	1	105	37	2016-02-11 16:38:34.07471	2016-02-11 16:38:34.07471	400	400	t
-415	Ejecutar los procesos administrativos del área, aplicando las normas y procedimientos, elaborando documentación necesaria, revisando y realizando cálculos, a fin de dar cumplimiento a cada uno de esos procesos.	20	1	1	95	37	2016-02-11 17:14:47.457057	2016-02-11 17:14:47.457057	444	444	t
-416	 Lograr resultados oportunos y garantizar la prestación efectiva del servicio	15	1	1	95	37	2016-02-11 17:16:52.820561	2016-02-11 17:16:52.820561	444	444	t
-417	Contribuir en el desarrollo de los programas y actividades de la unidad.	15	1	1	95	37	2016-02-11 17:17:21.809773	2016-02-11 17:17:21.809773	444	444	t
-418	\nPlanificar y coordinar las actividades de los programas socio-económicos dirigido a las organizaciones de mujeres y comunales	20	1	1	106	37	2016-02-11 17:31:15.82671	2016-02-11 17:31:15.82671	444	444	t
-419	Elaborar informes periódicos de las actividades realizadas	15	1	1	106	37	2016-02-11 17:31:43.49765	2016-02-11 17:31:43.49765	444	444	t
-420	Dictar charlas a las comunidad y grupos de mujeres organizadas	15	1	1	106	37	2016-02-11 17:32:23.839175	2016-02-11 17:32:23.839175	444	444	t
-421	Organizar la Agenda  de su supervisor inmediato articulada con el personal de la unidad y otras instituciones	20	1	1	107	37	2016-02-11 19:30:11.449991	2016-02-11 19:30:11.449991	444	444	t
-422	Redactar y envíar la correspondencia a las unidades que lo requieran.	15	1	1	107	37	2016-02-11 19:30:34.644046	2016-02-11 19:30:34.644046	444	444	t
-423	Supervisar y ejecutar  la realización de planes de trabajo realizados articuladamente.	15	1	1	107	37	2016-02-11 19:31:01.580474	2016-02-11 19:31:01.580474	444	444	t
-360	Culminar eficientemente en el 1° semestre dos (2) informes especiales correspondientes a la verificación de actas de entrega de las dependencias del MINMJUER con sus respectivas conclusiones y recomendaciones	15	1	1	23	37	2016-02-03 11:20:21.50442	2016-02-03 11:20:21.50442	41	41	t
-426	Ejecutar en el 1er Semestre 8 actividades de sensibilización sobre Socio Productivo para incentivar la Agricultura Urbana y Rural en nuevos urbanismos y comunas del Eje Paraguana con la participación  de 90 personas distribuidos en 10% mujeres y 10% hombres 	25	1	1	108	37	2016-02-12 14:32:30.4464	2016-02-12 14:32:30.4464	474	474	f
-431	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre marco conceptual de genero, para la consolidación de las comités de mujer e igualdad de género en el eje Paraguana a un total de 15 personas por actividad. 	15	1	1	109	37	2016-02-12 14:44:53.416149	2016-02-12 14:44:53.416149	474	474	f
-430	Desarrollar en el 1er semestre 1 actividad semanal de sensibilización sobre fortalecimiento del liderazgo politico de las mujeres, para la construcción del socialismo feminista en nuevos urbanismos del eje Paraguana a un total de 15 personas por actividad.  	15	1	1	109	37	2016-02-12 14:44:24.444948	2016-02-12 14:44:24.444948	474	474	f
-435	Elaborar semanalmente agenda intra e interinstitucional,relacionada con firma de 2 convenios y 1 programa de formación y capacitación socioproductiva,según Plan Operativo Anual,fecha tope de entrega los días miércoles, de manera eficaz.Para un total de 24 agendas en el primer semestre del 2016.	15	1	1	113	37	2016-02-12 15:25:15.711208	2016-02-12 15:25:15.711208	230	230	t
-437	Coordinar reuniones articulando con organismos vinculados al área de desarrollo socioproductivo para el impulso de mujeres vulnerables, según instrucciones emitidas por la Directora General de Promoción y Desarrollo Productivo, para un total de 12 (doce) reuniones en el primer semestre del 2016.	15	1	1	113	37	2016-02-12 15:28:14.995195	2016-02-12 15:28:14.995195	230	230	t
-438	Elaborar minutas de las reuniones vinculadas al Plan Operativo Anual,según las directrices de la Dirección.Presentándo de manera eficaz,con un plazo de 4 horas aproximadamente luego de concluida la reunión,para un total de 12 minutas en el primer semestre del 2016	10	1	1	113	37	2016-02-12 15:34:31.110565	2016-02-12 15:34:31.110565	230	230	t
-439	Mantener organizados los informes, oficios, minutas, memorandos enviados y recibidos semanalmente, sin errores u omisiones, de acuerdo a las actividades que se generen en la Dirección General de Promoción y Desarrollo Productivo, para un total de 40 documentos en el primer semestre del 2016.	10	1	1	113	37	2016-02-12 15:34:59.559494	2016-02-12 15:34:59.559494	230	230	t
-440	Coordinar con las instituciones del Estado con competencia en formación y capacitación en materia socioproductiva la firma de 2 convenios en 1 semestre.	15	1	1	112	37	2016-02-12 15:37:57.209097	2016-02-12 15:37:57.209097	225	225	t
-445	2. Coordinar el proceso de desarrollo del Plan anual de formación y capacitación en materia socioproductiva, conjuntamente con los entes adscritos del MINMUJER ( BANMUJER y la FMMDB) en articulación con las Instituciones del estado con competencia en la materia para se ejecutado en 1 semestre	15	1	1	112	37	2016-02-12 15:50:03.251435	2016-02-12 15:50:03.251435	225	225	t
-446	3. Evaluar trimestralmente las informaciones relacionadas con la formación y capacitación en materia socioproductiva, emitida por los entes adscritos del MINMUJER en articulación con las Instituciones del Estado con competencia en la materia.	10	1	1	112	37	2016-02-12 15:50:23.597804	2016-02-12 15:50:23.597804	225	225	t
-447	4. Revisar contratos de usos, comodatos y actas constitutivas para la instalación de los proyectos estructurantes impulsados por el MINMUJER, a objeto de evitar errores y omisiones de acuerdo a lo contemplado en la normativa legal. Tres (3) documentos en 1 semestre	10	1	1	112	37	2016-02-12 15:51:12.173079	2016-02-12 15:51:12.173079	225	225	t
-452	1. Preparar sin errores, y de manera oportuna, un informe semanal de toda la información e incidencias reportadas a lo largo de la semana.	25	1	1	119	37	2016-02-12 16:27:47.970672	2016-02-12 16:27:47.970672	155	155	t
-453	2. Presentar al final de cada jornada, un reporte resumiendo la información recabada en la misma. 	10	1	1	119	37	2016-02-12 16:28:09.753492	2016-02-12 16:28:09.753492	155	155	t
-454	3. Supervisar diariamente de manera efectiva, que las tareas del personal de la sala de seguimiento y control se cumplan a cabalidad. 	10	1	1	119	37	2016-02-12 16:28:32.324224	2016-02-12 16:28:32.324224	155	155	t
-455	4. Supervisar el cumplimiento del proceso de transcripción diaria de las planillas de registro y verificación del censo de la Gran Misión Hogares de la Patria.\n\n	5	1	1	119	37	2016-02-12 16:29:24.281906	2016-02-12 16:29:24.281906	155	155	t
-456	1. Realizar tres (3) llamadas efectivas diarias a las coordinadoras de los estados Carabobo, Cojedes, Delta Amacuro, Mérida, Falcón y Guárico, para el seguimiento del personal voluntario que realiza el proceso de  verificación casa por casa del censo nacional de la Gran Misión Hogares de la Patria.	20	1	1	120	37	2016-02-12 16:31:39.299767	2016-02-12 16:31:39.299767	155	155	t
-457	2. Solicitar diariamente, de manera oportuna, a las coordinadoras de los estados Carabobo, Cojedes, Delta Amacuro, Mérida, Falcón y Guárico, información específica requerida, según sea el caso, por  la  Dirección General de la Gran Misión Hogares de la Patria. 	15	1	1	120	37	2016-02-12 16:32:09.706296	2016-02-12 16:32:09.706296	155	155	t
-432	Ejecutar en el 1er Semestre 4 actividades de sensibilización sobre Transformación Cultural en Nuevos Urbanismos del Eje Centro  para la construcción del Socialismo Feminista a un total de 60 personas distribuidos en 90% mujeres y 10% hombres 	10	1	1	110	37	2016-02-12 14:46:15.449606	2016-02-12 14:46:15.449606	474	474	f
-433	Ejecutar en el 1er Semestre 4 actividades de Sensibilización sobre Político Ideológico para la consolidación de las Comités de Mujer e Igualdad de Género en el Eje Centro a un total de 60 personas distribuidos en 90% mujeres y 10% hombres 	15	1	1	110	37	2016-02-12 14:46:31.004743	2016-02-12 14:46:31.004743	474	474	f
-441	Ejecutar 4 intervenciones sociales en 4 Urbanismos Priorizados de la Gran Misión Vivienda Venezuela y brindar las orientaciones correspondientes a las familias, para la resolución efectivas de las mismas 	20	1	1	111	37	2016-02-12 15:39:11.233421	2016-02-12 15:39:11.233421	474	474	f
-442	Coordinar enlaces interinstitucionales para la atención integral a mujeres en situación de alto riesgo social (mujeres privadas de libertad, pobreza extrema y situación de calles) con 2 jornadas de atención medica social 	10	1	1	111	37	2016-02-12 15:40:15.047298	2016-02-12 15:40:15.047298	474	474	f
-443	Efectuar atenciones y acompañamientos a 20 Mujeres diagnosticas y sobreviviente del cáncer, en el Programa la Patria es Una Mujer 	10	1	1	111	37	2016-02-12 15:40:35.295037	2016-02-12 15:40:35.295037	474	474	f
-444	Ejecutar 3 actividades grupales con mujeres víctimas de violencia para evaluar al vulnerabilidad de las mismas y su entorno familiar 	10	1	1	111	37	2016-02-12 15:40:56.96674	2016-02-12 15:40:56.96674	474	474	f
-448	Conformar 18 Brigadas de Trabajadoras de Instituciones Publicas y Privadas en Defensa de los derechos de la Mujer Trabajadora 	15	1	1	114	37	2016-02-12 15:54:17.447887	2016-02-12 15:54:17.447887	474	474	f
-449	Ejecutar 2 encuentros de Mujeres con Capacidades Especiales y cuidadoras de personas en dependencia para la consolidación del Programa Heroínas sin Barrera en los Municipios Miranda y Carirubana con la participación de 50 mujeres por encuentro 	10	1	1	114	37	2016-02-12 15:58:26.912987	2016-02-12 15:58:26.912987	474	474	f
-450	Promover en 4 comunas del Eje Centro la Creación de las Vocerias de las Defensoras Comunales para la defensa del Derecho de la Mujer a una Vida Libre de Violencia 	25	1	1	114	37	2016-02-12 15:59:37.93932	2016-02-12 15:59:37.93932	474	474	f
-458	3. Sistematizar, diariamente, las  planillas del registro y verificación del Censo de la Gran Misión Hogares de la Patria, respetando los formatos establecidos para tal fin. 	10	1	1	120	37	2016-02-12 16:32:32.779776	2016-02-12 16:32:32.779776	155	155	t
-459	4. Consolidar, sin errores u omisiones, al final de cada jornada, la información recabada, y  enviar a la dirección de Regiones de la Gran Misión Hogares de la Patria. 	5	1	1	120	37	2016-02-12 16:32:57.8334	2016-02-12 16:32:57.8334	155	155	t
-460	1. Corroborar eficientemente los datos personales de las personas visitadas en el transcurso de cada mes, en el proceso de verificación del censo de la Gran Misión Hogares de la Patria, comparando con los datos del Servicio Administrativo de Identificación, Migración y Extranjería SAIME.	20	1	1	121	37	2016-02-12 16:34:03.882282	2016-02-12 16:34:03.882282	155	155	t
-461	2. Sistematizar, para el mes de marzo, la información levantada en el censo de la Gran Misión Hogares de la Patria – Comunidades Indígenas, de acuerdo a los formatos establecidos para el manejo de dicha data. 	15	1	1	121	37	2016-02-12 16:34:24.012376	2016-02-12 16:34:24.012376	155	155	t
-462	3. Consolidar todos los viernes, respetando los formatos establecidos para ello, los datos recabados de los hogares y personas registradas y verificadas en las visitas casa por casa de los censos Gran Misión Hogares de la Patria y Gran Misión Hogares de la Patria-Servicios Penitenciarios. 	10	1	1	121	37	2016-02-12 16:34:46.15373	2016-02-12 16:34:46.15373	155	155	t
-463	4. Preparar semanalmente, sin errores u omisiones, los reportes referentes a todos los procesos que son ejecutados y/o controlados por la coordinación de operaciones de la Gran Misión Hogares de la Patria.	5	1	1	121	37	2016-02-12 16:35:40.779222	2016-02-12 16:35:40.779222	155	155	t
-464	1. Consolidar mensualmente, sin errores u omisiones, las bases de datos correspondientes a los casos de postulados a las diferentes Misiones (Amor Mayor, Madres del Barrio e hijos de Venezuela y cualquier ayuda social). 	20	1	1	122	37	2016-02-12 16:37:10.821734	2016-02-12 16:37:10.821734	155	155	t
-465	2. Supervisar diariamente, de manera eficiente y objetiva, las tareas asignadas a los analistas del Área de Atención Social. 	15	1	1	122	37	2016-02-12 16:37:30.219593	2016-02-12 16:37:30.219593	155	155	t
-466	3. Clasificar oportunamente las solicitudes de ayuda social (Amor Mayor, Madres del Barrio, Hijos de Venezuela, entre otras). 	10	1	1	122	37	2016-02-12 16:37:55.402356	2016-02-12 16:37:55.402356	155	155	t
-467	4. Asignar diariamente, las solicitudes de ayuda social a los analistas para su adecuado procesamiento. 	5	1	1	122	37	2016-02-12 16:38:15.339026	2016-02-12 16:38:15.339026	155	155	t
-468	1. Atender oportunamente a todos los usuarios y usuarias que asisten diariamente a la Coordinación del Área de Atención Social de la Gran Misión Hogares de la Patria. 	25	1	1	123	37	2016-02-12 16:39:38.434161	2016-02-12 16:39:38.434161	155	155	t
-469	2. Registrar diariamente, y de manera eficiente, las solicitudes de ayudas sociales recibidas de parte del poder popular (operaciones, medicamentos, incorporación a beneficios sociales, entre otros) . 	15	1	1	123	37	2016-02-12 16:40:03.013051	2016-02-12 16:40:03.013051	155	155	t
-471	3. Preparar un consolidado mensual de todas las solicitudes de ayudas sociales recibidas.	10	1	1	123	37	2016-02-12 16:40:20.462781	2016-02-12 16:40:20.462781	155	155	t
-472	1. Sistematizar diariamente y sin errores, 50 solicitudes de postulaciones para la incorporación a la Misión Amor Mayor. 	25	1	1	124	37	2016-02-12 16:41:11.916874	2016-02-12 16:41:11.916874	155	155	t
-473	2. Depurar semanalmente 250 solicitudes de incorporación a la Misión Amor Mayor, de manera eficiente, basado en los parámetros y requisitos establecidos.	15	1	1	124	37	2016-02-12 16:41:58.442146	2016-02-12 16:41:58.442146	155	155	t
-475	3. Consolidar mensualmente las solicitudes de incorporación a la Misión Amor Mayor en una base de datos, sin omisiones, y en el formato establecido para tal fin. 	10	1	1	124	37	2016-02-12 16:42:16.482902	2016-02-12 16:42:16.482902	155	155	t
-478	1. Registrar sin errores diariamente 15 solicitudes de postulaciones de la Misión Madres del Barrio e Hijos de Venezuela. 	25	1	1	125	37	2016-02-12 16:47:01.729644	2016-02-12 16:47:01.729644	2	2	t
-479	2. Depurar semanalmente 75 solicitudes de incorporación a la Misión Madres del Barrio e Hijos de Venezuela, de manera eficiente, basado en los parámetros y requisitos establecidos. 	15	1	1	125	37	2016-02-12 16:47:22.420052	2016-02-12 16:47:22.420052	2	2	t
-480	3. Consolidar mensualmente las solicitudes de incorporación a la Misión Madres del Barro e Hijos de Venezuela en una base de datos, sin omisiones, y en el formato establecido para tal fin.	10	1	1	125	37	2016-02-12 16:47:42.548429	2016-02-12 16:47:42.548429	2	2	t
-483	Ejecutar eficiente y eficazmente el proceso de jubilación y pensión de los trabajadores y trabajadoras de este ministerio ante la Tesoreria Nacional.	20	1	1	126	37	2016-02-12 17:16:47.795527	2016-02-12 17:16:47.795527	23	23	t
-487	Controlar eficientemente el registro y resumen de trabajadoras y trabajadores adscritas (os) a este ministerio; asi como a la Fundación Madres del Barrio, Banco de la Mujer e Instituto Nacional de la Mujer.	10	1	1	126	37	2016-02-12 17:22:31.352532	2016-02-12 17:22:31.352532	23	23	t
-490	Efectuar los movimientos oportunos (ingresos, egresos, traslados) en el Registro Funcional de las (os) trabajadoras (es) de este ministerio.	10	1	1	126	37	2016-02-12 17:25:39.158686	2016-02-12 17:25:39.158686	23	23	t
-470	Organizar 4 encuentros pedagógicos en el 1er Semestre  con docentes de los diferentes centros educativos para la Transversalización del Género en el Curriculum Educativo con la participación de 35 Docentes del Eje Centro 	20	1	1	115	37	2016-02-12 16:40:05.487788	2016-02-12 16:40:05.487788	474	474	f
-476	Ejecutar 4 actividades de sensibilización Político Ideológico dirigido a Voceras de los Consejos Comunales y Comunas para la consolidación de los Comités de Mujer e Igualdad de Género en el Eje Centro 	15	1	1	115	37	2016-02-12 16:45:36.650899	2016-02-12 16:45:36.650899	474	474	f
-477	Organizar 4 colectivos de Mujeres como formadoras voluntarias para el Empoderamiento Social del los programas implementados por el MinMujer en el Eje Centro y Eje Paraguana 	15	1	1	115	37	2016-02-12 16:46:57.575332	2016-02-12 16:46:57.575332	474	474	f
-493	Registrar movimientos de ingresos, egresos y actualizaciones, en el Sistema (SISROE) de la Contraloría general de la República, y hacerle el respectivo seguimiento.	10	1	1	126	37	2016-02-12 17:29:07.474157	2016-02-12 17:29:07.474157	23	23	t
-500	Evaluar las Metas de Rendimiento Laboral del personal Administrativo, Tecnico y Profesional y a su vez la evaluación de eficiencia del personal obrero.	25	1	1	128	37	2016-02-12 17:37:46.206845	2016-02-12 17:37:46.206845	23	23	t
-502	Asesorar a las (os) Directoras (es) y Coordinadores sobre el proceso de evaluación del desempeño, correspondiente al 1er semestre del año 2016, así como el uso y manejo del sistema SIMCLA.	20	1	1	128	37	2016-02-12 17:40:02.513435	2016-02-12 17:40:02.513435	23	23	t
-504	Establecer agenda de trabajo para el cumplimiento de actividades implícitas en el proceso de evaluación del desempeño, durante el período enero - junio del año 2016.	5	1	1	128	37	2016-02-12 17:42:11.011622	2016-02-12 17:42:11.011622	23	23	t
-505	Planificar oportunamente los programas de Formación y Capacitación de las trabajadoras y trabajadores durante el 1er semestre del año 2016 	25	1	1	130	37	2016-02-12 17:45:34.167643	2016-02-12 17:45:34.167643	23	23	t
-506	Aplicar formato de detección de necesidades de dearrollo.	20	1	1	130	37	2016-02-12 17:47:18.229264	2016-02-12 17:47:18.229264	23	23	t
-507	Sistematizar la información contentiva de los formatos de detección de necesidades para las (os) trabajadoras (es), durante el 1er semestre del año 2016	5	1	1	130	37	2016-02-12 17:49:49.442218	2016-02-12 17:49:49.442218	23	23	t
-516	Ejecutar y Elaborar programas de formación e investigación sobre feminismo, patriarcado	10	1	1	131	37	2016-02-13 05:46:24.30838	2016-02-13 05:46:24.30838	444	444	t
-517	Facilitar a las mujeres y hombres el Plan Argelia Laya, plan de la nación, plan mamá rosa y otros programas nacionales, como robinsón II, yo mujer si puedo, estudiantes, universidades, consejos comunales, comunas, unamujer, comunidades indígenas, afrodescendiente	10	1	1	131	37	2016-02-13 05:49:05.761396	2016-02-13 05:49:05.761396	444	444	t
-518	Conducir apropiadamente el taller o charla de sensibilización, cine foro, con un lenguaje no sexista feminista en todas las formaciones y actividades	10	1	1	131	37	2016-02-13 05:51:26.602366	2016-02-13 05:51:26.602366	444	444	t
-519	Adecuar los planes de formación según la cultura y aplicación adecuada a la región, campesinos, indígenas, afrodescendiente	10	1	1	131	37	2016-02-13 05:53:43.054108	2016-02-13 05:53:43.054108	444	444	t
-520	Conceptualizar el feminismo en las comunidades y unificar los criterios de coerción social para el cambio de una sociedad desporalizada.	10	1	1	131	37	2016-02-13 05:55:59.445925	2016-02-13 05:55:59.445925	444	444	t
-521	Ejecutar y Elaborar programas de formación e investigación sobre feminismo, patriarcado	10	1	1	132	37	2016-02-13 05:56:56.175655	2016-02-13 05:56:56.175655	444	444	t
-522	Facilitar a las mujeres y hombres el Plan Argelia Laya, plan de la nación, plan mamá rosa y otros programas nacionales, como robinsón II, yo mujer si puedo, estudiantes, universidades, consejos comunales, comunas, unamujer, comunidades indígenas, afrodescendiente	10	1	1	132	37	2016-02-13 05:57:09.04644	2016-02-13 05:57:09.04644	444	444	t
-523	Conducir apropiadamente el taller o charla de sensibilización, cine foro, con un lenguaje no sexista feminista en todas las formaciones y actividades	10	1	1	132	37	2016-02-13 05:57:24.023565	2016-02-13 05:57:24.023565	444	444	t
-524	Adecuar los planes de formación según la cultura y aplicación adecuada a la región, campesinos, indígenas, afrodescendiente	10	1	1	132	37	2016-02-13 05:57:39.099509	2016-02-13 05:57:39.099509	444	444	t
-513	Garantizar el envío oportuno de informes actividades desarrolladas semanales y mensuales ante la Dirección Nacional de Formación e Investigación del MinMujer 	20	1	1	127	37	2016-02-12 18:18:18.710383	2016-02-12 18:18:18.710383	474	474	t
-498	Abordaje de 2 Comunas Priorizadas en el 1er Semestre para la conformación de los Comites de Género e Igualdad de Género en los Consejos Comunales y el Comité de Gestión para la consolidación de la participación pollitica de la mujer en el Sistema de Gobierno Popular 	20	1	1	117	37	2016-02-12 17:33:28.331603	2016-02-12 17:33:28.331603	474	474	f
-503	Realizar 1 Encuentro de Voceras de Mujer e Igualdad de Género en el  mes de Junio para compartir saberes y sistematizar experiencias de las mujeres en el ámbito comunal  	20	1	1	117	37	2016-02-12 17:40:08.286007	2016-02-12 17:40:08.286007	474	474	f
-509	Ejecutar 4 Actividades de Sensibilización Político Ideológico en el 1er Semestre  dirigida a Instituciones Publicas para la Transversalización del Género en la Administración Publica 	15	1	1	87	37	2016-02-12 18:03:48.290668	2016-02-12 18:03:48.290668	2	2	f
-510	Coordinar 8 Círculos para el Dialogo y la Reflexión en el 1er Semestre  dirigido a los Equipos de Facilitadores de los Entes Adscritos Misión Madres del Barrio, BANMUJER e INAMUJER con la finalidad de garantizar la integración de contenidos en materia formativa  	10	1	1	87	37	2016-02-12 18:09:23.413102	2016-02-12 18:09:23.413102	2	2	f
-511	Supervisar la ejecución de las MRL del 1er Semestre garantizando la eficiencia y eficacia institucional 	10	1	1	87	37	2016-02-12 18:13:30.039261	2016-02-12 18:13:30.039261	2	2	f
-494	Conformar 15 Brigadas Feministas Estudiantiles en el 1er Semestre para el Empoderamiento Politico de la Mujer Joven en los Municipios del Eje Central 	15	1	1	118	37	2016-02-12 17:30:13.282388	2016-02-12 17:30:13.282388	474	474	f
-495	Realizar 1 Encuentro con 80 Mujeres Lideresas Jóvenes de las Brigadas de Mujer Joven para definir la agenda estratégica de incidencia política en el mes de Junio 	15	1	1	118	37	2016-02-12 17:30:31.354117	2016-02-12 17:30:31.354117	474	474	f
-496	Ejecutar 1 Curso en el 1er Semestre sobre el Empoderamiento Político, Social, Económico y Cultural de la Mujer Joven de la Revolución Bolivariana 	10	1	1	118	37	2016-02-12 17:30:45.924767	2016-02-12 17:30:45.924767	474	474	f
-497	 Abordar 2 Nuevos Urbanismos para la conformación de 4 Brigadas de Mujeres Jóvenes para Fortalecer el Liderazgo Politico Territorial de Lideresas Políticas Juveniles 	10	1	1	118	37	2016-02-12 17:31:00.706335	2016-02-12 17:31:00.706335	474	474	f
-515	Remitir oporunamente las agendas semanales enmarcadas en la planificación mensual los dias viernes de cada semana antes de las 2:00 pm a la Dirección Nacional de Formación e Investigación del Ministerio del Poder Popular  para la Mujer e Igualdad de Género  	15	1	1	127	37	2016-02-12 18:29:36.580825	2016-02-12 18:29:36.580825	474	474	t
-525	Conceptualizar el feminismo en las comunidades y unificar los criterios de coerción social para el cambio de una sociedad despolarizada.	10	1	1	132	37	2016-02-13 05:57:52.646623	2016-02-13 05:57:52.646623	444	444	t
-526	Ejecutar y Elaborar programas de formación e investigación sobre feminismo, patriarcado	10	1	1	133	37	2016-02-13 05:58:34.982923	2016-02-13 05:58:34.982923	444	444	t
-527	Facilitar a las mujeres y hombres el Plan Argelia Laya, plan de la nación, plan mamá rosa y otros programas nacionales, como robinsón II, yo mujer si puedo, estudiantes, universidades, consejos comunales, comunas, unamujer, comunidades indígenas, afrodescendiente	10	1	1	133	37	2016-02-13 05:58:52.941696	2016-02-13 05:58:52.941696	444	444	t
-528	Conducir apropiadamente el taller o charla de sensibilización, cine foro, con un lenguaje no sexista feminista en todas las formaciones y actividades	10	1	1	133	37	2016-02-13 05:59:08.174264	2016-02-13 05:59:08.174264	444	444	t
-529	Adecuar los planes de formación según la cultura y aplicación adecuada a la región, campesinos, indígenas, afrodescendiente	10	1	1	133	37	2016-02-13 06:00:22.819873	2016-02-13 06:00:22.819873	444	444	t
-530	Conceptualizar el feminismo en las comunidades y unificar los criterios de coerción social para el cambio de una sociedad despolarizada.	10	1	1	133	37	2016-02-13 06:00:40.064726	2016-02-13 06:00:40.064726	444	444	t
-531	Ejecutar y Elaborar programas de formación e investigación sobre feminismo, patriarcado	10	1	1	134	37	2016-02-13 06:01:34.799925	2016-02-13 06:01:34.799925	444	444	t
-532	Facilitar a las mujeres y hombres el Plan Argelia Laya, plan de la nación, plan mamá rosa y otros programas nacionales, como robinsón II, yo mujer si puedo, estudiantes, universidades, consejos comunales, comunas, unamujer, comunidades indígenas, afrodescendiente	10	1	1	134	37	2016-02-13 06:01:52.190452	2016-02-13 06:01:52.190452	444	444	t
-533	Conducir apropiadamente el taller o charla de sensibilización, cine foro, con un lenguaje no sexista feminista en todas las formaciones y actividades	10	1	1	134	37	2016-02-13 06:02:08.89757	2016-02-13 06:02:08.89757	444	444	t
-534	Adecuar los planes de formación según la cultura y aplicación adecuada a la región, campesinos, indígenas, afrodescendiente	10	1	1	134	37	2016-02-13 06:02:24.981275	2016-02-13 06:02:24.981275	444	444	t
-535	Conceptualizar el feminismo en las comunidades y unificar los criterios de coerción social para el cambio de una sociedad despolarizada	10	1	1	134	37	2016-02-13 06:02:39.876816	2016-02-13 06:02:39.876816	444	444	t
-537	CONFORMAR LAS BRIGADAS UNAMUJER INSTITUCIONALES	20	1	1	96	37	2016-02-13 08:07:27.530658	2016-02-13 08:07:27.530658	235	235	t
-538	INCORPORARSE AL PROCESO FORMATIVO INTERNO DE LA COORDINACION DE FORMACION	10	1	1	96	37	2016-02-13 08:08:00.872762	2016-02-13 08:08:00.872762	235	235	t
-539	CONSOLIDAR LOS COMITE DE MUJER  IGUALDAD DE GENERO EN BRIGADAS UNAMUJER	20	1	1	96	37	2016-02-13 08:09:13.165526	2016-02-13 08:09:13.165526	235	235	t
-540	GARANTIZAR EL PROCESO FORMATIVO EN 10 MUNICIPIOS	15	1	1	85	37	2016-02-13 08:10:19.361675	2016-02-13 08:10:19.361675	235	235	t
-541	INCORPORAR LAS BRIGADAS UNAMUJER AL PROCESO FORMATIVO	10	1	1	85	37	2016-02-13 08:10:50.697181	2016-02-13 08:10:50.697181	235	235	t
-542	INCORPORAR CUATRO COMUNAS DEL ESTADO EN EL PROCESO FORMATIVO	10	1	1	85	37	2016-02-13 08:11:23.214774	2016-02-13 08:11:23.214774	235	235	t
-543	INCORPORAR URBANISMOS Y BASES DE MISIONES EN EL PROCESO FORMATIVO	15	1	1	85	37	2016-02-13 08:11:52.911034	2016-02-13 08:11:52.911034	235	235	t
-544	INCORPORACION AL PROCESO FORMATIVO INTERNO DE LA COORDINACION DE FORMACION	10	1	1	135	37	2016-02-13 08:15:15.462527	2016-02-13 08:15:15.462527	235	235	t
-545	CONFORMACION DE LAS BRIGADAS UNAMUJER EN LAS INSTITUCIONES EDUCATIVAS DEL ESTADO	15	1	1	135	37	2016-02-13 08:15:57.175063	2016-02-13 08:15:57.175063	235	235	t
-546	CONFORMAR BRIGADAS UNAMUJER EN LOS URBANISMOS Y BASES DE MISIONES	15	1	1	135	37	2016-02-13 08:16:27.449531	2016-02-13 08:16:27.449531	235	235	t
-547	CONSOLIDAR HUERTOS ESCOLARES A TRAVES DE LA BRIGADAS UNAMUJER	10	1	1	135	37	2016-02-13 08:18:02.198844	2016-02-13 08:18:02.198844	235	235	t
-548	INCORPORARSE AL PROCESO FORMATIVO INTERNO DE LA COORDINACION DE FORMACION 	10	1	1	136	37	2016-02-13 08:20:17.999563	2016-02-13 08:20:17.999563	235	235	t
-549	ORGANIZAR Y ENTREGAR LOS DIAS 25 DE CADA MES EL POA GENERAL	15	1	1	136	37	2016-02-13 08:21:22.210482	2016-02-13 08:21:22.210482	235	235	t
-550	PRESENTAR UNA RELACION SEMANAL DE LOS PERMISOS Y REPOSOS	10	1	1	136	37	2016-02-13 08:22:34.557296	2016-02-13 08:22:34.557296	235	235	t
-551	ORGANIZAR LOS DIAS LUNES TODA LA PLANIFICACION SEMANAL	10	1	1	136	37	2016-02-13 08:23:40.48702	2016-02-13 08:23:40.48702	235	235	t
-552	ORGANIZAR SEMANALMENTE DOCUMENTACION INTERNA, Y EXPEDIENTES	5	1	1	136	37	2016-02-13 08:27:29.108846	2016-02-13 08:27:29.108846	2	2	t
-553	INCORPORARSE AL PROCESO FORMATIVO INTERNO DE LA COORDINACION DE FORMACION	10	1	1	137	37	2016-02-13 08:30:42.915052	2016-02-13 08:30:42.915052	235	235	t
-554	ELABORAR INFORMES SOCIALES DE CASOS ABORDADOS EN LA COMUNIDAD	20	1	1	137	37	2016-02-13 08:32:13.544494	2016-02-13 08:32:13.544494	235	235	t
-555	PROCESAR LOS INFORMES SOCIALES ANTE LOS RESPECTIVOS ENTES PARA DAR POSIBLES SOLUCIONES	10	1	1	137	37	2016-02-13 08:34:16.52515	2016-02-13 08:34:16.52515	235	235	t
-567	Registrar eficazmente en el sistema access, de la Coordinación de Bienestar Social, los reposos y permisos consignados por las directoras y directores de cada oficina general y estadal del personal a cargo del MinMujer. 	19	1	1	129	37	2016-02-15 08:15:30.816331	2016-02-15 08:15:30.816331	382	382	t
-561	Elaborar de manera Eficiente  el Plan Operativo Anual (POA)  de la Oficina de Tecnología de Sistemas de la Información dentro de los 5 primeros días de cada mes durante el primer semestre del 2016.	10	1	1	138	37	2016-02-14 23:10:33.836612	2016-02-14 23:10:33.836612	355	355	t
-558	Brindar apoyo en las actividades inherentes a la Directiva de la Oficina de Tecnología de Sistemas de Información, durante el primer semestre del 2016.	10	1	1	138	37	2016-02-14 23:09:33.731335	2016-02-14 23:09:33.731335	355	355	t
-565	Tramitar  de manera eficiente la solicitud de suministro de materiales para la  Oficina de Tecnología de Sistemas de la Información  en los primeros 5 días de cada mes del primer semestre del 2016.	5	1	1	139	37	2016-02-14 23:12:58.44943	2016-02-14 23:12:58.44943	355	355	t
-706	Entregar los primeros 05 días de cada mes informe de gestión de las actividades realizadas dentro y fuera de la Institución. 	10	1	1	86	37	2016-02-18 15:03:22.039893	2016-02-18 15:03:22.039893	443	443	t
-714	Elaborar informes, actas, oficios, memorando de las actividades realizadas a diario y otras comunicaciones que le sean requeridas por la Directora Estadal Anzoátegui.	10	1	1	90	37	2016-02-18 15:28:43.585496	2016-02-18 15:28:43.585496	443	443	t
-564	Informar a la directiva  de la Oficina de Tecnología de Sistemas de la Información de todos los documentos y solicitudes recibidas en la dirección, durante el primer semestre del 2016	15	1	1	139	37	2016-02-14 23:12:43.30118	2016-02-14 23:12:43.30118	355	355	t
-568	Verificar eficientemente en la pagina del FAOV en línea, adscrito al MPP para el Ecosocialismo, Habitat y Vivienda, las constancias indivuduales del ahorrista, de cada trabajadora y trabajador adscrito al Minmujer, siempre y cuando lo soliciten ante la Coordinación de Bienestar Social. 	15	1	1	129	37	2016-02-15 08:22:12.624063	2016-02-15 08:22:12.624063	382	382	t
-569	Revisar eficaz y eficientemente los finiquitos de los siniestros incurridos por las trabajadoras y trabajadores suministrados por la aseguradora contratada para su respectiva validación. 	16	1	1	129	37	2016-02-15 08:29:28.754929	2016-02-15 08:29:28.754929	382	382	t
-571	Elaborar efectivamente las constancias de trabajo para el Instituto Venezolano de los Seguros Sociales IVSS, forma 14-100, a las trabajadoras y trabajadores adscritos al Minmujer, según requerimiento. 	18	1	1	140	37	2016-02-15 08:59:28.165526	2016-02-15 08:59:28.165526	2	2	t
-572	Ejecutar quincenalmente los movimientos de personal (Ingresos, Egresos, Cambios de Salarios, Carga Familiar y Actualizaciones), eficazmente en el Sistema Tiuna, del Instituto Venezonano de los Seguros Sociales IVSS, a las trabajadoras y trabajadores asdcritos al Minmujer.	19	1	1	140	37	2016-02-15 09:03:34.591588	2016-02-15 09:03:34.591588	2	2	t
-573	Tramitar efectiva y eficazmente el beneficio mensual del Bono de  Alimentación para las trabajadoras y trabajadores activos del Minmujer. 	13	1	1	140	37	2016-02-15 09:18:21.191612	2016-02-15 09:18:21.191612	2	2	t
-575	Canalizar eficientemente la realización  y cooperación de jornadas sociales destinadas a beneficiar a las trabajadoras y a los trabajadores adscritos al Minmujer. 	20	1	1	141	37	2016-02-15 09:38:43.975953	2016-02-15 09:38:43.975953	382	382	t
-584	Tramitar efectivamente a través del sistema Access las solicitudes de vacaciones de las trabajadoras y los trabajadores activos al Minmujer.	20	1	1	141	37	2016-02-15 10:04:19.24597	2016-02-15 10:04:19.24597	382	382	t
-586	Desarrollar dos (02) propuestas de programas para la ejecución de proyectos socioproductivos con enfoque de genero para el I Semestre de 2016, con un máximo de calidad y eficiencia.  	10	1	1	144	37	2016-02-15 10:05:14.200073	2016-02-15 10:05:14.200073	471	471	t
-587	Diseñar un (1) Modelo de Gestión de proyectos estructurantes con perspectiva de género para incorporar de manera efectiva a las mujeres en situación de vulnerabilidad a la fuerza de trabajo productiva del país para el I Semestre de 2016.	10	1	1	144	37	2016-02-15 10:05:30.450003	2016-02-15 10:05:30.450003	471	471	t
-580	Elaborar informe de seguimiento a la ejecución Física y Financiera de los proyectos impulsados por el MINMUJER en la REDI Occidental a través de los entes adscritos, según el marco normativo y legal vigente, con calidad y eficiencia, teniendo como fecha tope de entrega los 28 de cada mes	10	1	1	143	37	2016-02-15 10:03:22.954038	2016-02-15 10:03:22.954038	471	471	t
-588	Realizar acompañamiento a la Red Turística Mamá Rosa, financiadas e impulsadas  por el viceministerio a través de los entes adscritos, con reporte situacional el 30 de cada mes, sin errores ni omisiones. 	20	1	1	144	37	2016-02-15 10:05:50.46789	2016-02-15 10:05:50.46789	471	471	t
-581	Desarrollar dos (02) propuestas de programas para la ejecución de proyectos socioproductivos con enfoque de genero para el I Semestre de 2016, con un máximo de calidad y eficiencia.	10	1	1	143	37	2016-02-15 10:03:38.861716	2016-02-15 10:03:38.861716	471	471	t
-582	Diseñar un (1) Modelo de Gestión de proyectos estructurantes con perspectiva de género para incorporar de manera efectiva a las mujeres en situación de vulnerabilidad a la fuerza de trabajo productiva del país para el I Semestre de 2016.	10	1	1	143	37	2016-02-15 10:03:54.989051	2016-02-15 10:03:54.989051	471	471	t
-589	Elaborar informe de seguimiento a la ejecución Física y Financiera de los proyectos impulsados por el MINMUJER en la REDI Central a través de los entes adscritos, según el marco normativo y legal vigente, con calidad y eficiencia, teniendo como fecha tope de entrega los 28 de cada mes.	15	1	1	145	37	2016-02-15 10:06:31.275303	2016-02-15 10:06:31.275303	471	471	t
-590	Desarrollar dos (02) propuestas de programas para la ejecución de proyectos socioproductivos con enfoque de genero para el I Semestre de 2016, con un máximo de calidad y eficiencia. 	10	1	1	145	37	2016-02-15 10:06:44.418254	2016-02-15 10:06:44.418254	471	471	t
-591	Diseñar un (1) Modelo de Gestión de proyectos estructurantes con perspectiva de género para incorporar de manera efectiva a las mujeres en situación de vulnerabilidad a la fuerza de trabajo productiva del país para el I Semestre de 2016. 	15	1	1	145	37	2016-02-15 10:07:05.798854	2016-02-15 10:07:05.798854	471	471	t
-592	Realizar acompañamiento a los proyectos socioproductivos financiados e impulsados  por el viceministerio a través de los entes adscritos, con reporte situacional el 30 de cada mes, con criterios de calidad, oportunidad y eficiencia.	10	1	1	145	37	2016-02-15 10:07:23.451817	2016-02-15 10:07:23.451817	471	471	t
-593	Elaborar informe de seguimiento a la ejecución Física y Financiera de los proyectos impulsados por el MINMUJER en la REDI Los Llanos a través de los entes adscritos, según el marco normativo y legal vigente, con calidad y eficiencia, teniendo como fecha tope de entrega los 28 de cada mes.	15	1	1	146	37	2016-02-15 10:08:04.897342	2016-02-15 10:08:04.897342	471	471	t
-594	Desarrollar dos (02) propuestas de programas para la ejecución de proyectos socioproductivos con enfoque de genero para el I Semestre de 2016, con un máximo de calidad y eficiencia. 	10	1	1	146	37	2016-02-15 10:08:22.947613	2016-02-15 10:08:22.947613	471	471	t
-595	Diseñar un (1) Modelo de Gestión de proyectos estructurantes con perspectiva de género para incorporar de manera efectiva a las mujeres en situación de vulnerabilidad a la fuerza de trabajo productiva del país para el I Semestre de 2016. 	10	1	1	146	37	2016-02-15 10:08:38.210053	2016-02-15 10:08:38.210053	471	471	t
-596	Realizar la sistematización de los estatus financieros de los proyectos socioproductivos y estructurantes financiados e impulsados  por el viceministerio a través de los entes adscritos, con reporte el 30 de cada mes, con criterios de calidad, oportunidad y eficiencia.	15	1	1	146	37	2016-02-15 10:08:51.647521	2016-02-15 10:08:51.647521	471	471	t
-577	Desarrollar dos (02) propuestas de programas para la ejecución de proyectos socioproductivos con enfoque de genero para el I Semestre de 2016, con un máximo de calidad y eficiencia. 	10	1	1	142	37	2016-02-15 10:00:25.610281	2016-02-15 10:00:25.610281	471	471	t
-578	Diseñar un (1) Modelo de Gestión de proyectos estructurantes con perspectiva de género para incorporar de manera efectiva a las mujeres en situación de vulnerabilidad a la fuerza de trabajo productiva del país para el I Semestre de 2016.	10	1	1	142	37	2016-02-15 10:01:10.752808	2016-02-15 10:01:10.752808	471	471	t
-579	Realizar acompañamiento a la ejecución del Programa Luisa Cáceres de Arismendi, financiado e impulsado  por el viceministerio a través de los entes adscritos, con reporte situacional el 30 de cada mes, sin errores ni omisiones.	20	1	1	142	37	2016-02-15 10:01:45.011195	2016-02-15 10:01:45.011195	471	471	t
-597	Verificar eficientemente los finiquitos de las siniestralidades de las trabajadoras y los trabajadores, mediante el servicio de Salud contratado por el Minmujer correspondiente al año fiscal 2015. 	10	1	1	141	37	2016-02-15 10:13:24.415942	2016-02-15 10:13:24.415942	382	382	t
-585	Elaborar informe de seguimiento a la ejecución Física y Financiera de los proyectos impulsados por el MINMUJER en la REDI Los Andes a través de los entes adscritos, según el marco normativo y legal vigente, con calidad y eficiencia, teniendo como fecha tope de entrega los 28 de cada mes.	10	1	1	144	37	2016-02-15 10:04:59.61279	2016-02-15 10:04:59.61279	471	471	t
-583	Realizar acompañamiento a la Red de Producción y Comercialización de Artesanías Indigena Urquía, financiadas e impulsadas  por el viceministerio a través de los entes adscritos, con reporte situacional el 30 de cada mes, sin errores ni omisiones. 	20	1	1	143	37	2016-02-15 10:04:09.54249	2016-02-15 10:04:09.54249	471	471	t
-576	Elaborar informe de seguimiento a la ejecución Física y Financiera de los proyectos impulsados por el MINMUJER en la REDI Amazonas a través de los entes adscritos, según el marco normativo y legal vigente, con calidad y eficiencia, teniendo como fecha tope de entrega los 28 de cada mes.	10	1	1	142	37	2016-02-15 09:59:57.495399	2016-02-15 09:59:57.495399	471	471	t
-390	Procesar las solicitudes de caracter administrativo que demandan las Direcciones Estadales , a fin de dar respuestas efectivas a su requerimiento para su eficaz funcionamiento durante el primer semestre del año 2016	10	1	1	100	37	2016-02-11 15:03:22.551179	2016-02-11 15:03:22.551179	384	384	t
-599	Elabora y analizar cuadros relacionados con el movimiento y gastos administrativos	10	1	1	150	37	2016-02-15 17:56:37.603363	2016-02-15 17:56:37.603363	455	455	t
-600	Controlar el seguimiento de actividades ejecutadas y por ejecutar.	10	1	1	150	37	2016-02-15 17:57:31.834159	2016-02-15 17:57:31.834159	455	455	t
-601	Llevar y controlar los bienes y materiales de la dirección.	10	1	1	150	37	2016-02-15 17:59:02.942778	2016-02-15 17:59:02.942778	455	455	t
-602	Elaborar informe de actividades ejecutadas.	10	1	1	150	37	2016-02-15 17:59:49.108606	2016-02-15 17:59:49.108606	455	455	t
-604	Redactar documentos y memoranda en general	10	1	1	150	37	2016-02-15 18:01:37.467815	2016-02-15 18:01:37.467815	455	455	t
-605	Apoyar y asesorar a organizaciones comunitarias en la planificación y diseño de actividades, educativas, asistenciales y sociales	10	1	1	151	37	2016-02-15 18:19:03.132301	2016-02-15 18:19:03.132301	455	455	t
-606	Gestionar apoyo institucional para la ejecución de actividades de la Institución para la comunidad	10	1	1	151	37	2016-02-15 18:28:04.453991	2016-02-15 18:28:04.453991	455	455	t
-608	Apoyar a la dirección en la organización de eventos	10	1	1	151	37	2016-02-15 18:29:04.153917	2016-02-15 18:29:04.153917	455	455	t
-609	Elaborar cronogramas de las actividades planificadas	10	1	1	151	37	2016-02-15 18:29:40.536877	2016-02-15 18:29:40.536877	455	455	t
-610	Elaborar informe de actividades ejecutadas	10	1	1	151	37	2016-02-15 18:30:58.245806	2016-02-15 18:30:58.245806	455	455	t
-501	Articular  con FUNDACOMUNAL 1 Jornada de Registro de los Comités de Mujer e Igualdad de Género y Comités de Gestión de las Comunas seleccionadas en el 1er Semestre respetando los procedimientos y normativas vigentes del Poder Popular 	10	1	1	117	37	2016-02-12 17:38:27.754972	2016-02-12 17:38:27.754972	474	474	f
-512	Elaborar informes Semanales y Mensuales sobre la ejecución de las metas del Plan Nacional de Formación Argelia Laya  ante la Dirección Nacional de Formación e Investigación del MinMujer \n	15	1	1	87	37	2016-02-12 18:13:51.23122	2016-02-12 18:13:51.23122	2	2	f
-427	Ejecutar en el 1er Semestre 4 actividades de sensibilización sobre Transformación Cultural para la construcción del Socialismo Feminista en nuevos urbanismos del Eje Paraguana a un total de 60 personas distribuidos en 90% mujeres y 10% hombres 	10	1	1	108	37	2016-02-12 14:34:21.629207	2016-02-12 14:34:21.629207	474	474	f
-428	Ejecutar en el 1er Semestre 4 actividades de Sensibilización sobre Político Ideológico para la consolidación de las Comités de Mujer e Igualdad de Género en el Eje Paraguana a un total de 60 personas distribuidos en 90% mujeres y 10% hombres 	15	1	1	108	37	2016-02-12 14:39:24.830342	2016-02-12 14:39:24.830342	2	2	f
-429	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre perspectiva de género en el ámbito comunal, para incentivar la agricultura urbana y rural en nuevos urbanismos y comunas del eje Paraguana con la participación de 15 personas por actividad 	20	1	1	109	37	2016-02-12 14:43:51.62547	2016-02-12 14:43:51.62547	474	474	f
-434	Ejecutar en el 1er Semestre 8 actividades de sensibilización sobre Socio Productivo para incentivar la Agricultura Urbana y Rural en nuevos urbanismos y comunas del Eje Centro con la participación de 90 personas distribuidos en 10% mujeres y 10% hombres 	25	1	1	110	37	2016-02-12 14:46:48.473161	2016-02-12 14:46:48.473161	474	474	f
-616	Ejecutar 2 abordajes sociales en bases de misiones en el 1er semestre en nuevos urbanismos,  para brindar orientaciones a familias sobre la canalización de sus demandas sociales para elevar el nivel organizativo, de participación protagonica y autonomía en la resolución efectivas de sus solicitudes.	15	1	1	154	37	2016-02-16 12:30:21.287422	2016-02-16 12:30:21.287422	474	474	t
-617	Realizar 1 jornada de atención medica social por trimestre dirigida a mujeres en situación de alto riesgo social, con la participación de diferentes entes públicos del sector salud, para asegurar la articulación e integralidad en la ejecución de la atención integral a las mujeres.	10	1	1	154	37	2016-02-16 12:31:23.210988	2016-02-16 12:31:23.210988	474	474	t
-514	Canalizar los tramites administrativos (vacaciones, reposos, permisos, asistencias, requerimientos, solicitudes) ante la Oficina de Coordinación Territorial del MinMujer a fin  de dar seguimiento  para la respuesta oportuna de la solicitud requerida. 	15	1	1	127	37	2016-02-12 18:22:05.143911	2016-02-12 18:22:05.143911	474	474	t
-611	Desarrollar en el 1er semestre 1 actividad  quincenal con mujeres víctimas de violencia para evaluar el impacto de las políticas públicas de prevención de la violencia intrafamiliar para garantizar una mayor eficiencia, eficacia y el mejoramiento de la calidad en la atención brindada por el MinMujer	10	1	1	154	37	2016-02-16 12:06:35.237251	2016-02-16 12:06:35.237251	474	474	t
-612	Atender a  mujeres diagnosticas y sobrevivientes del cáncer los días martes y jueves de 8:00 am – 12 m para su atención y posterior registro en el programa la Patria es Una Mujer, garantizando la eficaz y eficiente ejecución de las políticas públicas en materia salud del Minmujer.	10	1	1	154	37	2016-02-16 12:07:13.603617	2016-02-16 12:07:13.603617	474	474	t
-614	Rendir oportunamente los dias viernes antes de las 12:00 m las actividades desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	154	37	2016-02-16 12:16:02.887122	2016-02-16 12:16:02.887122	474	474	t
-715	Entregar los primeros 05 días de cada mes informe de las actividades realizadas dentro y fuera de la Institución. 	10	1	1	90	37	2016-02-18 15:28:58.07536	2016-02-18 15:28:58.07536	443	443	t
-625	Realizar 1 encuentro en el en el mes de junio con la participación de 80 mujeres lideresas jóvenes de las brigadas de mujer joven para definir la agenda estratégica de incidencia política  	15	1	1	156	37	2016-02-16 12:40:31.765126	2016-02-16 12:40:31.765126	474	474	t
-629	Articular con FUNDACOMUNAL 1 Jornada de Registro de los Comités de Mujer e Igualdad de Género y Comités de Gestión de las Comunas seleccionadas por trimestre respetando los procedimientos y normativas vigentes del Poder Popular \n	10	1	1	157	37	2016-02-16 12:53:46.047443	2016-02-16 12:53:46.047443	474	474	t
-630	Realizar 1 Encuentro de Voceras de Mujer e Igualdad de Género en la 1era quincena del Junio para compartir saberes y sistematizar experiencias de las mujeres en el ámbito comunal 	20	1	1	157	37	2016-02-16 12:54:00.783692	2016-02-16 12:54:00.783692	474	474	t
-639	Supervisar la ejecución de las Metas de Rendimiento Laboral  del 1er semestre garantizando la eficiencia y eficacia institucional 	15	1	1	160	37	2016-02-16 13:02:52.738245	2016-02-16 13:02:52.738245	474	474	t
-643	Coordinar 8 círculos para el dialogo y la reflexión en el 1er semestre dirigido a los equipos de facilitadores de los entes adscritos Misión Madres del Barrio, Banco de la Mujer  e Instituto Nacional de la Mujer  con la finalidad de garantizar la integración de contenidos en materia formativa 	10	1	1	160	37	2016-02-16 13:04:11.968775	2016-02-16 13:04:11.968775	474	474	t
-644	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre perspectiva de género en el ámbito comunal, para incentivar la agricultura urbana y rural en nuevos urbanismos y comunas del eje Centro con la participación de 15 personas por actividad 	15	1	1	161	37	2016-02-16 13:05:17.880268	2016-02-16 13:05:17.880268	474	474	t
-646	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre marco conceptual de genero, para la consolidación de las comités de mujer e igualdad de género en el eje Centro a un total de 15 personas por actividad. \n	10	1	1	161	37	2016-02-16 13:05:44.817798	2016-02-16 13:05:44.817798	474	474	t
-621	Rendir oportunamente los días viernes antes de las 12:00 m las actividades desarrolladas en la semana  precedente, para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	155	37	2016-02-16 12:36:34.258082	2016-02-16 12:36:34.258082	2	2	t
-619	Realizar 1 encuentro trimestral con mujeres con capacidades especiales y cuidadoras de personas en dependencia,  para la consolidación del programa “Heroínas sin Barrera” en los Municipios Miranda y Carirubana con la participación de 50 mujeres por encuentro 	15	1	1	155	37	2016-02-16 12:35:59.244497	2016-02-16 12:35:59.244497	2	2	t
-622	Organizar 18 brigadas en el 1er semestre del año 2016 conformadas por trabajadoras de instituciones públicas y privadas, para garantizar el empoderamiento de la mujer en la defensa de sus derechos laborales.	20	1	1	155	37	2016-02-16 12:37:48.584291	2016-02-16 12:37:48.584291	2	2	t
-627	Rendir oportunamente los días viernes antes de las 12:00 m las actividades desarrolladas en la semana precedente, para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	156	37	2016-02-16 12:41:10.967035	2016-02-16 12:41:10.967035	474	474	t
-623	Conformar de 4 brigadas de mujeres jóvenes en 2 nuevos urbanismos de la gran misión vivienda para el fortalecimiento del liderazgo territorial de lideresas juveniles 	10	1	1	156	37	2016-02-16 12:39:46.621661	2016-02-16 12:39:46.621661	474	474	t
-624	Ejecutar 1 actividad formativa en el 1er semestre del año 2016 sobre el empoderamiento de la mujer joven para garantizar la participación efectiva de la juventud en la ejecución de las políticas públicas del MinMujer.	10	1	1	156	37	2016-02-16 12:40:12.335737	2016-02-16 12:40:12.335737	474	474	t
-626	Conformar 15 brigadas feministas estudiantiles en el 1er semestre del año 2016, para el empoderamiento de la mujer joven en los municipios del eje Central	10	1	1	156	37	2016-02-16 12:40:54.923683	2016-02-16 12:40:54.923683	474	474	t
-631	Rendir oportunamente los días viernes antes de las 12:00 m las actividades desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	157	37	2016-02-16 12:54:19.80353	2016-02-16 12:54:19.80353	474	474	t
-632	Abordaje de 6 comunas priorizadas en el 1er semestre para la conformación de comités de género e igualdad de género en los consejos comunales y el comité de gestión para la consolidación de la participación de la mujer en el sistema de gobierno popular 	15	1	1	157	37	2016-02-16 12:56:07.644715	2016-02-16 12:56:07.644715	474	474	t
-638	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre perspectiva de género en el ámbito comunal, para incentivar la agricultura urbana y rural en nuevos urbanismos y comunas del eje Paraguana con la participación de 15 personas por actividad 	15	1	1	158	37	2016-02-16 13:00:51.33611	2016-02-16 13:00:51.33611	474	474	t
-634	Desarrollar en el 1er semestre 1 actividad semanal de sensibilización sobre fortalecimiento del liderazgo de las mujeres, para la construcción del socialismo feminista en nuevos urbanismos del eje Paraguana a un total de 15 personas por actividad.	10	1	1	158	37	2016-02-16 12:58:25.309347	2016-02-16 12:58:25.309347	474	474	t
-635	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre marco conceptual de genero, para la consolidación de las comités de mujer e igualdad de género en el eje Paraguana a un total de 15 personas por actividad. 	10	1	1	158	37	2016-02-16 12:59:25.088285	2016-02-16 12:59:25.088285	474	474	t
-636	Realizar en el 1er semestre 1 actividad semanal de sensibilización sobre políticas públicas para la igualdad y equidad de género, dirigida a servidores y servidoras de la administración pública nacional en el eje Paraguana a un total de 15 personas por actividad. 	10	1	1	158	37	2016-02-16 12:59:40.510875	2016-02-16 12:59:40.510875	474	474	t
-637	Rendir oportunamente los días viernes antes de las 12:00 m las actividades formativas desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	158	37	2016-02-16 12:59:56.581976	2016-02-16 12:59:56.581976	474	474	t
-642	Rendir oportunamente los días lunes antes de las 12:00 m actividades formativas desarrolladas en la semana precedente,  y mensualmente informe cualitativo y cuantitativo el ultimo viernes de cada mes; antes de las 10:00 am   	10	1	1	160	37	2016-02-16 13:03:55.983623	2016-02-16 13:03:55.983623	474	474	t
-640	Elaborar  agendas semanales enmarcadas en la planificación mensual los viernes de cada semana antes de las 2:00 pm a la Dirección Nacional de Formación e Investigación del MinMujer	5	1	1	160	37	2016-02-16 13:03:23.655758	2016-02-16 13:03:23.655758	474	474	t
-641	Ejecutar 4 actividades de sensibilización sobre políticas  públicas con perspectiva de genero  en el 1er semestre del año 2016,  dirigida a Instituciones Publicas para la transversalización del género en la administración pública 	10	1	1	160	37	2016-02-16 13:03:40.596626	2016-02-16 13:03:40.596626	474	474	t
-710	Enlazar semanalmente con las distintas Organizaciones de Mujeres Sociales, Primera Combatientes, Directoras de los Institutos Municipales de la Mujer del Estado Anzoátegui.	10	1	1	92	37	2016-02-18 15:12:37.627346	2016-02-18 15:12:37.627346	443	443	t
-711	Gestionar, planificar y reportar las actividades que se reaizan a diario por parte de la Dirección Estadal Minmujer y sus entes adscritos,  Banmujer,  Madres del Barrio e Inamujer.	20	1	1	92	37	2016-02-18 15:13:10.292058	2016-02-18 15:13:10.292058	443	443	t
-663	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre perspectiva de género en el ámbito comunal, para incentivar la agricultura urbana y rural en nuevos urbanismos y comunas del eje Paraguaná con la participación de 15 personas por actividad 	15	1	1	163	37	2016-02-16 13:30:50.695873	2016-02-16 13:30:50.695873	474	474	t
-664	Desarrollar en el 1er semestre 1 actividad semanal de sensibilización sobre fortalecimiento del liderazgo político de las mujeres, para la construcción del socialismo feminista en nuevos urbanismos del eje Paraguaná a un total de 15 personas por actividad. 	10	1	1	163	37	2016-02-16 13:31:06.796172	2016-02-16 13:31:06.796172	474	474	t
-665	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre marco conceptual de genero, para la consolidación de las comités de mujer e igualdad de género en el eje Paraguana a un total de 15 personas por actividad. 	10	1	1	163	37	2016-02-16 13:31:22.343999	2016-02-16 13:31:22.343999	474	474	t
-666	Realizar en el 1er semestre 1 actividad semanal de sensibilización sobre politicas publicas para la igualdad y equidad de género, dirigida a servidores y servidoras de la administración publica  nacional en el eje Paraguaná a un total de 15 personas por actividad.	10	1	1	163	37	2016-02-16 13:31:46.773659	2016-02-16 13:31:46.773659	474	474	t
-667	Rendir semanal los días viernes antes de las 12:00 m sobre actividades formativas desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas.	5	1	1	163	37	2016-02-16 13:32:00.416744	2016-02-16 13:32:00.416744	474	474	t
-650	Desarrollar en el 1er semestre 1 actividad semanal de sensibilización sobre fortalecimiento del liderazgo de las mujeres, para la construcción del socialismo feminista en nuevos urbanismos del eje Centro a un total de 15 personas por actividad.	10	1	1	162	37	2016-02-16 13:08:05.626406	2016-02-16 13:08:05.626406	474	474	t
-645	Desarrollar en el 1er semestre 1 actividad semanal de sensibilización sobre fortalecimiento del liderazgo de las mujeres, para la construcción del socialismo feminista en nuevos urbanismos del eje Centro a un total de 15 personas por actividad.	10	1	1	161	37	2016-02-16 13:05:31.789046	2016-02-16 13:05:31.789046	474	474	t
-651	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre marco conceptual de genero, para la consolidación de las comités de mujer e igualdad de género en el eje Centro a un total de 15 personas por actividad. 	10	1	1	162	37	2016-02-16 13:08:20.381344	2016-02-16 13:08:20.381344	2	2	t
-648	Rendir oportunamente los días viernes antes de las 12:00 m las actividades formativas desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	161	37	2016-02-16 13:06:13.727497	2016-02-16 13:06:13.727497	474	474	t
-560	Notificar de manera eficaz y eficiente cualquier situación relacionada a la dirección y/o el equipo de trabajo de la Oficina de Tecnología de Sistemas de Información, durante el primer semestre del 2016.	10	1	1	138	37	2016-02-14 23:10:21.406491	2016-02-14 23:10:21.406491	355	355	t
-566	Llevar el control del  listado de asistencia y resumen mensual de las guardias realizadas por el personal de la Oficina de Tecnología de Sistemas de la Información, dentro de los 5 primeros días de cada mes durante el  primer semestre del 2016.	5	1	1	139	37	2016-02-14 23:13:19.267903	2016-02-14 23:13:19.267903	355	355	t
-557	Controlar de  manera eficiente la agenda correspondiente a la Directiva de la Oficina de Tecnología de Sistemas de Información, los días viernes de cada mes durante el primer semestre del 2016.	20	1	1	138	37	2016-02-14 23:09:03.147952	2016-02-14 23:09:03.147952	355	355	t
-562	Llevar de manera eficiente el control de  la correspondencia (enviada y Recibida) en la  Oficina de Tecnología de sistemas de la información  durante el primer semestre del 2016.	25	1	1	139	37	2016-02-14 23:12:06.284272	2016-02-14 23:12:06.284272	355	355	t
-647	 Realizar en el 1er semestre 1 actividad semanal de sensibilización sobre políticas públicas para la igualdad y equidad de género, dirigida a servidores y servidoras de la administración pública  nacional en el eje Centro a un total de 15 personas por actividad. 	10	1	1	161	37	2016-02-16 13:05:59.723803	2016-02-16 13:05:59.723803	474	474	t
-652	Realizar en el 1er semestre 1 actividad semanal de sensibilización sobre políticas públicas para la igualdad y equidad de género, dirigida a servidores y servidoras de la administración pública nacional en el eje Centro a un total de 15 personas por actividad. 	10	1	1	162	37	2016-02-16 13:08:41.226987	2016-02-16 13:08:41.226987	2	2	t
-618	Promover en 4 comunas del eje Centro en el 1er semestre del año 2016 la creación de vocerías de defensoras comunales para fortalecer en el seno de los consejos comunales y comunas las políticas públicas de prevención de la violencia contra la mujer.	10	1	1	155	37	2016-02-16 12:35:02.198214	2016-02-16 12:35:02.198214	2	2	t
-649	Ejecutar en el 1er semestre 1 actividad semanal de sensibilización sobre perspectiva de género en el ámbito comunal, para incentivar la agricultura urbana y rural en nuevos urbanismos y comunas del eje Centro con la participación de 15 personas por actividad 	15	1	1	162	37	2016-02-16 13:07:42.537591	2016-02-16 13:07:42.537591	474	474	t
-653	Rendir oportunamente los días viernes antes de las 12:00 m las actividades formativas desarrolladas en la semana precedente para garantizar la eficiencia y eficacia en el cumplimiento de las metas trazadas	5	1	1	162	37	2016-02-16 13:09:01.170634	2016-02-16 13:09:01.170634	2	2	t
-668	Entregar de manera oportuna y actualizada agenda telefónica de las consultorias juridicas, los ministerios, los inspectores del trabajo a escala nacional, así como, los espacios donde se brinde asesoría gratuita a las usuarias y usuarios.	10	1	1	80	37	2016-02-17 12:24:39.956187	2016-02-17 12:24:39.956187	404	404	t
-669	Preparar eficiente y oportunamente carpeta en formato fisico y electrónico, actualizada de las publicaciones de las gacetas oficiales relacionadas con el ministerio y los demas entes publicos.	10	1	1	80	37	2016-02-17 12:28:35.418795	2016-02-17 12:28:35.418795	404	404	t
-713	Efectuar el seguimiento y control eficaz a los proyectos financiados por el Ministerio (Red de Panaderías, Artesanas).	15	1	1	90	37	2016-02-18 15:28:26.272863	2016-02-18 15:28:26.272863	443	443	t
-670	Trámitar eficaz y periodicamente, archivador, para ser entregado a cada miembro de la consultoria juridica, con cuadro contentivo de los datos más relevantes para el trabajo cotidiano sobre la fecha y número de los decretos de nombramiento de las autoridades del ministerio y de sus entes adscritos	10	1	1	80	37	2016-02-17 12:36:35.440595	2016-02-17 12:36:35.440595	404	404	t
-671	Realizar de manera eficiente y sistematica, data de los contratos laborales de los años 2013 y 2014, de las trabajadoras y los trabajadores adscritos a la institución	10	1	1	80	37	2016-02-17 12:39:23.137568	2016-02-17 12:39:23.137568	2	2	t
-672	Prestar apoyo administrativo, con eficiencia y calidad, llevando a cabo las tareas diarias, tales como, el envío de correos electrónicos, fotocopiado, archivado, atención telefónica y toma de mensajes.	10	1	1	80	37	2016-02-17 12:42:52.557318	2016-02-17 12:42:52.557318	2	2	t
-673	Prestar apoyo administrativo, con eficiencia y calidad, llevando a cabo las tareas diarias, tales como, el envío de correos electrónicos, fotocopiado, archivado, atención telefónica y toma de mensajes.	10	1	1	80	37	2016-02-17 12:43:12.136377	2016-02-17 12:43:12.136377	2	2	t
-674	Asistir por vía telefonica a los Estados 2 días a la semana	10	1	1	165	37	2016-02-18 10:07:59.714226	2016-02-18 10:07:59.714226	450	450	t
-675	Sistematizar los reportes semanales y mensuales de los procesos formativos desarrollados por el equipo de formación estadal	15	1	1	165	37	2016-02-18 10:09:51.798451	2016-02-18 10:09:51.798451	450	450	t
-676	Ordenar la agenda semanal de cada estado	15	1	1	165	37	2016-02-18 10:10:05.533032	2016-02-18 10:10:05.533032	450	450	t
-677	Diseñar y actualizar los instrumentos de seguimiento de la Dirección de Formación Estadal	10	1	1	165	37	2016-02-18 10:10:44.148987	2016-02-18 10:10:44.148987	450	450	t
-678	Asistir por vía telefonica a los estados 2 días  a la semana	10	1	1	166	37	2016-02-18 10:12:24.547809	2016-02-18 10:12:24.547809	450	450	t
-679	Sistematizar los reportes semanales y mensuales de los procesos formativos desarrollados por el equipo de formación estadal 	15	1	1	166	37	2016-02-18 10:13:03.878506	2016-02-18 10:13:03.878506	450	450	t
-680	Ordenar la agenda semanal de cada Estado	15	1	1	166	37	2016-02-18 10:13:21.411633	2016-02-18 10:13:21.411633	450	450	t
-681	Diseñar y actualizar los instrumentos de segumiento de la Dirección de Formación Estadal	10	1	1	166	37	2016-02-18 10:13:47.438879	2016-02-18 10:13:47.438879	450	450	t
-682	Atender  llamadas de la Dirección General de Formación y del Centro Nacional de Formación con reportes  diarios. En 85% durante el primer semestre 	10	1	1	167	37	2016-02-18 10:19:27.111431	2016-02-18 10:19:27.111431	450	450	t
-683	Atender  los participantes de los procesos formativos realizados  en el centro de Formación Argelia Laya en un 80% durante el primer  semestre.	15	1	1	167	37	2016-02-18 10:19:42.424244	2016-02-18 10:19:42.424244	450	450	t
-684	Mantener la data de participantes  de los cursos del Centro nacional de Formación Argelia Laya. El 90% durante el primer  semestre.	15	1	1	167	37	2016-02-18 10:20:01.208716	2016-02-18 10:20:01.208716	450	450	t
-685	Apoyar actividades  secretarial en las coordinaciones de  la dirección general	10	1	1	167	37	2016-02-18 10:20:15.408252	2016-02-18 10:20:15.408252	450	450	t
-693	Elaborar mensualmente informes, actas, oficios, memorando y otras comunicaciones que sean requeridas por parte de la Directora de la Dirección Estadal Anzoátegui.	20	1	1	149	37	2016-02-18 11:35:46.623899	2016-02-18 11:35:46.623899	443	443	t
-694	Actualizar cada mes los expedientes de las trabajadoras de la Dirección Estadal Anzoátegui registrando permisos, reposos, inasistencias y otras situaciones administrativas.	15	1	1	149	37	2016-02-18 11:42:33.2757	2016-02-18 11:42:33.2757	443	443	t
-695	Tramitar eficazmente las solicitudes de vacaciones, permisos, fideicomisos, reembolsos, constancias de trabajo, recibos de pagos, becas de estudios, pagos de guardería de las trabajadoras de la Dirección Estadal Anzoátegui.	15	1	1	149	37	2016-02-18 11:56:28.368274	2016-02-18 11:56:28.368274	2	2	t
-696	Apoyar en la formación a los entes adscrito, Banmujer, Madres del Barrio e Inamujer de la Dirección Estadal Anzoátegui, mediante charla y video foros en materia de Igualdad de Género en los Consejos Comunales-Comunas, Planteles Educativo recibiendo la formación profesores-alumnos.	20	1	1	91	37	2016-02-18 13:26:29.25353	2016-02-18 13:26:29.25353	443	443	t
-697	Formar mensualmente a las trabajadoras y trabajadores de la Dirección MinMujer Anzoátegui y los entes adscrito, Banmujer, Madres del Barrio e Inamujer en materia de Igualdad de Género.	15	1	1	91	37	2016-02-18 13:27:02.347705	2016-02-18 13:27:02.347705	443	443	t
-698	Preparar a los formadores de formadoras (milicianas y milicianos, frente colectivos, Servidores Públicos e integrantes de Unamujer) en materia de Igualdad de Género.	15	1	1	91	37	2016-02-18 13:27:50.816847	2016-02-18 13:27:50.816847	443	443	t
-702	Planificar, organizar  y participar  mensualmente en mesas de trabajo con los Organos de Administración de Justicia, organos receptores de denuncia y las Instituciones en pro del mejoramiento a la  atención  de la  violencia contra la mujer y el impulso procesal.	10	1	1	86	37	2016-02-18 14:56:32.854852	2016-02-18 14:56:32.854852	443	443	t
-703	Formar, asesorar, orientar y revisar trimestralmente la gestión  de las abogadas  y abogados de los Institutos Municipales y Organos Policiales con departamentos de atención a la Violencia de Género.	10	1	1	86	37	2016-02-18 14:57:34.37018	2016-02-18 14:57:34.37018	443	443	t
-704	Asesorar y asistir a diario a victimas de violencia en casos de emergencia, así como brindarles talleres a las Universidades, Instituciones Públicas y Privadas sobre los procedimientos de la Ley Orgánica Sobre los derechos de las mujeres a una Vida Libre Violencia.	10	1	1	86	37	2016-02-18 15:01:23.759807	2016-02-18 15:01:23.759807	443	443	t
-705	Redactar diariamente actas, informenes, minutas y oficios de las actividades que se realizan; así como  Asesorar  en la parte jurídica a la Directora Estadal referentes al manejo y control del funcionamiento laboral.	10	1	1	86	37	2016-02-18 15:02:08.927396	2016-02-18 15:02:08.927396	443	443	t
-708	Realizar Seguimiento y control de actividades que erealizan diariamente el personal de la Dirección Estadal Minmujer con el fin de velar el cumplimiento de las mismas.	10	1	1	92	37	2016-02-18 15:12:06.920498	2016-02-18 15:12:06.920498	443	443	t
-709	Redactar los memorandos, oficios, informes y minutas de las actividades que se realizan a diario en la Dirección Estadal Minmujer.	10	1	1	92	37	2016-02-18 15:12:20.732819	2016-02-18 15:12:20.732819	443	443	t
-712	Realizar actividades efectivamente con el fin de promover los proyectos socio-productivos y asi conformar los comite de mujeres emprendedoras.	15	1	1	90	37	2016-02-18 15:28:11.381068	2016-02-18 15:28:11.381068	443	443	t
-690	Llevar el control eficaz de los bienes y equipos asignados a la Dirección Estadal Anzoátegui.	10	1	1	88	37	2016-02-18 11:18:39.613655	2016-02-18 11:18:39.613655	443	443	t
-687	Llevar el seguimiento y control efectivamente de las actividades que se realizan diariamente por los entes adscritos, Banmujer, Madres del Barrio e Inamujer de la Dirección Estadal Anzoátegui.	15	1	1	88	37	2016-02-18 11:16:18.673947	2016-02-18 11:16:18.673947	443	443	t
-688	Recopilar los 5 primeros dias de cada mes, el informe sobre las actividades realizadas por los entes adscritos, Banmujer, Madres del Barrio e Inamujer para la entrega oportuna del Plan Operativo Anual (POA) 2016 de la Dirección Estadal  Anzoátegui.	25	1	1	88	37	2016-02-18 11:17:16.551703	2016-02-18 11:17:16.551703	443	443	t
+366	Obj 1	15	1	1	84	37	2016-02-18 09:30:20.559136	2016-02-18 09:30:20.559136	437	437	t
+367	Obj 2	15	1	1	84	37	2016-02-18 09:30:25.743796	2016-02-18 09:30:25.743796	437	437	t
+368	Obj 3	20	1	1	84	37	2016-02-18 09:30:30.694746	2016-02-18 09:30:30.694746	437	437	t
+369	Obj 1	15	1	1	85	37	2016-02-19 10:08:24.293528	2016-02-19 10:08:24.293528	437	437	t
+370	Obj 2	15	1	1	85	37	2016-02-19 10:08:29.176155	2016-02-19 10:08:29.176155	437	437	t
+371	Obj 3	20	1	1	85	37	2016-02-19 10:08:36.017566	2016-02-19 10:08:36.017566	437	437	t
+372	Obj 1	15	1	1	86	37	2016-02-19 10:08:58.358132	2016-02-19 10:08:58.358132	437	437	t
+373	Obj 2	15	1	1	86	37	2016-02-19 10:09:04.65042	2016-02-19 10:09:04.65042	437	437	t
+374	Obj 3	20	1	1	86	37	2016-02-19 10:09:09.916554	2016-02-19 10:09:09.916554	437	437	t
+375	Obj 1	15	1	1	87	37	2016-02-19 10:09:31.72905	2016-02-19 10:09:31.72905	437	437	t
+376	Obj 2	15	1	1	87	37	2016-02-19 10:09:38.178312	2016-02-19 10:09:38.178312	437	437	t
+377	Obj 3	20	1	1	87	37	2016-02-19 10:09:47.958576	2016-02-19 10:09:47.958576	437	437	t
+378	Obj 1	10	1	1	88	37	2016-02-19 10:10:53.974556	2016-02-19 10:10:53.974556	437	437	t
+379	Obj 2	10	1	1	88	37	2016-02-19 10:10:59.474661	2016-02-19 10:10:59.474661	437	437	t
+380	Obj 3	10	1	1	88	37	2016-02-19 10:11:04.951629	2016-02-19 10:11:04.951629	437	437	t
+381	Obj 4	10	1	1	88	37	2016-02-19 10:11:09.663705	2016-02-19 10:11:09.663705	437	437	t
+382	Obj 5	10	1	1	88	37	2016-02-19 10:11:15.146085	2016-02-19 10:11:15.146085	437	437	t
+383	lol	23	1	1	90	37	2016-02-22 00:01:27.678045	2016-02-22 00:01:27.678045	437	437	t
 \.
 
 
 --
--- TOC entry 2831 (class 0 OID 0)
--- Dependencies: 200
 -- Name: preguntas_individuales_id_preguntas_ind_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('preguntas_individuales_id_preguntas_ind_seq', 715, true);
+SELECT pg_catalog.setval('preguntas_individuales_id_preguntas_ind_seq', 383, true);
 
 
 --
--- TOC entry 2693 (class 0 OID 109303)
--- Dependencies: 201
 -- Data for Name: preguntas_obrero; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
@@ -6023,8 +3625,6 @@ COPY preguntas_obrero (id_preguntas_obr, puntaje, fk_pregunta, fk_evaluacion, fk
 
 
 --
--- TOC entry 2832 (class 0 OID 0)
--- Dependencies: 202
 -- Name: preguntas_obrero_id_preguntas_obr_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
@@ -6032,31 +3632,21 @@ SELECT pg_catalog.setval('preguntas_obrero_id_preguntas_obr_seq', 0, true);
 
 
 --
--- TOC entry 2695 (class 0 OID 109313)
--- Dependencies: 203
 -- Data for Name: revision; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
 COPY revision (id_revision, fk_revision, fk_evaluador, fk_evaluacion, fecha_revision, comentario, fk_estatus, created_date, modified_date, created_by, modified_by, es_activo) FROM stdin;
-1	81	\N	8	2016-02-12	Conforme con las metas de rendimiento laboral	93	2016-02-15 09:55:58.053413	2016-02-15 09:55:58.053413	41	\N	t
-2	81	\N	12	2016-02-15		93	2016-02-15 10:01:02.952412	2016-02-15 10:01:02.952412	41	\N	t
-3	81	\N	83	2016-02-15	Conforme con las actividades	93	2016-02-15 10:01:38.233566	2016-02-15 10:01:38.233566	41	\N	t
-4	81	\N	23	2016-02-15		93	2016-02-15 10:01:53.53382	2016-02-15 10:01:53.53382	41	\N	t
 \.
 
 
 --
--- TOC entry 2833 (class 0 OID 0)
--- Dependencies: 204
 -- Name: revision_id_revision_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
-SELECT pg_catalog.setval('revision_id_revision_seq', 4, true);
+SELECT pg_catalog.setval('revision_id_revision_seq', 6, true);
 
 
 --
--- TOC entry 2697 (class 0 OID 109324)
--- Dependencies: 205
 -- Data for Name: supervisor; Type: TABLE DATA; Schema: evaluacion; Owner: postgres
 --
 
@@ -6066,8 +3656,6 @@ COPY supervisor (id_supervisor, fk_persona, cargo, fk_estatus, created_date, mod
 
 
 --
--- TOC entry 2834 (class 0 OID 0)
--- Dependencies: 206
 -- Name: supervisor_id_supervisor_seq; Type: SEQUENCE SET; Schema: evaluacion; Owner: postgres
 --
 
@@ -6077,86 +3665,125 @@ SELECT pg_catalog.setval('supervisor_id_supervisor_seq', 1, false);
 SET search_path = poa, pg_catalog;
 
 --
--- TOC entry 2730 (class 0 OID 110742)
--- Dependencies: 247
 -- Data for Name: acciones; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
-COPY acciones (id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_proyecto, created_by, created_date, modified_by, modified_date, fk_status, es_activo, meta, bien_servicio) FROM stdin;
-1	Ola	36	12	47	11	437	2016-03-04 13:40:40.410675	437	2016-03-04 13:40:40.410675	12	t	Ola	Ola
+COPY acciones (id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_by, modified_date, fk_status, es_activo, meta, bien_servicio) FROM stdin;
+1	ttttt	37	20	47	7	2	2016-03-18 15:07:50.31494	2	2016-03-18 15:07:50.31494	12	t	tttt	ttt
+2	fff	36	20	47	8	437	2016-03-18 15:08:55.29337	437	2016-03-18 15:08:55.29337	12	t	fff	fff
+3	oooo	37	50	47	8	437	2016-03-18 15:12:03.584809	437	2016-03-18 15:12:03.584809	12	t	oooo	ooooo
+4	oooo	37	50	47	8	437	2016-03-18 15:13:14.691363	437	2016-03-18 15:13:14.691363	12	t	oooo	ooooo
+5	ddddd	36	20	47	9	437	2016-03-18 15:39:41.023316	437	2016-03-18 15:39:41.023316	12	t	dddd	ddd
+6	Accion 1	36	20	47	10	437	2016-03-19 19:44:20.91659	437	2016-03-19 19:44:20.91659	12	t	Meta 1	Bien o Servicio  1
+7	Acción 01	36	120	47	11	437	2016-03-19 21:23:35.5094	437	2016-03-19 21:23:35.5094	12	t	Meta 01	Bien o Servicio 01
+8	Accion	37	210	47	12	437	2016-03-19 22:53:24.792985	437	2016-03-19 22:53:24.792985	12	t	Meta	Bien o Sevicio
+9	Accion 01	36	20	47	13	437	2016-03-20 01:10:11.071356	437	2016-03-20 01:10:11.071356	12	t	Meta	Bien
+10	Accion 02	44	200	47	13	437	2016-03-20 01:11:31.14553	437	2016-03-20 01:11:31.14553	12	t	Meta	Bien o Servicio
+11	Accion	36	120	47	14	2	2016-03-20 01:30:14.237993	2	2016-03-20 01:30:14.237993	12	t	Meta	Bien o Servicio
+12	Accion	43	250	47	15	437	2016-03-20 02:11:34.351637	437	2016-03-20 02:11:34.351637	12	t	Meta	Bien o Servicio
+13	Accion 03	36	20	47	13	437	2016-03-20 02:31:44.018164	437	2016-03-20 02:31:44.018164	12	t	Meta	Bien o Servicio
+14	Accion 04	42	10	47	13	437	2016-03-20 02:51:41.566653	437	2016-03-20 02:51:41.566653	12	t	Meta	Bien o Servicio
 \.
 
 
 --
--- TOC entry 2835 (class 0 OID 0)
--- Dependencies: 248
 -- Name: acciones_id_accion_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('acciones_id_accion_seq', 1, true);
+SELECT pg_catalog.setval('acciones_id_accion_seq', 14, true);
 
 
 --
--- TOC entry 2732 (class 0 OID 110753)
--- Dependencies: 249
 -- Data for Name: actividades; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
 COPY actividades (id_actividades, actividad, fk_unidad_medida, cantidad, fk_accion, created_by, created_date, modified_by, modified_date, fk_status, es_activo) FROM stdin;
-1	Actividad	37	10	1	437	2016-03-04 13:40:58.561432	437	2016-03-04 13:40:58.561432	15	t
+1	Actividad 01.1	36	120	7	437	2016-03-19 21:24:03.304421	437	2016-03-19 21:24:03.304421	15	t
+2	Actividad 01.2	36	150	7	437	2016-03-19 21:24:38.392255	437	2016-03-19 21:24:38.392255	15	t
+3	Actividad 01.3	36	200	7	437	2016-03-19 21:25:33.261154	437	2016-03-19 21:25:33.261154	15	t
+4	Actividad 01.4	36	200	7	437	2016-03-19 21:26:38.817499	437	2016-03-19 21:26:38.817499	15	t
+5	Actividad 01.5	36	20	7	437	2016-03-19 21:28:34.462618	437	2016-03-19 21:28:34.462618	15	t
+6	ggggg	36	12	7	437	2016-03-19 21:29:59.546702	437	2016-03-19 21:29:59.546702	15	t
+7	ggggg	36	12	7	437	2016-03-19 21:31:09.011445	437	2016-03-19 21:31:09.011445	15	t
+8	45	36	20	7	437	2016-03-19 21:31:38.631532	437	2016-03-19 21:31:38.631532	15	t
+9	20	36	20	7	437	2016-03-19 21:32:12.769931	437	2016-03-19 21:32:12.769931	15	t
+10	Actividad 01.10	36	200	7	437	2016-03-19 21:33:46.739225	437	2016-03-19 21:33:46.739225	15	t
+11	Actividad 01.11	36	20	7	437	2016-03-19 21:36:51.912589	437	2016-03-19 21:36:51.912589	15	t
+12	Actividad 01.12	36	22	7	437	2016-03-19 21:37:34.174822	437	2016-03-19 21:37:34.174822	15	t
+13	Actividad	44	100	10	437	2016-03-20 01:15:02.556535	437	2016-03-20 01:15:02.556535	15	t
+14	Actividad 1.1	43	200	12	437	2016-03-20 02:12:18.002865	437	2016-03-20 02:12:18.002865	15	t
+15	Actividad 1.2	43	50	12	437	2016-03-20 02:12:54.809394	437	2016-03-20 02:12:54.809394	15	t
+16	Actividad 03.1	36	10	13	437	2016-03-20 02:32:16.100308	437	2016-03-20 02:32:16.100308	15	t
+17	Actividad 03.2	36	10	13	437	2016-03-20 02:50:37.595264	437	2016-03-20 02:50:37.595264	15	t
+18	Actividad 04.1	42	1	14	437	2016-03-20 02:52:23.339193	437	2016-03-20 02:52:23.339193	15	t
+19	Actividad 04.2	42	9	14	437	2016-03-20 02:52:44.1205	437	2016-03-20 02:52:44.1205	15	t
 \.
 
 
 --
--- TOC entry 2836 (class 0 OID 0)
--- Dependencies: 250
 -- Name: actividades_id_actividades_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('actividades_id_actividades_seq', 1, true);
+SELECT pg_catalog.setval('actividades_id_actividades_seq', 19, true);
 
 
 --
--- TOC entry 2734 (class 0 OID 110761)
--- Dependencies: 251
 -- Data for Name: comentarios; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
-COPY comentarios (id_comentarios, comentarios, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_proyecto, fk_tipo_entidad) FROM stdin;
+COPY comentarios (id_comentarios, comentarios, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_poa, fk_tipo_entidad) FROM stdin;
+1		355	2016-03-20 02:15:46.504754	\N	2016-03-20 02:15:46.504754	18	t	15	9
+2		462	2016-03-20 02:16:16.662786	\N	2016-03-20 02:16:16.662786	18	t	15	10
+3		355	2016-03-20 02:54:08.654814	\N	2016-03-20 02:54:08.654814	18	t	13	9
+4		462	2016-03-20 02:55:09.039448	\N	2016-03-20 02:55:09.039448	18	t	13	10
 \.
 
 
 --
--- TOC entry 2837 (class 0 OID 0)
--- Dependencies: 252
 -- Name: comentarios_id_comentarios_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('comentarios_id_comentarios_seq', 1, false);
+SELECT pg_catalog.setval('comentarios_id_comentarios_seq', 4, true);
 
 
 --
--- TOC entry 2838 (class 0 OID 0)
--- Dependencies: 254
--- Name: estatus_id_status_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
+-- Data for Name: estatus_poa; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('estatus_id_status_seq', 1, true);
-
-
---
--- TOC entry 2736 (class 0 OID 110772)
--- Dependencies: 253
--- Data for Name: estatus_proyecto; Type: TABLE DATA; Schema: poa; Owner: postgres
---
-
-COPY estatus_proyecto (id_estatus_proyecto, fk_estatus_proyecto, fk_proyecto, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_tipo_entidad) FROM stdin;
+COPY estatus_poa (id_estatus_poa, fk_estatus_poa, fk_poa, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_tipo_entidad) FROM stdin;
+1	50	1	437	2016-03-17 15:34:39.344704	\N	2016-03-17 15:34:39.344704	21	t	8
+2	50	2	437	2016-03-17 15:41:35.482654	\N	2016-03-17 15:41:35.482654	21	t	8
+3	50	3	437	2016-03-18 13:10:12.975425	\N	2016-03-18 13:10:12.975425	21	t	8
+4	50	4	437	2016-03-18 13:20:21.048314	\N	2016-03-18 13:20:21.048314	21	t	8
+5	50	5	437	2016-03-18 13:36:52.570156	\N	2016-03-18 13:36:52.570156	21	t	8
+6	50	6	437	2016-03-18 14:07:02.846511	\N	2016-03-18 14:07:02.846511	21	t	8
+7	50	7	437	2016-03-18 14:25:02.819568	\N	2016-03-18 14:25:02.819568	21	t	8
+8	50	8	437	2016-03-18 15:08:25.341241	\N	2016-03-18 15:08:25.341241	21	t	8
+9	50	9	437	2016-03-18 15:39:04.243331	\N	2016-03-18 15:39:04.243331	21	t	8
+10	50	10	437	2016-03-19 19:43:34.611074	\N	2016-03-19 19:43:34.611074	21	t	8
+11	50	11	437	2016-03-19 21:23:01.354726	\N	2016-03-19 21:23:01.354726	21	t	8
+12	50	12	437	2016-03-19 22:52:49.074819	\N	2016-03-19 22:52:49.074819	21	t	8
+13	50	13	437	2016-03-20 00:59:00.498748	\N	2016-03-20 00:59:00.498748	21	t	8
+14	50	14	437	2016-03-20 01:22:55.265041	\N	2016-03-20 01:22:55.265041	21	t	8
+15	50	15	437	2016-03-20 02:10:51.551442	\N	2016-03-20 02:10:51.551442	21	t	8
+16	51	15	437	2016-03-20 02:13:46.680319	\N	2016-03-20 02:13:46.680319	21	t	8
+17	51	14	437	2016-03-20 02:14:17.398315	\N	2016-03-20 02:14:17.398315	21	t	8
+18	54	15	355	2016-03-20 02:15:46.482519	\N	2016-03-20 02:15:46.482519	21	t	9
+19	52	15	462	2016-03-20 02:16:16.63992	\N	2016-03-20 02:16:16.63992	21	t	10
+20	51	13	437	2016-03-20 02:53:09.273587	\N	2016-03-20 02:53:09.273587	21	t	8
+21	54	13	355	2016-03-20 02:54:08.63561	\N	2016-03-20 02:54:08.63561	21	t	9
+22	52	13	462	2016-03-20 02:55:08.942086	\N	2016-03-20 02:55:08.942086	21	t	10
 \.
 
 
 --
--- TOC entry 2738 (class 0 OID 110780)
--- Dependencies: 255
+-- Name: estatus_poa_id_estatus_poa_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
+--
+
+SELECT pg_catalog.setval('estatus_poa_id_estatus_poa_seq', 22, true);
+
+
+--
 -- Data for Name: maestro; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
@@ -6180,10 +3807,8 @@ COPY maestro (id_maestro, descripcion, padre, hijo, created_by, created_date, mo
 17	ESTATUS COMENTARIO	0	2	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 18	ACTIVO	17	0	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 19	INACTIVO	17	0	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
-20	ESTATUS TABLA ESTATUS_PROYECTO	0	2	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 21	ACTIVO	20	0	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 22	INACTIVO	20	0	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
-23	ESTATUS PROYECTO	0	2	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 24	ACTIVO	23	0	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 25	INACTIVO	23	0	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
 26	ESTATUS RENDIMIENTO	0	2	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
@@ -6208,100 +3833,363 @@ COPY maestro (id_maestro, descripcion, padre, hijo, created_by, created_date, mo
 46	TIPO AMBITO	0	2	1	2016-02-22 01:51:38.847367	\N	2016-02-22 01:51:38.847367	t
 47	NACIONAL	46	0	1	2016-02-22 01:51:38.847367	\N	2016-02-22 01:51:38.847367	t
 48	INTERNACIONAL	46	0	1	2016-02-22 01:51:38.847367	\N	2016-02-22 01:51:38.847367	t
-49	ESTATUS EVALUACION	0	4	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
 50	NUEVO	49	0	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
-51	ENVIADO	49	0	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
 52	APROBADO	49	0	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
 53	REVISADO	49	0	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
 40	 	35	0	1	2016-02-22 01:40:23.839546	\N	2016-02-22 01:40:23.839546	t
+49	ESTATUS EVALUACION	0	5	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
+51	ENVIADO AL DIRECTOR(A)	49	0	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
+54	ENVIADO A PLANIFICACIÓN	49	0	1	2016-03-11 03:42:38.704464	\N	2016-03-11 03:42:38.704464	t
+55	RECHAZADO	49	0	1	2016-03-11 14:18:56.849685	\N	2016-03-11 14:18:56.849685	t
+56	MESES	0	12	1	2016-03-14 10:06:57.834732	\N	2016-03-14 10:06:57.834732	t
+57	ENERO	56	0	1	2016-03-14 10:07:10.082581	\N	2016-03-14 10:07:10.082581	t
+58	FEBRERO	56	0	1	2016-03-14 10:07:19.858357	\N	2016-03-14 10:07:19.858357	t
+59	MARZO	56	0	1	2016-03-14 10:07:28.338305	\N	2016-03-14 10:07:28.338305	t
+60	ABRIL	56	0	1	2016-03-14 10:07:35.650111	\N	2016-03-14 10:07:35.650111	t
+61	MAYO	56	0	1	2016-03-14 10:07:41.905957	\N	2016-03-14 10:07:41.905957	t
+62	JUNIO	56	0	1	2016-03-14 10:07:48.633965	\N	2016-03-14 10:07:48.633965	t
+63	JULIO	56	0	1	2016-03-14 10:07:54.777846	\N	2016-03-14 10:07:54.777846	t
+23	ESTATUS POA	0	2	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
+20	ESTATUS TABLA ESTATUS_POA	0	2	1	2016-02-21 20:54:21.299128	\N	2016-02-21 20:54:21.299128	t
+64	AGOSTO	56	0	1	2016-03-14 10:08:03.793658	\N	2016-03-14 10:08:03.793658	t
+65	SEPTIEMBRE	56	0	1	2016-03-14 10:08:22.121565	\N	2016-03-14 10:08:22.121565	t
+66	OCTUBRE	56	0	1	2016-03-14 10:08:30.465294	\N	2016-03-14 10:08:30.465294	t
+67	NOVIEMBRE	56	0	1	2016-03-14 10:08:37.001253	\N	2016-03-14 10:08:37.001253	t
+68	DICIEMBRE	56	0	1	2016-03-14 10:08:46.513118	\N	2016-03-14 10:08:46.513118	t
+69	TIPO POA	0	2	1	2016-03-15 16:14:13.974914	\N	2016-03-15 16:14:13.974914	t
+70	PROYECTO	69	0	1	2016-03-15 16:15:54.206749	\N	2016-03-15 16:15:54.206749	t
+71	ACCION CENTRALIZADA	69	0	1	2016-03-15 16:16:19.926663	\N	2016-03-15 16:16:19.926663	t
+73	ACCION	72	0	1	2016-03-18 12:18:28.719331	\N	2016-03-18 12:18:28.719331	t
+74	ACTIVIDAD 	72	0	1	2016-03-18 12:18:44.247239	\N	2016-03-18 12:18:44.247239	t
+72	TIPO RENDIMIENTO	0	2	1	2016-03-18 12:17:32.519334	\N	2016-03-18 12:17:32.519334	t
 \.
 
 
 --
--- TOC entry 2839 (class 0 OID 0)
--- Dependencies: 256
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('maestro_id_maestro_seq', 53, true);
+SELECT pg_catalog.setval('maestro_id_maestro_seq', 74, true);
 
 
 --
--- TOC entry 2740 (class 0 OID 110791)
--- Dependencies: 257
--- Data for Name: proyecto; Type: TABLE DATA; Schema: poa; Owner: postgres
+-- Data for Name: poa; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
-COPY proyecto (id_proyecto, nombre_proyecto, objetivo_general, descripcion, fecha_inicio, created_by, created_date, modified_by, modified_date, fk_status, es_activo, objetivo_historico) FROM stdin;
-5	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi		2016-01-01 00:00:00	437	2016-03-04 13:28:27.137353	\N	2016-03-04 13:28:27.137353	24	t	\N
-6	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi		2016-01-02 00:00:00	437	2016-03-04 13:30:58.212738	\N	2016-03-04 13:30:58.212738	24	t	\N
-7	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi		2016-01-02 00:00:00	437	2016-03-04 13:31:20.851273	\N	2016-03-04 13:31:20.851273	24	t	\N
-8	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi		2016-01-04 00:00:00	437	2016-03-04 13:32:10.266708	\N	2016-03-04 13:32:10.266708	24	t	\N
-9	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi	Ejercer el control posterior y sistemático de las operaciones presupuestarias, financieras y administrativas del Ministerio de Poder Popular para la Mujer y la Igualdad de Género, así como evaluar el sistema de control interno incluyendo el grado de operatividad y eficacia de los sistemas de administración, información gerencial y procedimientos, ejecutando auditorias, inspecciones, fiscalizaciones y exámenes. Ejercer la potestad de investigación y el procedimiento administrativo para la determi		2016-01-04 00:00:00	437	2016-03-04 13:35:22.869648	\N	2016-03-04 13:35:22.869648	24	t	\N
-10	Inclusión de las mujeres en situación de vulnerabilidad al sistema económico bajo un modelo comunal, humanista y solidario	Incorporar a las mujeres en situación de vulnerabilidad, ubicadas en comunidades priorizadas, vinculadas en las bases de misiones y nuevos urbanismos, al modelo económico socialista, mediante la ejecución de proyectos productivos.		2016-01-03 00:00:00	437	2016-03-04 13:38:54.731894	\N	2016-03-04 13:38:54.731894	24	t	\N
-11	chghf	fhfghfgh	fghfg	2016-01-04 00:00:00	437	2016-03-04 13:40:07.597257	\N	2016-03-04 13:40:07.597257	24	t	\N
-12	fsdfd	dg	fdfgfdg	2016-01-04 00:00:00	437	2016-03-04 14:03:27.638628	\N	2016-03-04 14:03:27.638628	24	t	\N
+COPY poa (id_poa, nombre, fk_tipo_poa, obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion, fecha_inicio, fecha_final, created_by, created_date, modified_by, modified_date, fk_status, es_activo) FROM stdin;
+1	fhgfg	71	\N	\N	gfhgfhfg	\N	fghfghfgh	\N	\N	437	2016-03-17 15:34:39.256997	\N	2016-03-17 15:34:39.256997	24	t
+2	ggffgh	71	\N	\N	fghfghfgh	\N	fgghfgfg fgg  fg	\N	\N	437	2016-03-17 15:41:35.421826	\N	2016-03-17 15:41:35.421826	24	t
+3	Proyecto	70	Objetivo Historico	Objetivo Estrategico	Objetivo General	Objetivo Institucional 	Descripcion	2016-01-01 00:00:00	2016-11-30 00:00:00	437	2016-03-18 13:10:12.854148	\N	2016-03-18 13:10:12.854148	24	t
+4	ddsfsdfsdsdfsdfsdfsd	70	sdfdsfdf	eeesdf	sdfdsseeef	eesfd	sefde	2016-01-01 00:00:00	2016-12-31 00:00:00	437	2016-03-18 13:20:20.98218	\N	2016-03-18 13:20:20.98218	24	t
+5	fghfghfxg fghfghfg gggg 	70	gggggg	g ghgh 	dfgfggfh gfhgfhfgh fgfgfjhf g	gfgtt tt 	gghg	2016-01-01 00:00:00	2016-12-30 00:00:00	437	2016-03-18 13:36:52.507036	\N	2016-03-18 13:36:52.507036	24	t
+6	Acción Centralizada	71	\N	\N	Objetivo Genral	\N	Descripcion	\N	\N	437	2016-03-18 14:07:02.784522	\N	2016-03-18 14:07:02.784522	24	t
+7	Nombre Acción Centralizada	71	\N	\N	Objetivo General  Acción Centralizada	\N	 Acción Centralizada	\N	\N	437	2016-03-18 14:25:02.751504	\N	2016-03-18 14:25:02.751504	24	t
+8	ffff	71	\N	\N	ffff	\N	fff	\N	\N	437	2016-03-18 15:08:25.268493	\N	2016-03-18 15:08:25.268493	24	t
+9	gfgfgfg	71	\N	\N	fgfgfgfg	\N	fgfgfg	\N	\N	437	2016-03-18 15:39:04.188407	\N	2016-03-18 15:39:04.188407	24	t
+10	Nombre Proyecto	71	\N	\N	Objetivo Genral	\N		\N	\N	437	2016-03-19 19:43:34.548828	\N	2016-03-19 19:43:34.548828	24	t
+11	Accion Centralizada	71	\N	\N	Objetivo General	\N		\N	\N	437	2016-03-19 21:23:01.292203	\N	2016-03-19 21:23:01.292203	24	t
+12	Accion Centralizada	71	\N	\N	Objetivo	\N	lolo	\N	\N	437	2016-03-19 22:52:48.946979	\N	2016-03-19 22:52:48.946979	24	t
+13	Accion Centralizada	71	\N	\N	Objetivo General	\N	Descripcion	\N	\N	437	2016-03-20 00:59:00.406798	\N	2016-03-20 00:59:00.406798	24	t
+14	Accion Centralizada	71	\N	\N	Objetivo	\N		\N	\N	437	2016-03-20 01:22:55.210523	\N	2016-03-20 01:22:55.210523	24	t
+15	Proyecto	70	Objetivo Historico	Objetivo Estrategico	Objetivo General	Institucional		2017-01-01 00:00:00	2017-12-29 00:00:00	437	2016-03-20 02:10:51.478807	\N	2016-03-20 02:10:51.478807	24	t
 \.
 
 
 --
--- TOC entry 2840 (class 0 OID 0)
--- Dependencies: 258
--- Name: proyecto_id_proyecto_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
+-- Name: poa_id_poa_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('proyecto_id_proyecto_seq', 12, true);
+SELECT pg_catalog.setval('poa_id_poa_seq', 15, true);
 
 
 --
--- TOC entry 2742 (class 0 OID 110802)
--- Dependencies: 259
 -- Data for Name: rendimiento; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
-COPY rendimiento (id_rendimiento, fk_meses, fk_actividad, created_by, created_date, modified_by, modified_date, fk_status, es_activo, cantidad_cumplida) FROM stdin;
+COPY rendimiento (id_rendimiento, fk_meses, created_by, created_date, modified_by, modified_date, fk_status, es_activo, cantidad_cumplida, cantidad_programada, fk_tipo_entidad, id_entidad) FROM stdin;
+1	57	437	2016-03-18 15:13:14.720179	\N	2016-03-18 15:13:14.720179	27	t	\N	1	73	4
+2	58	437	2016-03-18 15:13:14.736223	\N	2016-03-18 15:13:14.736223	27	t	\N	2	73	4
+3	59	437	2016-03-18 15:13:14.753691	\N	2016-03-18 15:13:14.753691	27	t	\N	3	73	4
+4	60	437	2016-03-18 15:13:14.769547	\N	2016-03-18 15:13:14.769547	27	t	\N	4	73	4
+5	61	437	2016-03-18 15:13:14.786724	\N	2016-03-18 15:13:14.786724	27	t	\N	5	73	4
+6	62	437	2016-03-18 15:13:14.802944	\N	2016-03-18 15:13:14.802944	27	t	\N	6	73	4
+7	63	437	2016-03-18 15:13:14.819792	\N	2016-03-18 15:13:14.819792	27	t	\N	7	73	4
+8	64	437	2016-03-18 15:13:14.837005	\N	2016-03-18 15:13:14.837005	27	t	\N	8	73	4
+9	65	437	2016-03-18 15:13:14.853517	\N	2016-03-18 15:13:14.853517	27	t	\N	9	73	4
+10	66	437	2016-03-18 15:13:14.869926	\N	2016-03-18 15:13:14.869926	27	t	\N	20	73	4
+11	67	437	2016-03-18 15:13:14.887138	\N	2016-03-18 15:13:14.887138	27	t	\N	21	73	4
+12	68	437	2016-03-18 15:13:14.903743	\N	2016-03-18 15:13:14.903743	27	t	\N	22	73	4
+13	57	437	2016-03-18 15:39:41.048202	\N	2016-03-18 15:39:41.048202	27	t	\N	20	73	5
+14	58	437	2016-03-18 15:39:41.065365	\N	2016-03-18 15:39:41.065365	27	t	\N	20	73	5
+15	59	437	2016-03-18 15:39:41.08175	\N	2016-03-18 15:39:41.08175	27	t	\N	20	73	5
+16	60	437	2016-03-18 15:39:41.098473	\N	2016-03-18 15:39:41.098473	27	t	\N	20	73	5
+17	61	437	2016-03-18 15:39:41.11524	\N	2016-03-18 15:39:41.11524	27	t	\N	20	73	5
+18	62	437	2016-03-18 15:39:41.131831	\N	2016-03-18 15:39:41.131831	27	t	\N	20	73	5
+19	63	437	2016-03-18 15:39:41.148342	\N	2016-03-18 15:39:41.148342	27	t	\N	20	73	5
+20	64	437	2016-03-18 15:39:41.165712	\N	2016-03-18 15:39:41.165712	27	t	\N	20	73	5
+21	65	437	2016-03-18 15:39:41.182617	\N	2016-03-18 15:39:41.182617	27	t	\N	20	73	5
+22	66	437	2016-03-18 15:39:41.199943	\N	2016-03-18 15:39:41.199943	27	t	\N	20	73	5
+23	67	437	2016-03-18 15:39:41.215913	\N	2016-03-18 15:39:41.215913	27	t	\N	20	73	5
+24	68	437	2016-03-18 15:39:41.232492	\N	2016-03-18 15:39:41.232492	27	t	\N	20	73	5
+25	57	437	2016-03-19 19:44:20.941536	\N	2016-03-19 19:44:20.941536	27	t	\N	1	73	6
+26	58	437	2016-03-19 19:44:20.958874	\N	2016-03-19 19:44:20.958874	27	t	\N	1	73	6
+27	59	437	2016-03-19 19:44:20.976584	\N	2016-03-19 19:44:20.976584	27	t	\N	1	73	6
+28	60	437	2016-03-19 19:44:20.992399	\N	2016-03-19 19:44:20.992399	27	t	\N	2	73	6
+29	61	437	2016-03-19 19:44:21.008718	\N	2016-03-19 19:44:21.008718	27	t	\N	2	73	6
+30	62	437	2016-03-19 19:44:21.025849	\N	2016-03-19 19:44:21.025849	27	t	\N	2	73	6
+31	63	437	2016-03-19 19:44:21.042456	\N	2016-03-19 19:44:21.042456	27	t	\N	3	73	6
+32	64	437	2016-03-19 19:44:21.058854	\N	2016-03-19 19:44:21.058854	27	t	\N	3	73	6
+33	65	437	2016-03-19 19:44:21.075941	\N	2016-03-19 19:44:21.075941	27	t	\N	3	73	6
+34	66	437	2016-03-19 19:44:21.093317	\N	2016-03-19 19:44:21.093317	27	t	\N	4	73	6
+35	67	437	2016-03-19 19:44:21.108864	\N	2016-03-19 19:44:21.108864	27	t	\N	4	73	6
+36	68	437	2016-03-19 19:44:21.125576	\N	2016-03-19 19:44:21.125576	27	t	\N	4	73	6
+37	57	437	2016-03-19 21:23:35.534509	\N	2016-03-19 21:23:35.534509	27	t	\N	10	73	7
+38	58	437	2016-03-19 21:23:35.551411	\N	2016-03-19 21:23:35.551411	27	t	\N	10	73	7
+39	59	437	2016-03-19 21:23:35.569364	\N	2016-03-19 21:23:35.569364	27	t	\N	10	73	7
+40	60	437	2016-03-19 21:23:35.585268	\N	2016-03-19 21:23:35.585268	27	t	\N	10	73	7
+41	61	437	2016-03-19 21:23:35.602585	\N	2016-03-19 21:23:35.602585	27	t	\N	10	73	7
+42	62	437	2016-03-19 21:23:35.617006	\N	2016-03-19 21:23:35.617006	27	t	\N	10	73	7
+43	63	437	2016-03-19 21:23:35.62582	\N	2016-03-19 21:23:35.62582	27	t	\N	10	73	7
+44	64	437	2016-03-19 21:23:35.635934	\N	2016-03-19 21:23:35.635934	27	t	\N	10	73	7
+45	65	437	2016-03-19 21:23:35.651535	\N	2016-03-19 21:23:35.651535	27	t	\N	10	73	7
+46	66	437	2016-03-19 21:23:35.66767	\N	2016-03-19 21:23:35.66767	27	t	\N	10	73	7
+47	67	437	2016-03-19 21:23:35.683217	\N	2016-03-19 21:23:35.683217	27	t	\N	10	73	7
+48	68	437	2016-03-19 21:23:35.692525	\N	2016-03-19 21:23:35.692525	27	t	\N	10	73	7
+49	61	437	2016-03-19 21:33:47.097634	\N	2016-03-19 21:33:47.097634	27	t	\N	12	74	10
+50	58	437	2016-03-19 21:33:47.141422	\N	2016-03-19 21:33:47.141422	27	t	\N	12	74	10
+51	57	437	2016-03-19 21:33:47.20396	\N	2016-03-19 21:33:47.20396	27	t	\N	12	74	10
+52	59	437	2016-03-19 21:33:47.263961	\N	2016-03-19 21:33:47.263961	27	t	\N	12	74	10
+53	62	437	2016-03-19 21:33:47.347896	\N	2016-03-19 21:33:47.347896	27	t	\N	12	74	10
+54	60	437	2016-03-19 21:33:47.41729	\N	2016-03-19 21:33:47.41729	27	t	\N	12	74	10
+55	63	437	2016-03-19 21:33:47.527621	\N	2016-03-19 21:33:47.527621	27	t	\N	12	74	10
+56	65	437	2016-03-19 21:33:47.578579	\N	2016-03-19 21:33:47.578579	27	t	\N	12	74	10
+57	64	437	2016-03-19 21:33:47.632679	\N	2016-03-19 21:33:47.632679	27	t	\N	12	74	10
+58	66	437	2016-03-19 21:33:47.683653	\N	2016-03-19 21:33:47.683653	27	t	\N	10	74	10
+59	68	437	2016-03-19 21:33:47.731223	\N	2016-03-19 21:33:47.731223	27	t	\N	10	74	10
+60	67	437	2016-03-19 21:33:47.767854	\N	2016-03-19 21:33:47.767854	27	t	\N	10	74	10
+61	57	437	2016-03-19 21:36:52.251885	\N	2016-03-19 21:36:52.251885	27	t	\N	1	74	11
+62	59	437	2016-03-19 21:36:52.30644	\N	2016-03-19 21:36:52.30644	27	t	\N	1	74	11
+63	58	437	2016-03-19 21:36:52.352727	\N	2016-03-19 21:36:52.352727	27	t	\N	1	74	11
+64	60	437	2016-03-19 21:36:52.419386	\N	2016-03-19 21:36:52.419386	27	t	\N	1	74	11
+65	63	437	2016-03-19 21:36:52.491935	\N	2016-03-19 21:36:52.491935	27	t	\N	1	74	11
+66	61	437	2016-03-19 21:36:52.566863	\N	2016-03-19 21:36:52.566863	27	t	\N	1	74	11
+67	64	437	2016-03-19 21:36:52.639803	\N	2016-03-19 21:36:52.639803	27	t	\N	1	74	11
+68	62	437	2016-03-19 21:36:52.722373	\N	2016-03-19 21:36:52.722373	27	t	\N	1	74	11
+69	65	437	2016-03-19 21:36:52.771581	\N	2016-03-19 21:36:52.771581	27	t	\N	1	74	11
+70	66	437	2016-03-19 21:36:52.826707	\N	2016-03-19 21:36:52.826707	27	t	\N	1	74	11
+71	67	437	2016-03-19 21:36:52.870312	\N	2016-03-19 21:36:52.870312	27	t	\N	1	74	11
+72	68	437	2016-03-19 21:36:52.914292	\N	2016-03-19 21:36:52.914292	27	t	\N	9	74	11
+73	57	437	2016-03-19 21:37:34.375568	\N	2016-03-19 21:37:34.375568	27	t	\N	8	74	12
+74	58	437	2016-03-19 21:37:34.447946	\N	2016-03-19 21:37:34.447946	27	t	\N	1	74	12
+75	59	437	2016-03-19 21:37:34.614151	\N	2016-03-19 21:37:34.614151	27	t	\N	1	74	12
+76	60	437	2016-03-19 21:37:34.684611	\N	2016-03-19 21:37:34.684611	27	t	\N	1	74	12
+77	61	437	2016-03-19 21:37:34.751365	\N	2016-03-19 21:37:34.751365	27	t	\N	1	74	12
+78	62	437	2016-03-19 21:37:34.854688	\N	2016-03-19 21:37:34.854688	27	t	\N	1	74	12
+79	64	437	2016-03-19 21:37:34.953418	\N	2016-03-19 21:37:34.953418	27	t	\N	1	74	12
+80	63	437	2016-03-19 21:37:35.027492	\N	2016-03-19 21:37:35.027492	27	t	\N	1	74	12
+81	65	437	2016-03-19 21:37:35.079889	\N	2016-03-19 21:37:35.079889	27	t	\N	1	74	12
+82	66	437	2016-03-19 21:37:35.137689	\N	2016-03-19 21:37:35.137689	27	t	\N	1	74	12
+83	67	437	2016-03-19 21:37:35.180593	\N	2016-03-19 21:37:35.180593	27	t	\N	1	74	12
+84	68	437	2016-03-19 21:37:35.237989	\N	2016-03-19 21:37:35.237989	27	t	\N	4	74	12
+85	57	437	2016-03-19 22:53:24.815833	\N	2016-03-19 22:53:24.815833	27	t	\N	2	73	8
+86	58	437	2016-03-19 22:53:24.829363	\N	2016-03-19 22:53:24.829363	27	t	\N	2	73	8
+87	59	437	2016-03-19 22:53:24.846008	\N	2016-03-19 22:53:24.846008	27	t	\N	2	73	8
+88	60	437	2016-03-19 22:53:24.864208	\N	2016-03-19 22:53:24.864208	27	t	\N	5	73	8
+89	61	437	2016-03-19 22:53:24.878795	\N	2016-03-19 22:53:24.878795	27	t	\N	5	73	8
+90	62	437	2016-03-19 22:53:24.89487	\N	2016-03-19 22:53:24.89487	27	t	\N	5	73	8
+91	63	437	2016-03-19 22:53:24.905628	\N	2016-03-19 22:53:24.905628	27	t	\N	6	73	8
+92	64	437	2016-03-19 22:53:24.920372	\N	2016-03-19 22:53:24.920372	27	t	\N	6	73	8
+93	65	437	2016-03-19 22:53:24.92806	\N	2016-03-19 22:53:24.92806	27	t	\N	6	73	8
+94	66	437	2016-03-19 22:53:24.937353	\N	2016-03-19 22:53:24.937353	27	t	\N	7	73	8
+95	67	437	2016-03-19 22:53:24.954227	\N	2016-03-19 22:53:24.954227	27	t	\N	7	73	8
+96	68	437	2016-03-19 22:53:24.970405	\N	2016-03-19 22:53:24.970405	27	t	\N	7	73	8
+97	57	437	2016-03-20 01:11:31.171592	\N	2016-03-20 01:11:31.171592	27	t	\N	10	73	10
+98	58	437	2016-03-20 01:11:31.220646	\N	2016-03-20 01:11:31.220646	27	t	\N	10	73	10
+99	59	437	2016-03-20 01:11:31.237314	\N	2016-03-20 01:11:31.237314	27	t	\N	20	73	10
+100	60	437	2016-03-20 01:11:31.255304	\N	2016-03-20 01:11:31.255304	27	t	\N	10	73	10
+101	61	437	2016-03-20 01:11:31.27229	\N	2016-03-20 01:11:31.27229	27	t	\N	20	73	10
+102	62	437	2016-03-20 01:11:31.287506	\N	2016-03-20 01:11:31.287506	27	t	\N	20	73	10
+103	63	437	2016-03-20 01:11:31.304005	\N	2016-03-20 01:11:31.304005	27	t	\N	10	73	10
+104	64	437	2016-03-20 01:11:31.322105	\N	2016-03-20 01:11:31.322105	27	t	\N	20	73	10
+105	65	437	2016-03-20 01:11:31.337404	\N	2016-03-20 01:11:31.337404	27	t	\N	10	73	10
+106	66	437	2016-03-20 01:11:31.354759	\N	2016-03-20 01:11:31.354759	27	t	\N	22	73	10
+107	67	437	2016-03-20 01:11:31.37013	\N	2016-03-20 01:11:31.37013	27	t	\N	10	73	10
+108	68	437	2016-03-20 01:11:31.378559	\N	2016-03-20 01:11:31.378559	27	t	\N	10	73	10
+109	61	437	2016-03-20 01:15:02.80784	\N	2016-03-20 01:15:02.80784	27	t	\N	7	74	13
+110	60	437	2016-03-20 01:15:02.969813	\N	2016-03-20 01:15:02.969813	27	t	\N	6	74	13
+111	62	437	2016-03-20 01:15:03.017548	\N	2016-03-20 01:15:03.017548	27	t	\N	8	74	13
+112	59	437	2016-03-20 01:15:03.077338	\N	2016-03-20 01:15:03.077338	27	t	\N	5	74	13
+113	58	437	2016-03-20 01:15:03.143571	\N	2016-03-20 01:15:03.143571	27	t	\N	4	74	13
+114	57	437	2016-03-20 01:15:03.225716	\N	2016-03-20 01:15:03.225716	27	t	\N	2	74	13
+115	64	437	2016-03-20 01:15:03.306677	\N	2016-03-20 01:15:03.306677	27	t	\N	20	74	13
+116	63	437	2016-03-20 01:15:03.371771	\N	2016-03-20 01:15:03.371771	27	t	\N	9	74	13
+117	67	437	2016-03-20 01:15:03.418225	\N	2016-03-20 01:15:03.418225	27	t	\N	33	74	13
+118	65	437	2016-03-20 01:15:03.458395	\N	2016-03-20 01:15:03.458395	27	t	\N	20	74	13
+119	68	437	2016-03-20 01:15:03.498966	\N	2016-03-20 01:15:03.498966	27	t	\N	20	74	13
+120	66	437	2016-03-20 01:15:03.533225	\N	2016-03-20 01:15:03.533225	27	t	\N	30	74	13
+121	57	2	2016-03-20 01:30:14.254265	\N	2016-03-20 01:30:14.254265	27	t	\N	10	73	11
+122	58	2	2016-03-20 01:30:14.270526	\N	2016-03-20 01:30:14.270526	27	t	\N	10	73	11
+123	59	2	2016-03-20 01:30:14.287205	\N	2016-03-20 01:30:14.287205	27	t	\N	10	73	11
+124	60	2	2016-03-20 01:30:14.304437	\N	2016-03-20 01:30:14.304437	27	t	\N	10	73	11
+125	61	2	2016-03-20 01:30:14.320681	\N	2016-03-20 01:30:14.320681	27	t	\N	10	73	11
+126	62	2	2016-03-20 01:30:14.337281	\N	2016-03-20 01:30:14.337281	27	t	\N	10	73	11
+127	63	2	2016-03-20 01:30:14.354434	\N	2016-03-20 01:30:14.354434	27	t	\N	10	73	11
+128	64	2	2016-03-20 01:30:14.370574	\N	2016-03-20 01:30:14.370574	27	t	\N	10	73	11
+129	65	2	2016-03-20 01:30:14.387225	\N	2016-03-20 01:30:14.387225	27	t	\N	10	73	11
+130	66	2	2016-03-20 01:30:14.404469	\N	2016-03-20 01:30:14.404469	27	t	\N	10	73	11
+131	67	2	2016-03-20 01:30:14.432496	\N	2016-03-20 01:30:14.432496	27	t	\N	10	73	11
+132	68	2	2016-03-20 01:30:14.461793	\N	2016-03-20 01:30:14.461793	27	t	\N	10	73	11
+133	57	437	2016-03-20 02:11:34.381659	\N	2016-03-20 02:11:34.381659	27	t	\N	12	73	12
+134	58	437	2016-03-20 02:11:34.397852	\N	2016-03-20 02:11:34.397852	27	t	\N	10	73	12
+135	59	437	2016-03-20 02:11:34.414388	\N	2016-03-20 02:11:34.414388	27	t	\N	8	73	12
+136	60	437	2016-03-20 02:11:34.431172	\N	2016-03-20 02:11:34.431172	27	t	\N	12	73	12
+137	61	437	2016-03-20 02:11:34.447831	\N	2016-03-20 02:11:34.447831	27	t	\N	8	73	12
+138	62	437	2016-03-20 02:11:34.464407	\N	2016-03-20 02:11:34.464407	27	t	\N	10	73	12
+139	63	437	2016-03-20 02:11:34.481276	\N	2016-03-20 02:11:34.481276	27	t	\N	10	73	12
+140	64	437	2016-03-20 02:11:34.497998	\N	2016-03-20 02:11:34.497998	27	t	\N	10	73	12
+141	65	437	2016-03-20 02:11:34.51453	\N	2016-03-20 02:11:34.51453	27	t	\N	10	73	12
+142	66	437	2016-03-20 02:11:34.53132	\N	2016-03-20 02:11:34.53132	27	t	\N	10	73	12
+143	67	437	2016-03-20 02:11:34.547993	\N	2016-03-20 02:11:34.547993	27	t	\N	10	73	12
+144	68	437	2016-03-20 02:11:34.564576	\N	2016-03-20 02:11:34.564576	27	t	\N	200	73	12
+145	57	437	2016-03-20 02:12:18.365393	\N	2016-03-20 02:12:18.365393	27	t	\N	10	74	14
+146	62	437	2016-03-20 02:12:18.423412	\N	2016-03-20 02:12:18.423412	27	t	\N	10	74	14
+147	61	437	2016-03-20 02:12:18.493559	\N	2016-03-20 02:12:18.493559	27	t	\N	10	74	14
+148	59	437	2016-03-20 02:12:18.589291	\N	2016-03-20 02:12:18.589291	27	t	\N	10	74	14
+149	58	437	2016-03-20 02:12:18.666924	\N	2016-03-20 02:12:18.666924	27	t	\N	10	74	14
+150	60	437	2016-03-20 02:12:18.779905	\N	2016-03-20 02:12:18.779905	27	t	\N	10	74	14
+151	63	437	2016-03-20 02:12:18.883552	\N	2016-03-20 02:12:18.883552	27	t	\N	10	74	14
+152	64	437	2016-03-20 02:12:18.951001	\N	2016-03-20 02:12:18.951001	27	t	\N	10	74	14
+153	65	437	2016-03-20 02:12:18.996599	\N	2016-03-20 02:12:18.996599	27	t	\N	10	74	14
+154	66	437	2016-03-20 02:12:19.032679	\N	2016-03-20 02:12:19.032679	27	t	\N	10	74	14
+155	67	437	2016-03-20 02:12:19.079062	\N	2016-03-20 02:12:19.079062	27	t	\N	10	74	14
+156	68	437	2016-03-20 02:12:19.122802	\N	2016-03-20 02:12:19.122802	27	t	\N	90	74	14
+157	59	437	2016-03-20 02:12:55.10391	\N	2016-03-20 02:12:55.10391	27	t	\N	5	74	15
+158	57	437	2016-03-20 02:12:55.177182	\N	2016-03-20 02:12:55.177182	27	t	\N	5	74	15
+159	58	437	2016-03-20 02:12:55.231906	\N	2016-03-20 02:12:55.231906	27	t	\N	5	74	15
+160	61	437	2016-03-20 02:12:55.300124	\N	2016-03-20 02:12:55.300124	27	t	\N	5	74	15
+161	62	437	2016-03-20 02:12:55.36628	\N	2016-03-20 02:12:55.36628	27	t	\N	5	74	15
+162	60	437	2016-03-20 02:12:55.472212	\N	2016-03-20 02:12:55.472212	27	t	\N	5	74	15
+163	63	437	2016-03-20 02:12:55.542173	\N	2016-03-20 02:12:55.542173	27	t	\N	5	74	15
+164	64	437	2016-03-20 02:12:55.615913	\N	2016-03-20 02:12:55.615913	27	t	\N	5	74	15
+165	65	437	2016-03-20 02:12:55.666135	\N	2016-03-20 02:12:55.666135	27	t	\N	5	74	15
+166	66	437	2016-03-20 02:12:55.719793	\N	2016-03-20 02:12:55.719793	27	t	\N	2	74	15
+167	67	437	2016-03-20 02:12:55.766644	\N	2016-03-20 02:12:55.766644	27	t	\N	1	74	15
+168	68	437	2016-03-20 02:12:55.816192	\N	2016-03-20 02:12:55.816192	27	t	\N	2	74	15
+169	57	437	2016-03-20 02:31:44.036845	\N	2016-03-20 02:31:44.036845	27	t	\N	1	73	13
+170	58	437	2016-03-20 02:31:44.055801	\N	2016-03-20 02:31:44.055801	27	t	\N	1	73	13
+171	59	437	2016-03-20 02:31:44.069207	\N	2016-03-20 02:31:44.069207	27	t	\N	1	73	13
+172	60	437	2016-03-20 02:31:44.077766	\N	2016-03-20 02:31:44.077766	27	t	\N	1	73	13
+173	61	437	2016-03-20 02:31:44.086894	\N	2016-03-20 02:31:44.086894	27	t	\N	2	73	13
+174	62	437	2016-03-20 02:31:44.104919	\N	2016-03-20 02:31:44.104919	27	t	\N	2	73	13
+175	63	437	2016-03-20 02:31:44.120352	\N	2016-03-20 02:31:44.120352	27	t	\N	1	73	13
+176	64	437	2016-03-20 02:31:44.136934	\N	2016-03-20 02:31:44.136934	27	t	\N	1	73	13
+177	65	437	2016-03-20 02:31:44.145357	\N	2016-03-20 02:31:44.145357	27	t	\N	1	73	13
+178	66	437	2016-03-20 02:31:44.162173	\N	2016-03-20 02:31:44.162173	27	t	\N	2	73	13
+179	67	437	2016-03-20 02:31:44.177537	\N	2016-03-20 02:31:44.177537	27	t	\N	2	73	13
+180	68	437	2016-03-20 02:31:44.186843	\N	2016-03-20 02:31:44.186843	27	t	\N	4	73	13
+181	57	437	2016-03-20 02:32:16.286708	\N	2016-03-20 02:32:16.286708	27	t	\N	1	74	16
+182	58	437	2016-03-20 02:32:16.381977	\N	2016-03-20 02:32:16.381977	27	t	\N	1	74	16
+183	59	437	2016-03-20 02:32:16.550848	\N	2016-03-20 02:32:16.550848	27	t	\N	1	74	16
+184	60	437	2016-03-20 02:32:16.65754	\N	2016-03-20 02:32:16.65754	27	t	\N	0	74	16
+185	62	437	2016-03-20 02:32:16.723917	\N	2016-03-20 02:32:16.723917	27	t	\N	1	74	16
+186	61	437	2016-03-20 02:32:16.789097	\N	2016-03-20 02:32:16.789097	27	t	\N	1	74	16
+187	63	437	2016-03-20 02:32:16.867497	\N	2016-03-20 02:32:16.867497	27	t	\N	1	74	16
+188	64	437	2016-03-20 02:32:16.939969	\N	2016-03-20 02:32:16.939969	27	t	\N	1	74	16
+189	66	437	2016-03-20 02:32:16.991909	\N	2016-03-20 02:32:16.991909	27	t	\N	1	74	16
+190	65	437	2016-03-20 02:32:17.054773	\N	2016-03-20 02:32:17.054773	27	t	\N	0	74	16
+191	67	437	2016-03-20 02:32:17.110879	\N	2016-03-20 02:32:17.110879	27	t	\N	1	74	16
+192	68	437	2016-03-20 02:32:17.164686	\N	2016-03-20 02:32:17.164686	27	t	\N	1	74	16
+193	58	437	2016-03-20 02:50:37.791069	\N	2016-03-20 02:50:37.791069	27	t	\N	1	74	17
+194	57	437	2016-03-20 02:50:37.843378	\N	2016-03-20 02:50:37.843378	27	t	\N	1	74	17
+195	59	437	2016-03-20 02:50:37.966605	\N	2016-03-20 02:50:37.966605	27	t	\N	0	74	17
+196	60	437	2016-03-20 02:50:38.099281	\N	2016-03-20 02:50:38.099281	27	t	\N	1	74	17
+197	63	437	2016-03-20 02:50:38.167449	\N	2016-03-20 02:50:38.167449	27	t	\N	1	74	17
+198	61	437	2016-03-20 02:50:38.231821	\N	2016-03-20 02:50:38.231821	27	t	\N	1	74	17
+199	62	437	2016-03-20 02:50:38.293449	\N	2016-03-20 02:50:38.293449	27	t	\N	1	74	17
+200	64	437	2016-03-20 02:50:38.360448	\N	2016-03-20 02:50:38.360448	27	t	\N	1	74	17
+201	65	437	2016-03-20 02:50:38.435612	\N	2016-03-20 02:50:38.435612	27	t	\N	1	74	17
+202	66	437	2016-03-20 02:50:38.483646	\N	2016-03-20 02:50:38.483646	27	t	\N	1	74	17
+203	68	437	2016-03-20 02:50:38.535163	\N	2016-03-20 02:50:38.535163	27	t	\N	1	74	17
+204	67	437	2016-03-20 02:50:38.582867	\N	2016-03-20 02:50:38.582867	27	t	\N	0	74	17
+205	57	437	2016-03-20 02:51:41.584153	\N	2016-03-20 02:51:41.584153	27	t	\N	1	73	14
+206	58	437	2016-03-20 02:51:41.593124	\N	2016-03-20 02:51:41.593124	27	t	\N	1	73	14
+207	59	437	2016-03-20 02:51:41.610017	\N	2016-03-20 02:51:41.610017	27	t	\N	0	73	14
+208	60	437	2016-03-20 02:51:41.626689	\N	2016-03-20 02:51:41.626689	27	t	\N	0	73	14
+209	61	437	2016-03-20 02:51:41.643215	\N	2016-03-20 02:51:41.643215	27	t	\N	0	73	14
+210	62	437	2016-03-20 02:51:41.659997	\N	2016-03-20 02:51:41.659997	27	t	\N	0	73	14
+211	63	437	2016-03-20 02:51:41.676829	\N	2016-03-20 02:51:41.676829	27	t	\N	5	73	14
+212	64	437	2016-03-20 02:51:41.693263	\N	2016-03-20 02:51:41.693263	27	t	\N	1	73	14
+213	65	437	2016-03-20 02:51:41.703883	\N	2016-03-20 02:51:41.703883	27	t	\N	0	73	14
+214	66	437	2016-03-20 02:51:41.718814	\N	2016-03-20 02:51:41.718814	27	t	\N	0	73	14
+215	67	437	2016-03-20 02:51:41.733759	\N	2016-03-20 02:51:41.733759	27	t	\N	1	73	14
+216	68	437	2016-03-20 02:51:41.74213	\N	2016-03-20 02:51:41.74213	27	t	\N	1	73	14
+217	59	437	2016-03-20 02:52:23.647922	\N	2016-03-20 02:52:23.647922	27	t	\N	0	74	18
+218	57	437	2016-03-20 02:52:23.729303	\N	2016-03-20 02:52:23.729303	27	t	\N	0	74	18
+219	60	437	2016-03-20 02:52:23.821712	\N	2016-03-20 02:52:23.821712	27	t	\N	0	74	18
+220	62	437	2016-03-20 02:52:23.899904	\N	2016-03-20 02:52:23.899904	27	t	\N	0	74	18
+221	58	437	2016-03-20 02:52:23.958837	\N	2016-03-20 02:52:23.958837	27	t	\N	0	74	18
+222	61	437	2016-03-20 02:52:24.035768	\N	2016-03-20 02:52:24.035768	27	t	\N	1	74	18
+223	63	437	2016-03-20 02:52:24.094984	\N	2016-03-20 02:52:24.094984	27	t	\N	0	74	18
+224	64	437	2016-03-20 02:52:24.160342	\N	2016-03-20 02:52:24.160342	27	t	\N	0	74	18
+225	65	437	2016-03-20 02:52:24.208821	\N	2016-03-20 02:52:24.208821	27	t	\N	0	74	18
+226	66	437	2016-03-20 02:52:24.25381	\N	2016-03-20 02:52:24.25381	27	t	\N	0	74	18
+227	67	437	2016-03-20 02:52:24.299783	\N	2016-03-20 02:52:24.299783	27	t	\N	0	74	18
+228	68	437	2016-03-20 02:52:24.338909	\N	2016-03-20 02:52:24.338909	27	t	\N	0	74	18
+229	57	437	2016-03-20 02:52:44.413574	\N	2016-03-20 02:52:44.413574	27	t	\N	1	74	19
+230	59	437	2016-03-20 02:52:44.486812	\N	2016-03-20 02:52:44.486812	27	t	\N	1	74	19
+231	58	437	2016-03-20 02:52:44.562428	\N	2016-03-20 02:52:44.562428	27	t	\N	1	74	19
+232	61	437	2016-03-20 02:52:44.629576	\N	2016-03-20 02:52:44.629576	27	t	\N	1	74	19
+233	62	437	2016-03-20 02:52:44.707926	\N	2016-03-20 02:52:44.707926	27	t	\N	1	74	19
+234	60	437	2016-03-20 02:52:44.810488	\N	2016-03-20 02:52:44.810488	27	t	\N	1	74	19
+235	63	437	2016-03-20 02:52:44.891045	\N	2016-03-20 02:52:44.891045	27	t	\N	1	74	19
+236	64	437	2016-03-20 02:52:44.968869	\N	2016-03-20 02:52:44.968869	27	t	\N	1	74	19
+237	66	437	2016-03-20 02:52:45.034467	\N	2016-03-20 02:52:45.034467	27	t	\N	0	74	19
+238	65	437	2016-03-20 02:52:45.074841	\N	2016-03-20 02:52:45.074841	27	t	\N	1	74	19
+239	67	437	2016-03-20 02:52:45.116961	\N	2016-03-20 02:52:45.116961	27	t	\N	0	74	19
+240	68	437	2016-03-20 02:52:45.160681	\N	2016-03-20 02:52:45.160681	27	t	\N	0	74	19
 \.
 
 
 --
--- TOC entry 2841 (class 0 OID 0)
--- Dependencies: 260
 -- Name: rendimiento_id_rendimiento_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('rendimiento_id_rendimiento_seq', 1, false);
+SELECT pg_catalog.setval('rendimiento_id_rendimiento_seq', 240, true);
 
 
 --
--- TOC entry 2744 (class 0 OID 110810)
--- Dependencies: 261
 -- Data for Name: responsable; Type: TABLE DATA; Schema: poa; Owner: postgres
 --
 
-COPY responsable (id_responsable, fk_persona_registro, fk_dir_responsable, fk_proyecto, created_by, modified_by, created_date, modified_date, es_activo, fk_estatus) FROM stdin;
-1	437	355	7	437	\N	2016-03-04 13:31:20.886755	2016-03-04 13:31:20.886755	t	30
-2	437	355	8	437	\N	2016-03-04 13:32:10.303612	2016-03-04 13:32:10.303612	t	30
-3	437	355	9	437	\N	2016-03-04 13:35:22.905112	2016-03-04 13:35:22.905112	t	30
-4	437	355	10	437	\N	2016-03-04 13:38:54.761486	2016-03-04 13:38:54.761486	t	30
-5	437	355	11	437	\N	2016-03-04 13:40:07.627667	2016-03-04 13:40:07.627667	t	30
-6	437	355	12	437	\N	2016-03-04 14:03:27.672936	2016-03-04 14:03:27.672936	t	30
+COPY responsable (id_responsable, fk_persona_registro, fk_dir_responsable, fk_poa, created_by, modified_by, created_date, modified_date, es_activo, fk_estatus, cod_dependencia_cruge, dependencia_cruge) FROM stdin;
+1	437	355	1	437	\N	2016-03-17 15:34:39.311166	2016-03-17 15:34:39.311166	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+2	437	355	2	437	\N	2016-03-17 15:41:35.456062	2016-03-17 15:41:35.456062	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+3	437	355	3	437	\N	2016-03-18 13:10:12.930786	2016-03-18 13:10:12.930786	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+4	437	355	4	437	\N	2016-03-18 13:20:21.020927	2016-03-18 13:20:21.020927	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+5	437	355	5	437	\N	2016-03-18 13:36:52.544142	2016-03-18 13:36:52.544142	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+6	437	355	6	437	\N	2016-03-18 14:07:02.818916	2016-03-18 14:07:02.818916	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+7	437	355	7	437	\N	2016-03-18 14:25:02.792303	2016-03-18 14:25:02.792303	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+8	437	355	8	437	\N	2016-03-18 15:08:25.313799	2016-03-18 15:08:25.313799	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+9	437	355	9	437	\N	2016-03-18 15:39:04.216197	2016-03-18 15:39:04.216197	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+10	437	355	10	437	\N	2016-03-19 19:43:34.585239	2016-03-19 19:43:34.585239	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+11	437	355	11	437	\N	2016-03-19 21:23:01.330246	2016-03-19 21:23:01.330246	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+12	437	355	12	437	\N	2016-03-19 22:52:49.038537	2016-03-19 22:52:49.038537	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+13	437	355	13	437	\N	2016-03-20 00:59:00.454094	2016-03-20 00:59:00.454094	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+14	437	355	14	437	\N	2016-03-20 01:22:55.241777	2016-03-20 01:22:55.241777	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+15	437	355	15	437	\N	2016-03-20 02:10:51.527927	2016-03-20 02:10:51.527927	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
 \.
 
 
 --
--- TOC entry 2842 (class 0 OID 0)
--- Dependencies: 262
 -- Name: responsable_id_responsable_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('responsable_id_responsable_seq', 6, true);
+SELECT pg_catalog.setval('responsable_id_responsable_seq', 15, true);
 
 
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2699 (class 0 OID 109379)
--- Dependencies: 215
 -- Data for Name: cruge_authassignment; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -6702,7 +4590,6 @@ COPY cruge_authassignment (userid, bizrule, data, itemname) FROM stdin;
 426	\N	N;	usuario_general
 427	\N	N;	usuario_general
 428	\N	N;	usuario_general
-1	\N	N;	administrador_tecnologia
 429	\N	N;	usuario_general
 430	\N	N;	usuario_general
 432	\N	N;	usuario_general
@@ -6714,7 +4601,6 @@ COPY cruge_authassignment (userid, bizrule, data, itemname) FROM stdin;
 438	\N	N;	usuario_general
 23	\N	N;	administrador_mrl
 431	\N	N;	administrador_mrl
-23	\N	N;	administrador_actualizacion
 54	\N	N;	registro_mrl
 22	\N	N;	registro_mrl
 9	\N	N;	registro_mrl
@@ -6785,7 +4671,6 @@ COPY cruge_authassignment (userid, bizrule, data, itemname) FROM stdin;
 437	\N	N;	usuario_general
 437	\N	N;	registro_mrl
 437	\N	N;	rrhh_mrl_verificacion
-461	\N	N;	administrador_actualizacion
 467	\N	N;	administrador_mrl
 467	\N	N;	rrhh_mrl_verificacion
 468	\N	N;	registro_mrl
@@ -6812,26 +4697,17 @@ COPY cruge_authassignment (userid, bizrule, data, itemname) FROM stdin;
 471	\N	N;	usuario_general
 136	\N	N;	registro_mrl
 437	\N	N;	administrador_mrl
+178	\N	N;	usuario_general
 470	\N	N;	registro_mrl
-472	\N	N;	administrador_mrl
-472	\N	N;	rrhh_mrl_verificacion
-178	\N	N;	administrador_mrl
-178	\N	N;	rrhh_mrl_verificacion
-473	\N	N;	administrador_mrl
-473	\N	N;	registro_mrl
-474	\N	N;	registro_mrl
-475	\N	N;	usuario_general
-476	\N	N;	registro_mrl
-471	\N	N;	registro_mrl
-477	\N	N;	usuario_general
-477	\N	N;	registro_mrl
+1	\N	N;	administrador_tecnologia
 462	\N	N;	administrador_tecnologia
+437	\N	N;	registro_poa
+355	\N	N;	administrador_poa
+462	\N	N;	evaluador_poa
 \.
 
 
 --
--- TOC entry 2700 (class 0 OID 109385)
--- Dependencies: 216
 -- Data for Name: cruge_authitem; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7059,6 +4935,7 @@ action_vswpdfreporte_delete	0		\N	N;
 action_vswpdfreporte_index	0		\N	N;
 action_vswpdfreporte_admin	0		\N	N;
 action_evaluacion_createobrero	0		\N	N;
+action_ui_fieldsadmincreate	0		\N	N;
 action_graficas_graficaodis	0		\N	N;
 controller_vswreportefinal	0		\N	N;
 action_vswreportefinal_view	0		\N	N;
@@ -7069,16 +4946,28 @@ action_vswreportefinal_update	0		\N	N;
 action_vswreportefinal_delete	0		\N	N;
 action_vswreportefinal_index	0		\N	N;
 action_vswreportefinal_admin	0		\N	N;
-action_vswreportefinal_create	0		\N	N;
+action_ui_fieldsadminupdate	0		\N	N;
+registro_poa	0		\N	N;
+administrador_poa	0		\N	N;
+evaluador_poa	0		\N	N;
 action_evaluacion_reporte_rechazados	0		\N	N;
-action_evaluacion_reporte_odi	0		\N	N;
-action_validacionjs_busquedaodi	0		\N	N;
+controller_poa	0		\N	N;
+action_poa_view	0		\N	N;
+action_poa_view_accion	0		\N	N;
+action_poa_view_evaluar	0		\N	N;
+action_poa_create	0		\N	N;
+action_poa_create_accion	0		\N	N;
+action_poa_create_actividad	0		\N	N;
+action_poa_update	0		\N	N;
+action_poa_delete	0		\N	N;
+action_poa_index	0		\N	N;
+action_poa_admin	0		\N	N;
+action_validacionjs_dibujaractividad	0		\N	N;
+action_validacionjs_eliminaractividad	0		\N	N;
 \.
 
 
 --
--- TOC entry 2701 (class 0 OID 109391)
--- Dependencies: 217
 -- Data for Name: cruge_authitemchild; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7217,7 +5106,6 @@ administrador_tecnologia	action_validacionjs_guardarobjetivo
 administrador_tecnologia	action_validacionjs_buscarsupervisor
 administrador_tecnologia	action_validacionjs_buscarsupervisado
 administrador_tecnologia	action_ui_usermanagementadmin
-administrador_tecnologia	action_ui_rbacusersassignments
 administrador_tecnologia	action_ui_usermanagementcreate
 administrador_mrl	controller_evaluacion
 administrador_mrl	action_evaluacion_odi
@@ -7295,23 +5183,16 @@ rrhh_mrl_verificacion	action_ui_rbaclistops
 rrhh_mrl_verificacion	action_ui_rbaclisttasks
 rrhh_mrl_verificacion	action_ui_editprofile
 rrhh_mrl_verificacion	action_ui_UserManagementUpdate_1
-administrador_mrl	action_graficas_graficarecepcion
+administrador_tecnologia	action_ui_rbacusersassignments
+administrador_tecnologia	action_ui_rbacajaxassignment
+administrador_actualizacion	action_ui_rbacajaxassignment
 rrhh_mrl_verificacion	action_graficas_graficarecepcion
-registro_mrl	action_graficas_graficarecepcion
-registro_mrl	action_vswreportefinal_reporte
-rrhh_mrl_verificacion	action_vswreportefinal_reporte
-administrador_mrl	action_vswreportefinal_reporte
-administrador_mrl	action_graficas_graficaodis
 rrhh_mrl_verificacion	action_graficas_graficaodis
-registro_mrl	action_graficas_graficaodis
-rrhh_mrl_verificacion	action_evaluacion_reporte_rechazados
-rrhh_mrl_verificacion	action_evaluacion_reporte_odi
+rrhh_mrl_verificacion	action_graficas_graficanacionalidad
 \.
 
 
 --
--- TOC entry 2702 (class 0 OID 109394)
--- Dependencies: 218
 -- Data for Name: cruge_field; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -7322,8 +5203,6 @@ COPY cruge_field (idfield, fieldname, longname, "position", required, fieldtype,
 
 
 --
--- TOC entry 2843 (class 0 OID 0)
--- Dependencies: 219
 -- Name: cruge_field_idfield_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -7331,37 +5210,29 @@ SELECT pg_catalog.setval('cruge_field_idfield_seq', 3, true);
 
 
 --
--- TOC entry 2704 (class 0 OID 109408)
--- Dependencies: 220
 -- Data for Name: cruge_fieldvalue; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY cruge_fieldvalue (idfieldvalue, iduser, idfield, value) FROM stdin;
-1	467	0	1
-2	467	1	11
 3	437	0	6
 4	437	1	40
 5	355	0	5
 6	355	1	40
-7	462	0	7
-8	462	1	40
-9	394	0	1
-10	394	1	11
+7	11	0	6
+8	11	1	40
+1	462	0	6
+2	462	1	40
 \.
 
 
 --
--- TOC entry 2844 (class 0 OID 0)
--- Dependencies: 221
 -- Name: cruge_fieldvalue_idfieldvalue_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cruge_fieldvalue_idfieldvalue_seq', 10, true);
+SELECT pg_catalog.setval('cruge_fieldvalue_idfieldvalue_seq', 8, true);
 
 
 --
--- TOC entry 2706 (class 0 OID 109416)
--- Dependencies: 222
 -- Data for Name: cruge_session; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -9872,7 +7743,6 @@ COPY cruge_session (idsession, iduser, created, expire, status, ipaddress, usage
 2512	355	1454089344	1454091144	1	172.16.20.25	1	1454089344	\N	\N
 2472	440	1454013865	1454015665	0	172.16.28.51	1	1454013865	1454014087	172.16.28.51
 2473	440	1454014143	1454015943	0	172.16.28.51	1	1454014143	1454014380	172.16.28.51
-2527	467	1454097745	1454099545	0	172.16.10.10	1	1454097745	\N	\N
 2513	453	1454089617	1454091417	0	172.16.12.10	1	1454089617	1454089836	172.16.12.10
 2495	468	1454077102	1454078902	0	172.16.28.16	1	1454077102	\N	\N
 2514	442	1454090444	1454092244	0	172.16.20.19	1	1454090444	1454090502	172.16.20.19
@@ -9896,6 +7766,7 @@ COPY cruge_session (idsession, iduser, created, expire, status, ipaddress, usage
 2526	37	1454095137	1454096937	1	172.16.30.37	1	1454095137	\N	\N
 2529	114	1454100622	1454102422	0	172.16.18.10	1	1454100622	1454101994	172.16.18.10
 2524	467	1454094469	1454096269	0	172.16.10.10	1	1454094469	\N	\N
+2632	462	1455223420	1455225220	0	::1	1	1455223420	1455223463	::1
 2536	437	1454335530	1454337330	0	172.16.20.21	2	1454336171	1454336464	172.16.20.21
 2533	467	1454106145	1454107945	0	172.16.10.10	2	1454107645	1454107706	172.16.10.10
 2531	467	1454101861	1454103661	0	172.16.10.10	1	1454101861	\N	\N
@@ -9970,529 +7841,157 @@ COPY cruge_session (idsession, iduser, created, expire, status, ipaddress, usage
 2599	11	1454512972	1454514772	1	172.16.20.25	1	1454512972	\N	\N
 2605	449	1454515596	1454517396	0	172.16.13.16	1	1454515596	1454515628	172.16.13.16
 2606	449	1454516148	1454517948	0	172.16.20.25	1	1454516148	1454516156	172.16.20.25
-2609	11	1454517192	1454518992	0	172.16.20.25	1	1454517192	1454517509	172.16.20.25
+2607	41	1454516172	1454517972	1	172.16.20.25	1	1454516172	\N	\N
+2608	449	1454516243	1454518043	1	172.16.20.25	1	1454516243	\N	\N
 2601	41	1454513277	1454515077	0	172.16.13.14	2	1454513992	\N	\N
 2604	41	1454515240	1454517040	0	172.16.13.14	1	1454515240	1454515574	172.16.13.14
-2608	449	1454516243	1454518043	0	172.16.20.13	2	1454517645	1454517652	172.16.20.13
-2607	41	1454516172	1454517972	0	172.16.20.13	2	1454517610	1454517627	172.16.20.13
-2614	11	1454519317	1454521117	1	172.16.20.25	1	1454519317	\N	\N
-2610	11	1454517516	1454519316	0	172.16.20.25	1	1454517516	1454517873	172.16.20.25
-2612	437	1454517885	1454519685	1	172.16.20.25	1	1454517885	\N	\N
-2611	29	1454517794	1454519594	0	172.16.20.13	1	1454517794	1454517998	172.16.20.13
-2613	41	1454518011	1454519811	1	172.16.20.13	1	1454518011	\N	\N
-2615	11	1454521267	1454523067	1	172.16.20.25	1	1454521267	\N	\N
-2616	41	1454522887	1454524687	0	172.16.20.13	2	1454524337	1454524387	172.16.20.13
-2617	41	1454524589	1454526389	0	172.16.13.14	1	1454524589	1454524747	172.16.13.14
-2618	22	1454526807	1454528607	1	172.16.20.23	1	1454526807	\N	\N
-2619	183	1454527869	1454529669	1	192.168.0.7	1	1454527869	\N	\N
-2620	468	1454527887	1454529687	0	172.16.14.22	2	1454529312	\N	\N
-2622	68	1454530474	1454532274	0	172.16.19.17	1	1454530474	1454530489	172.16.19.17
-2624	467	1454530926	1454532726	1	172.16.10.10	2	1454531405	\N	\N
-2657	11	1454688088	1454689888	0	172.16.20.25	1	1454688088	1454688132	172.16.20.25
-2625	355	1454531020	1454532820	0	172.16.20.21	1	1454531020	1454531052	172.16.20.21
-2658	467	1454688138	1454689938	0	172.16.20.28	1	1454688138	1454688237	172.16.20.28
-2635	468	1454596778	1454598578	0	172.16.14.22	3	1454598494	\N	\N
-2623	453	1454530605	1454532405	0	172.16.20.21	2	1454530932	1454530981	172.16.20.21
-2636	468	1454598630	1454600430	0	172.16.14.22	1	1454598630	1454598743	172.16.14.22
-2637	467	1454668506	1454670306	0	172.16.10.10	1	1454668506	1454668981	172.16.10.10
-2621	468	1454529871	1454531671	0	172.16.14.22	1	1454529871	\N	\N
-2638	468	1454675606	1454677406	1	172.16.14.22	1	1454675606	\N	\N
-2639	470	1454676489	1454678289	1	172.16.30.60	1	1454676489	\N	\N
-2641	22	1454680134	1454681934	1	192.168.0.7	1	1454680134	\N	\N
-2642	467	1454680346	1454682146	1	172.16.10.10	1	1454680346	\N	\N
-2640	87	1454677571	1454679371	0	172.16.30.10	1	1454677571	\N	\N
-2644	87	1454680792	1454682592	1	172.16.30.10	1	1454680792	\N	\N
-2655	468	1454687831	1454689631	0	172.16.28.16	1	1454687831	1454688282	172.16.28.16
-2626	453	1454531198	1454532998	0	172.16.12.32	4	1454532579	\N	\N
-2627	468	1454531699	1454533499	0	172.16.14.22	2	1454532715	1454533367	172.16.14.22
-2660	1	1454689129	1454690929	0	172.16.20.28	1	1454689129	1454689131	172.16.20.28
-2643	453	1454680462	1454682262	0	172.16.12.10	2	1454682100	\N	\N
-2679	1	1454709260	1454711060	0	172.16.20.28	1	1454709260	1454709351	172.16.20.28
-2628	453	1454533018	1454534818	0	172.16.12.10	4	1454534816	\N	\N
-2629	453	1454534837	1454536637	0	172.16.12.10	1	1454534837	1454534885	172.16.12.10
-2630	449	1454536069	1454537869	0	172.16.13.16	1	1454536069	1454536079	172.16.13.16
-2659	114	1454688423	1454690223	0	172.16.20.13	3	1454689311	1454689435	172.16.20.13
-2661	467	1454689450	1454691250	1	172.16.20.13	1	1454689450	\N	\N
-2662	114	1454694218	1454696018	1	172.16.18.10	1	1454694218	\N	\N
-2663	397	1454694251	1454696051	0	172.16.30.34	1	1454694251	\N	\N
-2666	401	1454696658	1454698458	1	172.16.0.2	1	1454696658	\N	\N
-2631	467	1454585193	1454586993	0	172.16.10.10	1	1454585193	\N	\N
-2664	397	1454696206	1454698006	0	172.16.30.34	1	1454696206	1454696759	172.16.30.34
-2665	467	1454696493	1454698293	1	172.16.10.10	2	1454696870	\N	\N
-2667	37	1454696801	1454698601	0	172.16.30.34	1	1454696801	1454696988	172.16.30.34
-2668	397	1454697004	1454698804	0	172.16.30.34	1	1454697004	1454697560	172.16.30.34
-2669	397	1454697903	1454699703	0	172.16.30.34	1	1454697903	1454698659	172.16.30.34
-2632	467	1454587189	1454588989	0	172.16.10.10	1	1454587189	\N	\N
-2646	453	1454682303	1454684103	0	172.16.12.10	1	1454682303	\N	\N
-2645	11	1454681996	1454683796	0	172.16.20.28	2	1454683733	\N	\N
-2647	453	1454684315	1454686115	0	172.16.12.10	1	1454684315	1454685632	172.16.12.10
-2670	397	1454699887	1454701687	0	172.16.30.34	1	1454699887	1454700010	172.16.30.34
-2633	467	1454589037	1454590837	0	172.16.10.10	1	1454589037	\N	\N
-2634	467	1454591402	1454593202	0	172.16.10.10	1	1454591402	1454592438	172.16.10.10
-2649	397	1454685976	1454687776	1	172.16.0.2	2	1454686547	\N	\N
-2648	467	1454684920	1454686720	0	172.16.10.10	2	1454685643	\N	\N
-2652	470	1454687532	1454689332	1	172.16.30.60	1	1454687532	\N	\N
-2653	11	1454687730	1454689530	0	172.16.20.28	1	1454687730	1454687763	172.16.20.28
-2654	462	1454687776	1454689576	0	172.16.20.28	1	1454687776	1454687824	172.16.20.28
-2651	358	1454687457	1454689257	0	192.168.0.7	1	1454687457	1454687838	192.168.0.7
-2656	11	1454687932	1454689732	0	172.16.20.28	1	1454687932	1454687984	172.16.20.28
-2650	467	1454686782	1454688582	0	172.16.20.28	2	1454688003	1454688101	172.16.20.28
-2672	397	1454700772	1454702572	1	172.16.30.34	1	1454700772	\N	\N
-2680	460	1454709367	1454711167	0	172.16.20.28	1	1454709367	1454709370	172.16.20.28
-2671	114	1454700283	1454702083	0	172.16.18.10	2	1454701618	1454701939	172.16.18.10
-2673	453	1454702537	1454704337	0	172.16.12.32	1	1454702537	\N	\N
-2681	437	1454709392	1454711192	0	172.16.20.28	1	1454709392	1454709404	172.16.20.28
-2682	11	1454709422	1454711222	0	172.16.20.28	1	1454709422	1454709436	172.16.20.28
-2674	467	1454703272	1454705072	0	172.16.10.10	2	1454704372	\N	\N
-2676	467	1454705321	1454707121	1	172.16.10.10	1	1454705321	\N	\N
-2677	437	1454705455	1454707255	1	172.16.20.25	1	1454705455	\N	\N
-2683	1	1454709459	1454711259	0	172.16.20.28	1	1454709459	1454709477	172.16.20.28
-2684	178	1454709507	1454711307	0	172.16.20.28	1	1454709507	1454709512	172.16.20.28
-2685	1	1454709567	1454711367	0	172.16.20.28	1	1454709567	1454709603	172.16.20.28
-2686	178	1454709628	1454711428	0	172.16.20.28	1	1454709628	1454709639	172.16.20.28
-2675	453	1454704529	1454706329	0	172.16.12.32	2	1454704959	\N	\N
-2678	453	1454706359	1454708159	0	172.16.12.32	1	1454706359	\N	\N
-2687	1	1454709666	1454711466	0	172.16.20.28	1	1454709666	1454709685	172.16.20.28
-2688	178	1454709703	1454711503	0	172.16.20.28	1	1454709703	1454709713	172.16.20.28
-2689	1	1454709740	1454711540	0	172.16.20.28	1	1454709740	1454709778	172.16.20.28
-2690	1	1454709802	1454711602	0	172.16.20.28	1	1454709802	1454709858	172.16.20.28
-2691	178	1454709873	1454711673	0	172.16.20.28	1	1454709873	1454709902	172.16.20.28
-2692	437	1454815156	1454816956	0	192.168.0.7	1	1454815156	1454815191	192.168.0.7
-2693	437	1454816238	1454818038	1	192.168.0.7	1	1454816238	\N	\N
-2694	235	1454942516	1454944316	0	192.168.0.7	1	1454942516	1454942969	192.168.0.7
-2695	349	1455068343	1455070143	1	192.168.0.7	1	1455068343	\N	\N
-2696	467	1455104212	1455106012	0	172.16.10.10	1	1455104212	\N	\N
-2697	467	1455106622	1455108422	0	172.16.10.10	1	1455106622	\N	\N
-2698	467	1455108442	1455110242	0	172.16.10.10	1	1455108442	\N	\N
-2699	467	1455110694	1455112494	0	172.16.10.10	3	1455111916	\N	\N
-2700	225	1455112688	1455114488	0	172.16.11.17	1	1455112688	1455112759	172.16.11.17
-2701	22	1455112870	1455114670	1	172.16.20.23	2	1455113256	\N	\N
-2703	114	1455114407	1455116207	0	172.16.18.10	1	1455114407	1455114436	172.16.18.10
-2702	467	1455112918	1455114718	0	172.16.10.10	2	1455114394	1455114451	172.16.10.10
-2704	1	1455114547	1455116347	0	172.16.20.28	1	1455114547	1455114588	172.16.20.28
-2705	1	1455114751	1455116551	0	172.16.20.28	1	1455114751	1455114842	172.16.20.28
-2706	437	1455114803	1455116603	0	172.16.20.21	1	1455114803	1455114854	172.16.20.21
-2707	204	1455114953	1455116753	0	172.16.10.50	1	1455114953	1455114976	172.16.10.50
-2708	437	1455114978	1455116778	0	172.16.20.21	1	1455114978	1455115014	172.16.20.21
-2709	437	1455115060	1455116860	0	172.16.20.21	1	1455115060	1455115131	172.16.20.21
-2710	54	1455116235	1455118035	1	172.16.13.20	1	1455116235	\N	\N
-2711	143	1455116414	1455118214	0	172.16.31.38	1	1455116414	1455116430	172.16.31.38
-2712	162	1455116446	1455118246	1	172.16.31.38	1	1455116446	\N	\N
-2713	225	1455116976	1455118776	0	172.16.11.17	1	1455116976	1455117020	172.16.11.17
-2715	87	1455118305	1455120105	1	172.16.30.10	1	1455118305	\N	\N
-2716	390	1455118541	1455120341	1	172.16.11.22	1	1455118541	\N	\N
-2718	449	1455119099	1455120899	0	172.16.13.16	1	1455119099	1455119118	172.16.13.16
-2719	474	1455119163	1455120963	0	172.16.20.28	1	1455119163	1455119167	172.16.20.28
-2720	1	1455119179	1455120979	0	172.16.20.28	1	1455119179	1455119196	172.16.20.28
-2756	37	1455219562	1455221362	0	172.16.30.37	1	1455219562	1455219602	172.16.30.37
-2721	474	1455119207	1455121007	0	172.16.20.28	1	1455119207	1455119224	172.16.20.28
-2722	474	1455119240	1455121040	0	172.16.20.28	1	1455119240	1455119242	172.16.20.28
-2723	1	1455119280	1455121080	0	172.16.20.28	1	1455119280	1455119306	172.16.20.28
-2725	474	1455119330	1455121130	0	172.16.20.28	1	1455119330	1455119332	172.16.20.28
-2724	449	1455119314	1455121114	0	172.16.20.13	1	1455119314	1455119387	172.16.20.13
-2757	397	1455219623	1455221423	1	172.16.30.37	1	1455219623	\N	\N
-2726	449	1455119697	1455121497	1	172.16.13.16	1	1455119697	\N	\N
-2729	440	1455120059	1455121859	1	172.16.28.51	1	1455120059	\N	\N
-2714	468	1455118061	1455119861	0	172.16.28.16	1	1455118061	\N	\N
-2768	431	1455225006	1455226806	0	172.16.22.19	1	1455225006	1455225237	172.16.22.19
-2727	474	1455119699	1455121499	0	192.168.0.7	2	1455120369	1455120453	192.168.0.7
-2730	474	1455120938	1455122738	1	192.168.0.7	1	1455120938	\N	\N
-2717	443	1455118550	1455120350	0	192.168.0.7	3	1455119589	\N	\N
-2731	443	1455121987	1455123787	0	192.168.0.7	1	1455121987	1455122049	192.168.0.7
-2732	443	1455122066	1455123866	0	192.168.0.7	1	1455122066	1455122102	192.168.0.7
-2733	443	1455122116	1455123916	0	192.168.0.7	1	1455122116	1455122177	192.168.0.7
-2735	443	1455122348	1455124148	0	192.168.0.7	1	1455122348	1455122373	192.168.0.7
-2736	443	1455122392	1455124192	0	192.168.0.7	1	1455122392	1455122495	192.168.0.7
-2738	453	1455125953	1455127753	1	172.16.12.32	1	1455125953	\N	\N
-2763	437	1455222301	1455224101	0	172.16.20.21	1	1455222301	\N	\N
-2740	384	1455127616	1455129416	1	172.16.16.12	1	1455127616	\N	\N
-2755	437	1455219454	1455221254	0	172.16.0.2	2	1455219920	1455219959	172.16.0.2
-2762	467	1455221810	1455223610	0	172.16.10.10	2	1455222608	1455222642	172.16.10.10
-2764	355	1455222974	1455224774	1	172.16.20.21	1	1455222974	\N	\N
-2752	444	1455218632	1455220432	0	192.168.0.7	1	1455218632	\N	\N
-2737	458	1455125869	1455127669	0	172.16.11.28	2	1455126846	\N	\N
-2741	458	1455127748	1455129548	1	172.16.11.28	1	1455127748	\N	\N
-2742	468	1455127939	1455129739	1	172.16.28.16	1	1455127939	\N	\N
-2739	444	1455127365	1455129165	1	192.168.0.7	2	1455128420	\N	\N
-2743	467	1455129340	1455131140	1	172.16.10.10	1	1455129340	\N	\N
-2744	453	1455131730	1455133530	1	172.16.12.32	1	1455131730	\N	\N
-2745	384	1455132752	1455134552	1	172.16.16.12	1	1455132752	\N	\N
-2746	468	1455132767	1455134567	0	172.16.28.16	1	1455132767	1455132871	172.16.28.16
-2747	9	1455158268	1455160068	0	192.168.0.7	1	1455158268	1455158320	192.168.0.7
-2748	235	1455192145	1455193945	0	192.168.0.7	1	1455192145	1455193023	192.168.0.7
-2758	444	1455220511	1455222311	1	192.168.0.7	1	1455220511	\N	\N
-2749	443	1455196859	1455198659	0	192.168.0.7	2	1455196888	1455197011	192.168.0.7
-2751	11	1455218265	1455220065	1	172.16.20.25	2	1455219311	\N	\N
-2750	384	1455217885	1455219685	0	172.16.16.12	1	1455217885	1455219453	172.16.16.12
-2754	453	1455219426	1455221226	0	172.16.12.32	2	1455220841	\N	\N
-2761	225	1455221679	1455223479	0	172.16.11.17	1	1455221679	1455221716	172.16.11.17
-2753	400	1455218842	1455220642	0	172.16.22.19	1	1455218842	\N	\N
-2759	400	1455220682	1455222482	0	172.16.22.19	1	1455220682	\N	\N
-2760	453	1455221243	1455223043	0	172.16.12.32	1	1455221243	\N	\N
-2767	454	1455224800	1455226600	0	192.168.0.7	1	1455224800	1455224902	192.168.0.7
-2766	400	1455223459	1455225259	0	172.16.22.19	3	1455225250	\N	\N
-2765	453	1455223102	1455224902	0	172.16.12.32	1	1455223102	\N	\N
-2769	453	1455225059	1455226859	1	172.16.12.32	1	1455225059	\N	\N
-2770	467	1455225394	1455227194	0	172.16.22.19	1	1455225394	1455225614	172.16.22.19
-2771	400	1455225617	1455227417	1	172.16.22.19	1	1455225617	\N	\N
-2773	437	1455227295	1455229095	0	172.16.20.13	1	1455227295	1455227470	172.16.20.13
-2774	444	1455228362	1455230162	1	192.168.0.7	1	1455228362	\N	\N
-2772	444	1455226380	1455228180	0	192.168.0.7	1	1455226380	\N	\N
-2775	384	1455231040	1455232840	0	172.16.16.12	1	1455231040	1455231062	172.16.16.12
-2776	444	1455235064	1455236864	0	192.168.0.7	1	1455235064	1455235494	192.168.0.7
-2777	9	1455250062	1455251862	0	192.168.0.7	1	1455250062	1455250468	192.168.0.7
-2803	384	1455305142	1455306942	0	172.16.16.12	1	1455305142	1455305159	172.16.16.12
-2823	23	1455314453	1455316253	0	172.16.31.24	1	1455314453	1455314578	172.16.31.24
-2802	474	1455304196	1455305996	0	192.168.0.7	2	1455305365	\N	\N
-2778	467	1455274448	1455276248	0	172.16.10.10	1	1455274448	\N	\N
-2779	467	1455278585	1455280385	1	172.16.10.10	1	1455278585	\N	\N
-2780	473	1455279566	1455281366	1	192.168.0.7	1	1455279566	\N	\N
-2781	468	1455284195	1455285995	0	172.16.28.16	3	1455284418	1455284605	172.16.28.16
-2782	440	1455284669	1455286469	0	172.16.28.16	1	1455284669	1455285013	172.16.28.16
-2783	468	1455285026	1455286826	0	172.16.28.16	1	1455285026	1455285184	172.16.28.16
-2784	440	1455285210	1455287010	1	172.16.28.16	1	1455285210	\N	\N
-2785	230	1455286077	1455287877	1	172.16.11.30	1	1455286077	\N	\N
-2786	468	1455287939	1455289739	0	172.16.18.20	1	1455287939	1455288088	172.16.18.20
-2788	155	1455289050	1455290850	0	172.16.29.23	1	1455289050	1455289135	172.16.29.23
-2807	397	1455306970	1455308770	0	172.16.30.37	1	1455306970	1455307260	172.16.30.37
-2826	467	1455314793	1455316593	0	172.16.10.10	1	1455314793	1455315177	172.16.10.10
-2787	41	1455288282	1455290082	0	172.16.13.14	2	1455289398	\N	\N
-2791	475	1455290475	1455292275	0	192.168.0.7	1	1455290475	1455291054	192.168.0.7
-2809	397	1455307711	1455309511	0	172.16.30.37	1	1455307711	1455307858	172.16.30.37
-2825	23	1455314586	1455316386	0	172.16.31.24	1	1455314586	1455315608	172.16.31.24
-2827	384	1455315823	1455317623	0	172.16.16.12	1	1455315823	1455315840	172.16.16.12
-2828	474	1455317086	1455318886	0	192.168.0.7	1	1455317086	1455318029	192.168.0.7
-2804	474	1455306058	1455307858	0	192.168.0.7	2	1455307647	\N	\N
-2789	41	1455290117	1455291917	0	172.16.13.14	1	1455290117	\N	\N
-2790	467	1455290401	1455292201	0	172.16.10.10	1	1455290401	\N	\N
-2793	467	1455292958	1455294758	1	172.16.10.10	1	1455292958	\N	\N
-2794	183	1455293437	1455295237	1	192.168.0.7	1	1455293437	\N	\N
-2815	155	1455309956	1455311756	0	172.16.29.24	2	1455310352	\N	\N
-2818	155	1455311905	1455313705	0	172.16.29.24	1	1455311905	1455312121	172.16.29.24
-2805	225	1455306167	1455307967	0	172.16.11.17	3	1455307586	\N	\N
-2819	37	1455312461	1455314261	1	172.16.30.37	1	1455312461	\N	\N
-2811	225	1455308337	1455310137	0	172.16.11.17	1	1455308337	1455308523	172.16.11.17
-2816	474	1455310420	1455312220	0	192.168.0.7	2	1455311078	\N	\N
-2792	41	1455291976	1455293776	0	172.16.13.14	1	1455291976	\N	\N
-2795	41	1455294296	1455296096	1	172.16.13.14	1	1455294296	\N	\N
-2796	468	1455296707	1455298507	0	172.16.18.20	1	1455296707	1455296755	172.16.18.20
-2798	41	1455303702	1455305502	0	172.16.13.14	1	1455303702	1455303735	172.16.13.14
-2799	11	1455304026	1455305826	0	172.16.20.13	1	1455304026	1455304078	172.16.20.13
-2800	462	1455304086	1455305886	0	172.16.20.13	1	1455304086	1455304089	172.16.20.13
-2801	11	1455304099	1455305899	0	172.16.20.13	1	1455304099	1455304117	172.16.20.13
-2808	155	1455307687	1455309487	0	172.16.31.24	2	1455308475	1455308638	172.16.31.24
-2806	230	1455306593	1455308393	0	172.16.11.30	2	1455307977	\N	\N
-2812	155	1455308810	1455310610	0	172.16.31.24	1	1455308810	1455308988	172.16.31.24
-2813	136	1455309002	1455310802	0	172.16.31.24	1	1455309002	1455309018	172.16.31.24
-2797	474	1455302293	1455304093	0	192.168.0.7	1	1455302293	\N	\N
-2814	155	1455309061	1455310861	0	172.16.31.24	1	1455309061	1455309184	172.16.31.24
-2829	376	1455320580	1455322380	1	172.16.0.2	1	1455320580	\N	\N
-2810	474	1455307897	1455309697	0	192.168.0.7	2	1455308583	\N	\N
-2817	376	1455310785	1455312585	1	172.16.0.2	1	1455310785	\N	\N
-2830	444	1455358405	1455360205	0	192.168.0.7	1	1455358405	1455359642	192.168.0.7
-2831	444	1455360657	1455362457	0	192.168.0.7	1	1455360657	1455361000	192.168.0.7
-2820	474	1455312556	1455314356	0	192.168.0.7	2	1455313241	\N	\N
-2836	437	1455393817	1455395617	0	192.168.0.7	1	1455393817	1455393874	192.168.0.7
-2837	437	1455394036	1455395836	1	192.168.0.7	1	1455394036	\N	\N
-2843	355	1455536774	1455538574	0	172.16.20.15	1	1455536774	1455536815	172.16.20.15
-2838	355	1455502885	1455504685	0	192.168.0.7	1	1455502885	\N	\N
-2832	235	1455366260	1455368060	0	192.168.0.7	2	1455366985	\N	\N
-2833	235	1455368293	1455370093	0	192.168.0.7	1	1455368293	1455369081	192.168.0.7
-2821	23	1455312607	1455314407	0	172.16.31.24	1	1455312607	\N	\N
-2824	382	1455314551	1455316351	1	172.16.31.11	1	1455314551	\N	\N
-2822	474	1455314371	1455316171	0	192.168.0.7	1	1455314371	\N	\N
-2834	462	1455393639	1455395439	0	192.168.0.7	1	1455393639	1455393754	192.168.0.7
-2835	462	1455393772	1455395572	0	192.168.0.7	1	1455393772	1455393801	192.168.0.7
-2839	355	1455507176	1455508976	0	192.168.0.7	1	1455507176	1455507895	192.168.0.7
-2841	355	1455536422	1455538222	0	172.16.20.15	1	1455536422	1455536512	172.16.20.15
-2842	437	1455536527	1455538327	0	172.16.20.15	1	1455536527	1455536757	172.16.20.15
-2844	437	1455536828	1455538628	0	172.16.20.15	1	1455536828	1455537053	172.16.20.15
-2845	467	1455536891	1455538691	0	172.16.10.10	1	1455536891	\N	\N
-2840	467	1455535001	1455536801	0	172.16.10.10	2	1455536619	\N	\N
-2848	471	1455540446	1455542246	0	172.16.11.20	1	1455540446	1455540526	172.16.11.20
-2846	467	1455538709	1455540509	0	172.16.10.10	1	1455538709	\N	\N
-2849	471	1455540536	1455542336	0	172.16.11.20	1	1455540536	1455540844	172.16.11.20
-2851	41	1455541825	1455543625	1	172.16.13.14	1	1455541825	\N	\N
-2847	382	1455540002	1455541802	0	172.16.31.10	1	1455540002	\N	\N
-2850	467	1455540648	1455542448	0	172.16.10.10	1	1455540648	\N	\N
-2855	382	1455544166	1455545966	0	172.16.31.10	2	1455545208	\N	\N
-2854	474	1455543782	1455545582	0	192.168.0.7	2	1455545193	\N	\N
-2853	467	1455543294	1455545094	0	172.16.10.10	2	1455544245	\N	\N
-2856	471	1455544388	1455546188	0	172.16.11.20	2	1455544922	\N	\N
-2858	41	1455545819	1455547619	0	172.16.13.14	1	1455545819	1455546760	172.16.13.14
-2861	474	1455546841	1455548641	1	192.168.0.7	1	1455546841	\N	\N
-2883	467	1455560727	1455562527	0	172.16.10.10	2	1455562007	\N	\N
-2859	471	1455546448	1455548248	0	172.16.11.20	1	1455546448	1455547158	172.16.11.20
-2890	355	1455564512	1455566312	1	172.16.23.11	2	1455565049	\N	\N
-2862	390	1455547391	1455549191	1	172.16.11.22	1	1455547391	\N	\N
-2860	382	1455546577	1455548377	0	172.16.31.10	1	1455546577	1455547430	172.16.31.10
-2864	54	1455548512	1455550312	0	172.16.20.13	1	1455548512	1455548539	172.16.20.13
-2865	54	1455548581	1455550381	0	172.16.20.13	1	1455548581	1455548672	172.16.20.13
-2857	467	1455545355	1455547155	0	172.16.10.10	2	1455547093	\N	\N
-2863	471	1455548039	1455549839	0	172.16.11.20	1	1455548039	\N	\N
-2868	471	1455550162	1455551962	1	172.16.11.20	2	1455550336	\N	\N
-2869	22	1455550760	1455552560	1	192.168.0.7	1	1455550760	\N	\N
-2867	143	1455549028	1455550828	0	172.16.31.38	2	1455550530	\N	\N
-2870	355	1455550886	1455552686	0	172.16.20.13	1	1455550886	1455550919	172.16.20.13
-2866	467	1455548818	1455550618	0	172.16.10.10	1	1455548818	\N	\N
-2872	437	1455551758	1455553558	0	172.16.23.11	1	1455551758	1455551787	172.16.23.11
-2873	355	1455551800	1455553600	1	172.16.23.11	1	1455551800	\N	\N
-2874	458	1455552186	1455553986	1	172.16.11.28	1	1455552186	\N	\N
-2876	230	1455552629	1455554429	1	172.16.11.21	1	1455552629	\N	\N
-2877	87	1455553010	1455554810	1	172.16.30.10	1	1455553010	\N	\N
-2871	467	1455551311	1455553111	0	172.16.10.10	1	1455551311	\N	\N
-2919	474	1455631645	1455633445	0	192.168.0.7	1	1455631645	\N	\N
-2920	456	1455632206	1455634006	0	172.16.20.13	1	1455632206	\N	\N
-2887	454	1455563405	1455565205	0	192.168.0.7	1	1455563405	\N	\N
-2875	474	1455552269	1455554069	0	192.168.0.7	2	1455554062	\N	\N
-2878	467	1455553699	1455555499	1	172.16.10.10	2	1455554611	\N	\N
-2894	390	1455565885	1455567685	1	172.16.11.22	1	1455565885	\N	\N
-2895	443	1455566128	1455567928	1	192.168.0.7	1	1455566128	\N	\N
-2912	467	1455622188	1455623988	0	172.16.10.10	2	1455623504	\N	\N
-2879	474	1455554112	1455555912	0	192.168.0.7	2	1455555475	\N	\N
-2880	474	1455555946	1455557746	1	192.168.0.7	2	1455556870	\N	\N
-2881	453	1455558146	1455559946	1	172.16.12.32	2	1455559169	\N	\N
-2882	467	1455558221	1455560021	0	172.16.10.10	1	1455558221	\N	\N
-2903	455	1455568882	1455570682	0	172.16.20.13	2	1455569286	1455569305	172.16.20.13
-2885	230	1455562522	1455564322	0	172.16.11.21	1	1455562522	1455562986	172.16.11.21
-2904	455	1455569447	1455571247	1	192.168.0.7	1	1455569447	\N	\N
-2886	474	1455563231	1455565031	1	192.168.0.7	1	1455563231	\N	\N
-2905	443	1455569823	1455571623	0	192.168.0.7	1	1455569823	1455569836	192.168.0.7
-2884	390	1455562219	1455564019	0	172.16.11.28	3	1455563927	\N	\N
-2888	458	1455563690	1455565490	1	172.16.11.28	2	1455564037	\N	\N
-2889	455	1455564425	1455566225	1	192.168.0.7	2	1455564506	\N	\N
-2891	467	1455564707	1455566507	0	172.16.10.10	1	1455564707	\N	\N
-2907	453	1455571748	1455573548	1	172.16.12.32	1	1455571748	\N	\N
-2893	474	1455565843	1455567643	1	192.168.0.7	3	1455567210	\N	\N
-2892	454	1455565515	1455567315	0	192.168.0.7	1	1455565515	\N	\N
-2906	397	1455570724	1455572524	1	172.16.30.34	2	1455571925	\N	\N
-2899	68	1455567634	1455569434	1	172.16.19.17	1	1455567634	\N	\N
-2898	454	1455567492	1455569292	0	192.168.0.7	1	1455567492	1455567887	192.168.0.7
-2900	454	1455567899	1455569699	1	192.168.0.7	1	1455567899	\N	\N
-2901	376	1455568013	1455569813	1	172.16.0.2	1	1455568013	\N	\N
-2896	467	1455566595	1455568395	0	172.16.10.10	3	1455568024	1455568175	172.16.10.10
-2909	477	1455574692	1455576492	1	192.168.0.7	1	1455574692	\N	\N
-2902	384	1455568547	1455570347	0	172.16.16.12	1	1455568547	1455568876	172.16.16.12
-2908	455	1455574127	1455575927	0	192.168.0.7	1	1455574127	\N	\N
-2897	355	1455567203	1455569003	0	172.16.23.11	2	1455568370	\N	\N
-2913	467	1455624190	1455625990	1	172.16.10.10	2	1455624222	\N	\N
-2910	455	1455575960	1455577760	1	192.168.0.7	3	1455577043	\N	\N
-2911	450	1455578462	1455580262	0	172.16.16.13	1	1455578462	1455578519	172.16.16.13
-2915	443	1455629920	1455631720	0	192.168.0.7	1	1455629920	1455630325	192.168.0.7
-2924	454	1455636177	1455637977	0	192.168.0.7	2	1455636762	1455637200	192.168.0.7
-2917	467	1455631205	1455633005	0	172.16.10.10	1	1455631205	1455631226	172.16.10.10
-2916	453	1455630308	1455632108	1	172.16.12.32	2	1455631350	\N	\N
-2918	456	1455631249	1455633049	0	172.16.10.10	1	1455631249	1455631433	172.16.10.10
-2914	474	1455628604	1455630404	0	192.168.0.7	1	1455628604	\N	\N
-2921	467	1455632996	1455634796	0	172.16.20.13	2	1455634368	1455634480	172.16.20.13
-2923	22	1455635186	1455636986	1	192.168.0.7	1	1455635186	\N	\N
-2925	454	1455637708	1455639508	1	192.168.0.7	1	1455637708	\N	\N
-2922	474	1455633521	1455635321	0	192.168.0.7	1	1455633521	\N	\N
-2927	87	1455638769	1455640569	1	172.16.30.10	1	1455638769	\N	\N
-2928	384	1455638803	1455640603	0	172.16.16.12	1	1455638803	1455638818	172.16.16.12
-2929	384	1455638872	1455640672	0	172.16.16.12	1	1455638872	1455638919	172.16.16.12
-2930	476	1455639615	1455641415	0	172.16.16.13	1	1455639615	1455639660	172.16.16.13
-2931	467	1455639660	1455641460	0	172.16.10.10	1	1455639660	1455639879	172.16.10.10
-2926	474	1455637735	1455639535	0	192.168.0.7	1	1455637735	\N	\N
-2933	453	1455640779	1455642579	1	172.16.12.32	3	1455641622	\N	\N
-2970	474	1455735667	1455737467	1	192.168.0.7	1	1455735667	\N	\N
-2952	437	1455659224	1455661024	0	172.16.20.21	1	1455659224	1455659302	172.16.20.21
-2951	355	1455657593	1455659393	0	172.16.20.21	2	1455659143	1455659303	172.16.20.21
-2932	474	1455640403	1455642203	0	192.168.0.7	2	1455641911	\N	\N
-2953	467	1455716670	1455718470	1	172.16.10.10	5	1455717470	\N	\N
-2991	443	1455823410	1455825210	0	192.168.0.7	1	1455823410	\N	\N
-2954	468	1455719264	1455721064	0	172.16.14.22	2	1455719867	1455720106	172.16.14.22
-2955	87	1455720163	1455721963	0	172.16.30.10	1	1455720163	1455720246	172.16.30.10
-2956	114	1455721129	1455722929	0	172.16.18.10	1	1455721129	1455721751	172.16.18.10
-2958	443	1455722810	1455724610	1	192.168.0.7	1	1455722810	\N	\N
-2992	443	1455825460	1455827260	1	192.168.0.7	1	1455825460	\N	\N
-2934	474	1455642496	1455644296	0	192.168.0.7	1	1455642496	\N	\N
-2936	474	1455644373	1455646173	1	192.168.0.7	1	1455644373	\N	\N
-2935	454	1455642683	1455644483	0	192.168.0.7	2	1455643554	\N	\N
-2937	455	1455646334	1455648134	1	192.168.0.7	1	1455646334	\N	\N
-2984	358	1455812623	1455814423	1	192.168.0.7	1	1455812623	\N	\N
-2939	454	1455648328	1455650128	0	192.168.0.7	1	1455648328	1455648628	192.168.0.7
-2957	474	1455721495	1455723295	0	192.168.0.7	1	1455721495	\N	\N
-2960	470	1455723397	1455725197	1	172.16.30.60	1	1455723397	\N	\N
-2961	467	1455724364	1455726164	1	172.16.10.10	1	1455724364	\N	\N
-2969	467	1455735226	1455737026	0	172.16.0.2	2	1455736860	\N	\N
-2938	467	1455646682	1455648482	0	172.16.0.2	2	1455647370	\N	\N
-2971	467	1455737135	1455738935	0	172.16.0.2	1	1455737135	\N	\N
-2959	474	1455723381	1455725181	0	192.168.0.7	1	1455723381	\N	\N
-2963	474	1455725215	1455727015	1	192.168.0.7	1	1455725215	\N	\N
-2962	468	1455724857	1455726657	0	172.16.28.16	1	1455724857	\N	\N
-2941	453	1455649177	1455650977	0	172.16.20.13	2	1455649744	1455649918	172.16.20.13
-2940	467	1455648731	1455650531	0	172.16.0.2	2	1455649397	\N	\N
-2943	474	1455652495	1455654295	1	192.168.0.7	1	1455652495	\N	\N
-2944	405	1455653408	1455655208	1	172.16.14.52	1	1455653408	\N	\N
-2964	468	1455726975	1455728775	0	172.16.28.16	1	1455726975	1455727763	172.16.28.16
-2972	467	1455739064	1455740864	1	172.16.0.2	1	1455739064	\N	\N
-2942	467	1455651248	1455653048	0	172.16.0.2	1	1455651248	\N	\N
-2945	467	1455653728	1455655528	1	172.16.10.10	2	1455654716	\N	\N
-2973	467	1455795327	1455797127	1	172.16.0.2	1	1455795327	\N	\N
-2947	476	1455655599	1455657399	0	172.16.16.13	1	1455655599	1455656098	172.16.16.13
-2974	384	1455802439	1455804239	0	172.16.16.12	1	1455802439	1455802455	172.16.16.12
-2946	355	1455654736	1455656536	0	172.16.20.21	2	1455655698	\N	\N
-2949	355	1455656708	1455658508	0	172.16.20.21	1	1455656708	1455657327	172.16.20.21
-2948	405	1455656559	1455658359	1	172.16.31.45	2	1455657528	\N	\N
-2950	437	1455657339	1455659139	0	172.16.20.21	1	1455657339	1455657546	172.16.20.21
-2975	404	1455802742	1455804542	0	192.168.0.7	2	1455803045	1455804251	192.168.0.7
-2977	23	1455804832	1455806632	1	172.16.31.24	1	1455804832	\N	\N
-2976	450	1455804075	1455805875	0	192.168.0.7	2	1455805135	1455805243	192.168.0.7
-2965	404	1455727100	1455728900	0	192.168.0.7	1	1455727100	\N	\N
-2966	467	1455731190	1455732990	1	172.16.10.10	1	1455731190	\N	\N
-2967	437	1455732808	1455734608	0	172.16.20.21	1	1455732808	1455732829	172.16.20.21
-2968	355	1455732840	1455734640	0	172.16.20.21	1	1455732840	1455733018	172.16.20.21
-2983	443	1455810282	1455812082	0	192.168.0.7	1	1455810282	\N	\N
-2979	443	1455806241	1455808041	0	192.168.0.7	2	1455806713	1455806948	192.168.0.7
-2978	450	1455806176	1455807976	0	172.16.16.12	1	1455806176	1455807337	172.16.16.12
-2981	450	1455808048	1455809848	0	172.16.16.12	1	1455808048	1455808113	172.16.16.12
-2985	443	1455812826	1455814626	1	192.168.0.7	1	1455812826	\N	\N
-2982	467	1455809921	1455811721	0	172.16.10.10	3	1455811521	\N	\N
-2986	467	1455814356	1455816156	1	172.16.0.2	1	1455814356	\N	\N
-2980	467	1455807419	1455809219	0	172.16.10.10	2	1455808567	\N	\N
-2987	443	1455818132	1455819932	1	192.168.0.7	2	1455818546	\N	\N
-2988	443	1455821351	1455823151	0	192.168.0.7	1	1455821351	1455821568	192.168.0.7
-2990	468	1455822277	1455824077	1	172.16.18.20	2	1455822775	\N	\N
-2989	443	1455821593	1455823393	0	192.168.0.7	1	1455821593	\N	\N
-2852	397	1455542336	1455544136	0	172.16.30.37	1	1455542336	1455542958	172.16.30.37
-2993	11	1455827367	1455829167	0	::1	1	1455827367	1455827379	::1
-2994	1	1455827389	1455829189	0	::1	1	1455827389	1455827675	::1
-2995	11	1455827685	1455829485	1	::1	1	1455827685	\N	\N
-2996	460	1455890514	1455892314	0	::1	1	1455890514	1455890592	::1
-3015	460	1456149647	1456151447	0	::1	2	1456151269	1456151303	::1
-2997	11	1455890711	1455892511	0	::1	2	1455892060	1455892207	::1
-2998	1	1455892213	1455894013	0	::1	1	1455892213	1455892389	::1
-2999	11	1455892410	1455894210	0	::1	1	1455892410	1455892432	::1
-3000	11	1455894585	1455896385	0	::1	1	1455894585	1455894601	::1
-3001	1	1455894606	1455896406	0	::1	1	1455894606	1455894638	::1
-3002	11	1455894644	1455896444	0	::1	1	1455894644	1455894794	::1
-3004	11	1455894810	1455896610	0	::1	1	1455894810	1455894820	::1
-3003	1	1455894799	1455896599	0	::1	1	1455894799	1455894824	::1
-3016	11	1456151310	1456153110	1	::1	2	1456152145	\N	\N
-3026	437	1456332520	1456334320	0	::1	1	1456332520	\N	\N
-3030	437	1456336331	1456338131	0	::1	1	1456336331	\N	\N
-3042	11	1456415340	1456417140	0	::1	2	1456416120	\N	\N
-3017	11	1456158993	1456160793	0	::1	1	1456158993	\N	\N
-3031	437	1456338775	1456340575	0	::1	2	1456339428	\N	\N
-3050	11	1456498455	1456500255	0	::1	1	1456498455	\N	\N
-3033	437	1456340808	1456342608	0	::1	1	1456340808	\N	\N
-3018	11	1456161142	1456162942	0	::1	1	1456161142	\N	\N
-3043	11	1456417324	1456419124	0	::1	2	1456418156	\N	\N
-3032	11	1456340570	1456342370	0	::1	2	1456342267	\N	\N
-3005	11	1455894831	1455896631	0	::1	2	1455894852	1455894863	::1
-3006	11	1455894892	1455896692	0	::1	2	1455894998	1455895030	::1
-3039	11	1456410443	1456412243	0	::1	2	1456411428	\N	\N
-3007	11	1455895085	1455896885	0	::1	3	1455896782	1455896791	::1
-3008	1	1455896796	1455898596	0	::1	1	1455896796	1455896966	::1
-3041	437	1456414365	1456416165	1	::1	1	1456414365	\N	\N
-3044	11	1456419318	1456421118	0	::1	1	1456419318	\N	\N
-3045	11	1456421227	1456423027	1	::1	2	1456421477	\N	\N
-3019	11	1456163192	1456164992	0	::1	1	1456163192	\N	\N
-3020	11	1456235719	1456237519	1	::1	1	1456235719	\N	\N
-3021	11	1456320625	1456322425	1	::1	1	1456320625	\N	\N
-3009	11	1455896975	1455898775	0	::1	2	1455897866	\N	\N
-3022	11	1456325753	1456327553	0	::1	1	1456325753	1456327310	::1
-3010	11	1455898816	1455900616	0	::1	1	1455898816	\N	\N
-3023	11	1456327317	1456329117	0	::1	1	1456327317	\N	\N
-3035	11	1456343381	1456345181	0	::1	1	1456343381	\N	\N
-3036	11	1456345263	1456347063	1	::1	1	1456345263	\N	\N
-2728	467	1455119950	1455121750	0	172.16.10.10	1	1455119950	\N	\N
-3011	11	1455900989	1455902789	0	::1	1	1455900989	\N	\N
-3012	11	1455902950	1455904750	1	::1	1	1455902950	\N	\N
-3013	11	1455909423	1455911223	1	::1	1	1455909423	\N	\N
-3034	437	1456342752	1456344552	0	::1	1	1456342752	\N	\N
-3014	11	1455917202	1455919002	1	::1	1	1455917202	\N	\N
-3025	437	1456330659	1456332459	0	::1	2	1456331760	\N	\N
-3024	11	1456329186	1456330986	0	::1	2	1456329956	\N	\N
-3027	11	1456332361	1456334161	0	::1	1	1456332361	1456332558	::1
-3028	1	1456332564	1456334364	0	::1	1	1456332564	1456332593	::1
-3029	467	1456332612	1456334412	1	::1	1	1456332612	\N	\N
-3037	437	1456345566	1456347366	1	::1	2	1456347178	\N	\N
-3046	437	1456426996	1456428796	1	::1	1	1456426996	\N	\N
-3038	11	1456408244	1456410044	0	::1	1	1456408244	\N	\N
-3040	11	1456412957	1456414757	0	::1	2	1456414539	\N	\N
-3056	11	1456511118	1456512918	0	::1	2	1456511635	\N	\N
-2734	443	1455122202	1455124002	0	192.168.0.7	1	1455122202	1455122330	192.168.0.7
-3051	11	1456500466	1456502266	0	::1	1	1456500466	\N	\N
-3055	437	1456510615	1456512415	1	::1	1	1456510615	\N	\N
-3062	437	1456752289	1456754089	0	::1	1	1456752289	1456753473	::1
-3047	11	1456491548	1456493348	0	::1	3	1456493190	\N	\N
-3048	11	1456493744	1456495544	1	::1	1	1456493744	\N	\N
-3057	11	1456512944	1456514744	0	::1	2	1456513581	\N	\N
-3049	437	1456496519	1456498319	1	::1	2	1456497324	\N	\N
-3054	11	1456508866	1456510666	0	::1	1	1456508866	\N	\N
-3052	11	1456502721	1456504521	0	::1	1	1456502721	\N	\N
-3053	11	1456504726	1456506526	1	::1	1	1456504726	\N	\N
-3059	437	1456517057	1456518857	0	::1	2	1456518500	\N	\N
-3061	437	1456518882	1456520682	1	::1	1	1456518882	\N	\N
-3058	11	1456514888	1456516688	0	::1	3	1456516014	\N	\N
-3060	11	1456516831	1456518631	1	::1	1	1456516831	\N	\N
-3063	11	1456752933	1456754733	0	::1	2	1456754354	\N	\N
-3064	11	1456755472	1456757272	0	::1	2	1456756527	\N	\N
-3065	11	1456757487	1456759287	0	::1	1	1456757487	\N	\N
-3067	437	1456759597	1456761397	0	::1	1	1456759597	1456759645	::1
-3068	437	1456759650	1456761450	1	::1	1	1456759650	\N	\N
-3066	11	1456759325	1456761125	0	::1	1	1456759325	\N	\N
-3069	11	1456761616	1456763416	0	::1	2	1456762639	\N	\N
-3070	437	1456762357	1456764157	0	::1	1	1456762357	\N	\N
-3072	437	1456764161	1456765961	1	::1	2	1456764343	\N	\N
-3071	11	1456763488	1456765288	0	::1	2	1456764864	\N	\N
-3073	11	1456765366	1456767166	0	::1	1	1456765366	\N	\N
-3074	437	1456767176	1456768976	0	::1	1	1456767176	1456767327	::1
-3104	437	1457101915	1457103715	1	::1	3	1457102501	\N	\N
-3075	11	1456767334	1456769134	0	::1	1	1456767334	\N	\N
-3077	11	1456769371	1456771171	1	::1	1	1456769371	\N	\N
-3076	437	1456768701	1456770501	0	::1	1	1456768701	\N	\N
-3078	462	1456771072	1456772872	0	::1	1	1456771072	1456771091	::1
-3079	437	1456771097	1456772897	0	::1	1	1456771097	1456771113	::1
-3103	437	1457099972	1457101772	0	::1	3	1457101461	\N	\N
-3080	462	1456771121	1456772921	0	::1	1	1456771121	\N	\N
-3081	437	1456773037	1456774837	0	::1	1	1456773037	\N	\N
-3083	462	1456775257	1456777057	0	::1	1	1456775257	\N	\N
-3084	462	1456777158	1456778958	1	::1	1	1456777158	\N	\N
-3106	11	1457104558	1457106358	0	::1	1	1457104558	\N	\N
-3082	11	1456774845	1456776645	0	::1	1	1456774845	\N	\N
-3085	437	1456778786	1456780586	0	::1	1	1456778786	1456779020	::1
-3086	437	1456844732	1456846532	1	::1	1	1456844732	\N	\N
-3087	437	1456858661	1456860461	1	::1	1	1456858661	\N	\N
-3088	11	1456861163	1456862963	0	::1	2	1456862074	\N	\N
-3089	1	1456863033	1456864833	0	::1	1	1456863033	1456863082	::1
-3090	11	1456863090	1456864890	0	::1	1	1456863090	1456863126	::1
-3091	1	1456863253	1456865053	1	::1	1	1456863253	\N	\N
-3092	437	1456870297	1456872097	1	::1	1	1456870297	\N	\N
-3093	1	1456925925	1456927725	0	::1	1	1456925925	1456925947	::1
-3094	394	1456925958	1456927758	0	::1	1	1456925958	\N	\N
-3095	394	1456928695	1456930495	0	::1	1	1456928695	1456928741	::1
-3096	437	1456933150	1456934950	0	::1	1	1456933150	\N	\N
-3097	11	1456935413	1456937213	1	::1	1	1456935413	\N	\N
-3098	437	1457013586	1457015386	1	127.0.0.1	1	1457013586	\N	\N
-3099	11	1457024916	1457026716	1	::1	1	1457024916	\N	\N
-3100	11	1457029537	1457031337	1	::1	2	1457030505	\N	\N
-3101	461	1457098688	1457100488	0	::1	1	1457098688	1457098744	::1
-3105	437	1457104696	1457106496	0	::1	5	1457106385	\N	\N
-3102	437	1457098749	1457100549	0	172.16.20.20	3	1457099734	1457099935	172.16.20.20
-3107	437	1457106915	1457108715	1	::1	2	1457108433	\N	\N
-3108	11	1457107895	1457109695	1	::1	2	1457109494	\N	\N
-3109	437	1457112811	1457114611	0	::1	1	1457112811	\N	\N
-3110	437	1457114618	1457116418	0	::1	1	1457114618	\N	\N
-3111	11	1457116482	1457118282	0	::1	1	1457116482	1457116493	::1
-3112	437	1457116497	1457118297	1	::1	1	1457116497	\N	\N
+2631	462	1455223197	1455224997	0	::1	1	1455223197	1455223415	::1
+2527	467	1454097745	1454099545	0	172.16.10.10	1	1454097745	\N	\N
+2609	437	1454531066	1454532866	0	::1	1	1454531066	1454531092	::1
+2610	355	1454531101	1454532901	1	::1	1	1454531101	\N	\N
+2613	11	1454679256	1454681056	1	127.0.0.1	1	1454679256	\N	\N
+2611	437	1454679007	1454680807	1	::1	2	1454679724	\N	\N
+2612	355	1454679237	1454681037	1	127.0.0.1	3	1454680373	\N	\N
+2614	22	1454680396	1454682196	1	::1	1	1454680396	\N	\N
+2615	437	1454684720	1454686520	1	::1	1	1454684720	\N	\N
+2616	355	1454684725	1454686525	1	::1	1	1454684725	\N	\N
+2617	22	1454685258	1454687058	1	127.0.0.1	1	1454685258	\N	\N
+2619	355	1454689026	1454690826	1	::1	1	1454689026	\N	\N
+2620	22	1454689060	1454690860	1	127.0.0.1	1	1454689060	\N	\N
+2633	462	1455223468	1455225268	0	::1	1	1455223468	1455223958	::1
+2618	437	1454688531	1454690331	0	::1	3	1454689826	1454689867	::1
+2621	437	1454694905	1454696705	1	::1	2	1454695821	\N	\N
+2623	355	1454709526	1454711326	1	::1	1	1454709526	\N	\N
+2622	437	1454709256	1454711056	1	::1	2	1454709876	\N	\N
+2624	11	1454709897	1454711697	1	127.0.0.1	1	1454709897	\N	\N
+2625	437	1455112413	1455114213	1	::1	1	1455112413	\N	\N
+2626	462	1455220318	1455222118	0	::1	1	1455220318	1455220321	::1
+2634	11	1455224000	1455225800	1	::1	1	1455224000	\N	\N
+2643	462	1455231487	1455233287	0	::1	1	1455231487	1455231634	::1
+2628	437	1455220591	1455222391	0	::1	3	1455222160	1455222173	::1
+2650	355	1455639474	1455641274	0	::1	1	1455639474	1455639481	::1
+2630	1	1455222374	1455224174	0	::1	4	1455224083	\N	\N
+2636	1	1455224923	1455226723	0	::1	1	1455224923	1455225240	::1
+2627	1	1455220551	1455222351	0	::1	2	1455222183	\N	\N
+2642	1	1455230567	1455232367	0	::1	3	1455231705	1455232040	::1
+2629	462	1455222324	1455224124	0	::1	2	1455222930	1455223191	::1
+2637	1	1455225246	1455227046	0	::1	4	1455226396	\N	\N
+2638	462	1455226431	1455228231	0	::1	1	1455226431	\N	\N
+2635	462	1455224912	1455226712	0	::1	2	1455225630	1455226425	::1
+2644	437	1455285191	1455286991	1	::1	1	1455285191	\N	\N
+2646	11	1455301401	1455303201	1	127.0.0.1	1	1455301401	\N	\N
+2645	355	1455301112	1455302912	1	::1	2	1455302006	\N	\N
+2640	462	1455228578	1455230378	0	::1	2	1455229139	1455230110	::1
+2639	1	1455228296	1455230096	0	::1	1	1455228296	\N	\N
+2647	437	1455302018	1455303818	1	::1	1	1455302018	\N	\N
+2641	462	1455230124	1455231924	0	::1	2	1455231133	1455231478	::1
+2648	1	1455303294	1455305094	1	::1	1	1455303294	\N	\N
+2649	437	1455639461	1455641261	0	::1	1	1455639461	1455639468	::1
+2651	1	1455639488	1455641288	1	::1	2	1455639863	\N	\N
+2652	1	1455646108	1455647908	0	::1	2	1455646701	1455647815	::1
+2653	437	1455647821	1455649621	1	::1	2	1455648419	\N	\N
+2654	437	1455652986	1455654786	0	::1	2	1455653818	1455654335	::1
+2655	11	1455654342	1455656142	0	::1	1	1455654342	1455654349	::1
+2656	355	1455654355	1455656155	0	::1	1	1455654355	1455654442	::1
+2657	11	1455654462	1455656262	1	::1	1	1455654462	\N	\N
+2658	355	1455654547	1455656347	0	::1	1	1455654547	1455654563	::1
+2659	437	1455654567	1455656367	0	::1	1	1455654567	1455654604	::1
+2660	1	1455715763	1455717563	1	::1	2	1455716352	\N	\N
+2661	1	1455719298	1455721098	1	::1	1	1455719298	\N	\N
+2662	437	1455721297	1455723097	0	::1	2	1455721802	1455722513	::1
+2663	1	1455722518	1455724318	0	::1	1	1455722518	1455722535	::1
+2665	437	1455801082	1455802882	1	::1	1	1455801082	\N	\N
+2666	437	1455803632	1455805432	1	::1	2	1455804049	\N	\N
+2668	1	1455823976	1455825776	1	::1	1	1455823976	\N	\N
+2689	355	1455895536	1455897336	1	::1	1	1455895536	\N	\N
+2667	437	1455823839	1455825639	0	::1	3	1455825364	1455825371	::1
+2669	355	1455825376	1455827176	1	::1	1	1455825376	\N	\N
+2670	437	1455825507	1455827307	0	::1	1	1455825507	1455825511	::1
+2671	11	1455825517	1455827317	1	::1	1	1455825517	\N	\N
+2687	11	1455895032	1455896832	0	127.0.0.1	2	1455896411	\N	\N
+2697	11	1455904909	1455906709	0	::1	1	1455904909	\N	\N
+2672	355	1455888316	1455890116	0	::1	1	1455888316	\N	\N
+2673	437	1455890531	1455892331	0	::1	1	1455890531	1455890540	::1
+2674	11	1455890545	1455892345	0	::1	1	1455890545	1455890564	::1
+2675	1	1455890569	1455892369	0	::1	1	1455890569	1455890830	::1
+2698	437	1455907855	1455909655	0	::1	1	1455907855	1455908414	::1
+2699	437	1455908421	1455910221	1	::1	1	1455908421	\N	\N
+2676	11	1455890836	1455892636	0	::1	1	1455890836	\N	\N
+2677	11	1455892729	1455894529	0	::1	1	1455892729	1455892753	::1
+2678	1	1455892757	1455894557	0	::1	1	1455892757	1455892853	::1
+2679	437	1455892859	1455894659	0	::1	1	1455892859	1455893057	::1
+2690	11	1455896882	1455898682	0	127.0.0.1	2	1455897917	\N	\N
+2692	355	1455900074	1455901874	1	::1	1	1455900074	\N	\N
+2681	11	1455893113	1455894913	0	::1	2	1455893146	1455893149	::1
+2691	11	1455898690	1455900490	0	127.0.0.1	2	1455899968	\N	\N
+2694	11	1455900599	1455902399	0	127.0.0.1	2	1455901231	\N	\N
+2680	355	1455893061	1455894861	0	::1	2	1455893169	1455893173	::1
+2685	1	1455893661	1455895461	0	127.0.0.1	1	1455893661	1455893879	127.0.0.1
+2686	1	1455893909	1455895709	0	127.0.0.1	1	1455893909	1455894056	127.0.0.1
+2695	11	1455902405	1455904205	0	127.0.0.1	1	1455902405	1455902448	127.0.0.1
+2693	437	1455900084	1455901884	0	::1	1	1455900084	\N	\N
+2682	11	1455893160	1455894960	0	127.0.0.1	2	1455894067	\N	\N
+2683	437	1455893179	1455894979	0	::1	2	1455894793	\N	\N
+2688	437	1455895045	1455896845	1	::1	1	1455895045	\N	\N
+2684	355	1455893195	1455894995	0	::1	1	1455893195	\N	\N
+2696	11	1455902470	1455904270	0	::1	5	1455903081	\N	\N
+2702	437	1456114067	1456115867	0	127.0.0.1	1	1456114067	\N	\N
+2664	437	1455722540	1455724340	0	::1	1	1455722540	\N	\N
+2700	437	1456105275	1456107075	0	127.0.0.1	1	1456105275	1456105291	127.0.0.1
+2701	1	1456105303	1456107103	0	127.0.0.1	1	1456105303	\N	\N
+2703	462	1456116974	1456118774	0	127.0.0.1	1	1456116974	1456117016	127.0.0.1
+2704	1	1456117027	1456118827	0	127.0.0.1	1	1456117027	1456117069	127.0.0.1
+2705	462	1456117076	1456118876	0	127.0.0.1	2	1456118293	\N	\N
+2706	462	1456119048	1456120848	0	127.0.0.1	2	1456120015	\N	\N
+2707	462	1456122408	1456124208	0	127.0.0.1	1	1456122408	\N	\N
+2708	462	1456124235	1456126035	0	127.0.0.1	1	1456124235	\N	\N
+2709	462	1456126424	1456128224	0	127.0.0.1	3	1456127313	\N	\N
+2710	462	1456128425	1456130225	1	127.0.0.1	1	1456128425	\N	\N
+2711	462	1456131922	1456133722	0	127.0.0.1	1	1456131922	\N	\N
+2712	462	1456134072	1456135872	0	127.0.0.1	1	1456134072	\N	\N
+2713	462	1456696527	1456698327	1	127.0.0.1	1	1456696527	\N	\N
+2714	437	1457599609	1457601409	0	127.0.0.1	2	1457600438	\N	\N
+2715	462	1457601897	1457603697	1	127.0.0.1	1	1457601897	\N	\N
+2716	437	1457602803	1457604603	1	127.0.0.1	1	1457602803	\N	\N
+2717	462	1457603801	1457605601	1	127.0.0.1	1	1457603801	\N	\N
+2733	437	1458444148	1458445948	0	127.0.0.1	1	1458444148	\N	\N
+2718	437	1457663691	1457665491	0	127.0.0.1	2	1457664288	\N	\N
+2719	462	1457666691	1457668491	0	127.0.0.1	1	1457666691	\N	\N
+2720	462	1457668556	1457670356	0	127.0.0.1	1	1457668556	\N	\N
+2721	462	1457670624	1457672424	0	127.0.0.1	1	1457670624	\N	\N
+2722	462	1457672529	1457674329	1	127.0.0.1	1	1457672529	\N	\N
+2723	462	1457678307	1457680107	0	127.0.0.1	2	1457679363	\N	\N
+2724	462	1457680761	1457682561	0	127.0.0.1	2	1457682031	\N	\N
+2725	462	1457684196	1457685996	0	127.0.0.1	1	1457684196	\N	\N
+2734	437	1458451693	1458453493	0	127.0.0.1	2	1458453157	\N	\N
+2726	462	1457686629	1457688429	0	127.0.0.1	2	1457688355	\N	\N
+2727	462	1457688940	1457690740	0	127.0.0.1	1	1457688940	\N	\N
+2735	437	1458453621	1458455421	0	127.0.0.1	3	1458454516	\N	\N
+2736	437	1458455741	1458457541	0	127.0.0.1	1	1458455741	1458455866	127.0.0.1
+2728	462	1457691588	1457693388	0	127.0.0.1	3	1457692838	\N	\N
+2729	437	1458432290	1458434090	0	127.0.0.1	1	1458432290	1458432390	127.0.0.1
+2730	1	1458432398	1458434198	0	127.0.0.1	1	1458432398	1458432767	127.0.0.1
+2731	437	1458432773	1458434573	1	127.0.0.1	1	1458432773	\N	\N
+2732	437	1458438755	1458440555	1	127.0.0.1	1	1458438755	\N	\N
+2737	437	1458455871	1458457671	0	127.0.0.1	1	1458455871	1458456312	127.0.0.1
+2738	355	1458456324	1458458124	0	127.0.0.1	1	1458456324	1458456354	127.0.0.1
+2739	462	1458456363	1458458163	0	127.0.0.1	1	1458456363	1458456380	127.0.0.1
+2740	437	1458456386	1458458186	0	127.0.0.1	3	1458457716	\N	\N
+2741	437	1458458329	1458460129	0	127.0.0.1	1	1458458329	1458458602	127.0.0.1
+2742	355	1458458612	1458460412	0	127.0.0.1	1	1458458612	1458458654	127.0.0.1
+2743	462	1458458660	1458460460	0	127.0.0.1	1	1458458660	1458458721	127.0.0.1
+2744	437	1458458727	1458460527	1	127.0.0.1	1	1458458727	\N	\N
 \.
 
 
 --
--- TOC entry 2845 (class 0 OID 0)
--- Dependencies: 223
 -- Name: cruge_session_idsession_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cruge_session_idsession_seq', 3112, true);
+SELECT pg_catalog.setval('cruge_session_idsession_seq', 2744, true);
 
 
 --
--- TOC entry 2708 (class 0 OID 109423)
--- Dependencies: 224
 -- Data for Name: cruge_system; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10502,8 +8001,6 @@ COPY cruge_system (idsystem, name, largename, sessionmaxdurationmins, sessionmax
 
 
 --
--- TOC entry 2846 (class 0 OID 0)
--- Dependencies: 225
 -- Name: cruge_system_idsystem_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -10511,8 +8008,6 @@ SELECT pg_catalog.setval('cruge_system_idsystem_seq', 1, false);
 
 
 --
--- TOC entry 2710 (class 0 OID 109442)
--- Dependencies: 226
 -- Data for Name: cruge_user; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -10526,11 +8021,13 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 451	1447182103	\N	\N	16581185	rmadriz@minmujer.gob.ve	67e5ae8f3baa711f7e9f4cea407c4d3e	de9555ce008d91678ed2fe38fe77b6ad	2	0	0	2181
 57	1438175320	1438175320	1438175320	10116219	10116219@minmujer.gob.ve	464494c508664753654c8904d5099bd0	\N	1	0	0	1050
 4	1426193656	1426193656	1440083739	84387171	84387171@gmai.com	bfeaa1d8875ab97df989088273f502a9	\N	1	0	0	\N
+458	1447785132	\N	1448292006	9482100	icarrabbia@minmujer.gob.ve	8b0e1741c32afc192757e9d66b1dfa0c	71cf3bddc54221f81fae17c25e67badd	1	0	0	4221
 438	1446660593	1446660593	1446660594	16286932	16286932@minmujer.gob.ve	55a69bbbe459e7313d9b9ebdee7dbbf7	\N	1	0	0	2141
 452	1447182171	\N	\N	11409862	jblanco@minmujer.gob.ve	c76ed13e7bb313d7305b5dede1209159	8cd89ffe47f8b8a65cc4d88e03787c3c	2	0	0	3757
 86	1438270422	1438270422	1438272658	4819761	4819761@minmujer.gob.ve	294ed910821e6644abc21e26177f366a	\N	1	0	0	1218
 93	1438278366	1438278366	1438278367	15586583	15586583@minmujer.gob.ve	7c2de0e190c7ffee83fb71751882d591	\N	1	0	0	2541
 84	1438267088	1438267088	1438268063	15801033	15801033@minmujer.gob.ve	d26b5f79284859549591ae4deb939c42	\N	1	0	0	3589
+444	1447098737	\N	\N	14779314	amoreno@minmujer.gob.ve	97f3c33c08143676cc6e7063c9c1be79	d2ae6d31c201487dd6112a1b97ce1146	1	0	0	2213
 140	1438788001	1438788001	1438788001	15115104	15115104@minmujer.gob.ve	f9a1c8be669f63acdcaf1c916bc808d9	\N	1	0	0	\N
 142	1438788112	1438788112	1438788112	12301887	12301887@minmujer.gob.ve	a9d8311f4e8f5911d524335e656ed77b	\N	1	0	0	\N
 131	1438635223	1438635223	1438884311	16359593	16359593@minmujer.gob.ve	65a821e1564f80f493393723213599c1	\N	1	0	0	1191
@@ -10540,45 +8037,45 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 165	1438803274	1438803274	1438887624	6309927	6309927@minmujer.gob.ve	6fe05a460a046c8f78ee83e25a922072	\N	1	0	0	657
 212	1439397942	1439397942	1439403328	84571087	84571087@minmujer.gob.ve	75d01a7dc8b8a4afe16b7ded0fa2571f	\N	1	0	0	\N
 229	1439410700	1439410700	1439419073	6440154	6440154@minmujer.gob.ve	657eabfd4116a698da1e08073d22627a	\N	1	0	0	4322
+455	1447185127	\N	\N	17255775	sbarrada@minmujer.gob.ve	13a426dd8e5fc28c9d21301bab596027	ff8ccaf0f4e7e43747361512957c9549	1	0	0	4231
 256	1439478178	1439478178	1439566329	15662117	15662117@minmujer.gob.ve	e64bea2405096ba6286e264c464230bb	\N	1	0	0	3987
 360	1439827815	1439827815	1439827816	5826610	5826610@minmujer.gob.ve	d479025f6b7d6b84f129947f45d757dd	\N	1	0	0	864
 300	1439559839	1439559839	1439565011	8546491	8546491@minmujer.gob.ve	5096529063b4bbeb43bfa3613dcecb16	\N	1	0	0	795
+456	1447185511	\N	\N	14897943	jlopez@minmujer.gob.ve	4f8bc3e85ab0ef35d8fa4bb2e255da2b	c243af8c7c39b0980946bed29c6d4c92	1	0	0	2653
 463	1449067074	1449067074	1449067074	16922608	16922608@minmujer.gob.ve	652d1e3e5c96059a15149f1cf5f521c4	\N	1	0	0	4601
 10	1426273722	1426273722	1446668845	84387171	18141986@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	3496
-397	1441113189	1441113189	1455571925	16202211	16202211@minmujer.gob.ve	203e9505a6485d03fe4d6c4c90f339bb	\N	1	0	0	3822
-458	1447785132	\N	1455564037	9482100	icarrabbia@minmujer.gob.ve	8b0e1741c32afc192757e9d66b1dfa0c	71cf3bddc54221f81fae17c25e67badd	1	0	0	4221
-454	1447184998	\N	1455648328	18535027	imaza@minmujer.gob.ve	f20e44b6b66f5e4579b580c1bcd4dda4	bac412da35a36699863288596dee968b	1	0	0	976
+461	1449063558	1449063558	1453902263	21092594	21092594@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4611
+454	1447184998	\N	1453832371	18535027	imaza@minmujer.gob.ve	f20e44b6b66f5e4579b580c1bcd4dda4	bac412da35a36699863288596dee968b	1	0	0	976
+460	1449063532	1449063532	1453744044	18712298	jrondon@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4543
+443	1447098236	\N	1454090530	8246451	egarcia@minmujer.gob.ve	5598c6a8a965b17372e5272a1daa3fff	fa6b1c1fa84b78d0ce2f1cf7336e5f75	1	0	0	3312
 457	1447610486	1447610486	1447610487	17287091	17287091@minmujer.gob.ve	4d9bf7794d3c890998c2e7d4505c7f30	\N	1	0	0	2882
+397	1441113189	1441113189	1454350639	16202211	16202211@minmujer.gob.ve	203e9505a6485d03fe4d6c4c90f339bb	\N	1	0	0	3822
 464	1452708463	1452708463	1452708805	4114842	4114842@minmujer.gob.ve	fab22a55359c40572cee9d4c9b536dd3	\N	1	0	0	969
 439	1446845539	\N	1453832427	23169533	mblanco@minmujer.gob.ve	57dfe1bf4403b3a3c9d506ca3a0ccf2a	4162f407df6009ba85b48d2f529c1e6e	1	0	0	3182
-68	1438178716	1438178716	1455567634	18134504	18134504@minmujer.gob.ve	0f36c96775a2158035d713c328bf2ff1	\N	1	0	0	2649
-443	1447098236	\N	1455825460	8246451	egarcia@minmujer.gob.ve	5598c6a8a965b17372e5272a1daa3fff	fa6b1c1fa84b78d0ce2f1cf7336e5f75	1	0	0	3312
+68	1438178716	1438178716	1454511100	18134504	18134504@minmujer.gob.ve	0f36c96775a2158035d713c328bf2ff1	\N	1	0	0	2649
 280	1439495087	1439495087	1453837469	10986121	jhernandez@minmujer.gob.ve	db47aa1861524e2ac70a733e2563b485	\N	1	0	0	754
 21	1433444003	1433444003	1453837698	6301603	mmarcano@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	2643
-143	1438788175	1438788175	1455550530	14484858	14484858@minmujer.gob.ve	28e374ef74289f533ecbb2aad7757185	\N	1	0	0	1140
-453	1447184595	\N	1455649744	13217158	eparedes@minmujer.gob.ve	697394f6deac276404286613fab9615d	c6a15c16e83b7ff484a711d7dc86d8b4	1	0	0	3834
-444	1447098737	\N	1455360657	14779314	amoreno@minmujer.gob.ve	97f3c33c08143676cc6e7063c9c1be79	d2ae6d31c201487dd6112a1b97ce1146	1	0	0	2213
-456	1447185511	\N	1455632206	14897943	jlopez@minmujer.gob.ve	4f8bc3e85ab0ef35d8fa4bb2e255da2b	c243af8c7c39b0980946bed29c6d4c92	1	0	0	2653
-455	1447185127	\N	1455646334	17255775	sbarrada@minmujer.gob.ve	13a426dd8e5fc28c9d21301bab596027	ff8ccaf0f4e7e43747361512957c9549	1	0	0	4231
+143	1438788175	1438788175	1454439809	14484858	14484858@minmujer.gob.ve	28e374ef74289f533ecbb2aad7757185	\N	1	0	0	1140
+453	1447184595	\N	1454089617	13217158	eparedes@minmujer.gob.ve	697394f6deac276404286613fab9615d	c6a15c16e83b7ff484a711d7dc86d8b4	1	0	0	3834
 313	1439566616	1439566616	1439566616	4293089	4293089@minmujer.gob.ve	24be6f78c63350e8281a8fdcfdcc0f64	\N	1	0	0	3794
 447	1447102585	\N	\N	14284469	yguevara@minmujer.gob.ve	9990ef573a759fa23f1ae2b3227a6c00	6a88da8ac8ed3f0d98f319c0ba694905	1	0	0	4037
 359	1439821817	1439821817	1439826425	19556263	19556263@minmujer.gob.ve	be90e4b5bc39836cf641b78c490c8143	\N	1	0	0	4277
 441	1447086593	\N	\N	lenin	lrumboss@minmujer.gob.ve	5247399889c1baf78534d1218c27abbd	721b47376e4d2720b20b7b4312c36fc8	2	0	0	4545
-1	\N	\N	1456925925	admin	admin@tucorreo.com	cce868a097d54c64229f71de9a6ca147	\N	1	0	0	\N
-461	1449063558	1449063558	1457098689	21092594	21092594@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4611
-462	1449065675	1449065675	1456777158	21281617	cvelasquez@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4612
+128	1438631426	1438631426	1438799682	14542923	14542923@minmujer.gob.ve	411a7fcd5e904fd188578b329ec93fd8	\N	1	0	0	4105
 448	1447102725	\N	\N	20326830	rrodriguez@minmujer.gob.ve	1622f4da2ae803f6fa899521852ef212	940456b98279f60dd23c5329a8d97c6a	1	0	0	4035
 417	1444246076	1444246076	1444248088	19310995	19310995@minmujer.gob.ve	13925eb0d255d1374d26d86c38b343d1	\N	1	0	0	1961
 133	1438774554	1438774554	1446746735	15709348	15709348@minmujer.gob.ve	cd1822b1bb458699ec9004ef3bdc3796	\N	1	0	0	3413
 430	1445354085	1445354085	1445354086	16021063	16021063@minmujer.gob.ve	d0a204d9e9dbf8f19691593eeb5a4cc3	\N	1	0	0	1135
 436	1446140825	1446140825	1446140825	19218536	19218536@minmujer.gob.ve	501815893cc5edef6190be4157229f3f	\N	1	0	0	3970
 19	1428421769	1428421769	1439837828	18221250	18221250@minmujer.gob.ve	8792e982ee81a317e925b05e6f586498	\N	1	0	0	3497
+431	1445354219	1445354219	1446749914	19396922	cyepez@minmujer.gob.ve	c31b418da7a9b0893ccbafb9783eacbb	\N	1	0	0	4541
 429	1445093681	1445093681	1445093682	15794592	15794592@minmujer.gob.ve	3d46ab78039c623a0e09c7d3927b1e50	\N	1	0	0	3414
 432	1445356634	1445356634	1445356635	20364964	20364964@minmujer.gob.ve	d1070651fdc3b56f577d82fb2f0ffcc6	\N	1	0	0	4560
 415	1443633458	1443633458	1449067324	20328536	20328536@minmujer.gob.ve	c9288cceb061e57f2952f85a8de3f7f9	\N	1	0	0	4542
 104	1438350299	1438350299	1438350299	21471176	21471176@minmujer.gob.ve	b4ed346116287ba8905dbc5e6083c0d4	\N	1	0	0	3753
 91	1438277682	1438277682	1438277682	24905025	24905025@minmujer.gob.ve	e7511edf96ff5634b662a72f83f04969	\N	1	0	0	3758
 88	1438271439	1438271439	1438271439	17312737	17312737@minmujer.gob.ve	9aa843a3471792b9bdc00ee199fd2322	\N	1	0	0	532
+376	1440001853	1440001853	1442236304	7996794	7996794@minmujer.gob.ve	8bb4ab40b67a18281d8038af3f93df96	\N	1	0	0	1045
 419	1444752104	1444752104	1444761074	12400945	12400945@minmujer.gob.ve	045d4171c8da29a02db9f17c0bd82b3f	\N	1	0	0	540
 433	1445442469	1445442469	1445444000	14020336	14020336@minmujer.gob.ve	6c3074dc95f285fdd66825b943ed54a6	\N	1	0	0	4438
 159	1438797234	1438797234	1444761909	16598510	16598510@minmujer.gob.ve	6f2313bdaf89ac715877ba7f53d500e1	\N	1	0	0	2693
@@ -10602,15 +8099,12 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 14	1428415265	1428415265	1438175388	13691869	13691869@minmujer.gob.ve	37da9b1a1c7f13cf45e3559312c3df1a	\N	1	0	0	606
 58	1438175795	1438175795	1445028006	6563623	6563623@minmujer.gob.ve	2ffc3d84814c737604cd11dd41529da6	\N	1	0	0	643
 43	1437658688	1437658688	1437658688	18817386	18817386@minmujer.gob.ve	2ec471f558f99ab78751c8d47daeae86	\N	1	0	0	2702
-431	1445354219	1445354219	1455225006	19396922	cyepez@minmujer.gob.ve	c31b418da7a9b0893ccbafb9783eacbb	\N	1	0	0	4541
-230	1439414857	1439414857	1455562522	6522001	6522001@minmujer.gob.ve	5cf3638a7b9ce6e1ca4de51bfea16d1e	\N	1	0	0	4025
-440	1447086298	\N	1455285210	14072097	lrumbos@minmujer.gob.ve	5247399889c1baf78534d1218c27abbd	6ef27cc0ef1bdf42f5ac124e3e98e3b4	1	0	0	4545
-22	1435852087	1435852087	1455635186	18528414	hviloria@minmujer.gob.ve	99a3df6c3d63f083f705b3af0fbaf678	\N	1	0	0	647
-449	1447181640	\N	1455119697	15328255	jramirez@minmujer.gob.ve	2420577adc94efbaf2dbf4199d9cf3fc	5f0b642f8fafaccf37ff2943359ec325	1	0	0	4531
-9	1426197581	1426197581	1455250062	17482882	ggrimam@minmujer.gob.ve	d278212eee10f20d8d1b032cc5f971c2	\N	1	0	0	649
-376	1440001853	1440001853	1455568013	7996794	7996794@minmujer.gob.ve	8bb4ab40b67a18281d8038af3f93df96	\N	1	0	0	1045
-384	1440075995	1440075995	1455802439	12296640	12296640@minmujer.gob.ve	c6c7250909a9933eccd7d29d9877b093	\N	1	0	0	2825
-37	1437580015	1437580015	1455312461	6494428	6494428@minmujer.gob.ve	feecf09b8b0d4251fb5f8b91fcfa5628	\N	1	0	0	971
+449	1447181640	\N	1454516243	15328255	jramirez@minmujer.gob.ve	2420577adc94efbaf2dbf4199d9cf3fc	5f0b642f8fafaccf37ff2943359ec325	1	0	0	4531
+440	1447086298	\N	1454019753	14072097	lrumbos@minmujer.gob.ve	5247399889c1baf78534d1218c27abbd	6ef27cc0ef1bdf42f5ac124e3e98e3b4	1	0	0	4545
+384	1440075995	1440075995	1453832039	12296640	12296640@minmujer.gob.ve	c6c7250909a9933eccd7d29d9877b093	\N	1	0	0	2825
+37	1437580015	1437580015	1454340660	6494428	6494428@minmujer.gob.ve	feecf09b8b0d4251fb5f8b91fcfa5628	\N	1	0	0	971
+230	1439414857	1439414857	1454337779	6522001	6522001@minmujer.gob.ve	5cf3638a7b9ce6e1ca4de51bfea16d1e	\N	1	0	0	4025
+9	1426197581	1426197581	1453903524	17482882	ggrimam@minmujer.gob.ve	d278212eee10f20d8d1b032cc5f971c2	\N	1	0	0	649
 412	1441896629	1441896629	1445171810	15421164	15421164@minmujer.gob.ve	d956cbe97dd9c9adc77100f85a3357a2	\N	1	0	0	2143
 121	1438386805	1438386805	1438392178	4165871	4165871@minmujer.gob.ve	e5f002b133d964df56747130183faa60	\N	1	0	0	3251
 132	1438692911	1438692911	1438692911	18714484	18714484@minmujer.gob.ve	8f4161c5743867a1ab61b44d916ea409	\N	1	0	0	3412
@@ -10618,7 +8112,6 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 77	1438187174	1438187174	1438187174	7924064	7924064@minmujer.gob.ve	06400ae1265bee1721e6104e365c3130	\N	1	0	0	3804
 62	1438176637	1438176637	1438790266	11692434	11692434@minmujer.gob.ve	cf4e177357433b5ff2ef8f2127de1baa	\N	1	0	0	3810
 427	1444855162	1444855162	1444855163	19958771	19958771@minmujer.gob.ve	8301a95661d0ba4ca1f1eda1a4581f52	\N	1	0	0	3981
-128	1438631426	1438631426	1438799682	14542923	14542923@minmujer.gob.ve	411a7fcd5e904fd188578b329ec93fd8	\N	1	0	0	4105
 425	1444850576	1444850576	1444851904	12501659	12501659@minmujer.gob.ve	0028dd24dd9ddc2232aef8dc4cf26715	\N	1	0	0	4112
 172	1438882784	1438882784	1438885181	12298093	12298093@minmujer.gob.ve	f940093d90f85d3003fa63e04abca41d	\N	1	0	0	4192
 407	1441376748	1441376748	1441379186	19037937	19037937@minmujer.gob.ve	56deaf82a743146f027849c3f7985db7	\N	1	0	0	4305
@@ -10655,11 +8148,12 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 402	1441120786	1441120786	1441120787	13576356	13576356@minmujer.gob.ve	32f09fa38a2917c715ca0019e1fd3acb	\N	1	0	0	3492
 389	1440555694	1440555694	1441298573	18270042	18270042@minmujer.gob.ve	fab55811525be3d6e53a950bf168117b	\N	1	0	0	4273
 242	1439471728	1439471728	1439559106	17174531	17174531@minmujer.gob.ve	ad43536437610dec09751c16f2fac12b	\N	1	0	0	2543
+394	1441037945	1441037945	1441040041	5117027	5117027@minmujer.gob.ve	8e9b4ef798d7df24c53beba8fb45c4e5	\N	2	0	0	3821
 31	1437146897	1437146897	1453822525	6122334	6122334@minmujer.gob.ve	162bc46168bd6730edcedb39e83bf50a	\N	1	0	0	1654
 32	1437146987	1437146987	1453823162	19658562	19658562@minmujer.gob.ve	4edffe652d94c119b12e9e977d4efef2	\N	1	0	0	3662
 44	1437661000	1437661000	1437675989	17610072	17610072@minmujer.gob.ve	6fb489e091d3d70df397948734ed507e	\N	1	0	0	1588
-204	1439389316	1439389316	1455114953	19557132	19557132@minmujer.gob.ve	171a4182494ada55d75444baf6866175	\N	1	0	0	4137
-183	1438981503	1438981503	1455293437	18189700	gmorales@minmujer.gob.ve	01cac7fc81c0f3628ad91a1694708e96	\N	1	0	0	3756
+183	1438981503	1438981503	1454093299	18189700	gmorales@minmujer.gob.ve	01cac7fc81c0f3628ad91a1694708e96	\N	1	0	0	3756
+204	1439389316	1439389316	1453825836	19557132	19557132@minmujer.gob.ve	171a4182494ada55d75444baf6866175	\N	1	0	0	4137
 393	1441037313	1441037313	1441037313	18816822	18816822@minmujer.gob.ve	aabd72143eb32ef977388e776eb5dc2c	\N	1	0	0	3994
 69	1438178777	1438178777	1438178777	10485518	10485518@minmujer.gob.ve	704d1464904f1272347a965ce099eb2e	\N	1	0	0	3584
 224	1439408595	1439408595	1439408595	12761695	12761695@minmujer.gob.ve	1a53ab5347da786acbf07b0d9948e042	\N	1	0	0	1733
@@ -10708,9 +8202,10 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 228	1439410686	1439410686	1439413635	14573918	14573918@minmujer.gob.ve	b9f0c7789116d6e993f5665a8905aa1e	\N	1	0	0	2703
 340	1439583872	1439583872	1439587971	4457109	4457109@minmujer.gob.ve	c7285f667bf3951181859684940a5bc4	\N	1	0	0	780
 213	1439399628	1439399628	1439399628	15995584	meizaguirre@minmujer.gob.ve	a73e208a9cbad4465d57c33188bafd26	\N	2	0	0	4321
-405	1441293829	1441293829	1455657528	16671974	16671974@minmujer.gob.ve	66c650725564844d8e9436bd8cc1a870	\N	1	0	0	4482
-401	1441119142	1441119142	1454696658	18967075	18967075@minmujer.gob.ve	6de34a7724e4b9da4cc324965e6fe9f0	\N	1	0	0	3184
-225	1439408831	1439408831	1455308337	6339859	illamozas@minmujer.gob.ve	adf40e4b35e0a344fc5bf46493f5d49c	\N	1	0	0	1741
+225	1439408831	1439408831	1453835658	6339859	illamozas@minmujer.gob.ve	adf40e4b35e0a344fc5bf46493f5d49c	\N	1	0	0	1741
+405	1441293829	1441293829	1454349929	16671974	16671974@minmujer.gob.ve	66c650725564844d8e9436bd8cc1a870	\N	1	0	0	4482
+401	1441119142	1441119142	1454511521	18967075	18967075@minmujer.gob.ve	6de34a7724e4b9da4cc324965e6fe9f0	\N	1	0	0	3184
+390	1440880794	1440880794	1447274819	7660782	7660782@minmujer.gob.ve	9cfd3bc599d00fa5393a822aa112affa	\N	1	0	0	3893
 299	1439558830	1439558830	1439818162	8866032	blevel@minmujer.gob.ve	660035118cbc81304a95c56119f42e88	\N	1	0	0	4181
 335	1439580833	1439580833	1439580833	7078552	7078552@minmujer.gob.ve	69710f296ff1371275c847855b9fffd8	\N	1	0	0	3240
 339	1439583864	1439583864	1439585877	10986834	10986834@minmujer.gob.ve	0f80ccaafcb568f2e2a714edd7f0da9d	\N	1	0	0	3985
@@ -10759,9 +8254,9 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 269	1439486710	1439486710	1439486710	16139319	16139319@minmujer.gob.ve	8f29681c937ba9a13442ac3204ac31ee	\N	1	0	0	2618
 238	1439470543	1439470543	1439470543	16420163	16420163@minmujer.gob.ve	d91b2b37102abdea197d15895a0e60f6	\N	1	0	0	930
 414	1443557173	1443557173	1443559846	4069852	4069852@minmujer.gob.ve	484759a55ee7f853895020d131c3d309	\N	1	0	0	841
+358	1439821255	1439821255	1439821256	17859156	17859156@minmujer.gob.ve	83e3119ea51a8073415cd3a03914eaf0	\N	1	0	0	2699
 265	1439485541	1439485541	1453837205	14413474	14413474@minmujer.gob.ve	867f8f130dec1f217082befd732fe8f2	\N	1	0	0	789
-358	1439821255	1439821255	1455812623	17859156	mmurphy@minmujer.gob.ve	7d5ca7ddb9f5cb54abd551def321169d	\N	1	0	0	2699
-390	1440880794	1440880794	1455565885	7660782	7660782@minmujer.gob.ve	9cfd3bc599d00fa5393a822aa112affa	\N	1	0	0	3893
+349	1439603800	1439603800	1439605915	11407120	11407120@minmujer.gob.ve	9e004105e43b2925470192184d3f8488	\N	1	0	0	3931
 304	1439561822	1439561822	1439561822	19395216	19395216@minmujer.gob.ve	77da9535e535804490c03b533e218d0e	\N	1	0	0	868
 301	1439560304	1439560304	1439562443	6841972	6841972@minmujer.gob.ve	4e1e868846265b787468f9d94ee34ba0	\N	1	0	0	869
 73	1438181888	1438181888	1438181889	12417541	12417541@minmujer.gob.ve	5760bd81c3f7a26e9ad5e5056dad4253	\N	1	0	0	865
@@ -10811,7 +8306,6 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 330	1439576991	1439576991	1439587723	11619263	11619263@minmujer.gob.ve	736f41d1b1fb69af194b4306f686972d	\N	1	0	0	877
 363	1439840394	1439840394	1439926184	17877777	17877777@minmujer.gob.ve	675fc9120f59cbf840a70c0f56c051d6	\N	1	0	0	830
 234	1439429584	1439429584	1453836473	17549714	17549714@minmujer.gob.ve	4e40cbbdf431a0671d6dee359ef82598	\N	1	0	0	899
-349	1439603800	1439603800	1455068343	11407120	11407120@minmujer.gob.ve	9e004105e43b2925470192184d3f8488	\N	1	0	0	3931
 337	1439583265	1439583265	1439585386	10374860	10374860@minmujer.gob.ve	f6d29d2002006a5c99b72e1d2997d5ed	\N	1	0	0	946
 307	1439563604	1439563604	1439578205	16482127	16482127@minmujer.gob.ve	975719479915a1f7f9641ed8e5d61c5e	\N	1	0	0	944
 387	1440184477	1440184477	1440193806	4971690	4971690@minmujer.gob.ve	e1b356a924c83eece11cd8c96bf5e248	\N	1	0	0	950
@@ -10859,10 +8353,10 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 314	1439566771	1439566771	1439566771	11820551	11820551@minmujer.gob.ve	5788fbdf29843a47cb122c5b3a6afe76	\N	1	0	0	617
 161	1438800044	1438800044	1442841024	18935390	18935390@minmujer.gob.ve	a58d6e638438c76fbc562fee4eb1424a	\N	1	0	0	3854
 396	1441112858	1441112858	1441112858	20913335	20913335@minmujer.gob.ve	4d66e66a0aea46199a07a2818e9928f9	\N	1	0	0	3853
+400	1441118760	1441118760	1441119726	19555250	19555250@minmujer.gob.ve	e5aef30dc913eac82661523a9c10b53a	\N	1	0	0	4526
 352	1439610452	1439610452	1439610453	11424523	11424523@minmujer.gob.ve	969d61fa5184d91d62e147033d6732a8	\N	1	0	0	3928
 392	1441037192	1441037192	1442863204	6252529	6252529@minmujer.gob.ve	7ec95a6e3e5a1dedfc4df4ed1383846a	\N	1	0	0	658
 275	1439491444	1439491444	1454512870	12642994	12642994@minmujer.gob.ve	22f5903d9c6c970dc4b81eff9d960153	\N	1	0	0	1187
-400	1441118760	1441118760	1455225617	19555250	19555250@minmujer.gob.ve	e5aef30dc913eac82661523a9c10b53a	\N	1	0	0	4526
 194	1439301393	1439301393	1439303975	13067730	13067730@minmujer.gob.ve	20b310c0dda44ed7484c9099dd7100b7	\N	1	0	0	3449
 94	1438278508	1438278508	1438801318	6532915	6532915@minmujer.gob.ve	355cfb524fbfa286ed47d73f3961b98f	\N	1	0	0	4303
 423	1444760777	1444760777	1445869351	6224189	6224189@minmujer.gob.ve	c665b8e98acc9e422eb5ba424d0fa8ab	\N	1	0	0	1576
@@ -10913,7 +8407,7 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 119	1438377605	1438377605	1438384588	6289494	6289494@minmujer.gob.ve	0e42c7e42530001493f809db14557969	\N	1	0	0	603
 426	1444850824	1444850824	1444851727	6388696	6388696@minmujer.gob.ve	eb9cfc8ba8399ee67a36d3346b1dcf29	\N	1	0	0	4166
 85	1438267118	1438267118	1438267119	6894760	6894760@minmujer.gob.ve	0fec441fb537069a37820f6a75b99057	\N	1	0	0	1183
-114	1438371646	1438371646	1455721129	6288565	6288565@minmujer.gob.ve	fa4f5283a6be0e630434ef7925f2afbe	\N	1	0	0	4500
+114	1438371646	1438371646	1454100622	6288565	6288565@minmujer.gob.ve	fa4f5283a6be0e630434ef7925f2afbe	\N	1	0	0	4500
 71	1438180001	1438180001	1438185175	6661126	6661126@minmujer.gob.ve	41bbdee57de032efabeebcc50fe57470	\N	1	0	0	595
 118	1438377003	1438377003	1438378069	12866915	12866915@minmujer.gob.ve	0b506b71088d7a02bb2adbf30019290d	\N	1	0	0	2781
 47	1438089185	1438089185	1438089185	16618915	16618915@minmujer.gob.ve	f70999467cbfb04662bb12bec3a28da2	\N	1	0	0	3873
@@ -10948,59 +8442,50 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 420	1444752584	1444752584	1444752584	20781961	20781961@minmujer.gob.ve	937f55c4e0898dcf2fe52e7f293dbbb3	\N	1	0	0	4557
 55	1438095891	1438095891	1438095895	18091920	18091920@minmujer.gob.ve	31cca568727a967df12f0417cb12f980	\N	1	0	0	3693
 350	1439608174	1439608174	1439610779	15866812	15866812@minmujer.gob.ve	e45b2ac6dcd00d359acc231dd2d02759	\N	1	0	0	902
+155	1438792081	1438792081	1447860191	14050109	14050109@minmujer.gob.ve	54afd81ff4a759b06039df7dca02eefe	\N	1	0	0	4157
 324	1439572013	1439572013	1439584882	16353541	16353541@minmujer.gob.ve	23d9655186fad465602cd0d427a093e4	\N	1	0	0	3333
+136	1438786159	1438786159	1438955660	17392780	17392780@minmujer.gob.ve	88fb7b1d4f8c2cce205282bfc6ad4bfe	\N	1	0	0	4513
+450	1447182035	\N	\N	4115975	sarratia@minmujer.gob.ve	1da02ff59714028bd15a3faa7a7b0be0	0fe0225b97113fa8bb37aec2740c018b	1	0	0	4533
 246	1439473797	1439473797	1439473797	5178945	5178945@minmujer.gob.ve	5cd57ae33383d7f16da4ff9a1bafb6da	\N	2	0	0	3573
-54	1438093305	1438093305	1455548581	16671539	16671539@minmujer.gob.ve	358a2d31b86d900bd629d99a5e5a92d0	\N	1	0	0	651
-136	1438786159	1438786159	1455309002	17392780	17392780@minmujer.gob.ve	88fb7b1d4f8c2cce205282bfc6ad4bfe	\N	1	0	0	4513
 442	1447098131	\N	1454090444	10024864	hrodriguez@minmujer.gob.ve	e5de3eba33c6b18babc26bec428ff8fc	1bdec453896edb42bd28926d2829ae5f	1	0	0	2822
-178	1438957839	1438957839	1454709873	20301688	asandoval@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4191
+404	1441213900	1441213900	1454512116	7375562	hmachado@minmujer.gob.ve	fa885cb38e090a1a54446fca858a3d97	\N	1	0	0	4527
 466	1453749088	\N	\N	10910946	wrumbos@minmujer.gob.ve	7f5ac64ae1b91c5d20bdb0c93a7964ff	faa1971c75a09ac87f1b255201e4ec70	1	0	0	\N
 465	1453748338	\N	\N	4952287	mguerra@minmujer.gob.ve	7f4fda343e221776571d271e1f04a3bf	b6f9c55e9751c4fa4adf13da9c4bd640	1	0	0	4471
 24	1436908346	1436908346	1453821567	6189428	ahenriquez@minmujer.gob.ve	b4a43c067ba9d945ac27ece881c8c6a1	\N	1	0	0	4472
-450	1447182035	\N	1455808048	4115975	sarratia@minmujer.gob.ve	1da02ff59714028bd15a3faa7a7b0be0	0fe0225b97113fa8bb37aec2740c018b	1	0	0	4533
-155	1438792081	1438792081	1455311905	14050109	14050109@minmujer.gob.ve	54afd81ff4a759b06039df7dca02eefe	\N	1	0	0	4157
-404	1441213900	1441213900	1455803045	7375562	hmachado@minmujer.gob.ve	fa885cb38e090a1a54446fca858a3d97	\N	1	0	0	4527
-476	1455543709	\N	1455655599	13134651	gdamico@minmujer.gob.ve	ae468393641476ba01bbc0e1c953060c	1c8402eab8007dee81d54c6e9550e7d5	1	0	0	827
-475	1455290475	1455290475	1455290475	4386709	4386709@minmujer.gob.ve	52696b1f807ed026fd5bfa88308cb381	\N	1	0	0	\N
-23	1436905310	1436905310	1455804832	14073418	arodriguez@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	2889
-41	1437593201	1437593201	1455545819	5525794	5525794@minmujer.gob.ve	1a8e8945bf3ae3185a9feabe1fb91406	\N	1	0	0	1229
-235	1439430300	1439430300	1455368293	17866061	aoviedo@minmujer.gob.ve	49646ab6e4eec5c43b35159ec34c4c98	\N	1	0	0	4532
-473	1455111289	\N	1455279566	9868930	llugo@minmujer.gob.ve	b560b31343c8ffe74f2a42f4a8e40f33	6b8436bb094dd3a754fb6711211cea2b	1	0	0	4621
+54	1438093305	1438093305	1454076808	16671539	16671539@minmujer.gob.ve	358a2d31b86d900bd629d99a5e5a92d0	\N	1	0	0	651
+178	1438957839	1438957839	1454006882	20301688	asandoval@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4191
+467	1453750126	\N	1454442221	11064318	lgomezl@minmujer.gob.ve	35daa06ca35d913f6f85624ee9cd6abf	b6c8676adec63b5f3214fc20539c5f5f	1	0	0	696
+162	1438800771	1438800771	1454439738	10629699	10629699@minmujer.gob.ve	0c3ab41d8485bca40f24bf3e9b95e10a	\N	1	0	0	1189
+87	1438270449	1438270449	1454077588	15541016	15541016@minmujer.gob.ve	739e2999be52a0192f83bffcad8e16d7	\N	1	0	0	588
+29	1437145095	1437145095	1453822116	13563857	13563857@minmujer.gob.ve	8a88da2d1c8ccf69c6ad74eb51988f24	\N	1	0	0	1127
+471	1453835864	1453835864	1453987897	12912432	12912432@minmujer.gob.ve	fba96c3477dc4835dcd5b789aed8a9be	\N	1	0	0	\N
+23	1436905310	1436905310	1453832208	14073418	arodriguez@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	2889
 446	1447099254	\N	1453832095	12779178	lpuentes@minmujer.gob.ve	9c6ddd30eae07a700ce8dcc5ec02cc2d	cf7750e05b0380306646d7af9c18d216	1	0	0	854
-382	1440016356	1440016356	1455546577	17158970	17158970@minmujer.gob.ve	f66cdcd62ab83cb33cdbf0b400714087	\N	1	0	0	1493
+382	1440016356	1440016356	1453832229	17158970	17158970@minmujer.gob.ve	f66cdcd62ab83cb33cdbf0b400714087	\N	1	0	0	1493
+41	1437593201	1437593201	1454516172	5525794	5525794@minmujer.gob.ve	1a8e8945bf3ae3185a9feabe1fb91406	\N	1	0	0	1229
 469	1453750802	\N	1453843985	17426252	jvillarreal@minmujer.gob.ve	bbfff0205591f2ef43bcb789cdd05a40	3008d14dcc4292b362a1b8d3d1c2d136	1	0	0	3484
-472	1454688196	\N	\N	18141986	vrodriguez@minmujer.gob.ve	6c44e5cd17f0019c64b042e4a745412a	fe38d4f5e234ead277b942f6b11e3045	1	0	0	3496
-29	1437145095	1437145095	1454517794	13563857	13563857@minmujer.gob.ve	8a88da2d1c8ccf69c6ad74eb51988f24	\N	1	0	0	1127
-468	1453750519	\N	1455822775	16101603	jfuenmayor@minmujer.gob.ve	042152452a4794754e34f487477d9be9	52d72acad03a449089cadafa0e6546ec	1	0	0	4616
-87	1438270449	1438270449	1455720163	15541016	15541016@minmujer.gob.ve	739e2999be52a0192f83bffcad8e16d7	\N	1	0	0	588
-162	1438800771	1438800771	1455116446	10629699	10629699@minmujer.gob.ve	0c3ab41d8485bca40f24bf3e9b95e10a	\N	1	0	0	1189
-471	1453835864	1453835864	1455550336	12912432	fsanoja@minmujer.gob.ve	dfd584875db78444c4edbcfe8899044f	\N	1	0	0	4606
-355	1439776758	1439776758	1455732840	15911540	15911540@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4103
-467	1453750126	\N	1456332612	11064318	lgomezl@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	b6c8676adec63b5f3214fc20539c5f5f	1	0	0	696
-437	1446588539	\N	1457116498	12880477	yalmenar@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	fd3c8c4cf412a4551b62bec304db4cd6	1	0	0	4528
-470	1453750892	\N	1455723397	6478060	jorodriguez@minmujer.gob.ve	c731b413ba5ad26ad54c492dd9bf0a64	9327230603cb2e90b914fe676f73e96b	1	0	0	4642
+470	1453750892	\N	1454091489	6478060	jorodriguez@minmujer.gob.ve	c731b413ba5ad26ad54c492dd9bf0a64	9327230603cb2e90b914fe676f73e96b	1	0	0	4642
+468	1453750519	\N	1454094121	16101603	jfuenmayor@minmujer.gob.ve	042152452a4794754e34f487477d9be9	52d72acad03a449089cadafa0e6546ec	1	0	0	4616
 233	1439423112	1439423112	1453836440	6958153	6958153@minmujer.gob.ve	8e2e64d7a9a92182ba0b81055d73fbe7	\N	1	0	0	912
+235	1439430300	1439430300	1453836559	17866061	17866061@minmujer.gob.ve	49646ab6e4eec5c43b35159ec34c4c98	\N	1	0	0	4532
 245	1439472685	1439472685	1453836802	7496753	7496753@minmujer.gob.ve	1a9a36bc4d03156e512fcb28e1539347	\N	1	0	0	821
-477	1455574691	1455574691	1455574692	9280523	mteresen@minmujer.gob.ve	bad201d24ed29c2c872383b92e397508	\N	1	0	0	\N
-474	1455113189	\N	1455735667	9520907	zpina@minmujer.gob.ve	55a7f731ce5c381e13bb27543ae12ebf	d18f848a5d63298c1338fdeccad75e82	1	0	0	4882
-394	1441037945	1441037945	1456928695	5117027	5117027@minmujer.gob.ve	8e9b4ef798d7df24c53beba8fb45c4e5	\N	1	0	0	3821
-11	1426278589	1426278589	1457116482	16249561	nespinoza@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	1401
-460	1449063532	1449063532	1456151269	18712298	jrondon@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4543
+22	1435852087	1435852087	1454689060	18528414	hviloria@minmujer.gob.ve	99a3df6c3d63f083f705b3af0fbaf678	\N	1	0	0	647
+11	1426278589	1426278589	1455904909	16249561	nespinoza@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	1401
+1	\N	\N	1458432398	admin	admin@tucorreo.com	cce868a097d54c64229f71de9a6ca147	\N	1	0	0	\N
+355	1439776758	1439776758	1458458612	15911540	15911540@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4103
+462	1449065675	1449065675	1458458660	21281617	cvelasquez@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4612
+437	1446588539	\N	1458458727	12880477	yalmenar@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	fd3c8c4cf412a4551b62bec304db4cd6	1	0	0	4528
 \.
 
 
 --
--- TOC entry 2847 (class 0 OID 0)
--- Dependencies: 227
 -- Name: cruge_user_iduser_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cruge_user_iduser_seq', 477, true);
+SELECT pg_catalog.setval('cruge_user_iduser_seq', 471, true);
 
 
 --
--- TOC entry 2712 (class 0 OID 109450)
--- Dependencies: 228
 -- Data for Name: maestro; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -11397,6 +8882,7 @@ COPY maestro (id_maestro, descripcion, padre, hijo, es_activo, fk_estatus, creat
 391	4.07.01.02.01 Donaciones corrientes a personas	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 392	4.07.01.02.02 Donaciones corrientes a instituciones sin fines de lucro	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 393	4.07.01.03.00 Transferencias corrientes internas al sector público	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
+733	TONER 531 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 394	4.07.01.03.01 Transferencias corrientes a la República	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 395	4.07.01.03.02 Transferencias corrientes a entes descentralizados sin finesempresariales	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 396	4.07.01.03.03 Transferencias corrientes a entes descentralizados sin finesempresariales para atender beneficios de la seguridad social	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
@@ -11508,6 +8994,7 @@ COPY maestro (id_maestro, descripcion, padre, hijo, es_activo, fk_estatus, creat
 499	4.07.06.01.00 Subsidio de Régimen Especial	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 500	4.07.07.00.00 Subsidio de capitalidad	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 501	4.07.07.01.00 Subsidio de capitalidad	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
+734	TONER 532 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 502	4.07.08.00.00 Asignaciones Económicas Especiales (LAEE)	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 503	4.07.08.01.00 Asignaciones Económicas Especiales (LAEE) Estadal	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
 504	4.07.08.02.00 Asignaciones Económicas Especiales (LAEE) Estadal aMunicipal	332	0	t	\N	1	2015-03-18 12:06:50.619013	\N	2015-03-18 12:06:50.619013	\N
@@ -11659,6 +9146,7 @@ COPY maestro (id_maestro, descripcion, padre, hijo, es_activo, fk_estatus, creat
 652	MARCADOR GRUESO NEGRO (CAJA: 12 PIEZAS)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 653	MARCADOR GRUESO ROJO (CAJA: 12 PIEZAS)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 654	MARCADOR GRUESO VERDE (CAJA: 12 PIEZAS)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
+735	TONER 533 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 655	MARCADOR PARA PIZARRA ACRÍLICA AZUL (CAJA: 12 PIEZAS)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 656	MARCADOR PARA PIZARRA ACRÍLICA NEGRO  (CAJA: 12 PIEZAS)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 657	MARCADOR PARA PIZARRA ACRÍLICA ROJO (CAJA: 12 PIEZAS)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
@@ -11737,9 +9225,6 @@ COPY maestro (id_maestro, descripcion, padre, hijo, es_activo, fk_estatus, creat
 730	TONER 322 A (CM1415)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 731	TONER 323 A (CM1415)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 732	TONER 530 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
-733	TONER 531 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
-734	TONER 532 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
-735	TONER 533 A (HP CP2025)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 736	TONER 540 A (HP CM1312)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 737	TONER 541 A (HP CM1312)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
 738	TONER 542 A (HP CM1312)	544	0	t	\N	1	2015-04-08 16:53:10.368465	\N	2015-04-08 16:53:10.368465	PIEZA
@@ -11762,8 +9247,6 @@ COPY maestro (id_maestro, descripcion, padre, hijo, es_activo, fk_estatus, creat
 
 
 --
--- TOC entry 2848 (class 0 OID 0)
--- Dependencies: 229
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -11773,8 +9256,6 @@ SELECT pg_catalog.setval('maestro_id_maestro_seq', 753, true);
 SET search_path = requisicion, pg_catalog;
 
 --
--- TOC entry 2714 (class 0 OID 109461)
--- Dependencies: 230
 -- Data for Name: datos_requisicion; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11783,8 +9264,6 @@ COPY datos_requisicion (id_datos_requisicion, fk_tipo_requisicion, anio_requisic
 
 
 --
--- TOC entry 2849 (class 0 OID 0)
--- Dependencies: 231
 -- Name: datos_requisicion_id_datos_requisicion_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11792,8 +9271,6 @@ SELECT pg_catalog.setval('datos_requisicion_id_datos_requisicion_seq', 1, false)
 
 
 --
--- TOC entry 2716 (class 0 OID 109472)
--- Dependencies: 232
 -- Data for Name: imputacion_presupuestaria_ac; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11802,8 +9279,6 @@ COPY imputacion_presupuestaria_ac (id_imp_presupuestaria_ac, fk_datos_requisicio
 
 
 --
--- TOC entry 2850 (class 0 OID 0)
--- Dependencies: 233
 -- Name: imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11811,8 +9286,6 @@ SELECT pg_catalog.setval('imputacion_presupuestaria_ac_id_imp_presupuestaria_ac_
 
 
 --
--- TOC entry 2718 (class 0 OID 109479)
--- Dependencies: 234
 -- Data for Name: imputacion_presupuestaria_ue; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11821,8 +9294,6 @@ COPY imputacion_presupuestaria_ue (id_imputacion_presupuestaria, fk_datos_requis
 
 
 --
--- TOC entry 2851 (class 0 OID 0)
--- Dependencies: 235
 -- Name: imputacion_presupuestaria_ue_id_imputacion_presupuestaria_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11830,8 +9301,6 @@ SELECT pg_catalog.setval('imputacion_presupuestaria_ue_id_imputacion_presupuesta
 
 
 --
--- TOC entry 2720 (class 0 OID 109489)
--- Dependencies: 236
 -- Data for Name: lugar_entrega; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11840,8 +9309,6 @@ COPY lugar_entrega (id_lugar_entrega, fk_datos_requisicion, dependencia, direcci
 
 
 --
--- TOC entry 2852 (class 0 OID 0)
--- Dependencies: 237
 -- Name: lugar_entrega_id_lugar_entrega_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11849,8 +9316,6 @@ SELECT pg_catalog.setval('lugar_entrega_id_lugar_entrega_seq', 1, false);
 
 
 --
--- TOC entry 2722 (class 0 OID 109497)
--- Dependencies: 238
 -- Data for Name: numero_requisicion_unidad; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11859,8 +9324,6 @@ COPY numero_requisicion_unidad (id_n_requisicion, fk_datos_requisicion, numero, 
 
 
 --
--- TOC entry 2853 (class 0 OID 0)
--- Dependencies: 239
 -- Name: numero_requisicion_unidad_id_n_requisicion_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11868,8 +9331,6 @@ SELECT pg_catalog.setval('numero_requisicion_unidad_id_n_requisicion_seq', 1, fa
 
 
 --
--- TOC entry 2724 (class 0 OID 109504)
--- Dependencies: 240
 -- Data for Name: observacion; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11878,8 +9339,6 @@ COPY observacion (id_observacion, id_entidad, fk_entidad, observacion, es_activo
 
 
 --
--- TOC entry 2854 (class 0 OID 0)
--- Dependencies: 241
 -- Name: observacion_id_observacion_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11887,8 +9346,6 @@ SELECT pg_catalog.setval('observacion_id_observacion_seq', 1, false);
 
 
 --
--- TOC entry 2726 (class 0 OID 109511)
--- Dependencies: 242
 -- Data for Name: pedido; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11897,8 +9354,6 @@ COPY pedido (id_pedido, fk_descripcion, cantidad, fk_datos_requisicion, unid_med
 
 
 --
--- TOC entry 2727 (class 0 OID 109516)
--- Dependencies: 243
 -- Data for Name: pedido_especial; Type: TABLE DATA; Schema: requisicion; Owner: postgres
 --
 
@@ -11907,8 +9362,6 @@ COPY pedido_especial (id_ped_especial, descripcion, cantidad, fk_datos_requisici
 
 
 --
--- TOC entry 2855 (class 0 OID 0)
--- Dependencies: 244
 -- Name: pedido_especial_id_ped_especial_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11916,8 +9369,6 @@ SELECT pg_catalog.setval('pedido_especial_id_ped_especial_seq', 1, false);
 
 
 --
--- TOC entry 2856 (class 0 OID 0)
--- Dependencies: 245
 -- Name: pedido_id_pedido_seq; Type: SEQUENCE SET; Schema: requisicion; Owner: postgres
 --
 
@@ -11927,7 +9378,6 @@ SELECT pg_catalog.setval('pedido_id_pedido_seq', 1, false);
 SET search_path = actualizar, pg_catalog;
 
 --
--- TOC entry 2382 (class 2606 OID 109554)
 -- Name: id_historico; Type: CONSTRAINT; Schema: actualizar; Owner: postgres; Tablespace: 
 --
 
@@ -11936,7 +9386,6 @@ ALTER TABLE ONLY historico
 
 
 --
--- TOC entry 2384 (class 2606 OID 109556)
 -- Name: id_personal_traza; Type: CONSTRAINT; Schema: actualizar; Owner: postgres; Tablespace: 
 --
 
@@ -11945,7 +9394,6 @@ ALTER TABLE ONLY traza
 
 
 --
--- TOC entry 2386 (class 2606 OID 109558)
 -- Name: id_traza; Type: CONSTRAINT; Schema: actualizar; Owner: postgres; Tablespace: 
 --
 
@@ -11956,7 +9404,6 @@ ALTER TABLE ONLY traza
 SET search_path = evaluacion, pg_catalog;
 
 --
--- TOC entry 2388 (class 2606 OID 109560)
 -- Name: id_comentario; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -11965,7 +9412,6 @@ ALTER TABLE ONLY comentarios
 
 
 --
--- TOC entry 2390 (class 2606 OID 109562)
 -- Name: id_estatus_eval; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -11974,7 +9420,6 @@ ALTER TABLE ONLY estatus_evaluacion
 
 
 --
--- TOC entry 2392 (class 2606 OID 109564)
 -- Name: id_evaluacion; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -11983,7 +9428,6 @@ ALTER TABLE ONLY evaluacion
 
 
 --
--- TOC entry 2396 (class 2606 OID 109566)
 -- Name: id_evaluado; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -11992,7 +9436,6 @@ ALTER TABLE ONLY evaluados
 
 
 --
--- TOC entry 2394 (class 2606 OID 109568)
 -- Name: id_evaluador; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12001,7 +9444,6 @@ ALTER TABLE ONLY evaluador
 
 
 --
--- TOC entry 2398 (class 2606 OID 109570)
 -- Name: id_maestro; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12010,7 +9452,6 @@ ALTER TABLE ONLY maestro
 
 
 --
--- TOC entry 2400 (class 2606 OID 109572)
 -- Name: id_pregunta; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12019,7 +9460,6 @@ ALTER TABLE ONLY preguntas
 
 
 --
--- TOC entry 2404 (class 2606 OID 109574)
 -- Name: id_pregunta_ind; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12028,7 +9468,6 @@ ALTER TABLE ONLY preguntas_individuales
 
 
 --
--- TOC entry 2406 (class 2606 OID 109576)
 -- Name: id_pregunta_obr; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12037,7 +9476,6 @@ ALTER TABLE ONLY preguntas_obrero
 
 
 --
--- TOC entry 2402 (class 2606 OID 109578)
 -- Name: id_preguntas_colect; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12046,7 +9484,6 @@ ALTER TABLE ONLY preguntas_colectivas
 
 
 --
--- TOC entry 2408 (class 2606 OID 109580)
 -- Name: id_revision; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12055,7 +9492,6 @@ ALTER TABLE ONLY revision
 
 
 --
--- TOC entry 2410 (class 2606 OID 109582)
 -- Name: id_supervisor; Type: CONSTRAINT; Schema: evaluacion; Owner: postgres; Tablespace: 
 --
 
@@ -12066,7 +9502,6 @@ ALTER TABLE ONLY supervisor
 SET search_path = poa, pg_catalog;
 
 --
--- TOC entry 2446 (class 2606 OID 110832)
 -- Name: id_accion; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -12075,7 +9510,6 @@ ALTER TABLE ONLY acciones
 
 
 --
--- TOC entry 2448 (class 2606 OID 110834)
 -- Name: id_actividades; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -12084,7 +9518,6 @@ ALTER TABLE ONLY actividades
 
 
 --
--- TOC entry 2450 (class 2606 OID 110836)
 -- Name: id_comentarios; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -12093,16 +9526,14 @@ ALTER TABLE ONLY comentarios
 
 
 --
--- TOC entry 2452 (class 2606 OID 110838)
--- Name: id_estatus_proyecto; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
+-- Name: id_estatus_poa; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
-ALTER TABLE ONLY estatus_proyecto
-    ADD CONSTRAINT id_estatus_proyecto PRIMARY KEY (id_estatus_proyecto);
+ALTER TABLE ONLY estatus_poa
+    ADD CONSTRAINT id_estatus_poa PRIMARY KEY (id_estatus_poa);
 
 
 --
--- TOC entry 2454 (class 2606 OID 110840)
 -- Name: id_maestro; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -12111,7 +9542,14 @@ ALTER TABLE ONLY maestro
 
 
 --
--- TOC entry 2458 (class 2606 OID 110842)
+-- Name: id_poa; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY poa
+    ADD CONSTRAINT id_poa PRIMARY KEY (id_poa);
+
+
+--
 -- Name: id_rendimiento; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -12120,7 +9558,6 @@ ALTER TABLE ONLY rendimiento
 
 
 --
--- TOC entry 2460 (class 2606 OID 110844)
 -- Name: id_responsable; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
 --
 
@@ -12128,19 +9565,9 @@ ALTER TABLE ONLY responsable
     ADD CONSTRAINT id_responsable PRIMARY KEY (id_responsable);
 
 
---
--- TOC entry 2456 (class 2606 OID 110846)
--- Name: proyecto_pkey; Type: CONSTRAINT; Schema: poa; Owner: postgres; Tablespace: 
---
-
-ALTER TABLE ONLY proyecto
-    ADD CONSTRAINT proyecto_pkey PRIMARY KEY (id_proyecto);
-
-
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2412 (class 2606 OID 109584)
 -- Name: cruge_authassignment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12149,7 +9576,6 @@ ALTER TABLE ONLY cruge_authassignment
 
 
 --
--- TOC entry 2414 (class 2606 OID 109586)
 -- Name: cruge_authitem_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12158,7 +9584,6 @@ ALTER TABLE ONLY cruge_authitem
 
 
 --
--- TOC entry 2416 (class 2606 OID 109588)
 -- Name: cruge_authitemchild_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12167,7 +9592,6 @@ ALTER TABLE ONLY cruge_authitemchild
 
 
 --
--- TOC entry 2418 (class 2606 OID 109590)
 -- Name: cruge_field_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12176,7 +9600,6 @@ ALTER TABLE ONLY cruge_field
 
 
 --
--- TOC entry 2420 (class 2606 OID 109592)
 -- Name: cruge_fieldvalue_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12185,7 +9608,6 @@ ALTER TABLE ONLY cruge_fieldvalue
 
 
 --
--- TOC entry 2422 (class 2606 OID 109594)
 -- Name: cruge_session_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12194,7 +9616,6 @@ ALTER TABLE ONLY cruge_session
 
 
 --
--- TOC entry 2424 (class 2606 OID 109596)
 -- Name: cruge_system_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12203,7 +9624,6 @@ ALTER TABLE ONLY cruge_system
 
 
 --
--- TOC entry 2426 (class 2606 OID 109598)
 -- Name: cruge_user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12212,7 +9632,6 @@ ALTER TABLE ONLY cruge_user
 
 
 --
--- TOC entry 2428 (class 2606 OID 109600)
 -- Name: maestro_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
 --
 
@@ -12223,7 +9642,6 @@ ALTER TABLE ONLY maestro
 SET search_path = requisicion, pg_catalog;
 
 --
--- TOC entry 2430 (class 2606 OID 109602)
 -- Name: datos_requisicion_pkey; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12232,7 +9650,6 @@ ALTER TABLE ONLY datos_requisicion
 
 
 --
--- TOC entry 2432 (class 2606 OID 109604)
 -- Name: id_imp_presupuestaria_ac; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12241,7 +9658,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac
 
 
 --
--- TOC entry 2444 (class 2606 OID 109606)
 -- Name: id_ped_especial; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12250,7 +9666,6 @@ ALTER TABLE ONLY pedido_especial
 
 
 --
--- TOC entry 2442 (class 2606 OID 109608)
 -- Name: id_pedido; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12259,7 +9674,6 @@ ALTER TABLE ONLY pedido
 
 
 --
--- TOC entry 2434 (class 2606 OID 109610)
 -- Name: imputacion_presupuestaria_ue_pkey; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12268,7 +9682,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2436 (class 2606 OID 109612)
 -- Name: lugar_entrega_pkey; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12277,7 +9690,6 @@ ALTER TABLE ONLY lugar_entrega
 
 
 --
--- TOC entry 2438 (class 2606 OID 109614)
 -- Name: numero_requisicion_unidad_pkey; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12286,7 +9698,6 @@ ALTER TABLE ONLY numero_requisicion_unidad
 
 
 --
--- TOC entry 2440 (class 2606 OID 109616)
 -- Name: observacion_pkey; Type: CONSTRAINT; Schema: requisicion; Owner: postgres; Tablespace: 
 --
 
@@ -12297,7 +9708,6 @@ ALTER TABLE ONLY observacion
 SET search_path = evaluacion, pg_catalog;
 
 --
--- TOC entry 2663 (class 2618 OID 109619)
 -- Name: _RETURN; Type: RULE; Schema: evaluacion; Owner: postgres
 --
 
@@ -12380,7 +9790,6 @@ CREATE RULE "_RETURN" AS
 
 
 --
--- TOC entry 2664 (class 2618 OID 109621)
 -- Name: _RETURN; Type: RULE; Schema: evaluacion; Owner: postgres
 --
 
@@ -12461,58 +9870,6 @@ CREATE RULE "_RETURN" AS
 
 
 --
--- TOC entry 2665 (class 2618 OID 109960)
--- Name: _RETURN; Type: RULE; Schema: evaluacion; Owner: postgres
---
-
-CREATE RULE "_RETURN" AS
-    ON SELECT TO vsw_reporte_final DO INSTEAD  SELECT p.id_personal AS id_persona_evaluado,
-    p.nacionalidad,
-    p.cedula,
-    (((p.primer_apellido)::text || ' '::text) || (p.segundo_apellido)::text) AS apellidos,
-    (((p.primer_nombre)::text || ' '::text) || (p.segundo_nombre)::text) AS nombres,
-    p.descripcion_cargo,
-    p.estatus AS activo,
-    p.id_dependencia AS cod_dependencia_evaluado,
-    p.nombre AS dependencia,
-    p.tipo_cargo,
-        CASE
-            WHEN (p.cod_tipo_personal = 1) THEN (14)::text
-            WHEN (p.cod_tipo_personal = 2) THEN (13)::text
-            WHEN (p.cod_tipo_personal = 3) THEN (11)::text
-            WHEN (p.cod_tipo_personal = 4) THEN (12)::text
-            ELSE NULL::text
-        END AS fk_tipo_clase,
-    eva.id_evaluacion,
-    eva.created_date AS fecha_creacion_evaluacion,
-    evador.fk_persona AS id_persona,
-    vevaldor.cod_dependencia_evaluador,
-    est.fk_estatus_evaluacion,
-    ms.descripcion AS estatus,
-        CASE
-            WHEN (preg.fk_evaluacion = eva.id_evaluacion) THEN 'TRUE'::text
-            ELSE 'FALSE'::text
-        END AS tiene_objetivos
-   FROM (((((((actualizar.dblink('dbname=actualizacion'::text, 'SELECT per.id_personal, per.nacionalidad, per.cedula, per.primer_nombre, per.segundo_nombre, per.primer_apellido,
-segundo_apellido, per.sexo, car.id_cargo, car.descripcion_cargo, tr.estatus, tr.codigo_nomina, dep.id_dependencia, dep.nombre, per.telefono_oficina, car.grado, car.tipo_cargo, tr.fecha_ingreso,tr.cod_tipo_personal
-FROM personal per
-JOIN trabajador tr on tr.id_personal = per.id_personal
-JOIN cargo car on car.id_cargo = tr.id_cargo
-JOIN dependencia dep on dep.id_dependencia = tr.id_dependencia
-'::text) p(id_personal integer, nacionalidad character varying(1), cedula integer, primer_nombre character varying(20), segundo_nombre character varying(20), primer_apellido character varying(20), segundo_apellido character varying(20), sexo character varying(1), id_cargo integer, descripcion_cargo character varying(60), estatus character varying(1), codigo_nomina integer, id_dependencia integer, nombre character varying(90), telefono_oficina character varying(15), grado integer, tipo_cargo character varying(1), fecha_ingreso date, cod_tipo_personal integer)
-     RIGHT JOIN evaluados evados ON ((evados.fk_persona = p.id_personal)))
-     RIGHT JOIN evaluacion eva ON (((evados.id_evaluado = eva.fk_evaluado) AND (evados.es_activo = true))))
-     RIGHT JOIN evaluador evador ON ((evador.id_evaluador = eva.fk_evaluador)))
-     LEFT JOIN vsw_certificado vevaldor ON ((vevaldor.id_evaluacion = eva.id_evaluacion)))
-     LEFT JOIN estatus_evaluacion est ON ((est.fk_evaluacion = eva.id_evaluacion)))
-     LEFT JOIN maestro ms ON ((ms.id_maestro = est.fk_estatus_evaluacion)))
-     LEFT JOIN preguntas_individuales preg ON ((preg.fk_evaluacion = eva.id_evaluacion)))
-  WHERE ((p.estatus)::text = 'A'::text)
-  GROUP BY p.id_personal, p.nacionalidad, p.cedula, p.primer_apellido, p.segundo_apellido, p.primer_nombre, p.segundo_nombre, p.descripcion_cargo, p.estatus, p.id_dependencia, p.nombre, p.tipo_cargo, p.cod_tipo_personal, eva.id_evaluacion, evador.fk_persona, est.fk_estatus_evaluacion, ms.descripcion, vevaldor.cod_dependencia_evaluador, preg.fk_evaluacion;
-
-
---
--- TOC entry 2667 (class 2618 OID 110950)
 -- Name: _RETURN; Type: RULE; Schema: evaluacion; Owner: postgres
 --
 
@@ -12557,7 +9914,6 @@ CREATE RULE "_RETURN" AS
 
 
 --
--- TOC entry 2463 (class 2606 OID 109623)
 -- Name: fk_entidad_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12566,7 +9922,6 @@ ALTER TABLE ONLY estatus_evaluacion
 
 
 --
--- TOC entry 2493 (class 2606 OID 109628)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12575,7 +9930,6 @@ ALTER TABLE ONLY supervisor
 
 
 --
--- TOC entry 2472 (class 2606 OID 109633)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12584,7 +9938,6 @@ ALTER TABLE ONLY evaluador
 
 
 --
--- TOC entry 2474 (class 2606 OID 109638)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12593,7 +9946,6 @@ ALTER TABLE ONLY evaluados
 
 
 --
--- TOC entry 2468 (class 2606 OID 109643)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12602,7 +9954,6 @@ ALTER TABLE ONLY evaluacion
 
 
 --
--- TOC entry 2461 (class 2606 OID 109648)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12611,7 +9962,6 @@ ALTER TABLE ONLY comentarios
 
 
 --
--- TOC entry 2464 (class 2606 OID 109653)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12620,7 +9970,6 @@ ALTER TABLE ONLY estatus_evaluacion
 
 
 --
--- TOC entry 2476 (class 2606 OID 109658)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12629,7 +9978,6 @@ ALTER TABLE ONLY preguntas
 
 
 --
--- TOC entry 2478 (class 2606 OID 109663)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12638,7 +9986,6 @@ ALTER TABLE ONLY preguntas_colectivas
 
 
 --
--- TOC entry 2483 (class 2606 OID 109668)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12647,7 +9994,6 @@ ALTER TABLE ONLY preguntas_individuales
 
 
 --
--- TOC entry 2486 (class 2606 OID 109673)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12656,7 +10002,6 @@ ALTER TABLE ONLY preguntas_obrero
 
 
 --
--- TOC entry 2489 (class 2606 OID 109678)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12665,7 +10010,6 @@ ALTER TABLE ONLY revision
 
 
 --
--- TOC entry 2465 (class 2606 OID 109683)
 -- Name: fk_estatus_eval; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12674,7 +10018,6 @@ ALTER TABLE ONLY estatus_evaluacion
 
 
 --
--- TOC entry 2462 (class 2606 OID 109688)
 -- Name: fk_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12683,7 +10026,6 @@ ALTER TABLE ONLY comentarios
 
 
 --
--- TOC entry 2466 (class 2606 OID 109693)
 -- Name: fk_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12692,7 +10034,6 @@ ALTER TABLE ONLY estatus_evaluacion
 
 
 --
--- TOC entry 2479 (class 2606 OID 109698)
 -- Name: fk_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12701,7 +10042,6 @@ ALTER TABLE ONLY preguntas_colectivas
 
 
 --
--- TOC entry 2484 (class 2606 OID 109703)
 -- Name: fk_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12710,7 +10050,6 @@ ALTER TABLE ONLY preguntas_individuales
 
 
 --
--- TOC entry 2487 (class 2606 OID 109708)
 -- Name: fk_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12719,7 +10058,6 @@ ALTER TABLE ONLY preguntas_obrero
 
 
 --
--- TOC entry 2490 (class 2606 OID 109713)
 -- Name: fk_evaluacion; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12728,7 +10066,6 @@ ALTER TABLE ONLY revision
 
 
 --
--- TOC entry 2469 (class 2606 OID 109718)
 -- Name: fk_evaluador; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12737,7 +10074,6 @@ ALTER TABLE ONLY evaluacion
 
 
 --
--- TOC entry 2491 (class 2606 OID 109723)
 -- Name: fk_evaluador; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12746,7 +10082,6 @@ ALTER TABLE ONLY revision
 
 
 --
--- TOC entry 2470 (class 2606 OID 109728)
 -- Name: fk_evaluados; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12755,7 +10090,6 @@ ALTER TABLE ONLY evaluacion
 
 
 --
--- TOC entry 2475 (class 2606 OID 109733)
 -- Name: fk_periodo; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12764,7 +10098,6 @@ ALTER TABLE ONLY evaluados
 
 
 --
--- TOC entry 2480 (class 2606 OID 109738)
 -- Name: fk_pregunta; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12773,7 +10106,6 @@ ALTER TABLE ONLY preguntas_colectivas
 
 
 --
--- TOC entry 2488 (class 2606 OID 109743)
 -- Name: fk_pregunta; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12782,7 +10114,6 @@ ALTER TABLE ONLY preguntas_obrero
 
 
 --
--- TOC entry 2481 (class 2606 OID 109748)
 -- Name: fk_rango; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12791,7 +10122,6 @@ ALTER TABLE ONLY preguntas_colectivas
 
 
 --
--- TOC entry 2485 (class 2606 OID 109753)
 -- Name: fk_rango; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12800,7 +10130,6 @@ ALTER TABLE ONLY preguntas_individuales
 
 
 --
--- TOC entry 2471 (class 2606 OID 109758)
 -- Name: fk_rango_act; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12809,7 +10138,6 @@ ALTER TABLE ONLY evaluacion
 
 
 --
--- TOC entry 2492 (class 2606 OID 109763)
 -- Name: fk_revision; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12818,7 +10146,6 @@ ALTER TABLE ONLY revision
 
 
 --
--- TOC entry 2473 (class 2606 OID 109768)
 -- Name: fk_supervisor; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12827,7 +10154,6 @@ ALTER TABLE ONLY evaluador
 
 
 --
--- TOC entry 2477 (class 2606 OID 109773)
 -- Name: fk_tipo_clase; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12836,7 +10162,6 @@ ALTER TABLE ONLY preguntas
 
 
 --
--- TOC entry 2482 (class 2606 OID 109778)
 -- Name: fk_tipo_clase; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12845,7 +10170,6 @@ ALTER TABLE ONLY preguntas_colectivas
 
 
 --
--- TOC entry 2467 (class 2606 OID 109783)
 -- Name: fk_tipo_entidad; Type: FK CONSTRAINT; Schema: evaluacion; Owner: postgres
 --
 
@@ -12856,7 +10180,6 @@ ALTER TABLE ONLY estatus_evaluacion
 SET search_path = poa, pg_catalog;
 
 --
--- TOC entry 2530 (class 2606 OID 110847)
 -- Name: actividades_fk_status_fkey; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12865,7 +10188,6 @@ ALTER TABLE ONLY actividades
 
 
 --
--- TOC entry 2531 (class 2606 OID 110852)
 -- Name: fk_accion; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12874,16 +10196,6 @@ ALTER TABLE ONLY actividades
 
 
 --
--- TOC entry 2539 (class 2606 OID 110857)
--- Name: fk_actividad; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
---
-
-ALTER TABLE ONLY rendimiento
-    ADD CONSTRAINT fk_actividad FOREIGN KEY (fk_actividad) REFERENCES actividades(id_actividades);
-
-
---
--- TOC entry 2526 (class 2606 OID 110862)
 -- Name: fk_ambito; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12892,7 +10204,6 @@ ALTER TABLE ONLY acciones
 
 
 --
--- TOC entry 2542 (class 2606 OID 110867)
 -- Name: fk_dir_responsable; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12901,7 +10212,6 @@ ALTER TABLE ONLY responsable
 
 
 --
--- TOC entry 2533 (class 2606 OID 110872)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12910,7 +10220,6 @@ ALTER TABLE ONLY comentarios
 
 
 --
--- TOC entry 2527 (class 2606 OID 110877)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12919,7 +10228,6 @@ ALTER TABLE ONLY acciones
 
 
 --
--- TOC entry 2543 (class 2606 OID 110882)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12928,7 +10236,22 @@ ALTER TABLE ONLY responsable
 
 
 --
--- TOC entry 2540 (class 2606 OID 110887)
+-- Name: fk_estatus; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+--
+
+ALTER TABLE ONLY poa
+    ADD CONSTRAINT fk_estatus FOREIGN KEY (fk_status) REFERENCES maestro(id_maestro);
+
+
+--
+-- Name: fk_estatus_poa; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+--
+
+ALTER TABLE ONLY estatus_poa
+    ADD CONSTRAINT fk_estatus_poa FOREIGN KEY (fk_estatus_poa) REFERENCES maestro(id_maestro);
+
+
+--
 -- Name: fk_mes; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12937,7 +10260,6 @@ ALTER TABLE ONLY rendimiento
 
 
 --
--- TOC entry 2544 (class 2606 OID 110892)
 -- Name: fk_persona_registro; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -12946,52 +10268,38 @@ ALTER TABLE ONLY responsable
 
 
 --
--- TOC entry 2528 (class 2606 OID 110897)
--- Name: fk_proyecto; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+-- Name: fk_poa; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
 ALTER TABLE ONLY acciones
-    ADD CONSTRAINT fk_proyecto FOREIGN KEY (fk_proyecto) REFERENCES proyecto(id_proyecto);
+    ADD CONSTRAINT fk_poa FOREIGN KEY (fk_poa) REFERENCES poa(id_poa);
 
 
 --
--- TOC entry 2535 (class 2606 OID 110902)
--- Name: fk_proyecto; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
---
-
-ALTER TABLE ONLY estatus_proyecto
-    ADD CONSTRAINT fk_proyecto FOREIGN KEY (fk_proyecto) REFERENCES proyecto(id_proyecto);
-
-
---
--- TOC entry 2534 (class 2606 OID 110907)
--- Name: fk_proyecto; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+-- Name: fk_poa; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
 ALTER TABLE ONLY comentarios
-    ADD CONSTRAINT fk_proyecto FOREIGN KEY (fk_proyecto) REFERENCES proyecto(id_proyecto);
+    ADD CONSTRAINT fk_poa FOREIGN KEY (fk_poa) REFERENCES poa(id_poa);
 
 
 --
--- TOC entry 2545 (class 2606 OID 110912)
--- Name: fk_proyecto; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+-- Name: fk_poa; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
 ALTER TABLE ONLY responsable
-    ADD CONSTRAINT fk_proyecto FOREIGN KEY (fk_proyecto) REFERENCES proyecto(id_proyecto);
+    ADD CONSTRAINT fk_poa FOREIGN KEY (fk_poa) REFERENCES poa(id_poa);
 
 
 --
--- TOC entry 2538 (class 2606 OID 110917)
--- Name: fk_status; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+-- Name: fk_poa; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
-ALTER TABLE ONLY proyecto
-    ADD CONSTRAINT fk_status FOREIGN KEY (fk_status) REFERENCES maestro(id_maestro);
+ALTER TABLE ONLY estatus_poa
+    ADD CONSTRAINT fk_poa FOREIGN KEY (fk_poa) REFERENCES poa(id_poa);
 
 
 --
--- TOC entry 2541 (class 2606 OID 110922)
 -- Name: fk_status; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -13000,25 +10308,30 @@ ALTER TABLE ONLY rendimiento
 
 
 --
--- TOC entry 2536 (class 2606 OID 110927)
 -- Name: fk_status; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
-ALTER TABLE ONLY estatus_proyecto
+ALTER TABLE ONLY estatus_poa
     ADD CONSTRAINT fk_status FOREIGN KEY (fk_status) REFERENCES maestro(id_maestro);
 
 
 --
--- TOC entry 2537 (class 2606 OID 110932)
--- Name: fk_status_proyecto; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+-- Name: fk_tipo_entidad; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
-ALTER TABLE ONLY estatus_proyecto
-    ADD CONSTRAINT fk_status_proyecto FOREIGN KEY (fk_estatus_proyecto) REFERENCES maestro(id_maestro);
+ALTER TABLE ONLY rendimiento
+    ADD CONSTRAINT fk_tipo_entidad FOREIGN KEY (fk_tipo_entidad) REFERENCES maestro(id_maestro);
 
 
 --
--- TOC entry 2529 (class 2606 OID 110937)
+-- Name: fk_tipo_poa; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
+--
+
+ALTER TABLE ONLY poa
+    ADD CONSTRAINT fk_tipo_poa FOREIGN KEY (fk_tipo_poa) REFERENCES maestro(id_maestro);
+
+
+--
 -- Name: fk_unidad_medida; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -13027,7 +10340,6 @@ ALTER TABLE ONLY acciones
 
 
 --
--- TOC entry 2532 (class 2606 OID 110942)
 -- Name: fk_unidad_medida; Type: FK CONSTRAINT; Schema: poa; Owner: postgres
 --
 
@@ -13038,7 +10350,6 @@ ALTER TABLE ONLY actividades
 SET search_path = public, pg_catalog;
 
 --
--- TOC entry 2496 (class 2606 OID 109788)
 -- Name: crugeauthitemchild_ibfk_1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -13047,7 +10358,6 @@ ALTER TABLE ONLY cruge_authitemchild
 
 
 --
--- TOC entry 2497 (class 2606 OID 109793)
 -- Name: crugeauthitemchild_ibfk_2; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -13056,7 +10366,6 @@ ALTER TABLE ONLY cruge_authitemchild
 
 
 --
--- TOC entry 2494 (class 2606 OID 109798)
 -- Name: fk_cruge_authassignment_cruge_authitem1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -13065,7 +10374,6 @@ ALTER TABLE ONLY cruge_authassignment
 
 
 --
--- TOC entry 2495 (class 2606 OID 109803)
 -- Name: fk_cruge_authassignment_user; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -13074,7 +10382,6 @@ ALTER TABLE ONLY cruge_authassignment
 
 
 --
--- TOC entry 2498 (class 2606 OID 109808)
 -- Name: fk_cruge_fieldvalue_cruge_field1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -13083,7 +10390,6 @@ ALTER TABLE ONLY cruge_fieldvalue
 
 
 --
--- TOC entry 2499 (class 2606 OID 109813)
 -- Name: fk_cruge_fieldvalue_cruge_user1; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -13094,7 +10400,6 @@ ALTER TABLE ONLY cruge_fieldvalue
 SET search_path = requisicion, pg_catalog;
 
 --
--- TOC entry 2504 (class 2606 OID 109818)
 -- Name: fk_accion_centralizada; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13103,7 +10408,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac
 
 
 --
--- TOC entry 2509 (class 2606 OID 109823)
 -- Name: fk_accion_especifica; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13112,7 +10416,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2510 (class 2606 OID 109828)
 -- Name: fk_clasificacion_presupuestaria; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13121,7 +10424,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2505 (class 2606 OID 109833)
 -- Name: fk_clasificacion_presupuestaria; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13130,7 +10432,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac
 
 
 --
--- TOC entry 2511 (class 2606 OID 109838)
 -- Name: fk_datos_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13139,7 +10440,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2518 (class 2606 OID 109843)
 -- Name: fk_datos_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13148,7 +10448,6 @@ ALTER TABLE ONLY numero_requisicion_unidad
 
 
 --
--- TOC entry 2524 (class 2606 OID 109848)
 -- Name: fk_datos_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13157,7 +10456,6 @@ ALTER TABLE ONLY pedido_especial
 
 
 --
--- TOC entry 2521 (class 2606 OID 109853)
 -- Name: fk_datos_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13166,7 +10464,6 @@ ALTER TABLE ONLY pedido
 
 
 --
--- TOC entry 2516 (class 2606 OID 109858)
 -- Name: fk_datos_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13175,7 +10472,6 @@ ALTER TABLE ONLY lugar_entrega
 
 
 --
--- TOC entry 2506 (class 2606 OID 109863)
 -- Name: fk_datos_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13184,7 +10480,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac
 
 
 --
--- TOC entry 2522 (class 2606 OID 109868)
 -- Name: fk_descripcion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13193,7 +10488,6 @@ ALTER TABLE ONLY pedido
 
 
 --
--- TOC entry 2512 (class 2606 OID 109873)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13202,7 +10496,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2519 (class 2606 OID 109878)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13211,7 +10504,6 @@ ALTER TABLE ONLY numero_requisicion_unidad
 
 
 --
--- TOC entry 2520 (class 2606 OID 109883)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13220,7 +10512,6 @@ ALTER TABLE ONLY observacion
 
 
 --
--- TOC entry 2500 (class 2606 OID 109888)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13229,7 +10520,6 @@ ALTER TABLE ONLY datos_requisicion
 
 
 --
--- TOC entry 2525 (class 2606 OID 109893)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13238,7 +10528,6 @@ ALTER TABLE ONLY pedido_especial
 
 
 --
--- TOC entry 2523 (class 2606 OID 109898)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13247,7 +10536,6 @@ ALTER TABLE ONLY pedido
 
 
 --
--- TOC entry 2517 (class 2606 OID 109903)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13256,7 +10544,6 @@ ALTER TABLE ONLY lugar_entrega
 
 
 --
--- TOC entry 2507 (class 2606 OID 109908)
 -- Name: fk_estatus; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13265,7 +10552,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac
 
 
 --
--- TOC entry 2501 (class 2606 OID 109913)
 -- Name: fk_fuente_financia; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13274,7 +10560,6 @@ ALTER TABLE ONLY datos_requisicion
 
 
 --
--- TOC entry 2513 (class 2606 OID 109918)
 -- Name: fk_proyecto; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13283,7 +10568,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2502 (class 2606 OID 109923)
 -- Name: fk_tipo_requisicion; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13292,7 +10576,6 @@ ALTER TABLE ONLY datos_requisicion
 
 
 --
--- TOC entry 2514 (class 2606 OID 109928)
 -- Name: fk_unidad_ejecutora; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13301,7 +10584,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2503 (class 2606 OID 109933)
 -- Name: fk_unidad_ejecutora; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13310,7 +10592,6 @@ ALTER TABLE ONLY datos_requisicion
 
 
 --
--- TOC entry 2515 (class 2606 OID 109938)
 -- Name: fk_unidad_medida; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13319,7 +10600,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ue
 
 
 --
--- TOC entry 2508 (class 2606 OID 109943)
 -- Name: fk_unidad_medida; Type: FK CONSTRAINT; Schema: requisicion; Owner: postgres
 --
 
@@ -13328,8 +10608,6 @@ ALTER TABLE ONLY imputacion_presupuestaria_ac
 
 
 --
--- TOC entry 2752 (class 0 OID 0)
--- Dependencies: 9
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
 
@@ -13342,8 +10620,6 @@ GRANT ALL ON SCHEMA public TO PUBLIC;
 SET search_path = actualizar, pg_catalog;
 
 --
--- TOC entry 2758 (class 0 OID 0)
--- Dependencies: 177
 -- Name: historico; Type: ACL; Schema: actualizar; Owner: postgres
 --
 
@@ -13353,8 +10629,6 @@ GRANT ALL ON TABLE historico TO postgres;
 
 
 --
--- TOC entry 2760 (class 0 OID 0)
--- Dependencies: 178
 -- Name: historico_id_historico_seq; Type: ACL; Schema: actualizar; Owner: postgres
 --
 
@@ -13364,8 +10638,6 @@ GRANT ALL ON SEQUENCE historico_id_historico_seq TO postgres;
 
 
 --
--- TOC entry 2761 (class 0 OID 0)
--- Dependencies: 179
 -- Name: traza; Type: ACL; Schema: actualizar; Owner: postgres
 --
 
@@ -13375,8 +10647,6 @@ GRANT ALL ON TABLE traza TO postgres;
 
 
 --
--- TOC entry 2763 (class 0 OID 0)
--- Dependencies: 180
 -- Name: traza_id_traza_seq; Type: ACL; Schema: actualizar; Owner: postgres
 --
 
@@ -13386,8 +10656,6 @@ GRANT ALL ON SEQUENCE traza_id_traza_seq TO postgres;
 
 
 --
--- TOC entry 2764 (class 0 OID 0)
--- Dependencies: 182
 -- Name: vsw_usuarios_actualizados; Type: ACL; Schema: actualizar; Owner: postgres
 --
 
@@ -13395,8 +10663,6 @@ REVOKE ALL ON TABLE vsw_usuarios_actualizados FROM PUBLIC;
 REVOKE ALL ON TABLE vsw_usuarios_actualizados FROM postgres;
 GRANT ALL ON TABLE vsw_usuarios_actualizados TO postgres;
 
-
--- Completed on 2016-03-04 14:56:25 VET
 
 --
 -- PostgreSQL database dump complete
