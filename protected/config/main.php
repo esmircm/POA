@@ -13,7 +13,7 @@ return array(
     'import' => array(
         'application.models.*',
         'application.models.evaluacion.*',
-        'application.models.proyecto.*',
+        'application.models.poa.*',
         'application.components.*',
         'application.funciones.*',
         'application.modules.cruge.components.*',
@@ -113,36 +113,36 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
          'db' => array(
-            'connectionString' => 'pgsql:host=10.10.0.28;dbname=siim_evaluacion',
+            'connectionString' => 'pgsql:host=127.0.0.1;dbname=siim',
             'emulatePrepare' => false,
             'username' => 'postgres',
-            'password' => '12qwaszx',
+            'password' => '123456',
             'charset' => 'utf8',
         ),
         'db2' => array(
             'class' => 'CDbConnection',
-            'connectionString' => 'pgsql:host=10.10.0.28;dbname=actualizacion',
+            'connectionString' => 'pgsql:host=127.0.0.1;dbname=actualizacion',
             'emulatePrepare' => false,
             'username' => 'postgres',
-            'password' => '12qwaszx',
+            'password' => '123456',
             'charset' => 'utf8',
         ),
-        'db3' => array(
-            'class' => 'CDbConnection',
-            'connectionString' => 'pgsql:host=10.10.0.28;dbname=geografia',
-            'emulatePrepare' => false,
-            'username' => 'postgres',
-            'password' => '12qwaszx',
-            'charset' => 'utf8',
-        ),
-        'db4' => array(
-            'class' => 'CDbConnection',
-            'connectionString' => 'pgsql:host=10.10.0.28;dbname=bd_diex',
-            'emulatePrepare' => false,
-            'username' => 'postgres',
-            'password' => '12qwaszx',
-            'charset' => 'utf8',
-        ),
+//        'db3' => array(
+//            'class' => 'CDbConnection',
+//            'connectionString' => 'pgsql:host=10.10.0.28;dbname=geografia',
+//            'emulatePrepare' => false,
+//            'username' => 'postgres',
+//            'password' => '12qwaszx',
+//            'charset' => 'utf8',
+//        ),
+//        'db4' => array(
+//            'class' => 'CDbConnection',
+//            'connectionString' => 'pgsql:host=10.10.0.28;dbname=bd_diex',
+//            'emulatePrepare' => false,
+//            'username' => 'postgres',
+//            'password' => '12qwaszx',
+//            'charset' => 'utf8',
+//        ),
 
         'errorHandler' => array(
             // use 'site/error' action to display errors
