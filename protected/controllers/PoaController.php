@@ -27,7 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar'),
+'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -530,4 +530,54 @@ echo CActiveForm::validate($model);
 Yii::app()->end();
 }
 }
-}
+
+public function actionRendimiento($id_poa) {
+        $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        $accion = new Acciones;
+       
+     
+        $this->render('rendimiento_create', array(
+            'model' => $model,
+            'id_poa' => $id_poa,
+            'accion' => $accion,
+           
+        ));
+    }
+    
+       
+    public function actionActualizarCantidadCumplida() { {
+            Yii :: import('booster.components.TbEditableSaver');
+            $es = new TbEditableSaver('Rendimiento');
+
+//            var_dump($es->beforeUpdate);die;
+//Con onBeforeUpdate agrego los atrubitos adicionales que quiero actualizar
+          
+            $es->onBeforeUpdate = function ($event) {
+                
+                    
+      
+//       $can_programada = $event->sender->model->cantidad_programada;
+       
+//       $can_cumplida= $event->sender->model->cantidad_cumplida;
+
+       
+      
+                        $event->sender->setAttribute('modified_date', date('Y-m-d H:i:s'));
+                        $event->sender->setAttribute('modified_by', Yii::app()->user->id);
+//                        $event->sender->setAttribute('cantidad_cumplida', $can_cumplida);
+//                        $event->update();
+//                return $can_programada; 
+
+                    };
+                    
+                    
+//                    echo onBeforeUpdate($event);
+
+            $es->update();
+        }
+    }
+    
+    
+    
+    
+    }

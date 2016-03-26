@@ -32,7 +32,8 @@ COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
 
 --
 -- TOC entry 556 (class 3079 OID 86665)
--- Name: dblink; Type: EXTENSION; Schema: -; Owner: 
+-- Name: 
+dblink; Type: EXTENSION; Schema: -; Owner: 
 --
 
 CREATE EXTENSION IF NOT EXISTS dblink WITH SCHEMA public;
