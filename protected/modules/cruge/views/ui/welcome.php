@@ -5,9 +5,8 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<h1><p style="color: white; font-size:15px;" ><b>SESIÓN EXPIRO</b></p></h1><br>
+
+<center><h1><p style="color: white; font-size:15px;" ><b>SESIÓN EXPIRO</b></p></h1><br></center>
 <div align="center"><img class="img-responsive" src="<?php echo Yii:: app()->baseUrl . '/img/lock.png' ?> " width="200" height="200"><br><br>
     
     

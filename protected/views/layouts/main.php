@@ -2,6 +2,7 @@
 <html lang="en">
 
     <head>
+             <script src="<?php echo Yii::app()->baseUrl; ?>/js/carga.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <!-- Meta, title, CSS, favicons, etc. -->
         <meta charset="utf-8">
@@ -19,6 +20,7 @@
 
     </head>
 
+        <!--<script src="<?php // echo Yii::app()->baseUrl; ?>/js/pace.js"></script>-->
 
     <body class="nav-md">
 
@@ -302,46 +304,75 @@
 
 <?php
 //$url_redirect = CHtml::normalizeUrl(array('/site/index'));
-$url_redirect = CHtml::normalizeUrl(array('/cruge/ui/login'));
-$url_valida_sesion = CHtml::normalizeUrl(array('/cruge/ui/login'));
-$url_destroy_session = CHtml::normalizeUrl(array('/site/logout'));
-/* Yii::app()->getClientScript()->registerScript("core_cruge", "
-  var tstampActual = 0;
-  var comprobar = 1200000;
+                            $url_redirect = CHtml::normalizeUrl(array('/cruge/ui/welcome'));
+                            $url_valida_sesion = CHtml::normalizeUrl(array('/cruge/ui/login'));
+                            $url_destroy_session = CHtml::normalizeUrl(array('/site/logout'));
+                            Yii::app()->getClientScript()->registerScript("core_cruge", "
+                                var t;
+                                
+                                window.onload = resetTimer;
+                                document.onkeypress = resetTimer;
+                                document.onmousemove
+                                function resetTimer()
+                                {
+                                    clearTimeout(t);
+                                    t = setTimeout(logout, 1000000) //5 minutos de inactividad, tiempo en ms
+                                }
 
 
+                                function logout()
+                                {
+                                
+                                    alert('Su sesión a expirado.');
+                                    
+                                  
+                                    
+                                    var xmlhttp;
 
-  function kill_session() {
-  if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }else{// code for IE6, IE5
-  xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
-  }
-  xmlhttp.open('GET','$url_destroy_session',false);
-  xmlhttp.send();
+                                    if (window.XMLHttpRequest) {
+                                    
+                                        xmlhttp = new XMLHttpRequest();
+                                    } else {
+                                   
+                                        xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+                                    }
+                                    xmlhttp.open('GET', '$url_destroy_session', false);
+                                    xmlhttp.send();
 
-  document.getElementById('expirado').innerHTML=xmlhttp.responseText;
-  document.location.href = '$url_redirect';
+                                    document.getElementById('expirado').innerHTML = xmlhttp.responseText;
+                                    document.location.href = '$url_redirect';
+                                }", CClientScript::POS_LOAD);?>
 
-  }
+                            <script type="text/javascript">
+                                var t;
 
-  function actividad() {
+                                window.onload = resetTimer;
+                                document.onkeypress = resetTimer;
+                                document.onmousemove
+                                function resetTimer()
+                                {
 
-  var tstamp = new Date().getTime();
+                                    clearTimeout(t);
+                                    t = setTimeout(logout, 1000000) //5 minutos de inactividad, tiempo en ms
 
-  if (Math.abs(tstampActual - tstamp) > comprobar) {
-  kill_session();
-  }
-  }
+                                }
 
-  $( document ).ready(function() {
-  // Handler for .ready() called.
-  document.body.addEventListener('mousemove', function() {
-  tstampActual = new Date().getTime();
-  }, false);
-  setInterval(function() {actividad()}, comprobar);
-  });
-  ", CClientScript::POS_LOAD); */
-?>
+//                                function logout()
+//                                {
+////                                    alert("El sistema se cierra por 5 minutos de inactividad.");
+//
+//                                    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+//                                        xmlhttp = new XMLHttpRequest();
+//                                    } else {// code for IE6, IE5
+//                                        xmlhttp = new ActiveXObject('Microsoft.XMLHTTP');
+//                                    }
+//                                    xmlhttp.open('GET', '$url_destroy_session', false);
+//                                    xmlhttp.send();
+//
+//                                    document.getElementById('expirado').innerHTML = xmlhttp.responseText;
+//                                    document.location.href = '$url_redirect';
+//                                }
+  </script>
+
 
 

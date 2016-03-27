@@ -2,8 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
     <head>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/pace.js"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/carga2.css" />
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/carga.js"></script>
+        <!--<link rel="stylesheet" type="text/css" href="<?php // echo Yii::app()->request->baseUrl; ?>/css/carga2.css" />-->
         <style type="text/css">
             body {
             background-image: url("<?php echo Yii::app()->baseUrl; ?>/images/f.png") !important;
@@ -48,7 +48,7 @@
 
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/animate.min.css" type="text/css"></link>
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/creative.css" type="text/css"></link>
-        <title>Consulta Masiva</title>
+        <title>SIMAP</title>
     </head>
 
     <body>
@@ -127,43 +127,43 @@
 </html>
 
 <?php
-$url_redirect = CHtml::normalizeUrl(array('/site/index'));
-$url_valida_sesion = CHtml::normalizeUrl(array('/cruge/ui/login'));
-$url_destroy_session = CHtml::normalizeUrl(array('/site/logout'));
-Yii::app()->getClientScript()->registerScript("core_cruge", "
-var tstampActual = 0;
-var comprobar = 900000;
-        
-    function kill_session() {
-        if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp=new XMLHttpRequest();
-        }else{// code for IE6, IE5
-            xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
-        }
-        xmlhttp.open('GET','$url_destroy_session',false);
-        xmlhttp.send();
-
-        document.getElementById('expirado').innerHTML=xmlhttp.responseText;
-        document.location.href = '$url_redirect';
-   
-    }      
-
-function actividad() {
-
-    var tstamp = new Date().getTime();
-    
-    if (Math.abs(tstampActual - tstamp) > comprobar) {
-        kill_session();  
-    }
-}
-
-$( document ).ready(function() {
-    // Handler for .ready() called.
-    document.body.addEventListener('mousemove', function() {
-    tstampActual = new Date().getTime(); 
-    }, false);
-    setInterval(function() {actividad()}, comprobar);
-});
-
-        ", CClientScript::POS_LOAD);
+//$url_redirect = CHtml::normalizeUrl(array('/site/index'));
+//$url_valida_sesion = CHtml::normalizeUrl(array('/cruge/ui/login'));
+//$url_destroy_session = CHtml::normalizeUrl(array('/site/logout'));
+//Yii::app()->getClientScript()->registerScript("core_cruge", "
+//var tstampActual = 0;
+//var comprobar = 900000;
+//        
+//    function kill_session() {
+//        if (window.XMLHttpRequest){// code for IE7+, Firefox, Chrome, Opera, Safari
+//            xmlhttp=new XMLHttpRequest();
+//        }else{// code for IE6, IE5
+//            xmlhttp=new ActiveXObject('Microsoft.XMLHTTP');
+//        }
+//        xmlhttp.open('GET','$url_destroy_session',false);
+//        xmlhttp.send();
+//
+//        document.getElementById('expirado').innerHTML=xmlhttp.responseText;
+//        document.location.href = '$url_redirect';
+//   
+//    }      
+//
+//function actividad() {
+//
+//    var tstamp = new Date().getTime();
+//    
+//    if (Math.abs(tstampActual - tstamp) > comprobar) {
+//        kill_session();  
+//    }
+//}
+//
+//$( document ).ready(function() {
+//    // Handler for .ready() called.
+//    document.body.addEventListener('mousemove', function() {
+//    tstampActual = new Date().getTime(); 
+//    }, false);
+//    setInterval(function() {actividad()}, comprobar);
+//});
+//
+//        ", CClientScript::POS_LOAD);
 ?>
