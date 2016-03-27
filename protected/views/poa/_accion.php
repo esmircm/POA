@@ -61,6 +61,9 @@
 
     </div>
 </div>
+<?php
+if($tipo == 70) {
+?>
 <div style="background-color: #6fa4cd; width: 100%; display: block; float: left; margin-top: 20px; color: #FFF; text-align: center; border-radius: 5px;">
     <h2 style="border-bottom: 1px solid #FFF; width: 90%; margin: 0 auto; margin-bottom: 20px; margin-top: 10px;">Programación de la Acción</h2>
         <?php
@@ -76,3 +79,6 @@
             }
         ?>
 </div>
+<?php
+}
+?>

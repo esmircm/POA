@@ -27,7 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar'),
+'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -163,6 +163,18 @@ public function actionView_Evaluar($id_poa) {
             'accion' => $accion,
             'comentarios' => $comentarios,
             'estatus_poa' => $estatus_poa,
+        ));
+    }
+
+public function actionView_Programacion($fk_poa) {
+        $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        $accion = VswAcciones::model()->findByPk($fk_poa);
+        $view_programa = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $fk_poa));
+
+        $this->render('view_programacion', array(
+            'model' => $model,
+            'accion' => $accion,
+            'view_programa' => $view_programa,
         ));
     }
 
@@ -314,7 +326,7 @@ public function actionCreate($tipo) {
             $tipo_poa = MaestroPoa::model()->findByPk(71);
         }
 //        var_dump($_POST);die;
-        if(isset($_POST['Acciones']) && isset($_POST['Rendimiento'])){
+        if(isset($_POST['Acciones'])){
 //            var_dump($_POST['Rendimiento']);die;
             $accion->nombre_accion = $_POST['Acciones']['nombre_accion'];
             $accion->meta = $_POST['Acciones']['meta'];
@@ -330,29 +342,33 @@ public function actionCreate($tipo) {
             $accion->modified_by = Yii::app()->user->id;
 
             if ($accion->save()) {
-                $o = 0;
-                $i = 57; //Enero en Maestro
-                foreach($_POST['Rendimiento'] as $data){
-                    $programacion = new Rendimiento;
-                    $programacion->fk_meses = $i;
-                    $programacion->cantidad_programada = $data;
-                    $programacion->fk_tipo_entidad = 73;
-                    $programacion->id_entidad = $accion->id_accion;
-                    $programacion->fk_status = 27;
-                    $programacion->created_by = Yii::app()->user->id;
-                    $programacion->created_date = 'now()';
-                    $programacion->modified_date = 'now()';
-                    if($programacion->save()){
-                        $o++;
-                    } else {
-                        echo "<pre>Programacion";
-                        var_dump($programacion->Errors);
-                        exit;
+                if($tipo == 70) {
+                    $o = 0;
+                    $i = 57; //Enero en Maestro
+                    foreach($_POST['Rendimiento'] as $data){
+                        $programacion = new Rendimiento;
+                        $programacion->fk_meses = $i;
+                        $programacion->cantidad_programada = $data;
+                        $programacion->fk_tipo_entidad = 73;
+                        $programacion->id_entidad = $accion->id_accion;
+                        $programacion->fk_status = 27;
+                        $programacion->created_by = Yii::app()->user->id;
+                        $programacion->created_date = 'now()';
+                        $programacion->modified_date = 'now()';
+                        if($programacion->save()){
+                            $o++;
+                        } else {
+                            echo "<pre>Programacion";
+                            var_dump($programacion->Errors);
+                            exit;
+                        }
+                        $i++;
+                        
                     }
-                    $i++;
-                    
-                }
-                if($o == count($_POST['Rendimiento'])){
+                    if($o == count($_POST['Rendimiento'])){
+                        $this->redirect(array('create_actividad', 'id_poa' => $_POST['Acciones']['fk_poa'], 'id_accion' => $accion->id_accion, 'tipo' => $tipo));
+                    }
+                } else {
                     $this->redirect(array('create_actividad', 'id_poa' => $_POST['Acciones']['fk_poa'], 'id_accion' => $accion->id_accion, 'tipo' => $tipo));
                 }
             }else{
@@ -530,4 +546,50 @@ echo CActiveForm::validate($model);
 Yii::app()->end();
 }
 }
+
+public function actionRendimiento($id_poa) {
+        $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        $accion = new Acciones;
+       
+     
+        $this->render('rendimiento_create', array(
+            'model' => $model,
+            'id_poa' => $id_poa,
+            'accion' => $accion,
+           
+        ));
+    }
+    
+       
+    public function actionActualizarCantidadCumplida() { {
+            Yii :: import('booster.components.TbEditableSaver');
+            $es = new TbEditableSaver('Rendimiento');
+
+//            var_dump($es->beforeUpdate);die;
+//Con onBeforeUpdate agrego los atrubitos adicionales que quiero actualizar
+          
+            $es->onBeforeUpdate = function ($event) {
+                
+                    
+      
+//       $can_programada = $event->sender->model->cantidad_programada;
+       
+//       $can_cumplida= $event->sender->model->cantidad_cumplida;
+
+       
+      
+                        $event->sender->setAttribute('modified_date', date('Y-m-d H:i:s'));
+                        $event->sender->setAttribute('modified_by', Yii::app()->user->id);
+//                        $event->sender->setAttribute('cantidad_cumplida', $can_cumplida);
+//                        $event->update();
+//                return $can_programada; 
+
+                    };
+                    
+                    
+//                    echo onBeforeUpdate($event);
+
+            $es->update();
+        }
+    }
 }

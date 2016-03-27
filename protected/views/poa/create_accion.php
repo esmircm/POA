@@ -39,7 +39,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'context' => 'primary',
         'headerIcon' => 'user',
         'headerHtmlOptions' => array('style' => 'background-color: #B2D4F1; color: #000000; border-bottom: none; border-radius: 0px;'),
-        'content' => $this->renderPartial('_accion', array('accion' => $accion, 'programacion' => $programacion, 'id_poa' => $id_poa, 'form' => $form), TRUE),
+        'content' => $this->renderPartial('_accion', array('accion' => $accion, 'programacion' => $programacion, 'id_poa' => $id_poa, 'tipo' => $tipo, 'form' => $form), TRUE),
         'htmlOptions' => array('style' => 'box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.5); border-radius: 0px; border: none;'),
             )
     );

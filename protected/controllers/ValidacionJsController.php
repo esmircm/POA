@@ -956,4 +956,24 @@ class ValidacionJsController extends Controller {
         }
     }
 
+    public function actionGuardarProgramadoActividad() {
+        $programacion = new Rendimiento;
+        $programacion->fk_meses = $_POST['fk_mes'];
+        $programacion->cantidad_programada = $_POST['programacion'];
+        $programacion->fk_tipo_entidad = 74;
+        $programacion->id_entidad = $_POST['id_actividad'];
+        $programacion->fk_status = 27;
+        $programacion->created_by = Yii::app()->user->id;
+        $programacion->created_date = 'now()';
+        $programacion->modified_date = 'now()';
+        if($programacion->save()){
+            echo json_encode(1);
+        } else {
+            echo '<pre>';
+            var_dump($programacion->Errors);
+            die;
+            echo json_encode(2);
+        }
+    }
+
 }

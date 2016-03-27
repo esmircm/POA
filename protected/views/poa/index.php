@@ -47,6 +47,11 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                 'header' => 'PLAN OPERATIVO ANUAL',
                 'value' => '$data->nombre',
             ),
+           'tipo_poa' => array(
+                'name' => 'tipo_poa',
+                'header' => 'TIPO POA',
+                'value' => '$data->tipo_poa',
+            ),
             'dependencia_cruge' => array(
                 'name' => 'dependencia_cruge',
                 'header' => 'OFICINA',
@@ -61,7 +66,7 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                 'class' => 'booster.widgets.TbButtonColumn',
                 'header' => 'ACCIONES',
                 'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
-                'template' => '{continuar}{ver}{editar}',
+                'template' => '{continuar}{ver}{editar}{rendimiento}',
                 'buttons' => array(
                     'continuar' => array(
                         'label' => 'Continuar POA',
@@ -83,6 +88,13 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                         'size' => 'medium',
                         'url' => 'Yii::app()->createUrl("poa/update", array("id_poa"=>$data->id_poa))',
                         'visible' => '($data->fk_estatus_poa == "55") ? true : false;',
+                    ),
+		    'rendimiento' => array(
+                        'label' => 'Rendimiento',
+                        'icon' => 'pencil',
+                        'size' => 'medium',
+                        'url' => 'Yii::app()->createUrl("poa/rendimiento", array("id_poa"=>$data->id_poa))',
+                        'visible' => '($data->fk_estatus_poa == "52") ? true : false;',
                     ),
                 ),
             ),

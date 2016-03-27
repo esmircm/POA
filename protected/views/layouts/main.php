@@ -107,8 +107,8 @@
                                     'visible' => Yii::app()->user->checkAccess('administrador_tecnologia') || Yii::app()->user->checkAccess('registro_poa') || Yii::app()->user->checkAccess('administrador_poa') || Yii::app()->user->checkAccess('evaluador_poa'),
                             
                                     'items' => array(
-                                        array('label' => 'Plan Operativo Anual', 'url' => array('/proyecto/index'), 'visible' => Yii::app()->user->checkAccess('registro_poa') || Yii::app()->user->checkAccess('administrador_poa')),
-                                        array('label' => 'Planificación', 'url' => array('/proyecto/admin'), 'visible' => Yii::app()->user->checkAccess('evaluador_poa')),
+                                        array('label' => 'Plan Operativo Anual', 'url' => array('/poa/index'), 'visible' => Yii::app()->user->checkAccess('registro_poa') || Yii::app()->user->checkAccess('administrador_poa')),
+                                        array('label' => 'Planificación', 'url' => array('/poa/admin'), 'visible' => Yii::app()->user->checkAccess('evaluador_poa')),
 
                                     )
                                     
