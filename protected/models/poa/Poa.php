@@ -66,8 +66,8 @@ class Poa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkTipoPoa' => array(self::BELONGS_TO, 'Maestro', 'fk_tipo_poa'),
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
+			'fkTipoPoa' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_tipo_poa'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
 			'estatusPoas' => array(self::HAS_MANY, 'EstatusPoa', 'fk_poa'),
 			'acciones' => array(self::HAS_MANY, 'Acciones', 'fk_poa'),
 			'comentarioses' => array(self::HAS_MANY, 'Comentarios', 'fk_poa'),

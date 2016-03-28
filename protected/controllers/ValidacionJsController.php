@@ -934,7 +934,7 @@ class ValidacionJsController extends Controller {
             
         }
         
-        $tabla = array('html' => $html);
+        $tabla = array('html' => $html, 'id_actividad' => $id_actividad);
         echo json_encode($tabla);
     }
 

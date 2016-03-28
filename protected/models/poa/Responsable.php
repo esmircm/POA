@@ -60,7 +60,7 @@ class Responsable extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
 			'fkDirResponsable' => array(self::BELONGS_TO, 'CrugeUser', 'fk_dir_responsable'),
-			'fkEstatus' => array(self::BELONGS_TO, 'Maestro', 'fk_estatus'),
+			'fkEstatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_estatus'),
 			'fkPersonaRegistro' => array(self::BELONGS_TO, 'CrugeUser', 'fk_persona_registro'),
 			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
 		);

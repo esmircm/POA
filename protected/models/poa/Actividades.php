@@ -58,9 +58,9 @@ class Actividades extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
 			'fkAccion' => array(self::BELONGS_TO, 'Acciones', 'fk_accion'),
-			'fkUnidadMedida' => array(self::BELONGS_TO, 'Maestro', 'fk_unidad_medida'),
+			'fkUnidadMedida' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_unidad_medida'),
 			'rendimientos' => array(self::HAS_MANY, 'Rendimiento', 'fk_actividad'),
 		);
 	}
@@ -119,8 +119,20 @@ class Actividades extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function suma_rendimiento($id_actividad) 
+        {
+            $consulta = Yii::app()->db->createCommand()
+                ->select('CASE WHEN SUM(cantidad_cumplida) is null THEN 0 ELSE SUM(cantidad_cumplida) END')
+                ->from('poa.rendimiento')
+                ->where('id_entidad = ' . $id_actividad . ' AND fk_tipo_entidad = 74')
+                ->queryRow();
+            
+                $resultado = $consulta['sum'];
+                return $resultado;
+        }
 
-	/**
+        /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.

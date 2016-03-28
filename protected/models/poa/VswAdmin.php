@@ -121,7 +121,7 @@ class VswAdmin extends CActiveRecord
 		));
 	}
         
-        public function search_planificacion($estatus)
+        public function search_planificacion($estatus, $estatus2)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -132,6 +132,7 @@ class VswAdmin extends CActiveRecord
 		$criteria->compare('cod_dependencia_cruge',$this->cod_dependencia_cruge,true);
 		$criteria->compare('dependencia_cruge',$this->dependencia_cruge,true);
 		$criteria->compare('fk_estatus_poa',$estatus);
+                $criteria->compare('fk_estatus_poa',$estatus2, false, 'OR');
 		$criteria->compare('descripcion',$this->descripcion,true);
                 $criteria->compare('fk_tipo_poa',$this->fk_tipo_poa);
 		$criteria->compare('tipo_poa',$this->tipo_poa,true);

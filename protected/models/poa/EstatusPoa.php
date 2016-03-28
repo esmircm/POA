@@ -55,9 +55,9 @@ class EstatusPoa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkEstatusPoa' => array(self::BELONGS_TO, 'Maestro', 'fk_estatus_poa'),
+			'fkEstatusPoa' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_estatus_poa'),
 			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
 		);
 	}
 

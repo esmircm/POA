@@ -63,9 +63,9 @@ class Acciones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkAmbito' => array(self::BELONGS_TO, 'Maestro', 'fk_ambito'),
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
-			'fkUnidadMedida' => array(self::BELONGS_TO, 'Maestro', 'fk_unidad_medida'),
+			'fkAmbito' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_ambito'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
+			'fkUnidadMedida' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_unidad_medida'),
 			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
 			'actividades' => array(self::HAS_MANY, 'Actividades', 'fk_accion'),
 		);
