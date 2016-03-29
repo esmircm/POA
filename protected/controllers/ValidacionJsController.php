@@ -939,21 +939,119 @@ class ValidacionJsController extends Controller {
     }
 
     public function actionEliminarActividad() {
-//        var_dump ($_POST);die;
-        $actividad = new Actividades;
 
-        $sql = "DELETE FROM poa.actividades WHERE id_actividades=" . $_POST['id_actividad'];
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $row = $command->queryAll();
-
-        if ($row) {
-
-            echo json_encode(1);
+        $programacion = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74));
+        if($programacion){
+            $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+            if ($actividad->delete()) {
+                echo json_encode(1);
+            } else {
+                echo '<pre>Actividad';
+                var_dump($actividad->Errors);
+                die;
+                echo json_encode(2);
+            }
         } else {
-            echo json_encode(2);
-//         $tabla = array('html' => $html);
+            $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+            if ($actividad->delete()) {
+                echo json_encode(1);
+            } else {
+                echo '<pre>Actividad';
+                var_dump($actividad->Errors);
+                die;
+                echo json_encode(2);
+            }
         }
+    }
+    
+    public function actionEliminarAccion() {
+        $actividades = VswActividades::model()->findAllByAttributes(array('fk_accion' => $_POST['id_accion']));
+//        var_dump($actividades);die;
+        if($actividades){
+            $i=0;
+            foreach($actividades as $data){
+                $programacion_act = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $data['id_actividades'], 'fk_tipo_entidad' => 74));
+                if($programacion_act){
+                    $actividad = Actividades::model()->findByPk($data['id_actividades']);
+                    if ($actividad->delete()) {
+                        $i++;
+                    } else {
+                        echo '<pre>Actividad';
+                        var_dump($actividad->Errors);
+                        die;
+                    }
+                    
+                } else {
+                    $actividad = Actividades::model()->findByPk($data['id_actividades']);
+                    if ($actividad->delete()) {
+                        $i++;
+                    } else {
+                        echo '<pre>Actividad';
+                        var_dump($actividad->Errors);
+                        die;
+                    }
+                }
+            }
+
+            if($i == count($actividades)){
+                $programacion_acc = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73));
+                if($programacion_acc){
+                    $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                    if ($accion->delete()) {
+                        echo json_encode(1);
+                    } else {
+                        echo '<pre>Accion';
+                        var_dump($accion->Errors);
+                        die;
+                    }
+                } else {
+                    $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                    if ($accion->delete()) {
+                        echo json_encode(1);
+                    } else {
+                        echo '<pre>Accion';
+                        var_dump($accion->Errors);
+                        die;
+                    }
+                }
+            } else {
+                echo json_encode(2);
+            }
+        }else{
+            $programacion_acc = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73));
+            if ($programacion_acc) {
+                $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                if ($accion->delete()) {
+                    echo json_encode(1);
+                } else {
+                    echo '<pre>Accion';
+                    var_dump($accion->Errors);
+                    die;
+                }
+            } else {
+                $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                if ($accion->delete()) {
+                    echo json_encode(1);
+                } else {
+                    echo '<pre>Accion';
+                    var_dump($accion->Errors);
+                    die;
+                }
+            }
+        }
+//        if($programacion){
+//            $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+//            if ($actividad->delete()) {
+//                echo json_encode(1);
+//            } else {
+//                echo '<pre>Actividad';
+//                var_dump($actividad->Errors);
+//                die;
+//                echo json_encode(2);
+//            }
+//        }else {
+//            echo json_encode(2);
+//        }
     }
 
     public function actionGuardarProgramadoActividad() {
@@ -973,6 +1071,32 @@ class ValidacionJsController extends Controller {
             var_dump($programacion->Errors);
             die;
             echo json_encode(2);
+        }
+    }
+    
+    public function actionBuscarTiempoMedida() {
+//        var_dump('$_POST');die;
+        $Id = (isset($_POST['MaestroPoa']['id_maestro']) ? $_POST['MaestroPoa']['id_maestro'] : $_GET['MaestroPoa']['id_maestro']);
+
+        $Selected = isset($_GET['id_maestro']) ? $_GET['id_maestro'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion');
+            echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    echo CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    echo CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
+        } else {
+
+            echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
         }
     }
 

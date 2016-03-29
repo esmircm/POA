@@ -26,11 +26,12 @@ class GraficasAccionesController extends Controller {
     }
 
     public function actionIndex($id_poa, $tipo) {
-//echo "hola"; exit();
+        
 
-        /* este es la consulta sql */
         if (!isset($_REQUEST['opc'])) {
-//            $sql = '';
+
+            $maestro = new MaestroPoa;
+            $maestro2 = new MaestroPoa;
             $poa = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
             $acciones = VswAcciones::model()->findAllByAttributes(array('fk_poa' => $id_poa));
 //            $i=0;
@@ -83,6 +84,8 @@ class GraficasAccionesController extends Controller {
                 'acciones' => $acciones,
                 'datos_leyenda' => $datos_leyenda,
                 'total' => $dato,
+                'maestro' => $maestro,
+                'maestro2' => $maestro2,
             ));
                 
 

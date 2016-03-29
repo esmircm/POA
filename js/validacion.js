@@ -1570,7 +1570,7 @@ function GuardarActividad() {
 
 function eliminar_actividad(valor, id) {
 
-    if (!confirm('\u00bfEstá usted seguro de que desea eliminar está actividad?')) {
+    if (!confirm('\u00bfEstá usted seguro de que desea eliminar está Actividad?')) {
 
     } else {
         $.ajax({
@@ -1583,6 +1583,7 @@ function eliminar_actividad(valor, id) {
 
                 if (datos == 1) {
                     bootbox.alert('Eliminado Con Exito!');
+                    $(valor).parent().parent().remove();
                 } else {
                     bootbox.alert('Verifique sus datos!.');
                 }
@@ -1593,7 +1594,40 @@ function eliminar_actividad(valor, id) {
 
             }
         });
-        $(valor).parent().parent().remove();
+        
+    }
+}
+
+function eliminar_accion(valor, id) {
+    if (!confirm('\u00bfEstá usted seguro de que desea eliminar está Acción?')) {
+
+    } else {
+        $.ajax({
+            url: baseUrl + "/ValidacionJs/EliminarAccion",
+            async: true,
+            type: 'POST',
+            data: 'id_accion=' + id,
+            dataType: 'json',
+            success: function(datos) {
+
+                if (datos == 1) {
+                    bootbox.alert('Eliminado Con Exito!');
+                    $(valor).parent().parent().remove();
+                } 
+                if (datos == 2) {
+                    bootbox.alert('Verifique sus Datos!');
+                }
+                if (datos == 3) {
+                    bootbox.alert('Prueba!');
+                }
+
+            },
+            error: function(datos) {
+                bootbox.alert('Ocurrio un error');
+
+            }
+        });
+        
     }
 }
 
@@ -1610,5 +1644,21 @@ $(document).ready(function() {
             $('#Comentarios_comentarios').prop('required', false);
         }
     });
+    
+    $('.button-panel').click(function()
+        {
+        $(".left-panel").animate({"right": "0px"}, "slow");
+        $('.button-panel').css("display", "none")
+        $('.button-panel-close').css("display", "inline-block")
+    }
+    );
+    
+    $('.button-panel-close').click(function()
+        {
+        $(".left-panel").animate({"right": "-360px"}, "slow");
+        $('.button-panel-close').css("display", "none")
+        $('.button-panel').css("display", "inline-block")
+        }
+    );
     
 })

@@ -3683,7 +3683,7 @@ COPY acciones (id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, 
 -- Name: acciones_id_accion_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('acciones_id_accion_seq', 26, true);
+SELECT pg_catalog.setval('acciones_id_accion_seq', 29, true);
 
 
 --
@@ -3710,7 +3710,7 @@ COPY actividades (id_actividades, actividad, fk_unidad_medida, cantidad, fk_acci
 -- Name: actividades_id_actividades_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('actividades_id_actividades_seq', 45, true);
+SELECT pg_catalog.setval('actividades_id_actividades_seq', 53, true);
 
 
 --
@@ -3745,6 +3745,8 @@ COPY estatus_poa (id_estatus_poa, fk_estatus_poa, fk_poa, created_by, created_da
 42	51	22	437	2016-03-28 23:42:05.802294	\N	2016-03-28 23:42:05.802294	21	t	8
 43	54	22	355	2016-03-28 23:43:29.984622	\N	2016-03-28 23:43:29.984622	21	t	9
 44	52	22	462	2016-03-28 23:43:53.677441	\N	2016-03-28 23:43:53.677441	21	t	10
+45	50	23	437	2016-03-29 04:42:25.243779	\N	2016-03-29 04:42:25.243779	21	t	8
+46	50	24	437	2016-03-29 06:09:07.368944	\N	2016-03-29 06:09:07.368944	21	t	8
 \.
 
 
@@ -3752,7 +3754,7 @@ COPY estatus_poa (id_estatus_poa, fk_estatus_poa, fk_poa, created_by, created_da
 -- Name: estatus_poa_id_estatus_poa_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('estatus_poa_id_estatus_poa_seq', 44, true);
+SELECT pg_catalog.setval('estatus_poa_id_estatus_poa_seq', 46, true);
 
 
 --
@@ -3813,7 +3815,6 @@ COPY maestro (id_maestro, descripcion, padre, hijo, created_by, created_date, mo
 51	ENVIADO AL DIRECTOR(A)	49	0	1	2016-02-22 13:02:11.295578	\N	2016-02-22 13:02:11.295578	t
 54	ENVIADO A PLANIFICACIÓN	49	0	1	2016-03-11 03:42:38.704464	\N	2016-03-11 03:42:38.704464	t
 55	RECHAZADO	49	0	1	2016-03-11 14:18:56.849685	\N	2016-03-11 14:18:56.849685	t
-56	MESES	0	12	1	2016-03-14 10:06:57.834732	\N	2016-03-14 10:06:57.834732	t
 57	ENERO	56	0	1	2016-03-14 10:07:10.082581	\N	2016-03-14 10:07:10.082581	t
 58	FEBRERO	56	0	1	2016-03-14 10:07:19.858357	\N	2016-03-14 10:07:19.858357	t
 59	MARZO	56	0	1	2016-03-14 10:07:28.338305	\N	2016-03-14 10:07:28.338305	t
@@ -3834,6 +3835,16 @@ COPY maestro (id_maestro, descripcion, padre, hijo, created_by, created_date, mo
 73	ACCION	72	0	1	2016-03-18 12:18:28.719331	\N	2016-03-18 12:18:28.719331	t
 74	ACTIVIDAD 	72	0	1	2016-03-18 12:18:44.247239	\N	2016-03-18 12:18:44.247239	t
 72	TIPO RENDIMIENTO	0	2	1	2016-03-18 12:17:32.519334	\N	2016-03-18 12:17:32.519334	t
+76	TRIMESTRE I	75	0	1	2016-03-29 03:19:37.751389	\N	2016-03-29 03:19:37.751389	t
+77	TRIMESTRE II	75	0	1	2016-03-29 03:19:47.975151	\N	2016-03-29 03:19:47.975151	t
+78	TRIMESTRE III	75	0	1	2016-03-29 03:19:58.268372	\N	2016-03-29 03:19:58.268372	t
+79	TRIMESTRE IV	75	0	1	2016-03-29 03:20:08.425526	\N	2016-03-29 03:20:08.425526	t
+81	SEMESTRE I	80	0	1	2016-03-29 03:20:50.006354	\N	2016-03-29 03:20:50.006354	t
+82	SEMESTRE II	80	0	1	2016-03-29 03:21:00.113966	\N	2016-03-29 03:21:00.113966	t
+83	MEDIDA TIEMPO	0	3	1	2016-03-29 03:21:40.827492	\N	2016-03-29 03:21:40.827492	t
+80	SEMESTRE	83	2	1	2016-03-29 03:20:26.261644	\N	2016-03-29 03:20:26.261644	t
+75	TRIMESTRE	83	4	1	2016-03-29 03:19:17.442634	\N	2016-03-29 03:19:17.442634	t
+56	MESES	83	12	1	2016-03-14 10:06:57.834732	\N	2016-03-14 10:06:57.834732	t
 \.
 
 
@@ -3841,7 +3852,7 @@ COPY maestro (id_maestro, descripcion, padre, hijo, created_by, created_date, mo
 -- Name: maestro_id_maestro_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('maestro_id_maestro_seq', 74, true);
+SELECT pg_catalog.setval('maestro_id_maestro_seq', 85, true);
 
 
 --
@@ -3851,6 +3862,8 @@ SELECT pg_catalog.setval('maestro_id_maestro_seq', 74, true);
 COPY poa (id_poa, nombre, fk_tipo_poa, obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion, fecha_inicio, fecha_final, created_by, created_date, modified_by, modified_date, fk_status, es_activo) FROM stdin;
 21	Nombre Acción Centralizada	71	\N	\N	Objetivo	\N		\N	\N	437	2016-03-27 20:57:16.097395	\N	2016-03-27 20:57:16.097395	24	t
 22	Proyecto 1	70	Objetivo Historico Proyecto	Objetivo Estrategico	Objetivo General Proyecto	Objetivo Institucional Proyecto		2016-03-01 00:00:00	2016-12-30 00:00:00	437	2016-03-28 23:34:19.140315	\N	2016-03-28 23:34:19.140315	24	t
+23	kkkkkkkkkk	71	\N	\N	kkkkkkkkkkkkkkk	\N		\N	\N	437	2016-03-29 04:42:25.183596	\N	2016-03-29 04:42:25.183596	24	t
+24	kkkkkkkkkkk	70			kkkkkkkkkkkkk			2016-03-01 00:00:00	2016-03-16 00:00:00	437	2016-03-29 06:09:07.310921	\N	2016-03-29 06:09:07.310921	24	t
 \.
 
 
@@ -3858,7 +3871,7 @@ COPY poa (id_poa, nombre, fk_tipo_poa, obj_historico, obj_estrategico, obj_gener
 -- Name: poa_id_poa_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('poa_id_poa_seq', 22, true);
+SELECT pg_catalog.setval('poa_id_poa_seq', 24, true);
 
 
 --
@@ -3962,13 +3975,6 @@ COPY rendimiento (id_rendimiento, fk_meses, created_by, created_date, modified_b
 394	66	437	2016-03-28 23:37:38.483882	\N	2016-03-28 23:37:38.483882	27	t	\N	500	74	40
 395	67	437	2016-03-28 23:37:38.537678	\N	2016-03-28 23:37:38.537678	27	t	\N	0	74	40
 396	68	437	2016-03-28 23:37:38.642766	\N	2016-03-28 23:37:38.642766	27	t	\N	0	74	40
-397	57	437	2016-03-28 23:38:29.902674	\N	2016-03-28 23:38:29.902674	27	t	\N	0	73	25
-398	58	437	2016-03-28 23:38:29.925714	\N	2016-03-28 23:38:29.925714	27	t	\N	0	73	25
-399	59	437	2016-03-28 23:38:29.942311	\N	2016-03-28 23:38:29.942311	27	t	\N	0	73	25
-400	60	437	2016-03-28 23:38:29.950431	\N	2016-03-28 23:38:29.950431	27	t	\N	0	73	25
-401	61	437	2016-03-28 23:38:29.961115	\N	2016-03-28 23:38:29.961115	27	t	\N	500	73	25
-402	62	437	2016-03-28 23:38:29.97761	\N	2016-03-28 23:38:29.97761	27	t	\N	500	73	25
-403	63	437	2016-03-28 23:38:29.992786	\N	2016-03-28 23:38:29.992786	27	t	\N	500	73	25
 404	64	437	2016-03-28 23:38:30.005955	\N	2016-03-28 23:38:30.005955	27	t	\N	500	73	25
 405	65	437	2016-03-28 23:38:30.017119	\N	2016-03-28 23:38:30.017119	27	t	\N	500	73	25
 406	66	437	2016-03-28 23:38:30.025522	\N	2016-03-28 23:38:30.025522	27	t	\N	5000	73	25
@@ -4046,6 +4052,13 @@ COPY rendimiento (id_rendimiento, fk_meses, created_by, created_date, modified_b
 478	66	437	2016-03-28 23:41:48.13081	\N	2016-03-28 23:41:48.13081	27	t	\N	1	74	45
 479	68	437	2016-03-28 23:41:48.272346	\N	2016-03-28 23:41:48.272346	27	t	\N	0	74	45
 480	67	437	2016-03-28 23:41:48.318887	\N	2016-03-28 23:41:48.318887	27	t	\N	1	74	45
+397	57	437	2016-03-28 23:38:29.902674	437	2016-03-29 00:21:42	27	t	0	0	73	25
+398	58	437	2016-03-28 23:38:29.925714	437	2016-03-29 00:21:44	27	t	0	0	73	25
+399	59	437	2016-03-28 23:38:29.942311	437	2016-03-29 00:21:46	27	t	0	0	73	25
+400	60	437	2016-03-28 23:38:29.950431	437	2016-03-29 00:21:48	27	t	1	0	73	25
+401	61	437	2016-03-28 23:38:29.961115	437	2016-03-29 00:23:45	27	t	100	500	73	25
+402	62	437	2016-03-28 23:38:29.97761	437	2016-03-29 00:42:13	27	t	250	500	73	25
+403	63	437	2016-03-28 23:38:29.992786	437	2016-03-29 00:42:15	27	t	250	500	73	25
 \.
 
 
@@ -4053,7 +4066,7 @@ COPY rendimiento (id_rendimiento, fk_meses, created_by, created_date, modified_b
 -- Name: rendimiento_id_rendimiento_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('rendimiento_id_rendimiento_seq', 480, true);
+SELECT pg_catalog.setval('rendimiento_id_rendimiento_seq', 588, true);
 
 
 --
@@ -4063,6 +4076,8 @@ SELECT pg_catalog.setval('rendimiento_id_rendimiento_seq', 480, true);
 COPY responsable (id_responsable, fk_persona_registro, fk_dir_responsable, fk_poa, created_by, modified_by, created_date, modified_date, es_activo, fk_estatus, cod_dependencia_cruge, dependencia_cruge) FROM stdin;
 21	437	355	21	437	\N	2016-03-27 20:57:16.138753	2016-03-27 20:57:16.138753	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
 22	437	355	22	437	\N	2016-03-28 23:34:19.192213	2016-03-28 23:34:19.192213	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+23	437	355	23	437	\N	2016-03-29 04:42:25.218883	2016-03-29 04:42:25.218883	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
+24	437	355	24	437	\N	2016-03-29 06:09:07.341494	2016-03-29 06:09:07.341494	t	30	40	OFICINAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN
 \.
 
 
@@ -4070,7 +4085,7 @@ COPY responsable (id_responsable, fk_persona_registro, fk_dir_responsable, fk_po
 -- Name: responsable_id_responsable_seq; Type: SEQUENCE SET; Schema: poa; Owner: postgres
 --
 
-SELECT pg_catalog.setval('responsable_id_responsable_seq', 22, true);
+SELECT pg_catalog.setval('responsable_id_responsable_seq', 24, true);
 
 
 SET search_path = public, pg_catalog;
@@ -7946,6 +7961,26 @@ COPY cruge_session (idsession, iduser, created, expire, status, ipaddress, usage
 2785	462	1459224899	1459226699	0	127.0.0.1	1	1459224899	1459225011	127.0.0.1
 2786	437	1459225022	1459226822	0	127.0.0.1	1	1459225022	1459225083	127.0.0.1
 2787	462	1459225089	1459226889	0	127.0.0.1	1	1459225089	1459225303	127.0.0.1
+2788	462	1459226787	1459228587	0	127.0.0.1	1	1459226787	1459226931	127.0.0.1
+2789	437	1459226937	1459228737	0	127.0.0.1	1	1459226937	1459227111	127.0.0.1
+2790	462	1459227117	1459228917	0	127.0.0.1	1	1459227117	1459227148	127.0.0.1
+2791	437	1459227153	1459228953	0	127.0.0.1	1	1459227153	1459227229	127.0.0.1
+2792	462	1459227234	1459229034	0	127.0.0.1	1	1459227234	1459227511	127.0.0.1
+2793	355	1459227521	1459229321	1	127.0.0.1	1	1459227521	\N	\N
+2794	437	1459228310	1459230110	0	127.0.0.1	1	1459228310	1459228381	127.0.0.1
+2795	462	1459228390	1459230190	0	127.0.0.1	1	1459228390	1459228429	127.0.0.1
+2796	437	1459228548	1459230348	0	127.0.0.1	1	1459228548	\N	\N
+2797	462	1459230478	1459232278	0	127.0.0.1	2	1459231796	\N	\N
+2798	462	1459232424	1459234224	0	127.0.0.1	1	1459232424	\N	\N
+2799	462	1459234261	1459236061	0	127.0.0.1	2	1459235573	\N	\N
+2800	462	1459236076	1459237876	0	127.0.0.1	1	1459236076	\N	\N
+2801	462	1459238268	1459240068	0	127.0.0.1	2	1459239357	\N	\N
+2802	462	1459240199	1459241999	0	127.0.0.1	1	1459240199	\N	\N
+2803	437	1459242721	1459244521	0	127.0.0.1	2	1459243265	\N	\N
+2804	437	1459244948	1459246748	0	127.0.0.1	1	1459244948	\N	\N
+2805	437	1459246869	1459248669	0	127.0.0.1	1	1459246869	1459248129	127.0.0.1
+2806	462	1459248135	1459249935	0	127.0.0.1	1	1459248135	1459248369	127.0.0.1
+2807	437	1459248959	1459250759	1	127.0.0.1	1	1459248959	\N	\N
 \.
 
 
@@ -7953,7 +7988,7 @@ COPY cruge_session (idsession, iduser, created, expire, status, ipaddress, usage
 -- Name: cruge_session_idsession_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('cruge_session_idsession_seq', 2787, true);
+SELECT pg_catalog.setval('cruge_session_idsession_seq', 2807, true);
 
 
 --
@@ -8436,10 +8471,10 @@ COPY cruge_user (iduser, regdate, actdate, logondate, username, email, password,
 245	1439472685	1439472685	1453836802	7496753	7496753@minmujer.gob.ve	1a9a36bc4d03156e512fcb28e1539347	\N	1	0	0	821
 22	1435852087	1435852087	1454689060	18528414	hviloria@minmujer.gob.ve	99a3df6c3d63f083f705b3af0fbaf678	\N	1	0	0	647
 11	1426278589	1426278589	1455904909	16249561	nespinoza@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	1401
-355	1439776758	1439776758	1459224796	15911540	15911540@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4103
+462	1449065675	1449065675	1459248135	21281617	cvelasquez@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4612
+437	1446588539	\N	1459248959	12880477	yalmenar@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	fd3c8c4cf412a4551b62bec304db4cd6	1	0	0	4528
 1	\N	\N	1459224865	admin	admin@tucorreo.com	cce868a097d54c64229f71de9a6ca147	\N	1	0	0	\N
-437	1446588539	\N	1459225022	12880477	yalmenar@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	fd3c8c4cf412a4551b62bec304db4cd6	1	0	0	4528
-462	1449065675	1449065675	1459225089	21281617	cvelasquez@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4612
+355	1439776758	1439776758	1459227521	15911540	15911540@minmujer.gob.ve	e10adc3949ba59abbe56e057f20f883e	\N	1	0	0	4103
 \.
 
 

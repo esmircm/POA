@@ -330,3 +330,47 @@ navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:
 .ValidationButton:hover {
     background-color: #0f6ab2;
 }
+
+.left-panel {
+    right: -360px;
+    width: 400px;
+    position: absolute;
+    z-index: 3;
+    
+    text-align: center;
+}
+
+.button-panel {
+    width: 40px;
+    background-color: #000;
+    height: 100px;
+    float: left;
+    display: inline-block;
+}
+.button-panel-close {
+    width: 40px;
+    background-color: #000;
+    height: 100px;
+    float: left;
+    display: none;
+}
+
+.info-panel {
+    width: 360px;
+    background-color: rgba(154,154,154,0.75);
+    float: left;
+    display: inline-block; 
+}
+
+.info-panel h1 {
+    font-size: 16px;
+}
+
+.left-panel-fixed {
+    top: 20%;
+    right: -360px;
+    width: 400px;
+    position: fixed;
+    z-index: 3;
+    text-align: center;
+}

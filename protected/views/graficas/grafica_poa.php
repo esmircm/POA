@@ -14,7 +14,71 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'validateOnType' => true,
     ),
 ));
+
+$baseUrl = Yii::app()->baseUrl;
+$Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/validacion.js');
+
 ?>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var altura = $('.left-panel').offset().top;
+        $(window).on('scroll', function(){
+            if ( $(window).scrollTop() > altura - 120 ){
+            $('.left-panel').addClass('left-panel-fixed');
+            } else {
+            $('.left-panel').removeClass('left-panel-fixed');
+            }
+        });
+    })
+
+</script>
+    <div class="left-panel">
+        <div class="button-panel">
+            
+        </div>
+        <div class="button-panel-close">
+            
+        </div>
+        <div class="info-panel">
+            <h1>Graficación Avanzada</h1>
+            <div class="col-md-12">
+            <?php
+            
+            echo $form->dropDownListGroup($maestro, 'id_maestro', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
+                'widgetOptions' => array(
+                    'data' => CHtml::listData(MaestroPoa::model()->findAllByAttributes(array('padre' => 83)), 'id_maestro', 'descripcion'),
+                    'htmlOptions' => array(
+                        'empty' => 'SELECCIONE',
+                        'ajax' => array(
+                            'type' => 'POST',
+                            'url' => CController::createUrl('ValidacionJs/BuscarTiempoMedida'),
+                            'update' => '#MaestroPoa2_id_maestro',
+                        ),
+                    ),
+                )
+                    )
+            );
+            ?>
+            </div>
+            <div class="col-md-12" >
+                <?php
+                echo $form->dropDownListGroup($maestro2, 'id_maestro', array('wrapperHtmlOptions' => array('class' => 'col-sm-12'),
+                    'widgetOptions' => array(
+                        'htmlOptions' => array(
+                            'id' => 'MaestroPoa2_id_maestro',
+                            'name' => 'MaestroPoa2_id_maestro',
+                            'empty' => 'SELECCIONE',
+                        ),
+                    )
+                        )
+                );
+                ?>
+            </div>
+        </div>
+       
+    </div>
+
 <div style="width: 90%; margin: 0 auto; text-align: center; background-color: rgba(94, 152, 201, 1); border-radius: none; color: #FFF; font-size: 16px; overflow: hidden; position: relative">
 
     <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
