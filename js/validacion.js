@@ -1473,11 +1473,15 @@ function guardar_poa(){
 if($('#Poa_fecha_inicio').val()==''){
     $('#Poa_fecha_inicio').css('border', '1px solid rgba(215, 40, 40, 0.9)');
     validacion = 1;
+} else {
+    $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
 }
 if($('#Poa_fecha_final').val()==''){
     $('#Poa_fecha_final').css('border', '1px solid rgba(215, 40, 40, 0.9)');
     validacion = 1;
-} 
+} else {
+    $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
+}
 
 if (validacion != 1) {
     $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
@@ -1606,4 +1610,5 @@ $(document).ready(function() {
             $('#Comentarios_comentarios').prop('required', false);
         }
     });
+    
 })
