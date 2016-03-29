@@ -481,6 +481,21 @@ public function actionIndex() {
         $field = CrugeField::model()->findByAttributes(array('idfield' => 1));
         $arOpt = CrugeUtil::explodeOptions($field->predetvalue);
         $dependencia = $arOpt[$cruge_dependencia->value];
+        
+        $verificacion_acc = VswPoa::model()->findByAttributes(array('codigo_dependencia' => $cruge_dependencia->value, 'anio' => date('Y'), 'fk_tipo_poa' => 71));
+        if($verificacion_acc) {
+            $anio_acc = $verificacion_acc->anio + 1; 
+        } else {
+            $anio_acc = date('Y');
+        }
+        
+        $verificacion_pro = VswPoa::model()->findByAttributes(array('codigo_dependencia' => $cruge_dependencia->value, 'anio' => date('Y'), 'fk_tipo_poa' => 70));
+        if($verificacion_pro){
+            $anio_pro = $verificacion_pro->anio + 1; 
+        } else {
+             $anio_pro = date('Y');
+        }
+        
         if ($cruge_dependencia->value >= 17 && $cruge_dependencia->value <= 20) {
             $tipo_poa = MaestroPoa::model()->findByPk(70);
         } else {
@@ -493,6 +508,8 @@ public function actionIndex() {
             'cruge_dependencia' => $cruge_dependencia,
             'cruge_cargo' => $cruge_cargo,
             'tipo_poa' => $tipo_poa,
+            'anio_acc' => $anio_acc,
+            'anio_pro' => $anio_pro,
         ));
     }
 
@@ -591,5 +608,10 @@ public function actionRendimiento($id_poa) {
 
             $es->update();
         }
+    }
+    
+    public function actionGenerarPDF ($id_poa) {
+//        $poa 
+        
     }
 }

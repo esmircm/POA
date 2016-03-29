@@ -35,26 +35,31 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 <div style="width: 90%; margin: 0 auto; text-align: center; font-size: 16px; margin-bottom: 20px; border-bottom: 1px solid #000;">
     <span style="margin-top: 20px; margin-bottom: 5px; display: inline-block; width: 100%;"><?php echo $poa->dependencia_responsable ?>  </span> 
 </div>
-
+<table style="width: 90%; border-collapse: collapse; text-align: center; margin: 0 auto; margin-bottom: 50px;">
+    <tr style="border-bottom: 1px solid rgba(152, 152, 152, 1); background-color: rgba(133, 133, 133, 1); color: #FFF;">
+        <td style="text-align: center">Acción Específica</td>
+        <td style="text-align: center">Unidad de Medida</td>
+        <td style="text-align: center">Total Anual</td>
+        <td style="text-align: center">Ejecutado hasta la Fecha</td>
+        <td style="text-align: center">% de Ejecución</td>
+    </tr>
 <?php
 $count = count($acciones);
 $i = 1;
 foreach ($acciones as $graficas) {
 ?>
 
-<div style="width: 90%; text-align: center; margin: 0 auto; <?php if($i == $count) { echo "margin-bottom: 50px;"; }?>">
     <?php
     
-    echo $this->renderPartial('_tabla_rendimiento', array('acciones' => $graficas, 'i' => $i), TRUE);
+    echo $this->renderPartial('_proyecto_rendimiento', array('acciones' => $graficas, 'i' => $i), TRUE);
     
     ?>
-</div>
 
 <?php
 $i++;
 }
 ?>
-
+</table>
 <div class="poa_content"> 
     
 <?php 
@@ -66,7 +71,7 @@ $i++;
     
     <?php
     
-    echo $this->renderPartial('_grafica_poa', array('datos_leyenda' => $datos_leyenda[$graficas->id_accion], 'total' => $total[$graficas->id_accion], 'graficas' => $graficas), TRUE);
+    echo $this->renderPartial('_grafica_proyecto', array('datos_leyenda' => $datos_leyenda[$graficas->id_accion], 'total' => $total[$graficas->id_accion], 'graficas' => $graficas), TRUE);
     
     ?>
     <div class='fromulario_gradica_cc' style="">

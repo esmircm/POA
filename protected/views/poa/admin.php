@@ -21,6 +21,11 @@ $this->breadcrumbs=array(
                 'header' => 'Plan Operativo Anual',
                 'value' => '$data->nombre',
             ),
+            'tipo_poa' => array(
+                'name' => 'tipo_poa',
+                'header' => 'TIPO POA',
+                'value' => '$data->tipo_poa',
+            ),
             'dependencia_cruge' => array(
                 'name' => 'dependencia_cruge',
                 'header' => 'Oficina',
@@ -35,7 +40,7 @@ $this->breadcrumbs=array(
                 'class' => 'booster.widgets.TbButtonColumn',
                 'header' => 'Acciones',
                 'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
-                'template' => '{ver}{graficar}',
+                'template' => '{ver}{graficar}{graficar_proyecto}',
                 'buttons' => array(
                     
                     'ver' => array(
@@ -51,7 +56,15 @@ $this->breadcrumbs=array(
                         'icon' => 'glyphicon glyphicon-stats',
                         'size' => 'medium',
                         'url' => 'Yii::app()->createUrl("graficas/GraficaAcciones", array("id_poa"=>$data->id_poa, "tipo"=>$data->fk_tipo_poa))',
-                        'visible' => '($data->fk_estatus_poa == "52") ? true : false;',
+                        'visible' => '(($data->fk_estatus_poa == "52") && ($data->fk_tipo_poa == "71")) ? true : false;',
+                    ),
+                    
+                    'graficar_proyecto' => array(
+                        'label' => 'Ver Rendimiento POA',
+                        'icon' => 'glyphicon glyphicon-stats',
+                        'size' => 'medium',
+                        'url' => 'Yii::app()->createUrl("graficas/GraficaAccionesProyecto", array("id_poa"=>$data->id_poa, "tipo"=>$data->fk_tipo_poa))',
+                        'visible' => '(($data->fk_estatus_poa == "52") && ($data->fk_tipo_poa == "70")) ? true : false;',
                     )
                 ),
             ),

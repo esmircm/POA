@@ -18,7 +18,7 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
         </div>
         <div style="display: block;">
             <h6>CREAR PROYECTO</h6>
-            <h1><?php echo date('Y') + 1;?></h1>
+            <h1><?php echo $anio_pro;?></h1>
         </div>
     </div>
     
@@ -28,7 +28,7 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
         </div>
         <div style="display: block;">
             <h6>CREAR ACCIÓN CENTRALIZADA</h6>
-            <h1><?php echo date('Y') + 1;?></h1>
+            <h1><?php echo $anio_acc;?></h1>
         </div>
     </div>
     
@@ -96,6 +96,14 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                         'url' => 'Yii::app()->createUrl("poa/rendimiento", array("id_poa"=>$data->id_poa))',
                         'visible' => '($data->fk_estatus_poa == "52") ? true : false;',
                     ),
+                    'reportes' => array(
+                        'label' => 'Generar PDF',
+                        'icon' => 'file',
+                        'size'=> 'medium',
+                        
+                        
+                        
+                    )
                 ),
             ),
         ),

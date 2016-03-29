@@ -170,6 +170,18 @@ class Acciones extends CActiveRecord
                 $resultado = $consulta['unidad_medida'];
                 return $resultado;
 	}
+        
+        public function suma_rendimiento($id_accion) 
+        {
+            $consulta = Yii::app()->db->createCommand()
+                ->select('CASE WHEN SUM(cantidad_cumplida) is null THEN 0 ELSE SUM(cantidad_cumplida) END')
+                ->from('poa.rendimiento')
+                ->where('id_entidad = ' . $id_accion . ' AND fk_tipo_entidad = 73')
+                ->queryRow();
+            
+                $resultado = $consulta['sum'];
+                return $resultado;
+        }
 
 	/**
 	 * Returns the static model of the specified AR class.

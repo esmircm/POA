@@ -14,7 +14,7 @@ $this->widget(
                 'type' => 'column',
             ),
             'title' => array('text' => $graficas->nombre_accion, 'style' => array('font-size' => '15px', 'font-weight' => 'bold')),
-//            'subtitle' => array('text' => $subtitulo, 'style' => array('fontSize' => '15px', 'font-weight' => 'bold')),
+            'subtitle' => array('text' => $graficas->unidad_medida, 'style' => array('fontSize' => '15px', 'font-weight' => 'bold')),
             'yAxis' => array('min' => '0',  'allowDecimals' => false, 'title' => array('text' => 'Cantidades por Descripción'),
                 'labels' => array('style' => array('color' => 'black', 'font' => '12px Trebuchet MS, Verdana, sans-serif'))
             ),
@@ -40,7 +40,7 @@ $this->widget(
                 'bar' => array(
                     'dataLabels' => array(
                         'enabled' => false,
-                        'colors' => '#058DC7',
+                        'colors' => array('#000000', '#FFFFFF'),
                         'style' => array(
                             'textShadow' => '1 1 5px black, 0 0 3px black'
                         )

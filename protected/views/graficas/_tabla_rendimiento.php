@@ -18,7 +18,7 @@
         <td style="text-align: center"><?php echo $data['unidad_medida'] ; ?></td>
         <td style="text-align: center"><?php echo $data['cantidad'] ; ?></td>
         <td style="text-align: center"><?php echo Actividades::model()->suma_rendimiento($data['id_actividades']) ; ?></td>
-        <td style="text-align: center"><?php echo ((Actividades::model()->suma_rendimiento($data['id_actividades']) * $data['cantidad'])/100) . "%" ; ?></td>
+        <td style="text-align: center"><?php echo ((Actividades::model()->suma_rendimiento($data['id_actividades']) * 100)/$data['cantidad']) . "%" ; ?></td>
     </tr>
             <?php
             $o++;

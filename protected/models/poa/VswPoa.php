@@ -29,6 +29,8 @@
  * @property integer $cedula
  * @property string $descripcion_cargo
  * @property string $dependencia
+ * @property integer $codigo_dependencia
+ * @property integer $anio
  */
 class VswPoa extends CActiveRecord
 {
@@ -48,7 +50,7 @@ class VswPoa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_poa, fk_tipo_poa, id_persona_responsable, cedula_responsable, id_persona, cedula', 'numerical', 'integerOnly'=>true),
+			array('id_poa, fk_tipo_poa, id_persona_responsable, cedula_responsable, id_persona, cedula, codigo_dependencia, anio', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>700),
 			array('obj_general, obj_historico, obj_estrategico, obj_institucional, descripcion', 'length', 'max'=>800),
 			array('tipo_poa', 'length', 'max'=>1000),
@@ -58,7 +60,7 @@ class VswPoa extends CActiveRecord
 			array('fecha_inicio, fecha_final, nombres_responsable, apellidos_responsable, nombres, apellidos', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_poa, nombre, obj_general, obj_historico, obj_estrategico, obj_institucional, descripcion, fecha_inicio, fecha_final, fk_tipo_poa, tipo_poa, id_persona_responsable, nombres_responsable, apellidos_responsable, nacionalidad_responsable, cedula_responsable, cargo_responsable, dependencia_responsable, id_persona, nombres, apellidos, nacionalidad, cedula, descripcion_cargo, dependencia', 'safe', 'on'=>'search'),
+			array('id_poa, nombre, obj_general, obj_historico, obj_estrategico, obj_institucional, descripcion, fecha_inicio, fecha_final, fk_tipo_poa, tipo_poa, id_persona_responsable, nombres_responsable, apellidos_responsable, nacionalidad_responsable, cedula_responsable, cargo_responsable, dependencia_responsable, id_persona, nombres, apellidos, nacionalidad, cedula, descripcion_cargo, dependencia, codigo_dependencia, anio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -104,6 +106,8 @@ class VswPoa extends CActiveRecord
 			'cedula' => 'Cedula',
 			'descripcion_cargo' => 'Descripcion Cargo',
 			'dependencia' => 'Dependencia',
+			'codigo_dependencia' => 'Codigo Dependencia',
+			'anio' => 'Anio',
 		);
 	}
 
@@ -150,6 +154,8 @@ class VswPoa extends CActiveRecord
 		$criteria->compare('cedula',$this->cedula);
 		$criteria->compare('descripcion_cargo',$this->descripcion_cargo,true);
 		$criteria->compare('dependencia',$this->dependencia,true);
+		$criteria->compare('codigo_dependencia',$this->codigo_dependencia);
+		$criteria->compare('anio',$this->anio);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
