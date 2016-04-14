@@ -113,18 +113,18 @@ return array(
           ), */
         // uncomment the following to use a MySQL database
          'db' => array(
-            'connectionString' => 'pgsql:host=XXX.XX.XX.XX;dbname=siim',
+            'connectionString' => 'pgsql:host=localhost;dbname=siim_evaluacion',
             'emulatePrepare' => false,
-            'username' => 'XXXXXX',
-            'password' => 'XXXXXX',
+            'username' => 'postgres',
+            'password' => '2712',
             'charset' => 'utf8',
         ),
         'db2' => array(
             'class' => 'CDbConnection',
-            'connectionString' => 'pgsql:host=XXX.XX.XX.XX;dbname=actualizacion',
+            'connectionString' => 'pgsql:host=localhost;dbname=actualizacion',
             'emulatePrepare' => false,
-            'username' => 'XXXXXX',
-            'password' => 'XXXXXX',
+            'username' => 'postgres',
+            'password' => '2712',
             'charset' => 'utf8',
         ),
         
