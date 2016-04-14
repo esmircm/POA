@@ -539,7 +539,8 @@ class UiController extends Controller {
     }
 
     public function actionWelcome() {
-        $this->layout = CrugeUtil::config()->registrationLayout;
+//        $this->layout = CrugeUtil::config()->registrationLayout;
+        $this->layout = $layout = '//layouts/principal';
         $this->render("welcome");
     }
 

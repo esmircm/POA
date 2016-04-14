@@ -1018,7 +1018,7 @@ CREATE VIEW vsw_evaluacion AS
             WHEN (p.cod_tipo_personal = 4) THEN (12)::text
             ELSE NULL::text
         END AS fk_tipo_clase
-   FROM actualizar.dblink('dbname=actualizacion'::text, 'SELECT per.id_personal, per.nacionalidad, per.cedula, per.primer_nombre, per.segundo_nombre, per.primer_apellido,
+   FROM actualizar.dblink('dbname=actualizacion host=localhost user=postgres password=2712'::text, 'SELECT per.id_personal, per.nacionalidad, per.cedula, per.primer_nombre, per.segundo_nombre, per.primer_apellido,
 segundo_apellido, per.sexo, car.id_cargo, car.descripcion_cargo, tr.estatus, tr.codigo_nomina, dep.id_dependencia, dep.nombre, per.telefono_oficina, car.grado, car.tipo_cargo, tr.fecha_ingreso,tr.cod_tipo_personal
 FROM personal per
 JOIN trabajador tr on tr.id_personal = per.id_personal
@@ -1783,7 +1783,7 @@ CREATE VIEW vsw_personal AS
     p.id_dependencia AS cod_dependencia,
     p.nombre AS dependencia,
     p.grado
-   FROM actualizar.dblink('dbname=actualizacion'::text, 'SELECT per.id_personal, per.nacionalidad, per.cedula, per.primer_nombre, per.segundo_nombre, per.primer_apellido,
+   FROM actualizar.dblink('dbname=actualizacion host=localhost user=postgres password=2712'::text, 'SELECT per.id_personal, per.nacionalidad, per.cedula, per.primer_nombre, per.segundo_nombre, per.primer_apellido,
 segundo_apellido, per.sexo, car.id_cargo, car.descripcion_cargo, tr.estatus, dep.id_dependencia, dep.nombre, car.grado, car.tipo_cargo, tr.fecha_ingreso
 FROM personal per
 JOIN trabajador tr on tr.id_personal = per.id_personal

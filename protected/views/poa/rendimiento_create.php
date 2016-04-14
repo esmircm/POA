@@ -3,9 +3,18 @@ $this->breadcrumbs = array(
     'Poas' => array('index'),
     $model->id_poa,
 );
+<<<<<<< HEAD
 $baseUrl = Yii::app()->baseUrl;
 $Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/validacion.js');
 $numeros = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/js_jquery.numeric.js');
+=======
+
+
+$baseUrl = Yii::app()->baseUrl;
+$Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/validacion.js');
+$numeros = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/js_jquery.numeric.js');
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
 $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     'id' => 'personal-form',
     'enableAjaxValidation' => false,
@@ -16,8 +25,19 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'validateOnType' => true,
     ),
         ));
+<<<<<<< HEAD
 function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDADES CUMPLIDAS SEGUN LA FECHA ACTUAL
     $tiempo_hora2 = date('m'); // FECHA ACTUAL DEL SERVIDOR
+=======
+
+
+function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDADES CUMPLIDAS SEGUN LA FECHA ACTUAL
+
+
+    $tiempo_hora2 = date('m'); // FECHA ACTUAL DEL SERVIDOR
+
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
     if ($tiempo_hora2 == 01) {
         $time = 57;
     }
@@ -54,7 +74,13 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
     if ($tiempo_hora2 == 12) {
         $time = 68;
     }
+<<<<<<< HEAD
     if ($tiempo_hora != $time) {
+=======
+
+    if ($tiempo_hora != $time) {
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
         $id = 'aprobado';
     }
     return $id;
@@ -108,6 +134,10 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
 
                     <?php
 //        #########################      GRID VIEW DE ACCIONES DE PROYECTO    ##########################
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
                     $this->widget('booster.widgets.TbExtendedGridView', array(
                         'type' => 'striped bordered',
                         'htmlOptions' => array('style' => 'margin-bottom: 40px;;'),
@@ -165,6 +195,10 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
                         <?php
                         $consulta2 = Acciones::model()->findByAttributes(array('id_accion' => $_GET['id_accion']));
                         $nombreAccion = $consulta2['nombre_accion'];
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
                         $this->widget(
                                 'booster.widgets.TbBadge', array(
                             'context' => 'success',
@@ -252,7 +286,13 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
                             'label' => 'Actividades de la acción: ' . $nombreAccion,
                                 )
                         );
+<<<<<<< HEAD
 //              ####################       GRID VIEW DE ACTIVIDADES DE PROYECTO          #####################
+=======
+
+//              ####################       GRID VIEW DE ACTIVIDADES DE PROYECTO          #####################
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
                         $this->widget('booster.widgets.TbExtendedGridView', array(
                             'type' => 'striped bordered condensed',
                             'id' => 'ActividadesGrid',
@@ -310,6 +350,10 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
                         <?php
                         $consulta3 = Actividades::model()->findByAttributes(array('id_actividades' => $_GET['id_actividades']));
                         $nombreActividad = $consulta3['actividad'];
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
                         $this->widget(
                                 'booster.widgets.TbBadge', array(
                             'context' => 'success',
@@ -325,6 +369,10 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
 
                         <?php
 //        #########################      GRID VIEW DE RENDIMIENTO DE ACTIVIDADES DE PROYECTO  ##########################
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
                         $this->widget('booster.widgets.TbExtendedGridView', array(
                             'type' => 'striped bordered condensed',
                             'id' => 'RendimientoGrid',
@@ -381,4 +429,9 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
 
 
 
+<<<<<<< HEAD
 <?php $this->endWidget(); ?>
+=======
+<?php $this->endWidget(); ?>
+
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece

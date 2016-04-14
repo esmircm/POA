@@ -27,7 +27,11 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
+<<<<<<< HEAD
 'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida', 'PDFpoa', 'PDFaccion'),
+=======
+'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida'),
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -722,8 +726,15 @@ public function actionRendimiento($id_poa) {
         }
     }
     
+<<<<<<< HEAD
     public function actionGenerarPDF ($id_poa) {
 //        $poa 
         
     }
 }
+=======
+    
+    
+    
+    }
+>>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
