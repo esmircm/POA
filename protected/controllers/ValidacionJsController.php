@@ -916,7 +916,6 @@ class ValidacionJsController extends Controller {
         $actividad->created_date = 'now()';
         $actividad->created_by = Yii::app()->user->id;
         $actividad->modified_date = 'now()';
-        $actividad->modified_by = Yii::app()->user->id;
 
         if ($actividad->save()) {
             $id_actividad = $actividad->id_actividades;
@@ -925,7 +924,7 @@ class ValidacionJsController extends Controller {
             $html .= '<td style="text-align: center">' . $_POST['actividad'] . '</td>';
             $html .= '<td style="text-align: center">' . $unidad_medida->descripcion . '</td>';
             $html .= '<td style="text-align: center">' . $_POST['cantidad'] . '</td>';
-            $html .= '<td style="text-align: center"><span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-trash" onclick="eliminar_actividad(this,' . $id_actividad . ')" /></span></td></tr>';
+            $html_accion = '<td style="text-align: center"><span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-pencil" onclick="editar_actividad(this,' . $id_actividad . ')" /></span><span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-trash" onclick="eliminar_actividad(this,' . $id_actividad . ')" /></span></td></tr>';
         } else {
 
             echo '<pre>';
@@ -934,44 +933,285 @@ class ValidacionJsController extends Controller {
             
         }
         
-        $tabla = array('html' => $html, 'id_actividad' => $id_actividad);
+        $tabla = array('html' => $html, 'id_actividad' => $id_actividad, 'html_accion' => $html_accion);
         echo json_encode($tabla);
+    }
+    
+    public function actionUpdateActividad() {
+        $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+
+//        var_dump($_POST);die;
+        $actividad->actividad = $_POST['actividad'];
+        $actividad->fk_unidad_medida = $_POST['fk_unidad_medida'];
+        $actividad->cantidad = $_POST['cantidad'];
+        $actividad->modified_date = 'now()';
+        $actividad->modified_by = Yii::app()->user->id;
+
+        if ($actividad->save()) {
+            echo json_encode(1);
+        } else {
+
+            echo '<pre>';
+            var_dump($actividad->Errors);
+            die;
+            echo json_encode(2);
+
+            
+        }
+
     }
 
     public function actionEliminarActividad() {
-//        var_dump ($_POST);die;
-        $actividad = new Actividades;
 
-        $sql = "DELETE FROM poa.actividades WHERE id_actividades=" . $_POST['id_actividad'];
-        $connection = Yii::app()->db;
-        $command = $connection->createCommand($sql);
-        $row = $command->queryAll();
-
-        if ($row) {
-
-            echo json_encode(1);
+        $programacion = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74));
+        if($programacion){
+            $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+            if ($actividad->delete()) {
+                echo json_encode(1);
+            } else {
+                echo '<pre>Actividad';
+                var_dump($actividad->Errors);
+                die;
+                echo json_encode(2);
+            }
         } else {
-            echo json_encode(2);
-//         $tabla = array('html' => $html);
+            $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+            if ($actividad->delete()) {
+                echo json_encode(1);
+            } else {
+                echo '<pre>Actividad';
+                var_dump($actividad->Errors);
+                die;
+                echo json_encode(2);
+            }
         }
     }
     
+    public function actionEliminarAccion() {
+        $actividades = VswActividades::model()->findAllByAttributes(array('fk_accion' => $_POST['id_accion']));
+//        var_dump($actividades);die;
+        if($actividades){
+            $i=0;
+            foreach($actividades as $data){
+                $programacion_act = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $data['id_actividades'], 'fk_tipo_entidad' => 74));
+                if($programacion_act){
+                    $actividad = Actividades::model()->findByPk($data['id_actividades']);
+                    if ($actividad->delete()) {
+                        $i++;
+                    } else {
+                        echo '<pre>Actividad';
+                        var_dump($actividad->Errors);
+                        die;
+                    }
+                    
+                } else {
+                    $actividad = Actividades::model()->findByPk($data['id_actividades']);
+                    if ($actividad->delete()) {
+                        $i++;
+                    } else {
+                        echo '<pre>Actividad';
+                        var_dump($actividad->Errors);
+                        die;
+                    }
+                }
+            }
+
+            if($i == count($actividades)){
+                $programacion_acc = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73));
+                if($programacion_acc){
+                    $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                    if ($accion->delete()) {
+                        echo json_encode(1);
+                    } else {
+                        echo '<pre>Accion';
+                        var_dump($accion->Errors);
+                        die;
+                    }
+                } else {
+                    $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                    if ($accion->delete()) {
+                        echo json_encode(1);
+                    } else {
+                        echo '<pre>Accion';
+                        var_dump($accion->Errors);
+                        die;
+                    }
+                }
+            } else {
+                echo json_encode(2);
+            }
+        }else{
+            $programacion_acc = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73));
+            if ($programacion_acc) {
+                $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                if ($accion->delete()) {
+                    echo json_encode(1);
+                } else {
+                    echo '<pre>Accion';
+                    var_dump($accion->Errors);
+                    die;
+                }
+            } else {
+                $accion = Acciones::model()->findByPk($_POST['id_accion']);
+                if ($accion->delete()) {
+                    echo json_encode(1);
+                } else {
+                    echo '<pre>Accion';
+                    var_dump($accion->Errors);
+                    die;
+                }
+            }
+        }
+//        if($programacion){
+//            $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
+//            if ($actividad->delete()) {
+//                echo json_encode(1);
+//            } else {
+//                echo '<pre>Actividad';
+//                var_dump($actividad->Errors);
+//                die;
+//                echo json_encode(2);
+//            }
+//        }else {
+//            echo json_encode(2);
+//        }
+    }
+
     public function actionGuardarProgramadoActividad() {
-        $programacion = new Rendimiento;
-        $programacion->fk_meses = $_POST['fk_mes'];
-        $programacion->cantidad_programada = $_POST['programacion'];
-        $programacion->fk_tipo_entidad = 74;
-        $programacion->id_entidad = $_POST['id_actividad'];
-        $programacion->fk_status = 27;
-        $programacion->created_by = Yii::app()->user->id;
-        $programacion->created_date = 'now()';
-        $programacion->modified_date = 'now()';
-        if($programacion->save()){
+        $programacion = trim($_POST['programacion'], ', ');
+        $programacion = explode(", ", $programacion);
+        $i = 0;
+        $meses = 57;
+        foreach ($programacion as $data){
+            $programacion = new Rendimiento;
+            $programacion->fk_meses = $meses;
+            if($data == ''){
+                $programacion->cantidad_programada = 0;
+            }else{
+                $programacion->cantidad_programada = $data;            
+            }
+            $programacion->fk_tipo_entidad = 74;
+            $programacion->id_entidad = $_POST['id_actividad'];
+            $programacion->fk_status = 27;
+            $programacion->created_by = Yii::app()->user->id;
+            $programacion->created_date = 'now()';
+            $programacion->modified_date = 'now()';
+            if($programacion->save()){
+                $i++;
+            } else {
+                echo '<pre>';
+                var_dump($programacion->Errors);
+                die;
+            }
+            $meses++;
+        }
+        
+        if($i == 12){
+            $html = '';
+            $criteria=new CDbCriteria;
+            $criteria->order='fk_meses';
+            $lista_rendimiento = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74), $criteria);
+            foreach ($lista_rendimiento as $data_rendimiento) {
+                $html .= '<td style="text-align: center">' . $data_rendimiento->cantidad_programada . '</td>';
+            }
+            $tabla = array('html' => $html);
+            echo json_encode($tabla);
+        }else{
+            echo json_encode(2);
+        }
+    }
+    
+    public function actionUpdateProgramadoActividad() {
+        $programacion = trim($_POST['programacion'], ', ');
+        $programacion = explode(", ", $programacion);
+        $i = 0;
+        $meses = 57;
+        foreach ($programacion as $data){
+            $programacion = Rendimiento::model()->findByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74, 'fk_meses' => $meses, 'es_activo' => TRUE));
+            if($data == ''){
+                $programacion->cantidad_programada = 0;
+            }else{
+                $programacion->cantidad_programada = $data;            
+            }
+            $programacion->modified_date = 'now()';
+            $programacion->modified_by = Yii::app()->user->id;
+            if($programacion->save()){
+                $i++;
+            } else {
+                echo '<pre>';
+                var_dump($programacion->Errors);
+                die;
+            }
+            $meses++;
+        }
+        
+        if($i == 12){
             echo json_encode(1);
+        }else{
+            echo json_encode(2);
+        }
+    }
+    
+    public function actionBuscarTiempoMedida() {
+//        var_dump('$_POST');die;
+        $Id = (isset($_POST['MaestroPoa']['id_maestro']) ? $_POST['MaestroPoa']['id_maestro'] : $_GET['MaestroPoa']['id_maestro']);
+
+        $Selected = isset($_GET['id_maestro']) ? $_GET['id_maestro'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion');
+            echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    echo CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    echo CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
         } else {
-            echo '<pre>';
-            var_dump($programacion->Errors);
-            die;
+
+            echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+        }
+    }
+    
+    public function actionBuscarAccion() {
+        $vsw_accion = VswAcciones::model()->findByAttributes(array('id_accion' => $_POST['id_accion']));
+//        var_dump($vsw_accion->attributes);die;
+        $criteria=new CDbCriteria;
+        $criteria->order='fk_meses';
+        $programacion = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73, 'es_activo' => TRUE), $criteria);
+        $datos = $vsw_accion->attributes;
+        foreach($programacion as $data) {
+            array_push($datos, $data->cantidad_programada);
+        }
+       
+//        var_dump($programado);die;
+        if($vsw_accion){
+            echo json_encode($datos);
+        } else {
+            echo json_encode(2);
+        }
+    }
+    
+    public function actionBuscarActividad() {
+        $vsw_accion = VswActividades::model()->findByAttributes(array('id_actividades' => $_POST['id_actividad']));
+//        var_dump($vsw_accion->attributes);die;
+        $criteria=new CDbCriteria;
+        $criteria->order='fk_meses';
+        $programacion = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74, 'es_activo' => TRUE), $criteria);
+        $datos = $vsw_accion->attributes;
+        foreach($programacion as $data) {
+            array_push($datos, $data->cantidad_programada);
+        }
+       
+//        var_dump($programado);die;
+        if($vsw_accion){
+            echo json_encode($datos);
+        } else {
             echo json_encode(2);
         }
     }

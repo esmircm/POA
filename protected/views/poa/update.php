@@ -16,7 +16,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     ),
 ));
 ?>
-<h3 class="text-danger text-center" style="margin-bottom: 20px;">FORMULACIÓN DEL PROYECTO OPERATIVO ANUAL<br><?php echo $model->dependencia; ?></h3>
+<h3 class="text-danger text-center" style="margin-bottom: 20px;">FORMULACIÓN DEL PLAN OPERATIVO ANUAL<br><?php echo $model->dependencia; ?></h3>
 
 <div class="span-20 poa_content">
     

@@ -13,6 +13,9 @@
  * @property string $descripcion
  * @property string $fecha_inicio
  * @property string $fecha_final
+ * @property integer $fk_unidad_medida
+ * @property string $unidad_medida
+ * @property integer $cantidad
  * @property integer $fk_tipo_poa
  * @property string $tipo_poa
  * @property integer $id_persona_responsable
@@ -29,6 +32,8 @@
  * @property integer $cedula
  * @property string $descripcion_cargo
  * @property string $dependencia
+ * @property integer $codigo_dependencia
+ * @property double $anio
  */
 class VswPoa extends CActiveRecord
 {
@@ -48,17 +53,18 @@ class VswPoa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_poa, fk_tipo_poa, id_persona_responsable, cedula_responsable, id_persona, cedula', 'numerical', 'integerOnly'=>true),
+			array('id_poa, fk_unidad_medida, cantidad, fk_tipo_poa, id_persona_responsable, cedula_responsable, id_persona, cedula, codigo_dependencia', 'numerical', 'integerOnly'=>true),
+			array('anio', 'numerical'),
 			array('nombre', 'length', 'max'=>700),
 			array('obj_general, obj_historico, obj_estrategico, obj_institucional, descripcion', 'length', 'max'=>800),
-			array('tipo_poa', 'length', 'max'=>1000),
+			array('unidad_medida, tipo_poa', 'length', 'max'=>1000),
 			array('nacionalidad_responsable, nacionalidad', 'length', 'max'=>1),
 			array('cargo_responsable, descripcion_cargo', 'length', 'max'=>60),
 			array('dependencia_responsable, dependencia', 'length', 'max'=>90),
 			array('fecha_inicio, fecha_final, nombres_responsable, apellidos_responsable, nombres, apellidos', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_poa, nombre, obj_general, obj_historico, obj_estrategico, obj_institucional, descripcion, fecha_inicio, fecha_final, fk_tipo_poa, tipo_poa, id_persona_responsable, nombres_responsable, apellidos_responsable, nacionalidad_responsable, cedula_responsable, cargo_responsable, dependencia_responsable, id_persona, nombres, apellidos, nacionalidad, cedula, descripcion_cargo, dependencia', 'safe', 'on'=>'search'),
+			array('id_poa, nombre, obj_general, obj_historico, obj_estrategico, obj_institucional, descripcion, fecha_inicio, fecha_final, fk_unidad_medida, unidad_medida, cantidad, fk_tipo_poa, tipo_poa, id_persona_responsable, nombres_responsable, apellidos_responsable, nacionalidad_responsable, cedula_responsable, cargo_responsable, dependencia_responsable, id_persona, nombres, apellidos, nacionalidad, cedula, descripcion_cargo, dependencia, codigo_dependencia, anio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -81,13 +87,16 @@ class VswPoa extends CActiveRecord
 		return array(
 			'id_poa' => 'Id Poa',
 			'nombre' => 'Nombre',
-			'obj_general' => 'Obj General',
-			'obj_historico' => 'Obj Historico',
-			'obj_estrategico' => 'Obj Estrategico',
-			'obj_institucional' => 'Obj Institucional',
-			'descripcion' => 'Descripcion',
+			'obj_general' => 'Objetivo General',
+			'obj_historico' => 'Objetivo Historico',
+			'obj_estrategico' => 'Objetivo Estrategico',
+			'obj_institucional' => 'Objetivo Institucional',
+			'descripcion' => 'Descripcion del Proyecto',
 			'fecha_inicio' => 'Fecha Inicio',
 			'fecha_final' => 'Fecha Final',
+			'fk_unidad_medida' => 'Unidad de Medida',
+			'unidad_medida' => 'Unidad de Medida',
+			'cantidad' => 'Cantidad',
 			'fk_tipo_poa' => 'Fk Tipo Poa',
 			'tipo_poa' => 'Tipo Poa',
 			'id_persona_responsable' => 'Id Persona Responsable',
@@ -104,6 +113,8 @@ class VswPoa extends CActiveRecord
 			'cedula' => 'Cedula',
 			'descripcion_cargo' => 'Descripcion Cargo',
 			'dependencia' => 'Dependencia',
+			'codigo_dependencia' => 'Codigo Dependencia',
+			'anio' => 'Anio',
 		);
 	}
 
@@ -134,6 +145,9 @@ class VswPoa extends CActiveRecord
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('fecha_inicio',$this->fecha_inicio,true);
 		$criteria->compare('fecha_final',$this->fecha_final,true);
+		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
+		$criteria->compare('unidad_medida',$this->unidad_medida,true);
+		$criteria->compare('cantidad',$this->cantidad);
 		$criteria->compare('fk_tipo_poa',$this->fk_tipo_poa);
 		$criteria->compare('tipo_poa',$this->tipo_poa,true);
 		$criteria->compare('id_persona_responsable',$this->id_persona_responsable);
@@ -150,6 +164,8 @@ class VswPoa extends CActiveRecord
 		$criteria->compare('cedula',$this->cedula);
 		$criteria->compare('descripcion_cargo',$this->descripcion_cargo,true);
 		$criteria->compare('dependencia',$this->dependencia,true);
+		$criteria->compare('codigo_dependencia',$this->codigo_dependencia);
+		$criteria->compare('anio',$this->anio);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

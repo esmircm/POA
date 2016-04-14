@@ -14,12 +14,17 @@ $this->breadcrumbs=array(
         'type' => 'striped bordered condensed',
         'responsiveTable' => true,
         'filter' => $admin,
-        'dataProvider' => $admin->search_planificacion(54),
+        'dataProvider' => $admin->search_planificacion(54, 52),
         'columns' => array(
             'nombre' => array(
                 'name' => 'nombre',
                 'header' => 'Plan Operativo Anual',
                 'value' => '$data->nombre',
+            ),
+            'tipo_poa' => array(
+                'name' => 'tipo_poa',
+                'header' => 'TIPO POA',
+                'value' => '$data->tipo_poa',
             ),
             'dependencia_cruge' => array(
                 'name' => 'dependencia_cruge',
@@ -35,7 +40,7 @@ $this->breadcrumbs=array(
                 'class' => 'booster.widgets.TbButtonColumn',
                 'header' => 'Acciones',
                 'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
-                'template' => '{ver}',
+                'template' => '{ver}{graficar}{graficar_proyecto}',
                 'buttons' => array(
                     
                     'ver' => array(
@@ -45,6 +50,22 @@ $this->breadcrumbs=array(
                         'url' => 'Yii::app()->createUrl("poa/view_evaluar", array("id_poa"=>$data->id_poa))',
                         'visible' => '($data->fk_estatus_poa == "54") ? true : false;',
                     ),
+                    
+                    'graficar' => array(
+                        'label' => 'Ver Rendimiento POA',
+                        'icon' => 'glyphicon glyphicon-stats',
+                        'size' => 'medium',
+                        'url' => 'Yii::app()->createUrl("graficas/GraficaAcciones", array("id_poa"=>$data->id_poa, "tipo"=>$data->fk_tipo_poa))',
+                        'visible' => '(($data->fk_estatus_poa == "52") && ($data->fk_tipo_poa == "71")) ? true : false;',
+                    ),
+                    
+                    'graficar_proyecto' => array(
+                        'label' => 'Ver Rendimiento POA',
+                        'icon' => 'glyphicon glyphicon-stats',
+                        'size' => 'medium',
+                        'url' => 'Yii::app()->createUrl("graficas/GraficaAccionesProyecto", array("id_poa"=>$data->id_poa, "tipo"=>$data->fk_tipo_poa))',
+                        'visible' => '(($data->fk_estatus_poa == "52") && ($data->fk_tipo_poa == "70")) ? true : false;',
+                    )
                 ),
             ),
         ),

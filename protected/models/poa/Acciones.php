@@ -16,14 +16,13 @@
  * @property string $modified_date
  * @property integer $fk_status
  * @property boolean $es_activo
- * @property string $meta
  * @property string $bien_servicio
  *
  * The followings are the available model relations:
  * @property Maestro $fkAmbito
  * @property Maestro $fkStatus
- * @property Maestro $fkUnidadMedida
  * @property Poa $fkPoa
+ * @property Maestro $fkUnidadMedida
  * @property Actividades[] $actividades
  */
 class Acciones extends CActiveRecord
@@ -46,12 +45,12 @@ class Acciones extends CActiveRecord
 		return array(
 			array('nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_date, fk_status', 'required'),
 			array('fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
-			array('nombre_accion, meta', 'length', 'max'=>500),
+			array('nombre_accion', 'length', 'max'=>500),
 			array('bien_servicio', 'length', 'max'=>200),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_by, modified_date, fk_status, es_activo, meta, bien_servicio', 'safe', 'on'=>'search'),
+			array('id_accion, nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_by, modified_date, fk_status, es_activo, bien_servicio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,10 +62,10 @@ class Acciones extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkAmbito' => array(self::BELONGS_TO, 'Maestro', 'fk_ambito'),
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
-			'fkUnidadMedida' => array(self::BELONGS_TO, 'Maestro', 'fk_unidad_medida'),
+			'fkAmbito' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_ambito'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
 			'fkPoa' => array(self::BELONGS_TO, 'Poa', 'fk_poa'),
+			'fkUnidadMedida' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_unidad_medida'),
 			'actividades' => array(self::HAS_MANY, 'Actividades', 'fk_accion'),
 		);
 	}
@@ -74,7 +73,7 @@ class Acciones extends CActiveRecord
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
-	public function attributeLabels()
+        public function attributeLabels()
 	{
 		return array(
 			'id_accion' => 'Id Accion',
@@ -89,7 +88,6 @@ class Acciones extends CActiveRecord
 			'modified_date' => 'Modified Date',
 			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
-			'meta' => 'Meta',
 			'bien_servicio' => 'Bien o Servicio',
 		);
 	}
@@ -106,6 +104,7 @@ class Acciones extends CActiveRecord
 	 * @return CActiveDataProvider the data provider that can return the models
 	 * based on the search/filter conditions.
 	 */
+	
 	public function search()
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
@@ -124,15 +123,20 @@ class Acciones extends CActiveRecord
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('fk_status',$this->fk_status);
 		$criteria->compare('es_activo',$this->es_activo);
-		$criteria->compare('meta',$this->meta,true);
 		$criteria->compare('bien_servicio',$this->bien_servicio,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
-        
-        public function searchAccion($fk_poa)
+
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return Acciones the static model class
+	 */
+	public function searchAccion($fk_poa)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -150,7 +154,6 @@ class Acciones extends CActiveRecord
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('fk_status',$this->fk_status);
 		$criteria->compare('es_activo',$this->es_activo);
-		$criteria->compare('meta',$this->meta,true);
 		$criteria->compare('bien_servicio',$this->bien_servicio,true);
 
 		return new CActiveDataProvider($this, array(
@@ -170,6 +173,31 @@ class Acciones extends CActiveRecord
                 $resultado = $consulta['unidad_medida'];
                 return $resultado;
 	}
+        
+	 public function suma_rendimiento($id_accion, $condicion) 
+        {
+            $consulta = Yii::app()->db->createCommand()
+                ->select('CASE WHEN SUM(cantidad_cumplida) is null THEN 0 ELSE SUM(cantidad_cumplida) END')
+                ->from('poa.rendimiento')
+                ->where('id_entidad = ' . $id_accion . ' AND fk_tipo_entidad = 73 ' . $condicion)
+                ->queryRow();
+            
+                $resultado = $consulta['sum'];
+                return $resultado;
+        }
+        
+         public function suma_programado($id_accion, $condicion) 
+        {
+            $consulta = Yii::app()->db->createCommand()
+                ->select('CASE WHEN SUM(cantidad_programada) is null THEN 0 ELSE SUM(cantidad_programada) END')
+                ->from('poa.rendimiento')
+                ->where('id_entidad = ' . $id_accion . ' AND fk_tipo_entidad = 73 ' . $condicion)
+                ->queryRow();
+            
+                $resultado = $consulta['sum'];
+                return $resultado;
+        }
+
 
 	/**
 	 * Returns the static model of the specified AR class.

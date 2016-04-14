@@ -20,13 +20,16 @@
  * @property string $modified_date
  * @property integer $fk_status
  * @property boolean $es_activo
+ * @property integer $fk_unidad_medida
+ * @property integer $cantidad
  *
  * The followings are the available model relations:
- * @property Maestro $fkTipoPoa
- * @property Maestro $fkStatus
  * @property EstatusPoa[] $estatusPoas
  * @property Acciones[] $acciones
  * @property Comentarios[] $comentarioses
+ * @property Maestro $fkStatus
+ * @property Maestro $fkTipoPoa
+ * @property Maestro $fkUnidadMedida
  * @property Responsable[] $responsables
  */
 class Poa extends CActiveRecord
@@ -48,13 +51,13 @@ class Poa extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nombre, fk_tipo_poa, obj_general, created_by, created_date, modified_date, fk_status', 'required'),
-			array('fk_tipo_poa, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
+			array('fk_tipo_poa, created_by, modified_by, fk_status, fk_unidad_medida, cantidad', 'numerical', 'integerOnly'=>true),
 			array('nombre', 'length', 'max'=>700),
 			array('obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion', 'length', 'max'=>800),
 			array('fecha_inicio, fecha_final, es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_poa, nombre, fk_tipo_poa, obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion, fecha_inicio, fecha_final, created_by, created_date, modified_by, modified_date, fk_status, es_activo', 'safe', 'on'=>'search'),
+			array('id_poa, nombre, fk_tipo_poa, obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion, fecha_inicio, fecha_final, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_unidad_medida, cantidad', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,11 +69,12 @@ class Poa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkTipoPoa' => array(self::BELONGS_TO, 'Maestro', 'fk_tipo_poa'),
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
 			'estatusPoas' => array(self::HAS_MANY, 'EstatusPoa', 'fk_poa'),
 			'acciones' => array(self::HAS_MANY, 'Acciones', 'fk_poa'),
 			'comentarioses' => array(self::HAS_MANY, 'Comentarios', 'fk_poa'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
+			'fkTipoPoa' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_tipo_poa'),
+			'fkUnidadMedida' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_unidad_medida'),
 			'responsables' => array(self::HAS_MANY, 'Responsable', 'fk_poa'),
 		);
 	}
@@ -88,7 +92,7 @@ class Poa extends CActiveRecord
 			'obj_estrategico' => 'Objetivo Estrategico',
 			'obj_general' => 'Objetivo General',
 			'obj_institucional' => 'Objetivo Institucional',
-			'descripcion' => 'Descripcion',
+			'descripcion' => 'Descripción del Proyecto',
 			'fecha_inicio' => 'Fecha de Inicio',
 			'fecha_final' => 'Fecha de Finalización',
 			'created_by' => 'Created By',
@@ -97,6 +101,8 @@ class Poa extends CActiveRecord
 			'modified_date' => 'Modified Date',
 			'fk_status' => 'Fk Status',
 			'es_activo' => 'Es Activo',
+			'fk_unidad_medida' => 'Unidad de Medida',
+			'cantidad' => 'Cantidad',
 		);
 	}
 
@@ -134,6 +140,8 @@ class Poa extends CActiveRecord
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('fk_status',$this->fk_status);
 		$criteria->compare('es_activo',$this->es_activo);
+		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
+		$criteria->compare('cantidad',$this->cantidad);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

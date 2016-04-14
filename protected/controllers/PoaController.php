@@ -27,7 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar'),
+'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida', 'PDFpoa', 'PDFaccion'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -166,6 +166,18 @@ public function actionView_Evaluar($id_poa) {
         ));
     }
 
+public function actionView_Programacion($fk_poa) {
+        $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        $accion = VswAcciones::model()->findByPk($fk_poa);
+        $view_programa = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $fk_poa));
+
+        $this->render('view_programacion', array(
+            'model' => $model,
+            'accion' => $accion,
+            'view_programa' => $view_programa,
+        ));
+    }
+
     /**
 * Creates a new model.
 * If creation is successful, the browser will be redirected to the 'view' page.
@@ -217,15 +229,28 @@ public function actionCreate($tipo) {
         } else {
             $tipo_poa = MaestroPoa::model()->findByPk(71);
         }
-// Uncomment the following line if AJAX validation is needed
-// $this->performAjaxValidation($model);
+        
+        $criteria=new CDbCriteria;
+        $criteria->order='id_poa DESC';
+        $verificacion_acc = VswPoa::model()->findByAttributes(array('codigo_dependencia' => $cruge_dependencia->value, 'fk_tipo_poa' => 71), $criteria);
+        if($verificacion_acc) {
+            $anio_acc = $verificacion_acc->anio + 1; 
+        } else {
+            $anio_acc = date('Y');
+        }
+        
+        $verificacion_pro = VswPoa::model()->findByAttributes(array('codigo_dependencia' => $cruge_dependencia->value, 'fk_tipo_poa' => 70), $criteria);
+        if($verificacion_pro){
+            $anio_pro = $verificacion_pro->anio + 1; 
+        } else {
+             $anio_pro = date('Y');
+        }
 
         if (isset($_POST['VswPersonal']) && isset($_POST['Poa'])) {
 //            var_dump($_POST);die;
             $poa = new Poa;
             $poa->nombre = $_POST['Poa']['nombre'];
             $poa->obj_general = $_POST['Poa']['obj_general'];
-            $poa->descripcion = $_POST['Poa']['descripcion'];
             $poa->created_by = Yii::app()->user->id;
             $poa->fk_status = 24;
             $poa->created_date = 'now()';
@@ -237,8 +262,13 @@ public function actionCreate($tipo) {
                 $poa->obj_historico = $_POST['Poa']['obj_historico'];
                 $poa->obj_estrategico = $_POST['Poa']['obj_estrategico'];
                 $poa->obj_institucional = $_POST['Poa']['obj_institucional'];
+                $poa->fk_unidad_medida = $_POST['Poa']['fk_unidad_medida'];
+                $poa->cantidad = $_POST['Poa']['cantidad'];
+                $poa->descripcion = $_POST['Poa']['descripcion'];
             }else{
                 $tipo_poa = 71;
+                $poa->fecha_inicio = $anio_acc . '-01-01';
+                $poa->fecha_final = $anio_acc . '-12-31';
             }
             $poa->fk_tipo_poa = $tipo_poa;
                 
@@ -297,6 +327,8 @@ public function actionCreate($tipo) {
             'model_dir' => $model_dir,
             'poa' => $poa,
             'tipo_poa' => $tipo_poa,
+            'anio_pro' => $anio_pro,
+   
         ));
     }
     
@@ -314,10 +346,9 @@ public function actionCreate($tipo) {
             $tipo_poa = MaestroPoa::model()->findByPk(71);
         }
 //        var_dump($_POST);die;
-        if(isset($_POST['Acciones']) && isset($_POST['Rendimiento'])){
+        if(isset($_POST['Acciones']) && isset($_POST['Rendimiento']) && empty($_POST['update_accion'])){
 //            var_dump($_POST['Rendimiento']);die;
             $accion->nombre_accion = $_POST['Acciones']['nombre_accion'];
-            $accion->meta = $_POST['Acciones']['meta'];
             $accion->bien_servicio = $_POST['Acciones']['bien_servicio'];
             $accion->fk_unidad_medida = $_POST['Acciones']['fk_unidad_medida'];
             $accion->fk_ambito = $_POST['Acciones']['fk_ambito'];
@@ -327,34 +358,40 @@ public function actionCreate($tipo) {
             $accion->created_date = 'now()';
             $accion->created_by = Yii::app()->user->id;
             $accion->modified_date = 'now()';
-            $accion->modified_by = Yii::app()->user->id;
+//            $accion->modified_by = Yii::app()->user->id;
 
             if ($accion->save()) {
-                $o = 0;
-                $i = 57; //Enero en Maestro
-                foreach($_POST['Rendimiento'] as $data){
-                    $programacion = new Rendimiento;
-                    $programacion->fk_meses = $i;
-                    $programacion->cantidad_programada = $data;
-                    $programacion->fk_tipo_entidad = 73;
-                    $programacion->id_entidad = $accion->id_accion;
-                    $programacion->fk_status = 27;
-                    $programacion->created_by = Yii::app()->user->id;
-                    $programacion->created_date = 'now()';
-                    $programacion->modified_date = 'now()';
-                    if($programacion->save()){
-                        $o++;
-                    } else {
-                        echo "<pre>Programacion";
-                        var_dump($programacion->Errors);
-                        exit;
+                
+                    $o = 0;
+                    $i = 57; //Enero en Maestro
+                    foreach($_POST['Rendimiento'] as $data){
+                        $programacion = new Rendimiento;
+                        $programacion->fk_meses = $i;
+                        if(empty($data)){
+                            $programacion->cantidad_programada = 0;
+                        }else{
+                            $programacion->cantidad_programada = $data;
+                        }
+                        $programacion->fk_tipo_entidad = 73;
+                        $programacion->id_entidad = $accion->id_accion;
+                        $programacion->fk_status = 27;
+                        $programacion->created_by = Yii::app()->user->id;
+                        $programacion->created_date = 'now()';
+                        $programacion->modified_date = 'now()';
+                        if($programacion->save()){
+                            $o++;
+                        } else {
+                            echo "<pre>Programacion";
+                            var_dump($programacion->Errors);
+                            exit;
+                        }
+                        $i++;
+                        
                     }
-                    $i++;
-                    
-                }
-                if($o == count($_POST['Rendimiento'])){
-                    $this->redirect(array('create_actividad', 'id_poa' => $_POST['Acciones']['fk_poa'], 'id_accion' => $accion->id_accion, 'tipo' => $tipo));
-                }
+                    if($o == count($_POST['Rendimiento'])){
+                        $this->redirect(array('create_actividad', 'id_poa' => $_POST['Acciones']['fk_poa'], 'id_accion' => $accion->id_accion, 'tipo' => $tipo));
+                    }
+                
             }else{
                 echo "<pre>Accion";
                 var_dump($accion->Errors);
@@ -362,9 +399,51 @@ public function actionCreate($tipo) {
             }
         }
         
-        if(isset($_POST['VswAdmin'])){
-            
+        if(isset($_POST['Acciones']) && isset($_POST['Rendimiento']) && !empty($_POST['update_accion'])){
+            $accion = Acciones::model()->findByPk($_POST['update_accion']);
+            $accion->nombre_accion = $_POST['Acciones']['nombre_accion'];
+            $accion->bien_servicio = $_POST['Acciones']['bien_servicio'];
+            $accion->fk_unidad_medida = $_POST['Acciones']['fk_unidad_medida'];
+            $accion->fk_ambito = $_POST['Acciones']['fk_ambito'];
+            $accion->cantidad = $_POST['Acciones']['cantidad'];
+            $accion->modified_date = 'now()';
+            $accion->modified_by = Yii::app()->user->id;
+
+            if ($accion->save()) {
+                
+                    $o = 0;
+                    $i = 57; //Enero en Maestro
+                    foreach($_POST['Rendimiento'] as $data){
+                        $programacion = Rendimiento::model()->findByAttributes(array('id_entidad' => $_POST['update_accion'], 'fk_tipo_entidad' => 73, 'fk_meses' => $i, 'es_activo' => TRUE));
+                        if(empty($data)){
+                            $programacion->cantidad_programada = 0;
+                        }else{
+                            $programacion->cantidad_programada = $data;
+                        }
+                        $programacion->modified_date = 'now()';
+                        $programacion->modified_by = Yii::app()->user->id;
+                        if($programacion->save()){
+                            $o++;
+                        } else {
+                            echo "<pre>Programacion";
+                            var_dump($programacion->Errors);
+                            exit;
+                        }
+                        $i++;
+                        
+                    }
+                    if($o == count($_POST['Rendimiento'])){
+                        $this->redirect(array('create_accion', 'id_poa' => $_POST['Acciones']['fk_poa'], 'tipo' => $tipo));
+
+                    }
+                
+            }else{
+                echo "<pre>Accion";
+                var_dump($accion->Errors);
+                exit;  
+            }
         }
+
         
         $this->render('create_accion', array(
             'accion' => $accion,
@@ -383,6 +462,10 @@ public function actionCreate($tipo) {
         $poa = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
         $accion = VswAcciones::model()->findByAttributes(array('id_accion' => $id_accion));
         $programacion = new Rendimiento;
+        
+        $criteria=new CDbCriteria;
+        $criteria->order='fk_meses';
+        $programacion_accion = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $id_accion, 'fk_tipo_entidad' => 73), $criteria);
 
         
         $this->render('create_actividad', array(
@@ -394,6 +477,7 @@ public function actionCreate($tipo) {
             'accion' => $accion,
             'tipo' => $tipo,
             'programacion' => $programacion,
+            'programacion_accion' => $programacion_accion,
         ));
     }
 
@@ -402,34 +486,45 @@ public function actionCreate($tipo) {
 * If update is successful, the browser will be redirected to the 'view' page.
 * @param integer $id the ID of the model to be updated
 */
-public function actionUpdate($id_poa){
-$model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+public function actionUpdate($id_poa, $tipo) {
+        $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
 
-if(isset($_POST['VswPoa'])){
-    $poa = Poa::model()->findByPk($id_poa);
-    $poa->nombre = $_POST['VswPoa']['nombre'];
-    $poa->obj_general = $_POST['VswPoa']['obj_general'];
-    $poa->fecha_inicio = $_POST['VswPoa']['fecha_inicio'];
-    $poa->descripcion = $_POST['VswPoa']['descripcion'];
-    $poa->created_by = Yii::app()->user->id;
-    $poa->fk_status = 24;
-    $poa->created_date = 'now()';
-    $poa->modified_date = 'now()';
-    if($poa->save()){
-       $this->redirect(array('create_accion', 'id_poa' => $id_poa)); 
-    } else {
-        echo "<pre>Poa";
-        var_dump($poa->Errors);
-        exit;
+        if (isset($_POST['VswPoa'])) {
+            $poa = Poa::model()->findByPk($id_poa);
+            $poa->nombre = $_POST['VswPoa']['nombre'];
+            $poa->obj_general = $_POST['VswPoa']['obj_general'];
+            $poa->modified_by = Yii::app()->user->id;
+            $poa->fk_status = 24;
+            $poa->modified_date = 'now()';
+            if ($tipo == 70) {
+                $poa->fecha_inicio = $_POST['VswPoa']['fecha_inicio'];
+                $poa->fecha_final = $_POST['VswPoa']['fecha_final'];
+                $poa->obj_historico = $_POST['VswPoa']['obj_historico'];
+                $poa->obj_estrategico = $_POST['VswPoa']['obj_estrategico'];
+                $poa->obj_institucional = $_POST['VswPoa']['obj_institucional'];
+                $poa->fk_unidad_medida = $_POST['VswPoa']['fk_unidad_medida'];
+                $poa->cantidad = $_POST['VswPoa']['cantidad'];
+                $poa->descripcion = $_POST['VswPoa']['descripcion'];
+            } else {
+                $poa->fecha_inicio = $model->anio . '-01-01';
+                $poa->fecha_final = $model->anio . '-12-31';
+            }
+
+            if ($poa->save()) {
+                $this->redirect(array('create_accion', 'id_poa' => $id_poa, 'tipo' => $tipo));
+            } else {
+                echo "<pre>Poa";
+                var_dump($poa->Errors);
+                exit;
+            }
+        }
+
+        $this->render('update', array(
+            'model' => $model,
+        ));
     }
-}
 
-$this->render('update',array(
-'model'=>$model,
-));
-}
-
-/**
+    /**
 * Deletes a particular model.
 * If deletion is successful, the browser will be redirected to the 'admin' page.
 * @param integer $id the ID of the model to be deleted
@@ -465,6 +560,24 @@ public function actionIndex() {
         $field = CrugeField::model()->findByAttributes(array('idfield' => 1));
         $arOpt = CrugeUtil::explodeOptions($field->predetvalue);
         $dependencia = $arOpt[$cruge_dependencia->value];
+        
+        $criteria=new CDbCriteria;
+        $criteria->order='id_poa DESC';
+
+        $verificacion_acc = VswPoa::model()->findByAttributes(array('codigo_dependencia' => $cruge_dependencia->value, 'fk_tipo_poa' => 71), $criteria);
+        if($verificacion_acc) {
+            $anio_acc = array($verificacion_acc->anio, $verificacion_acc->anio + 1); 
+        } else {
+            $anio_acc = array(date('Y'), date('Y'));
+        }
+        
+        $verificacion_pro = VswPoa::model()->findByAttributes(array('codigo_dependencia' => $cruge_dependencia->value, 'fk_tipo_poa' => 70), $criteria);
+        if($verificacion_pro){
+            $anio_pro = array($verificacion_pro->anio, $verificacion_pro->anio + 1); 
+        } else {
+             $anio_pro = array(date('Y'), date('Y'));
+        }
+        
         if ($cruge_dependencia->value >= 17 && $cruge_dependencia->value <= 20) {
             $tipo_poa = MaestroPoa::model()->findByPk(70);
         } else {
@@ -477,6 +590,8 @@ public function actionIndex() {
             'cruge_dependencia' => $cruge_dependencia,
             'cruge_cargo' => $cruge_cargo,
             'tipo_poa' => $tipo_poa,
+            'anio_acc' => $anio_acc,
+            'anio_pro' => $anio_pro,
         ));
     }
 
@@ -518,6 +633,36 @@ throw new CHttpException(404,'The requested page does not exist.');
 return $model;
 }
 
+public function actionPDFpoa($id_poa) {
+
+ 
+        $vswpdfproyecto = VswPdfProyecto::model()->findByAttributes(array('id_poa' => $id_poa));
+        $vswaccion = VswAcciones::model()->findAllByAttributes(array('fk_poa' => $id_poa));
+        $vswactividades = VswActividades::model()->findByAttributes(array('fk_poa' => $id_poa));
+        $criteria=new CDbCriteria;
+        $criteria->order='id_maestro';
+        $maestro = MaestroPoa::model()->findAllByAttributes(array('padre' => 56), $criteria);
+
+        $this->render('generarpdf', array('vswpdfproyecto' => $vswpdfproyecto, 'vswaccion' => $vswaccion, 'maestro' => $maestro)); 
+
+        
+    }
+    
+    
+public function actionPDFaccion($id_poa) {
+
+ 
+        $vswpdfproyecto = VswPdfProyecto::model()->findByAttributes(array('id_poa' => $id_poa));
+        $vswaccion = VswAcciones::model()->findAllByAttributes(array('fk_poa' => $id_poa));
+        $vswactividades = VswActividades::model()->findByAttributes(array('fk_poa' => $id_poa));
+        $criteria=new CDbCriteria;
+        $criteria->order='id_maestro';
+        $maestro = MaestroPoa::model()->findAllByAttributes(array('padre' => 56), $criteria);
+
+        $this->render('pdfaccion', array('vswpdfproyecto' => $vswpdfproyecto, 'vswaccion' => $vswaccion, 'maestro' => $maestro)); 
+
+        
+    }
 /**
 * Performs the AJAX validation.
 * @param CModel the model to be validated
@@ -530,4 +675,55 @@ echo CActiveForm::validate($model);
 Yii::app()->end();
 }
 }
+
+public function actionRendimiento($id_poa) {
+        $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        $accion = new Acciones;
+       
+     
+        $this->render('rendimiento_create', array(
+            'model' => $model,
+            'id_poa' => $id_poa,
+            'accion' => $accion,
+           
+        ));
+    }
+    
+       
+    public function actionActualizarCantidadCumplida() { {
+            Yii :: import('booster.components.TbEditableSaver');
+            $es = new TbEditableSaver('Rendimiento');
+
+//            var_dump($es->beforeUpdate);die;
+//Con onBeforeUpdate agrego los atrubitos adicionales que quiero actualizar
+          
+            $es->onBeforeUpdate = function ($event) {
+                
+                    
+      
+//       $can_programada = $event->sender->model->cantidad_programada;
+       
+//       $can_cumplida= $event->sender->model->cantidad_cumplida;
+
+       
+      
+                        $event->sender->setAttribute('modified_date', date('Y-m-d H:i:s'));
+                        $event->sender->setAttribute('modified_by', Yii::app()->user->id);
+//                        $event->sender->setAttribute('cantidad_cumplida', $can_cumplida);
+//                        $event->update();
+//                return $can_programada; 
+
+                    };
+                    
+                    
+//                    echo onBeforeUpdate($event);
+
+            $es->update();
+        }
+    }
+    
+    public function actionGenerarPDF ($id_poa) {
+//        $poa 
+        
+    }
 }

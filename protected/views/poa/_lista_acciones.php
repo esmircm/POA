@@ -22,8 +22,10 @@
                 $html .= '<td style="text-align: center">' . $data->bien_servicio . '</td>';
                 $html .= '<td style="text-align: center">' . $data->unidad_medida . '</td>';
                 $html .= '<td style="text-align: center">' . $data->cantidad . '</td>';
-                $html .= '<td style="text-align: center"><span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-trash" onclick="eliminar_accion(this,' . $data->id_accion . ')" /></span>'
-                        . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-pencil" onclick="editar_accion(this,' . $data->fk_poa . ',' . $data->id_accion . ',' . $tipo . ')" /></span></td>';
+                $html .= '<td style="text-align: center">'
+                        . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-eye-open" onclick="ver_accion(this,' . $data->fk_poa . ',' . $data->id_accion . ',' . $tipo . ')" /></span>'
+                        . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-pencil" onclick="editar_accion(this,' . $data->fk_poa . ',' . $data->id_accion . ',' . $tipo . ')" /></span>'
+                        . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-trash" onclick="eliminar_accion(this,' . $data->id_accion . ')" /></span>';
                 $html .= '</tr>';
                 echo $html;
             }

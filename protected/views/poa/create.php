@@ -14,6 +14,9 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'validateOnType' => true,
     ),
 ));
+
+$baseUrl = Yii::app()->baseUrl;
+$Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/validacion.js');
 ?>
 <h3 class="text-danger text-center" style="margin-bottom: 20px;">FORMULACIÓN <?php echo $tipo_poa->descripcion; ?><br><?php echo $model->dependencia; ?></h3>
 
@@ -37,18 +40,31 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
             <?php
-            echo $this->renderPartial('_poa', array('poa' => $poa, 'tipo_poa' => $tipo_poa, 'form' => $form), TRUE);
+            echo $this->renderPartial('_poa', array('poa' => $poa, 'tipo_poa' => $tipo_poa, 'anio_pro' => $anio_pro, 'form' => $form), TRUE);
        
             ?>
     </div>
 </div>
 <div class="pull-right">
     <?php
-    $this->widget('booster.widgets.TbButton', array(
-        'buttonType' => 'submit',
-        'context' => 'primary',
-        'label' => $poa->isNewRecord ? 'Siguiente' : 'Save',
-    ));
+    if($tipo_poa->id_maestro == 70){
+        $this->widget('booster.widgets.TbButton', array(
+            'buttonType' => 'button',
+            'icon' => 'glyphicon glyphicon-chevron-right',
+            'context' => 'primary',
+            'size' => 'large',
+            'label' => $poa->isNewRecord ? 'Siguiente' : 'Save',
+            'htmlOptions' => array('onclick' => 'guardar_poa()'),
+                ));
+    } else {
+         $this->widget('booster.widgets.TbButton', array(
+            'buttonType' => 'submit',
+            'icon' => 'glyphicon glyphicon-chevron-right',
+            'context' => 'primary',
+            'size' => 'large',
+            'label' => $poa->isNewRecord ? 'Siguiente' : 'Save',
+                ));
+    }
     ?>
 </div>
 <?php 
