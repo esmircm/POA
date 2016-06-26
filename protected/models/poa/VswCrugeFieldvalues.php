@@ -1,27 +1,21 @@
 <?php
 
 /**
- * This is the model class for table "poa.vsw_acciones".
+ * This is the model class for table "poa.vsw_cruge_fieldvalues".
  *
- * The followings are the available columns in table 'poa.vsw_acciones':
- * @property integer $id_accion
- * @property string $nombre_accion
- * @property integer $fk_unidad_medida
- * @property string $unidad_medida
- * @property integer $fk_ambito
- * @property string $ambito
- * @property string $bien_servicio
- * @property integer $cantidad
- * @property integer $fk_poa
+ * The followings are the available columns in table 'poa.vsw_cruge_fieldvalues':
+ * @property integer $dependencia
+ * @property integer $cargo
+ * @property integer $iduser
  */
-class VswAcciones extends CActiveRecord
+class VswCrugeFieldvalues extends CActiveRecord
 {
 	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'poa.vsw_acciones';
+		return 'poa.vsw_cruge_fieldvalues';
 	}
 
 	/**
@@ -32,13 +26,10 @@ class VswAcciones extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_accion, fk_unidad_medida, fk_ambito, cantidad, fk_poa', 'numerical', 'integerOnly'=>true),
-			array('nombre_accion', 'length', 'max'=>800),
-			array('unidad_medida, ambito', 'length', 'max'=>1000),
-			array('bien_servicio', 'length', 'max'=>200),
+			array('dependencia, cargo, iduser', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_accion, nombre_accion, fk_unidad_medida, unidad_medida, fk_ambito, ambito, bien_servicio, cantidad, fk_poa', 'safe', 'on'=>'search'),
+			array('dependencia, cargo, iduser', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,15 +50,9 @@ class VswAcciones extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'id_accion' => 'Id Accion',
-			'nombre_accion' => 'Nombre Accion',
-			'fk_unidad_medida' => 'Fk Unidad Medida',
-			'unidad_medida' => 'Unidad Medida',
-			'fk_ambito' => 'Fk Ambito',
-			'ambito' => 'Ambito',
-			'bien_servicio' => 'Bien Servicio',
-			'cantidad' => 'Cantidad',
-			'fk_poa' => 'Fk Poa',
+			'dependencia' => 'Dependencia',
+			'cargo' => 'Cargo',
+			'iduser' => 'Iduser',
 		);
 	}
 
@@ -89,15 +74,9 @@ class VswAcciones extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('id_accion',$this->id_accion);
-		$criteria->compare('nombre_accion',$this->nombre_accion,true);
-		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
-		$criteria->compare('unidad_medida',$this->unidad_medida,true);
-		$criteria->compare('fk_ambito',$this->fk_ambito);
-		$criteria->compare('ambito',$this->ambito,true);
-		$criteria->compare('bien_servicio',$this->bien_servicio,true);
-		$criteria->compare('cantidad',$this->cantidad);
-		$criteria->compare('fk_poa',$this->fk_poa);
+		$criteria->compare('dependencia',$this->dependencia);
+		$criteria->compare('cargo',$this->cargo);
+		$criteria->compare('iduser',$this->iduser);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -108,7 +87,7 @@ class VswAcciones extends CActiveRecord
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return VswAcciones the static model class
+	 * @return VswCrugeFieldvalues the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{

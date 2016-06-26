@@ -85,11 +85,7 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                 'class' => 'booster.widgets.TbButtonColumn',
                 'header' => 'ACCIONES',
                 'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
-<<<<<<< HEAD
-                'template' => '{continuar}{ver}{editar}{rendimiento}{GenerarPDF}{GenerarAccionPDF}',
-=======
-                'template' => '{continuar}{ver}{editar}{rendimiento}',
->>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
+                'template' => '{continuar}{ver}{editar}{rendimiento}{GenerarPDF}{GenerarAccionPDF}{vistaReporte}',
                 'buttons' => array(
                     'continuar' => array(
                         'label' => 'Continuar POA',
@@ -112,7 +108,6 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                         'url' => 'Yii::app()->createUrl("poa/update", array("id_poa"=>$data->id_poa, "tipo"=>$data->fk_tipo_poa))',
                         'visible' => '($data->fk_estatus_poa == "55") ? true : false;',
                     ),
-<<<<<<< HEAD
 		    'rendimiento' => array(
                         'label' => 'Rendimiento',
                         'icon' => 'glyphicon glyphicon-calendar',
@@ -141,16 +136,15 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                         'url' => 'Yii::app()->createUrl("poa/pdfaccion", array("id_poa"=>$data->id_poa))',
                         'visible' => '($data->fk_estatus_poa == "52" && $data->fk_tipo_poa =="71") ? true : false;',
            
-                    )
-=======
-                    'rendimiento' => array(
-                        'label' => 'Rendimiento',
-                        'icon' => 'pencil',
-                        'size' => 'medium',
-                        'url' => 'Yii::app()->createUrl("poa/rendimiento", array("id_poa"=>$data->id_poa))',
-//                        'visible' => '($data->fk_estatus_poa == "55") ? true : false;',
                     ),
->>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
+                    'vistaReporte' => array(
+                    'label' => 'Generar Reporte de Rendimiento',
+                    'icon' => 'glyphicon glyphicon-file',
+                    'size' => 'medium',
+                    'url' => 'Yii::app()->createUrl("poa/vista_reporte", array("id_poa"=>$data->id_poa))',
+                    'visible' => '($data->fk_estatus_poa == "52" ) ? true : false;',
+                   
+                    )
                 ),
             ),
         ),

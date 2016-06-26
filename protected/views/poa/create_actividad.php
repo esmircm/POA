@@ -94,8 +94,9 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'title' => 'Actividad',
         'context' => 'primary',
         'headerIcon' => 'user',
-        'headerHtmlOptions' => array('style' => 'background-color: #B2D4F1 !important;color: #000000 !important;'),
+        'headerHtmlOptions' => array('style' => 'background-color: #B2D4F1; color: #000000; border-bottom: none; border-radius: 0px;'),
         'content' => $this->renderPartial('_actividad', array('actividad' => $actividad, 'id_accion' => $id_accion, 'programacion' => $programacion, 'form' => $form), TRUE),
+        'htmlOptions' => array('style' => 'box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.5); border-radius: 0px; border: none;'),
             )
     );
     ?>
@@ -108,8 +109,9 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'title' => 'Lista de Actividades',
         'context' => 'primary',
         'headerIcon' => 'user',
-        'headerHtmlOptions' => array('style' => 'background-color: #B2D4F1 !important;color: #000000 !important;'),
+        'headerHtmlOptions' => array('style' => 'background-color: #B2D4F1; color: #000000; border-bottom: none; border-radius: 0px;'),
         'content' => $this->renderPartial('_lista_actividades', array('actividad' => $actividad, 'id_accion' => $id_accion, 'lista_actividad' => $lista_actividad, 'form' => $form), TRUE),
+        'htmlOptions' => array('style' => 'box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.5); border-radius: 0px; border: none;'),
             )
     );
     ?>

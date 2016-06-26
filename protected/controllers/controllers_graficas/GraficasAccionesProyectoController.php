@@ -90,7 +90,7 @@ class GraficasAccionesProyectoController extends Controller {
                         <td style="text-align: center">' . $graficas['unidad_medida'] . '</td>
                         <td style="text-align: center">' . $graficas['cantidad'] . '</td>
                         <td style="text-align: center">' . Acciones::model()->suma_rendimiento($graficas['id_accion'], $trim_condicion) . '</td>
-                        <td style="text-align: center">' . ((Acciones::model()->suma_rendimiento($graficas['id_accion'], $trim_condicion) * 100)/$graficas['cantidad']) . "%" . '</td>
+                        <td style="text-align: center">' . number_format(((Acciones::model()->suma_rendimiento($graficas['id_accion'], $trim_condicion) * 100)/$graficas['cantidad']), 2) . "%" . '</td>
                     </tr>';
 
                 $i++;
@@ -123,7 +123,7 @@ class GraficasAccionesProyectoController extends Controller {
                         <td style="text-align: center">' . $graficas['unidad_medida'] . '</td>
                         <td style="text-align: center">' . $graficas['cantidad'] . '</td>
                         <td style="text-align: center">' . Acciones::model()->suma_rendimiento($graficas['id_accion'], "") . '</td>
-                        <td style="text-align: center">' . ((Acciones::model()->suma_rendimiento($graficas['id_accion'], "") * 100)/$graficas['cantidad']) . "%" . '</td>
+                        <td style="text-align: center">' . number_format(((Acciones::model()->suma_rendimiento($graficas['id_accion'], "") * 100)/$graficas['cantidad']), 2) . "%" . '</td>
                     </tr>';
 
                 $i++;

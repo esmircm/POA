@@ -34,7 +34,7 @@ class VswAdmin extends CActiveRecord
 		return array(
 			array('id_poa, cod_dependencia_cruge, fk_estatus_poa, fk_tipo_poa', 'numerical', 'integerOnly'=>true),
 			array('anio', 'numerical'),
-			array('nombre', 'length', 'max'=>700),
+			array('nombre', 'length', 'max'=>800),
 			array('dependencia_cruge', 'length', 'max'=>200),
 			array('descripcion, tipo_poa', 'length', 'max'=>1000),
 			// The following rule is used by search().

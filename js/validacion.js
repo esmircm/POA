@@ -1636,7 +1636,7 @@ function GuardarActividad() {
 
             }
         });
-                        bootbox.confirm("La Actividad se ha modificado con éxito.", function(){  location.reload(); });
+                        bootbox.alert("La Actividad se ha modificado con éxito.", function(){  location.reload(); });
                        
                     
         
@@ -1680,66 +1680,70 @@ function editar_actividad(valor, id_actividad) {
 }
 
 function eliminar_actividad(valor, id) {
+    
+    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function(result){  
+        if(result==true) {
+            $.ajax({
+                url: baseUrl + "/ValidacionJs/EliminarActividad",
+                async: true,
+                type: 'POST',
+                data: 'id_actividad=' + id,
+                dataType: 'json',
+                success: function(datos) {
 
-    if (!confirm('\u00bfEstá usted seguro de que desea eliminar está Actividad?')) {
+                    if (datos == 1) {
+                        bootbox.alert('Eliminado Con Exito!');
+                        $(valor).parent().parent().remove();
+                    } else {
+                        bootbox.alert('Verifique sus datos!.');
+                    }
 
-    } else {
-        $.ajax({
-            url: baseUrl + "/ValidacionJs/EliminarActividad",
-            async: true,
-            type: 'POST',
-            data: 'id_actividad=' + id,
-            dataType: 'json',
-            success: function(datos) {
+                },
+                error: function(datos) {
+                    bootbox.alert('Ocurrio un error');
 
-                if (datos == 1) {
-                    bootbox.alert('Eliminado Con Exito!');
-                    $(valor).parent().parent().remove();
-                } else {
-                    bootbox.alert('Verifique sus datos!.');
                 }
+            });
+        } else {
 
-            },
-            error: function(datos) {
-                bootbox.alert('Ocurrio un error');
-
-            }
-        });
-        
-    }
+        }
+    });
+ 
 }
 
 function eliminar_accion(valor, id) {
-    if (!confirm('\u00bfEstá usted seguro de que desea eliminar está Acción?')) {
+    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function(result){  
+        if(result==true) {
+            $.ajax({
+                url: baseUrl + "/ValidacionJs/EliminarAccion",
+                async: true,
+                type: 'POST',
+                data: 'id_accion=' + id,
+                dataType: 'json',
+                success: function(datos) {
 
-    } else {
-        $.ajax({
-            url: baseUrl + "/ValidacionJs/EliminarAccion",
-            async: true,
-            type: 'POST',
-            data: 'id_accion=' + id,
-            dataType: 'json',
-            success: function(datos) {
+                    if (datos == 1) {
+                        bootbox.alert('Eliminado Con Exito!');
+                        $(valor).parent().parent().remove();
+                    } 
+                    if (datos == 2) {
+                        bootbox.alert('Verifique sus Datos!');
+                    }
+                    if (datos == 3) {
+                        bootbox.alert('Prueba!');
+                    }
 
-                if (datos == 1) {
-                    bootbox.alert('Eliminado Con Exito!');
-                    $(valor).parent().parent().remove();
-                } 
-                if (datos == 2) {
-                    bootbox.alert('Verifique sus Datos!');
+                },
+                error: function(datos) {
+                    bootbox.alert('Ocurrio un error');
+
                 }
-                if (datos == 3) {
-                    bootbox.alert('Prueba!');
-                }
+            });
 
-            },
-            error: function(datos) {
-                bootbox.alert('Ocurrio un error');
+        } else {
 
-            }
-        });
-        
-    }
+        }
+    });
 }
 
 function ver_accion(valor, fk_poa, id_accion, tipo) {
@@ -1839,6 +1843,13 @@ $(document).ready(function() {
         $('#Acciones_cantidad').val(total);
         $('#Actividades_cantidad').val(total);
 
+    });
+    
+    $('#descripcion_create').change(function() {
+        $('#maestro_medidas-grid').yiiGridView('update', {
+            data: $(this).serialize()  
+        });
+        return false; 
     });
     
 })

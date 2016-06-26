@@ -70,7 +70,7 @@ class GraficasAccionesController extends Controller {
                     $sql[$data_accion->id_accion] = "";
                     foreach ($actividades as $data_actividad) {
 
-                        $sql[$data_accion->id_accion] .= "SELECT CASE WHEN poa.id_poa = acc.fk_poa THEN ('" . $o . ". CANTIDAD PROGRAMADA')::text END AS descripcion, CASE WHEN SUM(ren.cantidad_programada) is null THEN 0 ELSE SUM(ren.cantidad_programada) END AS cantidad FROM poa.poa poa LEFT JOIN poa.acciones acc ON poa.id_poa = acc.fk_poa LEFT JOIN poa.actividades act ON acc.id_accion = act.fk_accion RIGHT JOIN poa.rendimiento ren ON act.id_actividades = ren.id_entidad WHERE act.id_actividades = " . $data_actividad->id_actividades . " AND ren.fk_tipo_entidad = 74 GROUP BY poa.id_poa, acc.fk_poa UNION SELECT CASE WHEN poa.id_poa = acc.fk_poa THEN ('" . $o . ". CANTIDAD CUMPLIDA')::text END AS descripcion, CASE WHEN SUM(ren.cantidad_cumplida) is null THEN 0 ELSE SUM(ren.cantidad_cumplida) END AS cantidad FROM poa.poa poa LEFT JOIN poa.acciones acc ON poa.id_poa = acc.fk_poa LEFT JOIN poa.actividades act ON acc.id_accion = act.fk_accion RIGHT JOIN poa.rendimiento ren ON act.id_actividades = ren.id_entidad WHERE act.id_actividades = " . $data_actividad->id_actividades . " AND ren.fk_tipo_entidad = 74 ". $condicion;
+                        $sql[$data_accion->id_accion] .= "SELECT CASE WHEN poa.id_poa = acc.fk_poa THEN ('" . $o . ". PROGRAMADA')::text END AS descripcion, CASE WHEN SUM(ren.cantidad_programada) is null THEN 0 ELSE SUM(ren.cantidad_programada) END AS cantidad FROM poa.poa poa LEFT JOIN poa.acciones acc ON poa.id_poa = acc.fk_poa LEFT JOIN poa.actividades act ON acc.id_accion = act.fk_accion RIGHT JOIN poa.rendimiento ren ON act.id_actividades = ren.id_entidad WHERE act.id_actividades = " . $data_actividad->id_actividades . " AND ren.fk_tipo_entidad = 74 GROUP BY poa.id_poa, acc.fk_poa UNION SELECT CASE WHEN poa.id_poa = acc.fk_poa THEN ('" . $o . ". CUMPLIDA')::text END AS descripcion, CASE WHEN SUM(ren.cantidad_cumplida) is null THEN 0 ELSE SUM(ren.cantidad_cumplida) END AS cantidad FROM poa.poa poa LEFT JOIN poa.acciones acc ON poa.id_poa = acc.fk_poa LEFT JOIN poa.actividades act ON acc.id_accion = act.fk_accion RIGHT JOIN poa.rendimiento ren ON act.id_actividades = ren.id_entidad WHERE act.id_actividades = " . $data_actividad->id_actividades . " AND ren.fk_tipo_entidad = 74 ". $condicion;
                      
                         $sql[$data_accion->id_accion] .= "GROUP BY poa.id_poa, acc.fk_poa ";
 
@@ -113,7 +113,7 @@ class GraficasAccionesController extends Controller {
                                     <td style="text-align: center">' . $data['unidad_medida'] . '</td>
                                     <td style="text-align: center">' . $data['cantidad'] . '</td>
                                     <td style="text-align: center">' . Actividades::model()->suma_rendimiento($data['id_actividades'], $trim_condicion) . '</td>
-                                    <td style="text-align: center">' . ((Actividades::model()->suma_rendimiento($data['id_actividades'], $trim_condicion) * 100)/$data['cantidad']) . "%" . '</td>
+                                    <td style="text-align: center">' . number_format(((Actividades::model()->suma_rendimiento($data['id_actividades'], $trim_condicion) * 100)/$data['cantidad']), 2) . "%" . '</td>
                                 </tr>';
                         $o++;
                     }
@@ -171,7 +171,7 @@ class GraficasAccionesController extends Controller {
                                     <td style="text-align: center">' . $data['unidad_medida'] . '</td>
                                     <td style="text-align: center">' . $data['cantidad'] . '</td>
                                     <td style="text-align: center">' . Actividades::model()->suma_rendimiento($data['id_actividades'], "") . '</td>
-                                    <td style="text-align: center">' . ((Actividades::model()->suma_rendimiento($data['id_actividades'], "") * 100)/$data['cantidad']) . "%" . '</td>
+                                    <td style="text-align: center">' . number_format(((Actividades::model()->suma_rendimiento($data['id_actividades'], "") * 100)/$data['cantidad']), 2) . "%" . '</td>
                                 </tr>';
                         $o++;
                     }

@@ -1215,5 +1215,251 @@ class ValidacionJsController extends Controller {
             echo json_encode(2);
         }
     }
+    
+    public function actionBuscarHistorico() {
+//        var_dump('$_POST');die;
+        if(isset($_POST['Poa'])){
+            $Id = (isset($_POST['Poa']['fk_historico']) ? $_POST['Poa']['fk_historico'] : $_GET['Poa']['fk_historico']);
+        }
+        if(isset($_POST['VswPoa'])){
+            $Id = (isset($_POST['VswPoa']['fk_historico']) ? $_POST['VswPoa']['fk_historico'] : $_GET['VswPoa']['fk_historico']);
+        }
 
+        $Selected = isset($_GET['fk_historico']) ? $_GET['fk_historico'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion2');
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    $html1 .= CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    $html1 .= CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
+            $descripcion = MaestroPoa::model()->findByPk($Id);
+            $html2 = $descripcion->descripcion;
+//            var_dump($descripcion);die;
+        } else {
+
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            $html2 = 'No se encontraron resultados.';
+        }
+        
+        $datos = array (
+          'html1' => $html1,
+          'html2' => $html2,
+        );
+        echo json_encode($datos);
+        
+    }
+
+    public function actionBuscarNacional() {
+//        var_dump('$_POST');die;
+        if(isset($_POST['Poa'])){
+            $Id = (isset($_POST['Poa']['fk_nacional']) ? $_POST['Poa']['fk_nacional'] : $_GET['Poa']['fk_nacional']);
+        }
+        if(isset($_POST['VswPoa'])){
+            $Id = (isset($_POST['VswPoa']['fk_nacional']) ? $_POST['VswPoa']['fk_nacional'] : $_GET['VswPoa']['fk_nacional']);
+        }
+
+        $Selected = isset($_GET['fk_nacional']) ? $_GET['fk_nacional'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion2');
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    $html1 .= CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    $html1 .= CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
+            $descripcion = MaestroPoa::model()->findByPk($Id);
+            $html2 = $descripcion->descripcion;
+//            var_dump($descripcion);die;
+        } else {
+
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            $html2 = 'No se encontraron resultados.';
+        }
+        
+        $datos = array (
+          'html1' => $html1,
+          'html2' => $html2,
+        );
+        echo json_encode($datos);
+    }
+    
+    public function actionBuscarEstrategico() {
+//        var_dump('$_POST');die;
+        if(isset($_POST['Poa'])){
+            $Id = (isset($_POST['Poa']['fk_estrategico']) ? $_POST['Poa']['fk_estrategico'] : $_GET['Poa']['fk_estrategico']);
+        }
+        if(isset($_POST['VswPoa'])){
+            $Id = (isset($_POST['VswPoa']['fk_estrategico']) ? $_POST['VswPoa']['fk_estrategico'] : $_GET['VswPoa']['fk_estrategico']);
+        }
+        
+        $Selected = isset($_GET['fk_estrategico']) ? $_GET['fk_estrategico'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion2');
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    $html1 .= CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    $html1 .= CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
+            $descripcion = MaestroPoa::model()->findByPk($Id);
+            $html2 = $descripcion->descripcion;
+//            var_dump($descripcion);die;
+        } else {
+
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            $html2 = 'No se encontraron resultados.';
+        }
+        
+        $datos = array (
+          'html1' => $html1,
+          'html2' => $html2,
+        );
+        echo json_encode($datos);
+    }
+    
+    public function actionBuscarGeneral() {
+//        var_dump('$_POST');die;
+        if(isset($_POST['Poa'])){
+            $Id = (isset($_POST['Poa']['fk_general']) ? $_POST['Poa']['fk_general'] : $_GET['Poa']['fk_general']);
+        }
+        if(isset($_POST['VswPoa'])){
+            $Id = (isset($_POST['VswPoa']['fk_general']) ? $_POST['VswPoa']['fk_general'] : $_GET['VswPoa']['fk_general']);
+        }
+        
+        $Selected = isset($_GET['fk_general']) ? $_GET['fk_general'] : '';
+        if (!empty($Id)) {
+            
+            $descripcion = MaestroPoa::model()->findByPk($Id);
+            if($descripcion){
+                echo $descripcion->descripcion;
+            } else {
+                echo 'No se encontraron resultados.';
+            }
+//            var_dump($descripcion);die;
+        } else {
+
+            echo '';
+        }
+        
+        
+    }
+    
+    public function actionBuscarMamaRosa() {
+//        var_dump('$_POST');die;
+        $Id = (isset($_POST['MaestroPoa']['id_maestro']) ? $_POST['MaestroPoa']['id_maestro'] : $_GET['MaestroPoa']['id_maestro']);
+
+        $Selected = isset($_GET['id_maestro']) ? $_GET['id_maestro'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion2');
+            echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    echo CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    echo CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
+        } else {
+
+            echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+        }
+    }
+    
+    public function actionBuscarEstrategicoMr() {
+//        var_dump('$_POST');die;
+        if(isset($_POST['Poa'])){
+            $Id = (isset($_POST['Poa']['fk_estrategico_mr']) ? $_POST['Poa']['fk_estrategico_mr'] : $_GET['Poa']['fk_estrategico_mr']);
+        }
+        if(isset($_POST['VswPoa'])){
+            $Id = (isset($_POST['VswPoa']['fk_estrategico_mr']) ? $_POST['VswPoa']['fk_estrategico_mr'] : $_GET['VswPoa']['fk_estrategico_mr']);
+        }
+        
+        $Selected = isset($_GET['fk_estrategico_mr']) ? $_GET['fk_estrategico_mr'] : '';
+        if (!empty($Id)) {
+            $criteria = new CDbCriteria;
+            $criteria->addCondition('t.padre = :padre');
+            $criteria->params = array(':padre' => $Id);
+            $criteria->order = 't.id_maestro ASC';
+
+            $data = CHtml::listData(MaestroPoa::model()->findAll($criteria), 'id_maestro', 'descripcion2');
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            foreach ($data as $id => $value) {
+                if ($Selected == $id) {
+                    $html1 .= CHtml::tag('option', array('value' => $id, 'selected' => true), CHtml::encode($value), true);
+                } else {
+                    $html1 .= CHtml::tag('option', array('value' => $id), CHtml::encode($value), true);
+                }
+            }
+            $descripcion = MaestroPoa::model()->findByPk($Id);
+            $html2 = $descripcion->descripcion;
+//            var_dump($descripcion);die;
+        } else {
+
+            $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
+            $html2 = 'No se encontraron resultados.';
+        }
+        
+        $datos = array (
+          'html1' => $html1,
+          'html2' => $html2,
+        );
+        echo json_encode($datos);
+    }
+    
+    public function actionBuscarInstitucional() {
+//        var_dump('$_POST');die;
+        if(isset($_POST['Poa'])){
+            $Id = (isset($_POST['Poa']['fk_institucional']) ? $_POST['Poa']['fk_institucional'] : $_GET['Poa']['fk_institucional']);
+        }
+        if(isset($_POST['VswPoa'])){
+            $Id = (isset($_POST['VswPoa']['fk_institucional']) ? $_POST['VswPoa']['fk_institucional'] : $_GET['VswPoa']['fk_institucional']);
+        }
+        
+        $Selected = isset($_GET['fk_institucional']) ? $_GET['fk_institucional'] : '';
+        if (!empty($Id)) {
+            
+            $descripcion = MaestroPoa::model()->findByPk($Id);
+            if($descripcion){
+                echo $descripcion->descripcion;
+            } else {
+                echo 'No se encontraron resultados.';
+            }
+//            var_dump($descripcion);die;
+        } else {
+
+            echo '';
+        }
+        
+        
+    }
+    
+    
 }

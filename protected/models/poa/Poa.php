@@ -7,10 +7,6 @@
  * @property integer $id_poa
  * @property string $nombre
  * @property integer $fk_tipo_poa
- * @property string $obj_historico
- * @property string $obj_estrategico
- * @property string $obj_general
- * @property string $obj_institucional
  * @property string $descripcion
  * @property string $fecha_inicio
  * @property string $fecha_final
@@ -22,15 +18,27 @@
  * @property boolean $es_activo
  * @property integer $fk_unidad_medida
  * @property integer $cantidad
+ * @property integer $fk_historico
+ * @property integer $fk_nacional
+ * @property integer $fk_estrategico
+ * @property integer $fk_general
+ * @property integer $fk_institucional
+ * @property integer $fk_estrategico_mr
  *
  * The followings are the available model relations:
- * @property EstatusPoa[] $estatusPoas
  * @property Acciones[] $acciones
  * @property Comentarios[] $comentarioses
+ * @property EstatusPoa[] $estatusPoas
+ * @property Responsable[] $responsables
  * @property Maestro $fkStatus
  * @property Maestro $fkTipoPoa
  * @property Maestro $fkUnidadMedida
- * @property Responsable[] $responsables
+ * @property Maestro $fkHistorico
+ * @property Maestro $fkNacional
+ * @property Maestro $fkEstrategico
+ * @property Maestro $fkGeneral
+ * @property Maestro $fkInstitucional
+ * @property Maestro $fkEstrategicoMr
  */
 class Poa extends CActiveRecord
 {
@@ -50,14 +58,13 @@ class Poa extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('nombre, fk_tipo_poa, obj_general, created_by, created_date, modified_date, fk_status', 'required'),
-			array('fk_tipo_poa, created_by, modified_by, fk_status, fk_unidad_medida, cantidad', 'numerical', 'integerOnly'=>true),
-			array('nombre', 'length', 'max'=>700),
-			array('obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion', 'length', 'max'=>800),
+			array('nombre, fk_tipo_poa, created_by, created_date, modified_date, fk_status', 'required'),
+			array('fk_tipo_poa, created_by, modified_by, fk_status, fk_unidad_medida, cantidad, fk_historico, fk_nacional, fk_estrategico, fk_general, fk_institucional, fk_estrategico_mr', 'numerical', 'integerOnly'=>true),
+			array('nombre, descripcion', 'length', 'max'=>800),
 			array('fecha_inicio, fecha_final, es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_poa, nombre, fk_tipo_poa, obj_historico, obj_estrategico, obj_general, obj_institucional, descripcion, fecha_inicio, fecha_final, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_unidad_medida, cantidad', 'safe', 'on'=>'search'),
+			array('id_poa, nombre, fk_tipo_poa, descripcion, fecha_inicio, fecha_final, created_by, created_date, modified_by, modified_date, fk_status, es_activo, fk_unidad_medida, cantidad, fk_historico, fk_nacional, fk_estrategico, fk_general, fk_institucional, fk_estrategico_mr', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,14 +76,20 @@ class Poa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'estatusPoas' => array(self::HAS_MANY, 'EstatusPoa', 'fk_poa'),
 			'acciones' => array(self::HAS_MANY, 'Acciones', 'fk_poa'),
 			'comentarioses' => array(self::HAS_MANY, 'Comentarios', 'fk_poa'),
+			'estatusPoas' => array(self::HAS_MANY, 'EstatusPoa', 'fk_poa'),
+			'responsables' => array(self::HAS_MANY, 'Responsable', 'fk_poa'),
 			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
 			'fkTipoPoa' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_tipo_poa'),
 			'fkUnidadMedida' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_unidad_medida'),
-			'responsables' => array(self::HAS_MANY, 'Responsable', 'fk_poa'),
-		);
+			'fkHistorico' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_historico'),
+			'fkNacional' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_nacional'),
+			'fkEstrategico' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_estrategico'),
+			'fkGeneral' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_general'),
+			'fkInstitucional' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_institucional'),
+                        'fkEstrategicoMr' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_estrategico_mr'),
+                );
 	}
 
 	/**
@@ -88,11 +101,7 @@ class Poa extends CActiveRecord
 			'id_poa' => 'Id Poa',
 			'nombre' => 'Nombre',
 			'fk_tipo_poa' => 'Fk Tipo Poa',
-			'obj_historico' => 'Objetivo Historico',
-			'obj_estrategico' => 'Objetivo Estrategico',
-			'obj_general' => 'Objetivo General',
-			'obj_institucional' => 'Objetivo Institucional',
-			'descripcion' => 'Descripción del Proyecto',
+			'descripcion' => 'Descripcion',
 			'fecha_inicio' => 'Fecha de Inicio',
 			'fecha_final' => 'Fecha de Finalización',
 			'created_by' => 'Created By',
@@ -103,6 +112,12 @@ class Poa extends CActiveRecord
 			'es_activo' => 'Es Activo',
 			'fk_unidad_medida' => 'Unidad de Medida',
 			'cantidad' => 'Cantidad',
+			'fk_historico' => 'Objetivo Historico',
+			'fk_nacional' => 'Objetivo Nacional',
+			'fk_estrategico' => 'Objetivo Estrategico',
+			'fk_general' => 'Objetivo General',
+			'fk_institucional' => 'Objetivo Institucional',
+                        'fk_estrategico_mr' => 'Objetivo Estrategico',
 		);
 	}
 
@@ -127,10 +142,6 @@ class Poa extends CActiveRecord
 		$criteria->compare('id_poa',$this->id_poa);
 		$criteria->compare('nombre',$this->nombre,true);
 		$criteria->compare('fk_tipo_poa',$this->fk_tipo_poa);
-		$criteria->compare('obj_historico',$this->obj_historico,true);
-		$criteria->compare('obj_estrategico',$this->obj_estrategico,true);
-		$criteria->compare('obj_general',$this->obj_general,true);
-		$criteria->compare('obj_institucional',$this->obj_institucional,true);
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('fecha_inicio',$this->fecha_inicio,true);
 		$criteria->compare('fecha_final',$this->fecha_final,true);
@@ -142,6 +153,12 @@ class Poa extends CActiveRecord
 		$criteria->compare('es_activo',$this->es_activo);
 		$criteria->compare('fk_unidad_medida',$this->fk_unidad_medida);
 		$criteria->compare('cantidad',$this->cantidad);
+		$criteria->compare('fk_historico',$this->fk_historico);
+		$criteria->compare('fk_nacional',$this->fk_nacional);
+		$criteria->compare('fk_estrategico',$this->fk_estrategico);
+		$criteria->compare('fk_general',$this->fk_general);
+		$criteria->compare('fk_institucional',$this->fk_institucional);
+                $criteria->compare('fk_estrategico_mr',$this->fk_estrategico_mr);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

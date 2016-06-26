@@ -45,7 +45,7 @@ class Acciones extends CActiveRecord
 		return array(
 			array('nombre_accion, fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, created_date, modified_date, fk_status', 'required'),
 			array('fk_unidad_medida, cantidad, fk_ambito, fk_poa, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
-			array('nombre_accion', 'length', 'max'=>500),
+			array('nombre_accion', 'length', 'max'=>800),
 			array('bien_servicio', 'length', 'max'=>200),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
@@ -153,7 +153,7 @@ class Acciones extends CActiveRecord
 		$criteria->compare('modified_by',$this->modified_by);
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('fk_status',$this->fk_status);
-		$criteria->compare('es_activo',$this->es_activo);
+		$criteria->compare('es_activo',TRUE);
 		$criteria->compare('bien_servicio',$this->bien_servicio,true);
 
 		return new CActiveDataProvider($this, array(

@@ -2,7 +2,7 @@
     <div class="row">
     <div class='col-md-5'>
         <?php
-        echo $form->textAreaGroup($actividad, 'actividad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 limpiar'))));
+        echo $form->textAreaGroup($actividad, 'actividad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 limpiar','maxlength'=>800))));
         ?>
     </div> 
 
@@ -10,7 +10,7 @@
         <?php
         echo $form->dropDownListGroup($actividad, 'fk_unidad_medida', array('wrapperHtmlOptions' => array('class' => 'span5 limpiar'),
             'widgetOptions' => array(
-                'data' => CHtml::listData(MaestroPoa::model()->findAll('padre=:padre', array(':padre' => '35')), 'id_maestro', 'descripcion'),
+                'data' => CHtml::listData(MaestroPoa::model()->findAllByAttributes(array('padre' => 35, 'es_activo' => TRUE)), 'id_maestro', 'descripcion'),
                 'htmlOptions' => array(
                     'class' => 'limpiar',
                     'empty' => 'SELECCIONE'

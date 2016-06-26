@@ -38,7 +38,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
             <?php
-            echo $this->renderPartial('_poa_update', array('model' => $model, 'form' => $form), TRUE);
+            echo $this->renderPartial('_poa_update', array('model' => $model, 'maestro' => $maestro, 'form' => $form), TRUE);
             ?>
     </div>
 </div>

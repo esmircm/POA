@@ -27,11 +27,7 @@ public function accessRules()
 {
 return array(
 array('allow',  // allow all users to perform 'index' and 'view' actions
-<<<<<<< HEAD
-'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida', 'PDFpoa', 'PDFaccion'),
-=======
-'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida'),
->>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
+'actions'=>array('index' ,'view', 'admin', 'Create_Accion', 'Create_Actividad', 'Create_Poa', 'View_Accion', 'View_Evaluar', 'Rendimiento', 'RendimientoUpdate', 'ActualizarCantidadCumplida', 'PDFpoa', 'PDFaccion', 'Create_Medida', 'DeleteMedida', 'vista_reporte'),
 'users'=>array('*'),
 ),
 array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -189,6 +185,7 @@ public function actionView_Programacion($fk_poa) {
 public function actionCreate($tipo) {
         $model= new VswPersonal;
         $poa = new Poa;
+        $maestro = new MaestroPoa;
         
         $sql = "select iduser, id_persona from cruge_user where iduser =" . Yii::app()->user->id;
         $connection = Yii::app()->db;
@@ -210,17 +207,25 @@ public function actionCreate($tipo) {
         $model->descripcion_cargo = $responsable['descripcion_cargo'];
         
         $cruge_dependencia = CrugeFieldValue::model()->findByAttributes(array('iduser' => $idUser, 'idfield' => 1));
-        $cruge_director = CrugeFieldValue::model()->findBySql("SELECT iduser FROM cruge_fieldvalue WHERE value = '" . 5 . "' OR value = '" . $cruge_dependencia->value . "' GROUP BY iduser having count(iduser) >= 2");
+        $criteria=new CDbCriteria;
+        $criteria->select='MIN(cargo) AS cargo';
+        $criteria->condition = 'dependencia = :dependencia';
+        $criteria->params = array(':dependencia' => $cruge_dependencia->value);
+        $crugefield_director = VswCrugeFieldvalues::model()->find($criteria);
+//        var_dump($crugefield_director->cargo);die;
+        $idUser_director = VswCrugeFieldvalues::model()->findByAttributes(array('cargo' => $crugefield_director->cargo, 'dependencia' => $cruge_dependencia->value));
+        $cruge_director = CrugeStoredUser::model()->findByPk($idUser_director->iduser);
+//        $cruge_director = CrugeFieldValue::model()->findBySql("SELECT iduser FROM cruge_fieldvalue WHERE value = '" . 5 . "' OR value = '" . $cruge_dependencia->value . "' GROUP BY iduser having count(iduser) >= 2");
 
-        $sql_director = "select iduser, id_persona from cruge_user where iduser =" . $cruge_director->iduser;
-        $connection_director = Yii::app()->db;
-        $command_director = $connection_director->createCommand($sql_director);
-        $row_director = $command_director->queryAll();
-        $idUser_director = $row_director[0]["iduser"];
-        $idP_director = $row_director[0]["id_persona"];
+//        $sql_director = "select iduser, id_persona from cruge_user where iduser =" . $cruge_director->iduser;
+//        $connection_director = Yii::app()->db;
+//        $command_director = $connection_director->createCommand($sql_director);
+//        $row_director = $command_director->queryAll();
+//        $idUser_director = $row_director[0]["iduser"];
+//        $idP_director = $row_director[0]["id_persona"];
         
         $model_dir = new VswPersonal;
-        $responsable_dir = VswPersonal::model()->findByAttributes(array('id_persona' => $idP_director));
+        $responsable_dir = VswPersonal::model()->findByAttributes(array('id_persona' => $cruge_director->id_persona));
         $model_dir->dependencia = $responsable_dir['dependencia'];
         $model_dir->nombres = $responsable_dir['nombres'];
         $model_dir->apellidos = $responsable_dir['apellidos'];
@@ -254,7 +259,7 @@ public function actionCreate($tipo) {
 //            var_dump($_POST);die;
             $poa = new Poa;
             $poa->nombre = $_POST['Poa']['nombre'];
-            $poa->obj_general = $_POST['Poa']['obj_general'];
+            $poa->descripcion = $_POST['Poa']['descripcion'];
             $poa->created_by = Yii::app()->user->id;
             $poa->fk_status = 24;
             $poa->created_date = 'now()';
@@ -263,12 +268,14 @@ public function actionCreate($tipo) {
                 $tipo_poa = 70;
                 $poa->fecha_inicio = $_POST['Poa']['fecha_inicio'];
                 $poa->fecha_final = $_POST['Poa']['fecha_final'];
-                $poa->obj_historico = $_POST['Poa']['obj_historico'];
-                $poa->obj_estrategico = $_POST['Poa']['obj_estrategico'];
-                $poa->obj_institucional = $_POST['Poa']['obj_institucional'];
+                $poa->fk_historico = $_POST['Poa']['fk_historico'];
+                $poa->fk_nacional = $_POST['Poa']['fk_nacional'];
+                $poa->fk_estrategico = $_POST['Poa']['fk_estrategico'];
+                $poa->fk_general = $_POST['Poa']['fk_general'];
+                $poa->fk_estrategico_mr = $_POST['Poa']['fk_estrategico_mr'];
+                $poa->fk_institucional = $_POST['Poa']['fk_institucional'];
                 $poa->fk_unidad_medida = $_POST['Poa']['fk_unidad_medida'];
                 $poa->cantidad = $_POST['Poa']['cantidad'];
-                $poa->descripcion = $_POST['Poa']['descripcion'];
             }else{
                 $tipo_poa = 71;
                 $poa->fecha_inicio = $anio_acc . '-01-01';
@@ -279,7 +286,7 @@ public function actionCreate($tipo) {
             if($poa->save()){
                 $id_Poa = $poa->id_poa;
                 $responsable = new Responsable;
-                $responsable->fk_dir_responsable = $idUser_director;
+                $responsable->fk_dir_responsable = $idUser_director->iduser;
                 $responsable->fk_persona_registro = $idUser;
                 $responsable->fk_poa = $id_Poa;
                 $responsable->created_by = Yii::app()->user->id;
@@ -332,6 +339,7 @@ public function actionCreate($tipo) {
             'poa' => $poa,
             'tipo_poa' => $tipo_poa,
             'anio_pro' => $anio_pro,
+            'maestro' => $maestro,
    
         ));
     }
@@ -492,23 +500,26 @@ public function actionCreate($tipo) {
 */
 public function actionUpdate($id_poa, $tipo) {
         $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        $maestro = new MaestroPoa;
 
         if (isset($_POST['VswPoa'])) {
             $poa = Poa::model()->findByPk($id_poa);
             $poa->nombre = $_POST['VswPoa']['nombre'];
-            $poa->obj_general = $_POST['VswPoa']['obj_general'];
             $poa->modified_by = Yii::app()->user->id;
             $poa->fk_status = 24;
             $poa->modified_date = 'now()';
+            $poa->descripcion = $_POST['VswPoa']['descripcion'];
             if ($tipo == 70) {
                 $poa->fecha_inicio = $_POST['VswPoa']['fecha_inicio'];
                 $poa->fecha_final = $_POST['VswPoa']['fecha_final'];
-                $poa->obj_historico = $_POST['VswPoa']['obj_historico'];
-                $poa->obj_estrategico = $_POST['VswPoa']['obj_estrategico'];
-                $poa->obj_institucional = $_POST['VswPoa']['obj_institucional'];
+                $poa->fk_historico = $_POST['VswPoa']['fk_historico'];
+                $poa->fk_nacional = $_POST['VswPoa']['fk_nacional'];
+                $poa->fk_estrategico = $_POST['VswPoa']['fk_estrategico'];
+                $poa->fk_general = $_POST['VswPoa']['fk_general'];
+                $poa->fk_estrategico_mr = $_POST['VswPoa']['fk_estrategico_mr'];
+                $poa->fk_institucional = $_POST['VswPoa']['fk_institucional'];
                 $poa->fk_unidad_medida = $_POST['VswPoa']['fk_unidad_medida'];
                 $poa->cantidad = $_POST['VswPoa']['cantidad'];
-                $poa->descripcion = $_POST['VswPoa']['descripcion'];
             } else {
                 $poa->fecha_inicio = $model->anio . '-01-01';
                 $poa->fecha_final = $model->anio . '-12-31';
@@ -525,6 +536,7 @@ public function actionUpdate($id_poa, $tipo) {
 
         $this->render('update', array(
             'model' => $model,
+            'maestro' => $maestro,
         ));
     }
 
@@ -548,7 +560,28 @@ else
 throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 }
 
-/**
+public function actionDeleteMedida($id_maestro) {
+        $maestro = new MaestroPoa('search');
+
+        //Función que imprime la Busqueda del jQuery
+        if (isset($_GET['MaestroPoa'])) {
+            $maestro->attributes = $_GET['MaestroPoa'];
+        }
+
+        $maestroPoa = MaestroPoa::model()->findByPk($id_maestro);
+        $maestroPoa->es_activo = FALSE;
+        $maestroPoa->modified_by = Yii::app()->user->id;
+        $maestroPoa->modified_date = 'now()';
+        if ($maestroPoa->save()) {
+            $this->redirect(array('create_medida'));
+        } else {
+            echo "<pre>Maestro";
+            var_dump($maestroPoa->Errors);
+            exit;
+        }
+    }
+
+    /**
 * Lists all models.
 */
 public function actionIndex() {
@@ -624,6 +657,52 @@ $admin = new VswAdmin('search');
     ));
 }
 
+public function actionCreate_Medida(){
+    $maestro = new MaestroPoa('search');
+    
+    //Función que imprime la Busqueda del jQuery
+    if (isset($_GET['MaestroPoa'])) {
+        $maestro->attributes = $_GET['MaestroPoa'];
+    }
+    
+    if(isset($_POST['MaestroPoa'])){
+        $descripcion = mb_strtoupper($_POST['MaestroPoa']['descripcion']);
+        $descripcion = trim($descripcion);
+        
+        $verificar = MaestroPoa::model()->findAllBySql("SELECT * FROM poa.maestro WHERE descripcion = '" . $descripcion . "' AND es_activo = TRUE");
+        if($verificar){
+            //Validación si existe ya la Unidad de Medida
+            $this->render('create_medida',array(
+                'respuesta' => 2,
+                'maestro'=>$maestro,
+            ));
+        }else{
+            //Si no existe se realiza el Guardado
+            $maestroPoa = new MaestroPoa;
+            $maestroPoa->descripcion = $descripcion;
+            $maestroPoa->padre = 35;
+            $maestroPoa->hijo = 0;
+            $maestroPoa->created_by = Yii::app()->user->id;
+            $maestroPoa->created_date = 'now()';
+            $maestroPoa->modified_date = 'now()';
+            if($maestroPoa->save()){
+                $this->render('create_medida',array(
+                    'respuesta' => 1,
+                    'maestro'=>$maestro,
+                ));
+            } else {
+                echo "<pre>Maestro";
+                var_dump($maestroPoa->Errors);
+                exit;
+            }
+        }
+    }
+    
+    $this->render('create_medida',array(
+        'maestro'=>$maestro,
+    ));
+}
+
 /**
 * Returns the data model based on the primary key given in the GET variable.
 * If the data model is not found, an HTTP exception will be raised.
@@ -682,13 +761,110 @@ Yii::app()->end();
 
 public function actionRendimiento($id_poa) {
         $model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
-        $accion = new Acciones;
+        $acciones = new Acciones;
        
-     
+        if (isset($_POST['Cumplido']) && isset($_POST['Accion'])) {
+//            var_dump($_POST);die;
+            $o = 0;
+            $i = 57; //Enero en Maestro
+            foreach ($_POST['Cumplido'] as $data) {
+                $programacion = Rendimiento::model()->findByAttributes(array('id_entidad' => $_POST['Accion'], 'fk_tipo_entidad' => 73, 'fk_meses' => $i, 'es_activo' => TRUE));
+                $programacion->cantidad_cumplida = $data;
+                $programacion->modified_date = 'now()';
+                $programacion->modified_by = Yii::app()->user->id;
+                if ($programacion->save()) {
+                    $o++;
+                } else {
+                    echo "<pre>Programacion";
+                    var_dump($programacion->Errors);
+                    exit;
+                }
+                $i++;
+            }
+            
+            if($o == count($_POST['Cumplido'])){
+                $this->redirect(array('Rendimiento', 'id_poa' => $id_poa, 'id_accion' => $_POST['Accion'], 'ver_actividad' => 1));
+            }
+        }
+        
+        if (isset($_POST['Cumplido']) && isset($_POST['Actividad'])) {
+//            var_dump($_POST);die;
+            $o = 0;
+            $i = 57; //Enero en Maestro
+            foreach ($_POST['Cumplido'] as $data) {
+                $programacion = Rendimiento::model()->findByAttributes(array('id_entidad' => $_POST['Actividad'], 'fk_tipo_entidad' => 74, 'fk_meses' => $i, 'es_activo' => TRUE));
+                $programacion->cantidad_cumplida = $data;
+                $programacion->modified_date = 'now()';
+                $programacion->modified_by = Yii::app()->user->id;
+                if ($programacion->save()) {
+                    $o++;
+                } else {
+                    echo "<pre>Programacion";
+                    var_dump($programacion->Errors);
+                    exit;
+                }
+                $i++;
+            }
+            
+            if($o == count($_POST['Cumplido'])){
+                $this->redirect(array('Rendimiento', 'id_poa' => $id_poa, 'id_accion' => $_GET['id_accion'], 'ver_actividad' => 1));
+            }
+            
+        }
+        
+        if (isset($_GET['rendimiento_accion'])) {
+            $rendimiento = new Rendimiento;
+            $accion = VswAcciones::model()->findByAttributes(array('id_accion' => $_GET['id_accion']));
+            $criteria=new CDbCriteria;
+            $criteria->order='fk_meses';
+            $rendimiento_entidad = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_GET['id_accion'], 'fk_tipo_entidad' => 73, 'es_activo' => TRUE), $criteria);
+            
+//            var_dump($accion);die;
+            $this->render('rendimiento_create', array(
+                'model' => $model,
+                'id_poa' => $id_poa,
+                'acciones' => $acciones,
+                'entidad' => $accion,
+                'rendimiento' => $rendimiento,
+                'rendimiento_entidad' => $rendimiento_entidad,
+            ));
+        }
+        
+        if (isset($_GET['ver_actividad'])) {
+            $actividades = new VswActividades;
+            
+            if(isset($_GET['id_actividad'])){
+                $rendimiento = new Rendimiento;
+                $actividad = VswActividades::model()->findByAttributes(array('id_actividades' => $_GET['id_actividad']));
+                $criteria=new CDbCriteria;
+                $criteria->order='fk_meses';
+                $rendimiento_entidad = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_GET['id_actividad'], 'fk_tipo_entidad' => 74, 'es_activo' => TRUE), $criteria);
+
+//                var_dump($_GET['id_poa']);die;
+                $this->render('rendimiento_create', array(
+                    'model' => $model,
+                    'id_poa' => $id_poa,
+                    'acciones' => $acciones,
+                    'actividades' => $actividades,
+                    'entidad' => $actividad,
+                    'rendimiento' => $rendimiento,
+                    'rendimiento_entidad' => $rendimiento_entidad,
+                ));
+            }
+            
+            $this->render('rendimiento_create', array(
+                'model' => $model,
+                'id_poa' => $id_poa,
+                'acciones' => $acciones,
+                'actividades' => $actividades,
+            ));
+        }
+        
+
         $this->render('rendimiento_create', array(
             'model' => $model,
             'id_poa' => $id_poa,
-            'accion' => $accion,
+            'acciones' => $acciones,
            
         ));
     }
@@ -726,15 +902,20 @@ public function actionRendimiento($id_poa) {
         }
     }
     
-<<<<<<< HEAD
     public function actionGenerarPDF ($id_poa) {
 //        $poa 
         
     }
-}
-=======
     
-    
-    
+    public function actionvista_reporte($id_poa) {
+        //$model = VswPoa::model()->findByAttributes(array('id_poa' => $id_poa));
+        //$accion = new Acciones;
+		$model = new MaestroPoa;
+		$this->render('reporte_rendimiento', array(
+            'model' => $model,
+            'id_poa' => $id_poa,
+            //'accion' => $accion,
+           
+        ));
     }
->>>>>>> 8e9418485ea9cd441f7866e55a81d0d9f3d7cece
+}

@@ -21,27 +21,35 @@
         ?>
         </div>
     </div>
-    <?php
-        }
-    ?>
+    
     <div class='row'>
-        <div class='col-md-12' style="text-align: center">
-	<?php echo $form->textAreaGroup($model,'obj_general',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center')))); ?>    
-        </div>
-    </div>
-    <?php
-    if($model->fk_tipo_poa == 70){
-    ?>
-    <div class='row'>
-        <div class='col-md-6'>
+        <div class='col-md-12'>
         <?php 
         echo $form->textAreaGroup($model,'obj_historico',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center'))));
         ?>
         </div>
-        
-        <div class='col-md-6'>
+    </div>
+
+    <div class='row'>
+        <div class='col-md-12'>
         <?php 
-        echo $form->textAreaGroup($model,'obj_estrategico',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center')))); 
+        echo $form->textAreaGroup($model,'obj_nacional',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center'))));
+        ?>
+        </div>
+    </div>
+    
+    <div class='row'>
+        <div class='col-md-12'>
+        <?php 
+        echo $form->textAreaGroup($model,'obj_estrategico',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center'))));
+        ?>
+        </div>
+    </div>
+        
+    <div class='row'>
+        <div class='col-md-12'>
+        <?php 
+        echo $form->textAreaGroup($model,'obj_general',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center'))));
         ?>
         </div>
     </div>
@@ -56,7 +64,7 @@
     <div class='row'>
         <div class='col-md-6'>
         <?php 
-                echo $form->textFieldGroup($model, 'fk_unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center'))));
+                echo $form->textFieldGroup($model, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center'))));
 
         ?>
         </div>
@@ -67,11 +75,11 @@
         ?>
         </div>
     </div>
+    <?php
+    }
+    ?>
     <div class='row'>
         <div class='col-md-12' style="text-align: center">
 	<?php echo $form->textAreaGroup($model,'descripcion',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5', 'readOnly' => true, 'style' => 'background: transparent; border: none; box-shadow: none; text-align: center')))); ?>
         </div>
     </div>
-    <?php
-    }
-    ?>

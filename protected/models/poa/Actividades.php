@@ -42,7 +42,7 @@ class Actividades extends CActiveRecord
 		return array(
 			array('fk_unidad_medida, fk_accion, created_by, created_date, modified_date, fk_status', 'required'),
 			array('fk_unidad_medida, cantidad, fk_accion, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
-			array('actividad', 'length', 'max'=>200),
+			array('actividad', 'length', 'max'=>800),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

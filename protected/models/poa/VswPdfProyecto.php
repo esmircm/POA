@@ -34,11 +34,11 @@ class VswPdfProyecto extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_poa, fk_unidad_medida, unidad_actividad', 'numerical', 'integerOnly'=>true),
-			array('nombre_proyecto', 'length', 'max'=>700),
-			array('nombre_accion', 'length', 'max'=>500),
+			array('nombre_proyecto', 'length', 'max'=>800),
+			array('nombre_accion', 'length', 'max'=>800),
 			array('objetivo_general, objetivo_historico', 'length', 'max'=>800),
 			array('unidad_medida, unidad_actividades', 'length', 'max'=>1000),
-			array('actividad', 'length', 'max'=>200),
+			array('actividad', 'length', 'max'=>800),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_poa, nombre_proyecto, nombre_accion, objetivo_general, objetivo_historico, fk_unidad_medida, unidad_medida, actividad, unidad_actividad, unidad_actividades', 'safe', 'on'=>'search'),

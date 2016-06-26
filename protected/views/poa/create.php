@@ -22,7 +22,7 @@ $Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/j
 
 <div class="span-20 poa_content">
     
-    <div style="position: absolute; z-index: 1; margin-left: -50px; bottom: -5%;">
+    <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -20px;">
         <span class="glyphicon glyphicon-user" style="font-size: 300px; opacity: 0.2;"></span>
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
@@ -35,12 +35,12 @@ $Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/j
 
 <div class="span-20 poa_content">
     
-    <div style="position: absolute; z-index: 1; margin-left: -50px; bottom: -5%;">
+    <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -50px;">
         <span class="glyphicon glyphicon-briefcase" style="font-size: 300px; opacity: 0.2;"></span>
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
             <?php
-            echo $this->renderPartial('_poa', array('poa' => $poa, 'tipo_poa' => $tipo_poa, 'anio_pro' => $anio_pro, 'form' => $form), TRUE);
+            echo $this->renderPartial('_poa', array('poa' => $poa, 'tipo_poa' => $tipo_poa, 'anio_pro' => $anio_pro, 'form' => $form, 'maestro' => $maestro), TRUE);
        
             ?>
     </div>
