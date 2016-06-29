@@ -90,7 +90,7 @@ $this->widget('booster.widgets.TbExtendedGridView', array(
 ?>
     </div>
 </div>
-<div class="pull-right">
+<div class=" form-actions text-center"style="margin-top: 15px;">
     <?php
     $this->widget('booster.widgets.TbButton', array(
         'buttonType' => 'submit',

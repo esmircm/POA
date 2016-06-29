@@ -108,7 +108,8 @@ $this->widget('booster.widgets.TbExtendedGridView', array(
     ?>
 </div>
 
-<div class="pull-right">
+<div class="well">
+<div class=" form-actions text-center"style="margin-top: 15px;">
     <?php
     $this->widget('booster.widgets.TbButton', array(
         'buttonType' => 'submit',
@@ -118,6 +119,7 @@ $this->widget('booster.widgets.TbExtendedGridView', array(
         'label' => $estatus_poa->isNewRecord ? 'Guardar' : 'Save',
     ));
     ?>
+</div>
 </div>
 <?php $this->endWidget(); ?>
 

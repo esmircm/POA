@@ -48,7 +48,7 @@
 
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/animate.min.css" type="text/css"></link>
         <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/creative.css" type="text/css"></link>
-        <title>SIMAP</title>
+        <title>SIGEPOA</title>
     </head>
 
     <body>

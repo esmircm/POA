@@ -21,17 +21,14 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 <div class="span-20 poa_content" style="box-shadow: none">
     
     <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
-        <span style="font-size: 200px; opacity: 0.2;"><?php echo $poa->tipo_poa; ?></span>
+        <!--<span style="font-size: 140px; opacity: 0.2;"><?php // echo $poa->tipo_poa; ?></span>-->
     </div>
-    <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; font-size: 20px; margin-top: 40px; text-align: center">
-    <?php
-        echo $form->textAreaGroup($poa, 'nombre', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; text-align: center; color: #000; font-size: 20px;', 'readOnly' => true)), 'label' => false));
-    ?>
-    </div>
+ 
+     <center><h1><b>Proyecto:</b> <?php echo $poa->nombre; ?><br/></h1></center>
 </div>
 
 <h3 class="text-danger text-center"></br>Formulación de <?php echo $poa->tipo_poa; ?></h3>
-<div class="span-20" >
+<div class="span-20 expose" >
     <?php
     $this->widget(
             'booster.widgets.TbPanel', array(
@@ -39,7 +36,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         'context' => 'primary',
         'headerIcon' => 'user',
         'headerHtmlOptions' => array('style' => 'background-color: #B2D4F1; color: #000000; border-bottom: none; border-radius: 0px;'),
-        'content' => $this->renderPartial('_accion', array('accion' => $accion, 'programacion' => $programacion, 'id_poa' => $id_poa, 'form' => $form), TRUE),
+        'content' => $this->renderPartial('_accion', array('accion' => $accion, 'programacion' => $programacion, 'id_poa' => $id_poa, 'tipo' => $tipo, 'form' => $form), TRUE),
         'htmlOptions' => array('style' => 'box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.5); border-radius: 0px; border: none;'),
             )
     );
@@ -60,8 +57,8 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     );
     ?>
 </div>
-
-<div class="pull-right">
+<div class="well">
+<div class=" form-actions text-center"style="margin-top: 15px;">
 <?php
     $this->widget('booster.widgets.TbButton', array(
         'buttonType' => 'link',
@@ -72,8 +69,10 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     ));
 ?>
 </div>
+</div>
+<div id="overlay"></div>
 
-<?php $this->endWidget(); 
+<?php $this->endWidget(); ?>
 
 
 

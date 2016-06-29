@@ -56,7 +56,7 @@
 </div> 
 <div style="width: 10%; display: inline-block; float: right">
     <div style="width: 100%; height: 100%; text-align: center">
-        <div onclick="GuardarAccion()" class="ValidationButton"><span class="glyphicon glyphicon-play" style="margin-top: 25%; margin-bottom: 25%;"></span></div>
+        <div data-toggle="tooltip" title="" rows="1" data-original-title="Agregar Acción" onclick="GuardarAccion()" class="ValidationButton"><span class="glyphicon glyphicon-play" style="margin-top: 25%; margin-bottom: 25%;"></span></div>
             
 
     </div>

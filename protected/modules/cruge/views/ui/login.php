@@ -164,12 +164,23 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
 ?>
 
 
+ <div class="header-content-inner text-center" style="margin-top: 1%">
+<!--    <h1 style="margin-top:auto;margin-bottom: 0;text-transform: uppercase;font-weight: 700;">Bienvenida al Registro Nacional de Mujeres <span style="color: #10429B;">UNAMUJER.</span></h1>-->
+    <p style="color: white " ><b><font size="7">Sistema de Gestión de Proyectos y Acción Centralizada del <span style="color: #F6CEEC;">MinMujer.</span></font></b></p>
+    
+    <hr class="text-center" style="max-width: 100%;border-color: #F6CEEC;border-width: 3px">
+</div>
+    
+    
+   
+
 <div class="container">
     <div class="login-container">
         <?php echo $form->error($model, 'username'); ?>
         <?php echo $form->error($model, 'password'); ?>
         <div id="output"></div>
-        <div class="avatar"></div>
+        <!--<div class="avatar"></div>-->
+        <div align="center"><img class="img-responsive" src="<?php echo Yii:: app()->baseUrl . '/img/icono-lapatriaesunamujer1.png' ?> " width="100" height="100"></div><br>
         <div class="form-box">
             <form action="" method="">
          

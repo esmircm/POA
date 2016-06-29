@@ -44,7 +44,7 @@
                             <!-- menu prile quick info -->
                             <div class="profile">
                                 <div class="profile_pic">
-                                    <img src="<?php echo Yii:: app()->baseUrl . '/images/banavih_ndice1.png' ?> " width="100" height="65" >
+                                    <img src="<?php echo Yii:: app()->baseUrl . '/img/icono-lapatriaesunamujer1.png' ?> " width="65" height="65" >
                                 </div>
                                 <div class="profile_info">
                                     <span>Bienvenid@,</span>
