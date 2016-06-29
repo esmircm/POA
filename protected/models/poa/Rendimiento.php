@@ -119,8 +119,55 @@ class Rendimiento extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function rendimiento_accion($id_accion) {
+            
+            $verificacion = 0;
+            $sql = "SELECT rend.cantidad_cumplida "
+            . "FROM poa.rendimiento rend "
+                    . "RIGHT JOIN poa.maestro maes ON rend.fk_meses = maes.id_maestro AND (maes.descripcion2)::integer <= " . date('n')
+                    . " WHERE rend.id_entidad = " . $id_accion . " AND rend.fk_tipo_entidad = 73 AND rend.es_activo AND maes.padre = 56";
+            $consulta = Yii::app()->db->createCommand($sql)->queryAll();
+//            var_dump($consulta);die;
+            foreach($consulta as $data) {
+                if(empty($data['cantidad_cumplida'])){
+                    if($data['cantidad_cumplida'] == '0'){
+                        
+                    } else {
+                        $verificacion++;
+                    }
+                } else {
+                    
+                }
+            }
+            
+            return $verificacion;
+        }
 
-	/**
+        public function rendimiento_actividad($id_actividades) {
+            
+            $verificacion = 0;
+            $sql = "SELECT rend.cantidad_cumplida "
+            . "FROM poa.rendimiento rend "
+                    . "RIGHT JOIN poa.maestro maes ON rend.fk_meses = maes.id_maestro AND (maes.descripcion2)::integer <= " . date('n')
+                    . " WHERE rend.id_entidad = " . $id_actividades . " AND rend.fk_tipo_entidad = 74 AND rend.es_activo AND maes.padre = 56";
+            $consulta = Yii::app()->db->createCommand($sql)->queryAll();
+//            var_dump($consulta);die;
+            foreach($consulta as $data) {
+                if(empty($data['cantidad_cumplida'])){
+                    if($data['cantidad_cumplida'] == '0'){
+                        
+                    } else {
+                        $verificacion++;
+                    }
+                } else {
+                    
+                }
+            }
+            
+            return $verificacion;
+        }
+        /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.

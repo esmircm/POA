@@ -31,7 +31,7 @@ class VswActividades extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_actividades, cantidad, fk_unidad_medida, fk_accion, fk_poa', 'numerical', 'integerOnly'=>true),
-			array('actividad', 'length', 'max'=>200),
+			array('actividad', 'length', 'max'=>800),
 			array('unidad_medida', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

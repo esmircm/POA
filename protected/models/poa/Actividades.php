@@ -42,7 +42,7 @@ class Actividades extends CActiveRecord
 		return array(
 			array('fk_unidad_medida, fk_accion, created_by, created_date, modified_date, fk_status', 'required'),
 			array('fk_unidad_medida, cantidad, fk_accion, created_by, modified_by, fk_status', 'numerical', 'integerOnly'=>true),
-			array('actividad', 'length', 'max'=>200),
+			array('actividad', 'length', 'max'=>800),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -58,9 +58,9 @@ class Actividades extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'fkStatus' => array(self::BELONGS_TO, 'Maestro', 'fk_status'),
+			'fkStatus' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_status'),
 			'fkAccion' => array(self::BELONGS_TO, 'Acciones', 'fk_accion'),
-			'fkUnidadMedida' => array(self::BELONGS_TO, 'Maestro', 'fk_unidad_medida'),
+			'fkUnidadMedida' => array(self::BELONGS_TO, 'MaestroPoa', 'fk_unidad_medida'),
 			'rendimientos' => array(self::HAS_MANY, 'Rendimiento', 'fk_actividad'),
 		);
 	}
@@ -119,8 +119,33 @@ class Actividades extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function suma_rendimiento($id_actividad, $condicion) 
+        {
+            $consulta = Yii::app()->db->createCommand()
+                ->select('CASE WHEN SUM(cantidad_cumplida) is null THEN 0 ELSE SUM(cantidad_cumplida) END')
+                ->from('poa.rendimiento')
+                ->where('id_entidad = ' . $id_actividad . ' AND fk_tipo_entidad = 74 ' . $condicion)
+                ->queryRow();
+            
+                $resultado = $consulta['sum'];
+                return $resultado;
+        }
+        
+        
+        public function suma_programado($id_actividad, $condicion) 
+        {
+            $consulta = Yii::app()->db->createCommand()
+                ->select('CASE WHEN SUM(cantidad_programada) is null THEN 0 ELSE SUM(cantidad_programada) END')
+                ->from('poa.rendimiento')
+                ->where('id_entidad = ' . $id_actividad . ' AND fk_tipo_entidad = 74 ' . $condicion)
+                ->queryRow();
+            
+                $resultado = $consulta['sum'];
+                return $resultado;
+        }
 
-	/**
+        /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.

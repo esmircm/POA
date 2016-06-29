@@ -12,6 +12,7 @@
  * @property string $descripcion
  * @property integer $fk_tipo_poa
  * @property string $tipo_poa
+ * @property double $anio
  */
 class VswAdmin extends CActiveRecord
 {
@@ -32,12 +33,13 @@ class VswAdmin extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_poa, cod_dependencia_cruge, fk_estatus_poa, fk_tipo_poa', 'numerical', 'integerOnly'=>true),
-			array('nombre', 'length', 'max'=>700),
+			array('anio', 'numerical'),
+			array('nombre', 'length', 'max'=>800),
 			array('dependencia_cruge', 'length', 'max'=>200),
 			array('descripcion, tipo_poa', 'length', 'max'=>1000),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_poa, nombre, cod_dependencia_cruge, dependencia_cruge, fk_estatus_poa, descripcion, fk_tipo_poa, tipo_poa', 'safe', 'on'=>'search'),
+			array('id_poa, nombre, cod_dependencia_cruge, dependencia_cruge, fk_estatus_poa, descripcion, fk_tipo_poa, tipo_poa, anio', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,6 +68,7 @@ class VswAdmin extends CActiveRecord
 			'descripcion' => 'Descripcion',
 			'fk_tipo_poa' => 'Fk Tipo Poa',
 			'tipo_poa' => 'Tipo Poa',
+			'anio' => 'Anio',
 		);
 	}
 
@@ -95,6 +98,7 @@ class VswAdmin extends CActiveRecord
 		$criteria->compare('descripcion',$this->descripcion,true);
 		$criteria->compare('fk_tipo_poa',$this->fk_tipo_poa);
 		$criteria->compare('tipo_poa',$this->tipo_poa,true);
+		$criteria->compare('anio',$this->anio);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
@@ -115,13 +119,14 @@ class VswAdmin extends CActiveRecord
 		$criteria->compare('descripcion',$this->descripcion,true);
                 $criteria->compare('fk_tipo_poa',$this->fk_tipo_poa);
 		$criteria->compare('tipo_poa',$this->tipo_poa,true);
+                $criteria->compare('anio',$this->anio);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
         
-        public function search_planificacion($estatus)
+        public function search_planificacion($estatus, $estatus2)
 	{
 		// @todo Please modify the following code to remove attributes that should not be searched.
 
@@ -132,9 +137,11 @@ class VswAdmin extends CActiveRecord
 		$criteria->compare('cod_dependencia_cruge',$this->cod_dependencia_cruge,true);
 		$criteria->compare('dependencia_cruge',$this->dependencia_cruge,true);
 		$criteria->compare('fk_estatus_poa',$estatus);
+                $criteria->compare('fk_estatus_poa',$estatus2, false, 'OR');
 		$criteria->compare('descripcion',$this->descripcion,true);
                 $criteria->compare('fk_tipo_poa',$this->fk_tipo_poa);
 		$criteria->compare('tipo_poa',$this->tipo_poa,true);
+                $criteria->compare('anio',$this->anio);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

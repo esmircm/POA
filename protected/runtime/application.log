@@ -4428,3 +4428,158 @@ Stack trace:
 REQUEST_URI=/siim_poa/img/header.jpg
 HTTP_REFERER=http://localhost/siim_poa/css/creative.css
 ---
+2016/04/14 04:38:18 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/var/www/poa_carlos/assets" es inválido. Asegúrese que el directorio exista y tenga permisos de escritura por el proceso que corre el servidor Web.' in /var/www/yii/framework/web/CAssetManager.php:138
+Stack trace:
+#0 /var/www/yii/framework/web/CAssetManager.php(123): CAssetManager->setBasePath('/var/www/poa_ca...')
+#1 /var/www/yii/framework/web/CAssetManager.php(217): CAssetManager->getBasePath()
+#2 /var/www/poa_carlos/protected/extensions/booster/components/Booster.php(413): CAssetManager->publish('/var/www/poa_ca...', false, -1, false)
+#3 /var/www/poa_carlos/protected/extensions/booster/components/packages.php(14): Booster->getAssetsUrl()
+#4 /var/www/poa_carlos/protected/extensions/booster/components/Booster.php(260): require('/var/www/poa_ca...')
+#5 /var/www/poa_carlos/protected/extensions/booster/components/Booster.php(246): Booster->appendUserSuppliedPackagesToOurs()
+#6 /var/www/poa_carlos/protected/extensions/booster/components/Booster.php(214): Booster->includeAssets()
+#7 /var/www/yii/framework/base/CModule.php(394): Booster->init()
+#8 /var/www/yii/framework/base/CModule.php(530): CModule->getComponent('booster')
+#9 /var/www/yii/framework/base/CApplication.php(167): CModule->preloadComponents()
+#10 /var/www/yii/framework/YiiBase.php(125): CApplication->__construct('/var/www/poa_ca...')
+#11 /var/www/yii/framework/YiiBase.php(98): YiiBase::createApplication('CWebApplication', '/var/www/poa_ca...')
+#12 /var/www/poa_carlos/index.php(13): YiiBase::createWebApplication('/var/www/poa_ca...')
+#13 {main}
+REQUEST_URI=/poa_carlos/
+HTTP_REFERER=http://localhost/
+---
+2016/04/14 04:38:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/logo1.png"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/logo1.pn...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/images/logo1.png
+HTTP_REFERER=http://localhost/poa_carlos/
+---
+2016/04/14 04:38:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "img/header.jpg"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('img/header.jpg')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/img/header.jpg
+HTTP_REFERER=http://localhost/poa_carlos/css/creative.css
+---
+2016/04/14 04:39:00 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "img/unamujer_-_favicon.png"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('img/unamujer_-_...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/img/unamujer_-_favicon.png
+HTTP_REFERER=http://localhost/poa_carlos/
+---
+2016/04/14 04:39:09 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('images')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/img...')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/poa_carlos/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/poa_carlos/site/images/img.jpg
+HTTP_REFERER=http://localhost/poa_carlos/site/index
+---
+2016/04/14 04:39:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/logo1.png"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/logo1.pn...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/images/logo1.png
+HTTP_REFERER=http://localhost/poa_carlos/
+---
+2016/04/14 04:39:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "img/header.jpg"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('img/header.jpg')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/img/header.jpg
+HTTP_REFERER=http://localhost/poa_carlos/css/creative.css
+---
+2016/04/14 04:39:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('images')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/img...')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/poa_carlos/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/poa_carlos/site/images/img.jpg
+HTTP_REFERER=http://localhost/poa_carlos/site/index
+---
+2016/04/14 04:40:22 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "images/logo1.png"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('images/logo1.pn...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/images/logo1.png
+HTTP_REFERER=http://localhost/poa_carlos/
+---
+2016/04/14 04:40:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "img/unamujer_-_favicon.png"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('img/unamujer_-_...')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/img/unamujer_-_favicon.png
+---
+2016/04/14 04:40:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'No es posible resolver la solicitud "img/header.jpg"' in /var/www/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('img/header.jpg')
+#1 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#2 /var/www/poa_carlos/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/poa_carlos/img/header.jpg
+HTTP_REFERER=http://localhost/poa_carlos/css/creative.css
+---
+2016/04/14 04:40:33 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('images')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/img...')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/poa_carlos/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/poa_carlos/site/images/img.jpg
+HTTP_REFERER=http://localhost/poa_carlos/site/index
+---
+2016/04/14 04:40:36 [error] [exception.CDbException] exception 'CDbException' with message 'Tabla "vsw_poa" no contiene la columna con nombre "codigo_dependencia".' in /var/www/yii/framework/db/schema/CDbCommandBuilder.php:697
+Stack trace:
+#0 /var/www/yii/framework/db/ar/CActiveRecord.php(1523): CDbCommandBuilder->createColumnCriteria(Object(CPgsqlTableSchema), Array, Object(CDbCriteria), Array, '"t".')
+#1 /var/www/poa_carlos/protected/controllers/PoaController.php(567): CActiveRecord->findByAttributes(Array, Object(CDbCriteria))
+#2 /var/www/yii/framework/web/actions/CInlineAction.php(49): PoaController->actionIndex()
+#3 /var/www/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#4 /var/www/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#5 /var/www/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#6 /var/www/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#7 /var/www/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#8 /var/www/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#9 /var/www/yii/framework/web/CController.php(291): CFilterChain->run()
+#10 /var/www/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#11 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('index')
+#12 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('poa/index')
+#13 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#14 /var/www/poa_carlos/index.php(13): CApplication->run()
+#15 {main}
+REQUEST_URI=/poa_carlos/poa/index
+HTTP_REFERER=http://localhost/poa_carlos/site/index
+---
+2016/04/14 04:40:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'El sistema no ha podido encontrar la acción "images" solicitada.' in /var/www/yii/framework/web/CController.php:483
+Stack trace:
+#0 /var/www/yii/framework/web/CController.php(270): CController->missingAction('images')
+#1 /var/www/yii/framework/web/CWebApplication.php(282): CController->run('images')
+#2 /var/www/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/images/img...')
+#3 /var/www/yii/framework/base/CApplication.php(184): CWebApplication->processRequest()
+#4 /var/www/poa_carlos/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/poa_carlos/site/images/img.jpg
+HTTP_REFERER=http://localhost/poa_carlos/site/index
+---

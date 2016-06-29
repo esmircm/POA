@@ -33,10 +33,10 @@ class VswPoa2 extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('id_poa, id_accion, actividades', 'numerical', 'integerOnly'=>true),
-			array('poa', 'length', 'max'=>700),
+			array('poa', 'length', 'max'=>800),
 			array('obj_general, obj_historico, descripcion', 'length', 'max'=>800),
-			array('acciones', 'length', 'max'=>500),
-			array('actividad', 'length', 'max'=>200),
+			array('acciones', 'length', 'max'=>800),
+			array('actividad', 'length', 'max'=>800),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_poa, poa, obj_general, obj_historico, descripcion, id_accion, acciones, actividades, actividad', 'safe', 'on'=>'search'),

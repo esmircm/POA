@@ -1468,7 +1468,28 @@ function ExportarReportes(tipo) {
 //////////////////PROYECTO/////////////////////////////
 ///////////////////////////////////////////////////////
 
+function guardar_poa(){
+    validacion = 0;
+if($('#Poa_fecha_inicio').val()==''){
+    $('#Poa_fecha_inicio').css('border', '1px solid rgba(215, 40, 40, 0.9)');
+    validacion = 1;
+} else {
+    $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
+}
+if($('#Poa_fecha_final').val()==''){
+    $('#Poa_fecha_final').css('border', '1px solid rgba(215, 40, 40, 0.9)');
+    validacion = 1;
+} else {
+    $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
+}
 
+if (validacion != 1) {
+    $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
+    $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
+    $('form').submit();
+}
+
+}
 
 function GuardarAccion() {
     validar = 0;
@@ -1488,15 +1509,19 @@ function GuardarAccion() {
         $('form').submit();
     }
 }
+
 function GuardarActividad() {
 
     if($("#Actividades_actividad").val()==''){
         bootbox.alert('Verifique que la Actividad no este vacia.');
     }
-    if($("#Actividades_fk_unidad_medida").val()=='SELECCIONE'){
+    if($("#Actividades_fk_unidad_medida").val()==''){
         bootbox.alert('Debe seleccionar un tipo de Unidad de Medida.');
     }
-    if(($("#Actividades_actividad").val()!='')&&($("#Actividades_fk_unidad_medida").val()!='SELECCIONE')){
+    if($("#Actividades_cantidad").val()==''){
+        bootbox.alert('Es necesario indicar la Programación para la Actividad.');
+    }
+    if(($("#Actividades_actividad").val()!='')&&($("#Actividades_fk_unidad_medida").val()!='')&&($("#Actividades_cantidad").val()!='')&&($('#update_actividad').val()=='')){
         
         $.ajax({
             url: baseUrl + "/ValidacionJs/DibujarActividad",
@@ -1507,27 +1532,41 @@ function GuardarActividad() {
             success: function(datos) {
                 if (datos != '') {
                     $('#id_actividad').val(datos['id_actividad']);
-                    $('#ActividadesPOA').append(datos['html']);
+                    html = datos['html'];
+                    html_accion = datos['html_accion'];
                     
                     //Guardado del Rendimiento de la Actividad
                     
                     i = 0;
                     fk_meses = 57;
-                   
+                    programacion = '';
                     while (i < 12) {
-                        id_actividad = $('#id_actividad').val();
-                        programacion = $('#Rendimiento_' + fk_meses).val();
-                        fk_mes = fk_meses;
+                        if($('#Rendimiento_' + fk_meses).val() == ''){
+                            programado = 0;
+                        } else {
+                            programado = $('#Rendimiento_' + fk_meses).val();
+                        }
+                        programacion += programado + ', ';
               
+                        fk_meses++;
+                        i++;
+                    }
+                    if(i == 12){
+                        id_actividad = $('#id_actividad').val();
                         $.ajax({
                             url: baseUrl + "/ValidacionJs/GuardarProgramadoActividad",
                             async: true,
                             type: 'POST',
-                            data: 'id_actividad=' + id_actividad + '&fk_mes=' + fk_mes + '&programacion=' + programacion,
+                            data: 'id_actividad=' + id_actividad + '&programacion=' + programacion,
                             dataType: 'json',
+                            success: function(datos){
+                                html_programado = datos['html'];
+                                $('#ActividadesPOA').append(html + html_programado + html_accion);
+                            },
+                            error: function(datos) {
+                                bootbox.alert('Ocurrio un error');
+                            }
                         });
-                        fk_meses++;
-                        i++;
                     }
                     
                     bootbox.alert('La Actividad fue guardada con éxito.');
@@ -1543,40 +1582,220 @@ function GuardarActividad() {
             }
         });
     }
-
-}
-
-function eliminar_actividad(valor, id) {
-
-    if (!confirm('\u00bfEstá usted seguro de que desea eliminar está actividad?')) {
-
-    } else {
+    
+    if(($("#Actividades_actividad").val()!='')&&($("#Actividades_fk_unidad_medida").val()!='')&&($("#Actividades_cantidad").val()!='')&&($('#update_actividad').val()!='')){
         $.ajax({
-            url: baseUrl + "/ValidacionJs/EliminarActividad",
+            url: baseUrl + "/ValidacionJs/UpdateActividad",
             async: true,
             type: 'POST',
-            data: 'id_actividad=' + id,
+            data: 'actividad=' + $("#Actividades_actividad").val() + '&fk_unidad_medida=' + $("#Actividades_fk_unidad_medida").val() + '&cantidad=' + $("#Actividades_cantidad").val() + '&fk_accion=' + $("#Actividades_fk_accion").val() + '&id_actividad=' + $('#update_actividad').val(),
             dataType: 'json',
             success: function(datos) {
+                if (datos != '') {
+                                        
+                    //Guardado del Rendimiento de la Actividad
+                    
+                    i = 0;
+                    fk_meses = 57;
+                    programacion = '';
+                    while (i < 12) {
+                        if($('#Rendimiento_' + fk_meses).val() == ''){
+                            programado = 0;
+                        } else {
+                            programado = $('#Rendimiento_' + fk_meses).val();
+                        }
+                        programacion += programado + ', ';
+              
+                        fk_meses++;
+                        i++;
+                    }
+                    if(i == 12){
+                        id_actividad = $('#id_actividad').val();
+                        $.ajax({
+                            url: baseUrl + "/ValidacionJs/UpdateProgramadoActividad",
+                            async: true,
+                            type: 'POST',
+                            data: 'id_actividad=' + $('#update_actividad').val() + '&programacion=' + programacion,
+                            dataType: 'json',
+                            success: function(datos){
+                            },
+                            error: function(datos) {
+                                bootbox.alert('Ocurrio un error Programado');
+                            }
+                        });
+                    }
+                    u=1;
 
-                if (datos == 1) {
-                    bootbox.alert('Eliminado Con Exito!');
                 } else {
                     bootbox.alert('Verifique sus datos!.');
                 }
 
             },
             error: function(datos) {
-                bootbox.alert('Ocurrio un error');
+                bootbox.alert('Ocurrio un error Actividad');
 
             }
         });
-        $(valor).parent().parent().remove();
+                        bootbox.alert("La Actividad se ha modificado con éxito.", function(){  location.reload(); });
+                       
+                    
+        
     }
+
+}
+
+function editar_actividad(valor, id_actividad) {
+    $('.expose').css('z-index','3');
+    $('#overlay').fadeIn(300);
+    $.ajax({
+        url: baseUrl + "/ValidacionJs/BuscarActividad",
+        async: true,
+        type: 'POST',
+        data: 'id_actividad=' + id_actividad,
+        dataType: 'json',
+        success: function (datos) {
+            $('#Actividades_actividad').val(datos['actividad']);
+            $('#Actividades_fk_unidad_medida').val(datos['fk_unidad_medida']);
+            $('#Actividades_cantidad').val(datos['cantidad']);
+            i = 0;
+            fk_mes = 57;
+            while (i < 12){
+                $('#Rendimiento_' + fk_mes).val(datos[i]);
+                i++;
+                fk_mes++;
+            }
+            $('#update_actividad').val(datos['id_actividades']);
+            
+            $('#button_save_actividad').removeClass();
+            $('#button_save_actividad').addClass('glyphicon glyphicon-pencil');
+            $('#button_save_actividad').css('font-size', '50px')
+            
+            $('.button_cancel').show();
+        },
+        error: function (datos) {
+            bootbox.alert('Ocurrio un error');
+
+        }
+    });
+}
+
+function eliminar_actividad(valor, id) {
+    
+    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function(result){  
+        if(result==true) {
+            $.ajax({
+                url: baseUrl + "/ValidacionJs/EliminarActividad",
+                async: true,
+                type: 'POST',
+                data: 'id_actividad=' + id,
+                dataType: 'json',
+                success: function(datos) {
+
+                    if (datos == 1) {
+                        bootbox.alert('Eliminado Con Exito!');
+                        $(valor).parent().parent().remove();
+                    } else {
+                        bootbox.alert('Verifique sus datos!.');
+                    }
+
+                },
+                error: function(datos) {
+                    bootbox.alert('Ocurrio un error');
+
+                }
+            });
+        } else {
+
+        }
+    });
+ 
+}
+
+function eliminar_accion(valor, id) {
+    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function(result){  
+        if(result==true) {
+            $.ajax({
+                url: baseUrl + "/ValidacionJs/EliminarAccion",
+                async: true,
+                type: 'POST',
+                data: 'id_accion=' + id,
+                dataType: 'json',
+                success: function(datos) {
+
+                    if (datos == 1) {
+                        bootbox.alert('Eliminado Con Exito!');
+                        $(valor).parent().parent().remove();
+                    } 
+                    if (datos == 2) {
+                        bootbox.alert('Verifique sus Datos!');
+                    }
+                    if (datos == 3) {
+                        bootbox.alert('Prueba!');
+                    }
+
+                },
+                error: function(datos) {
+                    bootbox.alert('Ocurrio un error');
+
+                }
+            });
+
+        } else {
+
+        }
+    });
+}
+
+function ver_accion(valor, fk_poa, id_accion, tipo) {
+    $(location).attr('href', baseUrl + "/poa/create_actividad/id_poa/" + fk_poa + "/id_accion/" + id_accion + "/tipo/" + tipo);
 }
 
 function editar_accion(valor, fk_poa, id_accion, tipo) {
-    $(location).attr('href', baseUrl + "/poa/create_actividad/id_poa/" + fk_poa + "/id_accion/" + id_accion + "/tipo/" + tipo);
+    $('.expose').css('z-index','3');
+    $('#overlay').fadeIn(300);
+    $.ajax({
+        url: baseUrl + "/ValidacionJs/BuscarAccion",
+        async: true,
+        type: 'POST',
+        data: 'id_accion=' + id_accion + '&fk_poa=' + fk_poa,
+        dataType: 'json',
+        success: function (datos) {
+            $('#Acciones_nombre_accion').val(datos['nombre_accion']);
+            $('#Acciones_bien_servicio').val(datos['bien_servicio']);
+            $('#Acciones_fk_unidad_medida').val(datos['fk_unidad_medida']);
+            $('#Acciones_cantidad').val(datos['cantidad']);
+            $('#Acciones_fk_ambito').val(datos['fk_ambito']);
+            i = 0;
+            fk_mes = 57;
+            while (i < 12){
+                $('#Rendimiento_' + fk_mes).val(datos[i]);
+                i++;
+                fk_mes++;
+            }
+            $('#update_accion').val(datos['id_accion']);
+            $('#button_save_accion').removeClass();
+            $('#button_save_accion').addClass('glyphicon glyphicon-pencil');
+            $('.button_cancel').show();
+        },
+        error: function (datos) {
+            bootbox.alert('Ocurrio un error');
+
+        }
+    });
+}
+
+function cancelar_update() {
+    Limpiar();
+    $('#overlay').fadeOut(300, function () {
+        $('.expose').css('z-index', '1');
+    });
+    $('#button_save_accion').removeClass();
+    $('#button_save_accion').addClass('glyphicon glyphicon-play');
+    $('#button_save_actividad').removeClass();
+    $('#button_save_actividad').addClass('glyphicon-plus');
+    $('#button_save_actividad').css('font-size', '70px');
+    $('.button_cancel').hide();
+
 }
 
 $(document).ready(function() {
@@ -1588,4 +1807,49 @@ $(document).ready(function() {
             $('#Comentarios_comentarios').prop('required', false);
         }
     });
+    
+    $('.button-panel').click(function()
+        {
+        $(".left-panel").animate({"right": "0px"}, "slow");
+        $('.button-panel').css("display", "none")
+        $('.button-panel-close').css("display", "inline-block")
+    }
+    );
+    
+    $('.button-panel-close').click(function()
+        {
+        $(".left-panel").animate({"right": "-360px"}, "slow");
+        $('.button-panel-close').css("display", "none")
+        $('.button-panel').css("display", "inline-block")
+        }
+    );
+    
+    $('.suma_cantidad').change(function()
+    {
+        i = 0;
+        fk_meses = 57;
+        total = 0;
+
+        while (i < 12) {
+            programacion = $('#Rendimiento_' + fk_meses).val();
+            if(programacion == ''){
+                programacion=0;
+            }
+            total += parseInt(programacion);
+            fk_meses++;
+            i++;
+        }
+        
+        $('#Acciones_cantidad').val(total);
+        $('#Actividades_cantidad').val(total);
+
+    });
+    
+    $('#descripcion_create').change(function() {
+        $('#maestro_medidas-grid').yiiGridView('update', {
+            data: $(this).serialize()  
+        });
+        return false; 
+    });
+    
 })

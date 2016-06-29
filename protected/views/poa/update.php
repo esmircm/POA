@@ -16,7 +16,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     ),
 ));
 ?>
-<h3 class="text-danger text-center" style="margin-bottom: 20px;">FORMULACIÓN DEL PROYECTO OPERATIVO ANUAL<br><?php echo $model->dependencia; ?></h3>
+<h3 class="text-danger text-center" style="margin-bottom: 20px;">FORMULACIÓN DEL PLAN OPERATIVO ANUAL<br><?php echo $model->dependencia; ?></h3>
 
 <div class="span-20 poa_content">
     
@@ -38,7 +38,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%;">
             <?php
-            echo $this->renderPartial('_poa_update', array('model' => $model, 'form' => $form), TRUE);
+            echo $this->renderPartial('_poa_update', array('model' => $model, 'maestro' => $maestro, 'form' => $form), TRUE);
             ?>
     </div>
 </div>

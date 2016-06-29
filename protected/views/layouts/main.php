@@ -79,6 +79,11 @@
                                                         <span>Planificación</span>
                                                     </a>
                                                 </li>
+                                                <li><a href="<?php echo $this->createUrl('/poa/Create_Medida'); ?>">
+                                                        <i class="fa fa-pencil"></i>
+                                                        <span>Crear Unidad de Medida</span>
+                                                    </a>
+                                                </li>
                                                 <?php
                                                 }
                                                 ?>
@@ -87,29 +92,7 @@
                                         </li>
 
 
-                                        <li><a href="<?php echo $this->createUrl('/graficas/graficarecepcion'); ?>">
-                                                <i class="fa fa-pie-chart"></i>
-                                                <span>Gráficas</span>
-                                            </a>
-                                        </li>
-                                        <li><a><i class="fa fa-file-pdf-o"></i> Reportes <span class="fa fa-chevron-down"></span></a>
-                                            <ul class="nav child_menu" style="display: none">
-                                                <li><a href="<?php echo $this->createUrl('/vswReporteFinal/reporte'); ?>">
-                                                        <i class="fa fa-check"></i>
-                                                        <span>Reporte Final</span>
-                                                    </a>
-                                                </li>
-
-                                            
-                                           
-                                                <li><a href="<?php echo $this->createUrl('/evaluacion/Reporte_Rechazados'); ?>">
-                                                        <i class="fa fa-times"></i>
-                                                        <span>Rechazados</span>
-                                                    </a>
-                                                </li>
-
-                                            </ul>
-                                        </li>
+                                        
 
                                     </ul>
                                 </div>

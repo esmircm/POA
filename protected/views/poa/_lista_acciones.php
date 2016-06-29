@@ -23,9 +23,11 @@
                 $html .= '<td style="text-align: center">' . $data->unidad_medida . '</td>';
                 $html .= '<td style="text-align: center">' . $data->cantidad . '</td>';
                 $html .= '<td style="text-align: center">'
+
                         . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-eye-open" data-toggle="tooltip" title="" rows="1" data-original-title="Ver Acción" onclick="ver_accion(this,' . $data->fk_poa . ',' . $data->id_accion . ',' . $tipo . ')" /></span>'
                         . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="" rows="1" data-original-title="Editar Acción" onclick="editar_accion(this,' . $data->fk_poa . ',' . $data->id_accion . ',' . $tipo . ')" /></span>'
                         . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-trash" data-toggle="tooltip" title="" rows="1" data-original-title="Editar Acción" onclick="eliminar_accion(this,' . $data->id_accion . ')" /></span>';
+
                 $html .= '</tr>';
                 echo $html;
             }

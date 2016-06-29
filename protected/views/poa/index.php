@@ -13,22 +13,41 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
     <h1 style="border-bottom: 1px solid #dddddd; margin-bottom: 20px;">SISTEMA DE GESTIÓN DE PROYECTOS Y ACCIÓN CENTRALIZADA</h1>
     <h1 style="margin-bottom: 20px; font-size: 26px;"><?php echo $dependencia; ?></h1>
     
-    <div class="button-proyecto" id="button-proyecto" onclick="window.location='<?php echo Yii::app()->createUrl("poa/create/tipo/70"); ?>';">
+    <?php
+    if($anio_pro[0] == (date('Y')+1)){
+        ?>
+        <div class="button-proyecto-disabled" id="button-proyecto">
+        <?php
+    }else{
+        ?>
+        <div class="button-proyecto" id="button-proyecto" onclick="window.location='<?php echo Yii::app()->createUrl("poa/create/tipo/70"); ?>';">
+        <?php
+    }
+    ?>
         <div class="button-img" style="background-image: url('<?php echo Yii::app()->request->baseUrl;?>/img/button3.jpg');">
         </div>
         <div style="display: block;">
             <h6>CREAR PROYECTO</h6>
-            <h1><?php echo date('Y') + 1;?></h1>
+            <h1><?php echo $anio_pro[1]; ?></h1>
         </div>
     </div>
     
-    
-    <div class="button-proyecto" id="button-proyecto" onclick="window.location='<?php echo Yii::app()->createUrl("poa/create/tipo/71"); ?>';">
+    <?php
+    if($anio_acc[0] == (date('Y')+1)){
+        ?>
+        <div class="button-proyecto-disabled" id="button-proyecto">
+        <?php
+    }else{
+        ?>
+        <div class="button-proyecto" id="button-proyecto" onclick="window.location='<?php echo Yii::app()->createUrl("poa/create/tipo/71"); ?>';">
+        <?php
+    }
+    ?>
         <div class="button-img" style="background-image: url('<?php echo Yii::app()->request->baseUrl;?>/img/button2.jpg');">
         </div>
         <div style="display: block;">
             <h6>CREAR ACCIÓN CENTRALIZADA</h6>
-            <h1><?php echo date('Y') + 1;?></h1>
+            <h1><?php echo $anio_acc[1]; ?></h1>
         </div>
     </div>
     
@@ -47,6 +66,11 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                 'header' => 'PLAN OPERATIVO ANUAL',
                 'value' => '$data->nombre',
             ),
+           'tipo_poa' => array(
+                'name' => 'tipo_poa',
+                'header' => 'TIPO POA',
+                'value' => '$data->tipo_poa',
+            ),
             'dependencia_cruge' => array(
                 'name' => 'dependencia_cruge',
                 'header' => 'OFICINA',
@@ -61,7 +85,7 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                 'class' => 'booster.widgets.TbButtonColumn',
                 'header' => 'ACCIONES',
                 'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
-                'template' => '{continuar}{ver}{editar}{rendimiento}',
+                'template' => '{continuar}{ver}{editar}{rendimiento}{GenerarPDF}{GenerarAccionPDF}{vistaReporte}',
                 'buttons' => array(
                     'continuar' => array(
                         'label' => 'Continuar POA',
@@ -81,16 +105,46 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
                         'label' => 'Editar Plan Operativo Anual',
                         'icon' => 'pencil',
                         'size' => 'medium',
-                        'url' => 'Yii::app()->createUrl("poa/update", array("id_poa"=>$data->id_poa))',
+                        'url' => 'Yii::app()->createUrl("poa/update", array("id_poa"=>$data->id_poa, "tipo"=>$data->fk_tipo_poa))',
                         'visible' => '($data->fk_estatus_poa == "55") ? true : false;',
                     ),
-                    'rendimiento' => array(
+		    'rendimiento' => array(
                         'label' => 'Rendimiento',
-                        'icon' => 'pencil',
+                        'icon' => 'glyphicon glyphicon-calendar',
                         'size' => 'medium',
                         'url' => 'Yii::app()->createUrl("poa/rendimiento", array("id_poa"=>$data->id_poa))',
-//                        'visible' => '($data->fk_estatus_poa == "55") ? true : false;',
+                        'visible' => '($data->fk_estatus_poa == "52" && $data->anio == "' . date('Y') . '") ? true : false;',
                     ),
+                    'reportes' => array(
+                        'label' => 'Generar PDF',
+                        'icon' => 'file',
+                        'size'=> 'medium',
+
+                    ),
+                    'GenerarPDF' => array(
+                        'label' => 'Generar PDF',
+                        'icon' => 'glyphicon glyphicon-file',
+                        'size' => 'medium',
+                        'url' => 'Yii::app()->createUrl("poa/pdfpoa", array("id_poa"=>$data->id_poa))',
+                        'visible' => '($data->fk_estatus_poa == "52" && $data->fk_tipo_poa =="70") ? true : false;',
+                        
+                    ),
+                    'GenerarAccionPDF' => array(
+                        'label' => 'Generar PDF',
+                        'icon' => 'glyphicon glyphicon-file',
+                        'size' => 'medium',
+                        'url' => 'Yii::app()->createUrl("poa/pdfaccion", array("id_poa"=>$data->id_poa))',
+                        'visible' => '($data->fk_estatus_poa == "52" && $data->fk_tipo_poa =="71") ? true : false;',
+           
+                    ),
+                    'vistaReporte' => array(
+                    'label' => 'Generar Reporte de Rendimiento',
+                    'icon' => 'glyphicon glyphicon-file',
+                    'size' => 'medium',
+                    'url' => 'Yii::app()->createUrl("poa/vista_reporte", array("id_poa"=>$data->id_poa))',
+                    'visible' => '($data->fk_estatus_poa == "52" ) ? true : false;',
+                   
+                    )
                 ),
             ),
         ),

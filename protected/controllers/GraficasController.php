@@ -53,9 +53,12 @@ class GraficasController extends Controller {
         GraficasodisController::actionIndex();
       }
     
+      public function actionGraficaAcciones($id_poa, $tipo) {
+        GraficasAccionesController::actionIndex($id_poa, $tipo);
+      }
+      
+      public function actionGraficaAccionesProyecto($id_poa, $tipo) {
+        GraficasAccionesProyectoController::actionIndex($id_poa, $tipo);
+      }
     
-    
-    
-    
-
 }

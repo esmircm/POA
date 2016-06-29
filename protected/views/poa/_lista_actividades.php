@@ -22,8 +22,10 @@
                         $html .= '<td style="text-align: center">' . $data_rendimiento->cantidad_programada . '</td>';
                     }
                     $html .= '<td style="text-align: center">'
+
                             . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="" rows="1" data-original-title="Editar Actividad" onclick="editar_actividad(this,' . $data->id_actividades . ')" /></span>'
                             . '<span style="font-size: 40px; color: #2282cd; cursor: pointer;" class="glyphicon glyphicon-trash" data-toggle="tooltip" title="" rows="1" data-original-title="Eliminar Actividad" onclick="eliminar_actividad(this,' . $data->id_actividades . ')" /></span></td>';
+
                     $html .= '</tr>';
                     echo $html;
                 }

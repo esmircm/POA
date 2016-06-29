@@ -69,7 +69,7 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     ));
 ?>
 </div>
-</div>
+
 <div id="overlay"></div>
 
 <?php $this->endWidget(); ?>

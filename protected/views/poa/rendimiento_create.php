@@ -3,14 +3,11 @@ $this->breadcrumbs = array(
     'Poas' => array('index'),
     $model->id_poa,
 );
-
-
 $baseUrl = Yii::app()->baseUrl;
 $Validaciones = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/validacion.js');
 $numeros = Yii::app()->getClientScript()->registerScriptFile($baseUrl . '/js/js_jquery.numeric.js');
-
 $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
-    'id' => 'personal-form',
+    'id' => 'rendimiento-form',
     'enableAjaxValidation' => false,
     'enableClientValidation' => true,
     'clientOptions' => array(
@@ -20,13 +17,290 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     ),
         ));
 
+?>
+<div class="span-20 poa_content" style="width: 99%;">
+    
+    <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
+        <span style="font-size: 200px; opacity: 0.2;"><?php echo $model->tipo_poa; ?></span>
+    </div>
+    <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; font-size: 20px; margin-top: 40px; text-align: center">
+    <?php
+        echo $form->textAreaGroup($model, 'nombre', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; text-align: center; font-size: 20px; margin-top: 50px;', 'readOnly' => true)), 'label' => false));
+    ?>
+    </div>
+</div>
 
+<div class="span-20 poa_content" style="width: 99%;">
+    <div class="col-lg-12">
+        <?php
+
+//        #########################      GRID VIEW DE ACCIONES   ##########################
+        $this->widget('booster.widgets.TbExtendedGridView', array(
+            'type' => 'striped bordered',
+            'htmlOptions' => array('style' => 'margin-bottom: 20px;'),
+            'dataProvider' => $acciones->searchAccion($id_poa),
+            'template' => "{items}",
+            'columns' => array(
+                array(
+                    'name' => 'nombre_accion',
+                    'header' => 'Acción',
+                    'value' => '$data->nombre_accion',
+                ),
+                'bien_servicio' => array(
+                    'name' => 'bien_servicio',
+                    'header' => 'Bien o Servicio',
+                    'value' => '$data->bien_servicio'
+                ),
+                'fk_unidad_medida' => array(
+                    'name' => 'fk_unidad_medida',
+                    'header' => 'Unidad de Medida',
+                    'value' => '$data->search_unidad_medida($data->id_accion)'
+                ),
+                'cantidad' => array(
+                    'name' => 'cantidad',
+                    'header' => 'Cantidad',
+                    'value' => '$data->cantidad'
+                ),
+                array(
+                    'class' => 'booster.widgets.TbButtonColumn',
+                    'header' => 'Acciones',
+                    'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
+                    'template' => '{rendir_accion}{ver_actividades}',
+                    'buttons' => array(
+                        'rendir_accion' => array(
+                            'label' => 'Rendir Acción',
+                            'icon' => 'glyphicon glyphicon-calendar',
+                            'size' => 'medium',
+                            'url' => 'Yii::app()->createUrl("/poa/Rendimiento", array("id_poa"=>' . $id_poa . ', "id_accion"=>$data->id_accion, "rendimiento_accion"=>1))',
+                            'visible' => 'Rendimiento::model()->rendimiento_accion($data->id_accion) != "0"',
+                        ),
+                        
+                        'ver_actividades' => array(
+                            'label' => 'Ver Actividades',
+                            'icon' => 'eye-open',
+                            'size' => 'medium',
+                            'url' => 'Yii::app()->createUrl("/poa/Rendimiento", array("id_poa"=>' . $id_poa . ', "id_accion"=>$data->id_accion, "ver_actividad"=>1))',
+                        ),
+                    ),
+                ),
+            ),
+        ));
+        
+        
+        ?>
+    </div>
+    
+    <?php
+    if (isset($_GET['rendimiento_accion'])) {
+        $rendimiento = new Rendimiento;
+        $entidad = VswAcciones::model()->findByAttributes(array('id_accion' => $_GET['id_accion']));
+        $criteria=new CDbCriteria;
+        $criteria->order='fk_meses';
+        $rendimiento_entidad = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_GET['id_accion'], 'fk_tipo_entidad' => 73, 'es_activo' => TRUE), $criteria);
+            
+        ?>
+    <div class="col-lg-12" style="position: relative; overflow: hidden; margin-bottom: 20px;">
+
+        <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
+            <span style="font-size: 200px; opacity: 0.2;">Acción</span>
+        </div>
+        <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; margin-top: 50px;">
+            <div class="row">
+            <?php
+//        var_dump($entidad);die;
+            echo $form->textFieldGroup($entidad, 'nombre_accion', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+            ?>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <?php
+                echo $form->textFieldGroup($entidad, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+                ?>
+                </div>
+                <div class="col-md-6">
+                <?php
+                echo $form->textFieldGroup($entidad, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" style="margin-bottom: 40px; background-color: #6fa4cd; color: #FFF;">
+        <span style="width: 90%; display: block; margin: 0 auto; text-align: center; border-bottom: solid 1px rgba(255,255,255,1); margin-bottom: 20px; margin-top: 20px; font-size: 20px;"> Rendimiento de la Acción</span>
+
+        <?php
+            echo $this->renderPartial('_rendimiento', array('entidad' => $entidad, 'rendimiento_entidad' => $rendimiento_entidad, 'rendimiento' => $rendimiento, 'form' => $form), TRUE);
+        ?>   
+        
+    </div>
+    <div class="col-lg-12" style="margin: 0 auto; text-align: center">
+            <input type="hidden" value="<?php echo $_GET['id_accion']; ?>" name="Accion">
+                    <?php
+
+                    $this->widget('booster.widgets.TbButton', array(
+                    'buttonType' => 'submit',
+                    'icon' => 'glyphicon glyphicon-save',
+                    'context' => 'primary',
+                    'size' => 'large',
+                    'htmlOptions' => array(
+                      'style' => 'font-size: 40px; padding: 10px 50px; border: none;'  
+                    ),
+//                    'label' => 'Guardar Rendimiento',
+                        ));
+                    ?>
+        </div>
+    <?php
+    }
+    ?>
+    <div class="col-lg-12" style="margin-bottom: 20px;">
+    <?php
+    if (isset($_GET['ver_actividad'])) {
+        ?>
+        <div class="col-lg-12" style="position: relative; overflow: hidden; margin-bottom: 20px;">
+
+        <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
+            <span style="font-size: 200px; opacity: 0.2;">Acción</span>
+        </div>
+        <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; margin-top: 50px;">
+            <div class="row">
+            <?php
+            $consulta_accion = VswAcciones::model()->findByAttributes(array('id_accion' => $_GET['id_accion']));
+            echo $form->textFieldGroup($consulta_accion, 'nombre_accion', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+            ?>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <?php
+                echo $form->textFieldGroup($consulta_accion, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+                ?>
+                </div>
+                <div class="col-md-6">
+                <?php
+                echo $form->textFieldGroup($consulta_accion, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
+        <?php
+        $this->widget('booster.widgets.TbExtendedGridView', array(
+            'type' => 'striped bordered condensed',
+            'id' => 'ActividadesGrid',
+            'dataProvider' => new CActiveDataProvider('VswActividades', array(
+                'criteria' => array(
+                    'order' => 'id_actividades ASC',
+                    'condition' => 'fk_accion=' . $_GET['id_accion'],
+                ))
+            ),
+            'columns' => array(
+                array(
+                    'name' => 'actividad',
+                    'header' => 'Nombre Actividad',
+                    
+                ),
+                array(
+                    'name' => 'fk_unidad_medida',
+                    'header' => 'Unidad de Medida',
+                    'value' => '$data->unidad_medida',
+                    
+                ),
+                array(
+                    'name' => 'cantidad',
+                    'header' => 'Cantidad',
+                    
+                ),
+                array(
+                    'class' => 'booster.widgets.TbButtonColumn',
+                    'header' => 'Acciones',
+                    'htmlOptions' => array('width' => '100', 'style' => 'text-align: center; font-size: 20px; letter-spacing: 5px;'),
+                    'template' => '{rendir_actividad}',
+                    'buttons' => array(
+                        'rendir_actividad' => array(
+                            'label' => 'Rendir Actividad',
+                            'icon' => 'glyphicon glyphicon-calendar',
+                            'size' => 'medium',
+                            'url' => 'Yii::app()->createUrl("/poa/Rendimiento", array("id_poa"=>' . $id_poa . ', "id_accion"=>' . $_GET['id_accion'] . ', "id_actividad"=>$data->id_actividades, "ver_actividad"=>1))',
+                            'visible' => 'Rendimiento::model()->rendimiento_actividad($data->id_actividades) != "0"',
+                        ),
+                    ),
+                ),
+            ),
+        ));
+        ?>
+    </div>    
+        <?php
+        if (isset($_GET['id_actividad'])) {
+            $rendimiento = new Rendimiento;
+            $entidad = VswActividades::model()->findByAttributes(array('id_actividades' => $_GET['id_actividad']));
+            $criteria=new CDbCriteria;
+            $criteria->order='fk_meses';
+            $rendimiento_entidad = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_GET['id_actividad'], 'fk_tipo_entidad' => 74, 'es_activo' => TRUE), $criteria);
+            
+            ?>
+        <div class="col-lg-12" style="position: relative; overflow: hidden; margin-bottom: 20px;">
+
+        <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
+            <span style="font-size: 200px; opacity: 0.2;">Actividad</span>
+        </div>
+        <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; margin-top: 50px;">
+            <div class="row">
+            <?php
+            echo $form->textFieldGroup($entidad, 'actividad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+            ?>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                <?php
+                echo $form->textFieldGroup($entidad, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+                ?>
+                </div>
+                <div class="col-md-6">
+                <?php
+                echo $form->textFieldGroup($entidad, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
+                ?>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+        <div class="col-lg-12" style="margin-bottom: 40px; background-color: #6fa4cd; color: #FFF;">
+            <span style="width: 90%; display: block; margin: 0 auto; text-align: center; border-bottom: solid 1px rgba(255,255,255,1); margin-bottom: 20px; margin-top: 20px; font-size: 20px;"> Rendimiento de la Actividad</span>
+
+            <?php
+                echo $this->renderPartial('_rendimiento', array('entidad' => $entidad, 'rendimiento_entidad' => $rendimiento_entidad, 'rendimiento' => $rendimiento, 'form' => $form), TRUE);
+            ?>        
+        </div>
+            <div class="col-lg-12" style="margin: 0 auto; text-align: center; margin-bottom: 20px;">
+                <input type="hidden" value="<?php echo $_GET['id_actividad']; ?>" name="Actividad">
+                    <?php
+
+                    $this->widget('booster.widgets.TbButton', array(
+                    'buttonType' => 'submit',
+                    'icon' => 'glyphicon glyphicon-save',
+                    'context' => 'primary',
+                    'size' => 'large',
+                    'htmlOptions' => array(
+                      'style' => 'font-size: 40px; padding: 10px 50px; border: none;'  
+                    ),
+//                    'label' => 'Guardar Rendimiento',
+                        ));
+                    ?>
+            </div>
+        <?php
+        }
+    }
+       
+?>
+    
+</div>
+
+<?php
+    
+
+
+/*
 function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDADES CUMPLIDAS SEGUN LA FECHA ACTUAL
-
-
     $tiempo_hora2 = date('m'); // FECHA ACTUAL DEL SERVIDOR
-
-
     if ($tiempo_hora2 == 01) {
         $time = 57;
     }
@@ -63,9 +337,7 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
     if ($tiempo_hora2 == 12) {
         $time = 68;
     }
-
     if ($tiempo_hora != $time) {
-
         $id = 'aprobado';
     }
     return $id;
@@ -119,7 +391,6 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
 
                     <?php
 //        #########################      GRID VIEW DE ACCIONES DE PROYECTO    ##########################
-
                     $this->widget('booster.widgets.TbExtendedGridView', array(
                         'type' => 'striped bordered',
                         'htmlOptions' => array('style' => 'margin-bottom: 40px;;'),
@@ -177,7 +448,6 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
                         <?php
                         $consulta2 = Acciones::model()->findByAttributes(array('id_accion' => $_GET['id_accion']));
                         $nombreAccion = $consulta2['nombre_accion'];
-
                         $this->widget(
                                 'booster.widgets.TbBadge', array(
                             'context' => 'success',
@@ -265,9 +535,7 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
                             'label' => 'Actividades de la acción: ' . $nombreAccion,
                                 )
                         );
-
 //              ####################       GRID VIEW DE ACTIVIDADES DE PROYECTO          #####################
-
                         $this->widget('booster.widgets.TbExtendedGridView', array(
                             'type' => 'striped bordered condensed',
                             'id' => 'ActividadesGrid',
@@ -325,7 +593,6 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
                         <?php
                         $consulta3 = Actividades::model()->findByAttributes(array('id_actividades' => $_GET['id_actividades']));
                         $nombreActividad = $consulta3['actividad'];
-
                         $this->widget(
                                 'booster.widgets.TbBadge', array(
                             'context' => 'success',
@@ -341,7 +608,6 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
 
                         <?php
 //        #########################      GRID VIEW DE RENDIMIENTO DE ACTIVIDADES DE PROYECTO  ##########################
-
                         $this->widget('booster.widgets.TbExtendedGridView', array(
                             'type' => 'striped bordered condensed',
                             'id' => 'RendimientoGrid',
@@ -396,7 +662,7 @@ function FechaActual($id, $tiempo_hora) { // FUNCIÓN PARA PODER AÑADIR CANTIDA
 
 
 
-
+*/
+?>
 
 <?php $this->endWidget(); ?>
-

@@ -13,20 +13,24 @@
  * @property integer $modified_by
  * @property string $modified_date
  * @property boolean $es_activo
+ * @property string $descripcion2
  *
  * The followings are the available model relations:
- * @property Proyecto[] $proyectos
  * @property Acciones[] $acciones
  * @property Acciones[] $acciones1
  * @property Acciones[] $acciones2
- * @property Responsable[] $responsables
- * @property EstatusProyecto[] $estatusProyectos
- * @property EstatusProyecto[] $estatusProyectos1
- * @property Comentarios[] $comentarioses
  * @property Actividades[] $actividades
  * @property Actividades[] $actividades1
+ * @property Comentarios[] $comentarioses
+ * @property Poa[] $poas
+ * @property Poa[] $poas1
+ * @property Poa[] $poas2
+ * @property EstatusPoa[] $estatusPoas
+ * @property EstatusPoa[] $estatusPoas1
+ * @property Responsable[] $responsables
  * @property Rendimiento[] $rendimientos
  * @property Rendimiento[] $rendimientos1
+ * @property Rendimiento[] $rendimientos2
  */
 class MaestroPoa extends CActiveRecord
 {
@@ -49,10 +53,11 @@ class MaestroPoa extends CActiveRecord
 			array('padre, hijo, created_by, created_date, modified_date', 'required'),
 			array('padre, hijo, created_by, modified_by', 'numerical', 'integerOnly'=>true),
 			array('descripcion', 'length', 'max'=>1000),
+			array('descripcion2', 'length', 'max'=>200),
 			array('es_activo', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id_maestro, descripcion, padre, hijo, created_by, created_date, modified_by, modified_date, es_activo', 'safe', 'on'=>'search'),
+			array('id_maestro, descripcion, padre, hijo, created_by, created_date, modified_by, modified_date, es_activo, descripcion2', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,18 +69,21 @@ class MaestroPoa extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'proyectos' => array(self::HAS_MANY, 'Proyecto', 'fk_status'),
 			'acciones' => array(self::HAS_MANY, 'Acciones', 'fk_ambito'),
 			'acciones1' => array(self::HAS_MANY, 'Acciones', 'fk_status'),
 			'acciones2' => array(self::HAS_MANY, 'Acciones', 'fk_unidad_medida'),
-			'responsables' => array(self::HAS_MANY, 'Responsable', 'fk_estatus'),
-			'estatusProyectos' => array(self::HAS_MANY, 'EstatusProyecto', 'fk_status'),
-			'estatusProyectos1' => array(self::HAS_MANY, 'EstatusProyecto', 'fk_estatus_proyecto'),
-			'comentarioses' => array(self::HAS_MANY, 'Comentarios', 'fk_status'),
 			'actividades' => array(self::HAS_MANY, 'Actividades', 'fk_status'),
 			'actividades1' => array(self::HAS_MANY, 'Actividades', 'fk_unidad_medida'),
+			'comentarioses' => array(self::HAS_MANY, 'Comentarios', 'fk_status'),
+			'poas' => array(self::HAS_MANY, 'Poa', 'fk_status'),
+			'poas1' => array(self::HAS_MANY, 'Poa', 'fk_tipo_poa'),
+			'poas2' => array(self::HAS_MANY, 'Poa', 'fk_unidad_medida'),
+			'estatusPoas' => array(self::HAS_MANY, 'EstatusPoa', 'fk_estatus_poa'),
+			'estatusPoas1' => array(self::HAS_MANY, 'EstatusPoa', 'fk_status'),
+			'responsables' => array(self::HAS_MANY, 'Responsable', 'fk_estatus'),
 			'rendimientos' => array(self::HAS_MANY, 'Rendimiento', 'fk_meses'),
 			'rendimientos1' => array(self::HAS_MANY, 'Rendimiento', 'fk_status'),
+			'rendimientos2' => array(self::HAS_MANY, 'Rendimiento', 'fk_tipo_entidad'),
 		);
 	}
 
@@ -94,6 +102,7 @@ class MaestroPoa extends CActiveRecord
 			'modified_by' => 'Modified By',
 			'modified_date' => 'Modified Date',
 			'es_activo' => 'Es Activo',
+                        'descripcion2' => 'Descripcion2',
 		);
 	}
 
@@ -124,13 +133,36 @@ class MaestroPoa extends CActiveRecord
 		$criteria->compare('modified_by',$this->modified_by);
 		$criteria->compare('modified_date',$this->modified_date,true);
 		$criteria->compare('es_activo',$this->es_activo);
+                $criteria->compare('descripcion2',$this->descripcion2,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
+        
+        public function search_medida()
+	{
+		// @todo Please modify the following code to remove attributes that should not be searched.
 
-	/**
+		$criteria=new CDbCriteria;
+
+		$criteria->compare('id_maestro',$this->id_maestro);
+		$criteria->compare('descripcion',trim(mb_strtoupper($this->descripcion)), true);
+		$criteria->compare('padre',35);
+		$criteria->compare('hijo',$this->hijo);
+		$criteria->compare('created_by',$this->created_by);
+		$criteria->compare('created_date',$this->created_date,true);
+		$criteria->compare('modified_by',$this->modified_by);
+		$criteria->compare('modified_date',$this->modified_date,true);
+		$criteria->compare('es_activo',TRUE);
+                $criteria->compare('descripcion2',$this->descripcion2,true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria'=>$criteria,
+		));
+	}
+        
+        /**
 	 * Returns the static model of the specified AR class.
 	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
