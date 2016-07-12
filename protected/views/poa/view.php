@@ -90,15 +90,21 @@ $this->widget('booster.widgets.TbExtendedGridView', array(
 ?>
     </div>
 </div>
+
+<!--
+<div class='animatedParent' data-sequence='500' >
+    <div class="animated tada" data-id='1'> -->
 <div class=" form-actions text-center"style="margin-top: 15px;">
     <?php
     $this->widget('booster.widgets.TbButton', array(
         'buttonType' => 'submit',
         'icon' => 'glyphicon glyphicon-floppy-save',
         'size' => 'large',
-        'context' => 'primary',
+        'context' => 'danger',
         'label' => $model->isNewRecord ? 'Save' : 'Finalizar',
     ));
     ?>
 </div>
+<!--</div>
+</div>-->
 <?php $this->endWidget(); ?>

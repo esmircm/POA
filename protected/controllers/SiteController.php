@@ -27,7 +27,20 @@ class SiteController extends Controller {
     public function actionIndex() {
         // renders the view file 'protected/views/site/index.php'
         // using the default layout 'protected/views/layouts/main.php'
-        $this->render('index');
+
+        if (Yii::app()->user->checkAccess('registro_poa') || Yii::app()->user->checkAccess('administrador_poa')) {
+
+            $this->layout = 'main';
+            $this->redirect(array('/poa/index'));
+            Yii::app()->end();
+        } elseif (Yii::app()->user->checkAccess('evaluador_poa')) {
+            $this->layout = 'main';
+            $this->redirect(array('/poa/admin'));
+            Yii::app()->end();
+        } else {
+
+            $this->render('index');
+        }
     }
 
     /**

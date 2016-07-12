@@ -10,7 +10,8 @@
                   ))
     );?>
 
-<?php echo Yii::app()->user->ui->getFieldAdminCreateLink(CrugeTranslator::t("Crear un nuevo Campo Personalizado")); ?>
+
+
 
 <?php 
 $cols = array();

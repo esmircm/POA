@@ -4,7 +4,12 @@
     
     <div class='row'>
         <div class='col-md-12' style="text-align: center">
+            <!--<div class='animatedParent' data-sequence='500' >-->
+    <!--<div class="animated growIn slower" data-id='1'>-->
+    <div class="aparecer">
         <?php echo $form->textAreaGroup($poa,'nombre',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>800)), 'label' => $tipo_poa->descripcion)); ?>
+        <!--</div>-->
+        </div>
         </div>
     </div>
     
@@ -12,6 +17,7 @@
         if($tipo_poa->id_maestro == 70){
     ?>
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-6'>
         <?php
 //        var_dump($anio_pro);die;
@@ -36,7 +42,8 @@
         );
         ?>
         </div>
-        
+        </div>
+        <div class="aparecer">
         <div class='col-md-6'>
         <?php
 //        $fecha = '01-01-' . date('Y');
@@ -61,10 +68,12 @@
         );
         ?>
         </div>
+        </div>
     </div>
 <div class="span-12">
     <h4 style="text-align: center; border-bottom: solid 1px ;">Plan de la Patria 2013-2019</h4>
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-4'>
             
 	<?php 
@@ -98,12 +107,16 @@
 //        echo $form->textAreaGroup($poa,'obj_general',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>800))));
         ?>    
         </div>
+        </div>
+        <div class="aparecer">
         <div class="col-md-8">
             <textarea class="form-control" id="Poa_fk_historico_descripcion" readonly></textarea>
         </div>
     </div>
+    </div>
    
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-4'>
         <?php 
             echo $form->dropDownListGroup($poa, 'fk_nacional', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
@@ -128,11 +141,15 @@
             );
         ?>
         </div>
+        </div>
+        <div class="aparecer">
         <div class="col-md-8">
             <textarea class="form-control" id="Poa_fk_nacional_descripcion" readonly></textarea>
         </div>
+        </div>
     </div>
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-4'>
         <?php 
             echo $form->dropDownListGroup($poa, 'fk_estrategico', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
@@ -156,11 +173,15 @@
                     )
             );        ?>
         </div>
+        </div>
+        <div class="aparecer">
         <div class="col-md-8">
             <textarea class="form-control" id="Poa_fk_estrategico_descripcion" readonly></textarea>
         </div>
     </div>
+    </div>
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-4'>
         <?php 
             echo $form->dropDownListGroup($poa, 'fk_general', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
@@ -184,11 +205,13 @@
         <div class="col-md-8">
             <textarea class="form-control" id="Poa_fk_general_descripcion" readonly></textarea>
         </div>
+        </div>
     </div>
 </div>
 <div class="span-12" style="">
     <h4 style="text-align: center; color: rgba(255,115,150,1); border-bottom: solid 1px rgba(255,115,150,1);">Plan para la Igualdad y Equidad de Género "Mamá Rosa"</h4>
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-12'>
         <?php 
             echo $form->dropDownListGroup($maestro, 'id_maestro', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
@@ -212,8 +235,10 @@
 //        echo $form->textAreaGroup($poa,'obj_institucional',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>800))));
         ?>
         </div>
+        </div>
     </div>
     <div class="row">
+        <div class="aparecer">
         <div class="col-md-4">
             <?php
             echo $form->dropDownListGroup($poa, 'fk_estrategico_mr', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
@@ -240,8 +265,11 @@
         <div class="col-md-8">
             <textarea class="form-control" id="Poa_fk_estrategico_mr_descripcion" readonly></textarea>
         </div>
+        </div>
+            
     </div>
     <div class="row">
+        <div class="aparecer">
         <div class="col-md-4">
             <?php
             echo $form->dropDownListGroup($poa, 'fk_institucional', array('wrapperHtmlOptions' => array('class' => 'col-sm-4',),
@@ -264,9 +292,11 @@
         <div class="col-md-8">
             <textarea class="form-control" id="Poa_fk_institucional_descripcion" readonly></textarea>
         </div>
+        </div>
     </div>
 </div>
     <div class='row'>
+        <div class="aparecer">
         <div class='col-md-6'>
         <?php 
         echo $form->dropDownListGroup($poa, 'fk_unidad_medida', array('wrapperHtmlOptions' => array('class' => 'span5 limpiar'),
@@ -279,21 +309,25 @@
         ));
         ?>
         </div>
-        
+        </div>
+        <div class="aparecer">
         <div class='col-md-6'>
         <?php 
         echo $form->textFieldGroup($poa, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 limpiar'))));
         ?>
         </div>
     </div>
+    </div>
     <?php
     }
     ?>
     <div class='row'>
+        <div class="aparecer"data-move-y="200px" data-move-x="-100px">
         <div class='col-md-12'>
              <label><?php if($tipo_poa->id_maestro == 70){ echo 'Descripción del Proyecto'; } else { echo 'Objetivo'; }?></label>
 	<?php echo $form->textAreaGroup($poa,'descripcion',array('widgetOptions'=>array('htmlOptions'=>array('class'=>'span5','maxlength'=>800)), 'label' => FALSE)); ?>
         </div>
+    </div>
     </div>
     <p class="help-block">Los campos con <span class="required">*</span> son requeridos.</p>
 <?php  ?>

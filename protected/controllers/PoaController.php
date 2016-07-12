@@ -340,6 +340,7 @@ public function actionCreate($tipo) {
             'tipo_poa' => $tipo_poa,
             'anio_pro' => $anio_pro,
             'maestro' => $maestro,
+            'cruge_dependencia' => $cruge_dependencia,
    
         ));
     }
@@ -852,14 +853,18 @@ public function actionRendimiento($id_poa) {
                 ));
             }
             
+            if(!isset($_GET['id_actividad'])){
+            
             $this->render('rendimiento_create', array(
                 'model' => $model,
                 'id_poa' => $id_poa,
                 'acciones' => $acciones,
                 'actividades' => $actividades,
             ));
+            }
         }
         
+        if(!isset($_GET['rendimiento_accion']) && !isset($_GET['ver_actividad'])){
 
         $this->render('rendimiento_create', array(
             'model' => $model,
@@ -867,6 +872,7 @@ public function actionRendimiento($id_poa) {
             'acciones' => $acciones,
            
         ));
+        }
     }
     
        

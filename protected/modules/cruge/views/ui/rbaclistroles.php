@@ -1,5 +1,4 @@
 <h1><?php echo ucwords(CrugeTranslator::t("roles"));?></h1>
-
 <?php 
 
     $this->widget('booster.widgets.TbTabs', array(
@@ -11,6 +10,7 @@
             array('label' => 'Asignar Roles a Usuarios', 'url' => 'rbacusersassignments'),
                   ))
     );?>
+
 
 <div class='auth-item-create-button'>
 <?php echo CHtml::link(CrugeTranslator::t("Crear Nuevo Rol")

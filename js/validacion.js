@@ -25,7 +25,7 @@ function buscarPersonaRrhh(cedula) {
         type: 'POST',
         data: 'cedula=' + cedula,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
             //  alert(datos['strprimer_nombre']);
 //            if (!datos) {
 //                bootbox.alert('Debe Completar el campo Cédula');
@@ -87,7 +87,7 @@ function buscarPersonaRrhh(cedula) {
 //                }
 //            }
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
         }
     })
@@ -100,7 +100,7 @@ function buscarPersonaListar(cedula, nacionalidad, nombres, apellidos, descargo,
         type: 'POST',
         data: 'cedula_evaluado=' + cedula + '&nacionalidad =' + nacionalidad + '&nombres =' + nombres + '&apellidos =' + apellidos + '&descargo =' + descargo + '&coor=' + coor + '&dirg=' + dirg + '&dirl=' + dirl + '&desp=' + desp + '&id_persona=' + id_persona,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
 
             $('#id_persona').val(datos['id_persona']);
             $('#nacionalidad').val(datos['nacionalidad']);
@@ -112,7 +112,7 @@ function buscarPersonaListar(cedula, nacionalidad, nombres, apellidos, descargo,
 
 
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
         }
     })
@@ -126,7 +126,7 @@ function buscarPersonaSupervisor(cedula, nacionalidad, nombres, apellidos, codno
         type: 'POST',
         data: 'cedula=' + cedula + '&nacionalidad =' + nacionalidad + '&nombres =' + nombres + '&apellidos =' + apellidos + '&codnomina =' + codnomina + '&descargo =' + descargo + '&depnombre =' + depnombre + '&id_persona=' + id_persona,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
 
             $('#VswEvaluacion_nacionalidad').val(datos['nacionalidad']);
             $('#VswEvaluacion_cedula').val(datos['cedula']);
@@ -138,7 +138,7 @@ function buscarPersonaSupervisor(cedula, nacionalidad, nombres, apellidos, codno
             $('#VswEvaluacion_id_persona').val(datos['id_persona']);
 
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
         }
     })
@@ -161,7 +161,7 @@ function buscarSupervisado(cedula) {
             type: 'POST',
             data: 'cedula=' + cedula,
             dataType: 'json',
-            success: function(datos) {
+            success: function (datos) {
 
                 if (datos['respuesta'] == 5) {
                     bootbox.alert('El Evaluado no cumple el tiempo laboral necesario para realizarle una Evaluación.');
@@ -200,7 +200,7 @@ function buscarSupervisado(cedula) {
                 }
 
             },
-            error: function(datos) {
+            error: function (datos) {
                 bootbox.alert('Problema con la consulta');
 
             }
@@ -279,7 +279,7 @@ function GuardarFamiliar(cedulaFamiliar, primerNombre, segundoNombre, primerApel
         type: 'POST',
         data: 'cedulaFamiliar=' + cedulaFamiliar + '&primerNombre=' + primerNombre + '&segundoNombre=' + segundoNombre + '&primerApellido=' + primerApellido + '&segundoApellido=' + segundoApellido + '&estadoCivil=' + estadoCivil + '&sexo=' + sexo + '&fechaNacimiento=' + fechaNacimiento + '&parentesco=' + parentesco + '&mismoOrganismo=' + valorOrganismo + '&nivelEducativo=' + nivelEducativo + '&grado=' + grado + '&promedioNota=' + promedioNota + '&gozaUtiles=' + valorUtiles + '&grupoSanguineo=' + grupoSanguineo + '&ninoExcepcional=' + valorExcepcional + '&alergico=' + valorAlergico + '&alergias=' + alergias + '&tallaFranela=' + tallaFranela + '&tallaPantalon=' + tallaPantalon + '&tallaGorra=' + tallaGorra,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
 
             if (datos == 1) {
                 $.fn.yiiGridView.update('listado_familiar');
@@ -298,7 +298,7 @@ function GuardarFamiliar(cedulaFamiliar, primerNombre, segundoNombre, primerApel
             }
 
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
 
         }
@@ -378,7 +378,7 @@ function ActualizarFamiliar(cedulaFamiliar, primerNombre, segundoNombre, primerA
         type: 'POST',
         data: 'cedulaFamiliar=' + cedulaFamiliar + '&primerNombre=' + primerNombre + '&segundoNombre=' + segundoNombre + '&primerApellido=' + primerApellido + '&segundoApellido=' + segundoApellido + '&estadoCivil=' + estadoCivil + '&sexo=' + sexo + '&fechaNacimiento=' + fechaNacimiento + '&parentesco=' + parentesco + '&mismoOrganismo=' + valorOrganismo + '&nivelEducativo=' + nivelEducativo + '&grado=' + grado + '&promedioNota=' + promedioNota + '&gozaUtiles=' + valorUtiles + '&grupoSanguineo=' + grupoSanguineo + '&ninoExcepcional=' + valorExcepcional + '&alergico=' + valorAlergico + '&alergias=' + alergias + '&tallaFranela=' + tallaFranela + '&tallaPantalon=' + tallaPantalon + '&tallaGorra=' + tallaGorra + '&id=' + id,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
 // alert (datos);
 // return false;
             if (datos == 1) {
@@ -390,7 +390,7 @@ function ActualizarFamiliar(cedulaFamiliar, primerNombre, segundoNombre, primerA
             }
 
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
 
         }
@@ -415,7 +415,7 @@ function buscarPersonaSaime(nacionalidad, cedula) {
         type: 'POST',
         data: 'nacionalidad=' + nacionalidad + '&cedula=' + cedula,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
 
 
 //            alert(datos['dtmnacimiento']);
@@ -439,7 +439,7 @@ function buscarPersonaSaime(nacionalidad, cedula) {
                 }
             }
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
         }
     });
@@ -523,7 +523,7 @@ function BuscaPersona(nacionalidadFamiliar, cedulaFamiliar, nombreFamiliar, apel
             type: 'POST',
             data: 'cedulaFamiliar=' + cedulaFamiliar + '&nacionalidadFamiliar=' + nacionalidadFamiliar + '&nombreFamiliar=' + nombreFamiliar + '&apellidoFamiliar=' + apellidoFamiliar,
             dataType: 'json',
-            success: function(datos) {
+            success: function (datos) {
                 if (datos == 2) { //CONDICIONAL QUE NOS MUESTRA QUE EL REGISTRO NO ESTA EN BASE DE DATOS
 //                    $('.limpiar').val('');
                     bootbox.alert('Esta persona ya fue registrada, verifique sus datos!');
@@ -542,7 +542,7 @@ function BuscaPersona(nacionalidadFamiliar, cedulaFamiliar, nombreFamiliar, apel
 
                 }
             },
-            error: function(datos) {
+            error: function (datos) {
                 bootbox.alert('Ocurrio un error');
             }
         });
@@ -581,7 +581,7 @@ function Parentesco(valor) {
     contadorMadre = parseInt(0);
     contadorSuegro = parseInt(0);
     contadorAbuelo = parseInt(0);
-    $('#listado_familiar tr').each(function() {
+    $('#listado_familiar tr').each(function () {
         var parentesco = $(this).find('td:eq(6)').html();
         if (parentesco == 'PADRE') {
             contadorPadre++
@@ -849,16 +849,16 @@ function GuardarObjetivo() {
 
     }
 
-    if (Rows == 1  ) {
-        if( total_peso + peso == 75){
+    if (Rows == 1) {
+        if (total_peso + peso == 75) {
             alert('Recuerde que el mínimo de Objetivos son 3 y no puede exceder un peso total de 50 ');
-        return false;
+            return false;
         }
-       
+
 
 
     } else {
- 
+
     }
 
 
@@ -870,7 +870,7 @@ function GuardarObjetivo() {
         type: 'POST',
         data: 'objetivo=' + objetivo + '&peso=' + peso + '&total_objetivos=' + total_objetivos + '&idEvaluacion=' + idEvaluacion,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
 //           alert (data);
 //                var htmlTitulo = '<div class=\'limpiaTbl\'><h1>Reporte de' + titulo + '</h1><br/></div>'
 //                $('#titulo').append(data['titulo']);
@@ -895,7 +895,7 @@ function GuardarObjetivo() {
             }
 
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
 
         }
@@ -915,7 +915,7 @@ function eliminar_obj(valor, id, peso) {
             type: 'POST',
             data: 'id=' + id,
             dataType: 'json',
-            success: function(datos) {
+            success: function (datos) {
 //           alert (datos);
 //                var htmlTitulo = '<div class=\'limpiaTbl\'><h1>Reporte de' + titulo + '</h1><br/></div>'
 //                $('#titulo').append(data['titulo']);
@@ -933,7 +933,7 @@ function eliminar_obj(valor, id, peso) {
                 }
 
             },
-            error: function(datos) {
+            error: function (datos) {
                 bootbox.alert('Ocurrio un error');
 
             }
@@ -975,14 +975,14 @@ function ValidacionPeso() {
         alert('Verifique el Peso no puede exceder de 25');
         verificar = 1;
         return false;
-    }else{
+    } else {
         verificar = 0;
     }
     if ($("#VswPdfObjetivos_peso").val() == '') {
         alert('El Peso No debe ser en Blanco');
         verificar = 1;
         return false;
-    }else{
+    } else {
         verificar = 0;
     }
 
@@ -991,11 +991,11 @@ function ValidacionPeso() {
         verificar = 1;
         return false;
 
-    }else{
+    } else {
         verificar = 0;
     }
-    if(verificar == 1){
-        
+    if (verificar == 1) {
+
     }
     else {
         $('form').submit();
@@ -1010,10 +1010,10 @@ function ValidacionPeso() {
 }
 
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     ///Validacion para Comentarios
-    $('#EstatusEvaluacion_fk_estatus_evaluacion').change(function() {
+    $('#EstatusEvaluacion_fk_estatus_evaluacion').change(function () {
 //        alert($('#EstatusEvaluacion_fk_estatus_evaluacion option:selected').html());
         if ($('#EstatusEvaluacion_fk_estatus_evaluacion option:selected').html() == 'RECHAZADO') {
             $('#Comentarios_comentario').prop('required', true);
@@ -1024,22 +1024,22 @@ $(document).ready(function() {
     });
 
 
-    $('#table_objetivos #tr_objetivos').hover(function() {
+    $('#table_objetivos #tr_objetivos').hover(function () {
         $(this).css("background-color", "#d7dce8");
-    }, function() {
+    }, function () {
         $(this).css("background-color", "transparent");
     });
-    $('#table_competencias #tr_objetivos').hover(function() {
+    $('#table_competencias #tr_objetivos').hover(function () {
         $(this).css("background-color", "#d7dce8");
-    }, function() {
+    }, function () {
         $(this).css("background-color", "transparent");
     });
-    $('#table_obreros #tr_objetivos').hover(function() {
+    $('#table_obreros #tr_objetivos').hover(function () {
         $(this).css("background-color", "#d7dce8");
-    }, function() {
+    }, function () {
         $(this).css("background-color", "transparent");
     });
-    $('#table_obreros tr').click(function() {
+    $('#table_obreros tr').click(function () {
         $(this).find('input:radio').prop('checked', true);
         $(this).find('input:radio').prop('checked', true);
         o = 0;
@@ -1067,7 +1067,7 @@ $(document).ready(function() {
 
     var total_letras = 500;
     $('#limite_texto').html(500);
-    $('#comentario_text').keyup(function() {
+    $('#comentario_text').keyup(function () {
         var longitud = $(this).val().length;
         var resto = total_letras - longitud;
         $('#limite_texto').html(resto);
@@ -1079,7 +1079,7 @@ $(document).ready(function() {
 
 
 //  Calcular Peso x Rango Seccion B
-    $(".rango_calc").change(function() {
+    $(".rango_calc").change(function () {
 
         var tr = $(this).parent().parent();
         var peso = $(".peso_calc", tr).val();
@@ -1099,7 +1099,7 @@ $(document).ready(function() {
     });
 
 //  Sumar cada uno de los Pesos de Seccion C    
-    $(".peso_calc_compe").change(function() {
+    $(".peso_calc_compe").change(function () {
         subtotal = 0;
         i = 0;
         while (i < 8) {
@@ -1126,7 +1126,7 @@ $(document).ready(function() {
     });
 
 //  Calcular Peso x Rango Seccion C
-    $(".rango_calc_compe").change(function() {
+    $(".rango_calc_compe").change(function () {
 
         var tr = $(this).parent().parent();
         var peso = $(".peso_calc_compe", tr).val();
@@ -1142,7 +1142,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".peso_calc_compe").change(function() {
+    $(".peso_calc_compe").change(function () {
 
         var tr = $(this).parent().parent();
         var peso = $(".rango_calc_compe option:selected", tr).html();
@@ -1238,7 +1238,7 @@ function EditarObjetivos(id_peso, rango, peso, subpeso) {
             type: 'POST',
             data: 'total_subpeso=' + total + '&id_evaluacion=' + id_evaluacion,
             dataType: 'json',
-            success: function(datos) {
+            success: function (datos) {
                 if (datos == 1) {
                     bootbox.alert('Los Rangos fueron guardados con éxito.');
                     $('#seccionC').show();
@@ -1253,7 +1253,7 @@ function EditarObjetivos(id_peso, rango, peso, subpeso) {
                     bootbox.alert('Verifique los Rangos.');
                 }
             },
-            error: function(datos) {
+            error: function (datos) {
                 bootbox.alert('Ocurrio un error');
 
             }
@@ -1267,7 +1267,7 @@ function EditarObjetivos(id_peso, rango, peso, subpeso) {
 function CalcularTotal() {
 
     var total = 0;
-    $('#table_objetivos tr:not(:last)').each(function() {
+    $('#table_objetivos tr:not(:last)').each(function () {
 
         var coltotal = parseInt($(".subPeso_calc", this).val());
 
@@ -1284,7 +1284,7 @@ function CalcularTotal() {
 function CalcularSeccionC() {
 
     var total = 0;
-    $('#table_competencias tr:not(:last)').each(function() {
+    $('#table_competencias tr:not(:last)').each(function () {
 //        alert($(".subPeso_calc_compe", this).val());
         var coltotal = parseInt($(".subPeso_calc_compe", this).val());
 //        alert(coltotal);
@@ -1321,7 +1321,7 @@ function GuardarCompetencias() {
 }
 
 function numero() {
-    $('#PreguntasIndividuales_objetivo').keydown(function(e) {
+    $('#PreguntasIndividuales_objetivo').keydown(function (e) {
         if (e.shiftKey || e.ctrlKey || e.altKey) {
             e.preventDefault();
         } else {
@@ -1341,7 +1341,7 @@ function BtnAgregarP(objetivo) {
 
 
     contar = parseInt(0); //variable para indicar que solo sean 3 objetivos como minimo que el usuario debe ingresar 
-    $('.contadorP1').each(function() {
+    $('.contadorP1').each(function () {
         contar++
     });
 
@@ -1364,7 +1364,7 @@ function BtnAgregarP(objetivo) {
 
 
     objetivo = parseInt(0);
-    $('.contadorP1').each(function() {
+    $('.contadorP1').each(function () {
         if ($(this).text() == objetivo) {
             objetivo++;
 
@@ -1384,7 +1384,7 @@ function GuardarDatosRequisicion(tipo_requisicion, unidad, anio, ubicacion, parr
         type: 'POST',
         data: 'tipo_requisicion=' + tipo_requisicion + '&unidad=' + unidad + '&anio=' + anio + '&ubicacion=' + ubicacion + '&parroquia=' + parroquia + '&ciudad=' + ciudad,
         dataType: 'json',
-        success: function(datos) {
+        success: function (datos) {
             if (datos == 1) {
                 bootbox.alert('Su registro fue guardado con éxito.');
 //                $('#persona').show();
@@ -1397,7 +1397,7 @@ function GuardarDatosRequisicion(tipo_requisicion, unidad, anio, ubicacion, parr
             }
 
         },
-        error: function(datos) {
+        error: function (datos) {
             bootbox.alert('Ocurrio un error');
 
         }
@@ -1412,22 +1412,22 @@ function EditarObjetivo() {
         alert("El Peso Total debe ser de 50. Por favor verifique los pesos de sus Objetivos.");
 
     } else {
-         $('form').submit();
+        $('form').submit();
 //        alert($('#redireccion_js').val());
-    //    $(location).attr('href', $('#redireccion_js').val());
+        //    $(location).attr('href', $('#redireccion_js').val());
 
     }
 }
 
 function ValidacionFecha() {
 // alert('aqui'+$('#Revision_fecha_revision').val());
- 
+
     if ($('#Revision_fecha_revision').val() == '') {
 
         alert("Debe Seleccionar Una Fecha de Revisión.");
 
     } else {
-         $('#revision-form').submit();
+        $('#revision-form').submit();
 
     }
 }
@@ -1468,90 +1468,95 @@ function ExportarReportes(tipo) {
 //////////////////PROYECTO/////////////////////////////
 ///////////////////////////////////////////////////////
 
-function guardar_poa(){
-    validacion = 0;
-if($('#Poa_fecha_inicio').val()==''){
-    $('#Poa_fecha_inicio').css('border', '1px solid rgba(215, 40, 40, 0.9)');
-    validacion = 1;
-} else {
-    $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
-}
-if($('#Poa_fecha_final').val()==''){
-    $('#Poa_fecha_final').css('border', '1px solid rgba(215, 40, 40, 0.9)');
-    validacion = 1;
-} else {
-    $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
-}
+function guardar_poa() {
 
-if (validacion != 1) {
-    $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
-    $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
-    $('form').submit();
-}
+    validacion = 0;
+    if ($('#Poa_fecha_inicio').val() == '') {
+        $('#Poa_fecha_inicio').css('border', '1px solid rgba(215, 40, 40, 0.9)');
+        validacion = 1;
+    } else {
+        $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
+    }
+    if ($('#Poa_fecha_final').val() == '') {
+        $('#Poa_fecha_final').css('border', '1px solid rgba(215, 40, 40, 0.9)');
+        validacion = 1;
+    } else {
+        $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
+    }
+    if ((Date.parse($('#Poa_fecha_inicio').val())) > (Date.parse($('#Poa_fecha_final').val()))) {//Validacion de fecha de inicio y final
+        bootbox.alert('La fecha inicial no puede ser mayor que la fecha final ');
+        validacion = 1;
+    }
+
+    if (validacion != 1) {
+        $('#Poa_fecha_final').css('border', '1px solid #AFAEAE');
+        $('#Poa_fecha_inicio').css('border', '1px solid #AFAEAE');
+        $('form').submit();
+    }
 
 }
 
 function GuardarAccion() {
     validar = 0;
-    if($("#Acciones_nombre_accion")==''){
+    if ($("#Acciones_nombre_accion") == '') {
         bootbox.alert('Verifique que la Accion no este vacia.');
         validar = 1;
     }
-    if($("#Acciones_bien_servicio").val()==''){
+    if ($("#Acciones_bien_servicio").val() == '') {
         bootbox.alert('Debe indicar el Bien o Servicio de la Acción.');
         validar = 1;
     }
-    if($("#Acciones_cantidad").val()==''){
+    if ($("#Acciones_cantidad").val() == '') {
         bootbox.alert('Por favor, indique la cantidad a cumplir para esta Accion.');
         validar = 1;
     }
-    if(validar == 0){
+    if (validar == 0) {
         $('form').submit();
     }
 }
 
 function GuardarActividad() {
 
-    if($("#Actividades_actividad").val()==''){
+    if ($("#Actividades_actividad").val() == '') {
         bootbox.alert('Verifique que la Actividad no este vacia.');
     }
-    if($("#Actividades_fk_unidad_medida").val()==''){
+    if ($("#Actividades_fk_unidad_medida").val() == '') {
         bootbox.alert('Debe seleccionar un tipo de Unidad de Medida.');
     }
-    if($("#Actividades_cantidad").val()==''){
+    if ($("#Actividades_cantidad").val() == '') {
         bootbox.alert('Es necesario indicar la Programación para la Actividad.');
     }
-    if(($("#Actividades_actividad").val()!='')&&($("#Actividades_fk_unidad_medida").val()!='')&&($("#Actividades_cantidad").val()!='')&&($('#update_actividad').val()=='')){
-        
+    if (($("#Actividades_actividad").val() != '') && ($("#Actividades_fk_unidad_medida").val() != '') && ($("#Actividades_cantidad").val() != '') && ($('#update_actividad').val() == '')) {
+
         $.ajax({
             url: baseUrl + "/ValidacionJs/DibujarActividad",
             async: true,
             type: 'POST',
             data: 'actividad=' + $("#Actividades_actividad").val() + '&fk_unidad_medida=' + $("#Actividades_fk_unidad_medida").val() + '&cantidad=' + $("#Actividades_cantidad").val() + '&fk_accion=' + $("#Actividades_fk_accion").val(),
             dataType: 'json',
-            success: function(datos) {
+            success: function (datos) {
                 if (datos != '') {
                     $('#id_actividad').val(datos['id_actividad']);
                     html = datos['html'];
                     html_accion = datos['html_accion'];
-                    
+
                     //Guardado del Rendimiento de la Actividad
-                    
+
                     i = 0;
                     fk_meses = 57;
                     programacion = '';
                     while (i < 12) {
-                        if($('#Rendimiento_' + fk_meses).val() == ''){
+                        if ($('#Rendimiento_' + fk_meses).val() == '') {
                             programado = 0;
                         } else {
                             programado = $('#Rendimiento_' + fk_meses).val();
                         }
                         programacion += programado + ', ';
-              
+
                         fk_meses++;
                         i++;
                     }
-                    if(i == 12){
+                    if (i == 12) {
                         id_actividad = $('#id_actividad').val();
                         $.ajax({
                             url: baseUrl + "/ValidacionJs/GuardarProgramadoActividad",
@@ -1559,16 +1564,16 @@ function GuardarActividad() {
                             type: 'POST',
                             data: 'id_actividad=' + id_actividad + '&programacion=' + programacion,
                             dataType: 'json',
-                            success: function(datos){
+                            success: function (datos) {
                                 html_programado = datos['html'];
                                 $('#ActividadesPOA').append(html + html_programado + html_accion);
                             },
-                            error: function(datos) {
+                            error: function (datos) {
                                 bootbox.alert('Ocurrio un error');
                             }
                         });
                     }
-                    
+
                     bootbox.alert('La Actividad fue guardada con éxito.');
                     Limpiar();
                 } else {
@@ -1576,40 +1581,40 @@ function GuardarActividad() {
                 }
 
             },
-            error: function(datos) {
+            error: function (datos) {
                 bootbox.alert('Ocurrio un error');
 
             }
         });
     }
-    
-    if(($("#Actividades_actividad").val()!='')&&($("#Actividades_fk_unidad_medida").val()!='')&&($("#Actividades_cantidad").val()!='')&&($('#update_actividad').val()!='')){
+
+    if (($("#Actividades_actividad").val() != '') && ($("#Actividades_fk_unidad_medida").val() != '') && ($("#Actividades_cantidad").val() != '') && ($('#update_actividad').val() != '')) {
         $.ajax({
             url: baseUrl + "/ValidacionJs/UpdateActividad",
             async: true,
             type: 'POST',
             data: 'actividad=' + $("#Actividades_actividad").val() + '&fk_unidad_medida=' + $("#Actividades_fk_unidad_medida").val() + '&cantidad=' + $("#Actividades_cantidad").val() + '&fk_accion=' + $("#Actividades_fk_accion").val() + '&id_actividad=' + $('#update_actividad').val(),
             dataType: 'json',
-            success: function(datos) {
+            success: function (datos) {
                 if (datos != '') {
-                                        
+
                     //Guardado del Rendimiento de la Actividad
-                    
+
                     i = 0;
                     fk_meses = 57;
                     programacion = '';
                     while (i < 12) {
-                        if($('#Rendimiento_' + fk_meses).val() == ''){
+                        if ($('#Rendimiento_' + fk_meses).val() == '') {
                             programado = 0;
                         } else {
                             programado = $('#Rendimiento_' + fk_meses).val();
                         }
                         programacion += programado + ', ';
-              
+
                         fk_meses++;
                         i++;
                     }
-                    if(i == 12){
+                    if (i == 12) {
                         id_actividad = $('#id_actividad').val();
                         $.ajax({
                             url: baseUrl + "/ValidacionJs/UpdateProgramadoActividad",
@@ -1617,35 +1622,37 @@ function GuardarActividad() {
                             type: 'POST',
                             data: 'id_actividad=' + $('#update_actividad').val() + '&programacion=' + programacion,
                             dataType: 'json',
-                            success: function(datos){
+                            success: function (datos) {
                             },
-                            error: function(datos) {
+                            error: function (datos) {
                                 bootbox.alert('Ocurrio un error Programado');
                             }
                         });
                     }
-                    u=1;
+                    u = 1;
 
                 } else {
                     bootbox.alert('Verifique sus datos!.');
                 }
 
             },
-            error: function(datos) {
+            error: function (datos) {
                 bootbox.alert('Ocurrio un error Actividad');
 
             }
         });
-                        bootbox.alert("La Actividad se ha modificado con éxito.", function(){  location.reload(); });
-                       
-                    
-        
+        bootbox.alert("La Actividad se ha modificado con éxito.", function () {
+            location.reload();
+        });
+
+
+
     }
 
 }
 
 function editar_actividad(valor, id_actividad) {
-    $('.expose').css('z-index','3');
+    $('.expose').css('z-index', '3');
     $('#overlay').fadeIn(300);
     $.ajax({
         url: baseUrl + "/ValidacionJs/BuscarActividad",
@@ -1659,17 +1666,17 @@ function editar_actividad(valor, id_actividad) {
             $('#Actividades_cantidad').val(datos['cantidad']);
             i = 0;
             fk_mes = 57;
-            while (i < 12){
+            while (i < 12) {
                 $('#Rendimiento_' + fk_mes).val(datos[i]);
                 i++;
                 fk_mes++;
             }
             $('#update_actividad').val(datos['id_actividades']);
-            
+
             $('#button_save_actividad').removeClass();
             $('#button_save_actividad').addClass('glyphicon glyphicon-pencil');
             $('#button_save_actividad').css('font-size', '50px')
-            
+
             $('.button_cancel').show();
         },
         error: function (datos) {
@@ -1680,16 +1687,16 @@ function editar_actividad(valor, id_actividad) {
 }
 
 function eliminar_actividad(valor, id) {
-    
-    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function(result){  
-        if(result==true) {
+
+    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function (result) {
+        if (result == true) {
             $.ajax({
                 url: baseUrl + "/ValidacionJs/EliminarActividad",
                 async: true,
                 type: 'POST',
                 data: 'id_actividad=' + id,
                 dataType: 'json',
-                success: function(datos) {
+                success: function (datos) {
 
                     if (datos == 1) {
                         bootbox.alert('Eliminado Con Exito!');
@@ -1699,7 +1706,7 @@ function eliminar_actividad(valor, id) {
                     }
 
                 },
-                error: function(datos) {
+                error: function (datos) {
                     bootbox.alert('Ocurrio un error');
 
                 }
@@ -1708,24 +1715,24 @@ function eliminar_actividad(valor, id) {
 
         }
     });
- 
+
 }
 
 function eliminar_accion(valor, id) {
-    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function(result){  
-        if(result==true) {
+    bootbox.confirm("\u00bfEstá usted seguro de que desea eliminar está Actividad?", function (result) {
+        if (result == true) {
             $.ajax({
                 url: baseUrl + "/ValidacionJs/EliminarAccion",
                 async: true,
                 type: 'POST',
                 data: 'id_accion=' + id,
                 dataType: 'json',
-                success: function(datos) {
+                success: function (datos) {
 
                     if (datos == 1) {
                         bootbox.alert('Eliminado Con Exito!');
                         $(valor).parent().parent().remove();
-                    } 
+                    }
                     if (datos == 2) {
                         bootbox.alert('Verifique sus Datos!');
                     }
@@ -1734,7 +1741,7 @@ function eliminar_accion(valor, id) {
                     }
 
                 },
-                error: function(datos) {
+                error: function (datos) {
                     bootbox.alert('Ocurrio un error');
 
                 }
@@ -1751,7 +1758,7 @@ function ver_accion(valor, fk_poa, id_accion, tipo) {
 }
 
 function editar_accion(valor, fk_poa, id_accion, tipo) {
-    $('.expose').css('z-index','3');
+    $('.expose').css('z-index', '3');
     $('#overlay').fadeIn(300);
     $.ajax({
         url: baseUrl + "/ValidacionJs/BuscarAccion",
@@ -1767,7 +1774,7 @@ function editar_accion(valor, fk_poa, id_accion, tipo) {
             $('#Acciones_fk_ambito').val(datos['fk_ambito']);
             i = 0;
             fk_mes = 57;
-            while (i < 12){
+            while (i < 12) {
                 $('#Rendimiento_' + fk_mes).val(datos[i]);
                 i++;
                 fk_mes++;
@@ -1798,8 +1805,32 @@ function cancelar_update() {
 
 }
 
-$(document).ready(function() {
-    $('#EstatusPoa_fk_estatus_poa').change(function() {
+function validacion_poa(id_poa) {
+    $.ajax({
+        url: baseUrl + "/ValidacionJs/Validacion_POA",
+        async: true,
+        type: 'POST',
+        data: 'id_poa=' + id_poa,
+        dataType: 'json',
+        success: function (datos) {
+            
+            if(datos['validacion'] == '1'){
+                bootbox.alert(datos['error']);
+            }
+            if(datos['validacion'] == '2'){
+              document.location.href='' + baseUrl + '/poa/view/id_poa/'+id_poa;
+            }
+    
+        },
+        error: function (datos) {
+            bootbox.alert('Ocurrio un error');
+
+        }
+    });
+}
+
+$(document).ready(function () {
+    $('#EstatusPoa_fk_estatus_poa').change(function () {
         if ($('#EstatusPoa_fk_estatus_poa option:selected').html() == 'RECHAZADO') {
             $('#Comentarios_comentarios').prop('required', true);
         }
@@ -1807,24 +1838,24 @@ $(document).ready(function() {
             $('#Comentarios_comentarios').prop('required', false);
         }
     });
-    
-    $('.button-panel').click(function()
-        {
+
+    $('.button-panel').click(function ()
+    {
         $(".left-panel").animate({"right": "0px"}, "slow");
         $('.button-panel').css("display", "none")
         $('.button-panel-close').css("display", "inline-block")
     }
     );
-    
-    $('.button-panel-close').click(function()
-        {
+
+    $('.button-panel-close').click(function ()
+    {
         $(".left-panel").animate({"right": "-360px"}, "slow");
         $('.button-panel-close').css("display", "none")
         $('.button-panel').css("display", "inline-block")
-        }
+    }
     );
-    
-    $('.suma_cantidad').change(function()
+
+    $('.suma_cantidad').change(function ()
     {
         i = 0;
         fk_meses = 57;
@@ -1832,24 +1863,24 @@ $(document).ready(function() {
 
         while (i < 12) {
             programacion = $('#Rendimiento_' + fk_meses).val();
-            if(programacion == ''){
-                programacion=0;
+            if (programacion == '') {
+                programacion = 0;
             }
             total += parseInt(programacion);
             fk_meses++;
             i++;
         }
-        
+
         $('#Acciones_cantidad').val(total);
         $('#Actividades_cantidad').val(total);
 
     });
-    
-    $('#descripcion_create').change(function() {
+
+    $('#descripcion_create').change(function () {
         $('#maestro_medidas-grid').yiiGridView('update', {
-            data: $(this).serialize()  
+            data: $(this).serialize()
         });
-        return false; 
+        return false;
     });
-    
+
 })

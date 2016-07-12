@@ -248,12 +248,12 @@ class ValidacionJsController extends Controller {
             $fecha_inicio = "01-07-" . date('Y') . " 00:00:00";
             $fecha_final = "31-12-" . date('Y') . " 23:59:59";
         }
-        
+
         $ver = VswListarPersonas::model()->find("cedula_evaluado = " . $cedula . " AND fecha_creacion_evaluacion BETWEEN '" . $fecha_inicio . "' AND '" . $fecha_final . "'");
 //        var_dump(date('m'));
-        
+
         $Evaluacion = VswEvaluacion::model()->findByAttributes(array('cedula' => $cedula));
-        
+
         if ($Evaluacion) {
             $to_char = $Evaluacion['to_char'];
             $fecha_ingreso = explode("-", $to_char);
@@ -269,11 +269,10 @@ class ValidacionJsController extends Controller {
                 $validacion_fecha = date_diff($fecha_tope, $fecha);
             }
             $validacion_dias = $validacion_fecha->format('%a');
-            
+
             if ($validacion_dias <= 120) {
                 $validacion_evaluacion = 3;
             }
-            
         }
         if ($Evaluacion) {
             if ($Evaluacion['fk_tipo_clase'] == '') {
@@ -294,12 +293,12 @@ class ValidacionJsController extends Controller {
         ///////////////////////////////////////////////////////////////////////
         //////////////Codigo de los 120 IMPORTANTE/////////////////////////////
         ///////////////////////////////////////////////////////////////////////
-  
-        if ($Evaluacion){
+
+        if ($Evaluacion) {
             //Condicion para los Obreros despues de los 120 días//
 
             if ($fk_tipo_clase == 11) {
-                
+
                 if (date('n') <= 6) {
                     $fecha_inicio = date_create(date('Y') . "-01-01");
 //                    $fecha_actual = date_create('2016-06-20');
@@ -314,7 +313,7 @@ class ValidacionJsController extends Controller {
                         $validacion_evaluacion = 1;
                     }
                 }
-                
+
                 if (date('n') >= 7) {
                     $fecha_inicio = date_create(date('Y') . "-07-01");
                     $fecha_actual = date_create(date('Y') . '-' . date('m') . '-' . date('d'));
@@ -328,7 +327,6 @@ class ValidacionJsController extends Controller {
                         $validacion_evaluacion = 1;
                     }
                 }
-
             }
 
             ///Condicion para los Profesionales, Supervisores y Apoyo que esten fuera de los 120 dias reglamentarios///
@@ -344,7 +342,7 @@ class ValidacionJsController extends Controller {
                         $validacion_evaluacion = 2;
                     }
                 }
-                
+
                 if (date('n') >= 7) {
                     $fecha_inicio = date_create(date('Y') . "-07-01");
                     $fecha_actual = date_create(date('Y') . '-' . date('m') . '-' . date('d'));
@@ -358,14 +356,12 @@ class ValidacionJsController extends Controller {
                 }
             }
         }
-        
-        
+
+
         ///////////////////////////////////////////////////////////////
         //////////////----FINAL DE LOS 120 DIAS----////////////////////
         ///////////////////////////////////////////////////////////////
-       
-            
-          ///---------------Codigo donde se evalua si el Personal tiene más de 120 laborando-----------///  
+        ///---------------Codigo donde se evalua si el Personal tiene más de 120 laborando-----------///  
 //        if ($Evaluacion) {
 //            $to_char = $Evaluacion['to_char'];
 //            $fecha_ingreso = explode("-", $to_char);
@@ -386,21 +382,21 @@ class ValidacionJsController extends Controller {
             /////////////////////////////////////////////
             //Envio del Mensaje a .js para los 120 días//
             /////////////////////////////////////////////
-            
+
             if (isset($validacion_evaluacion)) {
-                if($validacion_evaluacion==1){
+                if ($validacion_evaluacion == 1) {
                     $data = array(
                         'respuesta' => 3,
                     );
                     echo json_encode($data);
                 }
-                if($validacion_evaluacion==2){
+                if ($validacion_evaluacion == 2) {
                     $data = array(
                         'respuesta' => 4,
                     );
                     echo json_encode($data);
                 }
-                if($validacion_evaluacion==3){
+                if ($validacion_evaluacion == 3) {
                     $data = array(
                         'respuesta' => 5,
                     );
@@ -416,9 +412,9 @@ class ValidacionJsController extends Controller {
                     );
                     echo json_encode($data);
                 } else {
-                    
-                    
-                    
+
+
+
                     $data = array(
                         'cedula' => $Evaluacion->cedula,
                         'fk_tipo_clase' => $fk_tipo_clase,
@@ -431,7 +427,6 @@ class ValidacionJsController extends Controller {
                         'dependencia' => $Evaluacion->dependencia,
                     );
                     echo json_encode($data);
-                    
                 }
             }
         } else {
@@ -899,11 +894,11 @@ class ValidacionJsController extends Controller {
             echo json_encode(2);
         }
     }
-    
+
     ////////////////////////////////////////////////////////////////
     /////////////////     PROYECTOS       /////////////////////////
     ////////////////////////////////////////////////////////////////
-    
+
     public function actionDibujarActividad() {
         $actividad = new Actividades;
 
@@ -930,13 +925,12 @@ class ValidacionJsController extends Controller {
             echo '<pre>';
             var_dump($actividad->Errors);
             die;
-            
         }
-        
+
         $tabla = array('html' => $html, 'id_actividad' => $id_actividad, 'html_accion' => $html_accion);
         echo json_encode($tabla);
     }
-    
+
     public function actionUpdateActividad() {
         $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
 
@@ -955,16 +949,13 @@ class ValidacionJsController extends Controller {
             var_dump($actividad->Errors);
             die;
             echo json_encode(2);
-
-            
         }
-
     }
 
     public function actionEliminarActividad() {
 
         $programacion = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74));
-        if($programacion){
+        if ($programacion) {
             $actividad = Actividades::model()->findByPk($_POST['id_actividad']);
             if ($actividad->delete()) {
                 echo json_encode(1);
@@ -986,15 +977,15 @@ class ValidacionJsController extends Controller {
             }
         }
     }
-    
+
     public function actionEliminarAccion() {
         $actividades = VswActividades::model()->findAllByAttributes(array('fk_accion' => $_POST['id_accion']));
 //        var_dump($actividades);die;
-        if($actividades){
-            $i=0;
-            foreach($actividades as $data){
+        if ($actividades) {
+            $i = 0;
+            foreach ($actividades as $data) {
                 $programacion_act = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $data['id_actividades'], 'fk_tipo_entidad' => 74));
-                if($programacion_act){
+                if ($programacion_act) {
                     $actividad = Actividades::model()->findByPk($data['id_actividades']);
                     if ($actividad->delete()) {
                         $i++;
@@ -1003,7 +994,6 @@ class ValidacionJsController extends Controller {
                         var_dump($actividad->Errors);
                         die;
                     }
-                    
                 } else {
                     $actividad = Actividades::model()->findByPk($data['id_actividades']);
                     if ($actividad->delete()) {
@@ -1016,9 +1006,9 @@ class ValidacionJsController extends Controller {
                 }
             }
 
-            if($i == count($actividades)){
+            if ($i == count($actividades)) {
                 $programacion_acc = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73));
-                if($programacion_acc){
+                if ($programacion_acc) {
                     $accion = Acciones::model()->findByPk($_POST['id_accion']);
                     if ($accion->delete()) {
                         echo json_encode(1);
@@ -1040,7 +1030,7 @@ class ValidacionJsController extends Controller {
             } else {
                 echo json_encode(2);
             }
-        }else{
+        } else {
             $programacion_acc = Rendimiento::model()->deleteAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73));
             if ($programacion_acc) {
                 $accion = Acciones::model()->findByPk($_POST['id_accion']);
@@ -1082,13 +1072,13 @@ class ValidacionJsController extends Controller {
         $programacion = explode(", ", $programacion);
         $i = 0;
         $meses = 57;
-        foreach ($programacion as $data){
+        foreach ($programacion as $data) {
             $programacion = new Rendimiento;
             $programacion->fk_meses = $meses;
-            if($data == ''){
+            if ($data == '') {
                 $programacion->cantidad_programada = 0;
-            }else{
-                $programacion->cantidad_programada = $data;            
+            } else {
+                $programacion->cantidad_programada = $data;
             }
             $programacion->fk_tipo_entidad = 74;
             $programacion->id_entidad = $_POST['id_actividad'];
@@ -1096,7 +1086,7 @@ class ValidacionJsController extends Controller {
             $programacion->created_by = Yii::app()->user->id;
             $programacion->created_date = 'now()';
             $programacion->modified_date = 'now()';
-            if($programacion->save()){
+            if ($programacion->save()) {
                 $i++;
             } else {
                 echo '<pre>';
@@ -1105,37 +1095,37 @@ class ValidacionJsController extends Controller {
             }
             $meses++;
         }
-        
-        if($i == 12){
+
+        if ($i == 12) {
             $html = '';
-            $criteria=new CDbCriteria;
-            $criteria->order='fk_meses';
+            $criteria = new CDbCriteria;
+            $criteria->order = 'fk_meses';
             $lista_rendimiento = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74), $criteria);
             foreach ($lista_rendimiento as $data_rendimiento) {
                 $html .= '<td style="text-align: center">' . $data_rendimiento->cantidad_programada . '</td>';
             }
             $tabla = array('html' => $html);
             echo json_encode($tabla);
-        }else{
+        } else {
             echo json_encode(2);
         }
     }
-    
+
     public function actionUpdateProgramadoActividad() {
         $programacion = trim($_POST['programacion'], ', ');
         $programacion = explode(", ", $programacion);
         $i = 0;
         $meses = 57;
-        foreach ($programacion as $data){
+        foreach ($programacion as $data) {
             $programacion = Rendimiento::model()->findByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74, 'fk_meses' => $meses, 'es_activo' => TRUE));
-            if($data == ''){
+            if ($data == '') {
                 $programacion->cantidad_programada = 0;
-            }else{
-                $programacion->cantidad_programada = $data;            
+            } else {
+                $programacion->cantidad_programada = $data;
             }
             $programacion->modified_date = 'now()';
             $programacion->modified_by = Yii::app()->user->id;
-            if($programacion->save()){
+            if ($programacion->save()) {
                 $i++;
             } else {
                 echo '<pre>';
@@ -1144,14 +1134,14 @@ class ValidacionJsController extends Controller {
             }
             $meses++;
         }
-        
-        if($i == 12){
+
+        if ($i == 12) {
             echo json_encode(1);
-        }else{
+        } else {
             echo json_encode(2);
         }
     }
-    
+
     public function actionBuscarTiempoMedida() {
 //        var_dump('$_POST');die;
         $Id = (isset($_POST['MaestroPoa']['id_maestro']) ? $_POST['MaestroPoa']['id_maestro'] : $_GET['MaestroPoa']['id_maestro']);
@@ -1177,51 +1167,51 @@ class ValidacionJsController extends Controller {
             echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
         }
     }
-    
+
     public function actionBuscarAccion() {
         $vsw_accion = VswAcciones::model()->findByAttributes(array('id_accion' => $_POST['id_accion']));
 //        var_dump($vsw_accion->attributes);die;
-        $criteria=new CDbCriteria;
-        $criteria->order='fk_meses';
+        $criteria = new CDbCriteria;
+        $criteria->order = 'fk_meses';
         $programacion = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_POST['id_accion'], 'fk_tipo_entidad' => 73, 'es_activo' => TRUE), $criteria);
         $datos = $vsw_accion->attributes;
-        foreach($programacion as $data) {
+        foreach ($programacion as $data) {
             array_push($datos, $data->cantidad_programada);
         }
-       
+
 //        var_dump($programado);die;
-        if($vsw_accion){
+        if ($vsw_accion) {
             echo json_encode($datos);
         } else {
             echo json_encode(2);
         }
     }
-    
+
     public function actionBuscarActividad() {
         $vsw_accion = VswActividades::model()->findByAttributes(array('id_actividades' => $_POST['id_actividad']));
 //        var_dump($vsw_accion->attributes);die;
-        $criteria=new CDbCriteria;
-        $criteria->order='fk_meses';
+        $criteria = new CDbCriteria;
+        $criteria->order = 'fk_meses';
         $programacion = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_POST['id_actividad'], 'fk_tipo_entidad' => 74, 'es_activo' => TRUE), $criteria);
         $datos = $vsw_accion->attributes;
-        foreach($programacion as $data) {
+        foreach ($programacion as $data) {
             array_push($datos, $data->cantidad_programada);
         }
-       
+
 //        var_dump($programado);die;
-        if($vsw_accion){
+        if ($vsw_accion) {
             echo json_encode($datos);
         } else {
             echo json_encode(2);
         }
     }
-    
+
     public function actionBuscarHistorico() {
 //        var_dump('$_POST');die;
-        if(isset($_POST['Poa'])){
+        if (isset($_POST['Poa'])) {
             $Id = (isset($_POST['Poa']['fk_historico']) ? $_POST['Poa']['fk_historico'] : $_GET['Poa']['fk_historico']);
         }
-        if(isset($_POST['VswPoa'])){
+        if (isset($_POST['VswPoa'])) {
             $Id = (isset($_POST['VswPoa']['fk_historico']) ? $_POST['VswPoa']['fk_historico'] : $_GET['VswPoa']['fk_historico']);
         }
 
@@ -1249,21 +1239,20 @@ class ValidacionJsController extends Controller {
             $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
             $html2 = 'No se encontraron resultados.';
         }
-        
-        $datos = array (
-          'html1' => $html1,
-          'html2' => $html2,
+
+        $datos = array(
+            'html1' => $html1,
+            'html2' => $html2,
         );
         echo json_encode($datos);
-        
     }
 
     public function actionBuscarNacional() {
 //        var_dump('$_POST');die;
-        if(isset($_POST['Poa'])){
+        if (isset($_POST['Poa'])) {
             $Id = (isset($_POST['Poa']['fk_nacional']) ? $_POST['Poa']['fk_nacional'] : $_GET['Poa']['fk_nacional']);
         }
-        if(isset($_POST['VswPoa'])){
+        if (isset($_POST['VswPoa'])) {
             $Id = (isset($_POST['VswPoa']['fk_nacional']) ? $_POST['VswPoa']['fk_nacional'] : $_GET['VswPoa']['fk_nacional']);
         }
 
@@ -1291,23 +1280,23 @@ class ValidacionJsController extends Controller {
             $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
             $html2 = 'No se encontraron resultados.';
         }
-        
-        $datos = array (
-          'html1' => $html1,
-          'html2' => $html2,
+
+        $datos = array(
+            'html1' => $html1,
+            'html2' => $html2,
         );
         echo json_encode($datos);
     }
-    
+
     public function actionBuscarEstrategico() {
 //        var_dump('$_POST');die;
-        if(isset($_POST['Poa'])){
+        if (isset($_POST['Poa'])) {
             $Id = (isset($_POST['Poa']['fk_estrategico']) ? $_POST['Poa']['fk_estrategico'] : $_GET['Poa']['fk_estrategico']);
         }
-        if(isset($_POST['VswPoa'])){
+        if (isset($_POST['VswPoa'])) {
             $Id = (isset($_POST['VswPoa']['fk_estrategico']) ? $_POST['VswPoa']['fk_estrategico'] : $_GET['VswPoa']['fk_estrategico']);
         }
-        
+
         $Selected = isset($_GET['fk_estrategico']) ? $_GET['fk_estrategico'] : '';
         if (!empty($Id)) {
             $criteria = new CDbCriteria;
@@ -1332,28 +1321,28 @@ class ValidacionJsController extends Controller {
             $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
             $html2 = 'No se encontraron resultados.';
         }
-        
-        $datos = array (
-          'html1' => $html1,
-          'html2' => $html2,
+
+        $datos = array(
+            'html1' => $html1,
+            'html2' => $html2,
         );
         echo json_encode($datos);
     }
-    
+
     public function actionBuscarGeneral() {
 //        var_dump('$_POST');die;
-        if(isset($_POST['Poa'])){
+        if (isset($_POST['Poa'])) {
             $Id = (isset($_POST['Poa']['fk_general']) ? $_POST['Poa']['fk_general'] : $_GET['Poa']['fk_general']);
         }
-        if(isset($_POST['VswPoa'])){
+        if (isset($_POST['VswPoa'])) {
             $Id = (isset($_POST['VswPoa']['fk_general']) ? $_POST['VswPoa']['fk_general'] : $_GET['VswPoa']['fk_general']);
         }
-        
+
         $Selected = isset($_GET['fk_general']) ? $_GET['fk_general'] : '';
         if (!empty($Id)) {
-            
+
             $descripcion = MaestroPoa::model()->findByPk($Id);
-            if($descripcion){
+            if ($descripcion) {
                 echo $descripcion->descripcion;
             } else {
                 echo 'No se encontraron resultados.';
@@ -1363,10 +1352,8 @@ class ValidacionJsController extends Controller {
 
             echo '';
         }
-        
-        
     }
-    
+
     public function actionBuscarMamaRosa() {
 //        var_dump('$_POST');die;
         $Id = (isset($_POST['MaestroPoa']['id_maestro']) ? $_POST['MaestroPoa']['id_maestro'] : $_GET['MaestroPoa']['id_maestro']);
@@ -1392,16 +1379,16 @@ class ValidacionJsController extends Controller {
             echo CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
         }
     }
-    
+
     public function actionBuscarEstrategicoMr() {
 //        var_dump('$_POST');die;
-        if(isset($_POST['Poa'])){
+        if (isset($_POST['Poa'])) {
             $Id = (isset($_POST['Poa']['fk_estrategico_mr']) ? $_POST['Poa']['fk_estrategico_mr'] : $_GET['Poa']['fk_estrategico_mr']);
         }
-        if(isset($_POST['VswPoa'])){
+        if (isset($_POST['VswPoa'])) {
             $Id = (isset($_POST['VswPoa']['fk_estrategico_mr']) ? $_POST['VswPoa']['fk_estrategico_mr'] : $_GET['VswPoa']['fk_estrategico_mr']);
         }
-        
+
         $Selected = isset($_GET['fk_estrategico_mr']) ? $_GET['fk_estrategico_mr'] : '';
         if (!empty($Id)) {
             $criteria = new CDbCriteria;
@@ -1426,28 +1413,28 @@ class ValidacionJsController extends Controller {
             $html1 = CHtml::tag('option', array('value' => ''), CHtml::encode('SELECCIONE'), true);
             $html2 = 'No se encontraron resultados.';
         }
-        
-        $datos = array (
-          'html1' => $html1,
-          'html2' => $html2,
+
+        $datos = array(
+            'html1' => $html1,
+            'html2' => $html2,
         );
         echo json_encode($datos);
     }
-    
+
     public function actionBuscarInstitucional() {
 //        var_dump('$_POST');die;
-        if(isset($_POST['Poa'])){
+        if (isset($_POST['Poa'])) {
             $Id = (isset($_POST['Poa']['fk_institucional']) ? $_POST['Poa']['fk_institucional'] : $_GET['Poa']['fk_institucional']);
         }
-        if(isset($_POST['VswPoa'])){
+        if (isset($_POST['VswPoa'])) {
             $Id = (isset($_POST['VswPoa']['fk_institucional']) ? $_POST['VswPoa']['fk_institucional'] : $_GET['VswPoa']['fk_institucional']);
         }
-        
+
         $Selected = isset($_GET['fk_institucional']) ? $_GET['fk_institucional'] : '';
         if (!empty($Id)) {
-            
+
             $descripcion = MaestroPoa::model()->findByPk($Id);
-            if($descripcion){
+            if ($descripcion) {
                 echo $descripcion->descripcion;
             } else {
                 echo 'No se encontraron resultados.';
@@ -1457,9 +1444,61 @@ class ValidacionJsController extends Controller {
 
             echo '';
         }
-        
-        
     }
-    
-    
+
+    public function actionValidacion_POA() {
+        $sql = "SELECT 
+                poa.id_poa,
+                poa.fk_tipo_poa,
+                acc.id_accion,
+                CASE WHEN acc.fk_poa = poa.id_poa THEN 'TRUE'::text
+                ELSE 'FALSE'::text END AS tiene_acciones,
+
+                CASE WHEN act.fk_accion = acc.id_accion THEN 'TRUE'::text
+                ELSE 'FALSE'::text END AS tiene_actividades
+                FROM poa.poa poa
+                LEFT JOIN poa.acciones acc ON acc.fk_poa = poa.id_poa
+                LEFT JOIN poa.actividades act ON act.fk_accion = acc.id_accion
+                WHERE id_poa = " . $_POST['id_poa'];
+        $validacion = Yii::app()->db->createCommand($sql)->queryAll();
+
+        $aErrores = array();
+        foreach ($validacion as $dato) {
+
+            if ($dato["fk_tipo_poa"] == "70") {
+                $nombre = 'el Proyecto';
+            } else {
+                $nombre = 'la Acción Centralizada';
+            }
+
+
+            if ($dato["tiene_acciones"] == "FALSE") {
+
+                array_push($aErrores, 'Debe crear una acción para finalizar ' . $nombre);
+            }
+
+            if ($dato["tiene_acciones"] == "TRUE" && $dato["tiene_actividades"] == "FALSE") {
+
+                $accion = VswAcciones::model()->findByAttributes(array('id_accion' => $dato["id_accion"]));
+                array_push($aErrores, 'Debe crear una actividad en la acción: <b>' . $accion->nombre_accion . '</b>');
+            }
+        }
+        if (count($aErrores) > 0) {
+            $error = implode('<br><br>', $aErrores);
+//        var_dump($error);die;
+
+            $data = array(
+                'validacion' => 1,
+                'error' => $error,
+            );
+        } else {
+            $data = array(
+                'validacion' => 2,
+                'error' => '',
+            );
+        }
+        echo json_encode($data);
+
+    }
+
 }

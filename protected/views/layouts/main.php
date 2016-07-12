@@ -9,7 +9,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>SIMAP</title>
+        <title>SIGEPOA</title>
+        
+<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/js/css3-animate-it-master/css/animations.css" media="screen, projection">
+
 
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/css/font-awesome.min.css" media="screen, projection">
 
@@ -37,7 +40,7 @@
                         <div class="left_col scroll-view">
 
                             <div class="navbar nav_title" style="border: 0;">
-                                <a class="site_title"><i class="fa fa-group"></i> <span>SIMAP</span></a>
+                                <a class="site_title"><i class="fa fa-group"></i> <span>SIGEPOA</span></a>
                             </div>
                             <div class="clearfix"></div>
 
@@ -161,7 +164,7 @@
                                             <span class="glyphicon glyphicon-user"><?php echo Yii::app()->user->name; ?></span>
                                             <span class=" fa fa-angle-down"></span>
                                         </a>
-                                        <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                                        <ul class="dropdown-menu dropdown-usermenu  pull-right">
 
                                             <?php if (Yii::app()->user->isGuest) { ?><li><a class="glyphicon glyphicon-lock" href="<?php echo $this->createUrl('/cruge/ui/login'); ?>"><i class="fa fa-key"></i>Ingresar</a></li><?php } ?>
                                             <?php if (!Yii::app()->user->isGuest) { ?><li><a class="" href="<?php echo $this->createUrl('/cruge/ui/usermanagementupdate', array('id' => Yii::app()->user->id)); ?>"><i class="fa fa-key"></i>Cambiar Clave</a></li><?php } ?>
@@ -172,7 +175,7 @@
                                     <li role="presentation" class="dropdown">
 
                                         <!--##NOTIFICACIONES##-->
-                                        <!--                                        <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+<!--                                                                                <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                                                                                     <i class="fa fa-envelope-o"></i>
                                                                                     <span class="badge bg-green">6</span>
                                                                                 </a>-->
@@ -281,6 +284,22 @@
         </div>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/nicescroll/jquery.nicescroll.min.js"></script>
         <script src="<?php echo Yii::app()->baseUrl; ?>/js/custom.js"></script>
+         <!--JQUERY NECESARIO PARA TODAS LAS TRANSACIONES-->
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+        <!--<script src="<?php // echo Yii::app()->baseUrl; ?>/js/jquery.1.11.1.js"></script>-->
+        <!--JS PARA ANIMACIONES-->
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/css3-animate-it-master/js/css3-animate-it.js"></script>
+         <!--JS QUE INICIA LAS TRANSICIONES-->    
+    <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery-scroll-1/dist/jquery.smoove.js"></script>
+    <!--<script>$('.login-container').smoove({offset:'20%'});</script>-->
+    <script>$('.aparecer').smoove({
+            offset: '20%',
+//        moveX   : '100px',
+//        moveY   : '100px'
+            move3d: '60px'
+
+
+        });</script>
     </body>
 
 </html>

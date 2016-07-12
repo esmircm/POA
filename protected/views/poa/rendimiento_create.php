@@ -18,16 +18,20 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         ));
 
 ?>
+<div class='animatedParent' data-sequence='500' >
 <div class="span-20 poa_content" style="width: 99%;">
     
     <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
+        <div class="animated fadeInDownShort" data-id='1'> 
         <span style="font-size: 200px; opacity: 0.2;"><?php echo $model->tipo_poa; ?></span>
+    </div>
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; font-size: 20px; margin-top: 40px; text-align: center">
     <?php
         echo $form->textAreaGroup($model, 'nombre', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; text-align: center; font-size: 20px; margin-top: 50px;', 'readOnly' => true)), 'label' => false));
     ?>
     </div>
+</div>
 </div>
 
 <div class="span-20 poa_content" style="width: 99%;">
@@ -99,32 +103,40 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         $rendimiento_entidad = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_GET['id_accion'], 'fk_tipo_entidad' => 73, 'es_activo' => TRUE), $criteria);
             
         ?>
-    <div class="col-lg-12" style="position: relative; overflow: hidden; margin-bottom: 20px;">
+   <div class='animatedParent' data-sequence='500' > 
+       <div class="animated fadeInDownShort" data-id='1'> 
+   <div class='col-md-12'>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!--<blockquote>-->
+                <blockquote style="border-left: 5px solid #1fb5ad !important;font-size: 15px;">
+                    <!--<div class='animatedParent' data-sequence='500' >-->
+                    <!--<div class="animated pulse" data-id='2'>--> 
+                    <div class='col-md-4'>
+                        Nombre Acción: <b> <?php echo $entidad->nombre_accion; ?> </b>
+                    </div>            
+                    <!--</div>-->            
+                    
+                    <!--<div class="animated pulse" data-id='3'>--> 
+                    <div class='col-md-4'>
+                        Unidad de Medida:<b> <?php echo $entidad->unidad_medida; ?> </b>
+                    </div> 
+                    <!--</div>--> 
+                    
+<!--                    <div class="animated pulse" data-id='4'> -->
+                    <div class='col-md-4'>
+                        Cantidad:<b> <?php echo $entidad->cantidad; ?> </b>
+                    </div> 
+                    <!--</div>--> 
+                    <!--</div>--> 
 
-        <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
-            <span style="font-size: 200px; opacity: 0.2;">Acción</span>
-        </div>
-        <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; margin-top: 50px;">
-            <div class="row">
-            <?php
-//        var_dump($entidad);die;
-            echo $form->textFieldGroup($entidad, 'nombre_accion', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-            ?>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                <?php
-                echo $form->textFieldGroup($entidad, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-                ?>
-                </div>
-                <div class="col-md-6">
-                <?php
-                echo $form->textFieldGroup($entidad, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-                ?>
-                </div>
+                </blockquote>
             </div>
         </div>
     </div>
+    </div>
+    </div>
+   
     <div class="col-lg-12" style="margin-bottom: 40px; background-color: #6fa4cd; color: #FFF;">
         <span style="width: 90%; display: block; margin: 0 auto; text-align: center; border-bottom: solid 1px rgba(255,255,255,1); margin-bottom: 20px; margin-top: 20px; font-size: 20px;"> Rendimiento de la Acción</span>
 
@@ -156,31 +168,42 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
     <?php
     if (isset($_GET['ver_actividad'])) {
         ?>
-        <div class="col-lg-12" style="position: relative; overflow: hidden; margin-bottom: 20px;">
-
-        <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
-            <span style="font-size: 200px; opacity: 0.2;">Acción</span>
-        </div>
-        <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; margin-top: 50px;">
-            <div class="row">
             <?php
             $consulta_accion = VswAcciones::model()->findByAttributes(array('id_accion' => $_GET['id_accion']));
             echo $form->textFieldGroup($consulta_accion, 'nombre_accion', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
             ?>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                <?php
-                echo $form->textFieldGroup($consulta_accion, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-                ?>
-                </div>
-                <div class="col-md-6">
-                <?php
-                echo $form->textFieldGroup($consulta_accion, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-                ?>
-                </div>
+         <div class='animatedParent' data-sequence='500' > 
+       <div class="animated fadeInDownShort" data-id='1'> 
+   <div class='col-md-12'>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!--<blockquote>-->
+                <blockquote style="border-left: 5px solid #1fb5ad !important;font-size: 15px;">
+                    <!--<div class='animatedParent' data-sequence='500' >-->
+                    <!--<div class="animated pulse" data-id='2'>--> 
+                    <div class='col-md-4'>
+                        Nombre Acción: <b> <?php echo $consulta_accion->nombre_accion; ?> </b>
+                    </div>            
+                    <!--</div>-->            
+                    
+                    <!--<div class="animated pulse" data-id='3'>--> 
+                    <div class='col-md-4'>
+                        Unidad de Medida:<b> <?php echo $consulta_accion->unidad_medida; ?> </b>
+                    </div> 
+                    <!--</div>-->   
+                    
+<!--                    <div class="animated pulse" data-id='4'> -->
+                    <div class='col-md-4'>
+                        Cantidad:<b> <?php echo $consulta_accion->cantidad; ?> </b>
+                    </div> 
+                    <!--</div>--> 
+                    <!--</div>--> 
+
+                </blockquote>
             </div>
         </div>
+    </div>
+    </div>
     </div>
         <?php
         $this->widget('booster.widgets.TbExtendedGridView', array(
@@ -237,31 +260,40 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
             $rendimiento_entidad = Rendimiento::model()->findAllByAttributes(array('id_entidad' => $_GET['id_actividad'], 'fk_tipo_entidad' => 74, 'es_activo' => TRUE), $criteria);
             
             ?>
-        <div class="col-lg-12" style="position: relative; overflow: hidden; margin-bottom: 20px;">
+      
+    <!--<div class='animatedParent' data-sequence='500' >--> 
+       <!--<div class="animated fadeInDownShort" data-id='2'>--> 
+   <div class='col-md-12'>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <!--<blockquote>-->
+                <blockquote style="border-left: 5px solid #1fb5ad !important;font-size: 15px;">
+                    <!--<div class='animatedParent' data-sequence='500' >-->
+                    <!--<div class="animated pulse" data-id='2'>--> 
+                    <div class='col-md-4'>
+                        Nombre Actividad: <b> <?php echo $entidad->actividad; ?> </b>
+                    </div>            
+                    <!--</div>-->            
+                    
+                    <!--<div class="animated pulse" data-id='3'>--> 
+                    <div class='col-md-4'>
+                        Unidad de Medida:<b> <?php echo $entidad->unidad_medida; ?> </b>
+                    </div> 
+                    <!--</div>-->   
+                    
+<!--                    <div class="animated pulse" data-id='4'> -->
+                    <div class='col-md-4'>
+                        Cantidad:<b> <?php echo $entidad->cantidad; ?> </b>
+                    </div> 
+                    <!--</div>--> 
+                    <!--</div>--> 
 
-        <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
-            <span style="font-size: 200px; opacity: 0.2;">Actividad</span>
-        </div>
-        <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; margin-top: 50px;">
-            <div class="row">
-            <?php
-            echo $form->textFieldGroup($entidad, 'actividad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-            ?>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                <?php
-                echo $form->textFieldGroup($entidad, 'unidad_medida', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-                ?>
-                </div>
-                <div class="col-md-6">
-                <?php
-                echo $form->textFieldGroup($entidad, 'cantidad', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; border-bottom: 1px solid;', 'readOnly' => true))));
-                ?>
-                </div>
+                </blockquote>
             </div>
         </div>
     </div>
+    <!--</div>-->
+    <!--</div>-->
     
         <div class="col-lg-12" style="margin-bottom: 40px; background-color: #6fa4cd; color: #FFF;">
             <span style="width: 90%; display: block; margin: 0 auto; text-align: center; border-bottom: solid 1px rgba(255,255,255,1); margin-bottom: 20px; margin-top: 20px; font-size: 20px;"> Rendimiento de la Actividad</span>

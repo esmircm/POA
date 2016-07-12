@@ -103,17 +103,20 @@ $form = $this->beginWidget('booster.widgets.TbActiveForm', array(
         </div>
        
     </div>
-
+<div class='animatedParent' data-sequence='500' >
 <div style="width: 90%; margin: 0 auto; text-align: center; background-color: rgba(94, 152, 201, 1); border-radius: none; color: #FFF; font-size: 16px; overflow: hidden; position: relative">
 
     <div style="position: absolute; z-index: 1; bottom: 0%; margin-bottom: -100px;">
+        <div class="animated bounceInUp" data-id='1'> 
         <span style="font-size: 200px; opacity: 0.2;"><?php echo $poa->tipo_poa; ?></span>
+    </div>
     </div>
     <div style="z-index: 2; position: relative; margin: 0 auto; width: 90%; font-size: 20px; margin-top: 40px; text-align: center">
     <?php
         echo $form->textAreaGroup($poa, 'nombre', array('widgetOptions' => array('htmlOptions' => array('class' => 'span5 ', 'style' => 'background: transparent; border: none; text-align: center; color: #FFF; font-size: 20px; margin-top: 50px;', 'readOnly' => true)), 'label' => false));
     ?>
     </div>
+</div>
 </div>
 
 <?php $this->endWidget();  ?>

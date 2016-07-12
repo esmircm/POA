@@ -8,12 +8,14 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
     $s = 1;
 }
 ?>
-
+<div class='animatedParent' data-sequence='500' >
+    <div class="animated fadeInDownShort" data-id='1'>    
 <div class="span-proyecto">
     <h1 style="border-bottom: 1px solid #dddddd; margin-bottom: 20px;">SISTEMA DE GESTIÓN DE PROYECTOS Y ACCIÓN CENTRALIZADA</h1>
     <h1 style="margin-bottom: 20px; font-size: 26px;"><?php echo $dependencia; ?></h1>
     
     <?php
+//    var_dump($anio_pro[0], date('Y')+1);die;
     if($anio_pro[0] == (date('Y')+1)){
         ?>
         <div class="button-proyecto-disabled" id="button-proyecto">
@@ -49,6 +51,11 @@ if($cruge_cargo->value == 1 || $cruge_cargo->value == 2 || $cruge_cargo->value =
             <h6>CREAR ACCIÓN CENTRALIZADA</h6>
             <h1><?php echo $anio_acc[1]; ?></h1>
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
     
     

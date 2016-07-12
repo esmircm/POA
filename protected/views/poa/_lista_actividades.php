@@ -1,6 +1,6 @@
 <div class="row">
     <div class='col-md-12'>
-           <table id='ActividadesPOA' class="table table-bordered" style="text-align:center;">
+           <table id='ActividadesPOA' class="table table-bordered animatedParent" data-sequence='500' style="text-align:center;">
                <tr style="font-weight: 700">  
                 <td style="text-align: center;"> Actividad  </td>
                 <td style="text-align: center;"> Unidad de Medida </td>
@@ -12,8 +12,9 @@
             $criteria=new CDbCriteria;
             $criteria->order='fk_meses';
 //            if(isset($lista_actividad)){
+                $i = 0;
                 foreach ($lista_actividad as $data){
-                    $html = '<tr>';
+                    $html = '<tr class="animated fadeInUp" data-id="'.$i.'">';
                     $html .= '<td style="text-align: center">' . $data->actividad . '</td>';
                     $html .= '<td style="text-align: center">' . $data->unidad_medida . '</td>';
                     $html .= '<td style="text-align: center">' . $data->cantidad . '</td>';
@@ -28,6 +29,7 @@
 
                     $html .= '</tr>';
                     echo $html;
+                    $i++;
                 }
 //            }
             ?>

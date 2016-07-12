@@ -38,6 +38,7 @@
         <meta name="language" content="en" />
 
         <!-- blueprint CSS framework -->
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/fonts/css/font-awesome.min.css" media="screen, projection">
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection" />
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print" />
 
@@ -46,8 +47,8 @@
         <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
         <!--<link rel="stylesheet" type="text/css" href="<?php // echo Yii::app()->request->baseUrl; ?>/css/fakeLoader.css " />-->
 
-        <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/animate.min.css" type="text/css"></link>
-        <link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/creative.css" type="text/css"></link>
+        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->request->baseUrl; ?>/css/animate.min.css" type="text/css"></link>-->
+        <!--<link rel="stylesheet" href="<?php // echo Yii::app()->request->baseUrl; ?>/css/creative.css" type="text/css"></link>-->
         <title>SIGEPOA</title>
     </head>
 
@@ -98,23 +99,34 @@
                 <!-- /.container-fluid -->
             </nav>
         </header>
-        <div id="content">
+<!--        <div id="content">
             <section class="wrapper">
                 <article class='col-md-1'></article>
-                <article class='col-md-10'>
+                <article class='col-md-10'>-->
                     <!--mini statistics start-->
                     <?php echo $content; ?>
                     <!--mini statistics end-->
-                </article>
+<!--                </article>
                 <article class='col-md-1'></article>
             </section>
-        </div>
+        </div>-->
         <div id="expirado"></div>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/layoutPrincipal/jquery.fittext.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/layoutPrincipal/wow.min.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/layoutPrincipal/creative.js"></script>
-        <script src="<?php echo Yii::app()->baseUrl; ?>/js/fakeLoader.min.js"></script>
-        <script>
+        <!--<script src="<?php // echo Yii::app()->baseUrl; ?>/js/layoutPrincipal/jquery.fittext.js"></script>-->
+        <!--<script src="<?php // echo Yii::app()->baseUrl; ?>/js/layoutPrincipal/wow.min.js"></script>-->
+        <!--<script src="<?php // echo Yii::app()->baseUrl; ?>/js/layoutPrincipal/creative.js"></script>-->
+        <!--<script src="<?php // echo Yii::app()->baseUrl; ?>/js/fakeLoader.min.js"></script>-->
+        
+        <!--JQUERY NECESARIO PARA TODAS LAS TRANSACIONES-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/jquery.1.11.1.js"></script>
+        <!--JS PARA ANIMACIONES-->
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/css3-animate-it-master/js/css3-animate-it.js"></script>
+        
+        
+            
+        <script src="<?php echo Yii::app()->baseUrl; ?>/js/main.js"></script>
+
+<!--        <script>
             $(document).ready(function () {
                 $(".fakeloader").fakeLoader({
                     timeToHide: 1200,
@@ -122,7 +134,7 @@
                     spinner: "spinner6"
                 });
             });
-        </script>
+        </script>-->
     </body>
 </html>
 
